@@ -415,8 +415,11 @@ function(zeega, Backbone, Layer) {
 			this.isPlaying = true;
 
 			// display citations
-			if(zeega.player.get('layerCitations')) $('#citation-tray').html( this.citationView.render().el );
-			
+			if(zeega.player.get('layerCitations'))
+			{
+				console.log('cc 		draw frame citations', this, this.citationView.render().el )
+				$('#citation-tray').html( this.citationView.render().el );
+			}
 			// update arrows
 			this.updateArrows();
 			
@@ -559,7 +562,7 @@ function(zeega, Backbone, Layer) {
 		
 		setViews : function()
 		{
-			if(zeega.player.get('layerCitations') ) this.citationView = new Zeega.Player.CitationTrayView({model:this});
+			this.citationView = new Zeega.Player.CitationTrayView({model:this});
 			this.loaderView = new Zeega.Player.LoaderView({model:this});
 		},
 		
@@ -767,21 +770,29 @@ function(zeega, Backbone, Layer) {
 		}
 	});
 
-
+// could be turned into a layout!!
 	Zeega.Player.CitationTrayView = Backbone.View.extend({
 
 		tagName : 'ul',
 		className : 'citation-list',
+
+		manage : false,
 		
+		initialize : function()
+		{
+			console.log('cc 		init citation list view')
+		},
+
 		render : function()
 		{
+			console.log('cc 		citation render', zeega, Zeega)
 			var _this = this;
 			this.$el.empty();
 			_.each( _.toArray(this.model.layers), function(layer){
-				if( zeega.player.get('appName') || Zeega.Player.CitationView[zeega.player.get('appName')] )
+				if( zeega.player.get('appName') && Zeega.Player.CitationView[zeega.player.get('appName')] )
 					var citation = new Zeega.Player.CitationView[zeega.player.get('appName')]({model:layer});
 				else var citation = new Zeega.Player.CitationView({model:layer});
-				console.log('citation stuff:', citation, Player)
+				console.log('citation stuff:', citation, Zeega.Player)
 
 				_this.$el.append( citation.render().el );
 				citation.delegateEvents();
@@ -794,6 +805,7 @@ function(zeega, Backbone, Layer) {
 	
 	Zeega.Player.CitationView = Backbone.View.extend({
 		
+		manage : false,
 		tagName : 'li',
 
 		render : function()
