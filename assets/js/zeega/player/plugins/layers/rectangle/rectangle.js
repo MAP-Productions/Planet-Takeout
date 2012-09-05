@@ -10,11 +10,17 @@
 
 ************************************/
 
-define(['layerModel', 'layerView'], function(){
+define([
+  "zeega",
+  "backbone",
+],
 
-(function(Layer){
+function(zeega, Backbone){
 
-	Layer.Rectangle = Layer.Model.extend({
+
+	var Layer = zeega.module();
+
+	Layer.Rectangle = Backbone.Model.extend({
 
 		layerType : 'Rectangle',
 		displayCitation : false,
@@ -31,69 +37,52 @@ define(['layerModel', 'layerView'], function(){
 			'opacity':.75,
 			
 			linkable : true
-		}	
-		
-	});
-	
-	Layer.Views.Controls.Rectangle = Layer.Views.Controls.extend({
-		
-		render : function()
-		{
-			var dissolveCheck = new Layer.Views.Lib.Checkbox({
+		},
+
+		controls : [
+
+			{
+				type : 'Checkbox',
 				property : 'dissolve',
-				model: this.model,
 				label : 'Fade In'
-			});
-			
-			var color = new Layer.Views.Lib.ColorPicker({
+			},
+			{
+				type : 'ColorPicker',
 				property : 'backgroundColor',
-				color : this.attr.backgroundColor,
-				model: this.model,
 				label : 'Color'
-			});
-			
-			var widthSlider = new Layer.Views.Lib.Slider({
+			},
+			{
+				type : 'Slider',
 				property : 'width',
-				model: this.model,
 				label : 'Width',
 				suffix : '%',
 				min : 1,
-				max : 200,
-			});
-			
-			var heightSlider = new Layer.Views.Lib.Slider({
+				max : 200
+			},
+			{
+				type : 'Slider',
 				property : 'height',
-				model: this.model,
 				label : 'Height',
 				suffix : '%',
 				min : 1,
 				max : 200,
-			});
-			
-			var opacitySlider = new Layer.Views.Lib.Slider({
+			},
+			{
+				type : 'Slider',
 				property : 'opacity',
-				model: this.model,
 				label : 'Opacity',
 				step : 0.01,
 				min : 0,
 				max : 1,
-			});
-			
-			this.controls
-				.append( dissolveCheck.getControl() )
-				.append( color.getControl() )
-				.append( opacitySlider.getControl() )
-				.append( widthSlider.getControl() )
-				.append( heightSlider.getControl() );
-			
-			return this;
-		
-		}
+			}
+
+		]
 		
 	});
+	
 
-	Layer.Views.Visual.Rectangle = Layer.Views.Visual.extend({
-		
+	Layer.Rectangle.Visual = Backbone.View.extend({
+
 		render : function()
 		{
 			var style = {
@@ -101,16 +90,17 @@ define(['layerModel', 'layerView'], function(){
 				'height' : this.model.get('attr').height +'%'
 			}
 
-			$(this.el).css( style );
-			
-			this.model.trigger('ready',this.model.id)
+			this.$el.css( style );
 			
 			return this;
-		}
-		
+		},
+
+		onPreload : function(){ this.model.trigger('ready',this.model.id) }
 		
 	});
-	
-})(zeega.module("layer"));
+
+
+
+	return Layer;
 
 })

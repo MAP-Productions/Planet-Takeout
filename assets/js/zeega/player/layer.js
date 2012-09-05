@@ -5,10 +5,10 @@ define([
 
   // Modules
   // Plugins
-  'zeega_layers/image/image'
+  'zeega_base/player/plugins.layers'
 ],
 
-function(zeega, Backbone, Plugin){
+function(zeega, Backbone, Layers){
 
 	var Layer = zeega.module();
 
@@ -44,8 +44,7 @@ function(zeega, Backbone, Plugin){
 		
 		initialize: function(attributes,options)
 		{
-
-			this.layerTypeModel = new Plugin.Layer[this.get('type')];
+			this.layerTypeModel = new Layers[this.get('type')];
 			
 			this.on('ready', function(){ this.visualLoaded = true });
 			this.on('refresh_view', this.refreshView, this);
@@ -200,9 +199,9 @@ function(zeega, Backbone, Plugin){
 		{
 			var _this = this;
 			
-			this.typeClass = new Plugin.Layer.Image.Visual({model:this.model, attributes:{
+			this.typeClass = new Layers[this.model.get('type')].Visual({model:this.model, attributes:{
 				id: 'layer-visual-'+this.model.id,
-				class: 'layer-'+ this.model.get('type').toLowerCase()
+				class: 'visual-element layer-'+ this.model.get('type').toLowerCase()
 			}});
 			//this.typeClass.attributes = { id:'testtrue' };
 

@@ -1,8 +1,14 @@
-define(['layerModel', 'layerView'], function(){
+define([
+  "zeega",
+  "backbone",
+],
 
-(function(Layer){
+function(zeega, Backbone){
 
-	Layer.Text = Layer.Model.extend({
+
+	var Layer = zeega.module();
+
+	Layer.Text = Backbone.Model.extend({
 
 		layerType : 'Text',
 		displayCitation : false,
@@ -41,64 +47,33 @@ define(['layerModel', 'layerView'], function(){
 		stash : function()
 		{
 			this.display.css({'top':"-1000%",'left':"-1000%"});
-		}
-	
-		
-	});
-	
-	Layer.Views.Controls.Text = Layer.Views.Controls.extend({
-		
-		render : function()
-		{
-			var dissolveCheck = new Layer.Views.Lib.Checkbox({
+		},
+
+		controls : [
+
+			{
+				type : 'Checkbox',
 				property : 'dissolve',
-				model: this.model,
 				label : 'Fade In'
-			});
-			
-			var color = new Layer.Views.Lib.ColorPicker({
+			},
+			{
+				type : 'ColorPicker',
 				property : 'color',
-				color : this.model.get('attr').color,
-				model: this.model,
 				label : '',
 				opacity : true
-			});
-			
-			/*
-			var sizeSlider = new Layer.Views.Lib.Slider({
-				property : 'fontSize',
-				model: this.model,
-				label : 'Font Size',
-				suffix : '%',
-				min : 100,
-				max : 1000,
-				
-			});
-			*/
-			
-			var textStyles = new Layer.Views.Lib.TextStyles({
-				model : this.model
-			})
-			
-			var fontChooser = new Layer.Views.Lib.FontChooser({
-				model : this.model
-			})
-			
-			this.controls
-				.append( dissolveCheck.getControl() )
-				.append( textStyles.getControl() )
-				.append( fontChooser.getControl() )
-				.append( color.getControl() );
-			
-			return this;
-		}
+			},
+			{ type : 'TextStyles' },
+			{ type : 'FontChooser' }
+		]
 		
 	});
 
-	Layer.Views.Visual.Text = Layer.Views.Visual.extend({
+	Layer.Text.Visual = Backbone.View.extend({
 		
 		draggable : true,
 		
+		template : '<div id="zedit-target" class="inner" contenteditable="<%= contentEditable %>" ><%= content %></div>',
+
 		render : function()
 		{
 			
@@ -129,7 +104,7 @@ define(['layerModel', 'layerView'], function(){
 				'line-height' : '100%',
 			}
 
-			$(this.el).html( _.template( this.getTemplate(), _.extend(this.model.get('attr'), {contentEditable:!this.model.player} ) ) ).css( style );
+			$(this.el).html( _.template( this.template, _.extend(this.model.get('attr'), {contentEditable:!this.model.player} ) ) ).css( style );
 			if(!this.model.player) $(this.el).addClass('text-non-editing');
 			
 			this.model.trigger('ready',this.model.id)
@@ -201,18 +176,11 @@ define(['layerModel', 'layerView'], function(){
 			$(this.el).find('#zedit-target').html(this.model.get('attr').content );
 		},
 		
-		getTemplate : function()
-		{
-			var html = 
-			
-					'<div id="zedit-target" class="inner" contenteditable="<%= contentEditable %>" ><%= content %></div>';
-			
-			return html;
-		}
+		onPreload : function(){ this.model.trigger('ready',this.model.id) }
 		
 	});
 	
-})(zeega.module("layer"));
+	return Layer;
 
 })
 

@@ -4,6 +4,8 @@ define([
   "lodash",
   "backbone",
 
+  "zeega_base/player/zeega.helpers",
+
   // Plugins.
   "plugins/backbone.layoutmanager",
   "vendor/imagesloaded/jquery.imagesloaded.min"

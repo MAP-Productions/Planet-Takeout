@@ -36,6 +36,8 @@ require.config({
     "plugins/backbone.layoutmanager": ["backbone"],
 
     "vendor/imagesloaded/jquery.imagesloaded.min" : ['jquery'],
+
+    'zeega_base/player/plugins.layers' : ['lodash'],
     "zeega_player": ["backbone"]
   }
 
