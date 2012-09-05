@@ -174,23 +174,19 @@ function(zeega, Backbone, Layer) {
 
 			var frame = this.frames.get(frameID);
 			console.log('$$		go to frame:',frameID, frame, this)
-			console.log('after player render', $('#preview-media'))
 			
 			if(frame.status == 'waiting')
 			{
-				console.log('$$		frame status is waiting')
 				frame.on('ready',this.renderFrame, this);
 				frame.renderLoader();
 				this.preloadFrames(frame);
 			}
 			else if( frame.status = 'ready')
 			{
-				console.log('$$		frame status is ready')
 				this.renderFrame( frameID );
 			}
 			else if(frame.status == 'loading' && frame.isLoaded())
 			{
-				console.log('$$		frame status is loading')
 				frame.onFrameLoaded();
 				this.renderFrame( frameID );
 			}
@@ -213,8 +209,6 @@ function(zeega, Backbone, Layer) {
 		{
 			var frame = this.frames.get(frameID);
 			var fromFrameID = this.currentFrame ? this.currentFrame.id : frameID;
-
-			console.log('$$		render frame', frameID, frame, fromFrameID)
 
 			frame.render( fromFrameID );
 			this.setFrameAdvance( frameID );
@@ -355,23 +349,13 @@ function(zeega, Backbone, Layer) {
 			var _this = this;
 			this.status = 'loading';
 
-			console.log('$$		frame preloading', this, zeega)
-
 			// preload layers
 			_.each( _.toArray(this.layers), function(layer){
 				if(layer.status == 'waiting')
 				{
-					console.log('$$		layer load',layer, zeega.player.project.layout )
 
-					zeega.player.project.layout.insertView( layer.visual );
-					zeega.player.project.layout.render();
-					//$('#preview-media').append( layer.visual.render().el );
-					/*
-					layer.visual.render(function(){
-						console.log('$$		render layer', layer.visual.el)
-						$('#preview-media').append(layer.visual.el)
-					})
-					*/
+					$('#preview-media').append( layer.visual.typeClass.render().el );
+
 					layer.on('ready', _this.onLayerReady, _this);
 					layer.on('error', _this.onLayerError, _this);
 
@@ -428,8 +412,6 @@ function(zeega, Backbone, Layer) {
 		{
 			var _this = this;
 
-			console.log('$$		render frame- inside', this, fromFrameID)
-
 			this.isPlaying = true;
 
 			// display citations
@@ -443,7 +425,6 @@ function(zeega, Backbone, Layer) {
 			// draw and update layer media
 			_.each( this.get('layers'), function(layerID,z){
 				var layer = _this.layers.get(layerID)
-				console.log('$$		layers',layer)
 				if( _.include(_this.commonLayers, layerID) ) layer.updateZIndex( z );
 				else layer.trigger('player_play', z );
 			})

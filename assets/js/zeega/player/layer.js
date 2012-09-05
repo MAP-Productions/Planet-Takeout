@@ -45,10 +45,7 @@ function(zeega, Backbone, Plugin){
 		initialize: function(attributes,options)
 		{
 
-			console.log('get child layer type', this);
-
 			this.layerTypeModel = new Plugin.Layer[this.get('type')];
-
 			
 			this.on('ready', function(){ this.visualLoaded = true });
 			this.on('refresh_view', this.refreshView, this);
@@ -171,11 +168,6 @@ function(zeega, Backbone, Plugin){
 
 		// utlities
 
-		// loads crap into the model. no longer necessary? hope so!
-		
-		// ??
-		setIcon : function(){ this.icon = true },
-		
 		//sets the z-index ??
 		setZIndex : function(z){ this.visualEditorElement.css( 'z-index', z ) },
 
@@ -196,9 +188,7 @@ function(zeega, Backbone, Plugin){
 	});
 
 	Layer.Views.Visual = Backbone.View.extend({
-		
-		className : 'visual-element',
-		
+				
 		LAYER_TIMEOUT : 30000,
 		
 		layerClassName : '',
@@ -210,22 +200,19 @@ function(zeega, Backbone, Plugin){
 		{
 			var _this = this;
 			
-
-			this.typeClass = new Plugin.Layer.Image.Visual({model:this.model});
-
-console.log('vv		tupe class', this, this.typeClass );
+			this.typeClass = new Plugin.Layer.Image.Visual({model:this.model, attributes:{
+				id: 'layer-visual-'+this.model.id,
+				class: 'layer-'+ this.model.get('type').toLowerCase()
+			}});
+			//this.typeClass.attributes = { id:'testtrue' };
 
 			_.extend( this.events, this.eventTriggers );
 			
 			this.initListeners();
 			
-			this.attr = this.model.get('attr')
+			//this.attr = this.model.get('attr')
 			
-			
-			
-			$(this.el).css({
-				'position' : 'absolute',
-				'overflow' : 'hidden',
+			this.typeClass.$el.css({
 				
 				'width' : _this.model.get('attr').width+'%',
 				'opacity' : _this.model.get('attr').opacity,
@@ -233,10 +220,7 @@ console.log('vv		tupe class', this, this.typeClass );
 				// if previewing, then set way off stage somewhere
 				'top' : (this.model.player) ? '-1000%' : _this.model.get('attr').top +'%',
 				'left' : (this.model.player) ? '-1000%' : _this.model.get('attr').left+'%'
-				})
-				.addClass('layer-'+ this.model.get('type').toLowerCase() )
-				.attr('id', 'layer-visual-'+this.model.id);
-			$(this.el).addClass(this.layerClassName);
+				});
 				
 			this.init();
 		},
@@ -295,11 +279,11 @@ console.log('vv		tupe class', this, this.typeClass );
 		onPreload : function()
 		{
 			var _this = this;
-			this.render();
-			if(this.attr.link)
+			this.typeClass.render();
+			if(this.model.get('attr').link)
 			{
 				$(this.el).click(function(){
-					window.location = 'http://'+ _this.attr.link
+					window.location = 'http://'+ _this.model.get('attr').link
 				})
 				.addClass('linked-layer');
 
@@ -310,7 +294,7 @@ console.log('vv		tupe class', this, this.typeClass );
 		
 		private_renderError : function()
 		{
-			this.$el.empty()
+			this.typeClass.$el.empty()
 				.css({
 					'background-color' : 'rgba(255,0,0,0.25)',
 					'min-height' : '25px'
@@ -405,9 +389,8 @@ console.log('vv		tupe class', this, this.typeClass );
 		{
 			var _this = this;
 			
-			this.typeClass.render();
 			this.typeClass.onPreload();
-			
+
 			if(this.timer) clearTimeout(this.timer);
 			this.timer = setTimeout(function(){
 				if(_this.model.status != 'ready')
@@ -425,8 +408,8 @@ console.log('vv		tupe class', this, this.typeClass );
 			this.isPlaying = true;
 			if(!this.onStage)
 			{
-				this.onStage=true;
-				if(this.attr.dissolve) $(this.el).clearQueue().css({opacity:.01});
+				this.onStage = true;
+				if(this.model.get('attr').dissolve) $(this.el).clearQueue().css({opacity:.01});
 			}
 			this.moveOnStage();
 
@@ -437,10 +420,10 @@ console.log('vv		tupe class', this, this.typeClass );
 			this.model.inFocus = true;
 			
 			//dissolve
-			if(this.attr.dissolve) $(this.el).fadeTo(1000,this.model.get('attr').opacity);
+			if(this.model.get('attr').dissolve) $(this.el).fadeTo(1000,this.model.get('attr').opacity);
 			
 			//make the linked layers blink on entrance
-			if(this.attr.link || this.model.get('type') == 'Link')
+			if(this.model.get('attr').link || this.model.get('type') == 'Link')
 			{
 				var _this = this;
 				setTimeout( function(){ $(_this.el).addClass('link-blink') }, 250 );
@@ -469,20 +452,20 @@ console.log('vv		tupe class', this, this.typeClass );
 		
 		moveOnStage :function()
 		{
-			$(this.el).css({
-				'top' : this.attr.top +'%',
-				'left' : this.attr.left+'%'
+			this.typeClass.$el.css({
+				'top' : this.model.get('attr').top +'%',
+				'left' : this.model.get('attr').left+'%'
 			});
 		},
 		
 		updateZIndex : function( z )
 		{
-			$(this.el).css('z-index', z)
+			this.typeClass.$el.css('z-index', z)
 		},
 		
 		moveOffStage :function()
 		{
-			$(this.el).css({
+			this.typeClass.$el.css({
 				'top' : '-1000%',
 				'left' : '-1000%'
 			});

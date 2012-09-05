@@ -30,13 +30,40 @@ function(zeega, Backbone){
 			'citation':true,
 			
 			'linkable' : true
-		}
+		},
+
+		controls : [
+			
+			{
+				type : 'checkbox',
+				property : 'dissolve',
+				model : this, // do I need this?
+				label : 'Fade In'
+			},
+			{
+				type : 'slider',
+				property : 'width',
+				label : 'Scale',
+				suffix : '%',
+				min : 1,
+				max : 200
+			},
+			{
+				type : 'slider',
+				property : 'opacity',
+				label : 'Scale',
+				step : 0.01,
+				min : 0.05,
+				max : 1
+			}
+
+		]
 
 	});
 
 
 	Plugin.Layer.Image.Controls = Backbone.View.extend({
-		
+
 		render : function()
 		{
 			var dissolveCheck = new Layer.Views.Lib.Checkbox({
@@ -69,7 +96,6 @@ function(zeega, Backbone){
 				.append( opacitySlider.getControl() );
 			
 			return this;
-		
 		}
 		
 	});
@@ -77,22 +103,17 @@ function(zeega, Backbone){
 	Plugin.Layer.Image.Visual = Backbone.View.extend({
 		
 		draggable : true,
+		className : 'visual-element',
+
+		template : '<img src="<%= attr.uri %>" width="100%"/>',
 
 		manage : false,
-		
+
 		render : function()
 		{
-			var img = $('<img>')
-				.attr('src', this.model.get('attr').uri)
-				.css({'width':'100%'});
-
-			this.$el.html( img );
-						console.log('ii		image layer before render', this, this.el)
-
-			$('#preview-media').append( this.el )
-
+			this.$el.html( _.template(this.template, this.model.toJSON()) );
+			return this;
 		},
-		
 		
 		onPreload : function()
 		{

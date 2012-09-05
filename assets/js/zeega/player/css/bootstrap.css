@@ -635,6 +635,12 @@
   overflow: hidden;
   margin: 0 auto;
 }
+#zeega-player #preview-media .visual-element {
+  top: -1000%;
+  left: -1000%;
+  position: absolute;
+  overflow: hidden;
+}
 #zeega-player .progress-bar {
   z-index: 1001;
   position: absolute;
