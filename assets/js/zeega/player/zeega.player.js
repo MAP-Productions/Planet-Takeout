@@ -363,15 +363,8 @@ function(zeega, Backbone, Layer) {
 				{
 					console.log('$$		layer load',layer, zeega.player.project.layout )
 
-					zeega.player.project.layout.insertView( layer.visual );
-					zeega.player.project.layout.render();
-					//$('#preview-media').append( layer.visual.render().el );
-					/*
-					layer.visual.render(function(){
-						console.log('$$		render layer', layer.visual.el)
-						$('#preview-media').append(layer.visual.el)
-					})
-					*/
+					$('#preview-media').append( layer.visual.render().el );
+
 					layer.on('ready', _this.onLayerReady, _this);
 					layer.on('error', _this.onLayerError, _this);
 
@@ -632,6 +625,8 @@ function(zeega, Backbone, Layer) {
 
 	Zeega.Player.PlayerView = Backbone.View.extend({
 		
+		manage: true,
+
     	template: "player",
 
 		isFullscreen : false,

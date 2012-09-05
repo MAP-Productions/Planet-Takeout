@@ -17,6 +17,7 @@ function(zeega, Backbone, Zeega) {
 
   // This will fetch the tutorial template and render it.
   Example.Views.Tutorial = Backbone.View.extend({
+    manage: true,
     template: "example",
 
     events : {
