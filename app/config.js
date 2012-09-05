@@ -13,7 +13,16 @@ require.config({
     // Libraries.
     jquery: "../assets/js/libs/jquery",
     lodash: "../assets/js/libs/lodash",
-    backbone: "../assets/js/libs/backbone"
+    backbone: "../assets/js/libs/backbone",
+
+    // Zeega folders
+    zeega_base: "../assets/js/zeega",
+    zeega_layers: "../assets/js/zeega/player/plugins/layers",
+    zeega_media_players: "../assets/js/zeega/player/plugins/players",
+
+    //  Zeega
+    zeega_player: "../assets/js/zeega/player/zeega.player",
+
   },
 
   shim: {
@@ -24,7 +33,10 @@ require.config({
     },
 
     // Backbone.LayoutManager depends on Backbone.
-    "plugins/backbone.layoutmanager": ["backbone"]
+    "plugins/backbone.layoutmanager": ["backbone"],
+
+    "vendor/imagesloaded/jquery.imagesloaded.min" : ['jquery'],
+    "zeega_player": ["backbone"]
   }
 
 });

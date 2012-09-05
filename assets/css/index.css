@@ -1,2 +1,6 @@
-@import "h5bp.css";
-@import "style.css";
+/* imported styles. */
+@import "bootstrap.css";
+@import "../js/zeega/player/css/bootstrap.css";
+
+
+/* Put development-only CSS below this line. */

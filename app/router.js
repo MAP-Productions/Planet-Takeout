@@ -1,12 +1,12 @@
 define([
   // Application.
-  "app",
+  "zeega",
 
   // Modules.
   "modules/example"
 ],
 
-function(app, Example) {
+function(zeega, Example) {
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
