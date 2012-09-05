@@ -34,16 +34,6 @@ function(zeega, Backbone){
 			this.visual.updateContentInPlace();
 		},
 
-		preload : function( target )
-		{
-			
-		},
-	
-		play : function( z )
-		{
-			
-		},
-
 		stash : function()
 		{
 			this.display.css({'top':"-1000%",'left':"-1000%"});

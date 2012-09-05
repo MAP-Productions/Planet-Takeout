@@ -34,11 +34,10 @@ require.config({
 
     // Backbone.LayoutManager depends on Backbone.
     "plugins/backbone.layoutmanager": ["backbone"],
-
+    'libs/spin' : ['jquery'],
     "vendor/imagesloaded/jquery.imagesloaded.min" : ['jquery'],
 
     'zeega_base/player/plugins.layers' : ['lodash'],
-    "zeega_player": ["backbone"]
   }
 
 });

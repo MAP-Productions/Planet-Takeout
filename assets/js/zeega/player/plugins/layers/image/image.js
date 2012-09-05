@@ -1,15 +1,14 @@
 define([
   "zeega",
   "backbone",
-  //'zeega_base/player/layer',
+  'zeega_layers/_layer/_layer'
 ],
 
-function(zeega, Backbone){
-
+function(zeega, Backbone, _Layer){
 
 	var Layer = zeega.module();
 
-	Layer.Image = Backbone.Model.extend({
+	Layer.Image = _Layer.extend({
 			
 		layerType : 'Image',
 
@@ -55,14 +54,9 @@ function(zeega, Backbone){
 
 	});
 
-	Layer.Image.Visual = Backbone.View.extend({
+	Layer.Image.Visual = _Layer.Visual.extend({
 		
-		draggable : true,
-		className : 'visual-element',
-
 		template : '<img src="<%= attr.uri %>" width="100%"/>',
-
-		manage : false,
 
 		render : function()
 		{
@@ -70,7 +64,8 @@ function(zeega, Backbone){
 			return this;
 		},
 		
-		onPreload : function()
+		/*
+		player_onPreload : function()
 		{
 			console.log('##		image on preload')
 			var _this = this;
@@ -84,6 +79,7 @@ function(zeega, Backbone){
 			});
 
 		}
+		*/
 	});
 
 	return Layer;

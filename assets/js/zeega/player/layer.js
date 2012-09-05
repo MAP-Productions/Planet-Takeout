@@ -15,27 +15,27 @@ function(zeega, Backbone, Layers){
 	Layer.Model = Backbone.Model.extend({
 		
 		status : 'waiting',
-
-		showControls : true,
-		player : false,
-		displayCitation: true,
-		visualLoaded : false,
-		defaultControls : true,
-		hasControls :true,
-		
 		editorWindow : $('#visual-editor-workspace'),
 		layerPanel : $('#layers-list-visual'),
+		player : false,
 		
+		//showControls : true,
+		//displayCitation: true,
+		//defaultControls : true,
+		//hasControls :true,
+		
+
+		
+		/*
 		layerColor : [ 'red','blue','yellow','green' ],
-		
 		defaults : {
 			attr : {},
 			linkable: true,
 			thumbUpdate : true,
 		},
-		
 		defaultAttributes : {},
-		
+		*/
+
 		url : function()
 		{
 			if( this.isNew() ) return zeega.app.url_prefix + 'api/projects/'+ zeega.app.project.id +'/layers';
@@ -44,26 +44,50 @@ function(zeega, Backbone, Layers){
 		
 		initialize: function(attributes,options)
 		{
-			this.layerTypeModel = new Layers[this.get('type')];
-			
-			this.on('ready', function(){ this.visualLoaded = true });
-			this.on('refresh_view', this.refreshView, this);
-			
+			if( options ) _.extend(this,options);
+
+			this.load();
+			this.startListeners();
+		},
+
+		load : function()
+		{
+			console.log('LL 		load layer', Layers);
+			this.typeModel = new Layers[this.get('type')]({parent:this});
+			this.typeVisual = new Layers[this.get('type')].Visual({model:this});
+			//this.controls = new // figure this out later
+		},
+
+		startListeners : function()
+		{
+			this.on('ready', this.ready, this);
+/*
 			this.on('editor_layerRender', this.renderLayerInEditor, this );
 			this.on('editor_destroyLayer editor_layerUnrender', this.unrenderLayerFromEditor, this);
-			
 			this.on('editor_controlsOpen', this.onControlsOpen, this);
 			this.on('editor_controlsClosed', this.onControlsClosed, this);
-			
 			this.on('editor_destroyLayer', this.unrenderLayerFromEditor, this);
-			
-			
-			if( options ) _.extend(this,options);
-			
-			this.generateNewViews();
-
+*/
+			if( this.player )
+			{
+				this.on('player_preload', this.private_onPreload, this);
+				this.on('player_play', this.private_onPlay, this);
+				this.on('player_exit', this.private_onExit, this);
+				this.on('player_unrender', this.private_onUnrender, this);
+				this.on('error', this.private_renderError, this);
+			}
+			else
+			{
+				this.on('editor_layerEnter editor_layerRender', this.private_onLayerEnter, this);
+				this.on('editor_layerExit editor_removeLayerFromFrame', this.private_onLayerExit, this);
+				this.on('editor_controlsOpen', this.private_onControlsOpen, this);
+				this.on('editor_controlsClosed', this.private_onControlsClosed, this);
+			}
 		},
+
+		onReady : function(){},
 		
+		/*
 		generateNewViews : function()
 		{
 			if( !_.isNull( this.layerType ) )
@@ -86,7 +110,7 @@ function(zeega, Backbone, Layers){
 		onControlsOpen : function(){},
 		
 		onControlsClosed : function(){},
-		
+		*/
 		
 		/*
 		renderLayerInEditor : function( i )
@@ -111,6 +135,7 @@ function(zeega, Backbone, Layers){
 		
 		*/
 		
+		/*
 		refreshView : function()
 		{
 			this.visual.$el.attr('id','layer-visual-'+this.id)
@@ -142,14 +167,14 @@ function(zeega, Backbone, Layers){
 
 			this.thumbnail.append( img );
 		},
-
+*/
 /*
 		// updates the z-index for the visual element
 		updateZIndex : function(z){},
 */
 
 		////////// player
-
+/*
 		// triggers ready for the player
 		preload : function()
 		{
@@ -183,7 +208,7 @@ function(zeega, Backbone, Layers){
 		{
 			if( attrs.title ) attrs.title = attrs.title.replace(/(<([^>]+)>)/ig, "");
 		}
-	
+*/
 	});
 
 	Layer.Views.Visual = Backbone.View.extend({
@@ -414,7 +439,7 @@ function(zeega, Backbone, Layers){
 
 			if(z) this.updateZIndex( z )
 
-			if(this.model.status != 'error' ) this.onPlay();
+			if(this.model.status != 'error' ) this.model.layerTypeModel.onPlay();
 
 			this.model.inFocus = true;
 			

@@ -1,10 +1,15 @@
-define(['app'], function(){
+define([
+  "zeega",
+  "backbone",
 
-(function(Player) {
+  'zeega_base/player/lib/popcorn-flash'
+],
 
-	Player.Views = Player.Views || {};
+function(zeega, Backbone){
 
-	Player.Views.Player = Backbone.View.extend({
+	var Player = zeega.module();
+
+	Player.Player = Backbone.View.extend({
 		
 		className : 'media-player-container',
 		
@@ -18,16 +23,18 @@ define(['app'], function(){
 			autoplay : false,
 			cue_in : 0,
 			cue_out : null,
-			volume : .5,
+			volume : 0.5,
 			fade_in :0,
 			fade_out : 0,
 		},
 		
 		initialize : function(options)
 		{
-						
+			console.log('pp 		player init', this, options)		
 			if(!_.isUndefined(this.model))
 			{
+				this.settings = _.defaults( _.extend({},this.model.toJSON(), options), this.defaults );
+				console.log('pp 		this settings',this, this.settings)
 				//_.extend( this.defaults, this.options );
 				//if there is a model then figure out what kind it is
 				if( !_.isUndefined(this.model.get('uri')) )
@@ -62,10 +69,9 @@ define(['app'], function(){
 			this.$el.html( _.template( this.templates[format](), this.settings ));
 			
 			
-			
-			
+			console.log('player settings', this)
 			//attach controls. is this the right place?
-			this.controls = new Player.Views.Player.Controls[this.settings.control_mode]({
+			this.controls = new Player.Controls[this.settings.control_mode]({
 				model:this.model,
 				detached_controls : !_.isNull(this.settings.controls_target)
 			});
@@ -85,8 +91,9 @@ define(['app'], function(){
 				switch( this.format )
 				{
 					case 'html5':
-						if (BrowserDetect.browser == 'Firefox') this.useFlash();
-						else this.useHTML5();
+						console.log('mm 		modernizer', Modernizr, Modernizr.video)
+						if ( Modernizr.video.h264 == 'probably') this.useHTML5();
+						else this.useFlash();
 						break;
 					case 'flashvideo':
 						this.useFlash();
@@ -325,9 +332,9 @@ define(['app'], function(){
 		
 	*****************************/
 	
-	Player.Views.Player.Controls = Player.Views.Player.Controls || {};
+	Player.Controls = Player.Controls || {};
 	
-	Player.Views.Player.Controls.none = Backbone.View.extend({
+	Player.Controls.none = Backbone.View.extend({
 		className : 'controls playback-controls controls-none',
 		item_mode : false,
 		
@@ -342,7 +349,7 @@ define(['app'], function(){
 		init : function(){}
 	})
 	
-	Player.Views.Player.Controls.simple = Player.Views.Player.Controls.none.extend({
+	Player.Controls.simple = Player.Controls.none.extend({
 		
 		className : 'controls playback-controls controls-simple',
 		
@@ -472,7 +479,7 @@ define(['app'], function(){
 		}
 	})
 	
-	Player.Views.Player.Controls.standard = Player.Views.Player.Controls.simple.extend({
+	Player.Controls.standard = Player.Controls.simple.extend({
 		
 		isSeeking : false,
 		
@@ -584,7 +591,7 @@ define(['app'], function(){
 		}
 	})
 	
-	Player.Views.Player.Controls.editor = Player.Views.Player.Controls.standard.extend({
+	Player.Controls.editor = Player.Controls.standard.extend({
 		
 		className : 'controls playback-controls controls-editor',
 		
@@ -788,6 +795,6 @@ define(['app'], function(){
 		}
 	})
 
-})(zeega.module("player"));
+	return Player;
 
 })

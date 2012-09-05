@@ -1,8 +1,14 @@
-define(['layerModel', 'layerView'], function(){
+define([
+  "zeega",
+  "backbone",
+  'zeega_media_players/plyr'
+],
 
-(function(Layer){
+function(zeega, Backbone, Player){
 
-	Layer.Video = Layer.Model.extend({
+	var Layer = zeega.module();
+
+	Layer.Video = Backbone.Model.extend({
 			
 		layerType : 'Video',
 		draggable : true,
@@ -28,6 +34,12 @@ define(['layerModel', 'layerView'], function(){
 			'citation':true,
 		},
 
+		initialize : function(opts)
+		{
+			console.log('vv		init video', this, opts)
+			_.extend( this, opts );
+		},
+
 		init : function()
 		{
 			this.initPlayer()
@@ -39,7 +51,7 @@ define(['layerModel', 'layerView'], function(){
 			console.log('init editor player', ct)
 			var Player = zeega.module('player');
 			this.player = new Player.Views.Player({
-				model:this,
+				model:this.parent,
 				control_mode : 'editor',
 				media_target : '#layer-visual-'+this.id,
 				controls_target : ct
@@ -48,18 +60,22 @@ define(['layerModel', 'layerView'], function(){
 		
 		initPlayerPlayer : function()
 		{
-			console.log('init player player')
-			var Player = zeega.module('player');
-			this.player = new Player.Views.Player({
-				model:this,
+			this.player = new Player.Player({
+				model:this.parent,
 				control_mode : 'none',
 				media_target : '#layer-visual-'+ this.id
 			});
-		}
+			console.log('init player player', Player, this, this.player)
+		},
+
+		controls : [
+
+		]
 
 	});
 	
-	Layer.Views.Controls.Video = Layer.Views.Controls.extend({
+	/*
+	Layer.Video.Controls = Layer.Views.Controls.extend({
 				
 		render : function()
 		{
@@ -171,8 +187,9 @@ define(['layerModel', 'layerView'], function(){
 		}
 	
 	});
+*/
 
-	Layer.Views.Visual.Video = Layer.Views.Visual.extend({
+	Layer.Video.Visual = Backbone.View.extend({
 		
 		draggable : true,
 		linkable : true,
@@ -182,10 +199,10 @@ define(['layerModel', 'layerView'], function(){
 			
 			var img = $('<img>')
 				.attr('id', 'video-player-'+ this.model.id)
-				.attr('src', this.attr.thumbnail_url)
+				.attr('src', this.model.get('attr').thumbnail_url)
 				.css({'width':'100%'});
 
-			$(this.el).html( img ).css('height', this.attr.height+'%');
+			$(this.el).html( img ).css('height', this.model.get('attr').height+'%');
 			
 			return this;
 		},
@@ -220,8 +237,6 @@ define(['layerModel', 'layerView'], function(){
 			{
 				this.model.player.pause();
 			}
-			
-		
 			//replace with the actual video object
 		},
 		
@@ -236,13 +251,14 @@ define(['layerModel', 'layerView'], function(){
 			
 			if( !this.model.player_loaded )
 			{
-				this.model.initPlayerPlayer();
+				console.log('pp 		video on preload', this)
+				this.model.layerTypeModel.initPlayerPlayer();
 
-				this.$el.html( this.model.player.render().el );
-				this.model.player.placePlayer();
+				this.$el.html( this.model.layerTypeModel.player.render().el );
+				this.model.layerTypeModel.player.placePlayer();
 				
 				var _this = this;
-				this.model.player.popcorn.listen('timeupdate',function(){ _this.onTimeUpdate() })
+				this.model.layerTypeModel.player.popcorn.listen('timeupdate',function(){ _this.onTimeUpdate() })
 				
 				this.model.player_loaded = true;
 			}
@@ -312,22 +328,26 @@ define(['layerModel', 'layerView'], function(){
 		
 		onPlay : function()
 		{
+			console.log('vv		vid on play', this)
 			this.model.player.play();
 		},
 
 		onPause : function()
 		{
+			console.log('vv		vid on pause', this)
 			this.model.player.pause();
 		},
 		
 		onExit : function()
 		{
+			console.log('vv		vid on exit', this)
 			this.model.player.pause();
 		},
 		
 		onUnrender : function()
 		{
 			
+			console.log('vv		vid on unrender', this)
 			this.model.player.pause();
 			this.model.destroy();	
 		}
@@ -335,13 +355,11 @@ define(['layerModel', 'layerView'], function(){
 	});
 	
 	Layer.Youtube = Layer.Video.extend();
-	Layer.Views.Controls.Youtube = Layer.Views.Controls.Video.extend();
-	Layer.Views.Visual.Youtube = Layer.Views.Visual.Video.extend();
+	Layer.Youtube.Visual = Layer.Video.Visual.extend();
 	
 	Layer.Vimeo = Layer.Video.extend();
-	Layer.Views.Controls.Vimeo = Layer.Views.Controls.Video.extend();
-	Layer.Views.Visual.Vimeo = Layer.Views.Visual.Video.extend();
+	Layer.Vimeo.Visual = Layer.Video.Visual.extend();
 
-})(zeega.module("layer"));
+	return Layer;
 
 })

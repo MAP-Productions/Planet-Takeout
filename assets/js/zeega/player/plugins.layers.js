@@ -1,7 +1,8 @@
 var layerTypes = [
 	'image',
 	'rectangle',
-	'text'
+	'text',
+	'video'
 ];
 
 define(
@@ -9,7 +10,8 @@ define(
 	function(
 		image,
 		rectangle,
-		text
+		text,
+		video
 	)
 	{
 		eval('var Plugins = _.extend('+layerTypes.toString()+')');
