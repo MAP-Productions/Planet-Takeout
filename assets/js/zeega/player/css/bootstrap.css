@@ -743,4 +743,12 @@
   box-shadow: 0 0 24px white;
   -webkit-transition: box-shadow 1s linear;
 }
+.media-element {
+  height: 100%;
+  width: 100%;
+}
+.media-element.media-type-Audio {
+  height: 0;
+  width: 0;
+}
 /************* end preview window styles ****************/

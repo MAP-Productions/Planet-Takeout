@@ -54,39 +54,142 @@ function(zeega, Backbone, Layers){
 		{
 			console.log('LL 		load layer', Layers);
 			this.typeModel = new Layers[this.get('type')]({parent:this});
-			this.typeVisual = new Layers[this.get('type')].Visual({model:this});
+			this.typeVisual = new Layers[this.get('type')].Visual({model:this, attributes:{
+				id: 'layer-visual-'+this.id,
+				class: 'visual-element layer-'+ this.get('type').toLowerCase()
+			}});
 			//this.controls = new // figure this out later
 		},
 
 		startListeners : function()
 		{
 			this.on('ready', this.ready, this);
-/*
-			this.on('editor_layerRender', this.renderLayerInEditor, this );
-			this.on('editor_destroyLayer editor_layerUnrender', this.unrenderLayerFromEditor, this);
-			this.on('editor_controlsOpen', this.onControlsOpen, this);
-			this.on('editor_controlsClosed', this.onControlsClosed, this);
-			this.on('editor_destroyLayer', this.unrenderLayerFromEditor, this);
-*/
+			// 
 			if( this.player )
 			{
-				this.on('player_preload', this.private_onPreload, this);
-				this.on('player_play', this.private_onPlay, this);
-				this.on('player_exit', this.private_onExit, this);
-				this.on('player_unrender', this.private_onUnrender, this);
-				this.on('error', this.private_renderError, this);
+				this.on('player_preload', this.player_onPreload, this);
+				this.on('player_play', this.player_onPlay, this);
+				this.on('player_pause', this.player_onPause, this);
+				this.on('player_play-pause', this.player_onPlayPause, this);
+				this.on('player_exit', this.player_onExit, this);
+				this.on('player_unrender', this.player_onUnrender, this);
+				this.on('error', this.player_onRenderError, this);
 			}
 			else
 			{
-				this.on('editor_layerEnter editor_layerRender', this.private_onLayerEnter, this);
-				this.on('editor_layerExit editor_removeLayerFromFrame', this.private_onLayerExit, this);
-				this.on('editor_controlsOpen', this.private_onControlsOpen, this);
-				this.on('editor_controlsClosed', this.private_onControlsClosed, this);
+				this.on('editor_layerEnter', this.editor_onLayerEnter, this);
+				this.on('editor_layerExit editor_removeLayerFromFrame', this.editor_onLayerExit, this);
+				this.on('editor_controlsOpen', this.editor_onControlsOpen, this);
+				this.on('editor_controlsClosed', this.editor_onControlsClosed, this);
 			}
 		},
 
 		onReady : function(){},
+
+
+		/*	player actions 	*/
+
+		player_onPreload : function()
+		{
+			$('#preview-media').append( this.typeVisual.render().el );
+			this.typeVisual.$el.css({
+				'width' : this.get('attr').width+'%',
+				'opacity' : this.get('attr').opacity,
+				// if previewing, then set way off stage somewhere
+				'top' : (this.player) ? '-1000%' : this.get('attr').top +'%',
+				'left' : (this.player) ? '-1000%' : this.get('attr').left+'%'
+			});
+
+			this.typeModel.player_onPreload();
+			this.typeVisual.player_onPreload();
+		},
+		player_onPlay : function()
+		{
+			this.moveOnStage();
+			this.typeModel.player_onPlay();
+			this.typeVisual.player_onPlay();
+		},
+		player_onPause : function()
+		{
+			this.typeModel.player_onPause();
+			this.typeVisual.player_onPause();
+		},
+		player_onPlayPause : function()
+		{
+			if( this.isPlaying )
+			{
+				this.isPlaying = false;
+				this.player_onPause();
+			}
+			else
+			{
+				this.isPlaying = true;
+				this.player_onPlay()
+			}
+		},
+		player_onExit : function()
+		{
+			this.moveOffStage();
+			this.typeModel.player_onExit();
+			this.typeVisual.player_onExit();
+		},
+		player_onUnrender : function()
+		{
+			this.typeModel.player_onUnrender();
+			this.typeVisual.player_onUnrender();
+		},
+		player_onRenderError : function()
+		{
+			this.typeModel.player_onRenderError();
+			this.typeVisual.player_onRenderError();
+		},
+
+		/*	editor actions 	*/
+
+		/*		needs implementation		*/
+
+		editor_onLayerEnter : function()
+		{
+
+		},
+		editor_onLayerExit : function()
+		{
+
+		},
+		editor_onControlsOpen : function()
+		{
+
+		},
+		editor_onControlsClosed : function()
+		{
+
+		},
 		
+		/*		utilities		*/
+
+		moveOnStage :function()
+		{
+			this.typeVisual.$el.css({
+				'top' : this.get('attr').top +'%',
+				'left' : this.get('attr').left+'%'
+			});
+		},
+		
+		moveOffStage :function()
+		{
+			this.typeVisual.$el.css({
+				'top' : '-1000%',
+				'left' : '-1000%'
+			});
+		},
+
+		updateZIndex : function( z )
+		{
+			this.typeClass.$el.css('z-index', z)
+		},
+		
+		
+
 		/*
 		generateNewViews : function()
 		{
@@ -222,31 +325,7 @@ function(zeega, Backbone, Layers){
 		
 		initialize : function()
 		{
-			var _this = this;
 			
-			this.typeClass = new Layers[this.model.get('type')].Visual({model:this.model, attributes:{
-				id: 'layer-visual-'+this.model.id,
-				class: 'visual-element layer-'+ this.model.get('type').toLowerCase()
-			}});
-			//this.typeClass.attributes = { id:'testtrue' };
-
-			_.extend( this.events, this.eventTriggers );
-			
-			this.initListeners();
-			
-			//this.attr = this.model.get('attr')
-			
-			this.typeClass.$el.css({
-				
-				'width' : _this.model.get('attr').width+'%',
-				'opacity' : _this.model.get('attr').opacity,
-				
-				// if previewing, then set way off stage somewhere
-				'top' : (this.model.player) ? '-1000%' : _this.model.get('attr').top +'%',
-				'left' : (this.model.player) ? '-1000%' : _this.model.get('attr').left+'%'
-				});
-				
-			this.init();
 		},
 		
 		initListeners : function()
@@ -300,22 +379,7 @@ function(zeega, Backbone, Layers){
 		
 		*******************/
 		
-		onPreload : function()
-		{
-			var _this = this;
-			this.typeClass.render();
-			if(this.model.get('attr').link)
-			{
-				$(this.el).click(function(){
-					window.location = 'http://'+ _this.model.get('attr').link
-				})
-				.addClass('linked-layer');
 
-			}
-			
-			this.model.trigger('ready',this.model.id)
-		},
-		
 		private_renderError : function()
 		{
 			this.typeClass.$el.empty()

@@ -352,13 +352,13 @@ function(zeega, Backbone, Layer) {
 			_.each( _.toArray(this.layers), function(layer){
 				if(layer.status == 'waiting')
 				{
-					$('#preview-media').append( layer.visual.typeClass.render().el );
+					//$('#preview-media').append( layer.visual.typeClass.render().el );
 
 					layer.on('ready', _this.onLayerReady, _this);
 					layer.on('error', _this.onLayerError, _this);
 
 					layer.status = 'loading';
-					layer.trigger('player_preload');
+					layer.player_onPreload();
 				}
 			})
 		},

@@ -11,7 +11,12 @@ function(Backbone){
 
 		controls : [],
 
-		defaults : {},
+		defaults : {
+			hasControls : true,
+			defaultControls : true,
+			showCitation : true,
+		},
+		defaultAttributes : {},
 
 		initialize : function()
 		{
@@ -19,6 +24,18 @@ function(Backbone){
 		},
 
 		init : function(){},
+
+		player_onPreload : function(){},
+		player_onPlay : function(){},
+		player_onPause : function(){},
+		player_onExit : function(){},
+		player_onUnrender : function(){},
+		player_onRenderError : function(){},
+
+		editor_onLayerEnter : function(){},
+		editor_onLayerExit : function(){},
+		editor_onControlsOpen : function(){},
+		editor_onControlsClosed : function(){},
 
 	});
 
@@ -29,14 +46,22 @@ function(Backbone){
 		template : '',
 		manage : false,
 
+		initialize : function()
+		{
+			this.init();
+		},
+
+		init : function(){},
 		render : function(){},
 
-		player_onPreload : function() { _this.model.trigger('ready',_this.model.id) },
+		verifyReady : function(){ this.model.trigger('ready',this.model.id) },
+
+		player_onPreload : function(){ this.verifyReady() },
 		player_onPlay : function(){},
 		player_onPause : function(){},
-		player_onPlayPause : function(){},
 		player_onExit : function(){},
 		player_onUnrender : function(){},
+		player_onRenderError : function(){},
 
 		editor_onLayerEnter : function(){},
 		editor_onLayerExit : function(){},

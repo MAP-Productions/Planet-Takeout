@@ -1,14 +1,15 @@
 define([
   "zeega",
   "backbone",
+  'zeega_layers/_layer/_layer'
 ],
 
-function(zeega, Backbone){
+function(zeega, Backbone, _Layer){
 
 
 	var Layer = zeega.module();
 
-	Layer.Text = Backbone.Model.extend({
+	Layer.Text = _Layer.extend({
 
 		layerType : 'Text',
 		displayCitation : false,
@@ -34,11 +35,6 @@ function(zeega, Backbone){
 			this.visual.updateContentInPlace();
 		},
 
-		stash : function()
-		{
-			this.display.css({'top':"-1000%",'left':"-1000%"});
-		},
-
 		controls : [
 
 			{
@@ -58,7 +54,7 @@ function(zeega, Backbone){
 		
 	});
 
-	Layer.Text.Visual = Backbone.View.extend({
+	Layer.Text.Visual = _Layer.Visual.extend({
 		
 		draggable : true,
 		
@@ -96,9 +92,7 @@ function(zeega, Backbone){
 
 			$(this.el).html( _.template( this.template, _.extend(this.model.get('attr'), {contentEditable:!this.model.player} ) ) ).css( style );
 			if(!this.model.player) $(this.el).addClass('text-non-editing');
-			
-			this.model.trigger('ready',this.model.id)
-			
+						
 			return this;
 		},
 		

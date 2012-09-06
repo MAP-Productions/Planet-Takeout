@@ -64,22 +64,14 @@ function(zeega, Backbone, _Layer){
 			return this;
 		},
 		
-		/*
-		player_onPreload : function()
+		verifyReady : function()
 		{
-			console.log('##		image on preload')
 			var _this = this;
-
 			var img = this.$el.imagesLoaded();
-			img.done(function(){
-				_this.model.trigger('ready',_this.model.id);
-			});
-			img.fail(function(){
-				_this.model.trigger('error',_this.model.id);
-			});
-
+			img.done(function(){ _this.model.trigger('ready',_this.model.id) });
+			img.fail(function(){ _this.model.trigger('error',_this.model.id) });
 		}
-		*/
+		
 	});
 
 	return Layer;

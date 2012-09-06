@@ -1,26 +1,14 @@
-/************************************
-
-	Rectangle LAYER CHILD CLASS
-	
-	
-	TODO:
-		
-		Features: 
-			-fullscreen bleed?
-
-************************************/
-
 define([
   "zeega",
   "backbone",
+  'zeega_layers/_layer/_layer'
 ],
 
-function(zeega, Backbone){
-
+function(zeega, Backbone, _Layer){
 
 	var Layer = zeega.module();
 
-	Layer.Rectangle = Backbone.Model.extend({
+	Layer.Rectangle = _Layer.extend({
 
 		layerType : 'Rectangle',
 		displayCitation : false,
@@ -81,8 +69,7 @@ function(zeega, Backbone){
 	});
 	
 
-	Layer.Rectangle.Visual = Backbone.View.extend({
-
+	Layer.Rectangle.Visual = _Layer.Visual.extend({
 		render : function()
 		{
 			var style = {
@@ -94,8 +81,6 @@ function(zeega, Backbone){
 			
 			return this;
 		},
-
-		onPreload : function(){ this.model.trigger('ready',this.model.id) }
 		
 	});
 

@@ -1,14 +1,15 @@
 define([
   "zeega",
   "backbone",
+  'zeega_layers/_layer/_layer',
   'zeega_media_players/plyr'
 ],
 
-function(zeega, Backbone, Player){
+function(zeega, Backbone, _Layer, Player){
 
 	var Layer = zeega.module();
 
-	Layer.Video = Backbone.Model.extend({
+	Layer.Video = _Layer.extend({
 			
 		layerType : 'Video',
 		draggable : true,
@@ -73,7 +74,180 @@ function(zeega, Backbone, Player){
 		]
 
 	});
+
+
+	Layer.Video.Visual = _Layer.Visual.extend({
+		
+		draggable : true,
+		linkable : true,
+		
+		render : function()
+		{
+			console.log('vv		video render', this)
+			var img = $('<img>')
+				.attr('id', 'video-player-'+ this.model.id)
+				.attr('src', this.model.get('attr').thumbnail_url)
+				.css({'width':'100%'});
+
+			this.$el.html( img ).css('height', this.model.get('attr').height+'%');
+			
+			return this;
+		},
+		
+		
+		editor_onLayerEnter : function(){},
+		
+		editor_onLayerExit : function()
+		{
+			console.log('@@@		on layer exit')
+			if( this.model.player_loaded ) this.model.player.destroy();
+			this.model.player_loaded = false;
+			
+			//must call this if you extend onLayerExit
+			this.model.trigger('editor_readyToRemove')
+		},
+		
+		editor_onControlsOpen : function()
+		{
+			console.log('video controls open : visual')
+			var _this = this;
+			if( !this.model.player_loaded )
+			{
+				this.model.initPlayer();
+				this.$el.html(this.model.player.render().el);
+				this.model.player.placePlayer();
+				console.log('on controls open',this, this.model.player)
+				
+				this.model.player_loaded = true;
+			}
+			else
+			{
+				this.model.player.pause();
+			}
+			//replace with the actual video object
+		},
+		
+		editor_onControlsClosed : function()
+		{
+			this.model.player.pause();
+		},
+		
+		player_onPreload : function()
+		{
+			var _this = this;
+			
+			if( !this.model.player_loaded )
+			{
+				this.model.typeModel.initPlayerPlayer();
+				console.log('pp 		video on preload', this, this.el, this.model.typeModel.player.render().el )
+
+				this.$el.html( this.model.typeModel.player.render().el );
+				this.model.typeModel.player.placePlayer();
+				
+				var _this = this;
+				this.model.typeModel.player.popcorn.listen('timeupdate',function(){ _this.onTimeUpdate() })
+				
+				this.model.player_loaded = true;
+			}
+			else
+			{
+				this.model.player.pause();
+			}
+			
+		},
+		onEnded : function()
+		{
+		
+		
+		},
+		
+		onTimeUpdate : function()
+		{
+			//Fades
+			
+			if(this.model.get('attr').cue_out==0) var out = this.model.player.getDuration();
+			else var out = this.model.get('attr').cue_out;
+			var t = this.model.typeModel.player.getCurrentTime();
+			var f = parseFloat(this.model.get('attr').cue_in)+parseFloat(this.model.get('attr').fade_in);
+			var g = out-parseFloat(this.model.get('attr').fade_out);
+			
+			
+			if(this.model.get('attr').fade_in>0 && t<f)
+			{
+				var vol =this.model.get('attr').volume*(1.0-((f-t)/this.model.get('attr').fade_in)*((f-t)/this.model.get('attr').fade_in));
+				this.model.player.setVolume(vol);
+			}
+			
+			else if(this.model.get('attr').fade_out>0 && t>g)
+			{
+				var vol =this.model.get('attr').volume*(1.0-((t-g)/this.model.get('attr').fade_out))*(1.0-((t-g)/this.model.get('attr').fade_out));
+				this.model.typeModel.player.setVolume(vol);
+			}
+			else if(Math.abs(this.model.get('attr').volume - this.model.typeModel.player.getVolume())>.01)
+			{
+				this.model.typeModel.player.setVolume(this.model.get('attr').volume);
+			}
+			
+			
+			//Dissolve
+			
+			/*
+			
+			if(this.model.get('attr').dissolve||true){
+			
+				if(this.model.video.currentTime()-this.model.get('attr').cue_in<1.0){
+					var op = parseFloat(this.model.video.currentTime()-this.model.get('attr').cue_in);
+					this.$el.css({opacity:op});
+				}
+				
+				else if(out-this.model.video.currentTime()<1.0){
+					var op = Math.max(0,parseFloat(out-this.model.video.currentTime()));
+					this.$el.css({opacity:op});
+				}
+			
+			}
+			
+			*/
+			
+			
+			
+		},
+		
+		player_onPlay : function()
+		{
+			console.log('vv		vid on play', this)
+			this.model.typeModel.player.play();
+		},
+
+		player_onPause : function()
+		{
+			console.log('vv		vid on pause', this)
+			this.model.typeModel.player.pause();
+		},
+		
+		player_onExit : function()
+		{
+			console.log('vv		vid on exit', this)
+			this.model.typeModel.player.pause();
+		},
+		
+		player_onUnrender : function()
+		{
+			
+			console.log('vv		vid on unrender', this)
+			this.model.typeModel.player.pause();
+			this.model.destroy();	
+		}
+		
+	});
 	
+	Layer.Youtube = Layer.Video.extend();
+	Layer.Youtube.Visual = Layer.Video.Visual.extend();
+	
+	Layer.Vimeo = Layer.Video.extend();
+	Layer.Vimeo.Visual = Layer.Video.Visual.extend();
+
+
 	/*
 	Layer.Video.Controls = Layer.Views.Controls.extend({
 				
@@ -188,177 +362,6 @@ function(zeega, Backbone, Player){
 	
 	});
 */
-
-	Layer.Video.Visual = Backbone.View.extend({
-		
-		draggable : true,
-		linkable : true,
-		
-		render : function()
-		{
-			
-			var img = $('<img>')
-				.attr('id', 'video-player-'+ this.model.id)
-				.attr('src', this.model.get('attr').thumbnail_url)
-				.css({'width':'100%'});
-
-			$(this.el).html( img ).css('height', this.model.get('attr').height+'%');
-			
-			return this;
-		},
-		
-		
-		onLayerEnter : function(){},
-		
-		onLayerExit : function()
-		{
-			console.log('@@@		on layer exit')
-			if( this.model.player_loaded ) this.model.player.destroy();
-			this.model.player_loaded = false;
-			
-			//must call this if you extend onLayerExit
-			this.model.trigger('editor_readyToRemove')
-		},
-		
-		onControlsOpen : function()
-		{
-			console.log('video controls open : visual')
-			var _this = this;
-			if( !this.model.player_loaded )
-			{
-				this.model.initPlayer();
-				this.$el.html(this.model.player.render().el);
-				this.model.player.placePlayer();
-				console.log('on controls open',this, this.model.player)
-				
-				this.model.player_loaded = true;
-			}
-			else
-			{
-				this.model.player.pause();
-			}
-			//replace with the actual video object
-		},
-		
-		onControlsClosed : function()
-		{
-			this.model.player.pause();
-		},
-		
-		onPreload : function()
-		{
-			var _this = this;
-			
-			if( !this.model.player_loaded )
-			{
-				console.log('pp 		video on preload', this)
-				this.model.layerTypeModel.initPlayerPlayer();
-
-				this.$el.html( this.model.layerTypeModel.player.render().el );
-				this.model.layerTypeModel.player.placePlayer();
-				
-				var _this = this;
-				this.model.layerTypeModel.player.popcorn.listen('timeupdate',function(){ _this.onTimeUpdate() })
-				
-				this.model.player_loaded = true;
-			}
-			else
-			{
-				this.model.player.pause();
-			}
-			
-		},
-		onEnded : function()
-		{
-		
-		
-		},
-		
-		onTimeUpdate : function()
-		{
-			//Fades
-			
-			if(this.model.get('attr').cue_out==0) var out = this.model.player.getDuration();
-			else var out = this.model.get('attr').cue_out;
-			var t = this.model.player.getCurrentTime();
-			var f = parseFloat(this.model.get('attr').cue_in)+parseFloat(this.model.get('attr').fade_in);
-			var g = out-parseFloat(this.model.get('attr').fade_out);
-			
-			
-			if(this.model.get('attr').fade_in>0 && t<f)
-			{
-				var vol =this.model.get('attr').volume*(1.0-((f-t)/this.model.get('attr').fade_in)*((f-t)/this.model.get('attr').fade_in));
-				this.model.player.setVolume(vol);
-			}
-			
-			else if(this.model.get('attr').fade_out>0 && t>g)
-			{
-				var vol =this.model.get('attr').volume*(1.0-((t-g)/this.model.get('attr').fade_out))*(1.0-((t-g)/this.model.get('attr').fade_out));
-				this.model.player.setVolume(vol);
-			}
-			else if(Math.abs(this.model.get('attr').volume-this.model.player.getVolume())>.01)
-			{
-				this.model.player.setVolume(this.model.get('attr').volume);
-			}
-			
-			
-			//Dissolve
-			
-			/*
-			
-			if(this.model.get('attr').dissolve||true){
-			
-				if(this.model.video.currentTime()-this.model.get('attr').cue_in<1.0){
-					var op = parseFloat(this.model.video.currentTime()-this.model.get('attr').cue_in);
-					this.$el.css({opacity:op});
-				}
-				
-				else if(out-this.model.video.currentTime()<1.0){
-					var op = Math.max(0,parseFloat(out-this.model.video.currentTime()));
-					this.$el.css({opacity:op});
-				}
-			
-			}
-			
-			*/
-			
-			
-			
-		},
-		
-		onPlay : function()
-		{
-			console.log('vv		vid on play', this)
-			this.model.player.play();
-		},
-
-		onPause : function()
-		{
-			console.log('vv		vid on pause', this)
-			this.model.player.pause();
-		},
-		
-		onExit : function()
-		{
-			console.log('vv		vid on exit', this)
-			this.model.player.pause();
-		},
-		
-		onUnrender : function()
-		{
-			
-			console.log('vv		vid on unrender', this)
-			this.model.player.pause();
-			this.model.destroy();	
-		}
-		
-	});
-	
-	Layer.Youtube = Layer.Video.extend();
-	Layer.Youtube.Visual = Layer.Video.Visual.extend();
-	
-	Layer.Vimeo = Layer.Video.extend();
-	Layer.Vimeo.Visual = Layer.Video.Visual.extend();
 
 	return Layer;
 
