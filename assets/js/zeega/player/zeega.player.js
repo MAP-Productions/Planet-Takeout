@@ -352,8 +352,6 @@ function(zeega, Backbone, Layer) {
 			_.each( _.toArray(this.layers), function(layer){
 				if(layer.status == 'waiting')
 				{
-					//$('#preview-media').append( layer.visual.typeClass.render().el );
-
 					layer.on('ready', _this.onLayerReady, _this);
 					layer.on('error', _this.onLayerError, _this);
 
@@ -620,6 +618,47 @@ function(zeega, Backbone, Layer) {
 		viewportRatio : 1.5,
 
 		id : 'zeega-player',
+
+		initialize : function()
+		{
+			
+
+		},
+
+		afterRender : function()
+		{
+			console.log('aa 		after render', this)
+			console.log('##		init player view', this)
+
+			var upperNavView = Backbone.View.extend({
+				manage : true,
+				template : 'upper-nav',
+
+				tagName : 'ul',
+
+				events : {
+					'click a' : 'onClick'
+				},
+
+				onClick : function()
+				{
+					alert('clickedddd')
+				}
+
+			})
+
+			this.upperNavLayout = new Backbone.Layout({
+				el : '#upper-nav',
+				beforeRender: function()
+				{
+				    // 	Append a new ItemView into the nested <UL>
+				    this.insertView( new upperNavView() );
+  				}
+			})
+			this.upperNavLayout.render();
+
+
+		},
 
 		serialize : function()
 		{

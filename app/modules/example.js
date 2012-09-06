@@ -53,7 +53,7 @@ function(zeega, Backbone, Zeega) {
             
             branding : false,
             social : false,
-            fullscreenEnabled : true,
+            fullscreenEnabled : false,
             fadeOutOverlays : false
 
           }

@@ -1,68 +1,46 @@
-#main {
-  margin: 40px;
-  font-size: 14px;
+#upper-nav
+{
+  position: absolute;
+  height: 100px;
+  width: 100%;
+  background: url(../img/top-fade.png);
+  background-size: 100% 100%;
+  min-width: 1000px;
+  padding:20px;
 }
 
-#main pre {
-  min-width: 320px;
-  border-radius: 10px;
-  color: #333;
-  font-weight: normal;
-  font-size: 12px;
-  display: inline-block;
-  padding-right: 40px;
-  background: #F8FAFC;
+#upper-nav ul
+{
+  list-style: none;
+  margin: 0;
 }
 
-#main a {
-  color: #00CCFF;
+#upper-nav a
+{
+  opacity:0.85;
 }
 
-#main a:hover {
-  color: #FE57A1;
+#upper-nav a:hover
+{
+  opacity:1;
 }
 
-#main img {
-  width: 320px;
-  height: auto;
+#upper-nav li
+{
+  float:left;
+  margin-left:12%;
+}
+#upper-nav li:first-child
+{
+  margin-left:0;
 }
 
-#main p {
-  line-height: 28px;
+#upper-nav .pt-logo
+{
+  width:60px;
 }
 
-#main ul.nested {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-#main ul li {
-  line-height: 28px;
-}
-
-#main header h1 {
-  margin: 15px;
-  display: inline-block;
-  color: #333;
-}
-
-#main header h2:not(.congrats) {
-  color: #666;
-  margin: 0; padding: 0;
-}
-
-#main header .congrats {
-  padding-bottom: 0;
-  margin-bottom: 0;
-  color: #00CCFF;
-  display: inline-block;
-  font-size: 28px;
-}
-
-#main .topic {
-  color: #CCC;
-}
-
-#main .clues {
-  color: #FE57A1;
+#upper-nav .nav-icon
+{
+  width:30px;
 }

@@ -17,8 +17,6 @@ function(zeega, Example) {
     index: function() {
       // Create a layout and associate it with the #main div.
       var layout = new Backbone.Layout({
-        
-
         el: "#main"
       });
 

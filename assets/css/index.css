@@ -1,6 +1,6 @@
 /* imported styles. */
 @import "bootstrap.css";
 @import "../js/zeega/player/css/bootstrap.css";
-
+@import "style.css";
 
 /* Put development-only CSS below this line. */
