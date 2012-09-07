@@ -62,7 +62,7 @@ function($, _, Backbone) {
   return _.extend(app, {
     // Create a custom object with a nested Views object.
     module: function(additionalProps) {
-      return _.extend({ Views: {} }, additionalProps);
+      return _.extend({ Views: {}, Layouts: {} }, additionalProps);
     },
 
     // Helper for using layouts.

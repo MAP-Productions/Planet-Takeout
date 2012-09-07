@@ -1,4 +1,37 @@
+@font-face {
+    font-family: 'PT_italic';
+    src: url('fonts/equo_black_ps_italic-webfont.eot');
+    src: url('fonts/equo_black_ps_italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/equo_black_ps_italic-webfont.woff') format('woff'),
+         url('fonts/equo_black_ps_italic-webfont.ttf') format('truetype'),
+         url('fonts/equo_black_ps_italic-webfont.svg#equo_psblack_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'PT-black';
+    src: url('fonts/equo_black_ps-webfont.eot');
+    src: url('fonts/equo_black_ps-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/equo_black_ps-webfont.woff') format('woff'),
+         url('fonts/equo_black_ps-webfont.ttf') format('truetype'),
+         url('fonts/equo_black_ps-webfont.svg#equo_psblack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 html{ background:black;}
+
+h1,h2,h3,h4,h5,h6{ font-family: 'PT-black', sans-serif;}
+
+ul.horizontal-list li{ float:left; }
+
+
 
 #nav-upper
 {
@@ -46,4 +79,88 @@ html{ background:black;}
 #nav-upper .nav-icon
 {
   width:30px;
+}
+
+
+
+/* modal styles */
+
+.PT-modal-overlay
+{
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  box-shadow: inset 0 0 54px;
+}
+
+.PT-modal
+{
+  width: 770px;
+  margin: 80px auto;
+}
+
+.PT-modal ul
+{
+  margin:0;
+  list-style: none;
+}
+
+.PT-modal-title
+{
+  color: white;
+  padding-bottom: 30px;
+}
+
+.PT-modal-title h1{ font-size: 4em; }
+
+.PT-modal-content-wrapper
+{
+  position: relative;
+  background: rgba(194, 217, 214, 1);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(154, 235, 231, 1)), to(rgba(255, 216, 171, 1)));
+  background-image: -webkit-linear-gradient(top, rgba(154, 235, 231, 1), rgba(255, 216, 171, 1)); 
+  background-image:    -moz-linear-gradient(top, rgba(154, 235, 231, 1), rgba(255, 216, 171, 1));
+  background-image:     -ms-linear-gradient(top, rgba(154, 235, 231, 1), rgba(255, 216, 171, 1));
+  background-image:      -o-linear-gradient(top, rgba(154, 235, 231, 1), rgba(255, 216, 171, 1));
+
+  box-shadow: 0 0 9px;
+  padding:20px;
+  text-align: justify;
+}
+
+.PT-modal-content
+{
+  min-height: 500px;
+  padding: 20px;
+  
+}
+
+.PT-modal-content h5
+{
+  color:rgba(211,32,26,1);
+  margin-bottom:20px;
+}
+
+.PT-modal-content .left-column
+{
+  width:20%;
+  float:left;
+}
+
+.PT-modal-content .right-column
+{
+  width:75%;
+  float:right;
+}
+
+.PT-modal-content .sponsor-drawer
+{
+  background: white;
+  height: 200px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
 }

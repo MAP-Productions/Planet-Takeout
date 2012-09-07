@@ -61,9 +61,38 @@ function(Zeega, Backbone) {
     template : 'upper-nav',
 
     tagName : 'ul',
-
-
   })
+
+
+  App.Layouts.Modal = Backbone.Layout.extend({
+    manage: true,
+    template: "modal",
+
+    className : 'PT-modal-overlay',
+
+    defaults : {
+      title : 'default'
+    },
+
+    initialize : function(opts)
+    {
+      this.settings = _.defaults(opts,this.defaults)
+    },
+
+    serialize : function(){ return this.settings }
+  });
+
+  App.Views.About = Backbone.View.extend({
+    manage:true,
+    template: 'about',
+  })
+
+  App.Views.Participate = Backbone.View.extend({
+    manage:true,
+    template: 'participate-0',
+  })
+
+
 
   // Required, return the module for AMD compliance
   return App;

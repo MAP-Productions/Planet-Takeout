@@ -36,11 +36,14 @@ function(Zeega, App) {
     {
       console.log('go to about')
       renderBaseLayout();
+      clearModals()
+      renderPage('About');
     },
 
     grid : function()
     {
       console.log('go to grid')
+      clearModals()
       renderBaseLayout();
 
     },
@@ -55,9 +58,10 @@ function(Zeega, App) {
     participate : function()
     {
       console.log('go to participate')
+      clearModals()
       renderBaseLayout();
-
-    },
+      renderPage('Participate');
+     },
 
     menu : function()
     {
@@ -75,6 +79,34 @@ function(Zeega, App) {
 
   });
 
+  function renderPage(pageName)
+  {
+    Zeega.page = new App.Layouts.Modal({title:pageName});
+    Zeega.page.setView('.PT-modal-content', new App.Views[pageName]() );
+    Zeega.page.render();
+    $('body').append(Zeega.page.el);
+  }
+
+  function renderAbout()
+  {
+    Zeega.page = new App.Layouts.Modal({title:'About'});
+    Zeega.page.setView('.PT-modal-content', new App.Views.About() );
+    Zeega.page.render();
+    $('body').append(Zeega.page.el);
+  }
+
+  function renderParticate()
+  {
+    Zeega.page = new App.Layouts.Modal({title:'Participate'});
+    Zeega.page.setView('.PT-modal-content', new App.Views.Participate() );
+    Zeega.page.render();
+    $('body').append(Zeega.page.el);
+  }
+
+  function clearModals()
+  {
+    if(Zeega.page) Zeega.page.remove();
+  }
 
   // this is a utility and should be elsewhere
   function renderBaseLayout()
