@@ -4,9 +4,9 @@ define([
   'zeega_layers/_layer/_layer'
 ],
 
-function(zeega, Backbone, _Layer){
+function(Zeega, Backbone, _Layer){
 
-	var Layer = zeega.module();
+	var Layer = Zeega.module();
 
 	Layer.Image = _Layer.extend({
 			

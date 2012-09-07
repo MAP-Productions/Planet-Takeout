@@ -24,9 +24,7 @@ define([
   //'zeega_base/player/layer.view.visual'
 ],
 
-function(zeega, Backbone, Layer) {
-
-	var Zeega = zeega.module();
+function(Zeega, Backbone, Layer) {
 
 	Zeega.Player = Backbone.Model.extend({
 
@@ -192,7 +190,7 @@ function(zeega, Backbone, Layer) {
 			}
 			
 
-			//if(zeega.player.get('mode') != 'editor') zeega.player.router.navigate('frame/'+ frameID );
+			//if(Zeega.player.get('mode') != 'editor') Zeega.player.router.navigate('frame/'+ frameID );
 			this.currentFrame = frame;
 		},
 		
@@ -289,7 +287,7 @@ function(zeega, Backbone, Layer) {
 			var _this = this;
 
 			var frameModels = _.map( this.get('frames'), function(frameID){
-				var frame = zeega.player.project.frames.get(frameID);
+				var frame = Zeega.player.project.frames.get(frameID);
 				
 				var index = _.indexOf( _this.get('frames'), frameID );
 				
@@ -411,7 +409,7 @@ function(zeega, Backbone, Layer) {
 			this.isPlaying = true;
 
 			// display citations
-			if(zeega.player.get('layerCitations')) $('#citation-tray').html( this.citationView.render().el );
+			if(Zeega.player.get('layerCitations')) $('#citation-tray').html( this.citationView.render().el );
 
 			// update arrows
 			this.updateArrows();
@@ -445,7 +443,7 @@ function(zeega, Backbone, Layer) {
 		
 		load : function()
 		{
-			var layerModels = _.map( this.get('layers'), function(layerID){ return zeega.player.project.layers.get(layerID) });
+			var layerModels = _.map( this.get('layers'), function(layerID){ return Zeega.player.project.layers.get(layerID) });
 			this.layers = new Zeega.Player.LayerCollection( layerModels );
 
 			if( this.layers.length == 0 ) this.status = 'ready';
@@ -502,10 +500,10 @@ function(zeega, Backbone, Layer) {
 			for( var i = 0 ; i < this.PRELOAD_ON_SEQUENCE ; i++)
 			{
 				_.each( targetArray, function(frameID){
-					var before = zeega.player.project.frames.get(frameID).before;
-					var after = zeega.player.project.frames.get(frameID).after;
-					var linksOut = zeega.player.project.frames.get(frameID).linksOut;
-					var linksIn = zeega.player.project.frames.get(frameID).linksIn;
+					var before = Zeega.player.project.frames.get(frameID).before;
+					var after = Zeega.player.project.frames.get(frameID).after;
+					var linksOut = Zeega.player.project.frames.get(frameID).linksOut;
+					var linksIn = Zeega.player.project.frames.get(frameID).linksIn;
 
 					targetArray = _.compact([before,after]);
 					_this.framesToPreload = _.union(_this.framesToPreload,targetArray,linksOut, linksIn);
@@ -523,7 +521,7 @@ function(zeega, Backbone, Layer) {
 			this.commonLayers = {};
 			_.each( this.framesToPreload, function(frameID){
 				if( _this.id != frameID)
-					_this.commonLayers[frameID] = _.intersection( zeega.player.project.frames.get(frameID).get('layers'), _this.get('layers') );
+					_this.commonLayers[frameID] = _.intersection( Zeega.player.project.frames.get(frameID).get('layers'), _this.get('layers') );
 			})
 		},
 		
@@ -619,47 +617,6 @@ function(zeega, Backbone, Layer) {
 
 		id : 'zeega-player',
 
-		initialize : function()
-		{
-			
-
-		},
-
-		afterRender : function()
-		{
-			console.log('aa 		after render', this)
-			console.log('##		init player view', this)
-
-			var upperNavView = Backbone.View.extend({
-				manage : true,
-				template : 'upper-nav',
-
-				tagName : 'ul',
-
-				events : {
-					'click a' : 'onClick'
-				},
-
-				onClick : function()
-				{
-					alert('clickedddd')
-				}
-
-			})
-
-			this.upperNavLayout = new Backbone.Layout({
-				el : '#upper-nav',
-				beforeRender: function()
-				{
-				    // 	Append a new ItemView into the nested <UL>
-				    this.insertView( new upperNavView() );
-  				}
-			})
-			this.upperNavLayout.render();
-
-
-		},
-
 		serialize : function()
 		{
 			var base = sessionStorage.getItem('hostname') + sessionStorage.getItem('directory');
@@ -700,7 +657,7 @@ function(zeega, Backbone, Layer) {
 				_this.$('#preview-media').clearQueue().animate( this.getWindowSize() ,500 );
 			}
 
-			if( zeega.player.get('fadeOutOverlays') )
+			if( Zeega.player.get('fadeOutOverlays') )
 			{
 				//	fadeout overlays after mouse inactivity
 				var fadeOutOverlays = _.debounce(function(){_this.fadeOutOverlays()},5000);
@@ -764,7 +721,7 @@ function(zeega, Backbone, Layer) {
 		{
 			this.unsetListeners();
 			if(this.isFullscreen) this.leaveFullscreen();
-			zeega.player.exit();
+			Zeega.player.exit();
 			return false;
 		},
 		
@@ -817,8 +774,8 @@ function(zeega, Backbone, Layer) {
 			var _this = this;
 			this.$el.empty();
 			_.each( _.toArray(this.model.layers), function(layer){
-				if( zeega.player.get('appName') && Zeega.Player.CitationView[zeega.player.get('appName')] )
-					var citation = new Zeega.Player.CitationView[zeega.player.get('appName')]({model:layer});
+				if( Zeega.player.get('appName') && Zeega.Player.CitationView[Zeega.player.get('appName')] )
+					var citation = new Zeega.Player.CitationView[Zeega.player.get('appName')]({model:layer});
 				else var citation = new Zeega.Player.CitationView({model:layer});
 
 				_this.$el.append( citation.render().el );
@@ -897,7 +854,7 @@ function(zeega, Backbone, Layer) {
 		render : function()
 		{
 			var _this = this;
-			this.$el.html( _.template(this.getTemplate(), zeega.player.project.toJSON() ) );
+			this.$el.html( _.template(this.getTemplate(), Zeega.player.project.toJSON() ) );
 
 			this.$el.find('.progress-types ul').empty();
 			_.each( _.toArray(this.model.layers), function(layer){

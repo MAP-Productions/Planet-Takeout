@@ -1,5 +1,8 @@
-#upper-nav
+html{ background:black;}
+
+#nav-upper
 {
+  z-index: 1000000;
   position: absolute;
   height: 100px;
   width: 100%;
@@ -9,38 +12,38 @@
   padding:20px;
 }
 
-#upper-nav ul
+#nav-upper ul
 {
   list-style: none;
   margin: 0;
 }
 
-#upper-nav a
+#nav-upper a
 {
   opacity:0.85;
 }
 
-#upper-nav a:hover
+#nav-upper a:hover
 {
   opacity:1;
 }
 
-#upper-nav li
+#nav-upper li
 {
   float:left;
   margin-left:12%;
 }
-#upper-nav li:first-child
+#nav-upper li:first-child
 {
   margin-left:0;
 }
 
-#upper-nav .pt-logo
+#nav-upper .pt-logo
 {
   width:60px;
 }
 
-#upper-nav .nav-icon
+#nav-upper .nav-icon
 {
   width:30px;
 }
