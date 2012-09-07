@@ -20,10 +20,10 @@ function(Zeega, Backbone) {
       appName : 'wayfinder',
       mode :'standalone',
 
-      navbar_top : true,
-      navbar_bottom : true,
-      layerCitations : true,
-      playerCitation : true,
+      navbar_top : false,
+      navbar_bottom : false,
+      layerCitations : false,
+      playerCitation : false,
       
       branding : false,
       social : false,
