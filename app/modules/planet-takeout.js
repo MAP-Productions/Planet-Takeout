@@ -2,7 +2,6 @@ define([
   "zeega",
   // Libs
   "backbone",
-
   // Plugins
   'zeega_player'
 ],
@@ -10,10 +9,10 @@ define([
 function(Zeega, Backbone) {
 
   // Create a new module
-  var PT = Zeega.module();
+  var App = Zeega.module();
 
 
-  PT.Model = Backbone.Model.extend({
+  App.Model = Backbone.Model.extend({
 
     url : 'http://dev.zeega.org/joseph/web/api/projects/1316',
 
@@ -52,29 +51,21 @@ function(Zeega, Backbone) {
   })
 
 
-  PT.Views.Base = Backbone.View.extend({
+  App.Views.Base = Backbone.View.extend({
     manage: true,
     template: "base",
   });
 
-  PT.Views.UpperNavView = Backbone.View.extend({
+  App.Views.UpperNavView = Backbone.View.extend({
     manage : true,
     template : 'upper-nav',
 
     tagName : 'ul',
 
-    events : {
-      'click a' : 'onClick'
-    },
-
-    onClick : function()
-    {
-      //alert('clickedddd')
-    }
 
   })
 
   // Required, return the module for AMD compliance
-  return PT;
+  return App;
 
 });

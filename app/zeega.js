@@ -19,12 +19,8 @@ function($, _, Backbone) {
   var app = {
     // The root path to run the application.
     root: "/",
-    appName : 'PlanetTakeout', // change this to change out modules
 
     isInitialized : false,
-
-
-
   };
 
   // Localize or create a new JavaScript Template object.

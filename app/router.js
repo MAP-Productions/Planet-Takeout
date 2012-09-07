@@ -3,12 +3,18 @@ define([
   "zeega",
 
   // Modules.
-  'modules/planet-takeout',
+  'modules/planet-takeout', // this needs to be cusomized
 ],
 
-function(Zeega, PT) {
+// generic App used
+function(Zeega, App) {
 
   // Defining the application router, you can attach sub routers here.
+  /*
+
+  the router is where your application/navigation logic goes
+
+  */
   var Router = Backbone.Router.extend({
     routes: {
       "" : "index",
@@ -23,7 +29,7 @@ function(Zeega, PT) {
     index: function()
     {
       renderBaseLayout();
-      Zeega.PT = new PT.Model();      
+      Zeega.PT = new App.Model();      
     },
 
     about : function()
@@ -67,12 +73,10 @@ function(Zeega, PT) {
 
     },
 
-
-
-
-
   });
 
+
+  // this is a utility and should be elsewhere
   function renderBaseLayout()
   {
     if( !Zeega.isInitialized )
@@ -81,8 +85,8 @@ function(Zeega, PT) {
         el: "#main"
       });
       // Insert the tutorial into the layout.
-      Zeega.baseLayout.insertView(new PT.Views.Base() );
-      Zeega.baseLayout.setView('#nav-upper', new PT.Views.UpperNavView() );
+      Zeega.baseLayout.insertView(new App.Views.Base() );
+      Zeega.baseLayout.setView('#nav-upper', new App.Views.UpperNavView() );
       // Render the layout into the DOM.
       Zeega.baseLayout.render();
       Zeega.isInitialized = true

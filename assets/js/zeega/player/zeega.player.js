@@ -654,7 +654,7 @@ function(Zeega, Backbone, Layer) {
 			window.onresize = function(event)
 			{
 				//constrain proportions in player
-				_this.$('#preview-media').clearQueue().animate( this.getWindowSize() ,500 );
+				_this.$('#preview-media').clearQueue().animate( _this.getWindowSize() ,500 );
 			}
 
 			if( Zeega.player.get('fadeOutOverlays') )
