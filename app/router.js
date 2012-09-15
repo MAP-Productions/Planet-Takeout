@@ -29,7 +29,8 @@ function(Zeega, App) {
     index: function()
     {
       renderBaseLayout();
-      Zeega.PT = new App.Model();      
+      Zeega.player = new App.Model();  
+      console.log(Zeega.player)    
     },
 
     about : function()
@@ -45,7 +46,7 @@ function(Zeega, App) {
       console.log('go to grid')
       clearModals()
       renderBaseLayout();
-
+      renderGrid();
     },
 
     map : function()
@@ -66,14 +67,16 @@ function(Zeega, App) {
     menu : function()
     {
       console.log('go to menu')
+      clearModals();
       renderBaseLayout();
+      renderMenu();
 
     },
 
     search : function()
     {
-       console.log('go to search')
-     renderBaseLayout();
+      console.log('go to search')
+      renderBaseLayout();
 
     },
 
@@ -82,25 +85,38 @@ function(Zeega, App) {
   function renderPage(pageName)
   {
     Zeega.page = new App.Layouts.Modal({title:pageName});
-    Zeega.page.setView('.PT-modal-content', new App.Views[pageName]() );
+    var pageView = new App.Views[pageName]();
+    Zeega.page.setView('.PT-modal-content', pageView );
     Zeega.page.render();
     $('body').append(Zeega.page.el);
   }
 
-  function renderAbout()
+  function renderMenu()
   {
-    Zeega.page = new App.Layouts.Modal({title:'About'});
-    Zeega.page.setView('.PT-modal-content', new App.Views.About() );
+    Zeega.page = new App.Layouts.ModalWide({title:'Menu'});
+    var pageView = new App.Views.Menu();
+    Zeega.page.setView('.PT-modal-content', pageView );
     Zeega.page.render();
     $('body').append(Zeega.page.el);
   }
 
-  function renderParticate()
+  function renderGrid()
   {
-    Zeega.page = new App.Layouts.Modal({title:'Participate'});
-    Zeega.page.setView('.PT-modal-content', new App.Views.Participate() );
-    Zeega.page.render();
-    $('body').append(Zeega.page.el);
+    //removePlayer();
+    // make and render itemCollection
+    var itemCollectionsCollection = new App.Collections.ItemCollections();
+    itemCollectionsCollection.fetch().success(function(res){
+      console.log('$$   items coll', res, itemCollectionsCollection)
+      Zeega.grid = new App.Layouts.GridView({collection:itemCollectionsCollection});
+      Zeega.grid.render();
+      $('#app-base').append( Zeega.grid.el );
+
+    })
+  }
+
+  function renderMap()
+  {
+    
   }
 
   function clearModals()
@@ -108,11 +124,17 @@ function(Zeega, App) {
     if(Zeega.page) Zeega.page.remove();
   }
 
+  function removePlayer()
+  {
+    if( Zeega.player ) Zeega.player.exit();
+  }
+
   // this is a utility and should be elsewhere
   function renderBaseLayout()
   {
     if( !Zeega.isInitialized )
     {
+
       Zeega.baseLayout = new Backbone.Layout({
         el: "#main"
       });

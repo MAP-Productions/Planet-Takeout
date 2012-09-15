@@ -42,13 +42,14 @@ ul.horizontal-list li{ float:left; }
   background: url(../img/top-fade.png);
   background-size: 100% 100%;
   min-width: 1000px;
-  padding:20px;
+  padding:20px 0;
 }
 
 #nav-upper ul
 {
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
+width: 1000px;
 }
 
 #nav-upper a
@@ -63,8 +64,8 @@ ul.horizontal-list li{ float:left; }
 
 #nav-upper li
 {
-  float:left;
-  margin-left:12%;
+  float: left;
+  margin-left: 155px;
 }
 #nav-upper li:first-child
 {
@@ -85,6 +86,14 @@ ul.horizontal-list li{ float:left; }
 
 /* modal styles */
 
+button.close{ padding: 10px; }
+
+.PT-modal-content-head
+{
+  position: relative;
+  z-index: 10;
+}
+
 .PT-modal-overlay
 {
   z-index: 10000;
@@ -92,13 +101,19 @@ ul.horizontal-list li{ float:left; }
   position: fixed;
   height: 100%;
   width: 100%;
+  min-width: 1000px;
   box-shadow: inset 0 0 54px;
 }
 
 .PT-modal
 {
-  width: 770px;
+  width: 660px;
   margin: 80px auto;
+}
+
+.PT-modal-wide
+{
+  width: 1000px;
 }
 
 .PT-modal ul
@@ -111,7 +126,10 @@ ul.horizontal-list li{ float:left; }
 {
   color: white;
   padding-bottom: 30px;
+  padding-left: 40px
 }
+
+
 
 .PT-modal-title h1{ font-size: 4em; }
 
@@ -134,8 +152,13 @@ ul.horizontal-list li{ float:left; }
 {
   min-height: 500px;
   padding: 20px;
-  
 }
+
+.PT-modal-wide .PT-modal-content
+{
+  padding: 0;
+}
+
 
 .PT-modal-content h5
 {
@@ -158,9 +181,164 @@ ul.horizontal-list li{ float:left; }
 .PT-modal-content .sponsor-drawer
 {
   background: white;
-  height: 200px;
+  height: 260px;
   position: absolute;
   bottom: 0;
   width: 100%;
   left: 0;
+}
+
+.PT-modal .sponsor-drawer{}
+
+.PT-modal .sponsor-drawer ul
+{
+  margin:0;
+  list-style: none;
+  padding:20px;
+}
+
+
+.PT-modal .sponsor-drawer li
+{
+  float: left;
+  text-align: center;
+  height: 125px;
+  width: 143px;
+}
+.PT-modal .sponsor-drawer img
+{
+  width:110px;
+}
+
+
+
+/*  MENU    */
+
+.PT-menu-column
+{
+  width: -webkit-calc( 33.33% - 21px );
+  float: left;
+  height: 100%;
+  border-left: 1px solid #999;
+  position: relative;
+  padding:10px;
+
+  background: rgba(194, 217, 214, 1);
+  background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, from(rgba(154, 235, 231, 1)), to(rgba(255, 216, 171, 1)));
+  background-image: -webkit-linear-gradient(left, rgba(154, 235, 231, 1), rgba(255, 216, 171, 1)); 
+  background-image:    -moz-linear-gradient(left, rgba(154, 235, 231, 1), rgba(255, 216, 171, 1));
+  background-image:     -ms-linear-gradient(left, rgba(154, 235, 231, 1), rgba(255, 216, 171, 1));
+  background-image:      -o-linear-gradient(left, rgba(154, 235, 231, 1), rgba(255, 216, 171, 1));
+}
+.PT-manu-column:first-child
+{
+ width: -webkit-calc( 33.33% - 2px );
+ border-left: none;
+}
+
+.PT-modal-wide .PT-modal-title
+{
+  padding-left: 212px;
+}
+.PT-modal-wide .PT-modal-content-wrapper
+{
+  padding: 0;
+}
+
+.PT-modal-wide .PT-menu
+{
+  position: absolute;
+  height:100%;
+  width:100%;
+}
+
+/*    GRID VIEW   */
+
+#grid-view-wrapper
+{
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(194, 217, 214, 1);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(154, 235, 231, 1)), to(rgba(255, 216, 171, 1)));
+  background-image: -webkit-linear-gradient(top, rgba(255, 216, 171, 1), rgba(154, 235, 231, 1) ); 
+  background-image:    -moz-linear-gradient(top, rgba(255, 216, 171, 1), rgba(154, 235, 231, 1) );
+  background-image:     -ms-linear-gradient(top, rgba(255, 216, 171, 1), rgba(154, 235, 231, 1) );
+  background-image:      -o-linear-gradient(top, rgba(255, 216, 171, 1), rgba(154, 235, 231, 1) );
+}
+
+
+#grid-view-slider
+{
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  width: 1000px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+.grid-view-title
+{
+  color:white;
+  margin-top: 100px;
+  padding-left: 211px;
+}
+
+.grid-view-title h2
+{
+  font-size: 19px;
+  line-height:1em;
+}
+
+#grid-view-slider ul
+{
+  margin: 0;
+  list-style: none;
+}
+
+#grid-view-slider>ul>li
+{
+  float: left;
+  width: 142px;
+  height: 100px;
+  background: white;
+  margin: 12px;
+  background-size:100% 100%;
+  background-color:white;
+}
+
+#grid-view-slider>ul>li a
+{
+  text-decoration: none
+}
+
+.item-title
+{
+  display:none;
+  overflow:none;
+  color:white;
+}
+
+
+#grid-view-slider>ul>li:hover .item-title
+{
+  display:block;
+  overflow:hidden;
+  position:relative;
+  top:-24px;
+  left:-24px;
+  height:148px;
+  width:190px;
+  background-color:white;
+}
+
+
+
+.item-title h1
+{
+  font-size: 5.9em;
+  line-height: 1em;
 }
