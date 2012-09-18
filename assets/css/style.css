@@ -280,6 +280,8 @@ button.close{ padding: 10px; }
   padding: 0 12px;
 }
 
+
+
 .grid-view-title
 {
   color:white;
@@ -290,6 +292,12 @@ button.close{ padding: 10px; }
 .grid-view-title h2
 {
   font-size: 19px;
+  line-height:1em;
+}
+
+.grid-view-title h1
+{
+  font-size:4em;
   line-height:1em;
 }
 
@@ -341,4 +349,29 @@ button.close{ padding: 10px; }
 {
   font-size: 5.9em;
   line-height: 1em;
+}
+
+
+/*  citations */
+
+#citation-drawer
+{
+  position: absolute;
+  bottom: 0;
+  z-index: 100000;
+  background: rgba(0, 0, 0, 0.75);
+  width:100%;
+  color: white;
+}
+.citation-view
+{
+  padding:10px 40px;
+}
+
+.citation-attribution,
+.citation-geo
+{
+  position: relative;
+  bottom: -1em;
+  margin-left: 10px;
 }

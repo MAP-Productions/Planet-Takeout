@@ -48,6 +48,52 @@ function(Zeega, Backbone) {
 
   })
 
+  App.CollectionZeegaPlayerModel = Backbone.Model.extend({
+
+    url : function(){ return 'http://alpha.zeega.org/api/items/'+ this.collection_id +'/project' },
+
+    defaults : {
+      //appName : 'wayfinder',
+      mode :'standalone',
+
+      chromeless : true,
+
+      navbar_top : false,
+      navbar_bottom : false,
+      layerCitations : false,
+      playerCitation : false,
+      
+      branding : false,
+      social : false,
+      fullscreenEnabled : false,
+      fadeOutOverlays : false,
+
+      user_id : -1
+    },
+
+    initialize : function()
+    {
+      console.log('pt collection init')
+      var _this = this;
+      //this.fetch().success(function(res){ _this.loadPlayer(), console.log(res) });
+    },
+
+    loadPlayer : function()
+    {
+      //I'm trusting that I'm getting valid data back
+      // the settings are a part of the data! this means the player attributes can be controlled by the data!
+      Zeega.player = new Zeega.Player( this.toJSON() );
+      Zeega.player.play();
+    },
+
+    parse : function(data)
+    {
+      return data.project;
+    }
+
+
+  })
+
 
   App.Views.Base = Backbone.View.extend({
     manage: true,
@@ -79,7 +125,7 @@ function(Zeega, Backbone) {
     {
       console.log('close modal');
       this.remove();
-      Zeega.router.navigate('/',{trigger:true})
+      //Zeega.router.navigate('/',{trigger:true})
     },
 
     initialize : function(opts)
@@ -140,14 +186,22 @@ function(Zeega, Backbone) {
   ////  grid views
 
   App.Layouts.GridView = Backbone.Layout.extend({
-    template: "grid-view",
+    template: "collection-grid-layout",
 
     initialize : function()
     {
+      console.log(this.collection, this)
+      this.template = this.options.type == 'items' ? 'item-grid-layout' : 'collection-grid-layout';
+      if(Zeega.grid) Zeega.grid.remove();
       //this.collection.on('all',function(e){console.log('event:',e)}, this);
       this.collection.on('reset',this.onReset, this);
-      this.collection.on('go_to_collection', this.goToCollection, this);
     },
+
+    serialize : function()
+    {
+      if(this.collection.data.items) return this.collection.data.items[0];
+    },
+
     onReset : function()
     {
       var _this = this;
@@ -159,34 +213,22 @@ function(Zeega, Backbone) {
       })
     },
 
-    goToCollection : function( collection )
-    {
-      var _this = this;
-      // empty the this.collection
-      this.getViews().each(function(view){ view.remove() });      
-      var items = new App.Collections.Items();
-      items.collectionID = collection.id;
-      items.fetch().success(function(res){
-        console.log('$$   items coll', res, items)
-        _this.collection = items;
-        _this.onReset();
-      })
-
-      //this.render();
-    },
-
     beforeRender : function()
     {
       console.log('before render', this)
       var _this = this;
       this.collection.each(function(item){
         item.set('rendered', true);
-        _this.insertView( 'ul.list', _this.getView(item) )
+        _this.insertView( 'ul.list', _this.getView(item) );
+
       })
     },
     afterRender : function()
     {
       var _this = this;
+
+      //this.getViews().each(function(view){ view.delegateEvents() });
+
       // infinite scroll
       this.$('#grid-view-slider').scroll(function(){
         //console.log('scroll', _this.$('#grid-view-slider ul').height(), _this.$('#grid-view-slider ul').position().top, $('#grid-view-wrapper').height()  )
@@ -222,6 +264,12 @@ function(Zeega, Backbone) {
 
   });
 
+  App.Layouts.CitationDrawerLayout = Backbone.Layout.extend({
+    template: "citation-drawer-layout",
+    id: 'citation-drawer'
+
+  })
+
   App.Views.ItemView = Backbone.LayoutView.extend({
     template : 'item',
     tagName : 'li',
@@ -230,38 +278,22 @@ function(Zeega, Backbone) {
 
     serialize : function(){ return this.model.toJSON() },
 
-    events : {
-      'click a' : 'goToItem'
-    },
-
-    goToItem : function()
-    {
-      console.log('goto item', this, 'launch player here')
-
-      // launch zeega player with parent collection. start at this item
-
-      return false;
-    }
   })
 
   App.Views.CollectionView = Backbone.LayoutView.extend({
-    template : 'item',
+    template : 'collection',
     tagName : 'li',
     className : 'collection-view',
 
-    serialize : function(){ return this.model.toJSON() },
-
-    events : {
-      'click a' : 'goToCollection'
-    },
-
-    goToCollection : function()
-    {
-      //console.log('go to collection ::',this.model)
-      this.model.trigger('go_to_collection', this.model)
-      return false;
-    }
+    serialize : function(){ return this.model.toJSON() }
   })
+
+  App.Views.CitationView = Backbone.LayoutView.extend({
+    template : 'citation',
+    className : 'citation-view',
+
+    serialize : function(){ return this.model.layers.at(0).toJSON() }
+  })  
 
 
 /************************
@@ -281,6 +313,7 @@ function(Zeega, Backbone) {
 
     parse : function( res )
     {
+      this.data = res;
       return res.items[0].child_items;
     }
   })
@@ -293,6 +326,7 @@ function(Zeega, Backbone) {
 
     parse : function( res )
     {
+      this.data = res;
       this.itemsCount = res.collections_count;
       return res.collections;
     }

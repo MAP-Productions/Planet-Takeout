@@ -46,12 +46,14 @@ function(Zeega, Backbone, Layer) {
 		play : function()
 		{
 			this.parseProject( this.toJSON() );
+			console.log('after parsed', this)
 			this.set( 'frameID', this.get('frameID') || this.project.sequences.at(0).frames.at(0).id );
 
 			console.log('%%		start player at', this.get('frameID'))
 
 			this.project.on('ready', this.onProjectReady, this );
 			this.project.renderPlayer();
+
 		},
 		
 		onProjectReady : function()
@@ -64,6 +66,8 @@ function(Zeega, Backbone, Layer) {
 		parseProject : function(data)
 		{
 			this.project = new Zeega.Player.ProjectModel( data );
+			var _this = this;
+			this.project.on('all', function(e,opts){ _this.trigger(e,opts) }); //pass along events from the project model
 			this.project.load();
 		},
 		
@@ -82,7 +86,9 @@ function(Zeega, Backbone, Layer) {
 
 			if(this.get('mode') == 'editor') zeega.app.restoreFromPreview(); // needs fixin'
 
-			Backbone.history.stop();
+			//Backbone.history.stop();
+
+			console.log('pp 		player exit')
 
 			return false;
 		},
@@ -162,22 +168,23 @@ function(Zeega, Backbone, Layer) {
 		{
 			var _this = this;
 			this.currentFrame.unrender();
-			this.playerView.$el.fadeOut( 450, function(){ _this.playerView.remove() });
+			console.log('pp 		unrender player', this);
+			var playerView = this.layout.getView(function(view){ return view.model === _this });
+			playerView.$el.fadeOut( 450, function(){ playerView.remove() });
 		},
 		
 		goToFrame : function( frameID )
 		{
+
 			this.cancelFrameAdvance();
 			if(this.currentFrame) this.currentFrame.unrender( frameID );
 
 			var frame = this.frames.get(frameID);
-			console.log('$$		go to frame:',frameID, frame, this)
 			
 			if(frame.status == 'waiting')
 			{
 				frame.on('ready',this.renderFrame, this);
 				frame.renderLoader();
-				this.preloadFrames(frame);
 			}
 			else if( frame.status = 'ready')
 			{
@@ -188,6 +195,7 @@ function(Zeega, Backbone, Layer) {
 				frame.onFrameLoaded();
 				this.renderFrame( frameID );
 			}
+			this.preloadFrames(frame);
 			
 
 			//if(Zeega.player.get('mode') != 'editor') Zeega.player.router.navigate('frame/'+ frameID );
@@ -207,8 +215,9 @@ function(Zeega, Backbone, Layer) {
 		{
 			var frame = this.frames.get(frameID);
 			var fromFrameID = this.currentFrame ? this.currentFrame.id : frameID;
-
 			frame.render( fromFrameID );
+
+			this.trigger('frame_rendered', frame)
 			this.setFrameAdvance( frameID );
 		},
 		
@@ -405,9 +414,7 @@ function(Zeega, Backbone, Layer) {
 		render : function( fromFrameID )
 		{
 			var _this = this;
-
 			this.isPlaying = true;
-
 			// display citations
 			if(Zeega.player.get('layerCitations')) $('#citation-tray').html( this.citationView.render().el );
 

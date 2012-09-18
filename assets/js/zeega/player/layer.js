@@ -18,23 +18,6 @@ function(zeega, Backbone, Layers){
 		editorWindow : $('#visual-editor-workspace'),
 		layerPanel : $('#layers-list-visual'),
 		player : false,
-		
-		//showControls : true,
-		//displayCitation: true,
-		//defaultControls : true,
-		//hasControls :true,
-		
-
-		
-		/*
-		layerColor : [ 'red','blue','yellow','green' ],
-		defaults : {
-			attr : {},
-			linkable: true,
-			thumbUpdate : true,
-		},
-		defaultAttributes : {},
-		*/
 
 		url : function()
 		{
@@ -52,12 +35,15 @@ function(zeega, Backbone, Layers){
 
 		load : function()
 		{
-			console.log('LL 		load layer', Layers);
 			this.typeModel = new Layers[this.get('type')]({parent:this});
 			this.typeVisual = new Layers[this.get('type')].Visual({model:this, attributes:{
 				id: 'layer-visual-'+this.id,
 				class: 'visual-element layer-'+ this.get('type').toLowerCase()
 			}});
+
+			var def = _.defaults( this.get('attr'), this.typeModel.defaultAttributes )
+			this.set('attr',def); // set the layer default attr if they don't exist in the layer
+
 			//this.controls = new // figure this out later
 		},
 
