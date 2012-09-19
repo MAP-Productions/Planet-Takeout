@@ -197,7 +197,6 @@ function(Zeega, App) {
 
   function renderCitations()
   {
-    console.log('draw citations')
     var citationDrawer = new App.Layouts.CitationDrawerLayout();
     Zeega.citation = citationDrawer;
     //Zeega.citation.insertView( new App.Views.CitationView() );

@@ -50,7 +50,7 @@ function(Zeega, Backbone) {
 
   App.CollectionZeegaPlayerModel = Backbone.Model.extend({
 
-    url : function(){ return 'http://alpha.zeega.org/api/items/'+ this.collection_id +'/project' },
+    url : function(){ return 'http://dev.zeega.org/planettakeout/web/api/items/'+ this.collection_id +'/project' },
 
     defaults : {
       //appName : 'wayfinder',
@@ -69,28 +69,7 @@ function(Zeega, Backbone) {
       fadeOutOverlays : false,
 
       user_id : -1
-    },
-
-    initialize : function()
-    {
-      console.log('pt collection init')
-      var _this = this;
-      //this.fetch().success(function(res){ _this.loadPlayer(), console.log(res) });
-    },
-
-    loadPlayer : function()
-    {
-      //I'm trusting that I'm getting valid data back
-      // the settings are a part of the data! this means the player attributes can be controlled by the data!
-      Zeega.player = new Zeega.Player( this.toJSON() );
-      Zeega.player.play();
-    },
-
-    parse : function(data)
-    {
-      return data.project;
     }
-
 
   })
 
@@ -292,7 +271,7 @@ function(Zeega, Backbone) {
     template : 'citation',
     className : 'citation-view',
 
-    serialize : function(){ return this.model.layers.at(0).toJSON() }
+    serialize : function(){ console.log(this.model.layers.at(0).toJSON()); return this.model.layers.at(0).toJSON() }
   })  
 
 
@@ -309,7 +288,7 @@ function(Zeega, Backbone) {
 
     page : 1,
 
-    url : function(){ return 'http://alpha.zeega.org/api/items/'+ this.collectionID },
+    url : function(){ return 'http://dev.zeega.org/planettakeout/web/api/items/'+ this.collectionID },
 
     parse : function( res )
     {
@@ -322,7 +301,7 @@ function(Zeega, Backbone) {
 
     page : 1,
 
-    url : function(){ return 'http://alpha.zeega.org/api/search?r_collections=1&page='+ this.page },
+    url : function(){ return 'http://dev.zeega.org/planettakeout/web/api/search?r_collections=1&page='+ this.page },
 
     parse : function( res )
     {
