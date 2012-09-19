@@ -66,7 +66,6 @@ function(Zeega, App) {
     {
       initialize();
 
-      itemID = itemID || 'first';
       console.log('rr     view collection player', collectionID, itemID, Zeega.grid )
 
       if(Zeega.grid) Zeega.grid.remove();
@@ -79,6 +78,8 @@ function(Zeega, App) {
         console.log('mm     model fetched', res, itemID);
 
         renderCitations();
+        if( !_.isUndefined(itemID) ) player.set('frameID', itemID );
+        console.log( player.toJSON() );
         Zeega.player = new Zeega.Player( player.toJSON() );
         Zeega.player.on('all', onPlayerEvent, this);
         Zeega.player.play();
@@ -111,7 +112,6 @@ function(Zeega, App) {
     {
       console.log('go to search')
       initialize();
-      renderBaseLayout();
 
     },
 
@@ -144,7 +144,7 @@ function(Zeega, App) {
   }
 
 
-  
+
 
   function renderPage(pageName)
   {
@@ -196,6 +196,8 @@ function(Zeega, App) {
     })
   }
 
+
+  // this is the switch that interperes all incoming player events
   function onPlayerEvent(e, opts)
   {
     switch(e)
