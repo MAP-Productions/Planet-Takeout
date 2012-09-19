@@ -161,6 +161,11 @@ function(Zeega, Backbone) {
     className: 'PT-menu'
   })
 
+  App.Views.Map = App.Views._Page.extend({
+    template: 'map',
+    className: 'PT-map'
+  })
+
 
   ////  grid views
 

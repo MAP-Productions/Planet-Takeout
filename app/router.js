@@ -90,9 +90,8 @@ function(Zeega, App) {
 
     map : function()
     {
-      console.log('go to map')
       initialize();
-
+      renderMap();
     },
 
     participate : function()
@@ -213,7 +212,12 @@ function(Zeega, App) {
 
   function renderMap()
   {
-    
+    console.log('render map');
+    Zeega.page = new App.Layouts.ModalWide({title:'Delicious World'});
+    var pageView = new App.Views.Map();
+    Zeega.page.setView('.PT-modal-content', pageView );
+    Zeega.page.render();
+    $('body').append(Zeega.page.el);
   }
 
   function clearModals()
