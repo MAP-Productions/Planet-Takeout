@@ -1,8 +1,17 @@
-<div><h5>Add a new Takeout Add photos, videos & sounds Tell your story</h5></div>
-<div class='left-column'>
-	takeout name
-	address
+<ul class="steps">
+	<li class="active">Add a new Takeout</li>
+	<li>Add photos, videos & sounds</li>
+	<li>Tell your story</li></ul>
+<div id='stepOne'>
+	<input placeholder="Takeout name" type="text" id="takeoutName" />
+	<input placeholder="Address" type="text" id="takeoutAddress" />
+	<button id='findTakeout' class='btn'>Find <i class='icon-search'></i></button>
 </div>
-<div class='right-column'>
-	<button class='btn'>Find <i class='icon-search'></i></button>
+<div id="stepTwo" style="display: none;">
+	<div id="streetView" style="width: 510px; height: 370px;"></div>
+	<p>Use your mouse to move Streetview to the best frame.</p>
+	<button id='savePov' class='btn'>Submit</button>
+</div>
+<div id="thanks" style="display: none;">
+	<p>Street View info saved.</p>
 </div>

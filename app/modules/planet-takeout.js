@@ -74,6 +74,10 @@ function(Zeega, Backbone) {
 
   })
 
+  App.NewTakeoutModel = Backbone.Model.extend({
+    // model for new takeout data (via 'participate')
+  });
+
 
   App.Views.Base = Backbone.View.extend({
     manage: true,
@@ -155,7 +159,68 @@ function(Zeega, Backbone) {
 
   App.Views.Participate = App.Views._Page.extend({
     template: 'participate-0',
-  })
+    events: {
+      'click #findTakeout': 'geoLookup',
+      'click #savePov': 'saveStreetView'
+    },
+    initialize: function() {
+      _.bindAll(this, 'render', 'geoLookup', 'processGeocodeResults');
+      this.newTakeout = new App.NewTakeoutModel();
+      this.geocoder = new google.maps.Geocoder();
+    },
+    geoLookup: function() {
+      var nameField = $(this.el).find('#takeoutName').val(),
+          addressField = $(this.el).find('#takeoutAddress').val();
+
+      if (nameField && addressField) {
+        this.newTakeout.set({
+          takeoutName: nameField,
+          takeoutAddress: addressField
+        });
+        
+        this.geocoder.geocode({
+          address: addressField
+        }, this.processGeocodeResults)
+      } else {
+        alert("Please enter the takeout's name and address");
+      }
+    },
+    processGeocodeResults: function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        this.newTakeout.set('latlong', results[0].geometry.location);
+        this.showStreetView();
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    },
+    showStreetView: function(results) {
+      var marker;
+      var viewOptions = {
+        position: this.newTakeout.get('latlong'),
+        pov: {
+          heading: 34,
+          pitch: 10,
+          zoom: 1
+        }
+      };
+
+      $(this.el)
+        .find('#stepOne').hide()
+        .siblings('#stepTwo').show();
+
+      this.newTakeoutStreetView =  new google.maps.StreetViewPanorama(document.getElementById("streetView"), viewOptions);
+
+      marker = new google.maps.Marker({
+        position: this.newTakeout.get('latlong'),
+        map: this.newTakeoutStreetView,
+        title: this.newTakeout.get('takeoutName')
+      });
+    },
+    saveStreetView: function() {
+      this.newTakeout.set('streetViewPov', this.newTakeoutStreetView.pov);
+      console.log(this.newTakeout);
+    }
+  });
 
   App.Views.Menu = App.Views._Page.extend({
     template: 'menu',

@@ -86,7 +86,13 @@ width: 1000px;
 
 /* modal styles */
 
-button.close{ padding: 10px; }
+button.close{
+  float: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 10px; float:
+}
 
 .PT-modal-content-head
 {
@@ -107,7 +113,7 @@ button.close{ padding: 10px; }
 
 .PT-modal
 {
-  width: 660px;
+  width: 750px;
   margin: 80px auto;
 }
 
@@ -126,7 +132,7 @@ button.close{ padding: 10px; }
 {
   color: white;
   padding-bottom: 30px;
-  padding-left: 40px
+  padding-left: 40px;
 }
 
 
@@ -144,27 +150,78 @@ button.close{ padding: 10px; }
   background-image:      -o-linear-gradient(top, rgba(154, 235, 231, 1), rgba(255, 216, 171, 1));
 
   box-shadow: 0 0 9px;
-  padding:20px;
+  /*padding:20px;*/
   text-align: justify;
 }
 
 .PT-modal-content
 {
   position:relative;
-  min-height: 500px;
+  /* min-height: 500px; */
   padding: 20px;
+  overflow: hidden;
 }
 
 .PT-modal-wide .PT-modal-content
 {
   padding: 0;
+  overflow: hidden;
 }
 
 
-.PT-modal-content h5
+.PT-modal-content ul.steps
 {
-  color:rgba(211,32,26,1);
   margin-bottom:20px;
+  position: relative;
+  top: -10px;
+}
+
+.PT-modal-content ul.steps li
+{
+  color:rgba(211,32,26,0.6);
+  display: inline;
+  font-family: 'PT-black', sans-serif;
+  font-size: 13px;
+  margin-right: 20px;
+}
+
+.PT-modal-content ul.steps li.active {
+  color:rgba(211,32,26,1);
+}
+
+.PT-modal-content #stepOne input[type=text] {
+  border: none;
+  border-radius: 12px;
+  display: inline-block;
+  font-size: 14px;
+  padding: 7px 15px;
+  margin: 0 30px 20px 0;
+  width: 480px;
+}
+
+.PT-modal-content #stepTwo #streetView {
+  float: left;
+}
+
+.PT-modal-content #stepTwo .btn {
+  clear: both;
+  display: block;
+  margin-top: 20px;
+}
+
+.PT-modal-content #stepTwo p {
+  float: right;
+  margin-right: 40px;
+  width: 130px;
+}
+
+.PT-modal-content .btn {
+  background: #de3620;
+  border: none;
+  border-radius: 11px;
+  color: #fff;
+  height: 30px;
+  vertical-align: top;
 }
 
 .PT-modal-content .left-column
@@ -248,8 +305,7 @@ button.close{ padding: 10px; }
 
 .PT-modal-wide .PT-menu
 {
-  position: absolute;
-  height:100%;
+  height:500px;
   width:100%;
 }
 
@@ -382,7 +438,6 @@ button.close{ padding: 10px; }
 #PT-map,
 #PT-map-wrapper
 {
-  position: absolute;
-  height : 100%;
+  height : 500px;
   width:100%;
 }
