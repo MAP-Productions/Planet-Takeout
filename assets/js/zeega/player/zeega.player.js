@@ -296,7 +296,6 @@ function(Zeega, Backbone, Layer) {
 			var _this = this;
 
 			var frameModels = _.map( this.get('frames'), function(frameID){
-			console.log('pp load',this, Zeega.player, Zeega.player.project.frames, frameID)
 				var frame = Zeega.player.project.frames.get(frameID);
 				
 				var index = _.indexOf( _this.get('frames'), frameID );

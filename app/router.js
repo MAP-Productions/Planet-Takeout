@@ -45,7 +45,6 @@ function(Zeega, App) {
     {
       console.log('go to about')
       initialize();
-      clearModals()
       renderPage('About');
     },
 
@@ -53,7 +52,6 @@ function(Zeega, App) {
     {
       console.log('go to grid')
       initialize();
-      clearModals()
       renderCollections();
     },
 
@@ -98,7 +96,6 @@ function(Zeega, App) {
     {
       console.log('go to participate')
       initialize();
-      clearModals()
       renderPage('Participate');
      },
 
@@ -106,7 +103,6 @@ function(Zeega, App) {
     {
       console.log('go to menu')
       initialize();
-      clearModals();
       renderMenu();
 
     },
@@ -127,12 +123,28 @@ function(Zeega, App) {
   esp inserting the layout into the dom!
 
   */
-  var initialize = _.once( init );
+
+  function initialize()
+  {
+    initPT();
+    cleanup();
+  }
+
+  // makes sure this happens on ly once per load
+  var initPT = _.once( init );
   function init()
   {
     renderBaseLayout();
-    Zeega.isInitialized = true;
   }
+
+  // happens on every router change
+  function cleanup()
+  {
+    clearModals();
+  }
+
+
+  
 
   function renderPage(pageName)
   {

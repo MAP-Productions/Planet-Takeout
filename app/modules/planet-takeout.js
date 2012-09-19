@@ -294,7 +294,7 @@ function(Zeega, Backbone) {
     template : 'citation',
     className : 'citation-view',
 
-    serialize : function(){ console.log(this.model.layers.at(0).toJSON()); return this.model.layers.at(0).toJSON() }
+    serialize : function(){ console.log('citation attr', this.model.layers.at(0).toJSON()); return this.model.layers.at(0).toJSON() }
   })  
 
 
