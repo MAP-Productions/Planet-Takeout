@@ -1,9 +1,8 @@
 define([
   // Application.
   "zeega",
-
   // Modules.
-  'modules/planet-takeout', // this needs to be cusomized
+  'modules/planet-takeout' // this needs to be cusomized
 ],
 
 // generic App used
@@ -38,22 +37,22 @@ function(Zeega, App) {
     {
       initialize();
       var player = new App.Model();  
-      console.log(Zeega.player)    
+      console.log(Zeega.player);
     },
 
     about : function()
     {
-      console.log('go to about')
+      console.log('go to about');
       initialize();
-      clearModals()
+      clearModals();
       renderPage('About');
     },
 
     collections : function()
     {
-      console.log('go to grid')
+      console.log('go to grid');
       initialize();
-      clearModals()
+      clearModals();
       renderCollections();
     },
 
@@ -69,7 +68,7 @@ function(Zeega, App) {
       initialize();
 
       itemID = itemID || 'first';
-      console.log('rr     view collection player', collectionID, itemID, Zeega.grid )
+      console.log('rr     view collection player', collectionID, itemID, Zeega.grid );
 
       if(Zeega.grid) Zeega.grid.remove();
       
@@ -96,15 +95,15 @@ function(Zeega, App) {
 
     participate : function()
     {
-      console.log('go to participate')
+      console.log('go to participate');
       initialize();
-      clearModals()
+      clearModals();
       renderPage('Participate');
      },
 
     menu : function()
     {
-      console.log('go to menu')
+      console.log('go to menu');
       initialize();
       clearModals();
       renderMenu();
@@ -113,12 +112,11 @@ function(Zeega, App) {
 
     search : function()
     {
-      console.log('go to search')
+      console.log('go to search');
       initialize();
       renderBaseLayout();
 
-    },
-
+    }
   });
 
   /*
@@ -161,15 +159,15 @@ function(Zeega, App) {
 
   function goToItemCollection( collectionID )
   {
-    console.log('rr     go to item Collection')
+    console.log('rr     go to item Collection');
 
     var items = new App.Collections.Items();
     items.collectionID = collectionID;
     items.fetch().success(function(res){
       console.log('$$   items coll', res, items);
-      items.each(function(item){ item.set('collection_id',collectionID)});
+      items.each(function(item){ item.set('collection_id',collectionID);});
       generateGrid( items, 'items' );
-    })
+    });
   }
 
   function renderCollections()
@@ -178,19 +176,24 @@ function(Zeega, App) {
     // make and render itemCollection
     var itemCollectionsCollection = new App.Collections.ItemCollections();
     itemCollectionsCollection.fetch().success(function(res){
-      console.log('$$   items coll', res, itemCollectionsCollection)
+      console.log('$$   items coll', res, itemCollectionsCollection);
       generateGrid( itemCollectionsCollection, 'collections' );
       $('#app-base').append( Zeega.grid.el );
-    })
+    });
   }
 
   function onPlayerEvent(e, opts)
   {
+    /* lint error - replaced switch with if
     switch(e)
     {
       case 'frame_rendered':
         renderCitation(e,opts);
         break;
+    }*/
+    if (e == 'frame_rendered')
+    {
+        renderCitation(e,opts);
     }
   }
 
@@ -205,7 +208,7 @@ function(Zeega, App) {
 
   function renderCitation(e,model)
   {
-    Zeega.citation.getViews().each(function(view){ view.remove() });
+    Zeega.citation.getViews().each(function(view){ view.remove(); });
     Zeega.citation.insertView( new App.Views.CitationView({model:model}));
     Zeega.citation.render();    
   }

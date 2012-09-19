@@ -21,8 +21,7 @@ require.config({
     zeega_media_players: "../assets/js/zeega/player/plugins/players",
 
     //  Zeega
-    zeega_player: "../assets/js/zeega/player/zeega.player",
-
+    zeega_player: "../assets/js/zeega/player/zeega.player"
   },
 
   shim: {
@@ -37,7 +36,7 @@ require.config({
     'libs/spin' : ['jquery'],
     "vendor/imagesloaded/jquery.imagesloaded.min" : ['jquery'],
 
-    'zeega_base/player/plugins.layers' : ['lodash'],
+    'zeega_base/player/plugins.layers' : ['lodash']
   }
 
 });

@@ -4,7 +4,8 @@ define([
   "backbone",
   // Plugins
   'zeega_player',
-  'assets/vendor/leaflet/dist/leaflet.js'
+  'libs/leaflet',
+  'libs/modernizr'
 ],
 
 function(Zeega, Backbone) {
@@ -34,9 +35,9 @@ function(Zeega, Backbone) {
 
     initialize : function()
     {
-      console.log('pt init')
+      console.log('pt init');
       var _this = this;
-      this.fetch().success(function(res){ _this.loadPlayer(), console.log(res) });
+      this.fetch().success(function(res){ _this.loadPlayer(); console.log(res); });
     },
 
     loadPlayer : function()
@@ -47,11 +48,11 @@ function(Zeega, Backbone) {
       Zeega.player.play();
     }
 
-  })
+  });
 
   App.CollectionZeegaPlayerModel = Backbone.Model.extend({
 
-    url : function(){ return 'http://dev.zeega.org/planettakeout/web/api/items/'+ this.collection_id +'/project' },
+    url : function(){ return 'http://dev.zeega.org/planettakeout/web/api/items/'+ this.collection_id +'/project'; },
 
     defaults : {
       //appName : 'wayfinder',
@@ -72,20 +73,20 @@ function(Zeega, Backbone) {
       user_id : -1
     }
 
-  })
+  });
 
 
   App.Views.Base = Backbone.View.extend({
     manage: true,
-    template: "base",
+    template: "base"
   });
 
   App.Views.UpperNavView = Backbone.View.extend({
     manage : true,
     template : 'upper-nav',
 
-    tagName : 'ul',
-  })
+    tagName : 'ul'
+  });
 
 
   App.Layouts.Modal = Backbone.Layout.extend({
@@ -110,10 +111,10 @@ function(Zeega, Backbone) {
 
     initialize : function(opts)
     {
-      this.settings = _.defaults(opts,this.defaults)
+      this.settings = _.defaults(opts,this.defaults);
     },
 
-    serialize : function(){ return this.settings }
+    serialize : function(){ return this.settings; }
 
   });
 
@@ -134,40 +135,40 @@ function(Zeega, Backbone) {
     {
       console.log('close modal');
       this.remove();
-      Zeega.router.navigate('/',{trigger:true})
+      Zeega.router.navigate('/',{trigger:true});
     },
 
     initialize : function(opts)
     {
-      this.settings = _.defaults(opts,this.defaults)
+      this.settings = _.defaults(opts,this.defaults);
     },
 
-    serialize : function(){ return this.settings }
+    serialize : function(){ return this.settings; }
 
   });
 
   App.Views._Page = Backbone.LayoutView.extend({
-  })
+  });
 
   App.Views.About = App.Views._Page.extend({
-    template: 'about',
-  })
+    template: 'about'
+  });
 
   App.Views.Participate = App.Views._Page.extend({
-    template: 'participate-0',
-  })
+    template: 'participate-0'
+  });
 
   App.Views.Menu = App.Views._Page.extend({
     template: 'menu',
     className: 'PT-menu'
-  })
+  });
 
   App.Views.Map = App.Views._Page.extend({
     template: 'map',
     id: 'PT-map-wrapper',
     afterRender : function()
     {
-      console.log('after render map')
+      console.log('after render map');
       var start = new L.LatLng(42.36431523548288, -71.07180118560791 );
       var map = L.map('PT-map',{
         //dragging:false,
@@ -178,11 +179,10 @@ function(Zeega, Backbone) {
 
       L.tileLayer('http://{s}.tiles.mapbox.com/v2/mapbox.mapbox-streets/{z}/{x}/{y}.png', {
           attribution: '<a href="http://www.josephbergen.com" target="blank">Joseph Bergen</a>',
-          maxZoom: 18,
+          maxZoom: 18
       }).addTo( map );
-
     }
-  })
+  });
 
 
   ////  grid views
@@ -192,7 +192,7 @@ function(Zeega, Backbone) {
 
     initialize : function()
     {
-      console.log(this.collection, this)
+      console.log(this.collection, this);
       this.template = this.options.type == 'items' ? 'item-grid-layout' : 'collection-grid-layout';
       if(Zeega.grid) Zeega.grid.remove();
       //this.collection.on('all',function(e){console.log('event:',e)}, this);
@@ -207,23 +207,23 @@ function(Zeega, Backbone) {
     onReset : function()
     {
       var _this = this;
-      var itemArray = _.reject( _.toArray(this.collection), function(item){ return item.get('rendered') })
+      var itemArray = _.reject( _.toArray(this.collection), function(item){ return item.get('rendered'); });
       _.each( itemArray, function(item){
         var itemView = _this.getView(item);
          _this.insertView('ul.list', itemView );
          itemView.render();
-      })
+      });
     },
 
     beforeRender : function()
     {
-      console.log('before render', this)
+      console.log('before render', this);
       var _this = this;
       this.collection.each(function(item){
         item.set('rendered', true);
         _this.insertView( 'ul.list', _this.getView(item) );
 
-      })
+      });
     },
     afterRender : function()
     {
@@ -241,23 +241,24 @@ function(Zeega, Backbone) {
           {
             console.log('infinitely load!');
             _this.collection.page++;
-            _this.collection.fetch({add:true}).success(function(){ _this.collection.trigger('reset')});
+            _this.collection.fetch({add:true}).success(function(){ _this.collection.trigger('reset');});
           }
         }
-      })
+      });
     },
 
     getView : function( item )
     {
-      if( item.get('media_type') == 'Collection')
+        var itemView;
+        if( item.get('media_type') == 'Collection')
         {
-          var itemView = new App.Views.CollectionView({model:item,attributes:{
+          itemView = new App.Views.CollectionView({model:item,attributes:{
             'style':'background:url('+ item.get('thumbnail_url') +');background-size:100% 100%'
           }});
         }
         else
         {
-          var itemView = new App.Views.ItemView({model:item,attributes:{
+          itemView = new App.Views.ItemView({model:item,attributes:{
             'style':'background:url('+ item.get('thumbnail_url') +');background-size:100% 100%'
           }});
          }
@@ -270,7 +271,7 @@ function(Zeega, Backbone) {
     template: "citation-drawer-layout",
     id: 'citation-drawer'
 
-  })
+  });
 
   App.Views.ItemView = Backbone.LayoutView.extend({
     template : 'item',
@@ -278,24 +279,24 @@ function(Zeega, Backbone) {
 
     className : 'item-view',
 
-    serialize : function(){ return this.model.toJSON() },
+    serialize : function(){ return this.model.toJSON(); }
 
-  })
+  });
 
   App.Views.CollectionView = Backbone.LayoutView.extend({
     template : 'collection',
     tagName : 'li',
     className : 'collection-view',
 
-    serialize : function(){ return this.model.toJSON() }
-  })
+    serialize : function(){ return this.model.toJSON(); }
+  });
 
   App.Views.CitationView = Backbone.LayoutView.extend({
     template : 'citation',
     className : 'citation-view',
 
-    serialize : function(){ console.log(this.model.layers.at(0).toJSON()); return this.model.layers.at(0).toJSON() }
-  })  
+    serialize : function(){ console.log(this.model.layers.at(0).toJSON()); return this.model.layers.at(0).toJSON(); }
+  }); 
 
 
 /************************
@@ -311,20 +312,20 @@ function(Zeega, Backbone) {
 
     page : 1,
 
-    url : function(){ return 'http://dev.zeega.org/planettakeout/web/api/items/'+ this.collectionID },
+    url : function(){ return 'http://dev.zeega.org/planettakeout/web/api/items/'+ this.collectionID; },
 
     parse : function( res )
     {
       this.data = res;
       return res.items[0].child_items;
     }
-  })
+  });
 
   App.Collections.ItemCollections = Backbone.Collection.extend({
 
     page : 1,
 
-    url : function(){ return 'http://dev.zeega.org/planettakeout/web/api/search?r_collections=1&page='+ this.page },
+    url : function(){ return 'http://dev.zeega.org/planettakeout/web/api/search?r_collections=1&page='+ this.page; },
 
     parse : function( res )
     {
@@ -332,7 +333,7 @@ function(Zeega, Backbone) {
       this.itemsCount = res.collections_count;
       return res.collections;
     }
-  })
+  });
 
 
 
