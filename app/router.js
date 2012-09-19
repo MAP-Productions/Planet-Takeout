@@ -141,6 +141,7 @@ function(Zeega, App) {
   function cleanup()
   {
     clearModals();
+    removeCitation();
   }
 
 
@@ -222,6 +223,11 @@ function(Zeega, App) {
     Zeega.citation.getViews().each(function(view){ view.remove() });
     Zeega.citation.insertView( new App.Views.CitationView({model:model}));
     Zeega.citation.render();    
+  }
+
+  function removeCitation()
+  {
+    if( Zeega.citation ) Zeega.citation.remove();
   }
 
   function renderMap()

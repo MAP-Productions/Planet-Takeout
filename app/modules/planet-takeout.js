@@ -162,14 +162,38 @@ function(Zeega, Backbone) {
     className: 'PT-menu'
   })
 
+
+/**********************
+
+        MAP
+
+***********************/
+
   App.Views.Map = App.Views._Page.extend({
     template: 'map',
     id: 'PT-map-wrapper',
+
+    initialize : function()
+    {
+      // immediately fetch geotagged items for the map
+      this.collection = new App.Collections.MapItems()
+      this.collection.fetch();
+
+      })
+    },
+
     afterRender : function()
     {
       console.log('after render map')
+      this.renderMap();
+      this.renderCollectionMarkers();
+
+    },
+
+    renderMap : function()
+    {
       var start = new L.LatLng(42.36431523548288, -71.07180118560791 );
-      var map = L.map('PT-map',{
+      this.map = L.map('PT-map',{
         //dragging:false,
           //zoomControl: false,
           scrollWheelZoom: false,
@@ -179,13 +203,40 @@ function(Zeega, Backbone) {
       L.tileLayer('http://{s}.tiles.mapbox.com/v2/mapbox.mapbox-streets/{z}/{x}/{y}.png', {
           attribution: '<a href="http://www.josephbergen.com" target="blank">Joseph Bergen</a>',
           maxZoom: 18,
-      }).addTo( map );
+      }).addTo( this.map );
+    },
 
+    renderCollectionMarkers : function()
+    {
+      var _this = this;
+      var renderMarkers = function()
+      {
+        this.collection.each(function(item){
+          item.marker = L.marker([ item.get('media_geo_latitude'), item.get('media_geo_longitude')]);
+          item.marker.addTo(_this.map);
+        })
+      }
+
+      //if collection hasn't finished fetching yet
+      if( this.collection.length == 0 ) this.collection.on('reset', renderMarkers, this);
+      else renderMarkers;
     }
+
+
+
+  })
+
+  App.Collections.MapItems = Backbone.Collection.extend({
+    url: function(){ return '' }
   })
 
 
-  ////  grid views
+
+/**********************
+
+        GRID VIEWS
+
+***********************/
 
   App.Layouts.GridView = Backbone.Layout.extend({
     template: "collection-grid-layout",
