@@ -150,6 +150,7 @@ button.close{ padding: 10px; }
 
 .PT-modal-content
 {
+  position:relative;
   min-height: 500px;
   padding: 20px;
 }
@@ -374,4 +375,14 @@ button.close{ padding: 10px; }
   position: relative;
   bottom: -1em;
   margin-left: 10px;
+}
+
+/*  map */
+
+#PT-map,
+#PT-map-wrapper
+{
+  position: absolute;
+  height : 100%;
+  width:100%;
 }

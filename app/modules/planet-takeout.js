@@ -3,7 +3,8 @@ define([
   // Libs
   "backbone",
   // Plugins
-  'zeega_player'
+  'zeega_player',
+  'assets/vendor/leaflet/dist/leaflet.js'
 ],
 
 function(Zeega, Backbone) {
@@ -163,7 +164,24 @@ function(Zeega, Backbone) {
 
   App.Views.Map = App.Views._Page.extend({
     template: 'map',
-    className: 'PT-map'
+    id: 'PT-map-wrapper',
+    afterRender : function()
+    {
+      console.log('after render map')
+      var start = new L.LatLng(42.36431523548288, -71.07180118560791 );
+      var map = L.map('PT-map',{
+        //dragging:false,
+          //zoomControl: false,
+          scrollWheelZoom: false,
+          attributionControl:false
+      }).setView(start, 12);
+
+      L.tileLayer('http://{s}.tiles.mapbox.com/v2/mapbox.mapbox-streets/{z}/{x}/{y}.png', {
+          attribution: '<a href="http://www.josephbergen.com" target="blank">Joseph Bergen</a>',
+          maxZoom: 18,
+      }).addTo( map );
+
+    }
   })
 
 
