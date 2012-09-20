@@ -5,8 +5,12 @@ var layerTypes = [
 	'video'
 ];
 
-define(
-	_.map(layerTypes,function(type){ return 'zeega_layers/'+type+'/'+type; }),
+define([
+	'zeega_layers/image/image',
+	'zeega_layers/rectangle/rectangle',
+	'zeega_layers/text/text',
+	'zeega_layers/video/video'
+],
 	function(
 		image,
 		rectangle,
