@@ -14,8 +14,10 @@ function(Zeega, App) {
   the router is where your application/navigation logic goes
 
   */
+  console.log('before router', this, Zeega, App);
   var Router = Backbone.Router.extend({
     routes: {
+
       "" : "index",
       "about" : 'about',
 
