@@ -1,6 +1,11 @@
-define(['layerModel', 'layerView'], function(){
+define([
+  "zeega",
+  "backbone",
+  'zeega_layers/_layer/_layer',
+  'zeega_media_players/plyr'
+],
 
-(function(Layer){
+function(zeega, Backbone, _Layer, Player){
 
 
 	Layer.Audio = Layer.Video.extend({
@@ -86,6 +91,6 @@ define(['layerModel', 'layerView'], function(){
 		render : function(){ return this },
 	});
 
-})(zeega.module("layer"));
+	return Layer;
 
 })
