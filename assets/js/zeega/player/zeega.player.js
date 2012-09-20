@@ -107,7 +107,17 @@ function(Zeega, Backbone, Layer) {
 			});
 			this.router = new Router();
 			//Backbone.history.start();
+		},
+
+
+
+		playPause : function()
+		{
+			console.log('zeega player  play pause', this)
+			this.project.playPause();
 		}
+
+
 	})
 
 
@@ -296,7 +306,6 @@ function(Zeega, Backbone, Layer) {
 			var _this = this;
 
 			var frameModels = _.map( this.get('frames'), function(frameID){
-			console.log('pp load',this, Zeega.player, Zeega.player.project.frames, frameID)
 				var frame = Zeega.player.project.frames.get(frameID);
 				
 				var index = _.indexOf( _this.get('frames'), frameID );
@@ -400,8 +409,9 @@ function(Zeega, Backbone, Layer) {
 		playPause : function()
 		{
 			this.isPlaying = !this.isPlaying;
+			console.log('frame play pause', this, this.layers)
 			_.each( _.toArray(this.layers), function(layer){
-				layer.visual.playPause();
+				layer.typeVisual.playPause();
 			})
 		},
 

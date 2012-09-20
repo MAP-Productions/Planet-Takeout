@@ -68,6 +68,21 @@ function(Backbone){
 		editor_onControlsOpen : function(){},
 		editor_onControlsClosed : function(){},
 
+		playPause : function()
+		{
+			console.log('play pause layer', this)
+			if( this.isPlaying != false )
+			{
+				this.isPlaying = false;
+				this.player_onPause();
+			}
+			else
+			{
+				this.isPlaying = true;
+				this.player_onPlay()
+			}
+		},
+
 		getAttr : function(key){ return this.model.get('attr')[key] }, // convenience method
 
 

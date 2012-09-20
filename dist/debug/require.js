@@ -336,23 +336,168 @@ var requirejs, require, define;
         jQuery: true
     };
 }());
+;this['JST'] = this['JST'] || {};
 
-this['JST'] = this['JST'] || {};
-
-this['JST']['app/templates/example.html'] = function(obj){
+this['JST']['app/templates/about.html'] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<br/>\n  <div role="main" id="main" class=\'container well\'>\n    <h1>Zeega App Boilerplate</h1>\n    <p>Enter the url of a valid Zeega project<p>\n    <small>like: http://dev.zeega.org/joseph/web/api/projects/1280</small>\n    <div class="input-append">\n      <input class="span6 dataloc" id="appendedInputButton" size="16" type="text" placeholder=\'type here…\' value=\'http://dev.zeega.org/joseph/web/api/projects/1315\'><button id=\'submit-button\' class="btn" type="button">Go!</button>\n    </div>\n  </div>';
+__p+='<div class=\'left-column\'>\n\t<h5>About</h5>\n\t<ul>\n\t\t<li><a href=\'#\'>Who We Are</a></l1>\n\t\t<li><a href=\'#\'>Blog</a></l1>\n\t\t<li><a href=\'#\'>Scavenger Hunt</a></l1>\n\t\t<li><a href=\'#\'>Podcasts</a></l1>\n\t</ul>\n\t<strong>Contact:</strong>\n\t<br/>\n\t<a href="mailto:val@planettakeout.com" target=\'blank\'>val@planettakeout.com</a>\n</div>\n\n<div class=\'right-column\'>\n\t<p>\n\t\tPlanet Takeout is a participatory documentary project about the Chinese takeout as a vital cultural crossroads in Boston and beyond. The radio and multimedia project aims to turn local Chinese takeouts into spaces for community storytelling and to use the stories as lenses into both the local neighborhood and into global immigration patterns to the city. || We want to hear your story about Chinese takeouts. Is there a takeout you’re a regular at? Do you remember the first time you had Chinese takeout food? Please call our Planet Takeout call-in line and tell us a story: 617.477.8688. It’s free in the Boston area and the recording explains what to do.\n\t</p>\n\t<p>\n\t\tProduced by Val Wang and brought to you by WGBH 89.7 and Zeega. Planet Takeout is part of a nationwide initiative, Localore, produced by the Association of Independents in Radio with funding from the Corporation for Public Broadcasting.\n\t</p>\n\n</div>\n\n<div class=\'sponsor-drawer\'>\n\t<ul>\n\t\t<li><a href=\'#\'><img src=\'assets/img/logo_wgbh.png\'/></a></l1>\n\t\t<li><a href=\'#\'><img src=\'assets/img/logo_localore.png\'/></a></l1>\n\t\t<li><a href=\'#\'><img src=\'assets/img/logo_air.png\'/></a></l1>\n\t\t<li><a href=\'#\'><img src=\'assets/img/logo_cpb.png\'/></a></l1>\n\t\t<li><a href=\'#\'><img src=\'assets/img/logo_artworks.jpg\'/></a></l1>\n\t\t<li><a href=\'#\'><img src=\'assets/img/logo_wyncote.png\'/></a></l1>\n\t\t<li><a href=\'#\'><img src=\'assets/img/logo_macarthur.png\'/></a></l1>\n\t\t<li><a href=\'#\'><img src=\'assets/img/logo_zeega.png\'/></a></l1>\n\t</ul>\n\n</div>';
 }
 return __p;
 };
 
-this['JST']['app/templates/image.html'] = function(obj){
+this['JST']['app/templates/base.html'] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<img src="'+
-( attr.uri )+
-'" width="100%"/>';
+__p+='<div id=\'nav-upper\'></div>\n<div id=\'nav-lower\'></div>\n<div id=\'app-base\'></div>';
+}
+return __p;
+};
+
+this['JST']['app/templates/citation-player.html'] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<div class=\'citation-top clearfix\'>\n\t<a href=\'#\' class=\'play-pause pull-left\'><i class=\'PT-icon-pause\'></i></a>\n\t<h2 class=\'citation-title pull-left\'>'+
+( attr.title )+
+'</h2>\n\t<div class=\'citation-attribution pull-left\'>by '+
+( attr.media_creator_realname )+
+' via <a href=\''+
+( attr.attribution_uri )+
+'\' target=\'blank\'>'+
+( attr.archive )+
+'</a></div>\n\t<div class=\'citation-geo pull-right\'><a href=\'#\'>'+
+( attr.location )+
+'</a> '+
+( attr.location )+
+' <i class=\'icon-map-marker icon-white\'></i></div>\n</div>\n<div class=\'citation-bottom\'>\n\t<div class=\'pull-left\'>Tidbits > Exteriors</div>\n</div>';
+}
+return __p;
+};
+
+this['JST']['app/templates/citation-static.html'] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<div class=\'citation-top clearfix\'>\n\t<h2 class=\'citation-title pull-left\'>'+
+( attr.title )+
+'</h2>\n\t<div class=\'citation-attribution pull-left\'>by '+
+( attr.media_creator_realname )+
+' via <a href=\''+
+( attr.attribution_uri )+
+'\' target=\'blank\'>'+
+( attr.archive )+
+'</a></div>\n\t<div class=\'citation-geo pull-right\'><a href=\'#\'>'+
+( attr.location )+
+'</a> '+
+( attr.location )+
+' <i class=\'icon-map-marker icon-white\'></i></div>\n</div>\n<div class=\'citation-bottom\'>\n\t<div class=\'pull-left\'>Tidbits > Exteriors</div>\n</div>';
+}
+return __p;
+};
+
+this['JST']['app/templates/collection.html'] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<a href=\'/collections/'+
+( id )+
+'\'>\n\t<div class=\'item-title\' style=\'background:url('+
+( thumbnail_url )+
+');background-size:100% 100%;\'><h1>'+
+( title )+
+'</h1></div>\n</a>';
+}
+return __p;
+};
+
+this['JST']['app/templates/example.html'] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<br/>\n\n<div role="main" id="main" class=\'container well\'>\n<h1>Zeega App Boilerplate</h1>\n<p>Enter the url of a valid Zeega project<p>\n<small>like: http://dev.zeega.org/joseph/web/api/projects/1280</small>\n<div class="input-append">\n  <input class="span6 dataloc" id="appendedInputButton" size="16" type="text" placeholder=\'type here…\' value=\'http://dev.zeega.org/joseph/web/api/projects/1316\'><button id=\'submit-button\' class="btn" type="button">Go!</button>\n</div>\n</div>';
+}
+return __p;
+};
+
+this['JST']['app/templates/item.html'] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<a href=\'/collections/'+
+( collection_id )+
+'/view/'+
+( id )+
+'\'>\n\t<div class=\'item-title\' style=\'background:url('+
+( thumbnail_url )+
+');background-size:100% 100%;\'><h1>'+
+( title )+
+'</h1></div>\n</a>';
+}
+return __p;
+};
+
+this['JST']['app/templates/layouts/citation-drawer-layout.html'] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='';
+}
+return __p;
+};
+
+this['JST']['app/templates/layouts/collection-grid-layout.html'] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<div id=\'grid-view-wrapper\'>\n\t<div id=\'grid-view-slider\'>\n\t\t<div class=\'grid-view-title\'>\n\t\t\t<h2>Planet Takeout is a participatory documentary project about the Chinese takeout as a vital cultural crossroads in Boston and beyond.</h2>\n\t\t</div>\n\t\t<ul class=\'list clearfix\'></ul>\n\t</div>\n</div>';
+}
+return __p;
+};
+
+this['JST']['app/templates/layouts/item-grid-layout.html'] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<div id=\'grid-view-wrapper\'>\n\t<div id=\'grid-view-slider\'>\n\t\t<div class=\'grid-view-title\'>\n\t\t\t<h1>'+
+( title )+
+'</h1>\n\t\t</div>\n\t\t<ul class=\'list clearfix\'></ul>\n\t</div>\n</div>';
+}
+return __p;
+};
+
+this['JST']['app/templates/layouts/modal-wide.html'] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<div class=\'PT-modal PT-modal-wide\'>\n\t<div class=\'PT-modal-title\'><h1>'+
+( title )+
+'</h1></div>\n\t<div class=\'PT-modal-content-wrapper clearfix\'>\n\t\t<div class=\'PT-modal-content-head\'><button class="close close-modal">&times;</button></div>\n\t\t<div class=\'PT-modal-content\'></div>\n\t</div>\n</div>\n';
+}
+return __p;
+};
+
+this['JST']['app/templates/layouts/modal.html'] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<div class=\'PT-modal\'>\n\t<div class=\'PT-modal-title\'><h1>'+
+( title )+
+'</h1></div>\n\t<div class=\'PT-modal-content-wrapper clearfix\'>\n\t\t<div class=\'PT-modal-content-head\'><button class="close close-modal">&times;</button></div>\n\t\t<div class=\'PT-modal-content\'></div>\n\t</div>\n</div>\n';
+}
+return __p;
+};
+
+this['JST']['app/templates/map.html'] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<div class=\'leaflet-map\' id=\'PT-map\'>map goes here</div>';
+}
+return __p;
+};
+
+this['JST']['app/templates/menu.html'] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<div class=\'PT-menu-column\'>\n\t<h2>Tidbits</h2>\n\t<img src=\'assets/img/menu_platter.png\' width=\'100px\'/>\n\t<img src=\'assets/img/menu_rose.png\'  width=\'100px\'/>\n</div>\n\n<div class=\'PT-menu-column\'>\n\t<h2>Stories</h2>\n\t<img src=\'assets/img/menu_flourish.png\'/>\n</div>\n\n<div class=\'PT-menu-column\'>\n\t<h2>Takeouts</h2>\n\t<img src=\'assets/img/menu_chef.png\' width=\'100px\'/>\n\t<img src=\'assets/img/menu_junk.png\' width=\'100px\'/>\n</div>\n';
+}
+return __p;
+};
+
+this['JST']['app/templates/participate-0.html'] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<ul class="steps">\n\t<li class="active">Add a new Takeout</li>\n\t<li>Add photos, videos & sounds</li>\n\t<li>Tell your story</li></ul>\n<div id=\'stepOne\'>\n\t<input placeholder="Takeout name" type="text" id="takeoutName" />\n\t<input placeholder="Address" type="text" id="takeoutAddress" />\n\t<button id=\'findTakeout\' class=\'btn\'>Find <i class=\'icon-search\'></i></button>\n</div>\n<div id="stepTwo" style="display: none;">\n\t<div id="streetView" style="width: 510px; height: 370px;"></div>\n\t<p>Use your mouse to move Streetview to the best frame.</p>\n\t<button id=\'savePov\' class=\'btn\'>Submit</button>\n</div>\n<div id="thanks" style="display: none;">\n\t<p>Street View info saved.</p>\n</div>';
 }
 return __p;
 };
@@ -386,7 +531,7 @@ __p+='<div class=\'player-header player-overlay\'>\n\n';
 ( id )+
 '\' class=\'share-facebook pull-right\' target=\'blank\'><i class=\'zitem-facebook zitem-30 loaded\'></i></a>\n';
  } 
-;__p+='\n\n</div>\n\n';
+;__p+='\n\n</div><!-- .player-header -->\n\n';
  if( branding ) { 
 ;__p+='\n<div class=\'player-zeega-icon player-overlay\'><a href=\''+
 ( url_base )+
@@ -394,7 +539,7 @@ __p+='<div class=\'player-header player-overlay\'>\n\n';
 ( user_id )+
 '\' target=\'blank\' class=\'zeega-user\'><i class=\'zitem-zeega00 zitem-30 loaded\'></i></a></div>\n';
  } 
-;__p+='\n\n<div id=\'preview-left\' class=\'hidden preview-nav-arrow preview-nav\'>\n\t"<div class=\'arrow-background\'></div>\n</div>\n<div id=\'preview-right\' class=\'hidden preview-nav-arrow preview-nav\'>\n\t<div class=\'arrow-background\'></div>\n</div>\n<div id=\'preview-media\' ></div>\n<div id=\'loader-tray\' class=\'\'></div>\n\n';
+;__p+='\n\n<div id=\'preview-left\' class=\'hidden preview-nav-arrow preview-nav\'>\n\t<div class=\'arrow-background\'></div>\n</div>\n<div id=\'preview-right\' class=\'hidden preview-nav-arrow preview-nav\'>\n\t<div class=\'arrow-background\'></div>\n</div>\n<div id=\'preview-media\' ></div>\n<div id=\'loader-tray\' class=\'\'></div>\n\n';
  if( navbar_bottom ) { 
 ;__p+='\n\t<div class=\'zeega-player-menu menu-bottom\'>"\n\t\t<div id=\'citation-tray\' class=\'player-overlay\'></div>\n\t';
  if( playerCitation ) { 
@@ -413,6 +558,13 @@ __p+='<div class=\'player-header player-overlay\'>\n\n';
 return __p;
 };
 
+this['JST']['app/templates/upper-nav.html'] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<li><a href="about"><img class=\'pt-logo\' src="assets/img/pt_logo-white.png"/></a></li>\n<li><a href="collections"><img class=\'nav-icon\' src="assets/img/icon_grid.png"/></a></li>\n<li><a href="map"><img class=\'nav-icon\' src="assets/img/icon_map.png"/></a></li>\n<li><a href="participate"><img class=\'nav-icon\' src="assets/img/icon_comment.png"/></a></li>\n<li><a href="menu"><img class=\'nav-icon\' src="assets/img/icon_menu.png"/></a></li>\n<li><a href="search"><img class=\'nav-icon\' src="assets/img/icon_search.png"/></a></li>';
+}
+return __p;
+};;
 /*!
  * jQuery JavaScript Library v1.8.0
  * http://jquery.com/
@@ -16335,7 +16487,9 @@ function($, _, Backbone) {
   // creation.
   var app = {
     // The root path to run the application.
-    root: "/"
+    root: "/",
+
+    isInitialized : false
   };
 
   // Localize or create a new JavaScript Template object.
@@ -16377,7 +16531,7 @@ function($, _, Backbone) {
   return _.extend(app, {
     // Create a custom object with a nested Views object.
     module: function(additionalProps) {
-      return _.extend({ Views: {} }, additionalProps);
+      return _.extend({ Views: {}, Layouts: {} }, additionalProps);
     },
 
     // Helper for using layouts.
@@ -16415,6 +16569,11764 @@ function($, _, Backbone) {
 
 });
 
+define('zeega_layers/_layer/_layer',[
+  //"zeega",
+  "backbone",
+],
+
+function(Backbone){
+
+	_Layer = Backbone.Model.extend({
+		
+		layerType : null,
+
+		controls : [],
+
+		defaults : {
+			hasControls : true,
+			defaultControls : true,
+			showCitation : true,
+		},
+		defaultAttributes : {},
+
+		initialize : function()
+		{
+			this.init();
+		},
+
+		init : function(){},
+
+		player_onPreload : function(){},
+		player_onPlay : function(){},
+		player_onPause : function(){},
+		player_onExit : function(){},
+		player_onUnrender : function(){},
+		player_onRenderError : function(){},
+
+		editor_onLayerEnter : function(){},
+		editor_onLayerExit : function(){},
+		editor_onControlsOpen : function(){},
+		editor_onControlsClosed : function(){},
+
+	});
+
+	_Layer.Visual = Backbone.View.extend({
+		
+		className : 'visual-element',
+		draggable : true,
+		template : '',
+		manage : false,
+
+		initialize : function()
+		{
+			this.init();
+		},
+
+		init : function(){},
+		render : function(){},
+
+		verifyReady : function(){ this.model.trigger('ready',this.model.id) },
+
+		player_onPreload : function(){ this.verifyReady() },
+		player_onPlay : function(){},
+		player_onPause : function(){},
+		player_onExit : function(){},
+		player_onUnrender : function(){},
+		player_onRenderError : function(){},
+
+		editor_onLayerEnter : function(){},
+		editor_onLayerExit : function(){},
+		editor_onControlsOpen : function(){},
+		editor_onControlsClosed : function(){},
+
+		playPause : function()
+		{
+			console.log('play pause layer', this)
+			if( this.isPlaying != false )
+			{
+				this.isPlaying = false;
+				this.player_onPause();
+			}
+			else
+			{
+				this.isPlaying = true;
+				this.player_onPlay()
+			}
+		},
+
+		getAttr : function(key){ return this.model.get('attr')[key] }, // convenience method
+
+
+	});
+
+	return _Layer;
+
+})
+;
+define('zeega_layers/image/image',[
+  "zeega",
+  "backbone",
+  'zeega_layers/_layer/_layer'
+],
+
+function(Zeega, Backbone, _Layer){
+
+	var Layer = Zeega.module();
+
+	Layer.Image = _Layer.extend({
+			
+		layerType : 'Image',
+
+		defaultAttributes : {
+			'title' : 'Image Layer',
+			'url' : 'none',
+			'left' : 0,
+			'top' : 0,
+			'height' : 100,
+			'width' : 100,
+			'opacity':1,
+			'aspect':1.33,
+			'citation':true,
+			
+			'linkable' : true
+		},
+
+		controls : [
+			
+			{
+				type : 'checkbox',
+				property : 'dissolve',
+				label : 'Fade In'
+			},
+			{
+				type : 'slider',
+				property : 'width',
+				label : 'Scale',
+				suffix : '%',
+				min : 1,
+				max : 200
+			},
+			{
+				type : 'slider',
+				property : 'opacity',
+				label : 'Scale',
+				step : 0.01,
+				min : 0.05,
+				max : 1
+			}
+
+		]
+
+	});
+
+	Layer.Image.Visual = _Layer.Visual.extend({
+		
+		template : '<img src="<%= attr.uri %>" width="100%"/>',
+
+		render : function()
+		{
+			this.$el.html( _.template(this.template, this.model.toJSON()) );
+			return this;
+		},
+		
+		verifyReady : function()
+		{
+			var _this = this;
+			var img = this.$el.imagesLoaded();
+			img.done(function(){ _this.model.trigger('ready',_this.model.id) });
+			img.fail(function(){ _this.model.trigger('error',_this.model.id) });
+		}
+		
+	});
+
+	return Layer;
+
+})
+;
+define('zeega_layers/rectangle/rectangle',[
+  "zeega",
+  "backbone",
+  'zeega_layers/_layer/_layer'
+],
+
+function(zeega, Backbone, _Layer){
+
+	var Layer = zeega.module();
+
+	Layer.Rectangle = _Layer.extend({
+
+		layerType : 'Rectangle',
+		displayCitation : false,
+		linkable : true,
+		
+		defaultAttributes : {
+			'title' : 'Color Layer',
+			'url' : null,
+			'backgroundColor': '#ff00ff',
+			'left' : 0,
+			'top' : 0,
+			'height' : 100,
+			'width' : 100,
+			'opacity':.75,
+			
+			linkable : true
+		},
+
+		controls : [
+
+			{
+				type : 'Checkbox',
+				property : 'dissolve',
+				label : 'Fade In'
+			},
+			{
+				type : 'ColorPicker',
+				property : 'backgroundColor',
+				label : 'Color'
+			},
+			{
+				type : 'Slider',
+				property : 'width',
+				label : 'Width',
+				suffix : '%',
+				min : 1,
+				max : 200
+			},
+			{
+				type : 'Slider',
+				property : 'height',
+				label : 'Height',
+				suffix : '%',
+				min : 1,
+				max : 200,
+			},
+			{
+				type : 'Slider',
+				property : 'opacity',
+				label : 'Opacity',
+				step : 0.01,
+				min : 0,
+				max : 1,
+			}
+
+		]
+		
+	});
+	
+
+	Layer.Rectangle.Visual = _Layer.Visual.extend({
+		render : function()
+		{
+			var style = {
+				'backgroundColor' : this.model.get('attr').backgroundColor,
+				'height' : this.model.get('attr').height +'%'
+			}
+
+			this.$el.css( style );
+			
+			return this;
+		},
+		
+	});
+
+
+
+	return Layer;
+
+})
+;
+define('zeega_layers/text/text',[
+  "zeega",
+  "backbone",
+  'zeega_layers/_layer/_layer'
+],
+
+function(zeega, Backbone, _Layer){
+
+
+	var Layer = zeega.module();
+
+	Layer.Text = _Layer.extend({
+
+		layerType : 'Text',
+		displayCitation : false,
+		linkable : true,
+		
+		defaultAttributes: {
+			'title' :'Text Layer',
+			'content' : 'Text',
+			'left' :0,
+			'top' :0,
+			'color' : '#ffffff',
+			'opacity' : 0.9,
+			'fontSize' : 200,
+			'overflow' : 'visible',
+			'width' : 25,
+			//'height' : 10,
+			
+			linkable : true
+		},
+		
+		updateContentInPlace : function()
+		{
+			this.visual.updateContentInPlace();
+		},
+
+		controls : [
+
+			{
+				type : 'Checkbox',
+				property : 'dissolve',
+				label : 'Fade In'
+			},
+			{
+				type : 'ColorPicker',
+				property : 'color',
+				label : '',
+				opacity : true
+			},
+			{ type : 'TextStyles' },
+			{ type : 'FontChooser' }
+		]
+		
+	});
+
+	Layer.Text.Visual = _Layer.Visual.extend({
+		
+		draggable : true,
+		
+		template : '<div id="zedit-target" class="inner" contenteditable="<%= contentEditable %>" ><%= content %></div>',
+
+		render : function()
+		{
+			
+			// this should be removed later!
+			var c = '';
+			var b = '';
+			if( _.isObject( this.model.get('attr').color ) )
+			{
+				var a = this.model.get('attr').color;
+				c = rgbToHex(a.r,a.g,a.b);
+			}
+			else c = this.model.get('attr').color;
+			
+			if( _.isObject( this.model.get('attr').backgroundColor ) )
+			{
+				var a = this.model.get('attr').backgroundColor;
+				b = rgbToHex(a.r,a.g,a.b);
+			}
+			else b = this.model.get('attr').backgroundColor;
+			
+			
+			var style = {
+				'color' : 'rgba('+ c.toRGB() +','+ (this.model.get('attr').colorOpacity || 1) +')',
+				'opacity' : this.model.get('attr').opacity,
+				'fontSize' : this.model.get('attr').fontSize < 100 ? '200%' : this.model.get('attr').fontSize +'%', // enforces minimum. remove this later
+				'width' : this.model.get('attr').width+'%',
+				'overflow' : 'visible',
+				'line-height' : '100%',
+			}
+
+			$(this.el).html( _.template( this.template, _.extend(this.model.get('attr'), {contentEditable:!this.model.player} ) ) ).css( style );
+			if(!this.model.player) $(this.el).addClass('text-non-editing');
+						
+			return this;
+		},
+		
+		onLayerEnter : function()
+		{
+			var _this = this;
+			
+			//this.$el.css('width',_this.$el.find('#zedit-target').width()+'px');
+			
+			this.$el.find('#zedit-target').keyup(function(e){
+				if(e.which == 27){ $(this).blur() }
+				
+				_this.lazySave();
+			})
+			.bind('paste', function(e){
+				console.log('content pasted in!')
+				_this.lazySave();
+			});
+			
+			this.$el.click(function(){
+				_this.$el.find('#zedit-target').focus();
+				_this.$el.draggable('option','disabled', true);
+				_this.$el.addClass('text-editing').removeClass('text-non-editing');
+				
+				
+				
+			}).focusout(function(){
+				_this.$el.draggable('option','disabled', false);
+				_this.$el.removeClass('text-editing').addClass('text-non-editing');
+				_this.lazySave();
+			})
+			
+			$(this.el).resizable({
+				stop : function(e,ui)
+				{
+					$(this).css('height','');
+					_this.model.update({
+						'width' : $(this).width() / $(this).parent().width() * 100,
+					})
+				}
+			});
+			
+			
+		},
+		
+		lazySave : _.debounce( function(){
+			
+			var str = this.$el.find('#zedit-target').html();
+			
+			var clean = this.cleanString( str );
+			
+			this.model.update({
+				'content' : str,
+				'title' : clean
+			});
+		}, 1000),
+		
+		cleanString : function(str)
+		{
+			return str.replace(/(<([^>]+)>)/ig, "");
+		},
+		
+		updateContentInPlace : function()
+		{
+			$(this.el).find('#zedit-target').html(this.model.get('attr').content );
+		},
+		
+		onPreload : function(){ this.model.trigger('ready',this.model.id) }
+		
+	});
+	
+	return Layer;
+
+})
+
+;
+/*
+ * popcorn.js version 1.1.2
+ * http://popcornjs.org
+ *
+ * Copyright 2011, Mozilla Foundation
+ * Licensed under the MIT license
+ */
+
+(function(global, document) {
+
+  // Popcorn.js does not support archaic browsers
+  if ( !document.addEventListener ) {
+    global.Popcorn = {
+      isSupported: false
+    };
+
+    var methods = ( "forEach extend effects error guid sizeOf isArray nop position disable enable destroy " +
+          "addTrackEvent removeTrackEvent getTrackEvents getTrackEvent getLastTrackEventId " +
+          "timeUpdate plugin removePlugin compose effect parser xhr getJSONP getScript" ).split(/\s+/);
+
+    while ( methods.length ) {
+      global.Popcorn[ methods.shift() ] = function() {};
+    }
+    return;
+  }
+
+  var
+
+  AP = Array.prototype,
+  OP = Object.prototype,
+
+  forEach = AP.forEach,
+  slice = AP.slice,
+  hasOwn = OP.hasOwnProperty,
+  toString = OP.toString,
+
+  // Copy global Popcorn (may not exist)
+  _Popcorn = global.Popcorn,
+
+  //  ID string matching
+  rIdExp  = /^(#([\w\-\_\.]+))$/,
+
+  //  Ready fn cache
+  readyStack = [],
+  readyBound = false,
+  readyFired = false,
+
+  //  Non-public internal data object
+  internal = {
+    events: {
+      hash: {},
+      apis: {}
+    }
+  },
+
+  //  Non-public `requestAnimFrame`
+  //  http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+  requestAnimFrame = (function(){
+    return global.requestAnimationFrame ||
+      global.webkitRequestAnimationFrame ||
+      global.mozRequestAnimationFrame ||
+      global.oRequestAnimationFrame ||
+      global.msRequestAnimationFrame ||
+      function( callback, element ) {
+        global.setTimeout( callback, 16 );
+      };
+  }()),
+
+  refresh = function( obj ) {
+    var currentTime = obj.media.currentTime,
+      animation = obj.options.frameAnimation,
+      disabled = obj.data.disabled,
+      tracks = obj.data.trackEvents,
+      animating = tracks.animating,
+      start = tracks.startIndex,
+      registryByName = Popcorn.registryByName,
+      animIndex = 0,
+      byStart, natives, type;
+
+    start = Math.min( start + 1, tracks.byStart.length - 2 );
+
+    while ( start > 0 && tracks.byStart[ start ] ) {
+
+      byStart = tracks.byStart[ start ];
+      natives = byStart._natives;
+      type = natives && natives.type;
+
+      if ( !natives ||
+          ( !!registryByName[ type ] || !!obj[ type ] ) ) {
+
+        if ( ( byStart.start <= currentTime && byStart.end > currentTime ) &&
+                disabled.indexOf( type ) === -1 ) {
+
+          if ( !byStart._running ) {
+            byStart._running = true;
+            natives.start.call( obj, null, byStart );
+
+            // if the 'frameAnimation' option is used,
+            // push the current byStart object into the `animating` cue
+            if ( animation &&
+                ( byStart && byStart._running && byStart.natives.frame ) ) {
+
+              natives.frame.call( obj, null, byStart, currentTime );
+            }
+          }
+        } else if ( byStart._running === true ) {
+
+          byStart._running = false;
+          natives.end.call( obj, null, byStart );
+
+          if ( animation && byStart._natives.frame ) {
+            animIndex = animating.indexOf( byStart );
+            if ( animIndex >= 0 ) {
+              animating.splice( animIndex, 1 );
+            }
+          }
+        }
+      }
+
+      start--;
+    }
+  },
+
+  //  Declare constructor
+  //  Returns an instance object.
+  Popcorn = function( entity, options ) {
+    //  Return new Popcorn object
+    return new Popcorn.p.init( entity, options || null );
+  };
+
+  //  Popcorn API version, automatically inserted via build system.
+  Popcorn.version = "1.1.2";
+
+  //  Boolean flag allowing a client to determine if Popcorn can be supported
+  Popcorn.isSupported = true;
+
+  //  Instance caching
+  Popcorn.instances = [];
+
+  //  Declare a shortcut (Popcorn.p) to and a definition of
+  //  the new prototype for our Popcorn constructor
+  Popcorn.p = Popcorn.prototype = {
+
+    init: function( entity, options ) {
+
+      var matches;
+
+      //  Supports Popcorn(function () { /../ })
+      //  Originally proposed by Daniel Brooks
+
+      if ( typeof entity === "function" ) {
+
+        //  If document ready has already fired
+        if ( document.readyState === "interactive" || document.readyState === "complete" ) {
+
+          entity( document, Popcorn );
+
+          return;
+        }
+        //  Add `entity` fn to ready stack
+        readyStack.push( entity );
+
+        //  This process should happen once per page load
+        if ( !readyBound ) {
+
+          //  set readyBound flag
+          readyBound = true;
+
+          var DOMContentLoaded  = function() {
+
+            readyFired = true;
+
+            //  Remove global DOM ready listener
+            document.removeEventListener( "DOMContentLoaded", DOMContentLoaded, false );
+
+            //  Execute all ready function in the stack
+            for ( var i = 0, readyStackLength = readyStack.length; i < readyStackLength; i++ ) {
+
+              readyStack[ i ].call( document, Popcorn );
+
+            }
+            //  GC readyStack
+            readyStack = null;
+          };
+
+          //  Register global DOM ready listener
+          document.addEventListener( "DOMContentLoaded", DOMContentLoaded, false );
+        }
+
+        return;
+      }
+
+      //  Check if entity is a valid string id
+      matches = rIdExp.exec( entity );
+
+      //  Get media element by id or object reference
+      this.media = matches && matches.length && matches[ 2 ] ?
+                     document.getElementById( matches[ 2 ] ) :
+                     entity;
+
+      //  Create an audio or video element property reference
+      this[ ( this.media.nodeName && this.media.nodeName.toLowerCase() ) || "video" ] = this.media;
+
+      //  Register new instance
+      Popcorn.instances.push( this );
+
+      this.options = options || {};
+
+      this.isDestroyed = false;
+
+      this.data = {
+
+        // Executed by either timeupdate event or in rAF loop
+        timeUpdate: Popcorn.nop,
+
+        // Allows disabling a plugin per instance
+        disabled: [],
+
+        // Stores DOM event queues by type
+        events: {},
+
+        // Stores Special event hooks data
+        hooks: {},
+
+        // Store track event history data
+        history: [],
+
+        // Stores ad-hoc state related data]
+        state: {
+          volume: this.media.volume
+        },
+
+        // Store track event object references by trackId
+        trackRefs: {},
+
+        // Playback track event queues
+        trackEvents: {
+          byStart: [{
+
+            start: -1,
+            end: -1
+          }],
+          byEnd: [{
+            start: -1,
+            end: -1
+          }],
+          animating: [],
+          startIndex: 0,
+          endIndex: 0,
+          previousUpdateTime: -1
+        }
+      };
+
+      //  Wrap true ready check
+      var isReady = function( that ) {
+
+        var duration, videoDurationPlus;
+
+        if ( that.media.readyState >= 2 ) {
+          //  Adding padding to the front and end of the arrays
+          //  this is so we do not fall off either end
+
+          duration = that.media.duration;
+          //  Check for no duration info (NaN)
+          videoDurationPlus = duration != duration ? Number.MAX_VALUE : duration + 1;
+
+          Popcorn.addTrackEvent( that, {
+            start: videoDurationPlus,
+            end: videoDurationPlus
+          });
+
+          if ( that.options.frameAnimation ) {
+            //  if Popcorn is created with frameAnimation option set to true,
+            //  requestAnimFrame is used instead of "timeupdate" media event.
+            //  This is for greater frame time accuracy, theoretically up to
+            //  60 frames per second as opposed to ~4 ( ~every 15-250ms)
+            that.data.timeUpdate = function () {
+
+              Popcorn.timeUpdate( that, {} );
+
+              that.trigger( "timeupdate" );
+
+              !that.isDestroyed && requestAnimFrame( that.data.timeUpdate );
+            };
+
+            !that.isDestroyed && requestAnimFrame( that.data.timeUpdate );
+
+          } else {
+
+            that.data.timeUpdate = function( event ) {
+              Popcorn.timeUpdate( that, event );
+            };
+
+            if ( !that.isDestroyed ) {
+              that.media.addEventListener( "timeupdate", that.data.timeUpdate, false );
+            }
+          }
+        } else {
+          global.setTimeout(function() {
+            isReady( that );
+          }, 1 );
+        }
+      };
+
+      isReady( this );
+
+      return this;
+    }
+  };
+
+  //  Extend constructor prototype to instance prototype
+  //  Allows chaining methods to instances
+  Popcorn.p.init.prototype = Popcorn.p;
+
+  Popcorn.forEach = function( obj, fn, context ) {
+
+    if ( !obj || !fn ) {
+      return {};
+    }
+
+    context = context || this;
+
+    var key, len;
+
+    // Use native whenever possible
+    if ( forEach && obj.forEach === forEach ) {
+      return obj.forEach( fn, context );
+    }
+
+    if ( toString.call( obj ) === "[object NodeList]" ) {
+      for ( key = 0, len = obj.length; key < len; key++ ) {
+        fn.call( context, obj[ key ], key, obj );
+      }
+      return obj;
+    }
+
+    for ( key in obj ) {
+      if ( hasOwn.call( obj, key ) ) {
+        fn.call( context, obj[ key ], key, obj );
+      }
+    }
+    return obj;
+  };
+
+  Popcorn.extend = function( obj ) {
+    var dest = obj, src = slice.call( arguments, 1 );
+
+    Popcorn.forEach( src, function( copy ) {
+      for ( var prop in copy ) {
+        dest[ prop ] = copy[ prop ];
+      }
+    });
+
+    return dest;
+  };
+
+
+  // A Few reusable utils, memoized onto Popcorn
+  Popcorn.extend( Popcorn, {
+    noConflict: function( deep ) {
+
+      if ( deep ) {
+        global.Popcorn = _Popcorn;
+      }
+
+      return Popcorn;
+    },
+    error: function( msg ) {
+      throw new Error( msg );
+    },
+    guid: function( prefix ) {
+      Popcorn.guid.counter++;
+      return  ( prefix ? prefix : "" ) + ( +new Date() + Popcorn.guid.counter );
+    },
+    sizeOf: function( obj ) {
+      var size = 0;
+
+      for ( var prop in obj ) {
+        size++;
+      }
+
+      return size;
+    },
+    isArray: Array.isArray || function( array ) {
+      return toString.call( array ) === "[object Array]";
+    },
+
+    nop: function() {},
+
+    position: function( elem ) {
+
+      var clientRect = elem.getBoundingClientRect(),
+          bounds = {},
+          doc = elem.ownerDocument,
+          docElem = document.documentElement,
+          body = document.body,
+          clientTop, clientLeft, scrollTop, scrollLeft, top, left;
+
+      //  Determine correct clientTop/Left
+      clientTop = docElem.clientTop || body.clientTop || 0;
+      clientLeft = docElem.clientLeft || body.clientLeft || 0;
+
+      //  Determine correct scrollTop/Left
+      scrollTop = ( global.pageYOffset && docElem.scrollTop || body.scrollTop );
+      scrollLeft = ( global.pageXOffset && docElem.scrollLeft || body.scrollLeft );
+
+      //  Temp top/left
+      top = Math.ceil( clientRect.top + scrollTop - clientTop );
+      left = Math.ceil( clientRect.left + scrollLeft - clientLeft );
+
+      for ( var p in clientRect ) {
+        bounds[ p ] = Math.round( clientRect[ p ] );
+      }
+
+      return Popcorn.extend({}, bounds, { top: top, left: left });
+    },
+
+    disable: function( instance, plugin ) {
+
+      var disabled = instance.data.disabled;
+
+      if ( disabled.indexOf( plugin ) === -1 ) {
+        disabled.push( plugin );
+      }
+
+      refresh( instance );
+
+      return instance;
+    },
+    enable: function( instance, plugin ) {
+
+      var disabled = instance.data.disabled,
+          index = disabled.indexOf( plugin );
+
+      if ( index > -1 ) {
+        disabled.splice( index, 1 );
+      }
+
+      refresh( instance );
+
+      return instance;
+    },
+    destroy: function( instance ) {
+      var events = instance.data.events,
+          singleEvent, item, fn;
+
+      //  Iterate through all events and remove them
+      for ( item in events ) {
+        singleEvent = events[ item ];
+        for ( fn in singleEvent ) {
+          delete singleEvent[ fn ];
+        }
+        events[ item ] = null;
+      }
+
+      if ( !instance.isDestroyed ) {
+        instance.data.timeUpdate && instance.media.removeEventListener( "timeupdate", instance.data.timeUpdate, false );
+        instance.isDestroyed = true;
+      }
+    }
+  });
+
+  //  Memoized GUID Counter
+  Popcorn.guid.counter = 1;
+
+  //  Factory to implement getters, setters and controllers
+  //  as Popcorn instance methods. The IIFE will create and return
+  //  an object with defined methods
+  Popcorn.extend(Popcorn.p, (function() {
+
+      var methods = "load play pause currentTime playbackRate volume duration preload playbackRate " +
+                    "autoplay loop controls muted buffered readyState seeking paused played seekable ended",
+          ret = {};
+
+
+      //  Build methods, store in object that is returned and passed to extend
+      Popcorn.forEach( methods.split( /\s+/g ), function( name ) {
+
+        ret[ name ] = function( arg ) {
+
+          if ( typeof this.media[ name ] === "function" ) {
+
+            // Support for shorthanded play(n)/pause(n) jump to currentTime
+            // If arg is not null or undefined and called by one of the
+            // allowed shorthandable methods, then set the currentTime
+            // Supports time as seconds or SMPTE
+            if ( arg != null && /play|pause/.test( name ) ) {
+              this.media.currentTime = Popcorn.util.toSeconds( arg );
+            }
+
+            this.media[ name ]();
+
+            return this;
+          }
+
+
+          if ( arg != null ) {
+
+            this.media[ name ] = arg;
+
+            return this;
+          }
+
+          return this.media[ name ];
+        };
+      });
+
+      return ret;
+
+    })()
+  );
+
+  Popcorn.forEach( "enable disable".split(" "), function( method ) {
+    Popcorn.p[ method ] = function( plugin ) {
+      return Popcorn[ method ]( this, plugin );
+    };
+  });
+
+  Popcorn.extend(Popcorn.p, {
+
+    //  Rounded currentTime
+    roundTime: function() {
+      return -~this.media.currentTime;
+    },
+
+    //  Attach an event to a single point in time
+    exec: function( time, fn ) {
+
+      //  Creating a one second track event with an empty end
+      Popcorn.addTrackEvent( this, {
+        start: time,
+        end: time + 1,
+        _running: false,
+        _natives: {
+          start: fn || Popcorn.nop,
+          end: Popcorn.nop,
+          type: "exec"
+        }
+      });
+
+      return this;
+    },
+
+    // Mute the calling media, optionally toggle
+    mute: function( toggle ) {
+
+      var event = toggle == null || toggle === true ? "muted" : "unmuted";
+
+      // If `toggle` is explicitly `false`,
+      // unmute the media and restore the volume level
+      if ( event === "unmuted" ) {
+        this.media.muted = false;
+        this.media.volume = this.data.state.volume;
+      }
+
+      // If `toggle` is either null or undefined,
+      // save the current volume and mute the media element
+      if ( event === "muted" ) {
+        this.data.state.volume = this.media.volume;
+        this.media.muted = true;
+      }
+
+      // Trigger either muted|unmuted event
+      this.trigger( event );
+
+      return this;
+    },
+
+    // Convenience method, unmute the calling media
+    unmute: function( toggle ) {
+
+      return this.mute( toggle == null ? false : !toggle );
+    },
+
+    // Get the client bounding box of an instance element
+    position: function() {
+      return Popcorn.position( this.media );
+    },
+
+    // Toggle a plugin's playback behaviour (on or off) per instance
+    toggle: function( plugin ) {
+      return Popcorn[ this.data.disabled.indexOf( plugin ) > -1 ? "enable" : "disable" ]( this, plugin );
+    },
+
+    // Set default values for plugin options objects per instance
+    defaults: function( plugin, defaults ) {
+
+      // If an array of default configurations is provided,
+      // iterate and apply each to this instance
+      if ( Popcorn.isArray( plugin ) ) {
+
+        Popcorn.forEach( plugin, function( obj ) {
+          for ( var name in obj ) {
+            this.defaults( name, obj[ name ] );
+          }
+        }, this );
+
+        return this;
+      }
+
+      if ( !this.options.defaults ) {
+        this.options.defaults = {};
+      }
+
+      if ( !this.options.defaults[ plugin ] ) {
+        this.options.defaults[ plugin ] = {};
+      }
+
+      Popcorn.extend( this.options.defaults[ plugin ], defaults );
+
+      return this;
+    }
+  });
+
+  Popcorn.Events  = {
+    UIEvents: "blur focus focusin focusout load resize scroll unload",
+    MouseEvents: "mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave click dblclick",
+    Events: "loadstart progress suspend emptied stalled play pause " +
+            "loadedmetadata loadeddata waiting playing canplay canplaythrough " +
+            "seeking seeked timeupdate ended ratechange durationchange volumechange"
+  };
+
+  Popcorn.Events.Natives = Popcorn.Events.UIEvents + " " +
+                           Popcorn.Events.MouseEvents + " " +
+                           Popcorn.Events.Events;
+
+  internal.events.apiTypes = [ "UIEvents", "MouseEvents", "Events" ];
+
+  // Privately compile events table at load time
+  (function( events, data ) {
+
+    var apis = internal.events.apiTypes,
+    eventsList = events.Natives.split( /\s+/g ),
+    idx = 0, len = eventsList.length, prop;
+
+    for( ; idx < len; idx++ ) {
+      data.hash[ eventsList[idx] ] = true;
+    }
+
+    apis.forEach(function( val, idx ) {
+
+      data.apis[ val ] = {};
+
+      var apiEvents = events[ val ].split( /\s+/g ),
+      len = apiEvents.length,
+      k = 0;
+
+      for ( ; k < len; k++ ) {
+        data.apis[ val ][ apiEvents[ k ] ] = true;
+      }
+    });
+  })( Popcorn.Events, internal.events );
+
+  Popcorn.events = {
+
+    isNative: function( type ) {
+      return !!internal.events.hash[ type ];
+    },
+    getInterface: function( type ) {
+
+      if ( !Popcorn.events.isNative( type ) ) {
+        return false;
+      }
+
+      var eventApi = internal.events,
+        apis = eventApi.apiTypes,
+        apihash = eventApi.apis,
+        idx = 0, len = apis.length, api, tmp;
+
+      for ( ; idx < len; idx++ ) {
+        tmp = apis[ idx ];
+
+        if ( apihash[ tmp ][ type ] ) {
+          api = tmp;
+          break;
+        }
+      }
+      return api;
+    },
+    //  Compile all native events to single array
+    all: Popcorn.Events.Natives.split( /\s+/g ),
+    //  Defines all Event handling static functions
+    fn: {
+      trigger: function( type, data ) {
+
+        var eventInterface, evt;
+        //  setup checks for custom event system
+        if ( this.data.events[ type ] && Popcorn.sizeOf( this.data.events[ type ] ) ) {
+
+          eventInterface  = Popcorn.events.getInterface( type );
+
+          if ( eventInterface ) {
+
+            evt = document.createEvent( eventInterface );
+            evt.initEvent( type, true, true, global, 1 );
+
+            this.media.dispatchEvent( evt );
+
+            return this;
+          }
+
+          //  Custom events
+          Popcorn.forEach( this.data.events[ type ], function( obj, key ) {
+
+            obj.call( this, data );
+
+          }, this );
+
+        }
+
+        return this;
+      },
+      listen: function( type, fn ) {
+
+        var self = this,
+            hasEvents = true,
+            eventHook = Popcorn.events.hooks[ type ],
+            origType = type,
+            tmp;
+
+        if ( !this.data.events[ type ] ) {
+          this.data.events[ type ] = {};
+          hasEvents = false;
+        }
+
+        // Check and setup event hooks
+        if ( eventHook ) {
+
+          // Execute hook add method if defined
+          if ( eventHook.add ) {
+            eventHook.add.call( this, {}, fn );
+          }
+
+          // Reassign event type to our piggyback event type if defined
+          if ( eventHook.bind ) {
+            type = eventHook.bind;
+          }
+
+          // Reassign handler if defined
+          if ( eventHook.handler ) {
+            tmp = fn;
+
+            fn = function wrapper( event ) {
+              eventHook.handler.call( self, event, tmp );
+            };
+          }
+
+          // assume the piggy back event is registered
+          hasEvents = true;
+
+          // Setup event registry entry
+          if ( !this.data.events[ type ] ) {
+            this.data.events[ type ] = {};
+            // Toggle if the previous assumption was untrue
+            hasEvents = false;
+          }
+        }
+
+        //  Register event and handler
+        this.data.events[ type ][ fn.name || ( fn.toString() + Popcorn.guid() ) ] = fn;
+
+        // only attach one event of any type
+        if ( !hasEvents && Popcorn.events.all.indexOf( type ) > -1 ) {
+
+          this.media.addEventListener( type, function( event ) {
+
+            Popcorn.forEach( self.data.events[ type ], function( obj, key ) {
+              if ( typeof obj === "function" ) {
+                obj.call( self, event );
+              }
+            });
+
+          }, false);
+        }
+        return this;
+      },
+      unlisten: function( type, fn ) {
+
+        if ( this.data.events[ type ] && this.data.events[ type ][ fn ] ) {
+
+          delete this.data.events[ type ][ fn ];
+
+          return this;
+        }
+
+        this.data.events[ type ] = null;
+
+        return this;
+      }
+    },
+    hooks: {
+      canplayall: {
+        bind: "canplaythrough",
+        add: function( event, callback ) {
+
+          var state = false;
+
+          if ( this.media.readyState ) {
+
+            callback.call( this, event );
+
+            state = true;
+          }
+
+          this.data.hooks.canplayall = {
+            fired: state
+          };
+        },
+        // declare special handling instructions
+        handler: function canplayall( event, callback ) {
+
+          if ( !this.data.hooks.canplayall.fired ) {
+            // trigger original user callback once
+            callback.call( this, event );
+
+            this.data.hooks.canplayall.fired = true;
+          }
+        }
+      }
+    }
+  };
+
+  //  Extend Popcorn.events.fns (listen, unlisten, trigger) to all Popcorn instances
+  Popcorn.forEach( [ "trigger", "listen", "unlisten" ], function( key ) {
+    Popcorn.p[ key ] = Popcorn.events.fn[ key ];
+  });
+
+  // Internal Only - Adds track events to the instance object
+  Popcorn.addTrackEvent = function( obj, track ) {
+
+    // Determine if this track has default options set for it
+    // If so, apply them to the track object
+    if ( track && track._natives && track._natives.type &&
+        ( obj.options.defaults && obj.options.defaults[ track._natives.type ] ) ) {
+
+      track = Popcorn.extend( {}, obj.options.defaults[ track._natives.type ], track );
+    }
+
+    if ( track._natives ) {
+      //  Supports user defined track event id
+      track._id = !track.id ? Popcorn.guid( track._natives.type ) : track.id;
+
+      //  Push track event ids into the history
+      obj.data.history.push( track._id );
+    }
+
+    track.start = Popcorn.util.toSeconds( track.start, obj.options.framerate );
+    track.end   = Popcorn.util.toSeconds( track.end, obj.options.framerate );
+
+    //  Store this definition in an array sorted by times
+    var byStart = obj.data.trackEvents.byStart,
+        byEnd = obj.data.trackEvents.byEnd,
+        startIndex, endIndex,
+        currentTime;
+
+    for ( startIndex = byStart.length - 1; startIndex >= 0; startIndex-- ) {
+
+      if ( track.start >= byStart[ startIndex ].start ) {
+        byStart.splice( startIndex + 1, 0, track );
+        break;
+      }
+    }
+
+    for ( endIndex = byEnd.length - 1; endIndex >= 0; endIndex-- ) {
+
+      if ( track.end > byEnd[ endIndex ].end ) {
+        byEnd.splice( endIndex + 1, 0, track );
+        break;
+      }
+    }
+
+    // Display track event immediately if it's enabled and current
+    if ( track._natives &&
+        ( !!Popcorn.registryByName[ track._natives.type ] || !!obj[ track._natives.type ] ) ) {
+
+      currentTime = obj.media.currentTime;
+      if ( track.end > currentTime &&
+        track.start <= currentTime &&
+        obj.data.disabled.indexOf( track._natives.type ) === -1 ) {
+
+        track._running = true;
+        track._natives.start.call( obj, null, track );
+
+        if ( obj.options.frameAnimation &&
+          track._natives.frame ) {
+
+          obj.data.trackEvents.animating.push( track );
+          track._natives.frame.call( obj, null, track, currentTime );
+        }
+      }
+    }
+
+    // update startIndex and endIndex
+    if ( startIndex <= obj.data.trackEvents.startIndex &&
+      track.start <= obj.data.trackEvents.previousUpdateTime ) {
+
+      obj.data.trackEvents.startIndex++;
+    }
+
+    if ( endIndex <= obj.data.trackEvents.endIndex &&
+      track.end < obj.data.trackEvents.previousUpdateTime ) {
+
+      obj.data.trackEvents.endIndex++;
+    }
+
+    this.timeUpdate( obj, null, true );
+
+    // Store references to user added trackevents in ref table
+    if ( track._id ) {
+      Popcorn.addTrackEvent.ref( obj, track );
+    }
+  };
+
+  // Internal Only - Adds track event references to the instance object's trackRefs hash table
+  Popcorn.addTrackEvent.ref = function( obj, track ) {
+    obj.data.trackRefs[ track._id ] = track;
+
+    return obj;
+  };
+
+  Popcorn.removeTrackEvent  = function( obj, trackId ) {
+
+    var historyLen = obj.data.history.length,
+        indexWasAt = 0,
+        byStart = [],
+        byEnd = [],
+        animating = [],
+        history = [];
+
+    Popcorn.forEach( obj.data.trackEvents.byStart, function( o, i, context ) {
+      // Preserve the original start/end trackEvents
+      if ( !o._id ) {
+        byStart.push( obj.data.trackEvents.byStart[i] );
+        byEnd.push( obj.data.trackEvents.byEnd[i] );
+      }
+
+      // Filter for user track events (vs system track events)
+      if ( o._id ) {
+
+        // Filter for the trackevent to remove
+        if ( o._id !== trackId ) {
+          byStart.push( obj.data.trackEvents.byStart[i] );
+          byEnd.push( obj.data.trackEvents.byEnd[i] );
+        }
+
+        //  Capture the position of the track being removed.
+        if ( o._id === trackId ) {
+          indexWasAt = i;
+          o._natives._teardown && o._natives._teardown.call( obj, o );
+        }
+      }
+
+    });
+
+    if ( obj.data.trackEvents.animating.length ) {
+      Popcorn.forEach( obj.data.trackEvents.animating, function( o, i, context ) {
+        // Preserve the original start/end trackEvents
+        if ( !o._id ) {
+          animating.push( obj.data.trackEvents.animating[i] );
+        }
+
+        // Filter for user track events (vs system track events)
+        if ( o._id ) {
+          // Filter for the trackevent to remove
+          if ( o._id !== trackId ) {
+            animating.push( obj.data.trackEvents.animating[i] );
+          }
+        }
+      });
+    }
+
+    //  Update
+    if ( indexWasAt <= obj.data.trackEvents.startIndex ) {
+      obj.data.trackEvents.startIndex--;
+    }
+
+    if ( indexWasAt <= obj.data.trackEvents.endIndex ) {
+      obj.data.trackEvents.endIndex--;
+    }
+
+    obj.data.trackEvents.byStart = byStart;
+    obj.data.trackEvents.byEnd = byEnd;
+    obj.data.trackEvents.animating = animating;
+
+    for ( var i = 0; i < historyLen; i++ ) {
+      if ( obj.data.history[ i ] !== trackId ) {
+        history.push( obj.data.history[ i ] );
+      }
+    }
+
+    // Update ordered history array
+    obj.data.history = history;
+
+    // Update track event references
+    Popcorn.removeTrackEvent.ref( obj, trackId );
+  };
+
+  // Internal Only - Removes track event references from instance object's trackRefs hash table
+  Popcorn.removeTrackEvent.ref = function( obj, trackId ) {
+    delete obj.data.trackRefs[ trackId ];
+
+    return obj;
+  };
+
+  // Return an array of track events bound to this instance object
+  Popcorn.getTrackEvents = function( obj ) {
+
+    var trackevents = [],
+      refs = obj.data.trackEvents.byStart,
+      length = refs.length,
+      idx = 0,
+      ref;
+
+    for ( ; idx < length; idx++ ) {
+      ref = refs[ idx ];
+      // Return only user attributed track event references
+      if ( ref._id ) {
+        trackevents.push( ref );
+      }
+    }
+
+    return trackevents;
+  };
+
+  // Internal Only - Returns an instance object's trackRefs hash table
+  Popcorn.getTrackEvents.ref = function( obj ) {
+    return obj.data.trackRefs;
+  };
+
+  // Return a single track event bound to this instance object
+  Popcorn.getTrackEvent = function( obj, trackId ) {
+    return obj.data.trackRefs[ trackId ];
+  };
+
+  // Internal Only - Returns an instance object's track reference by track id
+  Popcorn.getTrackEvent.ref = function( obj, trackId ) {
+    return obj.data.trackRefs[ trackId ];
+  };
+
+  Popcorn.getLastTrackEventId = function( obj ) {
+    return obj.data.history[ obj.data.history.length - 1 ];
+  };
+
+  Popcorn.timeUpdate = function( obj, event ) {
+
+    var currentTime = obj.media.currentTime,
+        previousTime = obj.data.trackEvents.previousUpdateTime,
+        tracks = obj.data.trackEvents,
+        animating = tracks.animating,
+        end = tracks.endIndex,
+        start = tracks.startIndex,
+        animIndex = 0,
+        byStartLen = tracks.byStart.length,
+        byEndLen = tracks.byEnd.length,
+        registryByName = Popcorn.registryByName,
+        trackstart = "trackstart",
+        trackend = "trackend",
+
+        byEnd, byStart, byAnimate, natives, type;
+
+    //  Playbar advancing
+    if ( previousTime <= currentTime ) {
+
+      while ( tracks.byEnd[ end ] && tracks.byEnd[ end ].end <= currentTime ) {
+
+        byEnd = tracks.byEnd[ end ];
+        natives = byEnd._natives;
+        type = natives && natives.type;
+
+        //  If plugin does not exist on this instance, remove it
+        if ( !natives ||
+            ( !!registryByName[ type ] ||
+              !!obj[ type ] ) ) {
+
+          if ( byEnd._running === true ) {
+            byEnd._running = false;
+            natives.end.call( obj, event, byEnd );
+
+            obj.trigger( trackend,
+              Popcorn.extend({}, byEnd, {
+                plugin: type,
+                type: trackend
+              })
+            );
+          }
+
+          end++;
+        } else {
+          // remove track event
+          Popcorn.removeTrackEvent( obj, byEnd._id );
+          return;
+        }
+      }
+
+      while ( tracks.byStart[ start ] && tracks.byStart[ start ].start <= currentTime ) {
+
+        byStart = tracks.byStart[ start ];
+        natives = byStart._natives;
+        type = natives && natives.type;
+
+        //  If plugin does not exist on this instance, remove it
+        if ( !natives ||
+            ( !!registryByName[ type ] ||
+              !!obj[ type ] ) ) {
+
+          if ( byStart.end > currentTime &&
+                byStart._running === false &&
+                  obj.data.disabled.indexOf( type ) === -1 ) {
+
+            byStart._running = true;
+            natives.start.call( obj, event, byStart );
+
+            obj.trigger( trackstart,
+              Popcorn.extend({}, byStart, {
+                plugin: type,
+                type: trackstart
+              })
+            );
+
+            // If the `frameAnimation` option is used,
+            // push the current byStart object into the `animating` cue
+            if ( obj.options.frameAnimation &&
+                ( byStart && byStart._running && byStart._natives.frame ) ) {
+
+              animating.push( byStart );
+            }
+          }
+          start++;
+        } else {
+          // remove track event
+          Popcorn.removeTrackEvent( obj, byStart._id );
+          return;
+        }
+      }
+
+      // If the `frameAnimation` option is used, iterate the animating track
+      // and execute the `frame` callback
+      if ( obj.options.frameAnimation ) {
+        while ( animIndex < animating.length ) {
+
+          byAnimate = animating[ animIndex ];
+
+          if ( !byAnimate._running ) {
+            animating.splice( animIndex, 1 );
+          } else {
+            byAnimate._natives.frame.call( obj, event, byAnimate, currentTime );
+            animIndex++;
+          }
+        }
+      }
+
+    // Playbar receding
+    } else if ( previousTime > currentTime ) {
+
+      while ( tracks.byStart[ start ] && tracks.byStart[ start ].start > currentTime ) {
+
+        byStart = tracks.byStart[ start ];
+        natives = byStart._natives;
+        type = natives && natives.type;
+
+        // if plugin does not exist on this instance, remove it
+        if ( !natives ||
+            ( !!registryByName[ type ] ||
+              !!obj[ type ] ) ) {
+
+          if ( byStart._running === true ) {
+            byStart._running = false;
+            natives.end.call( obj, event, byStart );
+
+            obj.trigger( trackend,
+              Popcorn.extend({}, byEnd, {
+                plugin: type,
+                type: trackend
+              })
+            );
+          }
+          start--;
+        } else {
+          // remove track event
+          Popcorn.removeTrackEvent( obj, byStart._id );
+          return;
+        }
+      }
+
+      while ( tracks.byEnd[ end ] && tracks.byEnd[ end ].end > currentTime ) {
+
+        byEnd = tracks.byEnd[ end ];
+        natives = byEnd._natives;
+        type = natives && natives.type;
+
+        // if plugin does not exist on this instance, remove it
+        if ( !natives ||
+            ( !!registryByName[ type ] ||
+              !!obj[ type ] ) ) {
+
+          if ( byEnd.start <= currentTime &&
+                byEnd._running === false  &&
+                  obj.data.disabled.indexOf( type ) === -1 ) {
+
+            byEnd._running = true;
+            natives.start.call( obj, event, byEnd );
+
+            obj.trigger( trackstart,
+              Popcorn.extend({}, byStart, {
+                plugin: type,
+                type: trackstart
+              })
+            );
+            // If the `frameAnimation` option is used,
+            // push the current byEnd object into the `animating` cue
+            if ( obj.options.frameAnimation &&
+                  ( byEnd && byEnd._running && byEnd._natives.frame ) ) {
+
+              animating.push( byEnd );
+            }
+          }
+          end--;
+        } else {
+          // remove track event
+          Popcorn.removeTrackEvent( obj, byEnd._id );
+          return;
+        }
+      }
+
+      // If the `frameAnimation` option is used, iterate the animating track
+      // and execute the `frame` callback
+      if ( obj.options.frameAnimation ) {
+        while ( animIndex < animating.length ) {
+
+          byAnimate = animating[ animIndex ];
+
+          if ( !byAnimate._running ) {
+            animating.splice( animIndex, 1 );
+          } else {
+            byAnimate._natives.frame.call( obj, event, byAnimate, currentTime );
+            animIndex++;
+          }
+        }
+      }
+    // time bar is not moving ( video is paused )
+    }
+
+    tracks.endIndex = end;
+    tracks.startIndex = start;
+    tracks.previousUpdateTime = currentTime;
+
+    //enforce index integrity if trackRemoved
+    tracks.byStart.length < byStartLen && tracks.startIndex--;
+    tracks.byEnd.length < byEndLen && tracks.endIndex--;
+
+  };
+
+  //  Map and Extend TrackEvent functions to all Popcorn instances
+  Popcorn.extend( Popcorn.p, {
+
+    getTrackEvents: function() {
+      return Popcorn.getTrackEvents.call( null, this );
+    },
+
+    getTrackEvent: function( id ) {
+      return Popcorn.getTrackEvent.call( null, this, id );
+    },
+
+    getLastTrackEventId: function() {
+      return Popcorn.getLastTrackEventId.call( null, this );
+    },
+
+    removeTrackEvent: function( id ) {
+
+      Popcorn.removeTrackEvent.call( null, this, id );
+      return this;
+    },
+
+    removePlugin: function( name ) {
+      Popcorn.removePlugin.call( null, this, name );
+      return this;
+    },
+
+    timeUpdate: function( event ) {
+      Popcorn.timeUpdate.call( null, this, event );
+      return this;
+    },
+
+    destroy: function() {
+      Popcorn.destroy.call( null, this );
+      return this;
+    }
+  });
+
+  //  Plugin manifests
+  Popcorn.manifest = {};
+  //  Plugins are registered
+  Popcorn.registry = [];
+  Popcorn.registryByName = {};
+  //  An interface for extending Popcorn
+  //  with plugin functionality
+  Popcorn.plugin = function( name, definition, manifest ) {
+
+    if ( Popcorn.protect.natives.indexOf( name.toLowerCase() ) >= 0 ) {
+      Popcorn.error( "'" + name + "' is a protected function name" );
+      return;
+    }
+
+    //  Provides some sugar, but ultimately extends
+    //  the definition into Popcorn.p
+    var reserved = [ "start", "end" ],
+        plugin = {},
+        setup,
+        isfn = typeof definition === "function",
+        methods = [ "_setup", "_teardown", "start", "end", "frame" ];
+
+    // combines calls of two function calls into one
+    var combineFn = function( first, second ) {
+
+      first = first || Popcorn.nop;
+      second = second || Popcorn.nop;
+
+      return function() {
+        first.apply( this, arguments );
+        second.apply( this, arguments );
+      };
+    };
+
+    //  If `manifest` arg is undefined, check for manifest within the `definition` object
+    //  If no `definition.manifest`, an empty object is a sufficient fallback
+    Popcorn.manifest[ name ] = manifest = manifest || definition.manifest || {};
+
+    // apply safe, and empty default functions
+    methods.forEach(function( method ) {
+      definition[ method ] = safeTry( definition[ method ] || Popcorn.nop, name );
+    });
+
+    var pluginFn = function( setup, options ) {
+
+      if ( !options ) {
+        return this;
+      }
+
+      //  Storing the plugin natives
+      var natives = options._natives = {},
+          compose = "",
+          defaults, originalOpts, manifestOpts, mergedSetupOpts;
+
+      Popcorn.extend( natives, setup );
+
+      options._natives.type = name;
+      options._running = false;
+
+      natives.start = natives.start || natives[ "in" ];
+      natives.end = natives.end || natives[ "out" ];
+
+      // extend teardown to always call end if running
+      natives._teardown = combineFn(function() {
+
+        var args = slice.call( arguments );
+
+        // end function signature is not the same as teardown,
+        // put null on the front of arguments for the event parameter
+        args.unshift( null );
+
+        // only call end if event is running
+        args[ 1 ]._running && natives.end.apply( this, args );
+      }, natives._teardown );
+
+      // Check for previously set default options
+      defaults = this.options.defaults && this.options.defaults[ options._natives && options._natives.type ];
+
+      // default to an empty string if no effect exists
+      // split string into an array of effects
+      options.compose = options.compose && options.compose.split( " " ) || [];
+      options.effect = options.effect && options.effect.split( " " ) || [];
+
+      // join the two arrays together
+      options.compose = options.compose.concat( options.effect );
+
+      options.compose.forEach(function( composeOption ) {
+
+        // if the requested compose is garbage, throw it away
+        compose = Popcorn.compositions[ composeOption ] || {};
+
+        // extends previous functions with compose function
+        methods.forEach(function( method ) {
+          natives[ method ] = combineFn( natives[ method ], compose[ method ] );
+        });
+      });
+
+      //  Ensure a manifest object, an empty object is a sufficient fallback
+      options._natives.manifest = manifest;
+
+      //  Checks for expected properties
+      if ( !( "start" in options ) ) {
+        options.start = options[ "in" ] || 0;
+      }
+
+      if ( !( "end" in options ) ) {
+        options.end = options[ "out" ] || this.duration() || Number.MAX_VALUE;
+      }
+
+      // Merge with defaults if they exist, make sure per call is prioritized
+      mergedSetupOpts = defaults ? Popcorn.extend( {}, defaults, options ) :
+                          options;
+
+      // Resolves 239, 241, 242
+      if ( !mergedSetupOpts.target ) {
+
+        //  Sometimes the manifest may be missing entirely
+        //  or it has an options object that doesn't have a `target` property
+        manifestOpts = "options" in manifest && manifest.options;
+
+        mergedSetupOpts.target = manifestOpts && "target" in manifestOpts && manifestOpts.target;
+      }
+
+      // Trigger _setup method if exists
+      options._natives._setup && options._natives._setup.call( this, mergedSetupOpts );
+
+      // Create new track event for this instance
+      Popcorn.addTrackEvent( this, Popcorn.extend( mergedSetupOpts, options ) );
+
+      //  Future support for plugin event definitions
+      //  for all of the native events
+      Popcorn.forEach( setup, function( callback, type ) {
+
+        if ( type !== "type" ) {
+
+          if ( reserved.indexOf( type ) === -1 ) {
+
+            this.listen( type, callback );
+          }
+        }
+
+      }, this );
+
+      return this;
+    };
+
+    //  Assign new named definition
+    plugin[ name ] = function( options ) {
+      return pluginFn.call( this, isfn ? definition.call( this, options ) : definition,
+                                  options );
+    };
+
+    //  Extend Popcorn.p with new named definition
+    Popcorn.extend( Popcorn.p, plugin );
+
+    //  Push into the registry
+    var entry = {
+      fn: plugin[ name ],
+      definition: definition,
+      base: definition,
+      parents: [],
+      name: name
+    };
+    Popcorn.registry.push(
+       Popcorn.extend( plugin, entry, {
+        type: name
+      })
+    );
+    Popcorn.registryByName[ name ] = entry;
+
+    return plugin;
+  };
+
+  // Storage for plugin function errors
+  Popcorn.plugin.errors = [];
+
+  // Returns wrapped plugin function
+  function safeTry( fn, pluginName ) {
+    return function() {
+
+      //  When Popcorn.plugin.debug is true, do not suppress errors
+      if ( Popcorn.plugin.debug ) {
+        return fn.apply( this, arguments );
+      }
+
+      try {
+        return fn.apply( this, arguments );
+      } catch ( ex ) {
+
+        // Push plugin function errors into logging queue
+        Popcorn.plugin.errors.push({
+          plugin: pluginName,
+          thrown: ex,
+          source: fn.toString()
+        });
+
+        // Trigger an error that the instance can listen for
+        // and react to
+        this.trigger( "error", Popcorn.plugin.errors );
+      }
+    };
+  }
+
+  // Debug-mode flag for plugin development
+  Popcorn.plugin.debug = false;
+
+  //  removePlugin( type ) removes all tracks of that from all instances of popcorn
+  //  removePlugin( obj, type ) removes all tracks of type from obj, where obj is a single instance of popcorn
+  Popcorn.removePlugin = function( obj, name ) {
+
+    //  Check if we are removing plugin from an instance or from all of Popcorn
+    if ( !name ) {
+
+      //  Fix the order
+      name = obj;
+      obj = Popcorn.p;
+
+      if ( Popcorn.protect.natives.indexOf( name.toLowerCase() ) >= 0 ) {
+        Popcorn.error( "'" + name + "' is a protected function name" );
+        return;
+      }
+
+      var registryLen = Popcorn.registry.length,
+          registryIdx;
+
+      // remove plugin reference from registry
+      for ( registryIdx = 0; registryIdx < registryLen; registryIdx++ ) {
+        if ( Popcorn.registry[ registryIdx ].name === name ) {
+          Popcorn.registry.splice( registryIdx, 1 );
+          delete Popcorn.registryByName[ name ];
+          delete Popcorn.manifest[ name ];
+
+          // delete the plugin
+          delete obj[ name ];
+
+          // plugin found and removed, stop checking, we are done
+          return;
+        }
+      }
+
+    }
+
+    var byStart = obj.data.trackEvents.byStart,
+        byEnd = obj.data.trackEvents.byEnd,
+        animating = obj.data.trackEvents.animating,
+        idx, sl;
+
+    // remove all trackEvents
+    for ( idx = 0, sl = byStart.length; idx < sl; idx++ ) {
+
+      if ( ( byStart[ idx ] && byStart[ idx ]._natives && byStart[ idx ]._natives.type === name ) &&
+                ( byEnd[ idx ] && byEnd[ idx ]._natives && byEnd[ idx ]._natives.type === name ) ) {
+
+        byStart[ idx ]._natives._teardown && byStart[ idx ]._natives._teardown.call( obj, byStart[ idx ] );
+
+        byStart.splice( idx, 1 );
+        byEnd.splice( idx, 1 );
+
+        // update for loop if something removed, but keep checking
+        idx--; sl--;
+        if ( obj.data.trackEvents.startIndex <= idx ) {
+          obj.data.trackEvents.startIndex--;
+          obj.data.trackEvents.endIndex--;
+        }
+      }
+    }
+
+    //remove all animating events
+    for ( idx = 0, sl = animating.length; idx < sl; idx++ ) {
+
+      if ( animating[ idx ] && animating[ idx ]._natives && animating[ idx ]._natives.type === name ) {
+
+        animating.splice( idx, 1 );
+
+        // update for loop if something removed, but keep checking
+        idx--; sl--;
+      }
+    }
+
+  };
+
+  Popcorn.compositions = {};
+
+  //  Plugin inheritance
+  Popcorn.compose = function( name, definition, manifest ) {
+
+    //  If `manifest` arg is undefined, check for manifest within the `definition` object
+    //  If no `definition.manifest`, an empty object is a sufficient fallback
+    Popcorn.manifest[ name ] = manifest = manifest || definition.manifest || {};
+
+    // register the effect by name
+    Popcorn.compositions[ name ] = definition;
+  };
+
+  Popcorn.plugin.effect = Popcorn.effect = Popcorn.compose;
+
+  // stores parsers keyed on filetype
+  Popcorn.parsers = {};
+
+  // An interface for extending Popcorn
+  // with parser functionality
+  Popcorn.parser = function( name, type, definition ) {
+
+    if ( Popcorn.protect.natives.indexOf( name.toLowerCase() ) >= 0 ) {
+      Popcorn.error( "'" + name + "' is a protected function name" );
+      return;
+    }
+
+    // fixes parameters for overloaded function call
+    if ( typeof type === "function" && !definition ) {
+      definition = type;
+      type = "";
+    }
+
+    if ( typeof definition !== "function" || typeof type !== "string" ) {
+      return;
+    }
+
+    // Provides some sugar, but ultimately extends
+    // the definition into Popcorn.p
+
+    var natives = Popcorn.events.all,
+        parseFn,
+        parser = {};
+
+    parseFn = function( filename, callback ) {
+
+      if ( !filename ) {
+        return this;
+      }
+
+      var that = this;
+
+      Popcorn.xhr({
+        url: filename,
+        dataType: type,
+        success: function( data ) {
+
+          var tracksObject = definition( data ),
+              tracksData,
+              tracksDataLen,
+              tracksDef,
+              idx = 0;
+
+          tracksData = tracksObject.data || [];
+          tracksDataLen = tracksData.length;
+          tracksDef = null;
+
+          //  If no tracks to process, return immediately
+          if ( !tracksDataLen ) {
+            return;
+          }
+
+          //  Create tracks out of parsed object
+          for ( ; idx < tracksDataLen; idx++ ) {
+
+            tracksDef = tracksData[ idx ];
+
+            for ( var key in tracksDef ) {
+
+              if ( hasOwn.call( tracksDef, key ) && !!that[ key ] ) {
+
+                that[ key ]( tracksDef[ key ] );
+              }
+            }
+          }
+          if ( callback ) {
+            callback();
+          }
+        }
+      });
+
+      return this;
+    };
+
+    // Assign new named definition
+    parser[ name ] = parseFn;
+
+    // Extend Popcorn.p with new named definition
+    Popcorn.extend( Popcorn.p, parser );
+
+    // keys the function name by filetype extension
+    //Popcorn.parsers[ name ] = true;
+
+    return parser;
+  };
+
+  Popcorn.player = function( name, player ) {
+
+    player = player || {};
+
+    var playerFn = function( target, src, options ) {
+
+      options = options || {};
+
+      // List of events
+      var date = new Date() / 1000,
+          baselineTime = date,
+          currentTime = 0,
+          volume = 1,
+          muted = false,
+          events = {},
+
+          // The container div of the resource
+          container = document.getElementById( rIdExp.exec( target ) && rIdExp.exec( target )[ 2 ] ) ||
+                        document.getElementById( target ) ||
+                          target,
+          basePlayer = {},
+          timeout,
+          popcorn;
+
+      // copies a div into the media object
+      for( var val in container ) {
+
+        if ( typeof container[ val ] === "object" ) {
+
+          basePlayer[ val ] = container[ val ];
+        } else if ( typeof container[ val ] === "function" ) {
+
+          basePlayer[ val ] = (function( value ) {
+
+            // this is a stupid ugly kludgy hack in honour of Safari
+            // in Safari a NodeList is a function, not an object
+            if ( "length" in container[ value ] && !container[ value ].call ) {
+
+              return container[ value ];
+            } else {
+
+              return function() {
+
+                return container[ value ].apply( container, arguments );
+              };
+            }
+          }( val ));
+        } else {
+
+          Popcorn.player.defineProperty( basePlayer, val, {
+            get: (function( value ) {
+
+              return function() {
+
+                return container[ value ];
+              };
+            }( val )),
+            set: Popcorn.nop,
+            configurable: true
+          });
+        }
+      }
+
+      var timeupdate = function() {
+
+        date = new Date() / 1000;
+
+        if ( !basePlayer.paused ) {
+
+          basePlayer.currentTime = basePlayer.currentTime + ( date - baselineTime );
+          basePlayer.dispatchEvent( "timeupdate" );
+          timeout = setTimeout( timeupdate, 10 );
+        }
+
+        baselineTime = date;
+      };
+
+      basePlayer.play = function() {
+
+        this.paused = false;
+
+        if ( basePlayer.readyState >= 4 ) {
+
+          baselineTime = new Date() / 1000;
+          basePlayer.dispatchEvent( "play" );
+          timeupdate();
+        }
+      };
+
+      basePlayer.pause = function() {
+
+        this.paused = true;
+        basePlayer.dispatchEvent( "pause" );
+      };
+
+      Popcorn.player.defineProperty( basePlayer, "currentTime", {
+        get: function() {
+
+          return currentTime;
+        },
+        set: function( val ) {
+
+          // make sure val is a number
+          currentTime = +val;
+          basePlayer.dispatchEvent( "timeupdate" );
+          return currentTime;
+        },
+        configurable: true
+      });
+
+      Popcorn.player.defineProperty( basePlayer, "volume", {
+        get: function() {
+
+          return volume;
+        },
+        set: function( val ) {
+
+          // make sure val is a number
+          volume = +val;
+          basePlayer.dispatchEvent( "volumechange" );
+          return volume;
+        },
+        configurable: true
+      });
+
+      Popcorn.player.defineProperty( basePlayer, "muted", {
+        get: function() {
+
+          return muted;
+        },
+        set: function( val ) {
+
+          // make sure val is a number
+          muted = +val;
+          basePlayer.dispatchEvent( "volumechange" );
+          return muted;
+        },
+        configurable: true
+      });
+
+      // Adds an event listener to the object
+      basePlayer.addEventListener = function( evtName, fn ) {
+
+        if ( !events[ evtName ] ) {
+
+          events[ evtName ] = [];
+        }
+
+        events[ evtName ].push( fn );
+        return fn;
+      };
+
+      // Can take event object or simple string
+      basePlayer.dispatchEvent = function( oEvent ) {
+
+        var evt,
+            self = this,
+            eventInterface,
+            eventName = oEvent.type;
+
+        // A string was passed, create event object
+        if ( !eventName ) {
+
+          eventName = oEvent;
+          eventInterface  = Popcorn.events.getInterface( eventName );
+
+          if ( eventInterface ) {
+
+            evt = document.createEvent( eventInterface );
+            evt.initEvent( eventName, true, true, window, 1 );
+          }
+        }
+
+        Popcorn.forEach( events[ eventName ], function( val ) {
+
+          val.call( self, evt, self );
+        });
+      };
+
+      // Attempt to get src from playerFn parameter
+      basePlayer.src = src || "";
+      basePlayer.readyState = 0;
+      basePlayer.duration = 0;
+      basePlayer.paused = true;
+      basePlayer.ended = 0;
+
+      if ( player._setup ) {
+
+        player._setup.call( basePlayer, options );
+      } else {
+
+        // there is no setup, which means there is nothing to load
+        basePlayer.readyState = 4;
+        basePlayer.dispatchEvent( "load" );
+        basePlayer.dispatchEvent( "loadeddata" );
+      }
+
+      // when a custom player is loaded, load basePlayer state into custom player
+      basePlayer.addEventListener( "load", function() {
+
+        // if a player is not ready before currentTime is called, this will set it after it is ready
+        basePlayer.currentTime = currentTime;
+
+        // same as above with volume and muted
+        basePlayer.volume = volume;
+        basePlayer.muted = muted;
+      });
+
+      basePlayer.addEventListener( "loadeddata", function() {
+
+        // if play was called before player ready, start playing video
+        !basePlayer.paused && basePlayer.play();
+      });
+
+      popcorn = new Popcorn.p.init( basePlayer, options );
+
+      return popcorn;
+    };
+
+    Popcorn[ name ] = Popcorn[ name ] || playerFn;
+  };
+
+  Popcorn.player.defineProperty = Object.defineProperty || function( object, description, options ) {
+
+    object.__defineGetter__( description, options.get || Popcorn.nop );
+    object.__defineSetter__( description, options.set || Popcorn.nop );
+  };
+
+  //  Cache references to reused RegExps
+  var rparams = /\?/,
+  //  XHR Setup object
+  setup = {
+    url: "",
+    data: "",
+    dataType: "",
+    success: Popcorn.nop,
+    type: "GET",
+    async: true,
+    xhr: function() {
+      return new global.XMLHttpRequest();
+    }
+  };
+
+  Popcorn.xhr = function( options ) {
+
+    options.dataType = options.dataType && options.dataType.toLowerCase() || null;
+
+    if ( options.dataType &&
+         ( options.dataType === "jsonp" || options.dataType === "script" ) ) {
+
+      Popcorn.xhr.getJSONP(
+        options.url,
+        options.success,
+        options.dataType === "script"
+      );
+      return;
+    }
+
+    var settings = Popcorn.extend( {}, setup, options );
+
+    //  Create new XMLHttpRequest object
+    settings.ajax  = settings.xhr();
+
+    if ( settings.ajax ) {
+
+      if ( settings.type === "GET" && settings.data ) {
+
+        //  append query string
+        settings.url += ( rparams.test( settings.url ) ? "&" : "?" ) + settings.data;
+
+        //  Garbage collect and reset settings.data
+        settings.data = null;
+      }
+
+
+      settings.ajax.open( settings.type, settings.url, settings.async );
+      settings.ajax.send( settings.data || null );
+
+      return Popcorn.xhr.httpData( settings );
+    }
+  };
+
+
+  Popcorn.xhr.httpData = function( settings ) {
+
+    var data, json = null,
+        parser, xml = null;
+
+    settings.ajax.onreadystatechange = function() {
+
+      if ( settings.ajax.readyState === 4 ) {
+
+        try {
+          json = JSON.parse( settings.ajax.responseText );
+        } catch( e ) {
+          //suppress
+        }
+
+        data = {
+          xml: settings.ajax.responseXML,
+          text: settings.ajax.responseText,
+          json: json
+        };
+
+        // Normalize: data.xml is non-null in IE9 regardless of if response is valid xml
+        if ( !data.xml || !data.xml.documentElement ) {
+          data.xml = null;
+
+          try {
+            parser = new DOMParser();
+            xml = parser.parseFromString( settings.ajax.responseText, "text/xml" );
+
+            if ( !xml.getElementsByTagName( "parsererror" ).length ) {
+              data.xml = xml;
+            }
+          } catch ( e ) {
+            // data.xml remains null
+          }
+        }
+
+        //  If a dataType was specified, return that type of data
+        if ( settings.dataType ) {
+          data = data[ settings.dataType ];
+        }
+
+
+        settings.success.call( settings.ajax, data );
+
+      }
+    };
+    return data;
+  };
+
+  Popcorn.xhr.getJSONP = function( url, success, isScript ) {
+
+    var head = document.head || document.getElementsByTagName( "head" )[ 0 ] || document.documentElement,
+      script = document.createElement( "script" ),
+      paramStr = url.split( "?" )[ 1 ],
+      isFired = false,
+      params = [],
+      callback, parts, callparam;
+
+    if ( paramStr && !isScript ) {
+      params = paramStr.split( "&" );
+    }
+
+    if ( params.length ) {
+      parts = params[ params.length - 1 ].split( "=" );
+    }
+
+    callback = params.length ? ( parts[ 1 ] ? parts[ 1 ] : parts[ 0 ]  ) : "jsonp";
+
+    if ( !paramStr && !isScript ) {
+      url += "?callback=" + callback;
+    }
+
+    if ( callback && !isScript ) {
+
+      //  If a callback name already exists
+      if ( !!window[ callback ] ) {
+        //  Create a new unique callback name
+        callback = Popcorn.guid( callback );
+      }
+
+      //  Define the JSONP success callback globally
+      window[ callback ] = function( data ) {
+        // Fire success callbacks
+        success && success( data );
+        isFired = true;
+      };
+
+      //  Replace callback param and callback name
+      url = url.replace( parts.join( "=" ), parts[ 0 ] + "=" + callback );
+    }
+
+    script.onload = function() {
+
+      //  Handling remote script loading callbacks
+      if ( isScript ) {
+        //  getScript
+        success && success();
+      }
+
+      //  Executing for JSONP requests
+      if ( isFired ) {
+        //  Garbage collect the callback
+        delete window[ callback ];
+      }
+      //  Garbage collect the script resource
+      head.removeChild( script );
+    };
+
+    script.src = url;
+
+    head.insertBefore( script, head.firstChild );
+
+    return;
+  };
+
+  Popcorn.getJSONP = Popcorn.xhr.getJSONP;
+
+  Popcorn.getScript = Popcorn.xhr.getScript = function( url, success ) {
+
+    return Popcorn.xhr.getJSONP( url, success, true );
+  };
+
+  Popcorn.util = {
+    // Simple function to parse a timestamp into seconds
+    // Acceptable formats are:
+    // HH:MM:SS.MMM
+    // HH:MM:SS;FF
+    // Hours and minutes are optional. They default to 0
+    toSeconds: function( timeStr, framerate ) {
+      // Hours and minutes are optional
+      // Seconds must be specified
+      // Seconds can be followed by milliseconds OR by the frame information
+      var validTimeFormat = /^([0-9]+:){0,2}[0-9]+([.;][0-9]+)?$/,
+          errorMessage = "Invalid time format",
+          digitPairs, lastIndex, lastPair, firstPair,
+          frameInfo, frameTime;
+
+      if ( typeof timeStr === "number" ) {
+        return timeStr;
+      }
+
+      if ( typeof timeStr === "string" &&
+            !validTimeFormat.test( timeStr ) ) {
+        Popcorn.error( errorMessage );
+      }
+
+      digitPairs = timeStr.split( ":" );
+      lastIndex = digitPairs.length - 1;
+      lastPair = digitPairs[ lastIndex ];
+
+      // Fix last element:
+      if ( lastPair.indexOf( ";" ) > -1 ) {
+
+        frameInfo = lastPair.split( ";" );
+        frameTime = 0;
+
+        if ( framerate && ( typeof framerate === "number" ) ) {
+          frameTime = parseFloat( frameInfo[ 1 ], 10 ) / framerate;
+        }
+
+        digitPairs[ lastIndex ] = parseInt( frameInfo[ 0 ], 10 ) + frameTime;
+      }
+
+      firstPair = digitPairs[ 0 ];
+
+      return {
+
+        1: parseFloat( firstPair, 10 ),
+
+        2: ( parseInt( firstPair, 10 ) * 60 ) +
+              parseFloat( digitPairs[ 1 ], 10 ),
+
+        3: ( parseInt( firstPair, 10 ) * 3600 ) +
+            ( parseInt( digitPairs[ 1 ], 10 ) * 60 ) +
+              parseFloat( digitPairs[ 2 ], 10 )
+
+      }[ digitPairs.length || 1 ];
+    }
+  };
+
+
+  // Initialize locale data
+  // Based on http://en.wikipedia.org/wiki/Language_localisation#Language_tags_and_codes
+  function initLocale( arg ) {
+
+    var locale = typeof arg === "string" ? arg : [ arg.language, arg.region ].join( "-" ),
+        parts = locale.split( "-" );
+
+    // Setup locale data table
+    return {
+      iso6391: locale,
+      language: parts[ 0 ] || "",
+      region: parts[ 1 ] || ""
+    };
+  }
+
+  // Declare locale data table
+  var localeData = initLocale( global.navigator.userLanguage || global.navigator.language );
+
+  Popcorn.locale = {
+
+    // Popcorn.locale.get()
+    // returns reference to privately
+    // defined localeData
+    get: function() {
+      return localeData;
+    },
+
+    // Popcorn.locale.set( string|object );
+    set: function( arg ) {
+
+      localeData = initLocale( arg );
+
+      Popcorn.locale.broadcast();
+
+      return localeData;
+    },
+
+    // Popcorn.locale.broadcast( type )
+    // Sends events to all popcorn media instances that are
+    // listening for locale events
+    broadcast: function( type ) {
+
+      var instances = Popcorn.instances,
+          length = instances.length,
+          idx = 0,
+          instance;
+
+      type = type || "locale:changed";
+
+      // Iterate all current instances
+      for ( ; idx < length; idx++ ) {
+        instance = instances[ idx ];
+
+        // For those instances with locale event listeners,
+        // trigger a locale change event
+        if ( type in instance.data.events  ) {
+          instance.trigger( type );
+        }
+      }
+    }
+  };
+
+  // alias for exec function
+  Popcorn.p.cue = Popcorn.p.exec;
+
+  function getItems() {
+
+    var item,
+        list = [];
+
+    if ( Object.keys ) {
+      list = Object.keys( Popcorn.p );
+    } else {
+
+      for ( item in Popcorn.p ) {
+        if ( hasOwn.call( Popcorn.p, item ) ) {
+          list.push( item );
+        }
+      }
+    }
+
+    return list.join( "," ).toLowerCase().split( ",");
+  }
+
+  //  Protected API methods
+  Popcorn.protect = {
+    natives: getItems()
+  };
+
+  //  Exposes Popcorn to global context
+  global.Popcorn = Popcorn;
+
+})(window, window.document);
+/*!
+ * Popcorn.sequence
+ *
+ * Copyright 2011, Rick Waldron
+ * Licensed under MIT license.
+ *
+ */
+
+/* jslint forin: true, maxerr: 50, indent: 4, es5: true  */
+/* global Popcorn: true */
+
+// Requires Popcorn.js
+(function( global, Popcorn ) {
+
+  // TODO: as support increases, migrate to element.dataset
+  var doc = global.document,
+      location = global.location,
+      rprotocol = /:\/\//,
+      // TODO: better solution to this sucky stop-gap
+      lochref = location.href.replace( location.href.split("/").slice(-1)[0], "" ),
+      // privately held
+      range = function(start, stop, step) {
+
+        start = start || 0;
+        stop = ( stop || start || 0 ) + 1;
+        step = step || 1;
+
+        var len = Math.ceil((stop - start) / step) || 0,
+            idx = 0,
+            range = [];
+
+        range.length = len;
+
+        while (idx < len) {
+         range[idx++] = start;
+         start += step;
+        }
+        return range;
+      };
+
+  Popcorn.sequence = function( parent, list ) {
+    return new Popcorn.sequence.init( parent, list );
+  };
+
+  Popcorn.sequence.init = function( parent, list ) {
+
+    // Video element
+    this.parent = doc.getElementById( parent );
+
+    // Store ref to a special ID
+    this.seqId = Popcorn.guid( "__sequenced" );
+
+    // List of HTMLVideoElements
+    this.queue = [];
+
+    // List of Popcorn objects
+    this.playlist = [];
+
+    // Lists of in/out points
+    this.inOuts = {
+
+      // Stores the video in/out times for each video in sequence
+      ofVideos: [],
+
+      // Stores the clip in/out times for each clip in sequences
+      ofClips: []
+
+    };
+
+    // Store first video dimensions
+    this.dims = {
+      width: 0, //this.video.videoWidth,
+      height: 0 //this.video.videoHeight
+    };
+
+    this.active = 0;
+    this.cycling = false;
+    this.playing = false;
+
+    this.times = {
+      last: 0
+    };
+
+    // Store event pointers and queues
+    this.events = {
+
+    };
+
+    var self = this,
+        clipOffset = 0;
+
+    // Create `video` elements
+    Popcorn.forEach( list, function( media, idx ) {
+
+      var video = doc.createElement( "video" );
+
+      video.preload = "auto";
+
+      // Setup newly created video element
+      video.controls = true;
+
+      // If the first, show it, if the after, hide it
+      video.style.display = ( idx && "none" ) || "" ;
+
+      // Seta registered sequence id
+      video.id = self.seqId + "-" + idx ;
+
+      // Push this video into the sequence queue
+      self.queue.push( video );
+
+      var //satisfy lint
+       mIn = media["in"],
+       mOut = media["out"];
+
+      // Push the in/out points into sequence ioVideos
+      self.inOuts.ofVideos.push({
+        "in": ( mIn !== undefined && mIn ) || 1,
+        "out": ( mOut !== undefined && mOut ) || 0
+      });
+
+      self.inOuts.ofVideos[ idx ]["out"] = self.inOuts.ofVideos[ idx ]["out"] || self.inOuts.ofVideos[ idx ]["in"] + 2;
+
+      // Set the sources
+      video.src = !rprotocol.test( media.src ) ? lochref + media.src : media.src;
+
+      // Set some squence specific data vars
+      video.setAttribute("data-sequence-owner", parent );
+      video.setAttribute("data-sequence-guid", self.seqId );
+      video.setAttribute("data-sequence-id", idx );
+      video.setAttribute("data-sequence-clip", [ self.inOuts.ofVideos[ idx ]["in"], self.inOuts.ofVideos[ idx ]["out"] ].join(":") );
+
+      // Append the video to the parent element
+      self.parent.appendChild( video );
+
+
+      self.playlist.push( Popcorn("#" + video.id ) );
+
+    });
+
+    self.inOuts.ofVideos.forEach(function( obj ) {
+
+      var clipDuration = obj["out"] - obj["in"],
+          offs = {
+            "in": clipOffset,
+            "out": clipOffset + clipDuration
+          };
+
+      self.inOuts.ofClips.push( offs );
+
+      clipOffset = offs["out"] + 1;
+    });
+
+    Popcorn.forEach( this.queue, function( media, idx ) {
+
+      function canPlayThrough( event ) {
+
+        // If this is idx zero, use it as dimension for all
+        if ( !idx ) {
+          self.dims.width = media.videoWidth;
+          self.dims.height = media.videoHeight;
+        }
+
+        media.currentTime = self.inOuts.ofVideos[ idx ]["in"] - 0.5;
+
+        media.removeEventListener( "canplaythrough", canPlayThrough, false );
+
+        return true;
+      }
+
+      // Hook up event listeners for managing special playback
+      media.addEventListener( "canplaythrough", canPlayThrough, false );
+
+      // TODO: consolidate & DRY
+      media.addEventListener( "play", function( event ) {
+
+        self.playing = true;
+
+      }, false );
+
+      media.addEventListener( "pause", function( event ) {
+
+        self.playing = false;
+
+      }, false );
+
+      media.addEventListener( "timeupdate", function( event ) {
+
+        var target = event.srcElement || event.target,
+            seqIdx = +(  (target.dataset && target.dataset.sequenceId) || target.getAttribute("data-sequence-id") ),
+            floor = Math.floor( media.currentTime );
+
+        if ( self.times.last !== floor &&
+              seqIdx === self.active ) {
+
+          self.times.last = floor;
+
+          if ( floor === self.inOuts.ofVideos[ seqIdx ]["out"] ) {
+
+            Popcorn.sequence.cycle.call( self, seqIdx );
+          }
+        }
+      }, false );
+    });
+
+    return this;
+  };
+
+  Popcorn.sequence.init.prototype = Popcorn.sequence.prototype;
+
+  //
+  Popcorn.sequence.cycle = function( idx ) {
+
+    if ( !this.queue ) {
+      Popcorn.error("Popcorn.sequence.cycle is not a public method");
+    }
+
+    var // Localize references
+    queue = this.queue,
+    ioVideos = this.inOuts.ofVideos,
+    current = queue[ idx ],
+    nextIdx = 0,
+    next, clip;
+
+
+    var // Popcorn instances
+    $popnext,
+    $popprev;
+
+
+    if ( queue[ idx + 1 ] ) {
+      nextIdx = idx + 1;
+    }
+
+    // Reset queue
+    if ( !queue[ idx + 1 ] ) {
+
+      nextIdx = 0;
+      this.playlist[ idx ].pause();
+
+    } else {
+
+      next = queue[ nextIdx ];
+      clip = ioVideos[ nextIdx ];
+
+      // Constrain dimentions
+      Popcorn.extend( next, {
+        width: this.dims.width,
+        height: this.dims.height
+      });
+
+      $popnext = this.playlist[ nextIdx ];
+      $popprev = this.playlist[ idx ];
+
+      // When not resetting to 0
+      current.pause();
+
+      this.active = nextIdx;
+      this.times.last = clip["in"] - 1;
+
+      // Play the next video in the sequence
+      $popnext.currentTime( clip["in"] );
+
+      $popnext[ nextIdx ? "play" : "pause" ]();
+
+      // Trigger custom cycling event hook
+      this.trigger( "cycle", {
+
+        position: {
+          previous: idx,
+          current: nextIdx
+        }
+
+      });
+
+      // Set the previous back to it's beginning time
+      // $popprev.currentTime( ioVideos[ idx ].in );
+
+      if ( nextIdx ) {
+        // Hide the currently ending video
+        current.style.display = "none";
+        // Show the next video in the sequence
+        next.style.display = "";
+      }
+
+      this.cycling = false;
+    }
+
+    return this;
+  };
+
+  var excludes = [ "timeupdate", "play", "pause" ];
+
+  // Sequence object prototype
+  Popcorn.extend( Popcorn.sequence.prototype, {
+
+    // Returns Popcorn object from sequence at index
+    eq: function( idx ) {
+      return this.playlist[ idx ];
+    },
+    // Remove a sequence from it's playback display container
+    remove: function() {
+      this.parent.innerHTML = null;
+    },
+    // Returns Clip object from sequence at index
+    clip: function( idx ) {
+      return this.inOuts.ofVideos[ idx ];
+    },
+    // Returns sum duration for all videos in sequence
+    duration: function() {
+
+      var ret = 0,
+          seq = this.inOuts.ofClips,
+          idx = 0;
+
+      for ( ; idx < seq.length; idx++ ) {
+        ret += seq[ idx ]["out"] - seq[ idx ]["in"] + 1;
+      }
+
+      return ret - 1;
+    },
+
+    play: function() {
+
+      this.playlist[ this.active ].play();
+
+      return this;
+    },
+    // Attach an event to a single point in time
+    exec: function ( time, fn ) {
+
+      var index = this.active;
+
+      this.inOuts.ofClips.forEach(function( off, idx ) {
+        if ( time >= off["in"] && time <= off["out"] ) {
+          index = idx;
+        }
+      });
+
+      //offsetBy = time - self.inOuts.ofVideos[ index ].in;
+
+      time += this.inOuts.ofVideos[ index ]["in"] - this.inOuts.ofClips[ index ]["in"];
+
+      // Creating a one second track event with an empty end
+      Popcorn.addTrackEvent( this.playlist[ index ], {
+        start: time - 1,
+        end: time,
+        _running: false,
+        _natives: {
+          start: fn || Popcorn.nop,
+          end: Popcorn.nop,
+          type: "exec"
+        }
+      });
+
+      return this;
+    },
+    // Binds event handlers that fire only when all
+    // videos in sequence have heard the event
+    listen: function( type, callback ) {
+
+      var self = this,
+          seq = this.playlist,
+          total = seq.length,
+          count = 0,
+          fnName;
+
+      if ( !callback ) {
+        callback = Popcorn.nop;
+      }
+
+      // Handling for DOM and Media events
+      if ( Popcorn.Events.Natives.indexOf( type ) > -1 ) {
+        Popcorn.forEach( seq, function( video ) {
+
+          video.listen( type, function( event ) {
+
+            event.active = self;
+
+            if ( excludes.indexOf( type ) > -1 ) {
+
+              callback.call( video, event );
+
+            } else {
+              if ( ++count === total ) {
+                callback.call( video, event );
+              }
+            }
+          });
+        });
+
+      } else {
+
+        // If no events registered with this name, create a cache
+        if ( !this.events[ type ] ) {
+          this.events[ type ] = {};
+        }
+
+        // Normalize a callback name key
+        fnName = callback.name || Popcorn.guid( "__" + type );
+
+        // Store in event cache
+        this.events[ type ][ fnName ] = callback;
+      }
+
+      // Return the sequence object
+      return this;
+    },
+    unlisten: function( type, name ) {
+      // TODO: finish implementation
+    },
+    trigger: function( type, data ) {
+      var self = this;
+
+      // Handling for DOM and Media events
+      if ( Popcorn.Events.Natives.indexOf( type ) > -1 ) {
+
+        //  find the active video and trigger api events on that video.
+        return;
+
+      } else {
+
+        // Only proceed if there are events of this type
+        // currently registered on the sequence
+        if ( this.events[ type ] ) {
+
+          Popcorn.forEach( this.events[ type ], function( callback, name ) {
+            callback.call( self, { type: type }, data );
+          });
+
+        }
+      }
+
+      return this;
+    }
+  });
+
+
+  Popcorn.forEach( Popcorn.manifest, function( obj, plugin ) {
+
+    // Implement passthrough methods to plugins
+    Popcorn.sequence.prototype[ plugin ] = function( options ) {
+
+      // console.log( this, options );
+      var videos = {}, assignTo = [],
+      idx, off, inOuts, inIdx, outIdx, keys, clip, clipInOut, clipRange;
+
+      for ( idx = 0; idx < this.inOuts.ofClips.length; idx++  ) {
+        // store reference
+        off = this.inOuts.ofClips[ idx ];
+        // array to test against
+        inOuts = range( off["in"], off["out"] );
+
+        inIdx = inOuts.indexOf( options.start );
+        outIdx = inOuts.indexOf( options.end );
+
+        if ( inIdx > -1 ) {
+          videos[ idx ] = Popcorn.extend( {}, off, {
+            start: inOuts[ inIdx ],
+            clipIdx: inIdx
+          });
+        }
+
+        if ( outIdx > -1 ) {
+          videos[ idx ] = Popcorn.extend( {}, off, {
+            end: inOuts[ outIdx ],
+            clipIdx: outIdx
+          });
+        }
+      }
+
+      keys = Object.keys( videos ).map(function( val ) {
+                return +val;
+              });
+
+      assignTo = range( keys[ 0 ], keys[ 1 ] );
+
+      //console.log( "PLUGIN CALL MAPS: ", videos, keys, assignTo );
+      for ( idx = 0; idx < assignTo.length; idx++ ) {
+
+        var compile = {},
+        play = assignTo[ idx ],
+        vClip = videos[ play ];
+
+        if ( vClip ) {
+
+          // has instructions
+          clip = this.inOuts.ofVideos[ play ];
+          clipInOut = vClip.clipIdx;
+          clipRange = range( clip["in"], clip["out"] );
+
+          if ( vClip.start ) {
+            compile.start = clipRange[ clipInOut ];
+            compile.end = clipRange[ clipRange.length - 1 ];
+          }
+
+          if ( vClip.end ) {
+            compile.start = clipRange[ 0 ];
+            compile.end = clipRange[ clipInOut ];
+          }
+
+          //compile.start += 0.1;
+          //compile.end += 0.9;
+
+        } else {
+
+          compile.start = this.inOuts.ofVideos[ play ]["in"];
+          compile.end = this.inOuts.ofVideos[ play ]["out"];
+
+          //compile.start += 0.1;
+          //compile.end += 0.9;
+
+        }
+
+        // Handling full clip persistance
+        //if ( compile.start === compile.end ) {
+          //compile.start -= 0.1;
+          //compile.end += 0.9;
+        //}
+
+        // Call the plugin on the appropriate Popcorn object in the playlist
+        // Merge original options object & compiled (start/end) object into
+        // a new fresh object
+        this.playlist[ play ][ plugin ](
+
+          Popcorn.extend( {}, options, compile )
+
+        );
+
+      }
+
+      // Return the sequence object
+      return this;
+    };
+
+  });
+})( this, Popcorn );
+(function( Popcorn ) {
+  document.addEventListener( "DOMContentLoaded", function() {
+
+    //  Supports non-specific elements
+    var dataAttr = "data-timeline-sources",
+        medias = document.querySelectorAll( "[" + dataAttr + "]" );
+
+    Popcorn.forEach( medias, function( idx, key ) {
+
+      var media = medias[ key ],
+          hasDataSources = false,
+          dataSources, data, popcornMedia;
+
+      //  Ensure that the DOM has an id
+      if ( !media.id ) {
+
+        media.id = Popcorn.guid( "__popcorn" );
+      }
+
+      //  Ensure we're looking at a dom node
+      if ( media.nodeType && media.nodeType === 1 ) {
+
+        popcornMedia = Popcorn( "#" + media.id );
+
+        dataSources = ( media.getAttribute( dataAttr ) || "" ).split( "," );
+
+        if ( dataSources[ 0 ] ) {
+
+          Popcorn.forEach( dataSources, function( source ) {
+
+            // split the parser and data as parser!file
+            data = source.split( "!" );
+
+            // if no parser is defined for the file, assume "parse" + file extension
+            if ( data.length === 1 ) {
+
+              // parse a relative URL for the filename, split to get extension
+              data = source.match( /(.*)[\/\\]([^\/\\]+\.\w+)$/ )[ 2 ].split( "." );
+
+              data[ 0 ] = "parse" + data[ 1 ].toUpperCase();
+              data[ 1 ] = source;
+            }
+
+            //  If the media has data sources and the correct parser is registered, continue to load
+            if ( dataSources[ 0 ] && popcornMedia[ data[ 0 ] ] ) {
+
+              //  Set up the media and load in the datasources
+              popcornMedia[ data[ 0 ] ]( data[ 1 ] );
+
+            }
+          });
+
+        }
+
+        //  Only play the media if it was specified to do so
+        if ( !!popcornMedia.autoplay ) {
+          popcornMedia.play();
+        }
+
+      }
+    });
+  }, false );
+
+})( Popcorn );// PLUGIN: Attribution
+
+(function( Popcorn ) {
+
+  /**
+   * Attribution popcorn plug-in
+   * Adds text to an element on the page.
+   * Options parameter will need a mandatory start, end, target.
+   * Optional parameters include nameofwork, NameOfWorkUrl, CopyrightHolder, CopyrightHolderUrl, license & licenseUrl.
+   * Start is the time that you want this plug-in to execute
+   * End is the time that you want this plug-in to stop executing
+   * Target is the id of the document element that the text needs to be attached to, this target element must exist on the DOM
+   * nameofwork is the title of the attribution
+   * NameOfWorkUrl is a url that provides more details about the attribution
+   * CopyrightHolder is the name of the person/institution that holds the rights to the attribution
+   * CopyrightHolderUrl is the url that provides more details about the copyrightholder
+   * license is the type of license that the work is copyrighted under
+   * LicenseUrl is the url that provides more details about the ticense type
+   * @param {Object} options
+   *
+   * Example:
+     var p = Popcorn('#video')
+        .attribution({
+          start: 5, // seconds
+          end: 15, // seconds
+          target: 'attributiondiv'
+        } )
+   *
+   */
+  Popcorn.plugin( "attribution" , (function() {
+
+    var
+    common = "data:image/png;base64,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",
+    licenses = {
+      "cc-by": common + "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",
+      "cc-by-sa": common + "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",
+      "cc-by-nd": common + "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",
+      "cc-by-nc": common + "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",
+      "cc-by-nc-sa": common + "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",
+      "cc-by-nc-nd": common + "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"
+    },
+    target;
+
+    return {
+
+      _setup: function( options ) {
+
+        var attrib = "",
+        license = options.license && licenses[ options.license.toLowerCase() ],
+        tar = "target=_blank";
+
+        // make a div to put the information into
+        options._container = document.createElement( "div" );
+        options._container.style.display = "none";
+
+        // Cache declared target
+        target = document.getElementById( options.target );
+
+        if ( options.nameofworkurl ) {
+          attrib += "<a href='" + options.nameofworkurl + "' " + tar + ">";
+        }
+        if ( options.nameofwork ) {
+          attrib += options.nameofwork;
+        }
+        if ( options.nameofworkurl ) {
+          attrib += "</a>";
+        }
+        if ( options.copyrightholderurl ) {
+          attrib += "<a href='" + options.copyrightholderurl + "' " + tar + ">";
+        }
+        if ( options.copyrightholder ) {
+          attrib += ", " + options.copyrightholder;
+        }
+        if ( options.copyrightholderurl ) {
+          attrib += "</a>";
+        }
+
+        //if the user did not specify any parameters just pull the text from the tag
+        if ( attrib === "" ) {
+          attrib = options.text;
+        }
+
+        if ( options.license ) {
+          if ( license ) {
+            if ( options.licenseurl ) {
+              attrib = "<a href='" + options.licenseurl + "' " + tar + "><img src='"+ license +"' border='0'/></a> " + attrib;
+            } else {
+              attrib = "<img src='"+ license +"' />" + attrib;
+            }
+          } else {
+            attrib += ", license: ";
+
+            if ( options.licenseurl ) {
+              attrib += "<a href='" + options.licenseurl + "' " + tar + ">" + options.license + "</a> ";
+            } else {
+              attrib += options.license;
+            }
+          }
+        } else if ( options.licenseurl ) {
+          attrib += ", <a href='" + options.licenseurl + "' " + tar + ">license</a> ";
+        }
+
+        options._container.innerHTML  = attrib;
+
+        if ( !target && Popcorn.plugin.debug ) {
+          throw new Error( "target container doesn't exist" );
+        }
+        target && target.appendChild( options._container );
+      },
+      /**
+       * @member attribution
+       * The start function will be executed when the currentTime
+       * of the video  reaches the start time provided by the
+       * options variable
+       */
+      start: function( event, options ) {
+        options._container.style.display = "inline";
+      },
+      /**
+       * @member attribution
+       * The end function will be executed when the currentTime
+       * of the video  reaches the end time provided by the
+       * options variable
+       */
+      end: function( event, options ) {
+        options._container.style.display = "none";
+      },
+      _teardown: function( options ) {
+
+        // Cache declared target
+        target = document.getElementById( options.target );
+
+        target && target.removeChild( options._container );
+      }
+    };
+  })(),
+  {
+    about:{
+      name: "Popcorn Attribution Plugin",
+      version: "0.2",
+      author: "@rwaldron",
+      website: "github.com/rwldrn"
+    },
+    options:{
+      start: {
+       elem: "input",
+       type: "text",
+       label: "In"
+      },
+      end: {
+        elem: "input",
+        type: "text",
+        label: "Out"
+      },
+      nameofwork: {
+        elem: "input",
+        type: "text",
+        label: "Name of Work"
+      },
+      nameofworkurl: {
+        elem: "input",
+        type: "url",
+        label: "Url of Work"
+      },
+      copyrightholder: {
+        elem: "input",
+        type: "text",
+        label: "Copyright Holder"
+      },
+      copyrightholderurl: {
+        elem: "input",
+        type: "url",
+        label: "Copyright Holder Url"
+      },
+      license: {
+        elem: "input",
+        type: "text",
+        label: "License type"
+       },
+      licenseurl: {
+        elem: "input",
+        type: "url",
+        label: "License URL"
+      },
+      target: "attribution-container"
+    }
+  });
+})( Popcorn );
+// PLUGIN: Code
+
+(function ( Popcorn ) {
+
+  /**
+   * Code Popcorn Plug-in
+   *
+   * Adds the ability to run arbitrary code (JavaScript functions) according to video timing.
+   *
+   * @param {Object} options
+   *
+   * Required parameters: start, end, template, data, and target.
+   * Optional parameter: static.
+   *
+   *   start: the time in seconds when the mustache template should be rendered
+   *          in the target div.
+   *
+   *   end: the time in seconds when the rendered mustache template should be
+   *        removed from the target div.
+   *
+   *   onStart: the function to be run when the start time is reached.
+   *
+   *   onFrame: [optional] a function to be run on each paint call
+   *            (e.g., called ~60 times per second) between the start and end times.
+   *
+   *   onEnd: [optional] a function to be run when the end time is reached.
+   *
+   * Example:
+     var p = Popcorn('#video')
+
+        // onStart function only
+        .code({
+          start: 1,
+          end: 4,
+          onStart: function( options ) {
+            // called on start
+          }
+        })
+
+        // onStart + onEnd only
+        .code({
+          start: 6,
+          end: 8,
+          onStart: function( options ) {
+            // called on start
+          },
+          onEnd: function ( options ) {
+            // called on end
+          }
+        })
+
+        // onStart, onEnd, onFrame
+        .code({
+          start: 10,
+          end: 14,
+          onStart: function( options ) {
+            // called on start
+          },
+          onFrame: function ( options ) {
+            // called on every paint frame between start and end.
+            // uses mozRequestAnimationFrame, webkitRequestAnimationFrame,
+            // or setTimeout with 16ms window.
+          },
+          onEnd: function ( options ) {
+            // called on end
+          }
+        });
+  *
+  */
+
+  Popcorn.plugin( "code" , function( options ) {
+    var running = false;
+
+    // Setup a proper frame interval function (60fps), favouring paint events.
+    var step = (function() {
+
+      var buildFrameRunner = function( runner ) {
+        return function( f, options ) {
+
+          var _f = function() {
+            running && f();
+            running && runner( _f );
+          };
+
+          _f();
+        };
+      };
+
+      // Figure out which level of browser support we have for this
+      if ( window.webkitRequestAnimationFrame ) {
+        return buildFrameRunner( window.webkitRequestAnimationFrame );
+      } else if ( window.mozRequestAnimationFrame ) {
+        return buildFrameRunner( window.mozRequestAnimationFrame );
+      } else {
+        return buildFrameRunner( function( f ) {
+          window.setTimeout( f, 16 );
+        });
+      }
+
+    })();
+
+    if ( !options.onStart || typeof options.onStart !== "function" ) {
+
+      if ( Popcorn.plugin.debug ) {
+        throw new Error( "Popcorn Code Plugin Error: onStart must be a function." );
+      }
+      options.onStart = Popcorn.nop;
+    }
+
+    if ( options.onEnd && typeof options.onEnd !== "function" ) {
+
+      if ( Popcorn.plugin.debug ) {
+        throw new Error( "Popcorn Code Plugin Error: onEnd  must be a function." );
+      }
+      options.onEnd = undefined;
+    }
+
+    if ( options.onFrame && typeof options.onFrame !== "function" ) {
+
+      if ( Popcorn.plugin.debug ) {
+        throw new Error( "Popcorn Code Plugin Error: onFrame  must be a function." );
+      }
+      options.onFrame = undefined;
+    }
+
+    return {
+      start: function( event, options ) {
+        options.onStart( options );
+
+        if ( options.onFrame ) {
+          running = true;
+          step( options.onFrame, options );
+        }
+      },
+
+      end: function( event, options ) {
+        if ( options.onFrame ) {
+          running = false;
+        }
+
+        if ( options.onEnd ) {
+          options.onEnd( options );
+        }
+      }
+    };
+  },
+  {
+    about: {
+      name: "Popcorn Code Plugin",
+      version: "0.1",
+      author: "David Humphrey (@humphd)",
+      website: "http://vocamus.net/dave"
+    },
+    options: {
+      start: {
+       elem: "input",
+       type: "text",
+       label: "In"
+      },
+      end: {
+        elem: "input",
+        type: "text",
+        label: "Out"
+      },
+      onStart: {
+        elem: "input",
+        type: "function",
+        label: "onStart"
+      },
+      onFrame: {
+        elem: "input",
+        type: "function",
+        label: "onFrame"
+      },
+      onEnd: {
+        elem: "input",
+        type: "function",
+        label: "onEnd"
+      }
+    }
+  });
+})( Popcorn );
+// PLUGIN: Flickr
+(function (Popcorn) {
+
+  /**
+   * Flickr popcorn plug-in
+   * Appends a users Flickr images to an element on the page.
+   * Options parameter will need a start, end, target and userid or username and api_key.
+   * Optional parameters are numberofimages, height, width, padding, and border
+   * Start is the time that you want this plug-in to execute (in seconds)
+   * End is the time that you want this plug-in to stop executing (in seconds)
+   * Userid is the id of who's Flickr images you wish to show
+   * Tags is a mutually exclusive list of image descriptor tags
+   * Username is the username of who's Flickr images you wish to show
+   *  using both userid and username is redundant
+   *  an api_key is required when using username
+   * Apikey is your own api key provided by Flickr
+   * Target is the id of the document element that the images are
+   *  appended to, this target element must exist on the DOM
+   * Numberofimages specify the number of images to retreive from flickr, defaults to 4
+   * Height the height of the image, defaults to '50px'
+   * Width the width of the image, defaults to '50px'
+   * Padding number of pixels between images, defaults to '5px'
+   * Border border size in pixels around images, defaults to '0px'
+   *
+   * @param {Object} options
+   *
+   * Example:
+     var p = Popcorn('#video')
+        .flickr({
+          start:          5,                 // seconds, mandatory
+          end:            15,                // seconds, mandatory
+          userid:         '35034346917@N01', // optional
+          tags:           'dogs,cats',       // optional
+          numberofimages: '8',               // optional
+          height:         '50px',            // optional
+          width:          '50px',            // optional
+          padding:        '5px',             // optional
+          border:         '0px',             // optional
+          target:         'flickrdiv'        // mandatory
+        } )
+   *
+   */
+
+  var idx = 0;
+
+  Popcorn.plugin( "flickr" , function( options ) {
+    var containerDiv,
+        target = document.getElementById( options.target ),
+        _userid,
+        _uri,
+        _link,
+        _image,
+        _count = options.numberofimages || 4,
+        _height = options.height || "50px",
+        _width = options.width || "50px",
+        _padding = options.padding || "5px",
+        _border = options.border || "0px";
+
+    // create a new div this way anything in the target div is left intact
+    // this is later populated with Flickr images
+    containerDiv = document.createElement( "div" );
+    containerDiv.id = "flickr" + idx;
+    containerDiv.style.width = "100%";
+    containerDiv.style.height = "100%";
+    containerDiv.style.display = "none";
+    idx++;
+
+    // ensure the target container the user chose exists
+    if ( !target && Popcorn.plugin.debug ) {
+      throw new Error( "flickr target container doesn't exist" );
+    }
+
+    target && target.appendChild( containerDiv );
+
+    // get the userid from Flickr API by using the username and apikey
+    var isUserIDReady = function() {
+      if ( !_userid ) {
+
+        _uri  = "http://api.flickr.com/services/rest/?method=flickr.people.findByUsername&";
+        _uri += "username=" + options.username + "&api_key=" + options.apikey + "&format=json&jsoncallback=flickr";
+        Popcorn.getJSONP( _uri, function( data ) {
+          _userid = data.user.nsid;
+          getFlickrData();
+        });
+
+      } else {
+
+        setTimeout(function () {
+          isUserIDReady();
+        }, 5 );
+      }
+    };
+
+    // get the photos from Flickr API by using the user_id and/or tags
+    var getFlickrData = function() {
+
+      _uri  = "http://api.flickr.com/services/feeds/photos_public.gne?";
+
+      if ( _userid ) {
+        _uri += "id=" + _userid + "&";
+      }
+      if ( options.tags ) {
+        _uri += "tags=" + options.tags + "&";
+      }
+
+      _uri += "lang=en-us&format=json&jsoncallback=flickr";
+
+      Popcorn.xhr.getJSONP( _uri, function( data ) {
+
+        var fragment = document.createElement( "p" );
+
+        fragment.innerHTML = "<p style='padding:" + _padding + ";'>" + data.title + "<p/>";
+
+        Popcorn.forEach( data.items, function ( item, i ) {
+          if ( i < _count ) {
+
+            _link = document.createElement( "a" );
+            _link.setAttribute( "href", item.link );
+            _link.setAttribute( "target", "_blank" );
+            _image = document.createElement( "img" );
+            _image.setAttribute( "src", item.media.m );
+            _image.setAttribute( "height",_height );
+            _image.setAttribute( "width", _width );
+            _image.setAttribute( "style", "border:" + _border + ";padding:" + _padding );
+            _link.appendChild( _image );
+            fragment.appendChild( _link );
+
+          } else {
+
+            return false;
+          }
+        });
+
+        containerDiv.appendChild( fragment );
+      });
+    };
+
+    if ( options.username && options.apikey ) {
+      isUserIDReady();
+    }
+    else {
+      _userid = options.userid;
+      getFlickrData();
+    }
+    return {
+      /**
+       * @member flickr
+       * The start function will be executed when the currentTime
+       * of the video reaches the start time provided by the
+       * options variable
+       */
+      start: function( event, options ) {
+        containerDiv.style.display = "inline";
+      },
+      /**
+       * @member flickr
+       * The end function will be executed when the currentTime
+       * of the video reaches the end time provided by the
+       * options variable
+       */
+      end: function( event, options ) {
+        containerDiv.style.display = "none";
+      },
+      _teardown: function( options ) {
+        document.getElementById( options.target ) && document.getElementById( options.target ).removeChild( containerDiv );
+      }
+    };
+  },
+  {
+    about: {
+      name: "Popcorn Flickr Plugin",
+      version: "0.2",
+      author: "Scott Downe, Steven Weerdenburg, Annasob",
+      website: "http://scottdowne.wordpress.com/"
+    },
+    options: {
+      start: {
+        elem: "input",
+        type: "number",
+        label: "In"
+      },
+      end: {
+        elem: "input",
+        type: "number",
+        label: "Out"
+      },
+      userid: {
+        elem: "input",
+        type: "text",
+        label: "UserID"
+      },
+      tags: {
+        elem: "input",
+        type: "text",
+        label: "Tags"
+      },
+      username: {
+        elem: "input",
+        type: "text",
+        label: "Username"
+      },
+      apikey: {
+        elem: "input",
+        type: "text",
+        label: "Api_key"
+      },
+      target: "flickr-container",
+      height: {
+        elem: "input",
+        type: "text",
+        label: "Height"
+      },
+      width: {
+        elem: "input",
+        type: "text",
+        label: "Width"
+      },
+      padding: {
+        elem: "input",
+        type: "text",
+        label: "Padding"
+      },
+      border: {
+        elem: "input",
+        type: "text",
+        label: "Border"
+      },
+      numberofimages: {
+        elem: "input",
+        type: "text",
+        label: "Number of Images"
+      }
+    }
+  });
+})( Popcorn );
+// PLUGIN: Footnote/Text
+
+(function ( Popcorn ) {
+
+  /**
+   * Footnote popcorn plug-in
+   * Adds text to an element on the page.
+   * Options parameter will need a start, end, target and text.
+   * Start is the time that you want this plug-in to execute
+   * End is the time that you want this plug-in to stop executing
+   * Text is the text that you want to appear in the target
+   * Target is the id of the document element that the text needs to be
+   * attached to, this target element must exist on the DOM
+   *
+   * @param {Object} options
+   *
+   * Example:
+     var p = Popcorn('#video')
+        .footnote({
+          start: 5, // seconds
+          end: 15, // seconds
+          text: 'This video made exclusively for drumbeat.org',
+          target: 'footnotediv'
+        } )
+   *
+   */
+
+  Popcorn.forEach( [ "footnote", "text" ], function( name ) {
+
+    Popcorn.plugin( name , {
+
+      manifest: {
+        about: {
+          name: "Popcorn " + name + " Plugin",
+          version: "0.2",
+          author: "@annasob, @rwaldron",
+          website: "annasob.wordpress.com"
+        },
+        options: {
+          start: {
+            elem: "input",
+            type: "text",
+            label: "In"
+          },
+          end: {
+            elem: "input",
+            type: "text",
+            label: "Out"
+          },
+          text: {
+            elem: "input",
+            type: "text",
+            label: "Text"
+          },
+          target: name + "-container"
+        }
+      },
+    _setup: function( options ) {
+
+      var target = document.getElementById( options.target );
+
+      options._container = document.createElement( "div" );
+      options._container.style.display = "none";
+      options._container.innerHTML  = options.text;
+
+      if ( !target && Popcorn.plugin.debug ) {
+        throw new Error( "target container doesn't exist" );
+      }
+      target && target.appendChild( options._container );
+    },
+    /**
+     * @member footnote
+     * The start function will be executed when the currentTime
+     * of the video  reaches the start time provided by the
+     * options variable
+     */
+    start: function( event, options ){
+      options._container.style.display = "inline";
+    },
+    /**
+     * @member footnote
+     * The end function will be executed when the currentTime
+     * of the video  reaches the end time provided by the
+     * options variable
+     */
+    end: function( event, options ){
+      options._container.style.display = "none";
+    },
+    _teardown: function( options ) {
+      document.getElementById( options.target ) && document.getElementById( options.target ).removeChild( options._container );
+    }
+  });
+});
+
+})( Popcorn );
+//PLUGIN: facebook
+
+(function( Popcorn, global ) {
+/**
+  * Facebook Popcorn plug-in
+  * Places Facebook's "social plugins" inside a div ( http://developers.facebook.com/docs/plugins/ )
+  * Sets options according to user input or default values
+  * Options parameter will need a target, type, start and end time
+  * Type is the name of the plugin in fbxml format. Options: LIKE (default), LIKE-BOX, ACTIVITY, FACEPILE
+  * Target is the id of the document element that the text needs to be attached to. This target element must exist on the DOM
+  * Start is the time that you want this plug-in to execute
+  * End is the time that you want this plug-in to stop executing
+  *
+  * Other than the mandatory four parameters, there are several optional parameters (Some options are only applicable to certain plugins)
+  * Action - like button will either "Like" or "Recommend". Options: recommend / like(default)
+  * Always_post_to_friends - live-stream posts will be always be posted on your facebook wall if true. Options: true / false(default)
+  * Border_color - border color of the activity feed. Names (i.e: "white") and html color codes are valid
+  * Colorscheme - changes the color of almost all plugins. Options: light(default) / dark
+  * Event_app_id - an app_id is required for the live-stream plugin
+  * Font - the font of the text contained in the plugin. Options: arial / segoe ui / tahoma / trebuchet ms / verdana / lucida grande
+  * Header - displays the title of like-box or activity feed. Options: true / false(default)
+  * Href - url to apply to the plugin. Default is current page
+  * Layout - changes the format of the 'like' count (written in english or a number in a callout).
+  *          Options: box_count / button_count / standard(default)
+  * Max_rows - number of rows to disperse pictures in facepile. Default is 1
+  * Recommendations - shows recommendations, if any, in the bottom half of activity feed. Options: true / false(default)
+  * Show_faces - show pictures beside like button and like-box. Options: true / false(default)
+  * Site - href for activity feed. No idea why it must be "site". Default is current page
+  * Stream - displays a the latest posts from the specified page's wall. Options: true / false(default)
+  * Type - determines which plugin to create. Case insensitive
+  * Xid - unique identifier if more than one live-streams are on one page
+  *
+  * @param {Object} options
+  *
+  * Example:
+    var p = Popcorn('#video')
+      .facebook({
+        type  : "LIKE-BOX",
+        target: "likeboxdiv",
+        start : 3,
+        end   : 10,
+        href  : "http://www.facebook.com/senecacollege",
+        show_faces: "true",
+        header: "false"
+      } )
+  * This will show how many people "like" Seneca College's Facebook page, and show their profile pictures
+  */
+
+  var ranOnce = false;
+
+  Popcorn.plugin( "facebook" , {
+    manifest: {
+      about: {
+        name: "Popcorn Facebook Plugin",
+        version: "0.1",
+        author: "Dan Ventura, Matthew Schranz: @mjschranz",
+        website: "dsventura.blogspot.com, mschranz.wordpress.com"
+      },
+      options: {
+        type: {
+          elem: "select",
+          options: [ "LIKE", "LIKE-BOX", "ACTIVITY", "FACEPILE", "LIVE-STREAM", "SEND", "COMMENTS" ],
+          label: "Type"
+        },
+        target: "facebook-container",
+        start: {
+          elem: "input",
+          type: "number",
+          label: "In"
+        },
+        end: {
+          elem: "input",
+          type: "number",
+          label: "Out"
+        },
+        // optional parameters:
+        font: {
+          elem: "input",
+          type: "text",
+          label: "font"
+        },
+        xid: {
+          elem: "input",
+          type: "text",
+          label: "Xid"
+        },
+        href: {
+          elem: "input",
+          type: "url",
+          label: "Href"
+        },
+        site: {
+          elem: "input",
+          type: "url",
+          label:"Site"
+        },
+        height: {
+          elem: "input",
+          type: "text",
+          label: "Height"
+        },
+        width: {
+          elem: "input",
+          type: "text",
+          label: "Width"
+        },
+        action: {
+          elem: "select",
+          options: [ "like", "recommend" ],
+          label: "Action"
+        },
+        stream: {
+          elem: "select",
+          options: [ "false", "true" ],
+          label: "Stream"
+        },
+        header: {
+          elem: "select",
+          options: [ "false", "true" ],
+          label: "Header"
+        },
+        layout: {
+          elem: "select",
+          options: [ "standard", "button_count", "box_count" ],
+          label: "Layout"
+        },
+        max_rows: {
+          elem: "input",
+          type: "text",
+          label: "Max_rows"
+        },
+        border_color: {
+          elem: "input",
+          type: "text",
+          label: "Border_color"
+        },
+        event_app_id: {
+          elem: "input",
+          type: "text",
+          label: "Event_app_id"
+        },
+        colorscheme: {
+           elem: "select",
+           options: [ "light", "dark" ],
+           label: "Colorscheme"
+        },
+        show_faces: {
+           elem: "select",
+           options: [ "false", "true" ],
+           label: "Showfaces"
+        },
+        recommendations: {
+           elem: "select",
+           options: [ "false", "true" ],
+           label: "Recommendations"
+        },
+        always_post_to_friends: {
+          elem: "input",
+          options: [ "false", "true" ],
+          label: "Always_post_to_friends"
+        },
+        num_posts: {
+          elem: "input",
+          type: "text",
+          label: "Number_of_Comments"
+        }
+      }
+    },
+
+    _setup: function( options ) {
+
+      var target = document.getElementById( options.target ),
+          _type = options.type;
+
+      // facebook script requires a div named fb-root
+      if ( !document.getElementById( "fb-root" ) ) {
+        var fbRoot = document.createElement( "div" );
+        fbRoot.setAttribute( "id", "fb-root" );
+        document.body.appendChild( fbRoot );
+      }
+
+      if ( !ranOnce || options.event_app_id ) {
+        ranOnce = true;
+        // initialize facebook JS SDK
+        Popcorn.getScript( "//connect.facebook.net/en_US/all.js" );
+
+        global.fbAsyncInit = function() {
+          FB.init({
+            appId: ( options.event_app_id || "" ),
+            status: true,
+            cookie: true,
+            xfbml: true
+          });
+        };
+      }
+
+      // Lowercase to make value consistent no matter what user inputs
+      _type = _type.toLowerCase();
+
+      var validType = function( type ) {
+        return ( [ "like", "like-box", "activity", "facepile", "live-stream", "send", "comments" ].indexOf( type ) > -1 );
+      };
+
+      // Checks if type is valid
+      if ( !validType( _type ) ) {
+        throw new Error( "Facebook plugin type was invalid." );
+      }
+
+      options._container = document.createElement( "div" );
+      options._container.id = "facebookdiv-" + Popcorn.guid();
+      options._facebookdiv = document.createElement( "fb:" + _type );
+      options._container.appendChild( options._facebookdiv );
+
+      // All the the "types" for facebook share largely identical attributes, for loop suffices.
+      // ** Credit to Rick Waldron, it's essentially all his code in this function.
+      // activity feed uses 'site' rather than 'href'
+      var attr = _type === "activity" ? "site" : "href";
+
+      options._facebookdiv.setAttribute( attr, ( options[ attr ] || document.URL ) );
+
+      // create an array of Facebook widget attributes
+      var fbAttrs = (
+        "width height layout show_faces stream header colorscheme" +
+        " maxrows border_color recommendations font always_post_to_friends xid" +
+        " num_posts"
+      ).split(" ");
+
+      // For Each that loops through all of our attributes adding them to the divs properties
+      Popcorn.forEach( fbAttrs, function( attr ) {
+        // Test for null/undef. Allows 0, false & ""
+        if ( options[ attr ] != null ) {
+          options._facebookdiv.setAttribute( attr, options[ attr ] );
+        }
+      });
+
+      // Checks if the plugins target container exists
+      if ( !target && Popcorn.plugin.debug ) {
+        throw new Error( "Facebook target container doesn't exist" );
+      }
+      target && target.appendChild( options._container );
+    },
+    /**
+    * @member facebook
+    * The start function will be executed when the currentTime
+    * of the video reaches the start time provided by the
+    * options variable
+    */
+    start: function( event, options ){
+      options._container.style.display = "";
+    },
+    /**
+    * @member facebook
+    * The end function will be executed when the currentTime
+    * of the video reaches the end time provided by the
+    * options variable
+    */
+    end: function( event, options ){
+      options._container.style.display = "none";
+    },
+    _teardown: function( options ){
+      var target = document.getElementById( options.target );
+      target && target.removeChild( options._container );
+    }
+  });
+
+})( Popcorn, this );
+
+// PLUGIN: Google Maps
+var googleCallback;
+(function ( Popcorn ) {
+
+  var i = 1,
+    _mapFired = false,
+    _mapLoaded = false,
+    geocoder, loadMaps;
+  //google api callback
+  googleCallback = function ( data ) {
+    // ensure all of the maps functions needed are loaded
+    // before setting _maploaded to true
+    if ( typeof google !== "undefined" && google.maps && google.maps.Geocoder && google.maps.LatLng ) {
+      geocoder = new google.maps.Geocoder();
+      _mapLoaded = true;
+    } else {
+      setTimeout(function () {
+        googleCallback( data );
+      }, 1);
+    }
+  };
+  // function that loads the google api
+  loadMaps = function () {
+    // for some reason the Google Map API adds content to the body
+    if ( document.body ) {
+      _mapFired = true;
+      Popcorn.getScript( "//maps.google.com/maps/api/js?sensor=false&callback=googleCallback" );
+    } else {
+      setTimeout(function () {
+        loadMaps();
+      }, 1);
+    }
+  };
+
+  /**
+   * googlemap popcorn plug-in
+   * Adds a map to the target div centered on the location specified by the user
+   * Options parameter will need a start, end, target, type, zoom, lat and lng, and location
+   * -Start is the time that you want this plug-in to execute
+   * -End is the time that you want this plug-in to stop executing
+   * -Target is the id of the DOM element that you want the map to appear in. This element must be in the DOM
+   * -Type [optional] either: HYBRID (default), ROADMAP, SATELLITE, TERRAIN, STREETVIEW
+   * -Zoom [optional] defaults to 0
+   * -Heading [optional] STREETVIEW orientation of camera in degrees relative to true north (0 north, 90 true east, ect)
+   * -Pitch [optional] STREETVIEW vertical orientation of the camera (between 1 and 3 is recommended)
+   * -Lat and Lng: the coordinates of the map must be present if location is not specified.
+   * -Location: the adress you want the map to display, must be present if lat and lng are not specified.
+   * Note: using location requires extra loading time, also not specifying both lat/lng and location will
+   * cause and error.
+   *
+   * Tweening works using the following specifications:
+   * -location is the start point when using an auto generated route
+   * -tween when used in this context is a string which specifies the end location for your route
+   * Note that both location and tween must be present when using an auto generated route, or the map will not tween
+   * -interval is the speed in which the tween will be executed, a reasonable time is 1000 ( time in milliseconds )
+   * Heading, Zoom, and Pitch streetview values are also used in tweening with the autogenerated route
+   *
+   * -tween is an array of objects, each containing data for one frame of a tween
+   * -position is an object with has two paramaters, lat and lng, both which are mandatory for a tween to work
+   * -pov is an object which houses heading, pitch, and zoom paramters, which are all optional, if undefined, these values default to 0
+   * -interval is the speed in which the tween will be executed, a reasonable time is 1000 ( time in milliseconds )
+   *
+   * @param {Object} options
+   *
+   * Example:
+   var p = Popcorn("#video")
+   .googlemap({
+   start: 5, // seconds
+   end: 15, // seconds
+   type: "ROADMAP",
+   target: "map",
+   lat: 43.665429,
+   lng: -79.403323
+   } )
+   *
+   */
+  Popcorn.plugin( "googlemap", function ( options ) {
+    var newdiv, map, location,
+        target = document.getElementById( options.target );
+
+    // if this is the firest time running the plugins
+    // call the function that gets the sctipt
+    if ( !_mapFired ) {
+      loadMaps();
+    }
+
+    // create a new div this way anything in the target div is left intact
+    // this is later passed on to the maps api
+    newdiv = document.createElement( "div" );
+    newdiv.id = "actualmap" + i;
+    newdiv.style.width = "100%";
+    newdiv.style.height = "100%";
+    i++;
+
+    // ensure the target container the user chose exists
+    if ( !target && Popcorn.plugin.debug ) {
+      throw new Error( "target container doesn't exist" );
+    }
+    target && target.appendChild( newdiv );
+
+    // ensure that google maps and its functions are loaded
+    // before setting up the map parameters
+    var isMapReady = function () {
+      if ( _mapLoaded ) {
+        if ( options.location ) {
+          // calls an anonymous google function called on separate thread
+          geocoder.geocode({
+            "address": options.location
+          }, function ( results, status ) {
+            if ( status === google.maps.GeocoderStatus.OK ) {
+              options.lat = results[ 0 ].geometry.location.lat();
+              options.lng = results[ 0 ].geometry.location.lng();
+              location = new google.maps.LatLng( options.lat, options.lng );
+              map = new google.maps.Map( newdiv, {
+                mapTypeId: google.maps.MapTypeId[ options.type ] || google.maps.MapTypeId.HYBRID
+              });
+              map.getDiv().style.display = "none";
+            }
+          });
+        } else {
+          location = new google.maps.LatLng( options.lat, options.lng );
+          map = new google.maps.Map( newdiv, {
+            mapTypeId: google.maps.MapTypeId[ options.type ] || google.maps.MapTypeId.HYBRID
+          });
+          map.getDiv().style.display = "none";
+        }
+      } else {
+          setTimeout(function () {
+            isMapReady();
+          }, 5);
+        }
+      };
+
+    isMapReady();
+
+    return {
+      /**
+       * @member webpage
+       * The start function will be executed when the currentTime
+       * of the video reaches the start time provided by the
+       * options variable
+       */
+      start: function( event, options ) {
+        var that = this,
+            sView;
+
+        // ensure the map has been initialized in the setup function above
+        var isMapSetup = function() {
+          if ( map ) {
+            map.getDiv().style.display = "block";
+            // reset the location and zoom just in case the user plaid with the map
+            google.maps.event.trigger( map, "resize" );
+            map.setCenter( location );
+
+            // make sure options.zoom is a number
+            if ( options.zoom && typeof options.zoom !== "number" ) {
+              options.zoom = +options.zoom;
+            }
+
+            options.zoom = options.zoom || 8; // default to 8
+
+            map.setZoom( options.zoom );
+
+            //Make sure heading is a number
+            if ( options.heading && typeof options.heading !== "number" ) {
+              options.heading = +options.heading;
+            }
+            //Make sure pitch is a number
+            if ( options.pitch && typeof options.pitch !== "number" ) {
+              options.pitch = +options.pitch;
+            }
+
+            if ( options.type === "STREETVIEW" ) {
+              // Switch this map into streeview mode
+              map.setStreetView(
+              // Pass a new StreetViewPanorama instance into our map
+
+                sView = new google.maps.StreetViewPanorama( newdiv, {
+                  position: location,
+                  pov: {
+                    heading: options.heading = options.heading || 0,
+                    pitch: options.pitch = options.pitch || 0,
+                    zoom: options.zoom
+                  }
+                })
+              );
+
+              //  Function to handle tweening using a set timeout
+              var tween = function( rM, t ) {
+
+                var computeHeading = google.maps.geometry.spherical.computeHeading;
+                setTimeout(function() {
+
+                  var current_time = that.media.currentTime;
+
+                  //  Checks whether this is a generated route or not
+                  if ( typeof options.tween === "object" ) {
+
+                    for ( var i = 0, m = rM.length; i < m; i++ ) {
+
+                      var waypoint = rM[ i ];
+
+                      //  Checks if this position along the tween should be displayed or not
+                      if ( current_time >= ( waypoint.interval * ( i + 1 ) ) / 1000 &&
+                         ( current_time <= ( waypoint.interval * ( i + 2 ) ) / 1000 ||
+                           current_time >= waypoint.interval * ( m ) / 1000 ) ) {
+
+                        sView3.setPosition( new google.maps.LatLng( waypoint.position.lat, waypoint.position.lng ) );
+
+                        sView3.setPov({
+                          heading: waypoint.pov.heading || computeHeading( waypoint, rM[ i + 1 ] ) || 0,
+                          zoom: waypoint.pov.zoom || 0,
+                          pitch: waypoint.pov.pitch || 0
+                        });
+                      }
+                    }
+
+                    //  Calls the tween function again at the interval set by the user
+                    tween( rM, rM[ 0 ].interval );
+                  } else {
+
+                    for ( var k = 0, l = rM.length; k < l; k++ ) {
+
+                      var interval = options.interval;
+
+                      if( current_time >= (interval * ( k + 1 ) ) / 1000 &&
+                        ( current_time <= (interval * ( k + 2 ) ) / 1000 ||
+                          current_time >= interval * ( l ) / 1000 ) ) {
+
+                        sView2.setPov({
+                          heading: computeHeading( rM[ k ], rM[ k + 1 ] ) || 0,
+                          zoom: options.zoom,
+                          pitch: options.pitch || 0
+                        });
+                        sView2.setPosition( checkpoints[ k ] );
+                      }
+                    }
+
+                    tween( checkpoints, options.interval );
+                  }
+                }, t );
+              };
+
+              //  Determines if we should use hardcoded values ( using options.tween ),
+              //  or if we should use a start and end location and let google generate
+              //  the route for us
+              if ( options.location && typeof options.tween === "string" ) {
+
+              //  Creating another variable to hold the streetview map for tweening,
+              //  Doing this because if there was more then one streetview map, the tweening would sometimes appear in other maps
+              var sView2 = sView;
+
+                //  Create an array to store all the lat/lang values along our route
+                var checkpoints = [];
+
+                //  Creates a new direction service, later used to create a route
+                var directionsService = new google.maps.DirectionsService();
+
+                //  Creates a new direction renderer using the current map
+                //  This enables us to access all of the route data that is returned to us
+                var directionsDisplay = new google.maps.DirectionsRenderer( sView2 );
+
+                var request = {
+                  origin: options.location,
+                  destination: options.tween,
+                  travelMode: google.maps.TravelMode.DRIVING
+                };
+
+                //  Create the route using the direction service and renderer
+                directionsService.route( request, function( response, status ) {
+
+                  if ( status == google.maps.DirectionsStatus.OK ) {
+                    directionsDisplay.setDirections( response );
+                    showSteps( response, that );
+                  }
+
+                });
+
+                var showSteps = function ( directionResult, that ) {
+
+                  //  Push new google map lat and lng values into an array from our list of lat and lng values
+                  var routes = directionResult.routes[ 0 ].overview_path;
+                  for ( var j = 0, k = routes.length; j < k; j++ ) {
+                    checkpoints.push( new google.maps.LatLng( routes[ j ].lat(), routes[ j ].lng() ) );
+                  }
+
+                  //  Check to make sure the interval exists, if not, set to a default of 1000
+                  options.interval = options.interval || 1000;
+                  tween( checkpoints, 10 );
+
+                };
+              } else if ( typeof options.tween === "object" ) {
+
+                //  Same as the above to stop streetview maps from overflowing into one another
+                var sView3 = sView;
+
+                for ( var i = 0, l = options.tween.length; i < l; i++ ) {
+
+                  //  Make sure interval exists, if not, set to 1000
+                  options.tween[ i ].interval = options.tween[ i ].interval || 1000;
+                  tween( options.tween, 10 );
+                }
+              }
+            }
+          } else {
+            setTimeout(function () {
+              isMapSetup();
+            }, 13);
+          }
+        };
+        isMapSetup();
+      },
+      /**
+       * @member webpage
+       * The end function will be executed when the currentTime
+       * of the video reaches the end time provided by the
+       * options variable
+       */
+      end: function ( event, options ) {
+        // if the map exists hide it do not delete the map just in
+        // case the user seeks back to time b/w start and end
+        if ( map ) {
+          map.getDiv().style.display = "none";
+        }
+      },
+      _teardown: function ( options ) {
+
+        var target = document.getElementById( options.target );
+
+        // the map must be manually removed
+        target && target.removeChild( newdiv );
+        newdiv = map = location = null;
+      }
+    };
+  }, {
+    about: {
+      name: "Popcorn Google Map Plugin",
+      version: "0.1",
+      author: "@annasob",
+      website: "annasob.wordpress.com"
+    },
+    options: {
+      start: {
+        elem: "input",
+        type: "text",
+        label: "In"
+      },
+      end: {
+        elem: "input",
+        type: "text",
+        label: "Out"
+      },
+      target: "map-container",
+      type: {
+        elem: "select",
+        options: [ "ROADMAP", "SATELLITE", "STREETVIEW", "HYBRID", "TERRAIN" ],
+        label: "Type"
+      },
+      zoom: {
+        elem: "input",
+        type: "text",
+        label: "Zoom"
+      },
+      lat: {
+        elem: "input",
+        type: "text",
+        label: "Lat"
+      },
+      lng: {
+        elem: "input",
+        type: "text",
+        label: "Lng"
+      },
+      location: {
+        elem: "input",
+        type: "text",
+        label: "Location"
+      },
+      heading: {
+        elem: "input",
+        type: "text",
+        label: "Heading"
+      },
+      pitch: {
+        elem: "input",
+        type: "text",
+        label: "Pitch"
+      }
+    }
+  });
+})( Popcorn );
+
+// PLUGIN: IMAGE
+
+(function ( Popcorn ) {
+
+/**
+ * Images popcorn plug-in
+ * Shows an image element
+ * Options parameter will need a start, end, href, target and src.
+ * Start is the time that you want this plug-in to execute
+ * End is the time that you want this plug-in to stop executing
+ * href is the url of the destination of a link - optional
+ * Target is the id of the document element that the iframe needs to be attached to,
+ * this target element must exist on the DOM
+ * Src is the url of the image that you want to display
+ * text is the overlayed text on the image - optional
+ *
+ * @param {Object} options
+ *
+ * Example:
+   var p = Popcorn('#video')
+      .image({
+        start: 5, // seconds
+        end: 15, // seconds
+        href: 'http://www.drumbeat.org/',
+        src: 'http://www.drumbeat.org/sites/default/files/domain-2/drumbeat_logo.png',
+        text: 'DRUMBEAT',
+        target: 'imagediv'
+      } )
+ *
+ */
+  Popcorn.plugin( "image", {
+      manifest: {
+        about: {
+          name: "Popcorn image Plugin",
+          version: "0.1",
+          author: "Scott Downe",
+          website: "http://scottdowne.wordpress.com/"
+        },
+        options: {
+          start: {
+            elem: "input",
+            type: "number",
+            label: "In"
+          },
+          end: {
+            elem: "input",
+            type: "number",
+            label: "Out"
+          },
+          href: {
+            elem: "input",
+            type: "url",
+            label: "Link URL"
+          },
+          target: "image-container",
+          src: {
+            elem: "input",
+            type: "url",
+            label: "Source URL"
+          },
+          text: {
+            elem: "input",
+            type: "text",
+            label: "TEXT"
+          }
+        }
+      },
+      _setup: function( options ) {
+        var img = document.createElement( "img" ),
+            target = document.getElementById( options.target );
+
+        options.link = document.createElement( "a" );
+        options.link.style.position = "relative";
+        options.link.style.textDecoration = "none";
+
+
+        if ( !target && Popcorn.plugin.debug ) {
+          throw new Error( "target container doesn't exist" );
+        }
+        // add the widget's div to the target div
+        target && target.appendChild( options.link );
+
+        img.addEventListener( "load", function() {
+
+          // borders look really bad, if someone wants it they can put it on their div target
+          img.style.borderStyle = "none";
+
+          if ( options.href ) {
+            options.link.href = options.href;
+          }
+
+          options.link.target = "_blank";
+
+          var fontHeight = ( img.height / 12 ) + "px",
+              divText = document.createElement( "div" );
+
+          Popcorn.extend( divText.style, {
+
+            color: "black",
+            fontSize: fontHeight,
+            fontWeight: "bold",
+            position: "relative",
+            textAlign: "center",
+            width: img.width + "px",
+            zIndex: "10"
+          });
+
+          divText.innerHTML = options.text || "";
+          options.link.appendChild( divText );
+          options.link.appendChild( img );
+          divText.style.top = ( img.height / 2 ) - ( divText.offsetHeight / 2 ) + "px";
+          options.link.style.display = "none";
+        }, false );
+
+        img.src = options.src;
+      },
+
+      /**
+       * @member image
+       * The start function will be executed when the currentTime
+       * of the video  reaches the start time provided by the
+       * options variable
+       */
+      start: function( event, options ) {
+        options.link.style.display = "block";
+      },
+      /**
+       * @member image
+       * The end function will be executed when the currentTime
+       * of the video  reaches the end time provided by the
+       * options variable
+       */
+      end: function( event, options ) {
+        options.link.style.display = "none";
+      },
+      _teardown: function( options ) {
+        document.getElementById( options.target ) && document.getElementById( options.target ).removeChild( options.link );
+      }
+  });
+})( Popcorn );
+// PLUGIN: GML
+(function( Popcorn ) {
+
+  var gmlPlayer = function( $p ) {
+
+        var _stroke = 0,
+            onPt = 0,
+            onStroke = 0,
+            x = null,
+            y = null,
+            rotation = false,
+            strokes = 0,
+            play = function() {},
+            reset = function() {
+
+              $p.background( 0 );
+              onPt = onStroke = 0;
+              x = y = null;
+            },
+            drawLine = function( x, y, x2, y2 ) {
+
+              var _x, _y, _x2, _y2;
+
+              if ( rotation ) {
+
+                _x  = y * $p.height;
+                _y  = $p.width - ( x * $p.width );
+                _x2 = y2 * $p.height;
+                _y2 = $p.width - ( x2 * $p.width );
+              } else {
+
+                _x  = x * $p.width;
+                _y  = y * $p.height;
+                _x2 = x2 * $p.width;
+                _y2 = y2 * $p.height;
+              }
+
+              $p.stroke( 0 );
+              $p.strokeWeight( 13 );
+              $p.strokeCap( $p.SQUARE );
+              $p.line( _x, _y, _x2, _y2 );
+              $p.stroke( 255 );
+              $p.strokeWeight( 12 );
+              $p.strokeCap( $p.ROUND );
+              $p.line( _x, _y, _x2, _y2 );
+            },
+            seek = function( point ) {
+
+              ( point < onPt ) && reset();
+
+              while ( onPt <= point ) {
+
+                if ( !strokes ) {
+                  return;
+                }
+
+                _stroke = strokes[ onStroke ] || strokes;
+                var pt = _stroke.pt[ onPt ],
+                    p = onPt;
+                x != null && drawLine( x, y, pt.x, pt.y );
+
+                x = pt.x;
+                y = pt.y;
+                ( onPt === p ) && onPt++;
+              }
+            };
+
+        $p.draw = function() {
+
+          play();
+        };
+        $p.setup = function() {};
+        $p.construct = function( media, data, options ) {
+
+          var dataReady = function() {
+
+            if ( data ) {
+
+              strokes = data.gml.tag.drawing.stroke;
+
+              var drawingDur = ( options.end - options.start ) / ( strokes.pt || (function( strokes ) {
+
+                var rStrokes = [];
+
+                for ( var i = 0, sl = strokes.length; i < sl; i++ ) {
+
+                  rStrokes = rStrokes.concat( strokes[ i ].pt );
+                }
+
+                return rStrokes;
+              })( strokes ) ).length;
+
+              var tag = data.gml.tag,
+                  app_name =  tag.header && tag.header.client && tag.header.client.name;
+
+              rotation = app_name === "Graffiti Analysis 2.0: DustTag" ||
+                         app_name === "DustTag: Graffiti Analysis 2.0" ||
+                         app_name === "Fat Tag - Katsu Edition";
+
+              play = function() {
+
+                if ( media.currentTime < options.endDrawing ) {
+
+                  seek( ( media.currentTime - options.start ) / drawingDur );
+                }
+              };
+
+              return;
+            }
+
+            setTimeout( dataReady, 5 );
+          };
+
+          $p.size( 640, 640 );
+          $p.frameRate( 60 );
+          $p.smooth();
+          reset();
+          $p.noLoop();
+
+          dataReady();
+        };
+      };
+
+  /**
+   * Grafiti markup Language (GML) popcorn plug-in
+   * Renders a GML tag inside an HTML element
+   * Options parameter will need a mandatory start, end, target, gmltag.
+   * Optional parameters: none.
+   * Start is the time that you want this plug-in to execute
+   * End is the time that you want this plug-in to stop executing
+   * Target is the id of the document element that you wish to render the grafiti in
+   * gmltag is the numerical reference to a gml tag via 000000book.com
+   * @param {Object} options
+   *
+   * Example:
+     var p = Popcorn('#video')
+       .gml({
+         start: 0, // seconds
+         end: 5, // seconds
+         gmltag: '29582',
+         target: 'gmldiv'
+       });
+   *
+   */
+  Popcorn.plugin( "gml" , {
+
+    _setup: function( options ) {
+
+      var self = this,
+          target = document.getElementById( options.target );
+
+      options.endDrawing = options.endDrawing || options.end;
+
+      // create a canvas to put in the target div
+      options.container = document.createElement( "canvas" );
+
+      options.container.style.display = "none";
+      options.container.setAttribute( "id", "canvas" + options.gmltag );
+
+      if ( !target && Popcorn.plugin.debug ) {
+        throw new Error( "target container doesn't exist" );
+      }
+      target && target.appendChild( options.container );
+
+      var scriptReady = function() {
+        Popcorn.getJSONP( "//000000book.com/data/" + options.gmltag + ".json?callback=", function( data ) {
+
+          options.pjsInstance = new Processing( options.container, gmlPlayer );
+          options.pjsInstance.construct( self.media, data, options );
+          options._running && options.pjsInstance.loop();
+        }, false );
+      };
+
+      if ( !window.Processing ) {
+
+        Popcorn.getScript( "//processingjs.org/content/download/processing-js-1.3.0/processing-1.3.0.min.js", scriptReady );
+      } else {
+
+        scriptReady();
+      }
+
+    },
+    /**
+     * @member gml
+     * The start function will be executed when the currentTime
+     * of the video  reaches the start time provided by the
+     * options variable
+     */
+    start: function( event, options ) {
+
+      options.pjsInstance && options.pjsInstance.loop();
+      options.container.style.display = "block";
+    },
+    /**
+     * @member gml
+     * The end function will be executed when the currentTime
+     * of the video  reaches the end time provided by the
+     * options variable
+     */
+    end: function( event, options ) {
+
+      options.pjsInstance && options.pjsInstance.noLoop();
+      options.container.style.display = "none";
+    },
+    _teardown: function( options ) {
+
+      options.pjsInstance && options.pjsInstance.exit();
+      document.getElementById( options.target ) && document.getElementById( options.target ).removeChild( options.container );
+    }
+  });
+})( Popcorn );
+// PLUGIN: LASTFM
+
+(function ( Popcorn ) {
+
+  var _artists = {},
+      lastFMcallback = function( data ) {
+        if ( data.artist ) {
+          var htmlString = "";
+
+          htmlString = "<h3>" + data.artist.name + "</h3>";
+          htmlString += "<a href='" + data.artist.url + "' target='_blank' style='float:left;margin:0 10px 0 0;'><img src='" + data.artist.image[ 2 ][ "#text"] + "' alt=''></a>";
+          htmlString += "<p>" + data.artist.bio.summary + "</p>";
+          htmlString += "<hr /><p><h4>Tags</h4><ul>";
+
+          Popcorn.forEach( data.artist.tags.tag, function( val, i) {
+            htmlString += "<li><a href='" + val.url + "'>" + val.name + "</a></li>";
+          });
+
+          htmlString += "</ul></p>";
+          htmlString += "<hr /><p><h4>Similar</h4><ul>";
+
+          Popcorn.forEach( data.artist.similar.artist, function( val, i) {
+            htmlString += "<li><a href='" + val.url + "'>" + val.name + "</a></li>";
+          });
+
+          htmlString += "</ul></p>";
+
+          _artists[ data.artist.name.toLowerCase() ].htmlString = htmlString;
+        }
+      };
+
+  /**
+   * LastFM popcorn plug-in
+   * Appends information about a LastFM artist to an element on the page.
+   * Options parameter will need a start, end, target, artist and apikey.
+   * Start is the time that you want this plug-in to execute
+   * End is the time that you want this plug-in to stop executing
+   * Artist is the name of who's LastFM information you wish to show
+   * Target is the id of the document element that the images are
+   *  appended to, this target element must exist on the DOM
+   * ApiKey is the API key registered with LastFM for use with their API
+   *
+   * @param {Object} options
+   *
+   * Example:
+     var p = Popcorn('#video')
+        .lastfm({
+          start:          5,                                    // seconds, mandatory
+          end:            15,                                   // seconds, mandatory
+          artist:         'yacht',                              // mandatory
+          target:         'lastfmdiv',                          // mandatory
+          apikey:         '1234567890abcdef1234567890abcdef'    // mandatory
+        } )
+   *
+   */
+  Popcorn.plugin( "lastfm" , (function(){
+
+
+    return {
+
+      _setup: function( options ) {
+        options._container = document.createElement( "div" );
+        options._container.style.display = "none";
+        options._container.innerHTML = "";
+        options.artist = options.artist && options.artist.toLowerCase() || "";
+
+        var target = document.getElementById( options.target );
+
+        if ( !target && Popcorn.plugin.debug ) {
+          throw new Error( "target container doesn't exist" );
+        }
+        target && target.appendChild( options._container );
+
+        if ( !_artists[ options.artist ] ) {
+
+          _artists[ options.artist ] = {
+            count: 0,
+            htmlString: "Unknown Artist"
+          };
+          Popcorn.getJSONP( "//ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + options.artist + "&api_key=" + options.apikey + "&format=json&callback=lastFMcallback", lastFMcallback, false );
+        }
+        _artists[ options.artist ].count++;
+
+      },
+      /**
+       * @member LastFM
+       * The start function will be executed when the currentTime
+       * of the video  reaches the start time provided by the
+       * options variable
+       */
+      start: function( event, options ) {
+        options._container.innerHTML = _artists[ options.artist ].htmlString;
+        options._container.style.display = "inline";
+      },
+      /**
+       * @member LastFM
+       * The end function will be executed when the currentTime
+       * of the video  reaches the end time provided by the
+       * options variable
+       */
+      end: function( event, options ) {
+        options._container.style.display = "none";
+        options._container.innerHTML = "";
+      },
+      _teardown: function( options ) {
+        // cleaning possible reference to _artist array;
+        --_artists[ options.artist ].count || delete _artists[ options.artist ];
+        document.getElementById( options.target ) && document.getElementById( options.target ).removeChild( options._container );
+      }
+    };
+  })(),
+  {
+    about:{
+      name: "Popcorn LastFM Plugin",
+      version: "0.1",
+      author: "Steven Weerdenburg",
+      website: "http://sweerdenburg.wordpress.com/"
+    },
+    options: {
+      start: {
+        elem: "input",
+        type: "text",
+        label: "In"
+      },
+      end: {
+        elem: "input",
+        type: "text",
+        label: "Out"
+      },
+      target: "lastfm-container",
+      artist: {
+        elem: "input",
+        type: "text",
+        label: "Artist"
+      }
+    }
+  });
+
+})( Popcorn );
+// PLUGIN: lowerthird
+(function ( Popcorn ) {
+
+  /**
+   * Lower Third popcorn plug-in
+   * Displays information about a speaker over the video, or in the target div
+   * Options parameter will need a start, and end.
+   * Optional parameters are target, salutation, name and role.
+   * Start is the time that you want this plug-in to execute
+   * End is the time that you want this plug-in to stop executing
+   * Target is the id of the document element that the content is
+   *  appended to, this target element must exist on the DOM
+   * salutation is the speaker's Mr. Ms. Dr. etc.
+   * name is the speaker's name.
+   * role is information about the speaker, example Engineer.
+   *
+   * @param {Object} options
+   *
+   * Example:
+     var p = Popcorn('#video')
+        .lowerthird({
+          start:          5,                 // seconds, mandatory
+          end:            15,                // seconds, mandatory
+          salutation:     'Mr',              // optional
+          name:           'Scott Downe',     // optional
+          role:           'Programmer',      // optional
+          target:         'subtitlediv'      // optional
+        } )
+   *
+   */
+
+  Popcorn.plugin( "lowerthird", {
+
+      manifest: {
+        about:{
+          name: "Popcorn lowerthird Plugin",
+          version: "0.1",
+          author: "Scott Downe",
+          website: "http://scottdowne.wordpress.com/"
+        },
+        options:{
+          start: {
+            elem: "input",
+            type: "text",
+            label: "In"
+          },
+          end: {
+            elem: "input",
+            type: "text",
+            label: "Out"
+          },
+          target: "lowerthird-container",
+          salutation : {
+            elem: "input",
+            type: "text",
+            label: "Text"
+          },
+          name: {
+            elem: "input",
+            type: "text",
+            label: "Text"
+          },
+          role: {
+            elem: "input",
+            type: "text",
+            label: "Text"
+          }
+        }
+      },
+
+      _setup: function( options ) {
+
+        var target = document.getElementById( options.target );
+
+        // Creates a div for all Lower Thirds to use
+        if ( !this.container ) {
+          this.container = document.createElement( "div" );
+
+          this.container.style.position = "absolute";
+          this.container.style.color = "white";
+          this.container.style.textShadow = "black 2px 2px 6px";
+          this.container.style.fontSize = "24px";
+          this.container.style.fontWeight = "bold";
+          this.container.style.paddingLeft = "40px";
+
+          // the video element must have height and width defined
+          this.container.style.width = this.video.offsetWidth + "px";
+          this.container.style.left = this.position().left + "px";
+
+          this.video.parentNode.appendChild( this.container );
+        }
+
+        // if a target is specified, use that
+        if ( options.target && options.target !== "lowerthird-container" ) {
+          options.container = document.createElement( "div" );
+          if ( !target && Popcorn.plugin.debug ) {
+            throw new Error( "target container doesn't exist" );
+          }
+          target && target.appendChild( options.container );
+        // use shared default container
+        } else {
+          options.container = this.container;
+        }
+
+      },
+      /**
+       * @member lowerthird
+       * The start function will be executed when the currentTime
+       * of the video reaches the start time provided by the
+       * options variable
+       */
+      start: function(event, options){
+        options.container.innerHTML = ( options.salutation ? options.salutation + " " : "" ) + options.name + ( options.role ? "<br />" + options.role : "" );
+        this.container.style.top = this.position().top + this.video.offsetHeight - ( 40 + this.container.offsetHeight ) + "px";
+      },
+      /**
+       * @member lowerthird
+       * The end function will be executed when the currentTime
+       * of the video reaches the end time provided by the
+       * options variable
+       */
+      end: function( event, options ) {
+        options.container.innerHTML = "";
+      }
+
+  });
+})( Popcorn );
+// PLUGIN: Google Feed
+(function ( Popcorn ) {
+
+  var i = 1,
+      scriptLoaded  = false;
+
+  /**
+   * googlefeed popcorn plug-in
+   * Adds a feed from the specified blog url at the target div
+   * Options parameter will need a start, end, target, url and title
+   * -Start is the time that you want this plug-in to execute
+   * -End is the time that you want this plug-in to stop executing
+   * -Target is the id of the DOM element that you want the map to appear in. This element must be in the DOM
+   * -Url is the url of the blog's feed you are trying to access
+   * -Title is the title of the blog you want displayed above the feed
+   * -Orientation is the orientation of the blog, accepts either Horizontal or Vertical, defaults to Vertical
+   * @param {Object} options
+   *
+   * Example:
+    var p = Popcorn("#video")
+      .googlefeed({
+       start: 5, // seconds
+       end: 15, // seconds
+       target: "map",
+       url: "http://zenit.senecac.on.ca/~chris.tyler/planet/rss20.xml",
+       title: "Planet Feed"
+    } )
+  *
+  */
+
+  Popcorn.plugin( "googlefeed", function( options ) {
+
+    var dynamicFeedLoad = function() {
+      var dontLoad = false,
+          k = 0,
+          links = document.getElementsByTagName( "link" ),
+          len = links.length,
+          head = document.head || document.getElementsByTagName( "head" )[ 0 ],
+          css = document.createElement( "link" ),
+          resource = "//www.google.com/uds/solutions/dynamicfeed/gfdynamicfeedcontrol.";
+
+      if ( !window.GFdynamicFeedControl ) {
+
+        Popcorn.getScript( resource + "js", function() {
+          scriptLoaded = true;
+        });
+
+      } else {
+        scriptLoaded = true;
+      }
+
+      //  Checking if the css file is already included
+      for ( ; k < len; k++ ){
+        if ( links[ k ].href === resource + "css" ) {
+          dontLoad = true;
+        }
+      }
+
+      if ( !dontLoad ) {
+        css.type = "text/css";
+        css.rel = "stylesheet";
+        css.href =  resource + "css";
+        head.insertBefore( css, head.firstChild );
+      }
+    };
+
+    if ( !window.google ) {
+
+      Popcorn.getScript( "//www.google.com/jsapi", function() {
+
+        google.load( "feeds", "1", {
+
+          callback: function () {
+
+            dynamicFeedLoad();
+          }
+        });
+      });
+
+    } else {
+      dynamicFeedLoad();
+    }
+
+    // create a new div and append it to the parent div so nothing
+    // that already exists in the parent div gets overwritten
+    var newdiv = document.createElement( "div" ),
+        target = document.getElementById( options.target ),
+    initialize = function() {
+      //ensure that the script has been loaded
+      if ( !scriptLoaded ) {
+        setTimeout( function () {
+          initialize();
+        }, 5 );
+      } else {
+        // Create the feed control using the user entered url and title
+        options.feed = new GFdynamicFeedControl( options.url, newdiv, {
+          vertical: options.orientation.toLowerCase() === "vertical" ? true : false,
+          horizontal: options.orientation.toLowerCase() === "horizontal" ? true : false,
+          title: options.title = options.title || "Blog"
+        });
+      }
+    };
+
+    // Default to vertical orientation if empty or incorrect input
+    if( !options.orientation || ( options.orientation.toLowerCase() !== "vertical" &&
+      options.orientation.toLowerCase() !== "horizontal" ) ) {
+      options.orientation = "vertical";
+    }
+
+    newdiv.style.display = "none";
+    newdiv.id = "_feed" + i;
+    newdiv.style.width = "100%";
+    newdiv.style.height = "100%";
+    i++;
+
+    if ( !target && Popcorn.plugin.debug ) {
+      throw new Error( "target container doesn't exist" );
+    }
+    target && target.appendChild( newdiv );
+
+    initialize();
+
+    return {
+      /**
+       * @member webpage
+       * The start function will be executed when the currentTime
+       * of the video reaches the start time provided by the
+       * options variable
+       */
+      start: function( event, options ){
+        newdiv.setAttribute( "style", "display:inline" );
+      },
+      /**
+       * @member webpage
+       * The end function will be executed when the currentTime
+       * of the video reaches the end time provided by the
+       * options variable
+       */
+      end: function( event, options ){
+        newdiv.setAttribute( "style", "display:none" );
+      },
+      _teardown: function( options ) {
+        document.getElementById( options.target ) && document.getElementById( options.target ).removeChild( newdiv );
+        delete options.feed;
+      }
+    };
+  },
+  {
+    about: {
+      name: "Popcorn Google Feed Plugin",
+      version: "0.1",
+      author: "David Seifried",
+      website: "dseifried.wordpress.com"
+    },
+    options: {
+      start: {
+        elem: "input",
+        type: "text",
+        label: "In"
+      },
+      end: {
+        elem: "input",
+        type: "text",
+        label: "Out"
+      },
+      target: "feed-container",
+      url: {
+        elem: "input",
+        type: "url",
+        label: "url"
+      },
+      title: {
+        elem: "input",
+        type: "text",
+        label: "title"
+      },
+      orientation: {
+        elem: "select",
+        options: [ "Vertical", "Horizontal" ],
+        label: "orientation"
+      }
+    }
+  });
+})( Popcorn );
+// PLUGIN: Subtitle
+
+(function ( Popcorn ) {
+
+  var i = 0,
+      createDefaultContainer = function( context, id ) {
+
+        var ctxContainer = context.container = document.createElement( "div" ),
+            style = ctxContainer.style,
+            media = context.media;
+
+        var updatePosition = function() {
+          var position = context.position();
+          // the video element must have height and width defined
+          style.fontSize = "18px";
+          style.width = media.offsetWidth + "px";
+          style.top = position.top  + media.offsetHeight - ctxContainer.offsetHeight - 40 + "px";
+          style.left = position.left + "px";
+
+          setTimeout( updatePosition, 10 );
+        };
+
+        ctxContainer.id = id || Popcorn.guid();
+        style.position = "absolute";
+        style.color = "white";
+        style.textShadow = "black 2px 2px 6px";
+        style.fontWeight = "bold";
+        style.textAlign = "center";
+
+        updatePosition();
+
+        context.media.parentNode.appendChild( ctxContainer );
+
+        return ctxContainer;
+      };
+
+  /**
+   * Subtitle popcorn plug-in
+   * Displays a subtitle over the video, or in the target div
+   * Options parameter will need a start, and end.
+   * Optional parameters are target and text.
+   * Start is the time that you want this plug-in to execute
+   * End is the time that you want this plug-in to stop executing
+   * Target is the id of the document element that the content is
+   *  appended to, this target element must exist on the DOM
+   * Text is the text of the subtitle you want to display.
+   *
+   * @param {Object} options
+   *
+   * Example:
+     var p = Popcorn('#video')
+        .subtitle({
+          start:            5,                 // seconds, mandatory
+          end:              15,                // seconds, mandatory
+          text:             'Hellow world',    // optional
+          target:           'subtitlediv',     // optional
+        } )
+   *
+   */
+
+  Popcorn.plugin( "subtitle" , {
+
+      manifest: {
+        about: {
+          name: "Popcorn Subtitle Plugin",
+          version: "0.1",
+          author: "Scott Downe",
+          website: "http://scottdowne.wordpress.com/"
+        },
+        options: {
+          start: {
+            elem: "input",
+            type: "text",
+            label: "In"
+          },
+          end: {
+            elem: "input",
+            type: "text",
+            label: "Out"
+          },
+          target: "subtitle-container",
+          text: {
+            elem: "input",
+            type: "text",
+            label: "Text"
+          }
+        }
+      },
+
+      _setup: function( options ) {
+        var newdiv = document.createElement( "div" );
+
+        newdiv.id = "subtitle-" + i++;
+        newdiv.style.display = "none";
+
+        // Creates a div for all subtitles to use
+        ( !this.container && ( !options.target || options.target === "subtitle-container" ) ) &&
+          createDefaultContainer( this );
+
+        // if a target is specified, use that
+        if ( options.target && options.target !== "subtitle-container" ) {
+          // In case the target doesn't exist in the DOM
+          options.container = document.getElementById( options.target ) || createDefaultContainer( this, options.target );
+        } else {
+          // use shared default container
+          options.container = this.container;
+        }
+
+        document.getElementById( options.container.id ) && document.getElementById( options.container.id ).appendChild( newdiv );
+        options.innerContainer = newdiv;
+
+        options.showSubtitle = function() {
+          options.innerContainer.innerHTML = options.text || "";
+        };
+      },
+      /**
+       * @member subtitle
+       * The start function will be executed when the currentTime
+       * of the video  reaches the start time provided by the
+       * options variable
+       */
+      start: function( event, options ){
+        options.innerContainer.style.display = "inline";
+        options.showSubtitle( options, options.text );
+      },
+      /**
+       * @member subtitle
+       * The end function will be executed when the currentTime
+       * of the video  reaches the end time provided by the
+       * options variable
+       */
+      end: function( event, options ) {
+        options.innerContainer.style.display = "none";
+        options.innerContainer.innerHTML = "";
+      },
+
+      _teardown: function ( options ) {
+        options.container.removeChild( options.innerContainer );
+      }
+
+  });
+
+})( Popcorn );
+// PLUGIN: tagthisperson
+
+(function ( Popcorn ) {
+
+  var peopleArray = [];
+  // one People object per options.target
+  var People = function() {
+    this.name = "";
+    this.contains = { };
+    this.toString = function() {
+      var r = [];
+      for ( var j in this.contains ) {
+        if ( this.contains.hasOwnProperty( j ) ) {
+          r.push( " " + this.contains[ j ] );
+        }
+      }
+      return r.toString();
+    };
+  };
+
+  /**
+   * tagthisperson popcorn plug-in
+   * Adds people's names to an element on the page.
+   * Options parameter will need a start, end, target, image and person.
+   * Start is the time that you want this plug-in to execute
+   * End is the time that you want this plug-in to stop executing
+   * Person is the name of the person who you want to tag
+   * Image is the url to the image of the person - optional
+   * href is the url to the webpage of the person - optional
+   * Target is the id of the document element that the text needs to be
+   * attached to, this target element must exist on the DOM
+   *
+   * @param {Object} options
+   *
+   * Example:
+     var p = Popcorn('#video')
+        .tagthisperson({
+          start: 5, // seconds
+          end: 15, // seconds
+          person: '@annasob',
+          image:  'http://newshour.s3.amazonaws.com/photos%2Fspeeches%2Fguests%2FRichardNSmith_thumbnail.jpg',
+          href:   'http://annasob.wordpress.com',
+          target: 'tagdiv'
+        } )
+   *
+   */
+  Popcorn.plugin( "tagthisperson" , ( function() {
+
+    return {
+
+      _setup: function( options ) {
+        var exists = false,
+            target = document.getElementById( options.target );
+
+        if ( !target && Popcorn.plugin.debug ) {
+          throw new Error( "target container doesn't exist" );
+        }
+
+        // loop through the existing objects to ensure no duplicates
+        // the idea here is to have one object per unique options.target
+        for ( var i = 0; i < peopleArray.length; i++ ) {
+          if ( peopleArray[ i ].name === options.target ) {
+            options._p = peopleArray[ i ];
+            exists = true;
+            break;
+          }
+        }
+        if ( !exists ) {
+          options._p = new People();
+          options._p.name = options.target;
+          peopleArray.push( options._p );
+        }
+      },
+      /**
+       * @member tagthisperson
+       * The start function will be executed when the currentTime
+       * of the video  reaches the start time provided by the
+       * options variable
+       */
+      start: function( event, options ){
+        options._p.contains[ options.person ] = ( options.image ) ? "<img src='" + options.image + "'/> " : "" ;
+        options._p.contains[ options.person ] += ( options.href ) ? "<a href='" + options.href + "' target='_blank'> " + options.person + "</a>" : options.person ;
+
+        document.getElementById( options.target ).innerHTML = options._p.toString();
+      },
+      /**
+       * @member tagthisperson
+       * The end function will be executed when the currentTime
+       * of the video  reaches the end time provided by the
+       * options variable
+       */
+      end: function( event, options ){
+        delete options._p.contains[ options.person ];
+
+        document.getElementById( options.target ).innerHTML = options._p.toString();
+      }
+   };
+  })(),
+  {
+    about:{
+      name: "Popcorn tagthisperson Plugin",
+      version: "0.1",
+      author: "@annasob",
+      website: "annasob.wordpress.com"
+    },
+    options:{
+      start: {
+        elem: "input",
+        type: "text",
+        label: "In"
+      },
+      end: {
+        elem: "input",
+        type: "text",
+        label: "Out"
+      },
+      target : "tagthisperson-container",
+      person: {
+        elem: "input",
+        type: "text",
+        label: "Name"
+      },
+      image: {
+        elem: "input",
+        type: "url",
+        label: "Image Src"
+      },
+      href: {
+        elem: "input",
+        type: "url",
+        label: "URL"
+      }
+    }
+  });
+
+})( Popcorn );
+// PLUGIN: TWITTER
+
+(function ( Popcorn ) {
+  var scriptLoading = false;
+
+  /**
+   * Twitter popcorn plug-in
+   * Appends a Twitter widget to an element on the page.
+   * Options parameter will need a start, end, target and source.
+   * Optional parameters are height and width.
+   * Start is the time that you want this plug-in to execute
+   * End is the time that you want this plug-in to stop executing
+   * Src is the hash tag or twitter user to get tweets from
+   * Target is the id of the document element that the images are
+   *  appended to, this target element must exist on the DOM
+   * Height is the height of the widget, defaults to 200
+   * Width is the width of the widget, defaults to 250
+   *
+   * @param {Object} options
+   *
+   * Example:
+     var p = Popcorn('#video')
+        .twitter({
+          start:          5,                // seconds, mandatory
+          end:            15,               // seconds, mandatory
+          src:            '@stevesong',     // mandatory, also accepts hash tags
+          height:         200,              // optional
+          width:          250,              // optional
+          target:         'twitterdiv'      // mandatory
+        } )
+   *
+   */
+
+  Popcorn.plugin( "twitter" , {
+
+      manifest: {
+        about: {
+          name: "Popcorn Twitter Plugin",
+          version: "0.1",
+          author: "Scott Downe",
+          website: "http://scottdowne.wordpress.com/"
+        },
+        options:{
+          start: {
+            elem: "input",
+            type: "number",
+            label: "In"
+          },
+          end: {
+            elem: "input",
+            type: "number",
+            label: "Out"
+          },
+          src: {
+            elem: "input",
+            type: "text",
+            label: "Source"
+          },
+          target: "twitter-container",
+          height: {
+            elem: "input",
+            type: "number",
+            label: "Height"
+          },
+          width: {
+            elem: "input",
+            type: "number",
+            label: "Width"
+          }
+        }
+      },
+
+      _setup: function( options ) {
+
+        if ( !window.TWTR && !scriptLoading ) {
+          scriptLoading = true;
+          Popcorn.getScript( "//widgets.twimg.com/j/2/widget.js" );
+        }
+
+        var target = document.getElementById( options.target );
+        // create the div to store the widget
+        // setup widget div that is unique per track
+        options.container = document.createElement( "div" );
+        // use this id to connect it to the widget
+        options.container.setAttribute( "id", Popcorn.guid() );
+        // display none by default
+        options.container.style.display = "none";
+
+        if ( !target && Popcorn.plugin.debug ) {
+          throw new Error( "target container doesn't exist" );
+        }
+         // add the widget's div to the target div
+        target && target.appendChild( options.container );
+
+        // setup info for the widget
+        var src = options.src || "",
+            width = options.width || 250,
+            height = options.height || 200,
+            profile = /^@/.test( src ),
+            widgetOptions = {
+              version: 2,
+              // use this id to connect it to the div
+              id: options.container.getAttribute( "id" ),
+              rpp: 30,
+              width: width,
+              height: height,
+              interval: 6000,
+              theme: {
+                shell: {
+                  background: "#ffffff",
+                  color: "#000000"
+                },
+                tweets: {
+                  background: "#ffffff",
+                  color: "#444444",
+                  links: "#1985b5"
+                }
+              },
+              features: {
+                loop: true,
+                timestamp: true,
+                avatars: true,
+                hashtags: true,
+                toptweets: true,
+                live: true,
+                scrollbar: false,
+                behavior: 'default'
+              }
+            };
+
+        // create widget
+        var isReady = function( that ) {
+          if ( window.TWTR ) {
+            if ( profile ) {
+
+              widgetOptions.type = "profile";
+
+              new TWTR.Widget( widgetOptions ).render().setUser( src ).start();
+
+            } else {
+
+              widgetOptions.type = "search";
+              widgetOptions.search = src;
+              widgetOptions.subject = src;
+
+              new TWTR.Widget( widgetOptions ).render().start();
+
+            }
+          } else {
+            setTimeout( function() {
+              isReady( that );
+            }, 1);
+          }
+        };
+
+        isReady( this );
+      },
+
+      /**
+       * @member Twitter
+       * The start function will be executed when the currentTime
+       * of the video  reaches the start time provided by the
+       * options variable
+       */
+      start: function( event, options ) {
+        options.container.style.display = "inline";
+      },
+
+      /**
+       * @member Twitter
+       * The end function will be executed when the currentTime
+       * of the video  reaches the end time provided by the
+       * options variable
+       */
+      end: function( event, options ) {
+        options.container.style.display = "none";
+      },
+      _teardown: function( options ) {
+
+        document.getElementById( options.target ) && document.getElementById( options.target ).removeChild( options.container );
+      }
+    });
+
+})( Popcorn );
+// PLUGIN: WEBPAGE
+
+(function ( Popcorn ) {
+
+  /**
+   * Webpages popcorn plug-in
+   * Creates an iframe showing a website specified by the user
+   * Options parameter will need a start, end, id, target and src.
+   * Start is the time that you want this plug-in to execute
+   * End is the time that you want this plug-in to stop executing
+   * Id is the id that you want assigned to the iframe
+   * Target is the id of the document element that the iframe needs to be attached to,
+   * this target element must exist on the DOM
+   * Src is the url of the website that you want the iframe to display
+   *
+   * @param {Object} options
+   *
+   * Example:
+     var p = Popcorn('#video')
+        .webpage({
+          id: "webpages-a",
+          start: 5, // seconds
+          end: 15, // seconds
+          src: 'http://www.webmademovies.org',
+          target: 'webpagediv'
+        } )
+   *
+   */
+  Popcorn.plugin( "webpage" , {
+    manifest: {
+      about: {
+        name: "Popcorn Webpage Plugin",
+        version: "0.1",
+        author: "@annasob",
+        website: "annasob.wordpress.com"
+      },
+      options: {
+        id: {
+          elem: "input",
+          type: "text",
+          label: "Id"
+        },
+        start: {
+          elem: "input",
+          type: "text",
+          label: "In"
+        },
+        end: {
+          elem: "input",
+          type: "text",
+          label: "Out"
+        },
+        src: {
+          elem: "input",
+          type: "url",
+          label: "Src"
+        },
+        target: "iframe-container"
+      }
+    },
+    _setup: function( options ) {
+
+      var target = document.getElementById( options.target );
+
+      // make src an iframe acceptable string
+      options.src = options.src.replace( /^(https?:)?(\/\/)?/, "//" );
+
+      // make an iframe
+      options._iframe = document.createElement( "iframe" );
+      options._iframe.setAttribute( "width", "100%" );
+      options._iframe.setAttribute( "height", "100%" );
+      options._iframe.id = options.id;
+      options._iframe.src = options.src;
+      options._iframe.style.display = "none";
+
+      if ( !target && Popcorn.plugin.debug ) {
+        throw new Error( "target container doesn't exist" );
+      }
+
+      // add the hidden iframe to the DOM
+      target && target.appendChild( options._iframe );
+
+    },
+    /**
+     * @member webpage
+     * The start function will be executed when the currentTime
+     * of the video  reaches the start time provided by the
+     * options variable
+     */
+    start: function( event, options ){
+      // make the iframe visible
+      options._iframe.src = options.src;
+      options._iframe.style.display = "inline";
+    },
+    /**
+     * @member webpage
+     * The end function will be executed when the currentTime
+     * of the video  reaches the end time provided by the
+     * options variable
+     */
+    end: function( event, options ){
+      // make the iframe invisible
+      options._iframe.style.display = "none";
+    },
+    _teardown: function( options ) {
+
+      document.getElementById( options.target ) && document.getElementById( options.target ).removeChild( options._iframe );
+    }
+  });
+})( Popcorn );
+// PLUGIN: WIKIPEDIA
+
+
+var wikiCallback;
+
+(function ( Popcorn ) {
+  
+  /**
+   * Wikipedia popcorn plug-in 
+   * Displays a wikipedia aricle in the target specified by the user by using
+   * new DOM element instead overwriting them
+   * Options parameter will need a start, end, target, lang, src, title and numberofwords.
+   * -Start is the time that you want this plug-in to execute
+   * -End is the time that you want this plug-in to stop executing 
+   * -Target is the id of the document element that the text from the article needs to be  
+   * attached to, this target element must exist on the DOM
+   * -Lang (optional, defaults to english) is the language in which the article is in.
+   * -Src is the url of the article 
+   * -Title (optional) is the title of the article
+   * -numberofwords (optional, defaults to 200) is  the number of words you want displaid.  
+   *
+   * @param {Object} options
+   * 
+   * Example:
+     var p = Popcorn("#video")
+        .wikipedia({
+          start: 5, // seconds
+          end: 15, // seconds
+          src: "http://en.wikipedia.org/wiki/Cape_Town",
+          target: "wikidiv"
+        } )
+   *
+   */
+  Popcorn.plugin( "wikipedia" , {
+      
+    manifest: {
+      about:{
+        name: "Popcorn Wikipedia Plugin",
+        version: "0.1",
+        author: "@annasob",
+        website: "annasob.wordpress.com"
+      },
+      options:{
+        start: {
+          elem: "input", 
+          type: "text", 
+          label: "In"
+        },
+        end: {
+          elem: "input", 
+          type: "text", 
+          label: "Out"
+        },
+        lang: {
+          elem: "input", 
+          type: "text", 
+          label: "Language"
+        },
+        src: {
+          elem: "input", 
+          type: "url", 
+          label: "Src"
+        },
+        title: {
+          elem: "input", 
+          type: "text", 
+          label: "Title"
+        },
+        numberofwords: {
+          elem: "input", 
+          type: "text", 
+          label: "Num Of Words"
+        },
+        target: "wikipedia-container"
+      }
+    },
+    /**
+     * @member wikipedia 
+     * The setup function will get all of the needed 
+     * items in place before the start function is called. 
+     * This includes getting data from wikipedia, if the data
+     * is not received and processed before start is called start 
+     * will not do anything
+     */
+    _setup : function( options ) {
+      // declare needed variables
+      // get a guid to use for the global wikicallback function
+      var  _text, _guid = Popcorn.guid(); 
+      
+      // if the user didn't specify a language default to english
+      if ( !options.lang ) { 
+        options.lang = "en"; 
+      }
+
+      // if the user didn't specify number of words to use default to 200 
+      options.numberofwords  = options.numberofwords || 200;
+            
+      // wiki global callback function with a unique id
+      // function gets the needed information from wikipedia
+      // and stores it by appending values to the options object
+      window[ "wikiCallback" + _guid ]  = function ( data ) { 
+
+        options._link = document.createElement( "a" );
+        options._link.setAttribute( "href", options.src );
+        options._link.setAttribute( "target", "_blank" );
+
+        // add the title of the article to the link
+        options._link.innerHTML = options.title || data.parse.displaytitle;
+
+        // get the content of the wiki article
+        options._desc = document.createElement( "p" );
+
+        // get the article text and remove any special characters
+        _text = data.parse.text[ "*" ].substr( data.parse.text[ "*" ].indexOf( "<p>" ) );
+        _text = _text.replace( /((<(.|\n)+?>)|(\((.*?)\) )|(\[(.*?)\]))/g, "" );
+        
+        _text = _text.split( " " );
+        options._desc.innerHTML = ( _text.slice( 0, ( _text.length >= options.numberofwords ? options.numberofwords : _text.length ) ).join (" ") + " ..." ) ;
+        
+        options._fired = true;
+      };
+      
+      if ( options.src ) {
+        Popcorn.getScript( "//" + options.lang + ".wikipedia.org/w/api.php?action=parse&props=text&page=" + 
+          options.src.slice( options.src.lastIndexOf( "/" ) + 1 )  + "&format=json&callback=wikiCallback" + _guid );
+      } else if ( Popcorn.plugin.debug ) {
+        throw new Error( "Wikipedia plugin needs a 'src'" );
+      }
+
+    },
+    /**
+     * @member wikipedia 
+     * The start function will be executed when the currentTime 
+     * of the video  reaches the start time provided by the 
+     * options variable
+     */
+    start: function( event, options ){
+      // dont do anything if the information didn't come back from wiki
+      var isReady = function () {
+        
+        if ( !options._fired ) {
+          setTimeout( function () {
+            isReady();
+          }, 13);
+        } else {
+      
+          if ( options._link && options._desc ) {
+            if ( document.getElementById( options.target ) ) {
+              document.getElementById( options.target ).appendChild( options._link );
+              document.getElementById( options.target ).appendChild( options._desc );
+              options._added = true;
+            }
+          }
+        }
+      };
+      
+      isReady();
+    },
+    /**
+     * @member wikipedia 
+     * The end function will be executed when the currentTime 
+     * of the video  reaches the end time provided by the 
+     * options variable
+     */
+    end: function( event, options ){
+      // ensure that the data was actually added to the 
+      // DOM before removal
+      if ( options._added ) {
+        document.getElementById( options.target ).removeChild( options._link );
+        document.getElementById( options.target ).removeChild( options._desc );
+      }
+    },
+
+    _teardown: function( options ){
+
+      if ( options._added ) {
+        options._link.parentNode && document.getElementById( options.target ).removeChild( options._link );
+        options._desc.parentNode && document.getElementById( options.target ).removeChild( options._desc );
+        delete options.target;
+      }
+    }
+  });
+
+})( Popcorn );
+// PLUGIN: Tumblr
+
+(function( Popcorn, global ) {
+
+  /**
+  * Tumblr Popcorn Plugin.
+  * Adds elements to the page from selected blog.
+  * Start is the time that you want this plug-in to execute
+  * End is the time that you want this plug-in to stop executing
+  * ApiKey is the API key registered with Tumblr for use with their API.
+  *  The ApiKey is required for Blog Info and to retrieve published blog
+  *  posts.
+  *
+  * Test tumblr site is here: http://tumblrplugin.tumblr.com/
+  *
+  * @param {Object} options
+  *
+  * Example:
+    var p = Popcorn('#video')
+      .tumblr({
+        start: 5,                     // seconds, mandatory
+        end: 15,                      // seconds, mandatory
+        requestType: 'blogpost',      // mandatory
+        target: 'tumblrBlogInfodiv',  // mandatory
+        base_hostname: "john.io",     // mandatory
+        blogId: 123456789,            // Mandatory if requestType is 'blogpost'
+        api_key: ew29j2o1mw91m1wom1s9 // Mandatory is requestType is 'blogpost' or 'info'
+      } )
+  *
+  */
+
+  var processBlogPost = {
+    text: function( options ) {
+      var post = options.post,
+          link = document.createElement( "a" ),
+          linkText = document.createTextNode( post.title ),
+          linkDiv = document.createElement( "div" );
+
+      link.setAttribute( "href", post.post_url );
+      link.appendChild( linkText );
+      linkDiv.appendChild( link );
+      linkDiv.innerHTML += post.body;
+      options._container.appendChild( linkDiv );
+
+    },
+    photo: function( options ) {
+      var width = options.width || 250, defaultSizeIndex = -1,
+          picCaptions = [ options.post.photos.length ],
+          picURIs = [ options.post.photos.length ],
+          picDiv = document.createElement( "div" ),
+          pic = document.createElement( "img" ),
+          post = options.post;
+
+      // Finds the correct photo based on specified size, saves URI and Caption]
+      for ( var i = 0, len = post.photos.length; i < len; i++ ) {
+        // Store the current photo object being accessed
+        var photo = post.photos[ i ],
+            photoSizes = photo.alt_sizes;
+
+        for ( var k = 0, len2 = photoSizes.length; k < len2; k++ ) {
+          // Store the current alt_sizes object being accessed
+          var size = photoSizes[ k ];
+
+          // See If users desired photo size is in returned JSON
+          if ( size.width === width ) {
+            picURIs[ i ] = size.url;
+            picCaptions[ i ] = photo.caption;
+            defaultSizeIndex = 0;
+            break;
+          } else {
+            // Our default size is going to be 250
+            if( size.width === 250 ){
+              defaultSizeIndex = k;
+            }
+          }
+        }
+
+        // Current means of handling if alt_sizes doesn't have our default image size
+        defaultSizeIndex === -1 && Popcorn.error( "Clearly your blog has a picture that is so tiny it isn't even 250px wide. Consider " + 
+          " using a bigger picture or try a smaller size." );
+
+        // If a matching photo is never found, use the default size.
+        if ( k === photoSizes.length ) {
+          picURIs[ i ] = photoSizes[ defaultSizeIndex ].url;
+        }
+      }
+
+      // Finally, all the potential setup is done. Below is the actual code putting everything in our div element
+      for ( var m = 0, len3 = picURIs.length; m < len3; m++ ) {
+        picDiv.innerHTML += picCaptions[ m ] + "<br/>";
+        pic.setAttribute( "src", picURIs[ m ] );
+        pic.setAttribute( "alt", "Pic" + m );
+        picDiv.appendChild( pic );
+        picDiv.innerHTML += "<br/>";
+      }
+      picDiv.innerHTML += "<br/>" + post.caption;
+      options._container.appendChild( picDiv );
+    },
+    audio: function( options ) {
+      var artistDiv = document.createElement( "div" ),
+          artistLink = document.createElement( "a" ),
+          post = options.post;
+      // Artist/Track info is not always returned so checking first.
+      // Truth be told I have no idea if this will ever be returned. Their API specified it as responses but no
+      // matter how much I tried myself to replicate it in a test I couldn't ever get a response that included
+      // this info.
+      if ( !post.artist ) {
+        var artistText = document.createTextNode( post.source_title );
+
+        artistLink.setAttribute( "href", post.source_url );
+        artistLink.appendChild( artistText );
+        artistDiv.appendChild( artistLink );
+        artistDiv.innerHTML += "<br/>";
+      } else {
+        var artistImage = document.createElement( "img" );
+
+        artistDiv.innerHTML += "Artist: " + post.artist + "<br/>";
+        artistLink.setAttribute( "href", post.source_url );
+
+        // Construct Image
+        artistImage.setAttribute( "src", post.album_art );
+        artistImage.setAttribute( "alt", post.album );
+
+        // Set Image for link, append to div
+        artistLink.appendChild( artistImage );
+        artistDiv.appendChild( artistLink );
+
+        // Construct rest of plain old text
+        artistDiv.innerHTML += "<hr/>" + post.track_number + " - " + post.track_name + "<br/>";
+      }
+      // Obviously the player itself is something that will be displayed either way so it is included outside the check
+      artistDiv.innerHTML += post.player + "   " + post.plays + "plays<br/>" + post.caption;
+      options._container.appendChild( artistDiv );
+    },
+    video: function( options ) {
+      var width = options.width || 400,
+          defaultSizeIndex = -1,
+          post = options.post,
+          videoDiv = document.createElement( "div" ),
+          videoCode;
+
+      for ( var i = 0, len = post.player.length; i < len; i++ ) {
+      // First try to see if the current index matches the specified width
+      // If it doesn't, check if it equals our default width incase user didn't
+      // ever specify a width or if their width is never found.
+
+        // Store current player object being accessed
+        var video = post.player[ i ];
+
+        if ( video.width === width ) {
+          videoCode = video.embed_code;
+          defaultSizeIndex = 0;
+          break;
+        } else {
+          if( video.width === 400 ) {
+            defaultSizeIndex = i;
+          }
+        }
+      }
+
+      // If specified width never found, use default
+      if ( i === options.post.player.length ) {
+        videoCode = post.player[ defaultSizeIndex ].embed_code;
+      }
+
+      // Will run if user's size is never found and our default is never found
+      defaultSizeIndex === -1 && Popcorn.error( "Specified video size was not found and default was never found. Please try another width." );
+
+      // Finally build the html for the div element
+      videoDiv.innerHTML += videoCode + "<br/>" + post.caption;
+      options._container.appendChild( videoDiv );
+    },
+    chat: function( options ) {
+      var post = options.post,
+          dialogue,
+          chatDiv = document.createElement( "div" );
+
+      // Brainstorm up ideas how to make each dialogue object to appear up "better" rather than just all be there at once
+      chatDiv.innerHTML += "<strong><u>" + post.title + "</u></strong><br/><br/>";
+
+      for ( var i = 0, len = post.dialogue.length; i < len; i++ ) {
+        dialogue = post.dialogue[ i ];
+        chatDiv.innerHTML += dialogue.label + " " + dialogue.phrase + "<br/>";
+      }
+
+      // Append it to the parent container
+      options._container.appendChild( chatDiv );
+    },
+    quote: function( options ) {
+      var quoteDiv = document.createElement( "div" ),
+          quoteLink = document.createElement( "a" ),
+          post = options.post,
+          quoteLinkText = document.createTextNode( post.text );
+
+      // Quotes don't come with a title, so for a link to the post I'm going to use the blogname
+      quoteLink.setAttribute( "href", post.post_url );
+      quoteLink.appendChild( quoteLinkText );
+
+      // Append link, finish adding in plain text
+      quoteDiv.appendChild( quoteLink );
+      quoteDiv.innerHTML += "<br/><br/>Source: <b>" + post.source + "</b>";
+
+      // Append div to parent container
+      options._container.appendChild( quoteDiv );
+    },
+    link: function( options ) {
+      var linkDiv = document.createElement( "div" ),
+          link = document.createElement( "a" ),
+          post = options.post,
+          linkText = document.createTextNode( post.title );
+
+      // Using the blog title as a link to it
+      link.setAttribute( "href", post.post_url );
+      link.appendChild( linkText );
+      linkDiv.appendChild( link );
+      linkDiv.innerHTML += "<br/>" + post.description;
+
+      // Append to parent container
+      options._container.appendChild( linkDiv );
+    },
+    answer: function( options ) {
+      var answerDiv = document.createElement( "div" ),
+          link = document.createElement( "a" ),
+          post = options.post,
+          linkText = document.createTextNode( post.asking_name );
+
+      answerDiv.innerHTML = "Inquirer: ";
+      link.setAttribute( "href", post.asking_url );
+      link.appendChild( linkText );
+      answerDiv.appendChild( link );
+      answerDiv.innerHTML += "<br/><br/>Question: " + post.question + "<br/>Answer: " + post.answer;
+
+      // Append to parent container
+      options._container.appendChild( answerDiv );
+    }
+  };
+
+  Popcorn.plugin( "tumblr" , {
+    manifest: {
+      about: {
+        name: "Popcorn Tumblr Plugin",
+        version: "0.1",
+        author: "Matthew Schranz, @mjschranz",
+        website: "mschranz.wordpress.com"
+      },
+      options: {
+        requestType: {
+          elem: "select",
+          options:[ "INFO", "AVATAR", "BLOGPOST" ],
+          label: "Type_Of_Plugin"
+        },
+        target: "tumblr-container",
+        start: {
+          elem: "input",
+          type: "number",
+          label: "Start_Time"
+        },
+        end: {
+          elem: "input",
+          type: "number",
+          label: "End_Time"
+        },
+        base_hostname: {
+          elem: "input",
+          type: "text",
+          label: "User_Name"
+        },
+        // optional parameters:
+        api_key: { // Required for Blog Info and Blog Post retrievals
+          elem: "input",
+          type: "text",
+          label: "Application_Key"
+        },
+        size: {
+          elem: "select",
+          options: [ 16, 24, 30, 40, 48, 64, 96, 128, 512 ],
+          label: "avatarSize"
+        },
+        blogId: { // Required for BLOGPOST requests
+          elem: "input",
+          type: "number",
+          label: "Blog_ID"
+        },
+        /* Optional for Photo and Video BlogPosts, defaulted to 250 pixels for photos and 400 for videos if not provided or provided width
+        * is not found in their arrays. If multiple videos or photos are in the blogpost then it will use this same size for all of them unless
+        * it is not found, which it will then use the default. If default is not present an error will be thrown.
+        */
+        width: {
+          elem: "input",
+          type: "number",
+          label: "Photo_Width"
+        }
+      }
+    },
+    _setup: function( options ) {
+      var target = document.getElementById( options.target ),
+          requestString,
+          uri,
+          blogHTTPHeader,
+          uriNoHeader,
+          uriFinal,
+          type;
+
+      // Valid types of retrieval requests
+      var validType = function( type ) {
+        return ( [ "info", "avatar", "blogpost" ].indexOf( type ) > -1 );
+      };
+
+      // Lowercase the types incase user enters it in another way
+      options.requestType = options.requestType.toLowerCase();
+
+      // Check if blog url ( base_hostname ) is blank and api_key is included on info and blogpost requestType
+      ( !options.base_hostname || ( !options.api_key && ( options.requestType === "info" || options.requestType === "blogpost" ) ) ) &&
+        Popcorn.error( "Must provide a blog URL to the plugin and an api_key for Blog Info and Blog Post requests." );
+
+      // Check Request Type
+      !validType( options.requestType ) && Popcorn.error( "Invalid tumblr plugin type." );
+
+      // Check if a blogID is supplied
+      ( options.requestType === "blogpost" && options.blogId === undefined ) && Popcorn.error( "Error. BlogId required for blogpost requests" );
+
+      // Check if target container exists
+      ( !target && Popcorn.plugin.debug ) && Popcorn.error( "Target Tumblr container doesn't exist." );
+
+      // Checks if user included any http header in the url and removes it if that's the case as request don't work with it
+      uri = options.base_hostname.slice( ( options.base_hostname.indexOf( "/" ) + 2 ), options.base_hostname.length );
+      blogHTTPHeader = options.base_hostname.slice( 0, ( options.base_hostname.indexOf( "/" ) + 2 ) );
+      uriNoHeader = blogHTTPHeader === "http://" || blogHTTPHeader === "https://" ? uri : options.base_hostname;
+      if ( uriNoHeader.indexOf( "/" ) > -1 ){
+        uriNoHeader = uriNoHeader.slice( 0, uriNoHeader.indexOf( "/" ) );
+      }
+      options.base_hostname = uriNoHeader;
+
+      // Create seperate container for plugin
+      options._container = document.createElement( "div" );
+      options._container.id = "tumblrdiv-" + Popcorn.guid();
+
+      if ( options.requestType === "avatar" ) {
+        options._container.innerHTML = "<img src=" + 'http://api.tumblr.com/v2/blog/' + options.base_hostname + '/avatar/' + options.size + " alt='BlogAvatar' />";
+      } else {
+        // Construct type based if it's a blogpost or blog info as request string differs
+        if ( options.requestType === "blogpost" ) {
+          type = "posts";
+        } else {
+          type = "info";
+        }
+        requestString = "http://api.tumblr.com/v2/blog/" + options.base_hostname + "/" + type + "?api_key=" + options.api_key + "&id=" + options.blogId + 
+          "&jsonp=tumblrCallBack";
+
+        Popcorn.getJSONP( requestString, function( data ) {
+          if ( data.meta.msg === "OK" ) {
+            var commonDiv = document.createElement( "div" );
+            if ( options.requestType === "blogpost" ) {
+              options.post = data.response.posts[ 0 ];
+              var blogType = options.post.type,
+                  post = options.post,
+                  tags = post.tags;
+
+              // date is a response type common to all blogposts so it's in here to prevent duplicated code
+              commonDiv.innerHTML = "Date Published: " + options.post.date.slice( 0, options.post.date.indexOf( " " ) ) + "<br/>";
+              // Check if tags were used for the post, append them to commonDiv
+              if ( tags.length !== 0 ) {
+                commonDiv.innerHTML += "Tags: " + tags[ 0 ];
+                for ( var i = 1, len = tags.length; i < len; i++ ) {
+                  commonDiv.innerHTML += ", " + tags[ i ];
+                }
+              } else {
+                commonDiv.innerHTML += "Tags: No Tags Used";
+              }
+              // commonDiv is appended at two points because of the difference in how the information
+              // is constructed between blogposts and bloginfo
+              options._container.appendChild( commonDiv );
+
+              // Processes information and forms an information div based on what the blog type is
+              processBlogPost[ blogType ]( options );
+            } else {
+              // Blog Info Requests
+              var link = document.createElement( "a" ),
+                  blogInfo = data.response.blog,
+                  linkText = document.createTextNode( blogInfo.title );
+
+              link.setAttribute( "href", blogInfo.url );
+              link.appendChild( linkText );
+              commonDiv.appendChild( link );
+              commonDiv.innerHTML += blogInfo.description;
+              options._container.appendChild( commonDiv );
+            }
+          } else {
+            // There was an error somewhere down the line that caused the request to fail.
+            Popcorn.error( "Error. Request failed. Status code: " + data.meta.status + " - Message: " + data.meta.msg );
+          }
+        }, false );
+      }
+      options._container.style.display = "none";
+      target && target.appendChild( options._container );
+    },
+    start: function( event, options ){
+      if ( options._container ) {
+        options._container.style.display = "";
+      }
+    },
+    end: function( event, options ){
+      if( options._container ) {
+        options._container.style.display = "none";
+      }
+    },
+    _teardown: function( options ){
+      document.getElementById( options.target ) && document.getElementById( options.target ).removeChild( options._container );
+    }
+  });
+})( Popcorn, this );
+//PLUGIN: linkedin
+
+(function ( Popcorn ){
+
+  /**
+   * LinkedIn Popcorn plug-in
+   * Places a  LinkedIn plugin inside a div ( http://developers.facebook.com/docs/plugins/ )
+   * Options parameter will need a start, end, target, type, and an api key
+   * Optional parameters are url, counter, format, companyid, and productid
+   * Start is the time that you want this plug-in to execute
+   * End is the time that you want this plug-in to stop executing
+   * Target is the id of the document element that the plugin needs to be attached to, this target element must exist on the DOM
+   * Type is the name of the plugin, options are share, memberprofile, companyinsider, companyprofile, or recommendproduct
+   * Apikey is your own api key from obtained from https://www.linkedin.com/secure/developer
+   * Url is the desired url to share via LinkedIn. Defaults to the current page if no url is specified
+   * Counter is the position where the counter will be positioned. This is used if the type is "share" or "recommendproduct"
+   *  The options are right and top (don't include this option if you do not want a counter)
+   * Format is the data format of the member and company profile plugins. The options are inlined, hover, and click. Defaults to inline
+   * Companyid must be specified if the type is "companyprofile," "companyinsider," or "recommendproduct"
+   * Productid must be specified if the type is "recommendproduct"
+   *
+   * @param {Object} options
+   *
+   * Example:
+   * <script src="popcorn.linkedin.js"></script>
+   * ...
+   * var p = Popcorn("#video")
+   *     .linkedin({
+   *       type: "share",
+   *       url: "http://www.google.ca",
+   *       counter: "right",
+   *       target: "sharediv"
+   *       apikey: "ZOLRI2rzQS_oaXELpPF0aksxwFFEvoxAFZRLfHjaAhcGPfOX0Ds4snkJpWwKs8gk",
+   *       start: 1,
+   *       end: 3
+   *     })
+   *
+   * This plugin will be displayed between 1 and 3 seconds, inclusive, in the video. This will show how many people have "shared" Google via LinkedIn,
+   * with the number of people (counter) displayed to the right of the share plugin.
+   */
+  Popcorn.plugin( "linkedin", {
+    manifest: {
+      about: {
+        name: "Popcorn LinkedIn Plugin",
+        version: "0.1",
+        author: "Dan Ventura",
+        website: "dsventura.blogspot.com"
+      },
+      options: {
+        type: {
+          elem: "input",
+          type: "text",
+          label: "Type"
+        },
+        url: {
+          elem: "input",
+          type: "text",
+          label: "URL"
+        },
+        apikey: {
+          elem: "input",
+          type: "text",
+          label: "API Key"
+        },
+        counter: {
+          elem: "input",
+          type: "text",
+          label: "Counter"
+        },
+        memberid: {
+          elem: "input",
+          type: "text",
+          label: "Member ID"
+        },
+        format: {
+          elem: "input",
+          type: "text",
+          label: "Format"
+        },
+        companyid: {
+          elem: "input",
+          type: "text",
+          label: "Company ID"
+        },
+        modules: {
+          elem: "input",
+          type: "text",
+          label: "Modules"
+        },
+        productid: {
+          elem: "input",
+          type: "text",
+          label: "productid"
+        },
+        related: {
+          elem: "input",
+          type: "text",
+          label: "related"
+        },
+        start: {
+          elem: "input",
+          type: "text",
+          label: "In"
+        },
+        end: {
+          elem: "input",
+          type: "text",
+          label: "Out"
+        },
+
+        target: "linkedin-container"
+      }
+    },
+    _setup: function( options ) {
+
+      var apikey = options.apikey,
+          target = document.getElementById( options.target ),
+          script = document.createElement( "script" );
+
+      Popcorn.getScript( "//platform.linkedin.com/in.js" );
+
+      options._container = document.createElement( "div" );
+      options._container.appendChild( script );
+
+      if ( apikey ) {
+        script.innerHTML = "api_key: " + apikey;
+      }
+
+      options.type = options.type && options.type.toLowerCase() || "";
+
+      // Replace the LinkedIn plugin's error message to something more helpful
+      var errorMsg = function() {
+        options._container = document.createElement( "p" );
+        options._container.innerHTML = "Plugin requires a valid <a href='https://www.linkedin.com/secure/developer'>apikey</a>";
+        if ( !target && Popcorn.plugin.debug ) {
+          throw ( "target container doesn't exist" );
+        }
+        target && target.appendChild( options._container );
+      };
+
+      var setOptions = (function ( options ) {
+
+        return {
+          share: function () {
+
+            script.setAttribute( "type", "IN/Share" );
+
+            if ( options.counter ) {
+              script.setAttribute( "data-counter", options.counter );
+            }
+            if ( options.url ) {
+              script.setAttribute( "data-url", options.url );
+            }
+          },
+          memberprofile: function () {
+
+            script.setAttribute( "type", "IN/MemberProfile" );
+            script.setAttribute( "data-id", ( options.memberid ) );
+            script.setAttribute( "data-format", ( options.format || "inline" ) );
+
+            if ( options.text && options.format.toLowerCase() !== "inline" ) {
+              script.setAttribute( "data-text", options.text );
+            }
+          },
+          companyinsider: function () {
+
+            script.setAttribute( "type", "IN/CompanyInsider" );
+            script.setAttribute( "data-id", options.companyid );
+
+            if( options.modules ) {
+              options._container.setAttribute( "data-modules", options.modules );
+            }
+          },
+          companyprofile: function () {
+
+            script.setAttribute( "type", "IN/CompanyProfile" );
+            script.setAttribute( "data-id", ( options.companyid ) );
+            script.setAttribute( "data-format", ( options.format || "inline" ) );
+
+            if ( options.text && options.format.toLowerCase() !== "inline" ) {
+              script.setAttribute( "data-text", options.text );
+            }
+            if ( options.related !== undefined ) {
+              script.setAttribute( "data-related", options.related );
+            }
+          },
+          recommendproduct: function () {
+
+            script.setAttribute( "type", "IN/RecommendProduct" );
+            script.setAttribute( "data-company", ( options.companyid || "LinkedIn" ) );
+            script.setAttribute( "data-product", ( options.productid || "201714" ) );
+
+            if ( options.counter ) {
+              script.setAttribute( "data-counter", options.counter );
+            }
+          }
+        };
+      })( options );
+
+      if ( !apikey ) {
+        errorMsg();
+      } else {
+        setOptions[ options.type ] && setOptions[ options.type ]();
+      }
+
+      if ( !target && Popcorn.plugin.debug ) {
+        throw new Error( "target container doesn't exist" );
+      }
+      target && target.appendChild( options._container );
+
+      options._container.style.display = "none";
+    },
+    /**
+     * @member linkedin
+     * The start function will be executed when the currentTime
+     * of the video reaches the start time provided by the
+     * options variable
+     */
+    start: function( event, options ) {
+      options._container.style.display = "block";
+    },
+    /**
+     * @member linkedin
+     * The end function will be executed when the currentTime
+     * of the video reaches the end time provided by the
+     * options variable
+     */
+    end: function( event, options ) {
+      options._container.style.display = "none";
+    },
+    _teardown: function( options ) {
+      var tar = document.getElementById( options.target );
+      tar && tar.removeChild( options._container );
+    }
+  });
+})( Popcorn );
+// PLUGIN: Mustache
+
+(function ( Popcorn ) {
+
+  /**
+   * Mustache Popcorn Plug-in
+   *
+   * Adds the ability to render JSON using templates via the Mustache templating library.
+   *
+   * @param {Object} options
+   *
+   * Required parameters: start, end, template, data, and target.
+   * Optional parameter: static.
+   *
+   *   start: the time in seconds when the mustache template should be rendered
+   *          in the target div.
+   *
+   *   end: the time in seconds when the rendered mustache template should be
+   *        removed from the target div.
+   *
+   *   target: a String -- the target div's id.
+   *
+   *   template: the mustache template for the plugin to use when rendering.  This can be
+   *             a String containing the template, or a Function that returns the template's
+   *             String.
+   *
+   *   data: the data to be rendered using the mustache template.  This can be a JSON String,
+   *         a JavaScript Object literal, or a Function returning a String or Literal.
+   *
+   *   dynamic: an optional argument indicating that the template and json data are dynamic
+   *            and need to be loaded dynamically on every use.  Defaults to True.
+   *
+   * Example:
+     var p = Popcorn('#video')
+
+        // Example using template and JSON strings.
+        .mustache({
+          start: 5, // seconds
+          end:  15,  // seconds
+          target: 'mustache',
+          template: '<h1>{{header}}</h1>'                         +
+                    '{{#bug}}'                                    +
+                    '{{/bug}}'                                    +
+                    ''                                            +
+                    '{{#items}}'                                  +
+                    '  {{#first}}'                                +
+                    '    <li><strong>{{name}}</strong></li>'      +
+                    '  {{/first}}'                                +
+                    '  {{#link}}'                                 +
+                    '    <li><a href="{{url}}">{{name}}</a></li>' +
+                    '  {{/link}}'                                 +
+                    '{{/items}}'                                  +
+                    ''                                            +
+                    '{{#empty}}'                                  +
+                    '  <p>The list is empty.</p>'                 +
+                    '{{/empty}}'                                  ,
+
+          data:     '{'                                                        +
+                    '  "header": "Colors", '                                   +
+                    '  "items": [ '                                            +
+                    '      {"name": "red", "first": true, "url": "#Red"}, '    +
+                    '      {"name": "green", "link": true, "url": "#Green"}, ' +
+                    '      {"name": "blue", "link": true, "url": "#Blue"} '    +
+                    '  ],'                                                     +
+                    '  'empty': false'                                         +
+                    '}',
+          dynamic: false // The json is not going to change, load it early.
+        } )
+
+        // Example showing Functions instead of Strings.
+        .mustache({
+          start: 20,  // seconds
+          end:   25,  // seconds
+          target: 'mustache',
+          template: function(instance, options) {
+                      var template = // load your template file here...
+                      return template;
+                    },
+          data:     function(instance, options) {
+                      var json = // load your json here...
+                      return json;
+                    }
+        } );
+  *
+  */
+
+  Popcorn.plugin( "mustache" , function( options ){
+
+    var getData, data, getTemplate, template;
+
+    Popcorn.getScript( "https://github.com/janl/mustache.js/raw/master/mustache.js" );
+
+    var shouldReload = !!options.dynamic,
+        typeOfTemplate = typeof options.template,
+        typeOfData = typeof options.data,
+        target = document.getElementById( options.target );
+
+    if ( !target && Popcorn.plugin.debug ) {
+      throw new Error( "target container doesn't exist" );
+    }
+    options.container = target || document.createElement( "div" );
+
+    if ( typeOfTemplate === "function" ) {
+      if ( !shouldReload ) {
+        template = options.template( options );
+      } else {
+        getTemplate = options.template;
+      }
+    } else if ( typeOfTemplate === "string" ) {
+      template = options.template;
+    } else if ( Popcorn.plugin.debug ) {
+      throw new Error( "Mustache Plugin Error: options.template must be a String or a Function." );
+    } else {
+      template = "";
+    }
+
+    if ( typeOfData === "function" ) {
+      if ( !shouldReload ) {
+        data = options.data( options );
+      } else {
+        getData = options.data;
+      }
+    } else if ( typeOfData === "string" ) {
+      data = JSON.parse( options.data );
+    } else if ( typeOfData === "object" ) {
+      data = options.data;
+    } else if ( Popcorn.plugin.debug ) {
+      throw new Error( "Mustache Plugin Error: options.data must be a String, Object, or Function." );
+    } else {
+      data = "";
+    }
+
+    return {
+      start: function( event, options ) {
+
+        var interval = function() {
+
+          if( !window.Mustache ) {
+            setTimeout( function() {
+              interval();
+            }, 10 );
+          } else {
+
+            // if dynamic, freshen json data on every call to start, just in case.
+            if ( getData ) {
+              data = getData( options );
+            }
+
+            if ( getTemplate ) {
+              template = getTemplate( options );
+            }
+
+            var html = Mustache.to_html( template,
+                                         data
+                                       ).replace( /^\s*/mg, "" );
+            options.container.innerHTML = html;
+          }
+        };
+
+        interval();
+
+      },
+
+      end: function( event, options ) {
+        options.container.innerHTML = "";
+      },
+      _teardown: function( options ) {
+        getData = data = getTemplate = template = null;
+      }
+    };
+  },
+  {
+    about: {
+      name: "Popcorn Mustache Plugin",
+      version: "0.1",
+      author: "David Humphrey (@humphd)",
+      website: "http://vocamus.net/dave"
+    },
+    options: {
+      start: {
+        elem: "input",
+        type: "text",
+        label: "In"
+      },
+      end: {
+        elem: "input",
+        type: "text",
+        label: "Out"
+      },
+      target: "mustache-container",
+      template: {
+        elem: "input",
+        type: "text",
+        label: "Template"
+      },
+      data: {
+        elem: "input",
+        type: "text",
+        label: "Data"
+      },
+      /* TODO: how to show a checkbox/boolean? */
+      dynamic: {
+        elem: "input",
+        type: "text",
+        label: "Dynamic"
+      }
+    }
+  });
+})( Popcorn );
+// PLUGIN: OPENMAP
+( function ( Popcorn ) {
+
+  /**
+   * openmap popcorn plug-in
+   * Adds an OpenLayers map and open map tiles (OpenStreetMap [default], NASA WorldWind, or USGS Topographic)
+   * Based on the googlemap popcorn plug-in. No StreetView support
+   * Options parameter will need a start, end, target, type, zoom, lat and lng
+   * -Start is the time that you want this plug-in to execute
+   * -End is the time that you want this plug-in to stop executing
+   * -Target is the id of the DOM element that you want the map to appear in. This element must be in the DOM
+   * -Type [optional] either: ROADMAP (OpenStreetMap), SATELLITE (NASA WorldWind / LandSat), or TERRAIN (USGS).  ROADMAP/OpenStreetMap is the default.
+   * -Zoom [optional] defaults to 2
+   * -Lat and Lng are the coordinates of the map if location is not named
+   * -Location is a name of a place to center the map, geocoded to coordinates using TinyGeocoder.com
+   * -Markers [optional] is an array of map marker objects, with the following properties:
+   * --Icon is the URL of a map marker image
+   * --Size [optional] is the radius in pixels of the scaled marker image (default is 14)
+   * --Text [optional] is the HTML content of the map marker -- if your popcorn instance is named 'popped', use <script>popped.currentTime(10);</script> to control the video
+   * --Lat and Lng are coordinates of the map marker if location is not specified
+   * --Location is a name of a place for the map marker, geocoded to coordinates using TinyGeocoder.com
+   *  Note: using location requires extra loading time, also not specifying both lat/lng and location will
+   * cause a JavaScript error.
+   * @param {Object} options
+   *
+   * Example:
+     var p = Popcorn( '#video' )
+        .openmap({
+          start: 5,
+          end: 15,
+          type: 'ROADMAP',
+          target: 'map',
+          lat: 43.665429,
+          lng: -79.403323
+        })
+   *
+   */
+  var newdiv,
+      i = 1;
+
+  function toggle( container, display ) {
+    if ( container.map ) {
+
+      container.map.div.style.display = display;
+      return;
+    }
+
+    setTimeout(function() {
+      toggle( container, display );
+    }, 10 );
+  }
+
+  Popcorn.plugin( "openmap", function( options ){
+    var newdiv,
+        centerlonlat,
+        projection,
+        displayProjection,
+        pointLayer,
+        selectControl,
+        popup,
+        isGeoReady,
+        target = document.getElementById( options.target );
+
+    // create a new div within the target div
+    // this is later passed on to the maps api
+    newdiv = document.createElement( "div" );
+    newdiv.id = "openmapdiv" + i;
+    newdiv.style.width = "100%";
+    newdiv.style.height = "100%";
+    i++;
+
+    if ( !target && Popcorn.plugin.debug ) {
+      throw new Error( "target container doesn't exist" );
+    }
+
+    target && target.appendChild( newdiv );
+
+    // callback function fires when the script is run
+    isGeoReady = function() {
+      if ( !window.OpenLayers ) {
+        setTimeout(function() {
+          isGeoReady();
+        }, 50);
+      } else {
+        if ( options.location ) {
+          // set a dummy center at start
+          location = new OpenLayers.LonLat( 0, 0 );
+          // query TinyGeocoder and re-center in callback
+          Popcorn.getJSONP(
+            "//tinygeocoder.com/create-api.php?q=" + options.location + "&callback=jsonp",
+            function( latlng ) {
+              centerlonlat = new OpenLayers.LonLat( latlng[ 1 ], latlng[ 0 ] );
+              options.map.setCenter( centerlonlat );
+            }
+          );
+        } else {
+          centerlonlat = new OpenLayers.LonLat( options.lng, options.lat );
+        }
+        options.type = options.type || "ROADMAP";
+        if ( options.type === "SATELLITE" ) {
+          // add NASA WorldWind / LANDSAT map
+          options.map = new OpenLayers.Map( { div: newdiv, "maxResolution": 0.28125, tileSize: new OpenLayers.Size( 512, 512 ) } );
+          var worldwind = new OpenLayers.Layer.WorldWind( "LANDSAT", "//worldwind25.arc.nasa.gov/tile/tile.aspx", 2.25, 4, { T: "105" } );
+          options.map.addLayer( worldwind );
+          displayProjection = new OpenLayers.Projection( "EPSG:4326" );
+          projection = new OpenLayers.Projection( "EPSG:4326" );
+        }
+        else if ( options.type === "TERRAIN" ) {
+          // add terrain map ( USGS )
+          displayProjection = new OpenLayers.Projection( "EPSG:4326" );
+          projection = new OpenLayers.Projection( "EPSG:4326" );
+          options.map = new OpenLayers.Map( {div: newdiv, projection: projection } );
+          var relief = new OpenLayers.Layer.WMS( "USGS Terraserver", "//terraserver-usa.org/ogcmap.ashx?", { layers: "DRG" } );
+          options.map.addLayer( relief );
+        } else {
+          // add OpenStreetMap layer
+          projection = new OpenLayers.Projection( 'EPSG:900913' );
+          displayProjection = new OpenLayers.Projection( 'EPSG:4326' );
+          centerlonlat = centerlonlat.transform( displayProjection, projection );
+          options.map = new OpenLayers.Map( { div: newdiv, projection: projection, "displayProjection": displayProjection } );
+          var osm = new OpenLayers.Layer.OSM();
+          options.map.addLayer( osm );
+        }
+        if ( options.map ) {
+          options.map.div.style.display = "none";
+        }
+      }
+    };
+
+    isGeoReady();
+
+    return {
+
+      /**
+       * @member openmap
+       * The setup function will be executed when the plug-in is instantiated
+       */
+      _setup: function( options ) {
+
+        // insert openlayers api script once
+        if ( !window.OpenLayers ) {
+          Popcorn.getScript( "//openlayers.org/api/OpenLayers.js" );
+        }
+
+        var isReady = function() {
+          // wait until OpenLayers has been loaded, and the start function is run, before adding map
+          if ( !options.map ) {
+            setTimeout(function() {
+              isReady();
+            }, 13 );
+          } else {
+
+            // default zoom is 2
+            options.zoom = options.zoom || 2;
+
+            // make sure options.zoom is a number
+            if ( options.zoom && typeof options.zoom !== "number" ) {
+              options.zoom = +options.zoom;
+            }
+
+            // reset the location and zoom just in case the user played with the map
+            options.map.setCenter( centerlonlat, options.zoom );
+            if ( options.markers ) {
+              var layerStyle = OpenLayers.Util.extend( {} , OpenLayers.Feature.Vector.style[ "default" ] ),
+                  featureSelected = function( clickInfo ) {
+                    clickedFeature = clickInfo.feature;
+                    if ( !clickedFeature.attributes.text ) {
+                      return;
+                    }
+                    popup = new OpenLayers.Popup.FramedCloud(
+                      "featurePopup",
+                      clickedFeature.geometry.getBounds().getCenterLonLat(),
+                      new OpenLayers.Size( 120, 250 ),
+                      clickedFeature.attributes.text,
+                      null,
+                      true,
+                      function( closeInfo ) {
+                        selectControl.unselect( this.feature );
+                      }
+                    );
+                    clickedFeature.popup = popup;
+                    popup.feature = clickedFeature;
+                    options.map.addPopup( popup );
+                  },
+                  featureUnSelected = function( clickInfo ) {
+                    feature = clickInfo.feature;
+                    if ( feature.popup ) {
+                      popup.feature = null;
+                      options.map.removePopup( feature.popup );
+                      feature.popup.destroy();
+                      feature.popup = null;
+                    }
+                  },
+                  gcThenPlotMarker = function( myMarker ) {
+                    Popcorn.getJSONP(
+                      "//tinygeocoder.com/create-api.php?q=" + myMarker.location + "&callback=jsonp",
+                      function( latlng ) {
+                        var myPoint = new OpenLayers.Geometry.Point( latlng[1], latlng[0] ).transform( displayProjection, projection ),
+                            myPointStyle = OpenLayers.Util.extend( {}, layerStyle );
+                        if ( !myMarker.size || isNaN( myMarker.size ) ) {
+                          myMarker.size = 14;
+                        }
+                        myPointStyle.pointRadius = myMarker.size;
+                        myPointStyle.graphicOpacity = 1;
+                        myPointStyle.externalGraphic = myMarker.icon;
+                        var myPointFeature = new OpenLayers.Feature.Vector( myPoint, null, myPointStyle );
+                        if ( myMarker.text ) {
+                          myPointFeature.attributes = {
+                            text: myMarker.text
+                          };
+                        }
+                        pointLayer.addFeatures( [ myPointFeature ] );
+                      }
+                    );
+                  };
+              pointLayer = new OpenLayers.Layer.Vector( "Point Layer", { style: layerStyle } );
+              options.map.addLayer( pointLayer );
+              for ( var m = 0, l = options.markers.length; m < l ; m++ ) {
+                var myMarker = options.markers[ m ];
+                if( myMarker.text ){
+                  if( !selectControl ){
+                    selectControl = new OpenLayers.Control.SelectFeature( pointLayer );
+                    options.map.addControl( selectControl );
+                    selectControl.activate();
+                    pointLayer.events.on({
+                      "featureselected": featureSelected,
+                      "featureunselected": featureUnSelected
+                    });
+                  }
+                }
+                if ( myMarker.location ) {
+                  var geocodeThenPlotMarker = gcThenPlotMarker;
+                  geocodeThenPlotMarker( myMarker );
+                } else {
+                  var myPoint = new OpenLayers.Geometry.Point( myMarker.lng, myMarker.lat ).transform( displayProjection, projection ),
+                      myPointStyle = OpenLayers.Util.extend( {}, layerStyle );
+                  if ( !myMarker.size || isNaN( myMarker.size ) ) {
+                    myMarker.size = 14;
+                  }
+                  myPointStyle.pointRadius = myMarker.size;
+                  myPointStyle.graphicOpacity = 1;
+                  myPointStyle.externalGraphic = myMarker.icon;
+                  var myPointFeature = new OpenLayers.Feature.Vector( myPoint, null, myPointStyle );
+                  if ( myMarker.text ) {
+                    myPointFeature.attributes = {
+                      text: myMarker.text
+                    };
+                  }
+                  pointLayer.addFeatures( [ myPointFeature ] );
+                }
+              }
+            }
+          }
+        };
+
+        isReady();
+      },
+
+      /**
+       * @member openmap
+       * The start function will be executed when the currentTime
+       * of the video  reaches the start time provided by the
+       * options variable
+       */
+      start: function( event, options ) {
+        toggle( options, "block" );
+      },
+
+      /**
+       * @member openmap
+       * The end function will be executed when the currentTime
+       * of the video reaches the end time provided by the
+       * options variable
+       */
+      end: function( event, options ) {
+          toggle( options, "none" );
+      },
+
+      _teardown: function( options ) {
+
+        target && target.removeChild( newdiv );
+        newdiv = map = centerlonlat = projection = displayProjection = pointLayer = selectControl = popup = null;
+      }
+    };
+  },
+  {
+    about:{
+      name: "Popcorn OpenMap Plugin",
+      version: "0.3",
+      author: "@mapmeld",
+      website: "mapadelsur.blogspot.com"
+    },
+    options:{
+      start: {
+        elem: "input",
+        type: "text",
+        label: "In"
+      },
+      end: {
+        elem: "input",
+        type: "text",
+        label: "Out"
+      },
+      target: "map-container",
+      type: {
+        elem: "select",
+        options: [ "ROADMAP", "SATELLITE", "TERRAIN" ],
+        label: "Type"
+      },
+      zoom: {
+        elem: "input",
+        type: "text",
+        label: "Zoom"
+      },
+      lat: {
+        elem: "input",
+        type: "text",
+        label: "Lat"
+      },
+      lng: {
+        elem: "input",
+        type: "text",
+        label: "Lng"
+      },
+      location: {
+        elem: "input",
+        type: "text",
+        label: "Location"
+      },
+      markers: {
+        elem: "input",
+        type: "text",
+        label: "List Markers"
+      }
+    }
+  });
+}) ( Popcorn );
+/**
+* Pause Popcorn Plug-in
+*
+* When this plugin is used, links on the webpage, when clicked, will pause
+* popcorn videos that especified 'pauseOnLinkClicked' as an option. Links may
+* cause a new page to display on a new window, or may cause a new page to
+* display in the current window, in which case the videos won't be available
+* anymore. It only affects anchor tags. It does not affect objects with click
+* events that act as anchors.
+*
+* Example:
+ var p = Popcorn('#video', { pauseOnLinkClicked : true } )
+   .play();
+*
+*/
+
+document.addEventListener( "click", function( event ) {
+
+  var targetElement = event.target;
+
+  //Some browsers use an element as the target, some use the text node inside
+  if ( targetElement.nodeName === "A" || targetElement.parentNode && targetElement.parentNode.nodeName === "A" ) {
+    Popcorn.instances.forEach( function( video ) {
+      if ( video.options.pauseOnLinkClicked ) {
+        video.pause();
+      }
+    });
+  }
+}, false );
+// PLUGIN: Wordriver
+
+(function ( Popcorn ) {
+
+  var container = {},
+      spanLocation = 0,
+      setupContainer = function( target ) {
+
+        container[ target ] = document.createElement( "div" );
+
+        var t = document.getElementById( target );
+        t && t.appendChild( container[ target ] );
+
+        container[ target ].style.height = "100%";
+        container[ target ].style.position = "relative";
+
+        return container[ target ];
+      },
+      // creates an object of supported, cross platform css transitions
+      span = document.createElement( "span" ),
+      prefixes = [ "webkit", "Moz", "ms", "O", "" ],
+      specProp = [ "Transform", "TransitionDuration", "TransitionTimingFunction" ],
+      supports = {},
+      prop;
+
+  document.getElementsByTagName( "head" )[ 0 ].appendChild( span );
+
+  for ( var sIdx = 0, sLen = specProp.length; sIdx < sLen; sIdx++ ) {
+
+    for ( var pIdx = 0, pLen = prefixes.length; pIdx < pLen; pIdx++ ) {
+
+      prop = prefixes[ pIdx ] + specProp[ sIdx ];
+
+      if ( prop in span.style ) {
+
+        supports[ specProp[ sIdx ].toLowerCase() ] = prop;
+        break;
+      }
+    }
+  }
+
+  // Garbage collect support test span
+  document.getElementsByTagName( "head" )[ 0 ].appendChild( span );
+
+  /**
+   * Word River popcorn plug-in
+   * Displays a string of text, fading it in and out
+   * while transitioning across the height of the parent container
+   * for the duration of the instance  (duration = end - start)
+   *
+   * @param {Object} options
+   *
+   * Example:
+     var p = Popcorn( '#video' )
+        .wordriver({
+          start: 5,                      // When to begin the Word River animation
+          end: 15,                       // When to finish the Word River animation
+          text: 'Hello World',           // The text you want to be displayed by Word River
+          target: 'wordRiverDiv',        // The target div to append the text to
+          color: "blue"                  // The color of the text. (can be Hex value i.e. #FFFFFF )
+        } )
+   *
+   */
+
+  Popcorn.plugin( "wordriver" , {
+
+      manifest: {
+        about:{
+          name: "Popcorn WordRiver Plugin"
+        },
+        options: {
+          start: {
+            elem: "input",
+            type: "text",
+            label: "In"
+          },
+          end: {
+            elem: "input",
+            type: "text",
+            label: "Out"
+          },
+          target: "wordriver-container",
+          text: {
+            elem: "input",
+            type: "text",
+            label: "Text"
+          },
+          color: {
+            elem: "input",
+            type: "text",
+            label: "Color"
+          }
+        }
+      },
+
+      _setup: function( options ) {
+
+        if ( !document.getElementById( options.target ) && Popcorn.plugin.debug ) {
+          throw new Error( "target container doesn't exist" );
+        }
+
+        options._duration = options.end - options.start;
+        options._container = container[ options.target ] || setupContainer( options.target );
+
+        options.word = document.createElement( "span" );
+        options.word.style.position = "absolute";
+
+        options.word.style.whiteSpace = "nowrap";
+        options.word.style.opacity = 0;
+
+        options.word.style.MozTransitionProperty = "opacity, -moz-transform";
+        options.word.style.webkitTransitionProperty = "opacity, -webkit-transform";
+        options.word.style.OTransitionProperty = "opacity, -o-transform";
+        options.word.style.transitionProperty = "opacity, transform";
+
+        options.word.style[ supports.transitionduration ] = 1 + "s, " + options._duration + "s";
+        options.word.style[ supports.transitiontimingfunction ] = "linear";
+
+        options.word.innerHTML = options.text;
+        options.word.style.color = options.color || "black";
+      },
+      start: function( event, options ){
+
+        options._container.appendChild( options.word );
+
+        // Resets the transform when changing to a new currentTime before the end event occurred.
+        options.word.style[ supports.transform ] = "";
+
+        options.word.style.fontSize = ~~( 30 + 20 * Math.random() ) + "px";
+        spanLocation = spanLocation % ( options._container.offsetWidth - options.word.offsetWidth );
+        options.word.style.left = spanLocation + "px";
+        spanLocation += options.word.offsetWidth + 10;
+        options.word.style[ supports.transform ] = "translateY(" +
+          ( options._container.offsetHeight - options.word.offsetHeight ) + "px)";
+
+        options.word.style.opacity = 1;
+
+        // automatically clears the word based on time
+        setTimeout( function() {
+
+		      options.word.style.opacity = 0;
+        // ensures at least one second exists, because the fade animation is 1 second
+		    }, ( ( (options.end - options.start) - 1 ) || 1 ) * 1000 );
+      },
+      end: function( event, options ){
+
+        // manually clears the word based on user interaction
+        options.word.style.opacity = 0;
+      },
+      _teardown: function( options ) {
+
+        var target = document.getElementById( options.target );
+        // removes word span from generated container
+        options.word.parentNode && options._container.removeChild( options.word );
+
+        // if no more word spans exist in container, remove container
+        container[ options.target ] &&
+          !container[ options.target ].childElementCount &&
+          target && target.removeChild( container[ options.target ] ) &&
+          delete container[ options.target ];
+      }
+  });
+
+})( Popcorn );
+/**
+ * Processing Popcorn Plug-In
+ *
+ * This plugin adds a Processing.js sketch to be added to a target div or canvas.
+ *
+ * Options parameter needs to specify start, end, target and  sketch attributes
+ * -Start is the time [in seconds] that you want the sketch to display and start looping.
+ * -End is the time [in seconds] you want the sketch to become hidden and stop looping.
+ * -Target is the id of the div or canvas you want the target sketch to be displayed in. ( a target that is a div will have a canvas created and placed inside of it. )
+ * -Sketch specifies the filename of the Procesing code to be loaded into Processing.js
+ * -noLoop [optional] specifies whether a sketch should continue to loop when the video is paused or seeking.
+ *
+ * @param {Object} options
+ *
+ * Example:
+ var p = Popcorn( "#video" )
+ .processing({
+   start: 5,
+   end: 10,
+   target: "processing-div",
+   sketch: "processingSketch.pjs",
+   noLoop: true
+ });
+ *
+ */
+
+(function( Popcorn ) {
+
+  Popcorn.plugin( "processing", function( options ) {
+
+    var init = function( context ) {
+
+      function scriptReady( options ) {
+        var addListeners = function() {
+          context.listen( "pause", function() {
+            if ( options.canvas.style.display === "inline" ) {
+              options.pjsInstance.noLoop();
+            }
+          });
+          context.listen( "play", function() {
+            if ( options.canvas.style.display === "inline" ) {
+              options.pjsInstance.loop();
+            }
+          });
+        };
+
+        if ( options.sketch ) {
+
+          Popcorn.xhr({
+            url: options.sketch,
+            dataType: "text",
+            success: function( responseCode ) {
+
+              options.codeReady = false;
+
+              var s = Processing.compile( responseCode );
+              options.pjsInstance = new Processing( options.canvas, s );
+              options.seeking = false;
+              ( options._running && !context.media.paused && options.pjsInstance.loop() ) || options.pjsInstance.noLoop();
+
+              context.listen( "seeking", function() {
+                 options._running && options.canvas.style.display === "inline" && options.noPause && options.pjsInstance.loop();
+              });
+
+              options.noPause = options.noPause || false;
+              !options.noPause && addListeners();
+              options.codeReady = true;
+            }
+          });
+        } else if ( Popcorn.plugin.debug ) {
+
+          throw new Error( "Popcorn.Processing: options.sketch is undefined" );
+        }
+      }
+
+      if ( !window.Processing ) {
+        Popcorn.getScript( "//wac.1237.edgecastcdn.net/801237/cdn.processingjs.org/content/download/processing-js-1.3.6/processing-1.3.6.min.js", function() {
+          scriptReady( options );
+        });
+      } else {
+        scriptReady( options );
+      }
+
+    };
+
+    return {
+
+      _setup: function( options ) {
+
+        options.codeReady = false;
+
+        options.parentTarget = document.getElementById( options.target );
+
+        if ( !options.parentTarget && Popcorn.plugin.debug ) {
+          throw new Error( "target container doesn't exist" );
+        }
+
+        var canvas = document.createElement( "canvas" );
+        canvas.id = Popcorn.guid( options.target + "-sketch" );
+        canvas.style.display = "none";
+        options.canvas = canvas;
+
+        options.parentTarget && options.parentTarget.appendChild( options.canvas );
+
+        init( this );
+      },
+
+      start: function( event, options ) {
+
+        options.codeReady && !this.media.paused && options.pjsInstance.loop();
+        options.canvas.style.display = "inline";
+
+      },
+
+      end: function( event, options ) {
+
+        options.pjsInstance && options.pjsInstance.noLoop();
+        options.canvas.style.display = "none";
+      },
+
+      _teardown: function( options ) {
+        options.pjsInstance && options.pjsInstance.exit();
+        options.parentTarget && options.parentTarget.removeChild( options.canvas );
+      }
+    };
+  },
+  {
+    about: {
+      name: "Popcorn Processing Plugin",
+      version: "0.1",
+      author: "Christopher De Cairos, Benjamin Chalovich",
+      website: "cadecairos.blogspot.com, ben1amin.wordpress.org"
+    },
+    options: {
+      start: {
+        elem: "input",
+        type: "text",
+        label: "In"
+      },
+      end: {
+        elem: "input",
+        type: "text",
+        label: "Out"
+      },
+      target: {
+        elem: "input",
+        type: "text",
+        label: "Target"
+      },
+      sketch: {
+        elem: "input",
+        type: "url",
+        label: "Sketch"
+      },
+      noPause: {
+        elem: "select",
+        options: [ "TRUE", "FALSE" ],
+        label: "No Loop"
+      }
+    }
+  });
+}( Popcorn ));
+// PLUGIN: Timeline
+(function ( Popcorn ) {
+
+  /**
+     * timeline popcorn plug-in
+     * Adds data associated with a certain time in the video, which creates a scrolling view of each item as the video progresses
+     * Options parameter will need a start, target, title, and text
+     * -Start is the time that you want this plug-in to execute
+     * -End is the time that you want this plug-in to stop executing, tho for this plugin an end time may not be needed ( optional )
+     * -Target is the id of the DOM element that you want the timeline to appear in. This element must be in the DOM
+     * -Title is the title of the current timeline box
+     * -Text is text is simply related text that will be displayed
+     * -innerHTML gives the user the option to add things such as links, buttons and so on
+     * -direction specifies whether the timeline will grow from the top or the bottom, receives input as "UP" or "DOWN"
+     * @param {Object} options
+     *
+     * Example:
+      var p = Popcorn("#video")
+        .timeline( {
+         start: 5, // seconds
+         target: "timeline",
+         title: "Seneca",
+         text: "Welcome to seneca",
+         innerHTML: "Click this link <a href='http://www.google.ca'>Google</a>"
+      } )
+    *
+  */
+
+  var i = 1;
+
+  Popcorn.plugin( "timeline" , function( options ) {
+
+    var target = document.getElementById( options.target ),
+        contentDiv = document.createElement( "div" ),
+        container,
+        goingUp = true;
+
+    if ( target && !target.firstChild ) {
+      target.appendChild ( container = document.createElement( "div" ) );
+      container.style.width = "inherit";
+      container.style.height = "inherit";
+      container.style.overflow = "auto";
+    } else {
+      container = target.firstChild;
+    }
+
+    contentDiv.style.display = "none";
+    contentDiv.id = "timelineDiv" + i;
+
+    //  Default to up if options.direction is non-existant or not up or down
+    options.direction = options.direction || "up";
+    if ( options.direction.toLowerCase() === "down" ) {
+
+      goingUp = false;
+    }
+
+    if ( target && container ) {
+      // if this isnt the first div added to the target div
+      if( goingUp ){
+        // insert the current div before the previous div inserted
+        container.insertBefore( contentDiv, container.firstChild );
+      }
+      else {
+
+        container.appendChild( contentDiv );
+      }
+
+    } else if ( Popcorn.plugin.debug ) {
+      throw new Error( "target container doesn't exist" );
+    }
+
+    i++;
+
+    //  Default to empty if not used
+    //options.innerHTML = options.innerHTML || "";
+
+    contentDiv.innerHTML = "<p><span id='big' style='font-size:24px; line-height: 130%;' >" + options.title + "</span><br />" +
+    "<span id='mid' style='font-size: 16px;'>" + options.text + "</span><br />" + options.innerHTML;
+
+    return {
+
+      start: function( event, options ) {
+        contentDiv.style.display = "block";
+
+        if( options.direction === "down" ) {
+          container.scrollTop = container.scrollHeight;
+        }
+      },
+
+      end: function( event, options ) {
+        contentDiv.style.display = "none";
+      },
+
+      _teardown: function( options ) {
+
+        ( container && contentDiv ) && container.removeChild( contentDiv ) && !container.firstChild && target.removeChild( container );
+      }
+    };
+  },
+  {
+
+    about: {
+      name: "Popcorn Timeline Plugin",
+      version: "0.1",
+      author: "David Seifried @dcseifried",
+      website: "dseifried.wordpress.com"
+    },
+
+    options: {
+      start: {
+        elem: "input",
+        type: "text",
+        label: "In"
+      },
+      end: {
+        elem: "input",
+        type: "text",
+        label: "Out"
+      },
+      target: "feed-container",
+      title: {
+        elem: "input",
+        type: "text",
+        label: "title"
+      },
+      text: {
+        elem: "input",
+        type: "text",
+        label: "text"
+      },
+      innerHTML: {
+        elem: "input",
+        type: "text",
+        label: "innerHTML"
+      },
+      direction: {
+        elem: "input",
+        type: "text",
+        label: "direction"
+      }
+    }
+  });
+
+})( Popcorn );
+// PLUGIN: documentcloud
+
+(function( Popcorn, document ) {
+
+  /**
+   * Document Cloud popcorn plug-in
+   *
+   * @param {Object} options
+   *
+   * Example:
+   *  var p = Popcorn("#video")
+   *     // Let the pdf plugin load your PDF file for you using pdfUrl.
+   *     .documentcloud({
+   *       start: 45
+   *       url: "http://www.documentcloud.org/documents/70050-urbina-day-1-in-progress.html", // or .js
+   *       width: ...,
+   *       height: ...,
+   *       zoom: ...,
+   *       page: ...,
+   *       container: ...
+   *     });
+
+api - https://github.com/documentcloud/document-viewer/blob/master/public/javascripts/DV/controllers/api.js
+
+   */
+
+   // track registered plugins by document
+   var documentRegistry = {};
+
+  Popcorn.plugin( "documentcloud", {
+
+    manifest: {
+      about: {
+        name: "Popcorn Document Cloud Plugin",
+        version: "0.1",
+        author: "@humphd, @ChrisDeCairos",
+        website: "http://vocamus.net/dave"
+      },
+      options: {
+        start: {
+          elem: "input",
+          type: "text",
+          label: "In"
+        },
+        end: {
+          elem: "input",
+          type: "text",
+          label: "Out"
+        },
+        target: "documentcloud-container",
+        width: {
+          elem: "input",
+          type: "text",
+          label: "Width"
+        },
+        height: {
+          elem: "input",
+          type: "text",
+          label: "Height"
+        },
+        src: {
+          elem: "input",
+          type: "text",
+          label: "PDF URL"
+        },
+        preload: {
+          elem: "input",
+          type: "boolean",
+          label: "Preload"
+        },
+        page: {
+          elem: "input",
+          type: "number",
+          label: "Page Number"
+        },
+        aid: {
+          elem: "input",
+          type: "number",
+          label: "Annotation Id"
+        }
+      }
+    },
+
+    _setup: function( options ) {
+      var DV = window.DV = window.DV || {},
+          that = this;
+
+      //setup elem...
+      function load() {
+        DV.loaded = false;
+        // swap .html URL to .js for API call
+        var url = options.url.replace( /\.html$/, ".js" ),
+          target = options.target,
+          targetDiv = document.getElementById( target ),
+          containerDiv = document.createElement( "div" ),
+          containerDivSize = Popcorn.position( targetDiv ),
+          // need to use size of div if not given
+          width = options.width || containerDivSize.width,
+          height = options.height || containerDivSize.height,
+          sidebar = options.sidebar || true,
+          text = options.text || true,
+          pdf = options.pdf || true,
+          showAnnotations = options.showAnnotations || true,
+          zoom = options.zoom || 700,
+          search = options.search || true,
+          page = options.page,
+          container;
+
+        function setOptions( viewer ) {
+          options._key = viewer.api.getId();
+
+          options._changeView = function ( viewer ) {
+            if ( options.aid ) {
+              viewer.pageSet.showAnnotation( viewer.api.getAnnotation( options.aid ) );
+            } else {
+              viewer.api.setCurrentPage( options.page );
+            }
+          };
+        }
+
+        function documentIsLoaded( url ) {
+          var found = false;
+          Popcorn.forEach( DV.viewers, function( viewer, idx ) {
+            if( viewer.api.getSchema().canonicalURL === url ) {
+              var targetDoc;
+              setOptions( viewer );
+              targetDoc = documentRegistry[ options._key ];
+              options._containerId = targetDoc.id;
+              targetDoc.num += 1;
+              found = true;
+              DV.loaded = true;
+            }
+          });
+          return found;
+        }
+
+        function createRegistryEntry() {
+          var entry = {
+            num: 1,
+            id: options._containerId
+          };
+          documentRegistry[ options._key ] = entry;
+          DV.loaded = true;
+        }
+
+        if ( !documentIsLoaded( options.url ) ) {
+
+          containerDiv.id = options._containerId = Popcorn.guid( target );
+          container = "#" + containerDiv.id;
+          targetDiv.appendChild( containerDiv );
+          that.trigger( "documentready" );
+
+          // Figure out if we need a callback to change the page #
+          var afterLoad = options.page || options.aid ?
+            function( viewer ) {
+              setOptions( viewer );
+              options._changeView( viewer );
+              containerDiv.style.visibility = "hidden";
+              viewer.elements.pages.hide();
+              createRegistryEntry();
+            } :
+            function( viewer ) {
+              setOptions( viewer );
+              createRegistryEntry();
+              containerDiv.style.visibility = "hidden";
+              viewer.elements.pages.hide();
+            };
+          DV.load( url, {
+            width: width,
+            height: height,
+            sidebar: sidebar,
+            text: text,
+            pdf: pdf,
+            showAnnotations: showAnnotations,
+            zoom: zoom,
+            search: search,
+            container: container,
+            afterLoad: afterLoad
+          });
+        }
+      }
+      function readyCheck() {
+        if( window.DV.loaded ) {
+          load();
+        } else {
+          setTimeout( readyCheck, 25 );
+        }
+      }
+
+      // If the viewer is already loaded, don't repeat the process.
+      if ( !DV.loading ) {
+        DV.loading = true;
+        DV.recordHit = "//www.documentcloud.org/pixel.gif";
+
+        var link = document.createElement( "link" ),
+            head = document.getElementsByTagName( "head" )[ 0 ];
+
+        link.rel = "stylesheet";
+        link.type = "text/css";
+        link.media = "screen";
+        link.href = "//s3.documentcloud.org/viewer/viewer-datauri.css";
+
+        head.appendChild( link );
+
+        // Record the fact that the viewer is loaded.
+        DV.loaded = false;
+
+        // Request the viewer JavaScript.
+        Popcorn.getScript( "http://s3.documentcloud.org/viewer/viewer.js", function() {
+          DV.loading = false;
+          load();
+        });
+      } else {
+
+        readyCheck();
+      }
+
+    },
+
+    start: function( event, options ) {
+      var elem = document.getElementById( options._containerId ),
+          viewer = DV.viewers[ options._key ];
+      ( options.page || options.aid ) && viewer &&
+        options._changeView( viewer );
+
+      if ( elem && viewer) {
+        elem.style.visibility = "visible";
+        viewer.elements.pages.show();
+      }
+    },
+
+    end: function( event, options ) {
+      var elem = document.getElementById( options._containerId );
+
+      if ( elem && DV.viewers[ options._key ] ) {
+        elem.style.visibility = "hidden";
+        DV.viewers[ options._key ].elements.pages.hide();
+      }
+    },
+
+    _teardown: function( options ) {
+      var elem = document.getElementById( options._containerId ),
+          key = options._key;
+      if ( key && DV.viewers[ key ] && --documentRegistry[ key ].num === 0 ) {
+        DV.viewers[ key ].api.unload();
+
+        while ( elem.hasChildNodes() ) {
+          elem.removeChild( elem.lastChild );
+        }
+        elem.parentNode.removeChild( elem );
+      }
+    }
+  });
+})( Popcorn, window.document );
+// PARSER: 0.3 JSON
+
+(function (Popcorn) {
+  Popcorn.parser( "parseJSON", "JSON", function( data ) {
+
+    // declare needed variables
+    var retObj = {
+          title: "",
+          remote: "",
+          data: []
+        },
+        manifestData = {}, 
+        dataObj = data;
+    
+    
+    /*
+      TODO: add support for filling in source children of the video element
+      
+      
+      remote: [
+        { 
+          src: "whatever.mp4", 
+          type: 'video/mp4; codecs="avc1, mp4a"'
+        }, 
+        { 
+          src: "whatever.ogv", 
+          type: 'video/ogg; codecs="theora, vorbis"'
+        }
+      ]
+
+    */
+    
+        
+    Popcorn.forEach( dataObj.data, function ( obj, key ) {
+      retObj.data.push( obj );
+    });
+
+    return retObj;
+  });
+
+})( Popcorn );
+// PARSER: 0.1 SBV
+
+(function (Popcorn) {
+
+  /**
+   * SBV popcorn parser plug-in 
+   * Parses subtitle files in the SBV format.
+   * Times are expected in H:MM:SS.MIL format, with hours optional
+   * Subtitles which don't match expected format are ignored
+   * Data parameter is given by Popcorn, will need a text.
+   * Text is the file contents to be parsed
+   * 
+   * @param {Object} data
+   * 
+   * Example:
+    0:00:02.400,0:00:07.200
+    Senator, we're making our final approach into Coruscant.
+   */
+  Popcorn.parser( "parseSBV", function( data ) {
+  
+    // declare needed variables
+    var retObj = {
+          title: "",
+          remote: "",
+          data: []
+        },
+        subs = [],
+        lines,
+        i = 0,
+        len = 0,
+        idx = 0;
+    
+    // [H:]MM:SS.MIL string to SS.MIL
+    // Will thrown exception on bad time format
+    var toSeconds = function( t_in ) {
+      var t = t_in.split( ":" ),
+          l = t.length-1,
+          time;
+      
+      try {
+        time = parseInt( t[l-1], 10 )*60 + parseFloat( t[l], 10 );
+        
+        // Hours optionally given
+        if ( l === 2 ) { 
+          time += parseInt( t[0], 10 )*3600;
+        }
+      } catch ( e ) {
+        throw "Bad cue";
+      }
+      
+      return time;
+    };
+    
+    var createTrack = function( name, attributes ) {
+      var track = {};
+      track[name] = attributes;
+      return track;
+    };
+  
+    // Here is where the magic happens
+    // Split on line breaks
+    lines = data.text.split( /(?:\r\n|\r|\n)/gm );
+    len = lines.length;
+    
+    while ( i < len ) {
+      var sub = {},
+          text = [],
+          time = lines[i++].split( "," );
+      
+      try {
+        sub.start = toSeconds( time[0] );
+        sub.end = toSeconds( time[1] );
+        
+        // Gather all lines of text
+        while ( i < len && lines[i] ) {
+          text.push( lines[i++] );
+        }
+        
+        // Join line breaks in text
+        sub.text = text.join( "<br />" );
+        subs.push( createTrack( "subtitle", sub ) );
+      } catch ( e ) {
+        // Bad cue, advance to end of cue
+        while ( i < len && lines[i] ) {
+          i++;
+        }
+      }
+      
+      // Consume empty whitespace
+      while ( i < len && !lines[i] ) {
+        i++;
+      }
+    }
+    
+    retObj.data = subs;
+
+    return retObj;
+  });
+
+})( Popcorn );
+// PARSER: 0.3 SRT
+
+(function (Popcorn) {
+  /**
+   * SRT popcorn parser plug-in 
+   * Parses subtitle files in the SRT format.
+   * Times are expected in HH:MM:SS,MIL format, though HH:MM:SS.MIL also supported
+   * Ignore styling, which may occur after the end time or in-text
+   * While not part of the "official" spec, majority of players support HTML and SSA styling tags
+   * SSA-style tags are stripped, HTML style tags are left for the browser to handle:
+   *    HTML: <font>, <b>, <i>, <u>, <s>
+   *    SSA:  \N or \n, {\cmdArg1}, {\cmd(arg1, arg2, ...)}
+   
+   * Data parameter is given by Popcorn, will need a text.
+   * Text is the file contents to be parsed
+   * 
+   * @param {Object} data
+   * 
+   * Example:
+    1
+    00:00:25,712 --> 00:00:30.399
+    This text is <font color="red">RED</font> and has not been {\pos(142,120)} positioned.
+    This takes \Nup three \nentire lines.
+    This contains nested <b>bold, <i>italic, <u>underline</u> and <s>strike-through</s></u></i></b> HTML tags
+    Unclosed but <b>supported tags are left in
+    <ggg>Unsupported</ggg> HTML tags are left in, even if <hhh>not closed.
+    SSA tags with {\i1} would open and close italicize {\i0}, but are stripped
+    Multiple {\pos(142,120)\b1}SSA tags are stripped
+   */
+  Popcorn.parser( "parseSRT", function( data ) {
+
+    // declare needed variables
+    var retObj = {
+          title: "",
+          remote: "",
+          data: []
+        },
+        subs = [],
+        i = 0,
+        len = 0,
+        idx = 0,
+        lines,
+        time,
+        text,
+        sub;
+    
+    // Simple function to convert HH:MM:SS,MMM or HH:MM:SS.MMM to SS.MMM
+    // Assume valid, returns 0 on error
+    var toSeconds = function( t_in ) {
+      var t = t_in.split( ':' );
+      
+      try {
+        var s = t[2].split( ',' );
+        
+        // Just in case a . is decimal seperator
+        if ( s.length === 1 ) {
+          s = t[2].split( '.' );
+        }
+        
+        return parseFloat( t[0], 10 )*3600 + parseFloat( t[1], 10 )*60 + parseFloat( s[0], 10 ) + parseFloat( s[1], 10 )/1000;
+      } catch ( e ) {
+        return 0;
+      }
+    };
+    
+    var createTrack = function( name, attributes ) {
+      var track = {};
+      track[name] = attributes;
+      return track;
+    };
+  
+    // Here is where the magic happens
+    // Split on line breaks
+    lines = data.text.split( /(?:\r\n|\r|\n)/gm );
+    len = lines.length;
+    
+    for( i=0; i < len; i++ ) {
+      sub = {};
+      text = [];
+      
+      sub.id = parseInt( lines[i++], 10 );
+      
+      // Split on '-->' delimiter, trimming spaces as well
+      time = lines[i++].split( /[\t ]*-->[\t ]*/ );
+      
+      sub.start = toSeconds( time[0] );
+      
+      // So as to trim positioning information from end
+      idx = time[1].indexOf( " " );
+      if ( idx !== -1) {
+        time[1] = time[1].substr( 0, idx );
+      }
+      sub.end = toSeconds( time[1] );
+      
+      // Build single line of text from multi-line subtitle in file
+      while ( i < len && lines[i] ) {
+        text.push( lines[i++] );
+      }
+      
+      // Join into 1 line, SSA-style linebreaks
+      // Strip out other SSA-style tags
+      sub.text = text.join( "\\N" ).replace( /\{(\\[\w]+\(?([\w\d]+,?)+\)?)+\}/gi, "" );
+      
+      // Escape HTML entities
+      sub.text = sub.text.replace( /</g, "&lt;" ).replace( />/g, "&gt;" );
+      
+      // Unescape great than and less than when it makes a valid html tag of a supported style (font, b, u, s, i)
+      // Modified version of regex from Phil Haack's blog: http://haacked.com/archive/2004/10/25/usingregularexpressionstomatchhtml.aspx
+      // Later modified by kev: http://kevin.deldycke.com/2007/03/ultimate-regular-expression-for-html-tag-parsing-with-php/
+      sub.text = sub.text.replace( /&lt;(\/?(font|b|u|i|s))((\s+(\w|\w[\w\-]*\w)(\s*=\s*(?:\".*?\"|'.*?'|[^'\">\s]+))?)+\s*|\s*)(\/?)&gt;/gi, "<$1$3$7>" );
+      sub.text = sub.text.replace( /\\N/gi, "<br />" );
+      subs.push( createTrack( "subtitle", sub ) );
+    }
+    
+    retObj.data = subs;
+    return retObj;
+  });
+
+})( Popcorn );
+// PARSER: 0.3 SSA/ASS
+
+(function ( Popcorn ) {
+  /**
+   * SSA/ASS popcorn parser plug-in
+   * Parses subtitle files in the identical SSA and ASS formats.
+   * Style information is ignored, and may be found in these
+   * formats: (\N    \n    {\pos(400,570)}     {\kf89})
+   * Out of the [Script Info], [V4 Styles], [Events], [Pictures],
+   * and [Fonts] sections, only [Events] is processed.
+   * Data parameter is given by Popcorn, will need a text.
+   * Text is the file contents to be parsed
+   *
+   * @param {Object} data
+   *
+   * Example:
+     [Script Info]
+      Title: Testing subtitles for the SSA Format
+      [V4 Styles]
+      Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, TertiaryColour, BackColour, Bold, Italic, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, AlphaLevel, Encoding
+      Style: Default,Arial,20,65535,65535,65535,-2147483640,-1,0,1,3,0,2,30,30,30,0,0
+      [Events]
+      Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+      Dialogue: 0,0:00:02.40,0:00:07.20,Default,,0000,0000,0000,,Senator, {\kf89}we're \Nmaking our final \napproach into Coruscant.
+      Dialogue: 0,0:00:09.71,0:00:13.39,Default,,0000,0000,0000,,{\pos(400,570)}Very good, Lieutenant.
+      Dialogue: 0,0:00:15.04,0:00:18.04,Default,,0000,0000,0000,,It's \Na \ntrap!
+   *
+   */
+
+  // Register for SSA extensions
+  Popcorn.parser( "parseSSA", function( data ) {
+    // declare needed variables
+    var retObj = {
+          title: "",
+          remote: "",
+          data: [  ]
+        },
+        rNewLineFile = /(?:\r\n|\r|\n)/gm,
+        subs = [  ],
+        lines,
+        headers,
+        i = 0,
+        len;
+
+    // Here is where the magic happens
+    // Split on line breaks
+    lines = data.text.split( rNewLineFile );
+    len = lines.length;
+
+    // Ignore non-textual info
+    while ( i < len && lines[ i ] !== "[Events]" ) {
+      i++;
+    }
+
+    headers = parseFieldHeaders( lines[ ++i ] );
+
+    while ( ++i < len && lines[ i ] && lines[ i ][ 0 ] !== "[" ) {
+      try {
+        subs.push( createTrack( "subtitle", parseSub( lines[ i ], headers ) ) );
+      } catch ( e ) {}
+    }
+
+    retObj.data = subs;
+    return retObj;
+  });
+
+  function parseSub( line, headers ) {
+    // Trim beginning 'Dialogue: ' and split on delim
+    var fields = line.substr( 10 ).split( "," ),
+        rAdvancedStyles = /\{(\\[\w]+\(?([\w\d]+,?)+\)?)+\}/gi,
+        rNewLineSSA = /\\N/gi,
+        sub;
+
+    sub = {
+      start: toSeconds( fields[ headers.start ] ),
+      end: toSeconds( fields[ headers.end ] )
+    };
+
+    // Invalid time, skip
+    if ( sub.start === -1 || sub.end === -1 ) {
+      throw "Invalid time";
+    }
+
+    // Eliminate advanced styles and convert forced line breaks
+    sub.text = getTextFromFields( fields, headers.text ).replace( rAdvancedStyles, "" ).replace( rNewLineSSA, "<br />" );
+
+    return sub;
+  }
+
+  // h:mm:ss.cc (centisec) string to SS.mmm
+  // Returns -1 if invalid
+  function toSeconds( t_in ) {
+    var t = t_in.split( ":" );
+
+    // Not all there
+    if ( t_in.length !== 10 || t.length < 3 ) {
+      return -1;
+    }
+
+    return parseInt( t[ 0 ], 10 ) * 3600 + parseInt( t[ 1 ], 10 ) * 60 + parseFloat( t[ 2 ], 10 );
+  }
+
+  function getTextFromFields( fields, startIdx ) {
+    var fieldLen = fields.length,
+        text = [  ],
+        i = startIdx;
+
+    // There may be commas in the text which were split, append back together into one line
+    for( ; i < fieldLen; i++ ) {
+      text.push( fields[ i ] );
+    }
+
+    return text.join( "," );
+  }
+
+  function createTrack( name, attributes ) {
+    var track = {};
+    track[ name ] = attributes;
+    return track;
+  }
+
+  function parseFieldHeaders( line ) {
+    // Trim 'Format: ' off front, split on delim
+    var fields = line.substr( 8 ).split( ", " ),
+        result = {},
+        len,
+        i;
+
+     //Find where in Dialogue string the start, end and text info is
+    for ( i = 0, len = fields.length; i < len; i++ ) {
+      if ( fields[ i ] === "Start" ) {
+        result.start = i;
+      } else if ( fields[ i ] === "End" ) {
+        result.end = i;
+      } else if ( fields[ i ] === "Text" ) {
+        result.text = i;
+      }
+    }
+
+    return result;
+  }
+})( Popcorn );
+// PARSER: 0.3 TTML
+
+(function (Popcorn) {
+
+  /**
+   * TTML popcorn parser plug-in 
+   * Parses subtitle files in the TTML format.
+   * Times may be absolute to the timeline or relative
+   *   Absolute times are ISO 8601 format (hh:mm:ss[.mmm])
+   *   Relative times are a fraction followed by a unit metric (d.ddu)
+   *     Relative times are relative to the time given on the parent node
+   * Styling information is ignored
+   * Data parameter is given by Popcorn, will need an xml.
+   * Xml is the file contents to be processed
+   * 
+   * @param {Object} data
+   * 
+   * Example:
+    <tt xmlns:tts="http://www.w3.org/2006/04/ttaf1#styling" xmlns="http://www.w3.org/2006/04/ttaf1">
+      <body region="subtitleArea">
+        <div>
+          <p xml:id="subtitle1" begin="0.76s" end="3.45s">
+            It seems a paradox, does it not,
+          </p>
+        </div>
+      </body>
+    </tt>
+   */
+  Popcorn.parser( "parseTTML", function( data ) {
+
+    // declare needed variables
+    var returnData = {
+          title: "",
+          remote: "",
+          data: []
+        },
+        node,
+        numTracks = 0,
+        region;
+    
+    // Convert time expression to SS.mmm
+    // Expression may be absolute to timeline (hh:mm:ss.ms)
+    //   or relative ( fraction followedd by metric ) ex: 3.4s, 5.7m
+    // Returns -1 if invalid    
+    var toSeconds = function ( t_in, offset ) {
+      if ( !t_in ) {
+        return -1;
+      }
+      
+      var t = t_in.split( ":" ),
+          l = t.length - 1,
+          metric,
+          multiplier,
+          i;
+          
+      // Try clock time
+      if ( l >= 2 ) {
+        return parseInt( t[0], 10 )*3600 + parseInt( t[l-1], 10 )*60 + parseFloat( t[l], 10 );
+      }
+      
+      // Was not clock time, assume relative time
+      // Take metric from end of string (may not be single character)
+      // First find metric
+      for( i = t_in.length - 1; i >= 0; i-- ) {
+        if ( t_in[i] <= "9" && t_in[i] >= "0" ) {
+          break;
+        }
+      }
+      
+      // Point i at metric and normalize offsete time
+      i++;
+      metric = t_in.substr( i );
+      offset = offset || 0;
+      
+      // Determine multiplier for metric relative to seconds
+      if ( metric === "h" ) {
+        multiplier = 3600;
+      } else if ( metric === "m" ) {
+        multiplier = 60;
+      } else if ( metric === "s" ) {
+        multiplier = 1;
+      } else if ( metric === "ms" ) {
+        multiplier = 0.001;
+      } else {
+        return -1;
+      }
+      
+      // Valid multiplier
+      return parseFloat( t_in.substr( 0, i ) ) * multiplier + offset;
+    };
+
+    // creates an object of all atrributes keyd by name
+    var createTrack = function( name, attributes ) {
+      var track = {};
+      track[name] = attributes;
+      return track;
+    };
+    
+    // Parse a node for text content
+    var parseNode = function( node, timeOffset ) {
+      var sub = {};
+      
+      // Trim left and right whitespace from text and change non-explicit line breaks to spaces
+      sub.text = node.textContent.replace(/^[\s]+|[\s]+$/gm, "").replace(/(?:\r\n|\r|\n)/gm, "<br />");
+      sub.id = node.getAttribute( "xml:id" ) || node.getAttribute( "id" );
+      sub.start = toSeconds ( node.getAttribute( "begin" ), timeOffset );
+      sub.end = toSeconds( node.getAttribute( "end" ), timeOffset );
+      sub.target = region;
+      
+      if ( sub.end < 0 ) {
+        // No end given, infer duration if possible
+        // Otherwise, give end as MAX_VALUE
+        sub.end = toSeconds( node.getAttribute( "duration" ), 0 );
+        
+        if ( sub.end >= 0 ) {
+          sub.end += sub.start;
+        } else {
+          sub.end = Number.MAX_VALUE;
+        }
+      }
+      
+      return sub;
+    };
+    
+    // Parse the children of the given node
+    var parseChildren = function( node, timeOffset ) {
+      var currNode = node.firstChild,
+          sub,
+          newOffset;
+      
+      while ( currNode ) {
+        if ( currNode.nodeType === 1 ) {
+          if ( currNode.nodeName === "p" ) {
+            // p is a teextual node, process contents as subtitle
+            sub = parseNode( currNode, timeOffset );
+            returnData.data.push( createTrack( "subtitle", sub ) );
+            numTracks++;
+          } else if ( currNode.nodeName === "div" ) {
+            // div is container for subtitles, recurse
+            newOffset = toSeconds( currNode.getAttribute("begin") );
+            
+            if (newOffset < 0 ) {
+              newOffset = timeOffset;
+            }
+           
+            parseChildren( currNode, newOffset );
+          }
+        }
+        
+        currNode = currNode.nextSibling;
+      }
+    };
+    
+    // Null checks
+    if ( !data.xml || !data.xml.documentElement || !( node = data.xml.documentElement.firstChild ) ) {
+      return returnData;
+    }
+    
+    // Find body tag
+    while ( node.nodeName !== "body" ) {
+      node = node.nextSibling;
+    }
+    
+    region = "";
+    parseChildren( node, 0 );
+
+    return returnData;
+  });
+
+})( Popcorn );
+// PARSER: 0.1 TTXT
+
+(function (Popcorn) {
+
+  /**
+   * TTXT popcorn parser plug-in 
+   * Parses subtitle files in the TTXT format.
+   * Style information is ignored.
+   * Data parameter is given by Popcorn, will need an xml.
+   * Xml is the file contents to be parsed as a DOM tree
+   * 
+   * @param {Object} data
+   * 
+   * Example:
+     <TextSample sampleTime="00:00:00.000" text=""></TextSample>
+   */
+  Popcorn.parser( "parseTTXT", function( data ) {
+
+    // declare needed variables
+    var returnData = {
+          title: "",
+          remote: "",
+          data: []
+        };
+
+    // Simple function to convert HH:MM:SS.MMM to SS.MMM
+    // Assume valid, returns 0 on error
+    var toSeconds = function(t_in) {
+      var t = t_in.split(":");
+      var time = 0;
+      
+      try {        
+        return parseFloat(t[0], 10)*60*60 + parseFloat(t[1], 10)*60 + parseFloat(t[2], 10);
+      } catch (e) { time = 0; }
+      
+      return time;
+    };
+
+    // creates an object of all atrributes keyed by name
+    var createTrack = function( name, attributes ) {
+      var track = {};
+      track[name] = attributes;
+      return track;
+    };
+
+    // this is where things actually start
+    var node = data.xml.lastChild.lastChild; // Last Child of TextStreamHeader
+    var lastStart = Number.MAX_VALUE;
+    var cmds = [];
+    
+    // Work backwards through DOM, processing TextSample nodes
+    while (node) {
+      if ( node.nodeType === 1 && node.nodeName === "TextSample") {
+        var sub = {};
+        sub.start = toSeconds(node.getAttribute('sampleTime'));
+        sub.text = node.getAttribute('text');
+      
+        if (sub.text) { // Only process if text to display
+          // Infer end time from prior element, ms accuracy
+          sub.end = lastStart - 0.001;
+          cmds.push( createTrack("subtitle", sub) );
+        }
+        lastStart = sub.start;
+      }
+      node = node.previousSibling;
+    }
+    
+    returnData.data = cmds.reverse();
+
+    return returnData;
+  });
+
+})( Popcorn );
+// PARSER: 0.3 WebSRT/VTT
+
+(function ( Popcorn ) {
+  /**
+   * WebVTT popcorn parser plug-in
+   * Parses subtitle files in the WebVTT format.
+   * Specification here: http://www.whatwg.org/specs/web-apps/current-work/webvtt.html
+   * Styles which appear after timing information are presently ignored.
+   * Inline styling tags follow HTML conventions and are left in for the browser to handle (or ignore if VTT-specific)
+   * Data parameter is given by Popcorn, text property holds file contents.
+   * Text is the file contents to be parsed
+   *
+   * @param {Object} data
+   *
+   * Example:
+    00:32.500 --> 00:00:33.500 A:start S:50% D:vertical L:98%
+    <v Neil DeGrass Tyson><i>Laughs</i>
+   */
+  Popcorn.parser( "parseVTT", function( data ) {
+
+    // declare needed variables
+    var retObj = {
+          title: "",
+          remote: "",
+          data: []
+        },
+        subs = [],
+        i = 0,
+        len = 0,
+        lines,
+        text,
+        sub,
+        rNewLine = /(?:\r\n|\r|\n)/gm;
+
+    // Here is where the magic happens
+    // Split on line breaks
+    lines = data.text.split( rNewLine );
+    len = lines.length;
+
+    // Check for BOF token
+    if ( len === 0 || lines[ 0 ] !== "WEBVTT" ) {
+      return retObj;
+    }
+
+    i++;
+
+    while ( i < len ) {
+      text = [];
+
+      try {
+        i = skipWhitespace( lines, len, i );
+        sub = parseCueHeader( lines[ i++ ] );
+
+        // Build single line of text from multi-line subtitle in file
+        while ( i < len && lines[ i ] ) {
+          text.push( lines[ i++ ] );
+        }
+
+        // Join lines together to one and build subtitle text
+        sub.text = text.join( "<br />" );
+        subs.push( createTrack( "subtitle", sub ) );
+      } catch ( e ) {
+        i = skipNonWhitespace( lines, len, i );
+      }
+    }
+
+    retObj.data = subs;
+    return retObj;
+  });
+
+  // [HH:]MM:SS.mmm string to SS.mmm float
+  // Throws exception if invalid
+  function toSeconds ( t_in ) {
+    var t = t_in.split( ":" ),
+        l = t_in.length,
+        time;
+
+    // Invalid time string provided
+    if ( l !== 12 && l !== 9 ) {
+      throw "Bad cue";
+    }
+
+    l = t.length - 1;
+
+    try {
+      time = parseInt( t[ l-1 ], 10 ) * 60 + parseFloat( t[ l ], 10 );
+
+      // Hours were given
+      if ( l === 2 ) {
+        time += parseInt( t[ 0 ], 10 ) * 3600;
+      }
+    } catch ( e ) {
+      throw "Bad cue";
+    }
+
+    return time;
+  }
+
+  function createTrack( name, attributes ) {
+    var track = {};
+    track[ name ] = attributes;
+    return track;
+  }
+
+  function parseCueHeader ( line ) {
+    var lineSegments,
+        args,
+        sub = {},
+        rToken = /-->/,
+        rWhitespace = /[\t ]+/;
+
+    if ( !line || line.indexOf( "-->" ) === -1 ) {
+      throw "Bad cue";
+    }
+
+    lineSegments = line.replace( rToken, " --> " ).split( rWhitespace );
+
+    if ( lineSegments.length < 2 ) {
+      throw "Bad cue";
+    }
+
+    sub.id = line;
+    sub.start = toSeconds( lineSegments[ 0 ] );
+    sub.end = toSeconds( lineSegments[ 2 ] );
+
+    return sub;
+  }
+
+  function skipWhitespace ( lines, len, i ) {
+    while ( i < len && !lines[ i ] ) {
+      i++;
+    }
+
+    return i;
+  }
+
+  function skipNonWhitespace ( lines, len, i ) {
+    while ( i < len && lines[ i ] ) {
+      i++;
+    }
+
+    return i;
+  }
+})( Popcorn );
+// PARSER: 0.1 XML
+
+(function (Popcorn) {
+
+  /**
+   *
+   *
+   */
+  Popcorn.parser( "parseXML", "XML", function( data ) {
+
+    // declare needed variables
+    var returnData = {
+          title: "",
+          remote: "",
+          data: []
+        },
+        manifestData = {};
+
+    // Simple function to convert 0:05 to 0.5 in seconds
+    // acceptable formats are HH:MM:SS:MM, MM:SS:MM, SS:MM, SS
+    var toSeconds = function(time) {
+      var t = time.split(":");
+      if (t.length === 1) {
+        return parseFloat(t[0], 10);
+      } else if (t.length === 2) {
+        return parseFloat(t[0], 10) + parseFloat(t[1] / 12, 10);
+      } else if (t.length === 3) {
+        return parseInt(t[0] * 60, 10) + parseFloat(t[1], 10) + parseFloat(t[2] / 12, 10);
+      } else if (t.length === 4) {
+        return parseInt(t[0] * 3600, 10) + parseInt(t[1] * 60, 10) + parseFloat(t[2], 10) + parseFloat(t[3] / 12, 10);
+      }
+    };
+
+    // turns a node tree element into a straight up javascript object
+    // also converts in and out to start and end
+    // also links manifest data with ids
+    var objectifyAttributes = function ( nodeAttributes ) {
+
+      var returnObject = {};
+
+      for ( var i = 0, nal = nodeAttributes.length; i < nal; i++ ) {
+
+        var key  = nodeAttributes.item(i).nodeName,
+            data = nodeAttributes.item(i).nodeValue;
+
+        // converts in into start
+        if (key === "in") {
+          returnObject.start = toSeconds( data );
+        // converts out into end
+        } else if ( key === "out" ){
+          returnObject.end = toSeconds( data );
+        // this is where ids in the manifest are linked
+        } else if ( key === "resourceid" ) {
+          Popcorn.extend( returnObject, manifestData[data] );
+        // everything else
+        } else {
+          returnObject[key] = data;
+        }
+
+      }
+
+      return returnObject;
+    };
+
+    // creates an object of all atrributes keyd by name
+    var createTrack = function( name, attributes ) {
+      var track = {};
+      track[name] = attributes;
+      return track;
+    };
+
+    // recursive function to process a node, or process the next child node
+    var parseNode = function ( node, allAttributes, manifest ) {
+      var attributes = {};
+      Popcorn.extend( attributes, allAttributes, objectifyAttributes( node.attributes ), { text: node.textContent } );
+
+      var childNodes = node.childNodes;
+
+      // processes the node
+      if ( childNodes.length < 1 || ( childNodes.length === 1 && childNodes[0].nodeType === 3 ) ) {
+
+        if ( !manifest ) {
+          returnData.data.push( createTrack( node.nodeName, attributes ) );
+        } else {
+          manifestData[attributes.id] = attributes;
+        }
+
+      // process the next child node
+      } else {
+
+        for ( var i = 0; i < childNodes.length; i++ ) {
+
+          if ( childNodes[i].nodeType === 1 ) {
+            parseNode( childNodes[i], attributes, manifest );
+          }
+
+        }
+      }
+    };
+
+    // this is where things actually start
+    var x = data.documentElement.childNodes;
+
+    for ( var i = 0, xl = x.length; i < xl; i++ ) {
+
+      if ( x[i].nodeType === 1 ) {
+
+        // start the process of each main node type, manifest or timeline
+        if ( x[i].nodeName === "manifest" ) {
+          parseNode( x[i], {}, true );
+        } else { // timeline
+          parseNode( x[i], {}, false );
+        }
+
+      }
+    }
+
+    return returnData;
+  });
+
+})( Popcorn );
+// Popcorn Soundcloud Player Wrapper
+( function( Popcorn, global ) {
+  /**
+  * Soundcloud wrapper for Popcorn.
+  * This player adds enables Popcorn.js to handle Soundcloud audio. It does so by masking an embedded Soundcloud Flash object
+  * as a video and implementing the HTML5 Media Element interface.
+  *
+  * You can configure the video source and dimensions in two ways:
+  *  1. Use the embed code path supplied by Soundcloud the id of the desired location into a new Popcorn.soundcloud object.
+  *     Width and height can be configured throughh CSS.
+  *
+  *    <div id="player_1" style="width: 500px; height: 81px"></div>
+  *    <script type="text/javascript">
+  *      document.addEventListener("DOMContentLoaded", function() {
+  *        var popcorn = Popcorn( Popcorn.soundcloud( "player_1", "http://soundcloud.com/forss/flickermood" ));
+  *      }, false);
+  *    </script>
+  *
+  *  2. Width and height may also be configured directly with the player; this will override any CSS. This is useful for
+  *     when different sizes are desired. for multiple players within the same parent container.
+  *
+  *     <div id="player_1"></div>
+  *     <script type="text/javascript">
+  *       document.addEventListener("DOMContentLoaded", function() {
+  *       var popcorn = Popcorn( Popcorn.soundcloud( "player_1", "http://soundcloud.com/forss/flickermood", {
+  *         width: "500",                                     // Optional, will default to CSS values
+  *         height: "81"                                      // Optional, will default to CSS values
+  *       }));
+  *       }, false);
+  *     </script>
+  *
+  * The player can be further configured to integrate with the SoundCloud API:
+  *
+  * var popcorn = Popcorn( Popcorn.soundcloud( "player_1", "http://soundcloud.com/forss/flickermood", {
+  *   width: "100%",                                    // Optional, the width for the player. May also be as '##px'
+  *                                                     //           Defaults to the maximum possible width
+  *   height: "81px",                                   // Optional, the height for the player. May also be as '###%'
+  *                                                     //           Defaults to 81px
+  *   api: {                                            // Optional, information for Soundcloud API interaction
+  *     key: "abcdefsdfsdf",                            // Required for API interaction. The Soundcloud API key
+  *     commentdiv: "divId_for_output",                 // Required for comment retrieval, the Div Id for outputting comments.
+  *     commentformat: function( comment ) {}           // Optional, a function to format a comment. Returns HTML string
+  *   }
+  * }));
+  *
+  * Comments are retrieved from Soundcloud when the player is registered with Popcorn by calling the registerWithPopcorn()
+  * function. For this to work, the api_key and commentdiv attributes must be set. Comments are output by default similar to
+  * how Soundcloud formats them in-player, but a custom formatting function may be supplied. It receives a comment object and
+  * the current date. A comment object has:
+  *
+  * var comment = {
+  *   start: 0,                           // Required. Start time in ms.
+  *   date: new Date(),                   // Required. Date comment wasa posted.
+  *   text: "",                           // Required. Comment text
+  *   user: {                             // Required. Describes the user who posted the comment
+  *     name: "",                         // Required. User name
+  *     profile: "",                      // Required. User profile link
+  *     avatar: ""                        // Required. User avatar link
+  *   }
+  * }
+  *
+  * These events are completely custom-implemented and may be subscribed to at any time:
+  *   canplaythrough
+  *   durationchange
+  *   load
+  *   loadedmetadata
+  *   loadstart
+  *   play
+  *   readystatechange
+  *   volumechange
+  *
+  * These events are related to player functionality and must be subscribed to during or after the load event:
+  *   canplay
+  *   ended
+  *   error
+  *   pause
+  *   playing
+  *   progress
+  *   seeked
+  *   timeupdate
+  *
+  * These events are not supported:
+  *   abort
+  *   emptied
+  *   loadeddata
+  *   ratechange
+  *   seeking
+  *   stalled
+  *   suspend
+  *   waiting
+  *
+  * Supported media attributes:
+  *   autoplay ( via Popcorn )
+  *   currentTime
+  *   defaultPlaybackRate ( get only )
+  *   duration ( get only )
+  *   ended ( get only )
+  *   initialTime ( get only, always 0 )
+  *   loop ( get only, set by calling setLoop() )
+  *   muted ( get only )
+  *   paused ( get only )
+  *   playbackRate ( get only )
+  *   played ( get only, 0/1 only )
+  *   readyState ( get only )
+  *   src ( get only )
+  *   volume
+  *
+  *   load() function
+  *   mute() function ( toggles on/off )
+  *   play() function
+  *   pause() function
+  *
+  * Unsupported media attributes:
+  *   buffered
+  *   networkState
+  *   preload
+  *   seekable
+  *   seeking
+  *   startOffsetTime
+  *
+  *   canPlayType() function
+  */
+
+  // Trackers
+  var timeupdateInterval = 33,
+      timeCheckInterval = 0.25,
+      abs = Math.abs,
+      floor = Math.floor,
+      round = Math.round,
+      registry = {};
+
+  function hasAllDependencies() {
+    return global.swfobject && global.soundcloud;
+  }
+
+  // Borrowed from: http://www.quirksmode.org/dom/getstyles.html
+  // Gets the style for the given element
+  function getStyle( elem, styleProp ) {
+    if ( elem.currentStyle ) {
+      // IE way
+      return elem.currentStyle[styleProp];
+    } else if ( global.getComputedStyle ) {
+      // Firefox, Chrome, et. al
+      return document.defaultView.getComputedStyle( elem, null ).getPropertyValue( styleProp );
+    }
+  }
+
+  function formatComment( comment ) {
+    // Calclate the difference between d and now, express as "n units ago"
+    function ago( d ) {
+      var diff = ( ( new Date() ).getTime() - d.getTime() )/1000;
+
+      function pluralize( value, unit ) {
+        return value + " " + unit + ( value > 1 ? "s" : "") + " ago";
+      }
+
+      if ( diff < 60 ) {
+        return pluralize( round( diff ), "second" );
+      }
+      diff /= 60;
+
+      if ( diff < 60 ) {
+        return pluralize( round( diff ), "minute" );
+      }
+      diff /= 60;
+
+      if ( diff < 24 ) {
+        return pluralize( round( diff ), "hour" );
+      }
+      diff /= 24;
+
+      // Rough approximation of months
+      if ( diff < 30 ) {
+        return pluralize( round( diff ), "day" );
+      }
+
+      if ( diff < 365 ) {
+        return pluralize( round( diff/30 ), "month" );
+      }
+
+      return pluralize( round( diff/365 ), "year" );
+    }
+
+    // Converts sec to min.sec
+    function timeToFraction ( totalSec ) {
+      var min = floor( totalSec / 60 ),
+          sec = round( totalSec % 60 );
+
+      return min + "." + ( sec < 10 ? "0" : "" ) + sec;
+    }
+
+    return '<div><a href="' + comment.user.profile + '">' +
+           '<img width="16px height="16px" src="' + comment.user.avatar + '"></img>' +
+           comment.user.name + '</a> at ' + timeToFraction( comment.start ) + ' '  +
+           ago( comment.date )  +
+           '<br />' + comment.text + '</span>';
+  }
+
+  function isReady( self ) {
+    if ( !hasAllDependencies() ) {
+      setTimeout( function() {
+        isReady( self );
+      }, 15 );
+      return;
+    }
+
+    var flashvars = {
+      enable_api: true,
+      object_id: self._playerId,
+      url: self.src,
+      // Hide comments in player if showing them elsewhere
+      show_comments: !self._options.api.key && !self._options.api.commentdiv
+    },
+    params = {
+      allowscriptaccess: "always",
+      // This is so we can overlay html ontop of Flash
+      wmode: 'transparent'
+    },
+    attributes = {
+      id: self._playerId,
+      name: self._playerId
+    },
+    actualTarget = document.createElement( 'div' );
+
+    actualTarget.setAttribute( "id", self._playerId );
+    self._container.appendChild( actualTarget );
+
+    swfobject.embedSWF( "http://player.soundcloud.com/player.swf", self._playerId, self.offsetWidth, self.height, "9.0.0", "expressInstall.swf", flashvars, params, attributes );
+  }
+
+
+  Popcorn.soundcloud = function( containerId, src, options ) {
+
+    Popcorn.getScript( "http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js" );
+
+    // Source file originally from 'https://github.com/soundcloud/Widget-JS-API/raw/master/soundcloud.player.api.js'
+    Popcorn.getScript( "http://popcornjs.org/code/players/soundcloud/lib/soundcloud.player.api.js", function() {
+      // Play event is fired twice when player is first started. Ignore second one
+      var ignorePlayEvt = 1;
+
+      // Register the wrapper's load event with the player
+      soundcloud.addEventListener( 'onPlayerReady', function( object, data ) {
+        var wrapper = registry[object.api_getFlashId()];
+
+        wrapper.swfObj = object;
+        wrapper.duration = object.api_getTrackDuration();
+        wrapper.currentTime = object.api_getTrackPosition();
+        // This eliminates volumechangee event from firing on load
+        wrapper.volume = wrapper.previousVolume =  object.api_getVolume()/100;
+
+        // The numeric id of the track for use with Soundcloud API
+        wrapper._mediaId = data.mediaId;
+
+        wrapper.dispatchEvent( 'load' );
+        wrapper.dispatchEvent( 'canplay' );
+        wrapper.dispatchEvent( 'durationchange' );
+
+        wrapper.timeupdate();
+      });
+
+      // Register events for when the flash player plays a track for the first time
+      soundcloud.addEventListener( 'onMediaStart', function( object, data ) {
+        var wrapper = registry[object.api_getFlashId()];
+        wrapper.played = 1;
+        wrapper.dispatchEvent( 'playing' );
+      });
+
+      // Register events for when the flash player plays a track
+      soundcloud.addEventListener( 'onMediaPlay', function( object, data ) {
+        if ( ignorePlayEvt ) {
+          ignorePlayEvt = 0;
+          return;
+        }
+
+        var wrapper = registry[object.api_getFlashId()];
+        wrapper.dispatchEvent( 'play' );
+      });
+
+      // Register events for when the flash player pauses a track
+      soundcloud.addEventListener( 'onMediaPause', function( object, data ) {
+        var wrapper = registry[object.api_getFlashId()];
+        wrapper.dispatchEvent( 'pause' );
+      });
+
+      // Register events for when the flash player is buffering
+      soundcloud.addEventListener( 'onMediaBuffering', function( object, data ) {
+        var wrapper = registry[object.api_getFlashId()];
+
+        wrapper.dispatchEvent( 'progress' );
+
+        if ( wrapper.readyState === 0 ) {
+          wrapper.readyState = 3;
+          wrapper.dispatchEvent( "readystatechange" );
+        }
+      });
+
+      // Register events for when the flash player is done buffering
+      soundcloud.addEventListener( 'onMediaDoneBuffering', function( object, data ) {
+        var wrapper = registry[object.api_getFlashId()];
+        wrapper.dispatchEvent( 'canplaythrough' );
+      });
+
+      // Register events for when the flash player has finished playing
+      soundcloud.addEventListener( 'onMediaEnd', function( object, data ) {
+        var wrapper = registry[object.api_getFlashId()];
+        wrapper.paused = 1;
+        //wrapper.pause();
+        wrapper.dispatchEvent( 'ended' );
+      });
+
+      // Register events for when the flash player has seeked
+      soundcloud.addEventListener( 'onMediaSeek', function( object, data ) {
+        var wrapper = registry[object.api_getFlashId()];
+
+        wrapper.setCurrentTime( object.api_getTrackPosition() );
+
+        if ( wrapper.paused ) {
+          wrapper.dispatchEvent( "timeupdate" );
+        }
+      });
+
+      // Register events for when the flash player has errored
+      soundcloud.addEventListener( 'onPlayerError', function( object, data ) {
+        var wrapper = registry[object.api_getFlashId()];
+        wrapper.dispatchEvent( 'error' );
+      });
+    });
+
+    return new Popcorn.soundcloud.init( containerId, src, options );
+  };
+
+  // A constructor, but we need to wrap it to allow for "static" functions
+  Popcorn.soundcloud.init = (function() {
+    function pullFromContainer( that ) {
+      var options = that._options,
+          container = that._container,
+          bounds = container.getBoundingClientRect(),
+          tmp,
+          undef;
+
+      that.width = options.width || getStyle( container, "width" ) || "100%";
+      that.height = options.height || getStyle( container, "height" ) || "81px";
+      that.src = options.src;
+      that.autoplay = options.autoplay;
+
+      if ( parseFloat( that.height, 10 ) !== 81 ) {
+        that.height = "81px";
+      }
+
+      that.offsetLeft = bounds.left;
+      that.offsetTop = bounds.top;
+      that.offsetHeight = parseFloat( that.height, 10 );
+      that.offsetWidth = parseFloat( that.width, 10 );
+
+      // Width and height may've been specified as a %, find the value now in case a plugin needs it (like subtitle)
+      if ( /[\d]+%/.test( that.width ) ) {
+        tmp = getStyle( container, "width" );
+        that._container.style.width = that.width;
+        that.offsetWidth = that._container.offsetWidth;
+        that._container.style.width = tmp;
+      }
+
+      if ( /[\d]+%/.test( that.height ) ) {
+        tmp = getStyle( container, "height" );
+        that._container.style.height = that.height;
+        that.offsetHeight = that._container.offsetHeight;
+        that._container.style.height = tmp;
+      }
+    }
+
+    // If container id is not supplied, assumed to be same as player id
+    var ctor = function ( containerId, src, options ) {
+      if ( !containerId ) {
+        throw "Must supply an id!";
+      } else if ( !src ) {
+        throw "Must supply a source!";
+      } else if ( /file/.test( location.protocol ) ) {
+        throw "Must run from a web server!";
+      }
+
+      var container = this._container = document.getElementById( containerId );
+
+      if ( !container ) {
+        throw "Could not find that container in the DOM!";
+      }
+
+      options = options || {};
+      options.api = options.api || {};
+      options.target = containerId;
+      options.src = src;
+      options.api.commentformat = options.api.commentformat || formatComment;
+
+      this._mediaId = 0;
+      this._listeners = {};
+      this._playerId = Popcorn.guid( options.target );
+      this._containerId = options.target;
+      this._options = options;
+      this._comments = [];
+      this._popcorn = null;
+
+      pullFromContainer( this );
+
+      this.duration = 0;
+      this.volume = 1;
+      this.currentTime = 0;
+      this.ended = 0;
+      this.paused = 1;
+      this.readyState = 0;
+      this.playbackRate = 1;
+
+      this.top = 0;
+      this.left = 0;
+
+      this.autoplay = null;
+      this.played = 0;
+
+      this.addEventListener( "load", function() {
+        var boundRect = this.getBoundingClientRect();
+
+        this.top = boundRect.top;
+        this.left = boundRect.left;
+
+        this.offsetWidth = this.swfObj.offsetWidth;
+        this.offsetHeight = this.swfObj.offsetHeight;
+        this.offsetLeft = this.swfObj.offsetLeft;
+        this.offsetTop = this.swfObj.offsetTop;
+      });
+
+      registry[ this._playerId ] = this;
+      isReady( this );
+    };
+    return ctor;
+  })();
+
+  Popcorn.soundcloud.init.prototype = Popcorn.soundcloud.prototype;
+
+  // Sequence object prototype
+  Popcorn.extend( Popcorn.soundcloud.prototype, {
+    // Set the volume as a value between 0 and 1
+    setVolume: function( val ) {
+      if ( !val && val !== 0 ) {
+        return;
+      }
+
+      // Normalize in case outside range of expected values of 0 .. 1
+      if ( val < 0 ) {
+        val = -val;
+      }
+
+      if ( val > 1 ) {
+        val %= 1;
+      }
+
+      // HTML video expects to be 0.0 -> 1.0, Flash object expects 0-100
+      this.volume = this.previousVolume = val;
+      this.swfObj.api_setVolume( val*100 );
+      this.dispatchEvent( "volumechange" );
+    },
+    // Seeks the video
+    setCurrentTime: function ( time ) {
+      if ( !time && time !== 0 ) {
+        return;
+      }
+
+      this.currentTime = this.previousCurrentTime = time;
+      this.ended = time >= this.duration;
+
+      // Fire events for seeking and time change
+      this.dispatchEvent( "seeked" );
+    },
+    // Play the video
+    play: function() {
+      // In case someone is cheeky enough to try this before loaded
+      if ( !this.swfObj ) {
+        this.addEventListener( "load", this.play );
+        return;
+      } else if ( !this.paused ) {
+        // No need to process if already playing
+        return;
+      }
+
+      this.paused = 0;
+      this.swfObj.api_play();
+    },
+    // Pause the video
+    pause: function() {
+      // In case someone is cheeky enough to try this before loaded
+      if ( !this.swfObj ) {
+        this.addEventListener( "load", this.pause );
+        return;
+      } else if ( this.paused ) {
+        // No need to process if already playing
+        return;
+      }
+
+      this.paused = 1;
+      this.swfObj.api_pause();
+    },
+    // Toggle video muting
+    // Unmuting will leave it at the old value
+    mute: function() {
+      // In case someone is cheeky enough to try this before loaded
+      if ( !this.swfObj ) {
+        this.addEventListener( "load", this.mute );
+        return;
+      }
+
+      if ( !this.muted() ) {
+        this.oldVol = this.volume;
+
+        if ( this.paused ) {
+          this.setVolume( 0 );
+        } else {
+          this.volume = 0;
+        }
+      } else {
+        if ( this.paused ) {
+          this.setVolume( this.oldVol );
+        } else {
+          this.volume = this.oldVol;
+        }
+      }
+    },
+    muted: function() {
+      return this.volume === 0;
+    },
+    // Force loading by playing the player. Pause afterwards
+    load: function() {
+      // In case someone is cheeky enough to try this before loaded
+      if ( !this.swfObj ) {
+        this.addEventListener( "load", this.load );
+        return;
+      }
+
+      this.play();
+      this.pause();
+    },
+    // Hook an event listener for the player event into internal event system
+    // Stick to HTML conventions of add event listener and keep lowercase, without prepending "on"
+    addEventListener: function( evt, fn ) {
+      if ( !this._listeners[evt] ) {
+        this._listeners[evt] = [];
+      }
+
+      this._listeners[evt].push( fn );
+      return fn;
+    },
+    dispatchEvent: function( evt ) {
+      var self = this,
+          evtName = evt.type || evt;
+
+      // Manually triggered a UI event, have it invoke rather than just the event handlers
+      if ( evtName === "play" && this.paused || evtName === "pause" && !this.paused ) {
+        this[evtName]();
+        return;
+      }
+
+      Popcorn.forEach( this._listeners[evtName], function( fn ) {
+        fn.call( self );
+      });
+    },
+    timeupdate: function() {
+      var self = this,
+          checkedVolume = this.swfObj.api_getVolume()/100,
+          seeked = 0;
+
+      // If has been changed through setting currentTime attribute
+      if ( abs( this.currentTime - this.previousCurrentTime ) > timeCheckInterval ) {
+        // Has programatically set the currentTime
+        this.swfObj.api_seekTo( this.currentTime );
+        seeked = 1;
+      } else {
+        this.previousCurrentTime = this.currentTime = this.swfObj.api_getTrackPosition();
+      }
+
+      // If has been changed throughh volume attribute
+      if ( checkedVolume !== this.previousVolume ) {
+        this.setVolume( checkedVolume );
+      } else if ( this.volume !== this.previousVolume ) {
+        this.setVolume( this.volume );
+      }
+
+      if ( !this.paused ) {
+        this.dispatchEvent( 'timeupdate' );
+      }
+
+      if( !self.ended ) {
+        setTimeout( function() {
+          self.timeupdate.call( self );
+        }, timeupdateInterval);
+      }
+    },
+
+    getBoundingClientRect: function() {
+      var b,
+          self = this;
+
+      if ( this.swfObj ) {
+        b = this.swfObj.getBoundingClientRect();
+
+        return {
+          bottom: b.bottom,
+          left: b.left,
+          right: b.right,
+          top: b.top,
+
+          //  These not guaranteed to be in there
+          width: b.width || ( b.right - b.left ),
+          height: b.height || ( b.bottom - b.top )
+        };
+      } else {
+        //container = document.getElementById( this.playerId );
+        tmp = this._container.getBoundingClientRect();
+
+        // Update bottom, right for expected values once the container loads
+        return {
+          left: tmp.left,
+          top: tmp.top,
+          width: self.offsetWidth,
+          height: self.offsetHeight,
+          bottom: tmp.top + this.width,
+          right: tmp.top + this.height
+        };
+      }
+    },
+
+    registerPopcornWithPlayer: function( popcorn ) {
+      if ( !this.swfObj ) {
+        this.addEventListener( "load", function() {
+          this.registerPopcornWithPlayer( popcorn );
+        });
+        return;
+      }
+
+      this._popcorn = popcorn;
+
+      var api = this._options.api;
+
+      if ( api.key && api.commentdiv ) {
+        var self = this;
+
+        Popcorn.xhr({
+          url: "http://api.soundcloud.com/tracks/" + self._mediaId + "/comments.js?consumer_key=" + api.key,
+          success: function( data ) {
+            Popcorn.forEach( data.json, function ( obj ) {
+              self.addComment({
+                start: obj.timestamp/1000,
+                date: new Date( obj.created_at ),
+                text: obj.body,
+                user: {
+                  name: obj.user.username,
+                  profile: obj.user.permalink_url,
+                  avatar: obj.user.avatar_url
+                }
+              });
+            });
+          }
+        });
+      }
+    }
+  });
+
+  Popcorn.extend( Popcorn.soundcloud.prototype, {
+    addComment: function( obj, displayFn ) {
+      var self = this,
+          comment = {
+            start: obj.start || 0,
+            date: obj.date || new Date(),
+            text: obj.text || "",
+            user: {
+              name: obj.user.name || "",
+              profile: obj.user.profile || "",
+              avatar: obj.user.avatar || ""
+            },
+            display: function() {
+              return ( displayFn || self._options.api.commentformat )( comment );
+            }
+          };
+
+      this._comments.push( comment );
+
+      if ( !this._popcorn ) {
+        return;
+      }
+
+      this._popcorn.subtitle({
+        start: comment.start,
+        target: this._options.api.commentdiv,
+        display: 'inline',
+        language: 'en',
+        text: comment.display()
+      });
+    }
+  });
+})( Popcorn, window );
+(function() {
+
+  // global callback for vimeo.. yuck.
+  vimeo_player_loaded = function( playerId ) {
+    vimeo_player_loaded[ playerId ] && vimeo_player_loaded[ playerId ]();
+  };
+  vimeo_player_loaded.seek = {};
+  vimeo_player_loaded.loadProgress = {};
+  vimeo_player_loaded.play = {};
+  vimeo_player_loaded.pause = {};
+
+  Popcorn.player( "vimeo", {
+    _setup: function( options ) {
+
+      var media = this,
+          vimeoObject,
+          vimeoContainer = document.createElement( "div" ),
+          currentTime = 0,
+          seekTime = 0,
+          seeking = false,
+          volumeChanged = false,
+          lastMuted = false,
+          lastVolume = 0,
+          height,
+          width;
+
+      vimeoContainer.id = media.id + Popcorn.guid();
+
+      media.appendChild( vimeoContainer );
+
+      // setting vimeo player's height and width, default to 560 x 315
+      width = media.style.width ? ""+media.offsetWidth : "100%";
+      height = media.style.height ? ""+media.offsetHeight : "100%";
+
+      var vimeoInit = function() {
+
+        var flashvars,
+            params,
+            attributes = {},
+            src = media.src,
+            toggleMuteVolume = 0,
+            loadStarted = false;
+
+        vimeo_player_loaded[ vimeoContainer.id ] = function() {
+          vimeoObject = document.getElementById( vimeoContainer.id );
+
+          vimeo_player_loaded.seek[ vimeoContainer.id ] = function( time ) {
+            if( time !== currentTime ) {
+              currentTime = time;
+              media.dispatchEvent( "seeked" );
+              media.dispatchEvent( "timeupdate" );
+            }
+          };
+
+          vimeo_player_loaded.play[ vimeoContainer.id ] = function() {
+            if ( media.paused ) {
+              media.paused = false;
+              media.dispatchEvent( "play" );
+
+              media.dispatchEvent( "playing" );
+              timeUpdate();
+            }
+          };
+
+          vimeo_player_loaded.pause[ vimeoContainer.id ] = function() {
+            if ( !media.paused ) {
+              media.paused = true;
+              media.dispatchEvent( "pause" );
+            }
+          };
+
+          vimeo_player_loaded.loadProgress[ vimeoContainer.id ] = function( progress ) {
+
+            if ( !loadStarted ) {
+              loadStarted = true;
+              media.dispatchEvent( "loadstart" );
+            }
+
+            if ( progress.percent === 100 ) {
+              media.dispatchEvent( "canplaythrough" );
+            }
+          };
+
+          vimeoObject.api_addEventListener( "seek", "vimeo_player_loaded.seek." + vimeoContainer.id );
+          vimeoObject.api_addEventListener( "loadProgress", "vimeo_player_loaded.loadProgress." + vimeoContainer.id );
+          vimeoObject.api_addEventListener( "play", "vimeo_player_loaded.play." + vimeoContainer.id );
+          vimeoObject.api_addEventListener( "pause", "vimeo_player_loaded.pause." + vimeoContainer.id );
+
+          var timeUpdate = function() {
+            if ( !media.paused ) {
+              currentTime = vimeoObject.api_getCurrentTime();
+              media.dispatchEvent( "timeupdate" );
+              setTimeout( timeUpdate, 10 );
+            }
+          },
+
+          isMuted = function() {
+
+            return vimeoObject.api_getVolume() === 0;
+          };
+
+          var volumeUpdate = function() {
+
+            var muted = isMuted(),
+            vol = vimeoObject.api_getVolume();
+            if ( lastMuted !== muted ) {
+              lastMuted = muted;
+              media.dispatchEvent( "volumechange" );
+            }
+
+            if ( lastVolume !== vol ) {
+              lastVolume = vol;
+              media.dispatchEvent( "volumechange" );
+            }
+
+            setTimeout( volumeUpdate, 250 );
+          };
+
+          media.play = function() {
+            media.paused = false;
+            media.dispatchEvent( "play" );
+
+            media.dispatchEvent( "playing" );
+            timeUpdate();
+            vimeoObject.api_play();
+          };
+
+          media.pause = function() {
+
+            if ( !media.paused ) {
+
+              media.paused = true;
+              media.dispatchEvent( "pause" );
+              vimeoObject.api_pause();
+            }
+          };
+
+          Popcorn.player.defineProperty( media, "currentTime", {
+
+            set: function( val ) {
+
+              if ( !val ) {
+                return currentTime;
+              }
+
+              currentTime = seekTime = +val;
+              seeking = true;
+
+              media.dispatchEvent( "seeked" );
+              media.dispatchEvent( "timeupdate" );
+              vimeoObject.api_seekTo( currentTime );
+
+              return currentTime;
+            },
+
+            get: function() {
+
+              return currentTime;
+            }
+          });
+
+          Popcorn.player.defineProperty( media, "muted", {
+
+            set: function( val ) {
+
+              if ( isMuted() !== val ) {
+
+                if ( val ) {
+                  toggleMuteVolume = vimeoObject.api_getVolume();
+                  vimeoObject.api_setVolume( 0 );
+                } else {
+
+                  vimeoObject.api_setVolume( toggleMuteVolume );
+                }
+              }
+            },
+            get: function() {
+
+              return isMuted();
+            }
+          });
+
+          Popcorn.player.defineProperty( media, "volume", {
+
+            set: function( val ) {
+
+              if ( !val || typeof val !== "number" || ( val < 0 || val > 1 ) ) {
+                return vimeoObject.api_getVolume() / 100;
+              }
+
+              if ( vimeoObject.api_getVolume() !== val ) {
+                vimeoObject.api_setVolume( val * 100 );
+                lastVolume = vimeoObject.api_getVolume();
+                media.dispatchEvent( "volumechange" );
+              }
+
+              return vimeoObject.api_getVolume() / 100;
+            },
+            get: function() {
+
+              return vimeoObject.api_getVolume() / 100;
+            }
+          });
+
+          media.readyState = 4;
+          media.dispatchEvent( "canplaythrough" );
+          media.dispatchEvent( "load" );
+          media.duration = vimeoObject.api_getDuration();
+          media.dispatchEvent( "durationchange" );
+          volumeUpdate();
+
+          media.dispatchEvent( "loadeddata" );
+        };
+
+        function extractId( videoUrl ) {
+
+          if ( !videoUrl ) {
+            return;
+          }
+
+          var rPlayerUri = /^http:\/\/player\.vimeo\.com\/video\/[\d]+/i,
+              rWebUrl = /vimeo\.com\/[\d]+/;
+
+          var matches = videoUrl.match( rPlayerUri ) ? videoUrl.match( rPlayerUri )[ 0 ].substr( 30 ) : "";
+          return matches ? matches : videoUrl.match( rWebUrl ) ? videoUrl.match( rWebUrl )[ 0 ].substr( 10 ) : "";
+        }
+
+        if ( !( src = extractId( src ) ) ) {
+
+          throw "Invalid Video Id";
+        }
+
+        flashvars = {
+          clip_id: src,
+          js_api: 1,
+          js_swf_id: vimeoContainer.id
+        };
+
+        //  extend options from user to flashvars. NOTE: Videos owned by Plus Vimeo users may override these options
+        Popcorn.extend( flashvars, options );
+
+        params = {
+          allowscriptaccess: "always",
+          allowfullscreen: "true",
+          wmode: "transparent"
+        };
+
+        swfobject.embedSWF( "//vimeo.com/moogaloop.swf", vimeoContainer.id,
+                            width, height, "9.0.0", "expressInstall.swf",
+                            flashvars, params, attributes );
+
+      };
+
+      if ( !window.swfobject ) {
+
+        Popcorn.getScript( "//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js", vimeoInit );
+      } else {
+
+        vimeoInit();
+      }
+    }
+  });
+})();
+
+
+
+// A global callback for youtube... that makes me angry
+onYouTubePlayerReady = function( containerId ) {
+
+ console.log(containerId);
+  onYouTubePlayerReady[ containerId ] && onYouTubePlayerReady[ containerId ]();
+};
+
+stateChangeEventHandler = new Array();
+onErrorEventHandler  = new Array();
+
+Popcorn.player( "youtube", {
+  _setup: function( options ) {
+
+    var media = this,
+        youtubeObject,
+        container = document.createElement( "div" ),
+        currentTime = 0,
+        seekTime = 0,
+        seeking = false,
+        delay =false,
+
+        // state code for volume changed polling
+        volumeChanged = false,
+        lastMuted = false,
+        lastVolume = 0;
+
+    container.id = media.id + Popcorn.guid();
+	youtubeId = Popcorn.guid();
+	media.youtubeId=Popcorn.guid();
+    media.appendChild( container );
+	media.canPlay=0;
+    var youtubeInit = function() {
+
+      var flashvars,
+          params,
+          attributes,
+          src,
+          width,
+          height,
+          query;
+          canPlay=0;
+		
+      // expose a callback to this scope, that is called from the global callback youtube calls
+      onYouTubePlayerReady[ container.id ] = function() {
+		
+        media.youtubeObject = document.getElementById( container.id );
+
+        // more youtube callback nonsense
+       stateChangeEventHandler[media.youtubeId] = function( state ) {
+	
+		// console.log('onstatechange: '+state+' : '+media.youtubeId+' and canplay '+media.canPlay);
+          // playing is state 1
+          // paused is state 2
+          
+          
+          if ( state === 1&&media.canPlay==0) {
+          	
+          	media.canPlay=1;
+          	media.pause();
+          	media.readyState = 4;
+          	media.duration = media.youtubeObject.getDuration();
+			
+			media.dispatchEvent( "canplaythrough" );
+			media.dispatchEvent( "load" );
+			
+			media.dispatchEvent( "durationchange" );
+			//volumeupdate();
+	
+			media.dispatchEvent( "loadeddata" );
+          
+          } else if(state===1){
+		
+            media.paused && media.play();
+          // youtube fires paused events while seeking
+          // this is the only way to get seeking events
+          } else if ( state === 2 ) {
+			
+            // silly logic forced on me by the youtube API
+            // calling youtube.seekTo triggers multiple events
+            // with the second events getCurrentTime being the old time
+            if ( seeking && seekTime === currentTime && Math.abs(parseFloat(seekTime) - parseFloat(media.youtubeObject.getCurrentTime()))>2 ) {
+
+              	media.youtubeObject.seekTo( currentTime );
+              
+              return;
+            }
+            else if(seeking && seekTime === currentTime && Math.abs(parseFloat(seekTime) - parseFloat(media.youtubeObject.getCurrentTime()))<2 ) {
+   
+            	seeking=false;
+            	delay=true;	
+            	currentTime = media.youtubeObject.getCurrentTime();
+				media.dispatchEvent( "timeupdate" );
+				!media.paused && media.pause();
+				return
+            }
+            
+            if(delay){
+            	delay=false;
+            	return;
+            	}
+            else{
+            	
+				currentTime = media.youtubeObject.getCurrentTime();
+				media.dispatchEvent( "timeupdate" );
+				!media.paused && media.pause();
+				//console.log('setting the volume');
+            	//console.log(options.volume);
+				media.youtubeObject.setVolume(options.volume);
+            }
+				
+          }
+        };
+
+        stateChangeEventHandler[Popcorn.guid()] = function( errorCode ) {
+          if ( [ 2, 100, 101, 150 ].indexOf( errorCode ) !== -1 ) {
+            media.dispatchEvent( "error" );
+          }
+        };
+
+        // youtube requires callbacks to be a string to a function path from the global scope
+        media.youtubeObject.addEventListener( "onStateChange", "stateChangeEventHandler["+ media.youtubeId+"]" );
+
+        media.youtubeObject.addEventListener( "onError", "onErrorEventHandler[" + media.youtubeId+']');
+
+        var timeupdate = function() {
+
+          if ( !media.paused ) {
+
+            if( media.youtubeObject.getCurrentTime) currentTime = media.youtubeObject.getCurrentTime();
+            media.dispatchEvent( "timeupdate" );
+            setTimeout( timeupdate, 10 );
+          }
+        };
+
+        var volumeupdate = function() {
+	
+		if(media&&media.youtubeObject&&media.youtubeObject.isMuted()){	
+          if ( lastMuted !== media.youtubeObject.isMuted() ) {
+
+            lastMuted = media.youtubeObject.isMuted();
+            media.dispatchEvent( "volumechange" );
+          }
+
+          if ( lastVolume !== media.youtubeObject.getVolume() ) {
+
+            lastVolume = media.youtubeObject.getVolume();
+            media.dispatchEvent( "volumechange" );
+          }
+
+          setTimeout( volumeupdate, 250 );
+          }
+          
+        };
+
+        media.play = function() {
+
+          media.paused = false;
+          media.dispatchEvent( "play" );
+
+          media.dispatchEvent( "playing" );
+          timeupdate();
+          media.youtubeObject.playVideo();
+        };
+
+        media.pause = function() {
+
+          if ( !media.paused ) {
+
+            media.paused = true;
+            media.dispatchEvent( "pause" );
+            media.youtubeObject.pauseVideo();
+          }
+        };
+
+        Popcorn.player.defineProperty( media, "currentTime", {
+          set: function( val ) {
+			if(val!=0||options.cue_in==0){
+            // make sure val is a number
+            currentTime = seekTime = +val;
+            seeking = true;
+            media.dispatchEvent( "seeked" );
+            media.dispatchEvent( "timeupdate" );
+            media.youtubeObject.seekTo( currentTime );
+            }
+            else if(val==0&&options.cue_in==0){
+            	 media.dispatchEvent( "timeupdate" );
+            }
+            return currentTime;
+          },
+          get: function() {
+
+            return currentTime;
+          }
+        });
+
+        Popcorn.player.defineProperty( media, "muted", {
+          set: function( val ) {
+
+            if ( media.youtubeObject.isMuted() !== val ) {
+
+              if ( val ) {
+
+                media.youtubeObject.mute();
+              } else {
+
+                media.youtubeObject.unMute();
+              }
+
+              lastMuted = media.youtubeObject.isMuted();
+              media.dispatchEvent( "volumechange" );
+            }
+
+            return media.youtubeObject.isMuted();
+          },
+          get: function() {
+
+            return media.youtubeObject.isMuted();
+          }
+        });
+
+        Popcorn.player.defineProperty( media, "volume", {
+          set: function( val ) {
+			//console.log(media.youtubeObject.getVolume());
+			//console.log(val);
+			if( media.youtubeObject.getVolume){
+				if ( media.youtubeObject.getVolume() / 100 !== val ) {
+	
+				  media.youtubeObject.setVolume( val * 100 );
+				  //console.log(val*100);
+				  lastVolume = media.youtubeObject.getVolume();
+				  media.dispatchEvent( "volumechange" );
+				}
+			}
+            return media.youtubeObject.getVolume() / 100;
+          },
+          get: function() {
+
+              if( media.youtubeObject.getVolume) return media.youtubeObject.getVolume() / 100;
+          }
+        });
+		
+		media.youtubeObject.loadVideoById(src,options.cue_in);
+        
+      };
+
+      options.controls = +options.controls === 0 || +options.controls === 1 ? options.controls : 1;
+      options.annotations = +options.annotations === 1 || +options.annotations === 3 ? options.annotations : 1;
+	options.cue_in=options.cue_in||0
+	options.volume=options.volume||1
+     
+     flashvars = {
+        playerapiid: container.id
+      };
+
+      params = {
+       	wmode: "opaque", 
+       	disablekb: "1" ,
+        allowScriptAccess: "always"
+      };
+
+      attributes = {
+        id: container.id
+      };
+
+      src = /^.*(?:\/|v=)(.{11})/.exec( media.src )[ 1 ];
+      query = ( media.src.split( "?" )[ 1 ] || "" ).replace( /v=.{11}/, "" );
+
+      // setting youtube player's height and width, default to 560 x 315
+      width = media.style.width ? ""+media.offsetWidth : "560";
+      height = media.style.height ? ""+media.offsetHeight : "315";
+		//console.log(youtubeId);
+      swfobject.embedSWF("http://www.youtube.com/apiplayer?enablejsapi=1&version=3&key=AI39si7oX_eCGjrxs2lil28MMQdXn-ZWhzku8fGsRVhju-pziYgmI3EOt0o4GmEl00vGXsA_OGGEKwX-xAM0a5Gbsr8zgrGpyg&playerapiid="+container.id, 
+				   container.id, '100%', '100%', "8", null, flashvars, params, attributes);
+    //console.log(container.id);
+    	
+    
+    };
+
+    if ( !window.swfobject ) {
+
+      Popcorn.getScript( "//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js", youtubeInit );
+    } else {
+
+      youtubeInit();
+    }
+  }
+});
+
+
+// A global callback for flashplayer... 
+
+
+var onPlayerLoaded = function( containerId ) {
+	onPlayerLoaded[ containerId ] && onPlayerLoaded[ containerId ]();
+};
+
+var onLoading= function( containerId, value ) {
+	onLoading[ containerId ] && onLoading[ containerId ](value);
+};
+
+var onStateChange= function( containerId, eventid, eventvalue ) {
+	onStateChange[ containerId ] && onStateChange[ containerId ](eventid, eventvalue);
+};
+
+var onError= function( containerId, value ) {
+	onError[ containerId ] && onError[ containerId ](value);
+};
+
+
+
+Popcorn.player( "flashvideo", {
+  _setup: function( options ) {
+
+    var media = this,
+        flashvideoObject,
+        container = document.createElement( "div" ),
+        currentTime = 0,
+        seekTime = 0,
+        seeking = false,
+
+        // state code for volume changed polling
+        volumeChanged = false,
+        lastMuted = false,
+        lastVolume = 100;
+
+    container.id = media.id + Popcorn.guid();
+	media.waiting =true;
+    media.appendChild( container );
+
+    var flashvideoInit = function() {
+
+      var flashvars,
+          params,
+          attributes,
+          src,
+          width,
+          height,
+          query;
+
+      // expose a callback to this scope, that is called from the global callback youtube calls
+      onPlayerLoaded[ container.id ] = function() {
+
+      	console.log('player '+ container.id + ' has loaded');
+		flashvideoObject = document.getElementById (container.id);
+		
+		onLoading[container.id] = function (value){
+			console.log('on loading',value);
+			if(value==2) media.duration = flashvideoObject.sendToFlash('getEndTime','');
+			else if(value==3&&media.waiting){
+				media.waiting=false;
+				
+				
+				var timeupdate = function() {
+				
+						if ( !media.paused ) {
+							currentTime = flashvideoObject.sendToFlash('getCurrentTime','');
+							media.dispatchEvent( "timeupdate" );
+							setTimeout( timeupdate, 10 );
+						}
+				};
+				timeupdate();
+				media.play = function() {				
+					media.paused = false;
+					media.dispatchEvent( "play" );
+					
+					media.dispatchEvent( "playing" );
+					timeupdate();
+					flashvideoObject.sendToFlash('play','');
+				};
+				
+				media.pause = function() {
+					if ( !media.paused ) {	
+						media.paused = true;
+						media.dispatchEvent( "pause" );
+						flashvideoObject.sendToFlash('pause','');
+					}
+				};
+				
+				Popcorn.player.defineProperty( media, "currentTime", {
+					set: function( val ) {
+						
+						//console.log('setting current time to',val);
+						
+						// make sure val is a number
+						currentTime = seekTime = +val;
+						seeking = true;
+						media.dispatchEvent( "seeked" );
+						media.dispatchEvent( "timeupdate" );
+						flashvideoObject.sendToFlash('seek',currentTime);
+						return currentTime;
+						
+					},
+					get: function() {
+						return currentTime;
+					}
+        		});
+
+        
+
+			Popcorn.player.defineProperty( media, "volume", {
+			  set: function( val ) {
+		
+				
+				if(val !=flashvideoObject.getVolume())flashvideoObject.sendToFlash('setVolume',val);
+				return flashvideoObject.getVolume();
+				
+			  },
+			  get: function() {
+	
+				return flashvideoObject.getVolume();
+			  }
+			});
+	
+		
+			media.readyState = 4;
+			media.dispatchEvent( "canplaythrough" );
+			media.dispatchEvent( "load" );
+			media.duration = flashvideoObject.sendToFlash('getEndTime','');
+			media.dispatchEvent( "durationchange" );
+		   
+	
+			media.dispatchEvent( "loadeddata" );
+      	}
+      	
+		};
+		
+		
+		onStateChange[container.id] = function (playerId, value){
+				
+				switch(value){
+					case 1: // player loaded
+						console.log("onLoading - player loaded "+playerId);
+				  		break;
+					case 2: // metadata loaded
+				  		console.log("onLoading - metadata loaded "+playerId);
+				  		break;
+				  	case 3: // metadata loaded
+				  		console.log("onLoading - can play "+playerId);
+				  		break;
+				  	default:
+				  		console.log("onLoading - " + value);
+				}
+		}
+
+		onError[container.id] = function (playerId, value){
+				
+				switch(value){
+					case 1: // player loaded
+						console.log("onError - failed to load file");
+				  		break;
+					case 2: // metadata loaded
+				  			console.log("onError - wrong url or invalid file");
+				  		break;
+				}
+		}
+		var fun = "onLoading." + container.id;
+		
+		//Do we need these for any reason?
+		//flashvideoObject.addEventListener( "onLoading", "onLoading." + container.id );
+		//flashvideoObject.addEventListener( "onStateChange", "onStateChange." + container.id );
+		//flashvideoObject.addEventListener( "onError", "onError." + container.id );
+		
+		console.log('player '+ container.id + ' has loaded');
+		flashvideoObject.sendToFlash("load", src+','+options.cue_in);	
+	
+		
+        
+      
+      };
+
+      flashvars = {
+        vidId: container.id
+      };
+
+      params = {
+        wmode: "transparent",
+        allowScriptAccess: "always",
+        allownetworking : "all",
+        bgcolor : "#000000",
+      };
+
+      attributes = {
+        id: container.id
+      };
+
+      src = /(http.*)/.exec( media.src )[ 1 ];
+     
+      swfobject.embedSWF(sessionStorage.getItem('hostname')+sessionStorage.getItem('directory')+"MediaPlayer.swf", container.id, "100%", "100%", "9.0.0", false, flashvars, params, attributes);
+	  
+	  
+     
+    };
+
+    if ( !window.swfobject ) {
+
+      Popcorn.getScript( "//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js", flashvideoInit );
+    } else {
+
+      flashvideoInit();
+    }
+  }
+});
+
+// EFFECT: applyclass
+
+(function (Popcorn) {
+
+  /**
+   * apply css class to jquery selector
+   * selector is relative to plugin target's id
+   * so .overlay is actually jQuery( "#target .overlay")
+   *
+   * @param {Object} options
+   * 
+   * Example:
+     var p = Popcorn('#video')
+        .footnote({
+          start: 5, // seconds
+          end: 15, // seconds
+          text: 'This video made exclusively for drumbeat.org',
+          target: 'footnotediv',
+          effect: 'applyclass',
+          applyclass: 'selector: class'
+        })
+   *
+   */
+
+  var toggleClass = function( event, options ) {
+
+    var idx = 0, len = 0, elements;
+
+    Popcorn.forEach( options.classes, function( key, val ) {
+
+      elements = [];
+
+      if ( key === "parent" ) {
+
+        elements[ 0 ] = document.querySelectorAll("#" + options.target )[ 0 ].parentNode;
+      } else {
+
+        elements = document.querySelectorAll("#" + options.target + " " + key );
+      }
+
+      for ( idx = 0, len = elements.length; idx < len; idx++ ) {
+
+        elements[ idx ].classList.toggle( val );
+      }
+    });
+  };
+
+  Popcorn.compose( "applyclass", {
+    
+    manifest: {
+      about: {
+        name: "Popcorn applyclass Effect",
+        version: "0.1",
+        author: "@scottdowne",
+        website: "scottdowne.wordpress.com"
+      },
+      options: {}
+    },
+    _setup: function( options ) {
+
+      options.classes = {};
+      options.applyclass = options.applyclass || "";
+
+      var classes = options.applyclass.replace( /\s/g, "" ).split( "," ),
+          item = [],
+          idx = 0, len = classes.length;
+
+      for ( ; idx < len; idx++ ) {
+
+        item = classes[ idx ].split( ":" );
+
+        if ( item[ 0 ] ) {
+          options.classes[ item[ 0 ] ] = item[ 1 ] || "";
+        }
+      }
+    },
+    start: toggleClass,
+    end: toggleClass
+  });
+})( Popcorn );
+define("zeega_base/player/lib/popcorn-flash", function(){});
+
+define('zeega_media_players/plyr',[
+  "zeega",
+  "backbone",
+
+  'zeega_base/player/lib/popcorn-flash'
+],
+
+function(zeega, Backbone){
+
+	var Player = zeega.module();
+
+	Player.Player = Backbone.View.extend({
+		
+		className : 'media-player-container',
+		
+		defaults : {
+			control_mode : 'none', // none / simple / standard / editor
+			control_fade : true,
+			
+			media_target : null,
+			controls_target : null,
+			
+			autoplay : false,
+			cue_in : 0,
+			cue_out : null,
+			volume : 0.5,
+			fade_in :0,
+			fade_out : 0,
+		},
+		
+		initialize : function(options)
+		{
+			console.log('pp 		player init', this, options)		
+			if(!_.isUndefined(this.model))
+			{
+				this.settings = _.defaults( _.extend({},this.model.toJSON(), options), this.defaults );
+				console.log('pp 		this settings',this, this.settings)
+				//_.extend( this.defaults, this.options );
+				//if there is a model then figure out what kind it is
+				if( !_.isUndefined(this.model.get('uri')) )
+				{
+					// it must be from an item
+					this.format = this.getFormat(this.model.get('attribution_uri'));
+					this.settings = _.defaults( _.extend(this.model.attributes, this.options) , this.defaults);
+				}
+				else if( this.model.get('attr') && this.model.get('attr').uri )
+				{
+					//it must be from a layer
+					this.format = this.getFormat(this.model.get('attr').attribution_uri);
+					this.settings = _.defaults( _.extend(this.model.attributes.attr, this.options), this.defaults );
+					this.settings.id = this.model.id;
+				}
+				else
+				{
+					console.log('I dont know what kind of media this is :(');
+				}
+			}
+			
+			this.model.on('pause_play', this.playPause, this);
+			
+		},
+		
+		render : function()
+		{
+			this.$el.css({ 'width':'100%', 'height':'100%'}); // move this to the CSS !!!  .media-player-container{ height, width}
+			// choose which template to use
+			var format = this.templates[this.format] ? this.format : 'default';
+			console.log('template', _.template( this.templates[format](), this.settings ))
+			this.$el.html( _.template( this.templates[format](), this.settings ));
+			
+			
+			console.log('player settings', this)
+			//attach controls. is this the right place?
+			this.controls = new Player.Controls[this.settings.control_mode]({
+				model:this.model,
+				detached_controls : !_.isNull(this.settings.controls_target)
+			});
+			//draw the controls
+			if( _.isNull(this.settings.controls_target) ) this.$el.append( this.controls.render().el );
+			else $( this.settings.controls_target ).html( this.controls.render().el )
+			console.log('## controls', this.settings.controls_target, this, this.controls, this.controls.el)
+			return this;
+		},
+		
+		placePlayer : function()
+		{
+			if( !this.isVideoLoaded)
+			{
+				var _this = this;
+				console.log('format',this.format)
+				switch( this.format )
+				{
+					case 'html5':
+						console.log('mm 		modernizer', Modernizr, Modernizr.video)
+						if ( Modernizr.video.h264 == 'probably') this.useHTML5();
+						else this.useFlash();
+						break;
+					case 'flashvideo':
+						this.useFlash();
+						break;
+					case 'youtube':
+						this.useYoutube();
+						break;
+					case 'vimeo':
+						this.useVimeo();
+						break;
+					default:
+						console.log('none set');
+				}
+
+				this.initPopcornEvents();
+
+				this.isVideoLoaded = true;
+				this.$el.spin('tiny');
+			}
+		},
+		
+		initPopcornEvents : function()
+		{
+			if(this.popcorn)
+			{
+				var _this = this;
+				this.popcorn.listen('canplay',function(){
+					_this.private_onCanPlay();
+					_this.onCanplay();
+				})
+				
+				this.popcorn.listen('timeupdate',function(){ _this.private_onTimeUpdate() })
+			}
+		},
+		
+		addPopcornToControls : function()
+		{
+			if(this.controls && this.popcorn && this.settings.control_mode != 'none' )
+			{
+				this.controls.addPopcorn( this.popcorn );
+			}
+		},
+		
+		useHTML5 : function()
+		{
+			console.log('add html5 popcorn, target', this, '#media-player-html5-'+ this.model.id, $('#media-player-html5-'+ this.model.id) )
+			var _this = this;
+			var target = '#media-player-html5-'+ this.model.id;
+			
+			this.popcorn = Popcorn( target );
+			this.addPopcornToControls();
+			this.setVolume(0);
+		
+			this.popcorn.listen( 'canplay', function(){
+			
+				_this.$el.spin(false);
+				if( _this.settings.fade_in == 0 ) _this.setVolume( _this.settings.volume );
+				if( _this.settings.cue_in != 0 )
+				{
+					this.listen('seeked',function(){
+						_this.model.can_play = true;
+						_this.model.trigger('ready', _this.model.id ) ;
+					});
+					_this.setCurrentTime( _this.settings.cue_in );
+				}
+				else
+				{
+					_this.model.can_play = true;
+					_this.model.trigger('ready', _this.model.id ) ;
+				}
+			});
+		},
+		useYoutube : function()
+		{
+			console.log('add YOUTUBE to this shizzzz', this.model)
+			
+			var _this = this;
+			var target = '#media-player-'+ this.model.id;
+			var src = this.model.get('attr').attribution_uri;
+			
+			//this.pop = Popcorn.youtube('#zvideo-'+ this.id, this.get('url'),{volume:this.get('volume'), cue_in:this.get('cue_in')} );
+			
+			this.popcorn = Popcorn.youtube( target, src, {volume:_this.settings.volume * 100, cue_in:_this.settings.cue_in} );
+			this.addPopcornToControls();
+			this.setVolume(0);
+
+			this.popcorn.listen('canplaythrough',function(){
+				_this.$el.spin(false);
+				
+				_this.model.can_play = true;
+				
+				_this.popcorn.play();
+				_this.popcorn.pause();
+
+				_this.model.trigger('ready', _this.model.id ) ;
+				
+				if(_this.model.get('attr').fade_in==0) _this.volume(_this.model.get('attr').volume);
+			});
+			
+		},
+		useFlash : function()
+		{
+			var _this = this;
+			var target = '#media-player-'+ this.model.id;
+			var src = this.model.get('attr').uri;
+			
+			this.popcorn = Popcorn.flashvideo( target, src, {volume:_this.settings.volume, cue_in:_this.settings.cue_in} );
+			
+			this.popcorn.listen('loadeddata',function(){
+				_this.$el.spin(false);
+				
+				_this.model.can_play = true;
+				_this.model.trigger('ready', _this.model.id ) ;
+				
+				if(_this.model.get('attr').fade_in==0) _this.volume(_this.model.get('attr').volume);
+			});
+		},
+
+		useVimeo : function()
+		{
+			this.popcorn = Popcorn.vimeo('#media-player-'+ this.model.id, this.get('url') );
+			this.popcorn.listen('loadeddata',function(){
+				_this.trigger('video_canPlay');
+				_this.popcorn.currentTime(_this.get('cue_in'));
+			});
+		},
+		private_onCanPlay : function()
+		{
+			this.model.set('duration', this.popcorn.duration() );
+			if( _.isNull(this.model.get('cue_out')) ) this.model.set('cue_out', this.popcorn.duration() );
+			
+		},
+		onCanplay : function()
+		{
+			if(this.settings.autoplay && this.popcorn) this.popcorn.play();
+		},
+		
+		// getters && setters //
+		
+		setVolume : function(vol)
+		{
+			// constrain volume to 0 < v < 1
+			var volume = vol < 0 ? 0 : vol;
+			var volume = vol > 1 ? 1 : vol;
+			if( _.isNumber(vol) ) this.popcorn.volume( volume );
+		},
+		getVolume : function(){ return this.popcorn.volume() },
+
+		setCurrentTime : function(t){ if( _.isNumber(t) )  this.popcorn.currentTime(t) },
+		getCurrentTime : function(){ return this.popcorn.currentTime() },
+
+		private_onTimeUpdate : function()
+		{
+			// pause if player gets to the cue out point
+			
+			if(this.settings.cue_out == 0) this.settings.cue_out = this.getDuration();
+			
+			if( !_.isNull(this.settings.cue_out) && this.popcorn.currentTime() >= this.settings.cue_out )
+			{
+				this.pause();
+				this.popcorn.currentTime( this.settings.cue_in )
+			}
+		},
+
+		getDuration: function(){ return this.popcorn.duration() },
+
+		play : function(){ console.log('##		play'); if( this.popcorn && this.popcorn.paused() ) this.popcorn.play() },
+		pause : function(){ if( this.popcorn && !this.popcorn.paused() ) this.popcorn.pause() },
+		playPause : function()
+		{
+			console.log('##		playpause')
+			if(this.popcorn)
+			{
+				if(this.popcorn.paused()) this.popcorn.play();
+				else this.popcorn.pause();
+			}
+		},
+		
+		destroy : function()
+		{
+			if(this.popcorn)
+			{
+				console.log('##		destroy',this.popcorn, this.el)
+				this.popcorn.pause();
+				
+				Popcorn.destroy( this.popcorn );
+				//this.popcorn.destroy();
+			}
+		},
+		
+		getFormat : function(url)
+		{
+			console.log('get format',url)
+			//separated to make it easier to isolate and update this list
+			var format = '';
+			if( url.match(/^http:\/\/(?:www\.)?youtube.com\/watch\?(?=.*v=\w+)(?:\S+)?$/) ) format = 'youtube'
+			else if ( url.match(/^http:\/\/(?:www\.)?vimeo.com\/(.*)/) ) format = 'vimeo'
+			else format = 'html5';
+			//Force flash for html5 in Firefox browser
+			if( navigator.userAgent.split(' ')[navigator.userAgent.split(' ').length-1].split('/')[0] == 'Firefox' && format=='html5' ) format='flashvideo';
+			return format;
+		},
+		
+		
+		templates : {
+			
+			html5 : function()
+			{
+				html =
+				"<div id='media-player-<%= id %>' class='media-container'><video id='media-player-html5-<%= id %>' class='media-element media-type-<%= media_type %>' src='<%= uri %>'></video></div>";
+				return html;
+			},
+			
+			flashvideo : function()
+			{
+				html =
+				"<div id='media-player-<%= id %>' class='media-container' style='width:100%;height:100%;'></div>";
+				return html;
+			},
+
+			default : function()
+			{
+				html =
+				"<div id='media-player-<%= id %>' class='media-container'></div>";
+				return html;
+			}
+			
+		}
+		
+	})
+	
+	
+	/*****************************
+	
+		CONTROLS
+		
+	*****************************/
+	
+	Player.Controls = Player.Controls || {};
+	
+	Player.Controls.none = Backbone.View.extend({
+		className : 'controls playback-controls controls-none',
+		item_mode : false,
+		
+		initialize : function()
+		{
+			console.log('controls init',this)
+			if(this.options.detached_controls) this.$el.addClass('playback-layer-controls')
+			if(this.model.get('uri')) this.item_mode = true;
+			this.init();
+		},
+		
+		init : function(){}
+	})
+	
+	Player.Controls.simple = Player.Controls.none.extend({
+		
+		className : 'controls playback-controls controls-simple',
+		
+		addPopcorn : function(pop)
+		{
+			this.popcorn = pop;
+			this.initPopcornEvents();
+		},
+		
+		initPopcornEvents : function()
+		{
+			var _this = this;
+			this.popcorn.listen('canplay',function(){ _this.onCanPlay() });
+			this.popcorn.listen('canplaythrough',function(){ _this.onCanPlay() });
+			this.popcorn.listen('ended',function(){ _this.onEnded() });
+			this.popcorn.listen('playing',function(){ _this.onPlaying() });
+			this.popcorn.listen('pause',function(){ _this.onPause() });
+		},
+		
+		render : function()
+		{
+			this.$el.html( this.getTemplate() );
+			return this;
+		},
+		
+		events : {
+			'click' : 'playPause',
+			'mouseover' : 'onMouseover',
+			'mouseout' : 'onMouseout',
+		},
+		
+		onCanPlay : function()
+		{
+			this.updatePlayPauseIcon();
+			this.updateCues();
+		},
+		
+		updateCues : function()
+		{
+			console.log('update cues',this, this.item_mode, this.model.get('cue_in') )
+			this.cueIn = this.item_mode == true ? this.model.get('cue_in') : this.model.get('attr').cue_in;
+			this.cueOut = (this.item_mode == true ? this.model.get('cue_out') : this.model.get('attr').cue_out) || this.duration;
+		},
+		
+		playPause : function()
+		{
+			
+			if(this.popcorn)
+			{
+				if(this.popcorn.paused()) this.popcorn.play();
+				else this.popcorn.pause();
+				this.updatePlayPauseIcon();
+			}
+			return false;
+		},
+		
+		updatePlayPauseIcon : function()
+		{
+			if(this.popcorn)
+			{
+				if( !this.popcorn.paused() ) this.$el.find('.pause-play i').addClass('icon-pause').removeClass('icon-play');
+				else this.$el.find('.pause-play i').removeClass('icon-pause').addClass('icon-play');
+			}
+		},
+		
+		onPlaying : function()
+		{
+			// fade out after play
+			if( this.model.get('control_fade') ){ this.setFadeTimeout() };
+			this.updatePlayPauseIcon();
+			this.updatePlayPauseIcon();
+		},
+		
+		setFadeTimeout : function()
+		{
+			var _this = this;
+			if(this.timer) clearTimeout(_this.timer);
+			this.timer = setTimeout( function(){
+				_this.fadeOutControls();
+				clearTimeout(_this.timer);
+			}, 3500);
+		},
+		
+		onMouseover : function()
+		{
+			if(this.model.get('control_fade') && !this.popcorn.paused() )
+			{
+				if(this.timer) clearTimeout( this.timer );
+				this.fadeInControls();
+			}
+		},
+		onMouseout : function()
+		{
+			if(this.model.get('control_fade') && !this.popcorn.paused() )
+				this.setFadeTimeout();
+		},
+		
+		fadeOutControls : function()
+		{
+			if(this.$el.find('.player-control-inner').is(':visible') && !this.popcorn.paused()) this.$el.find('.player-control-inner').fadeOut('slow')
+		},
+		fadeInControls : function()
+		{
+			if(this.$el.find('.player-control-inner').is(':hidden')) this.$el.find('.player-control-inner').fadeIn('fast')
+		},
+		
+		onPause : function()
+		{
+			if(this.timer) clearTimeout( this.timer );
+			// make sure  controls are visible
+			this.fadeInControls();
+			this.updatePlayPauseIcon();
+		},
+		
+		onEnded : function()
+		{
+			this.$el.find('.pause-play i').addClass('icon-play').removeClass('icon-pause');
+		},
+		
+		getTemplate : function()
+		{
+			var html =
+			
+			"<div class='player-control-inner'><a href='#' class='pause-play pull-left'><i class='icon-pause icon-white'></i></a></div>";
+			
+			return html;
+		}
+	})
+	
+	Player.Controls.standard = Player.Controls.simple.extend({
+		
+		isSeeking : false,
+		
+		className : 'controls playback-controls controls-standard',
+		
+		addPopcorn : function(pop)
+		{
+			this.popcorn = pop;
+			this.initPopcornEvents();
+		},
+		
+		initPopcornEvents : function()
+		{
+			var _this = this;
+			this.popcorn.listen('canplay',function(){ _this.onCanPlay() });
+			this.popcorn.listen('ended',function(){ _this.onEnded() });
+			this.popcorn.listen('timeupdate',function(){ _this.updateElapsed() });
+			this.popcorn.listen('playing',function(){ _this.onPlaying() });
+			this.popcorn.listen('pause',function(){ _this.onPause() });
+			//this.popcorn.listen('progress',function(){ console.log( 'buffered',_this.popcorn.buffered(), _this.popcorn.buffered().end(0) ) })
+		},
+		
+		events : {
+			'click .pause-play' : 'playPause',
+			'mouseover' : 'onMouseover',
+			'mouseout' : 'onMouseout',
+		},
+		
+		onCanPlay : function()
+		{
+			this.updateDuration();
+			this.updateCues();
+			this.updatePlayPauseIcon();
+			
+			this.initScrubber();
+		},
+		
+		initScrubber : function()
+		{
+			var _this = this;
+			this.$el.find('.media-scrubber').slider({
+				range: 'min',
+				min: 0,
+				max : this.duration,
+				
+				slide : function(e,ui){ _this.scrub( ui.value ) },
+				stop : function(e,ui){ _this.seek(ui.value) }
+			})
+		},
+		
+		updateDuration : function()
+		{
+			this.duration = this.popcorn.duration();
+			this.$el.find('.media-time-duration').html( convertTime(this.duration) );
+		},
+		updateElapsed : function()
+		{
+			console.log('update elapsed', this.popcorn.currentTime())
+			var elapsed = this.popcorn.currentTime();
+			this.$el.find('.media-time-elapsed').html( convertTime( elapsed ) );
+			this.$el.find('.media-scrubber').slider('value', elapsed);
+		},
+		
+		scrub : function( time )
+		{
+			var _this = this;
+			this.isSeeking = true;
+
+		},
+		seek : function( time )
+		{
+			console.log('## seek to: ',time, this.cueIn,this.cueOut)
+			var wasPlaying = !this.popcorn.paused();
+			if(wasPlaying) this.popcorn.pause();
+
+			if( time < this.cueIn )
+			{
+				this.$el.find('.media-scrubber').slider('value',this.cueIn);
+				time = this.cueIn;
+			}
+			else if( time > this.cueOut )
+			{
+				this.$el.find('.media-scrubber').slider('value',this.cueOut);
+				time = this.cueOut;
+			}
+			else
+			{
+				this.$el.find('.media-scrubber').slider('value',time);
+			}
+			
+			console.log('## seek to: ',time, 'was playing?',!this.popcorn.paused())
+
+			this.popcorn.currentTime(time);
+			if(wasPlaying) this.popcorn.play();
+		},
+		
+		getTemplate : function()
+		{
+			var html =
+			"<div class='player-control-inner'>"+
+				"<div class='media-scrubber'></div>"+
+				"<div class='control-panel-inner'>"+
+					"<a href='#' class='pause-play pull-left'><i class='icon-pause icon-white'></i></a>"+
+					"<div class='pull-right'><span class='media-time-elapsed'>0:00</span> / <span class='media-time-duration'>0:00</span></div>"+
+				"</div>"+
+			"</div>";
+			
+			return html;
+		}
+	})
+	
+	Player.Controls.editor = Player.Controls.standard.extend({
+		
+		className : 'controls playback-controls controls-editor',
+		
+		initPopcornEvents : function()
+		{
+			var _this = this;
+			this.popcorn.listen('canplay',function(){ _this.onCanPlay() });
+			this.popcorn.listen('canplaythrough',function(){ _this.onCanPlay() });
+			this.popcorn.listen('ended',function(){ _this.onEnded() });
+			this.popcorn.listen('timeupdate',function(){ _this.updateElapsed() });
+			this.popcorn.listen('playing',function(){ _this.onPlaying() });
+			this.popcorn.listen('pause',function(){ _this.onPause() });
+			//this.popcorn.listen('progress',function(){ console.log( 'buffered',_this.popcorn.buffered(), _this.popcorn.buffered().end(0) ) })
+		},
+		
+		events : {
+			'click .pause-play' : 'playPause',
+			'mouseover' : 'onMouseover',
+			'mouseout' : 'onMouseout',
+			'mousedown .progress-outer' : 'scrub',
+		},
+		
+		onCanPlay : function()
+		{
+			this.updateDuration();
+			this.updateCues();
+			this.updatePlayPauseIcon();
+			
+			this.initScrubber();
+			this.initCropTool();
+		},
+		
+		updateDuration : function()
+		{
+			this.duration = this.popcorn.duration();
+			this.$el.find('.media-time-duration').html( convertTime(this.duration) );
+		},
+		updateElapsed : function()
+		{
+			var elapsed = this.popcorn.currentTime();
+			this.$el.find('.media-time-elapsed').html( convertTime( elapsed ) );
+			this.$el.find('.media-scrubber').slider('value', elapsed);
+			if(elapsed >= this.cueOut) this.popcorn.pause();
+		},
+		
+		initCropTool : function()
+		{
+			var _this = this;
+			
+			//this.cueIn = this.item_mode ? this.model.get('cue_in') : this.model.get('attr').cue_in;
+			//this.cueOut = (this.item_mode ? this.model.get('cue_out') : this.model.get('attr').cue_out) || this.duration;
+			
+			this.$el.find('.crop-time-left .time').text( convertTime( this.cueIn ) );
+			this.$el.find('.crop-time-right .time').text( convertTime( this.cueOut ) );
+			
+			this.$el.find('.crop-slider').slider({
+				range:true,
+				min:0,
+				max:_this.duration,
+				values : [ _this.cueIn , _this.cueOut ],
+				slide : function(e,ui){ _this.onCropSlide(e,ui) },
+				stop : function(e,ui){ _this.onCropStop(e,ui) }
+			})
+			
+			this.$el.find('.crop-time-left .time').unbind('keypress').keypress(function(e){
+				if((e.which >= 48 && e.which <= 58) || e.which == 13)
+				{
+					switch(e.which)
+					{
+						case 13:
+							var sec = _this.convertToSeconds($(this).text());
+							console.log('seconds', sec)
+							if(sec === false)
+							{
+								$(this).text( convertTime(_this.model.get('cue_in')) )
+							
+							}
+							else
+							{
+
+								sec = sec < 0 ? 0 : sec;
+								sec = sec > _this.model.get('cue_out') ? _this.model.get('cue_out') : sec;
+								$(this).text( convertTime(sec) )
+								_this.$el.find('.crop-slider').slider('values',0, sec );
+								_this.cueIn =sec;
+								_this.model.update({ 'cue_in' : sec })
+								_this.seek( sec );
+							}
+							this.blur();
+							return false;
+							break;
+					}
+				}
+				else return false;
+			})
+			this.$el.find('.crop-time-right .time').unbind('keypress').keypress(function(e){
+				if((e.which >= 48 && e.which <= 58) || e.which == 13)
+				{
+					switch(e.which)
+					{
+						case 13:
+							var sec = _this.convertToSeconds( $(this).text() );
+						
+							if(sec === false)
+							{
+								$(this).text( convertTime(_this.model.get('cue_out')) )
+							}
+							else
+							{
+								sec = sec > _this.duration ? _this.duration : sec;
+								sec = sec < _this.model.get('cue_in') ? _this.model.get('cue_in') : sec;
+								$(this).text( convertTime(sec) )
+								_this.$el.find('.crop-slider').slider('values',1, sec );
+								_this.cueOut = sec;
+								_this.seek( Math.max(sec-5,_this.cueIn) );
+								_this.model.update({ 'cue_out' : sec });
+							}
+							this.blur();
+							return false;
+							break;
+					}
+				}
+				else return false;
+			})
+		},
+		
+		convertToSeconds : function( string )
+		{
+			var st = string.split(/:/);
+			var flag = false;
+			var sec = 0;
+			
+			_.each( st.reverse(), function(number,i){
+				if(number.length > 2)
+				{
+					flag = true;
+					return false;
+				}
+				else
+				{
+					var num = parseInt(number);
+					if( !_.isNumber(num) )
+					{
+						flag = true;
+						return false;
+					}
+					else
+					{
+						if(i) sec += num * i * 60;
+						else sec += num;
+					}
+				}
+			})
+			if( flag ) return false;
+			else return sec;
+		},
+		
+		onCropSlide : function(e,ui)
+		{
+			this.$el.find('.crop-time-left .time').html( convertTime(ui.values[0]) );
+			this.$el.find('.crop-time-right .time').html( convertTime(ui.values[1]) );
+		},
+		
+		onCropStop : function(e,ui)
+		{
+			this.cueIn = ui.values[0];
+			this.cueOut = ui.values[1];
+			
+			if( !this.item_mode)
+			{
+				this.model.update({
+					'cue_in' : ui.values[0],
+					'cue_out' : ui.values[1]
+				})
+			}
+
+			this.popcorn.pause();
+			this.seek( ui.values[0] );
+		},
+		
+		getTemplate : function()
+		{
+			var html =
+			"<div class='player-control-inner'>"+
+			
+				"<div class='crop-wrapper'>"+
+					"<div class='crop-time-values clearfix'><span class='crop-time-left'>in [<span class='time' contenteditable='true'>0:00</span>]</span><span class='crop-time-right'>out [<span class='time' contenteditable='true'>0:00</span>]</span></div>"+
+					"<div class='crop-slider'></div>"+
+				"</div>"+
+				
+				"<div class='media-scrubber'></div>"+
+			
+				"<div class='control-panel-inner'>"+
+					"<a href='#' class='pause-play pull-left'><i class='icon-play icon-white'></i></a>"+
+					"<div class='pull-right'><span class='media-time-elapsed'>0:00</span> / <span class='media-time-duration'>0:00</span></div>"+
+				"</div>"+
+			
+			"</div>";
+			
+			return html;
+		}
+	})
+
+	return Player;
+
+})
+;
+define('zeega_layers/video/video',[
+  "zeega",
+  "backbone",
+  'zeega_layers/_layer/_layer',
+  'zeega_media_players/plyr'
+],
+
+function(zeega, Backbone, _Layer, Player){
+
+	var Layer = zeega.module();
+
+	Layer.Video = _Layer.extend({
+			
+		layerType : 'Video',
+		draggable : true,
+		
+		player_loaded : false,
+
+		defaultAttributes : 
+		{
+			'title' : 'Video Layer',
+			'url' : 'none',
+			'left' : 0,
+			'top' : 0,
+			'height' : 100,
+			'width' : 100,
+			'volume' : 0.5,
+			'cue_in'  : 0,
+			'cue_out' : null,
+			'fade_in' : 0,
+			'fade_out' : 0,
+			'dissolve': false,
+			'opacity':1,
+			'dimension':1.5,
+			'citation':true,
+		},
+
+		initialize : function(opts)
+		{
+			console.log('vv		init video', this, opts)
+			_.extend( this, opts );
+		},
+
+		init : function()
+		{
+			this.initPlayer()
+		},
+		
+		initPlayer : function()
+		{
+			var ct = '#media-controls-'+this.id;
+			console.log('init editor player', ct)
+			var Player = zeega.module('player');
+			this.player = new Player.Views.Player({
+				model:this.parent,
+				control_mode : 'editor',
+				media_target : '#layer-visual-'+this.id,
+				controls_target : ct
+			});
+		},
+		
+		initPlayerPlayer : function()
+		{
+			this.player = new Player.Player({
+				model:this.parent,
+				control_mode : 'none',
+				media_target : '#layer-visual-'+ this.id
+			});
+			console.log('init player player', Player, this, this.player)
+		},
+
+		controls : [
+
+		]
+
+	});
+
+
+	Layer.Video.Visual = _Layer.Visual.extend({
+		
+		draggable : true,
+		linkable : true,
+		
+		render : function()
+		{
+			console.log('vv		video render', this)
+			var img = $('<img>')
+				.attr('id', 'video-player-'+ this.model.id)
+				.attr('src', this.model.get('attr').thumbnail_url)
+				.css({'width':'100%'});
+
+			this.$el.html( img ).css('height', this.model.get('attr').height+'%');
+			
+			return this;
+		},
+		
+		
+		editor_onLayerEnter : function(){},
+		
+		editor_onLayerExit : function()
+		{
+			console.log('@@@		on layer exit')
+			if( this.model.player_loaded ) this.model.player.destroy();
+			this.model.player_loaded = false;
+			
+			//must call this if you extend onLayerExit
+			this.model.trigger('editor_readyToRemove')
+		},
+		
+		editor_onControlsOpen : function()
+		{
+			console.log('video controls open : visual')
+			var _this = this;
+			if( !this.model.player_loaded )
+			{
+				this.model.initPlayer();
+				this.$el.html(this.model.player.render().el);
+				this.model.player.placePlayer();
+				console.log('on controls open',this, this.model.player)
+				
+				this.model.player_loaded = true;
+			}
+			else
+			{
+				this.model.player.pause();
+			}
+			//replace with the actual video object
+		},
+		
+		editor_onControlsClosed : function()
+		{
+			this.model.player.pause();
+		},
+		
+		player_onPreload : function()
+		{
+			var _this = this;
+			
+			if( !this.model.player_loaded )
+			{
+				this.model.typeModel.initPlayerPlayer();
+				console.log('pp 		video on preload', this, this.el, this.model.typeModel.player.render().el )
+
+				this.$el.html( this.model.typeModel.player.render().el );
+				this.model.typeModel.player.placePlayer();
+				
+				var _this = this;
+				this.model.typeModel.player.popcorn.listen('timeupdate',function(){ _this.onTimeUpdate() })
+				
+				this.model.player_loaded = true;
+			}
+			else
+			{
+				this.model.player.pause();
+			}
+			
+		},
+		onEnded : function()
+		{
+		
+		
+		},
+		
+		onTimeUpdate : function()
+		{
+			//Fades
+			
+			if(this.model.get('attr').cue_out==0) var out = this.model.player.getDuration();
+			else var out = this.model.get('attr').cue_out;
+			var t = this.model.typeModel.player.getCurrentTime();
+			var f = parseFloat(this.model.get('attr').cue_in)+parseFloat(this.model.get('attr').fade_in);
+			var g = out-parseFloat(this.model.get('attr').fade_out);
+			
+			
+			if(this.model.get('attr').fade_in>0 && t<f)
+			{
+				var vol =this.model.get('attr').volume*(1.0-((f-t)/this.model.get('attr').fade_in)*((f-t)/this.model.get('attr').fade_in));
+				this.model.player.setVolume(vol);
+			}
+			
+			else if(this.model.get('attr').fade_out>0 && t>g)
+			{
+				var vol =this.model.get('attr').volume*(1.0-((t-g)/this.model.get('attr').fade_out))*(1.0-((t-g)/this.model.get('attr').fade_out));
+				this.model.typeModel.player.setVolume(vol);
+			}
+			else if(Math.abs(this.model.get('attr').volume - this.model.typeModel.player.getVolume())>.01)
+			{
+				this.model.typeModel.player.setVolume(this.model.get('attr').volume);
+			}
+			
+			
+			//Dissolve
+			
+			/*
+			
+			if(this.model.get('attr').dissolve||true){
+			
+				if(this.model.video.currentTime()-this.model.get('attr').cue_in<1.0){
+					var op = parseFloat(this.model.video.currentTime()-this.model.get('attr').cue_in);
+					this.$el.css({opacity:op});
+				}
+				
+				else if(out-this.model.video.currentTime()<1.0){
+					var op = Math.max(0,parseFloat(out-this.model.video.currentTime()));
+					this.$el.css({opacity:op});
+				}
+			
+			}
+			
+			*/
+			
+			
+			
+		},
+		
+		player_onPlay : function()
+		{
+			console.log('vv		vid on play', this)
+			this.model.typeModel.player.play();
+		},
+
+		player_onPause : function()
+		{
+			console.log('vv		vid on pause', this)
+			this.model.typeModel.player.pause();
+		},
+		
+		player_onExit : function()
+		{
+			console.log('vv		vid on exit', this)
+			this.model.typeModel.player.pause();
+		},
+		
+		player_onUnrender : function()
+		{
+			
+			console.log('vv		vid on unrender', this)
+			this.model.typeModel.player.pause();
+			this.model.destroy();	
+		}
+		
+	});
+	
+	Layer.Youtube = Layer.Video.extend();
+	Layer.Youtube.Visual = Layer.Video.Visual.extend();
+	
+	Layer.Vimeo = Layer.Video.extend();
+	Layer.Vimeo.Visual = Layer.Video.Visual.extend();
+
+
+	/*
+	Layer.Video.Controls = Layer.Views.Controls.extend({
+				
+		render : function()
+		{
+			var _this = this;
+			var playbackControls = new Layer.Views.Lib.Target({
+				model : this.model
+			});
+			
+			var dissolveCheck = new Layer.Views.Lib.Checkbox({
+				property : 'dissolve',
+				model: this.model,
+				label : 'Fade In'
+			});
+			
+			var volumeSlider = new Layer.Views.Lib.Slider({
+				property : 'volume',
+				model: this.model,
+				label : 'Volume',
+				min : 0,
+				max : 1,
+				step : 0.01,
+				css : false,
+				onSlide : function()
+				{
+					this.model.player.popcorn.volume( volumeSlider.getValue() )
+				}
+			});
+			
+			var fadeInSlider = new Layer.Views.Lib.Slider({
+				property : 'fade_in',
+				model: this.model,
+				label : 'Fade In (sec)',
+				min : 0,
+				max :5,
+				step : 0.1,
+				css : false
+			});
+			
+			var fadeOutSlider = new Layer.Views.Lib.Slider({
+				property : 'fade_out',
+				model: this.model,
+				label : 'Fade Out (sec)',
+				min : 0,
+				max : 5,
+				step : 0.1,
+				css : false
+			});
+			
+			var widthSlider = new Layer.Views.Lib.Slider({
+				property : 'width',
+				model: this.model,
+				label : 'Width',
+				suffix : '%',
+				min : 1,
+				max : 200,
+				
+				onStart : function()
+				{
+					this.model.visual.$el.addClass('editing-layer');
+				},
+				onStop : function()
+				{
+					this.model.visual.$el.removeClass('editing-layer')
+				}
+			});
+			
+			var heightSlider = new Layer.Views.Lib.Slider({
+				property : 'height',
+				model: this.model,
+				label : 'Height',
+				suffix : '%',
+				min : 1,
+				max : 200,
+				onStart : function()
+				{
+					this.model.visual.$el.addClass('editing-layer');
+				},
+				onStop : function()
+				{
+					this.model.visual.$el.removeClass('editing-layer')
+				}
+			});
+			
+			var opacitySlider = new Layer.Views.Lib.Slider({
+				property : 'opacity',
+				model: this.model,
+				label : 'Opacity',
+				step : 0.01,
+				min : 0,
+				max : 1,
+			});
+			
+			var audioLabel = new Layer.Views.Lib.SectionLabel({label:'Audio'})
+			
+			this.controls
+				.append( playbackControls.getControl() )
+				.append( dissolveCheck.getControl() )
+				.append( widthSlider.getControl() )
+				.append( heightSlider.getControl() )
+				.append( opacitySlider.getControl() )
+				.append( audioLabel.getControl() )
+				.append( volumeSlider.getControl() )
+				.append( fadeInSlider.getControl() )
+				.append( fadeOutSlider.getControl() );
+				
+			
+			return this;
+		
+		}
+	
+	});
+*/
+
+	return Layer;
+
+});
 var layerTypes = [
 	'image',
 	'rectangle',
@@ -16422,8 +28334,12 @@ var layerTypes = [
 	'video'
 ];
 
-define(
-	_.map(layerTypes,function(type){ return 'zeega_layers/'+type+'/'+type; }),
+define('zeega_base/player/plugins.layers',[
+	'zeega_layers/image/image',
+	'zeega_layers/rectangle/rectangle',
+	'zeega_layers/text/text',
+	'zeega_layers/video/video'
+],
 	function(
 		image,
 		rectangle,
@@ -16435,8 +28351,6 @@ define(
 		return Plugins;
 	}
 );
-define("zeega_base/player/plugins.layers", function(){});
-
 define('zeega_base/player/layer',[
   "zeega",
   // Libs
@@ -16457,23 +28371,6 @@ function(zeega, Backbone, Layers){
 		editorWindow : $('#visual-editor-workspace'),
 		layerPanel : $('#layers-list-visual'),
 		player : false,
-		
-		//showControls : true,
-		//displayCitation: true,
-		//defaultControls : true,
-		//hasControls :true,
-		
-
-		
-		/*
-		layerColor : [ 'red','blue','yellow','green' ],
-		defaults : {
-			attr : {},
-			linkable: true,
-			thumbUpdate : true,
-		},
-		defaultAttributes : {},
-		*/
 
 		url : function()
 		{
@@ -16491,41 +28388,147 @@ function(zeega, Backbone, Layers){
 
 		load : function()
 		{
-			console.log('LL 		load layer', Layers);
 			this.typeModel = new Layers[this.get('type')]({parent:this});
-			this.typeVisual = new Layers[this.get('type')].Visual({model:this});
+			this.typeVisual = new Layers[this.get('type')].Visual({model:this, attributes:{
+				id: 'layer-visual-'+this.id,
+				class: 'visual-element layer-'+ this.get('type').toLowerCase()
+			}});
+
+			var def = _.defaults( this.get('attr'), this.typeModel.defaultAttributes )
+			this.set('attr',def); // set the layer default attr if they don't exist in the layer
+
 			//this.controls = new // figure this out later
 		},
 
 		startListeners : function()
 		{
 			this.on('ready', this.ready, this);
-/*
-			this.on('editor_layerRender', this.renderLayerInEditor, this );
-			this.on('editor_destroyLayer editor_layerUnrender', this.unrenderLayerFromEditor, this);
-			this.on('editor_controlsOpen', this.onControlsOpen, this);
-			this.on('editor_controlsClosed', this.onControlsClosed, this);
-			this.on('editor_destroyLayer', this.unrenderLayerFromEditor, this);
-*/
+			// 
 			if( this.player )
 			{
-				this.on('player_preload', this.private_onPreload, this);
-				this.on('player_play', this.private_onPlay, this);
-				this.on('player_exit', this.private_onExit, this);
-				this.on('player_unrender', this.private_onUnrender, this);
-				this.on('error', this.private_renderError, this);
+				this.on('player_preload', this.player_onPreload, this);
+				this.on('player_play', this.player_onPlay, this);
+				this.on('player_pause', this.player_onPause, this);
+				this.on('player_play-pause', this.player_onPlayPause, this);
+				this.on('player_exit', this.player_onExit, this);
+				this.on('player_unrender', this.player_onUnrender, this);
+				this.on('error', this.player_onRenderError, this);
 			}
 			else
 			{
-				this.on('editor_layerEnter editor_layerRender', this.private_onLayerEnter, this);
-				this.on('editor_layerExit editor_removeLayerFromFrame', this.private_onLayerExit, this);
-				this.on('editor_controlsOpen', this.private_onControlsOpen, this);
-				this.on('editor_controlsClosed', this.private_onControlsClosed, this);
+				this.on('editor_layerEnter', this.editor_onLayerEnter, this);
+				this.on('editor_layerExit editor_removeLayerFromFrame', this.editor_onLayerExit, this);
+				this.on('editor_controlsOpen', this.editor_onControlsOpen, this);
+				this.on('editor_controlsClosed', this.editor_onControlsClosed, this);
 			}
 		},
 
 		onReady : function(){},
+
+
+		/*	player actions 	*/
+
+		player_onPreload : function()
+		{
+			$('#preview-media').append( this.typeVisual.render().el );
+			this.typeVisual.$el.css({
+				'width' : this.get('attr').width+'%',
+				'opacity' : this.get('attr').opacity,
+				// if previewing, then set way off stage somewhere
+				'top' : (this.player) ? '-1000%' : this.get('attr').top +'%',
+				'left' : (this.player) ? '-1000%' : this.get('attr').left+'%'
+			});
+
+			this.typeModel.player_onPreload();
+			this.typeVisual.player_onPreload();
+		},
+		player_onPlay : function()
+		{
+			this.moveOnStage();
+			this.typeModel.player_onPlay();
+			this.typeVisual.player_onPlay();
+		},
+		player_onPause : function()
+		{
+			this.typeModel.player_onPause();
+			this.typeVisual.player_onPause();
+		},
+		player_onPlayPause : function()
+		{
+			if( this.isPlaying )
+			{
+				this.isPlaying = false;
+				this.player_onPause();
+			}
+			else
+			{
+				this.isPlaying = true;
+				this.player_onPlay()
+			}
+		},
+		player_onExit : function()
+		{
+			this.moveOffStage();
+			this.typeModel.player_onExit();
+			this.typeVisual.player_onExit();
+		},
+		player_onUnrender : function()
+		{
+			this.typeModel.player_onUnrender();
+			this.typeVisual.player_onUnrender();
+		},
+		player_onRenderError : function()
+		{
+			this.typeModel.player_onRenderError();
+			this.typeVisual.player_onRenderError();
+		},
+
+		/*	editor actions 	*/
+
+		/*		needs implementation		*/
+
+		editor_onLayerEnter : function()
+		{
+
+		},
+		editor_onLayerExit : function()
+		{
+
+		},
+		editor_onControlsOpen : function()
+		{
+
+		},
+		editor_onControlsClosed : function()
+		{
+
+		},
 		
+		/*		utilities		*/
+
+		moveOnStage :function()
+		{
+			this.typeVisual.$el.css({
+				'top' : this.get('attr').top +'%',
+				'left' : this.get('attr').left+'%'
+			});
+		},
+		
+		moveOffStage :function()
+		{
+			this.typeVisual.$el.css({
+				'top' : '-1000%',
+				'left' : '-1000%'
+			});
+		},
+
+		updateZIndex : function( z )
+		{
+			this.typeClass.$el.css('z-index', z)
+		},
+		
+		
+
 		/*
 		generateNewViews : function()
 		{
@@ -16661,31 +28664,7 @@ function(zeega, Backbone, Layers){
 		
 		initialize : function()
 		{
-			var _this = this;
 			
-			this.typeClass = new Layers[this.model.get('type')].Visual({model:this.model, attributes:{
-				id: 'layer-visual-'+this.model.id,
-				class: 'visual-element layer-'+ this.model.get('type').toLowerCase()
-			}});
-			//this.typeClass.attributes = { id:'testtrue' };
-
-			_.extend( this.events, this.eventTriggers );
-			
-			this.initListeners();
-			
-			//this.attr = this.model.get('attr')
-			
-			this.typeClass.$el.css({
-				
-				'width' : _this.model.get('attr').width+'%',
-				'opacity' : _this.model.get('attr').opacity,
-				
-				// if previewing, then set way off stage somewhere
-				'top' : (this.model.player) ? '-1000%' : _this.model.get('attr').top +'%',
-				'left' : (this.model.player) ? '-1000%' : _this.model.get('attr').left+'%'
-				});
-				
-			this.init();
 		},
 		
 		initListeners : function()
@@ -16739,22 +28718,7 @@ function(zeega, Backbone, Layers){
 		
 		*******************/
 		
-		onPreload : function()
-		{
-			var _this = this;
-			this.typeClass.render();
-			if(this.model.get('attr').link)
-			{
-				$(this.el).click(function(){
-					window.location = 'http://'+ _this.model.get('attr').link
-				})
-				.addClass('linked-layer');
 
-			}
-			
-			this.model.trigger('ready',this.model.id)
-		},
-		
 		private_renderError : function()
 		{
 			this.typeClass.$el.empty()
@@ -16967,9 +28931,7 @@ define('zeega_player',[
   //'zeega_base/player/layer.view.visual'
 ],
 
-function(zeega, Backbone, Layer) {
-
-	var Zeega = zeega.module();
+function(Zeega, Backbone, Layer) {
 
 	Zeega.Player = Backbone.Model.extend({
 
@@ -16991,12 +28953,14 @@ function(zeega, Backbone, Layer) {
 		play : function()
 		{
 			this.parseProject( this.toJSON() );
+			console.log('after parsed', this)
 			this.set( 'frameID', this.get('frameID') || this.project.sequences.at(0).frames.at(0).id );
 
 			console.log('%%		start player at', this.get('frameID'))
 
 			this.project.on('ready', this.onProjectReady, this );
 			this.project.renderPlayer();
+
 		},
 		
 		onProjectReady : function()
@@ -17009,6 +28973,8 @@ function(zeega, Backbone, Layer) {
 		parseProject : function(data)
 		{
 			this.project = new Zeega.Player.ProjectModel( data );
+			var _this = this;
+			this.project.on('all', function(e,opts){ _this.trigger(e,opts) }); //pass along events from the project model
 			this.project.load();
 		},
 		
@@ -17027,7 +28993,9 @@ function(zeega, Backbone, Layer) {
 
 			if(this.get('mode') == 'editor') zeega.app.restoreFromPreview(); // needs fixin'
 
-			Backbone.history.stop();
+			//Backbone.history.stop();
+
+			console.log('pp 		player exit')
 
 			return false;
 		},
@@ -17046,7 +29014,17 @@ function(zeega, Backbone, Layer) {
 			});
 			this.router = new Router();
 			//Backbone.history.start();
+		},
+
+
+
+		playPause : function()
+		{
+			console.log('zeega player  play pause', this)
+			this.project.playPause();
 		}
+
+
 	})
 
 
@@ -17107,22 +29085,23 @@ function(zeega, Backbone, Layer) {
 		{
 			var _this = this;
 			this.currentFrame.unrender();
-			this.playerView.$el.fadeOut( 450, function(){ _this.playerView.remove() });
+			console.log('pp 		unrender player', this);
+			var playerView = this.layout.getView(function(view){ return view.model === _this });
+			playerView.$el.fadeOut( 450, function(){ playerView.remove() });
 		},
 		
 		goToFrame : function( frameID )
 		{
+
 			this.cancelFrameAdvance();
 			if(this.currentFrame) this.currentFrame.unrender( frameID );
 
 			var frame = this.frames.get(frameID);
-			console.log('$$		go to frame:',frameID, frame, this)
 			
 			if(frame.status == 'waiting')
 			{
 				frame.on('ready',this.renderFrame, this);
 				frame.renderLoader();
-				this.preloadFrames(frame);
 			}
 			else if( frame.status = 'ready')
 			{
@@ -17133,9 +29112,10 @@ function(zeega, Backbone, Layer) {
 				frame.onFrameLoaded();
 				this.renderFrame( frameID );
 			}
+			this.preloadFrames(frame);
 			
 
-			//if(zeega.player.get('mode') != 'editor') zeega.player.router.navigate('frame/'+ frameID );
+			//if(Zeega.player.get('mode') != 'editor') Zeega.player.router.navigate('frame/'+ frameID );
 			this.currentFrame = frame;
 		},
 		
@@ -17152,8 +29132,9 @@ function(zeega, Backbone, Layer) {
 		{
 			var frame = this.frames.get(frameID);
 			var fromFrameID = this.currentFrame ? this.currentFrame.id : frameID;
-
 			frame.render( fromFrameID );
+
+			this.trigger('frame_rendered', frame)
 			this.setFrameAdvance( frameID );
 		},
 		
@@ -17232,7 +29213,7 @@ function(zeega, Backbone, Layer) {
 			var _this = this;
 
 			var frameModels = _.map( this.get('frames'), function(frameID){
-				var frame = zeega.player.project.frames.get(frameID);
+				var frame = Zeega.player.project.frames.get(frameID);
 				
 				var index = _.indexOf( _this.get('frames'), frameID );
 				
@@ -17295,13 +29276,11 @@ function(zeega, Backbone, Layer) {
 			_.each( _.toArray(this.layers), function(layer){
 				if(layer.status == 'waiting')
 				{
-					$('#preview-media').append( layer.visual.typeClass.render().el );
-
 					layer.on('ready', _this.onLayerReady, _this);
 					layer.on('error', _this.onLayerError, _this);
 
 					layer.status = 'loading';
-					layer.trigger('player_preload');
+					layer.player_onPreload();
 				}
 			})
 		},
@@ -17337,8 +29316,9 @@ function(zeega, Backbone, Layer) {
 		playPause : function()
 		{
 			this.isPlaying = !this.isPlaying;
+			console.log('frame play pause', this, this.layers)
 			_.each( _.toArray(this.layers), function(layer){
-				layer.visual.playPause();
+				layer.typeVisual.playPause();
 			})
 		},
 
@@ -17352,11 +29332,9 @@ function(zeega, Backbone, Layer) {
 		render : function( fromFrameID )
 		{
 			var _this = this;
-
 			this.isPlaying = true;
-
 			// display citations
-			if(zeega.player.get('layerCitations')) $('#citation-tray').html( this.citationView.render().el );
+			if(Zeega.player.get('layerCitations')) $('#citation-tray').html( this.citationView.render().el );
 
 			// update arrows
 			this.updateArrows();
@@ -17390,7 +29368,7 @@ function(zeega, Backbone, Layer) {
 		
 		load : function()
 		{
-			var layerModels = _.map( this.get('layers'), function(layerID){ return zeega.player.project.layers.get(layerID) });
+			var layerModels = _.map( this.get('layers'), function(layerID){ return Zeega.player.project.layers.get(layerID) });
 			this.layers = new Zeega.Player.LayerCollection( layerModels );
 
 			if( this.layers.length == 0 ) this.status = 'ready';
@@ -17447,10 +29425,10 @@ function(zeega, Backbone, Layer) {
 			for( var i = 0 ; i < this.PRELOAD_ON_SEQUENCE ; i++)
 			{
 				_.each( targetArray, function(frameID){
-					var before = zeega.player.project.frames.get(frameID).before;
-					var after = zeega.player.project.frames.get(frameID).after;
-					var linksOut = zeega.player.project.frames.get(frameID).linksOut;
-					var linksIn = zeega.player.project.frames.get(frameID).linksIn;
+					var before = Zeega.player.project.frames.get(frameID).before;
+					var after = Zeega.player.project.frames.get(frameID).after;
+					var linksOut = Zeega.player.project.frames.get(frameID).linksOut;
+					var linksIn = Zeega.player.project.frames.get(frameID).linksIn;
 
 					targetArray = _.compact([before,after]);
 					_this.framesToPreload = _.union(_this.framesToPreload,targetArray,linksOut, linksIn);
@@ -17468,7 +29446,7 @@ function(zeega, Backbone, Layer) {
 			this.commonLayers = {};
 			_.each( this.framesToPreload, function(frameID){
 				if( _this.id != frameID)
-					_this.commonLayers[frameID] = _.intersection( zeega.player.project.frames.get(frameID).get('layers'), _this.get('layers') );
+					_this.commonLayers[frameID] = _.intersection( Zeega.player.project.frames.get(frameID).get('layers'), _this.get('layers') );
 			})
 		},
 		
@@ -17601,10 +29579,10 @@ function(zeega, Backbone, Layer) {
 			window.onresize = function(event)
 			{
 				//constrain proportions in player
-				_this.$('#preview-media').clearQueue().animate( this.getWindowSize() ,500 );
+				_this.$('#preview-media').clearQueue().animate( _this.getWindowSize() ,500 );
 			}
 
-			if( zeega.player.get('fadeOutOverlays') )
+			if( Zeega.player.get('fadeOutOverlays') )
 			{
 				//	fadeout overlays after mouse inactivity
 				var fadeOutOverlays = _.debounce(function(){_this.fadeOutOverlays()},5000);
@@ -17668,7 +29646,7 @@ function(zeega, Backbone, Layer) {
 		{
 			this.unsetListeners();
 			if(this.isFullscreen) this.leaveFullscreen();
-			zeega.player.exit();
+			Zeega.player.exit();
 			return false;
 		},
 		
@@ -17721,8 +29699,8 @@ function(zeega, Backbone, Layer) {
 			var _this = this;
 			this.$el.empty();
 			_.each( _.toArray(this.model.layers), function(layer){
-				if( zeega.player.get('appName') && Zeega.Player.CitationView[zeega.player.get('appName')] )
-					var citation = new Zeega.Player.CitationView[zeega.player.get('appName')]({model:layer});
+				if( Zeega.player.get('appName') && Zeega.Player.CitationView[Zeega.player.get('appName')] )
+					var citation = new Zeega.Player.CitationView[Zeega.player.get('appName')]({model:layer});
 				else var citation = new Zeega.Player.CitationView({model:layer});
 
 				_this.$el.append( citation.render().el );
@@ -17801,7 +29779,7 @@ function(zeega, Backbone, Layer) {
 		render : function()
 		{
 			var _this = this;
-			this.$el.html( _.template(this.getTemplate(), zeega.player.project.toJSON() ) );
+			this.$el.html( _.template(this.getTemplate(), Zeega.player.project.toJSON() ) );
 
 			this.$el.find('.progress-types ul').empty();
 			_.each( _.toArray(this.model.layers), function(layer){
@@ -17873,119 +29851,846 @@ function(zeega, Backbone, Layer) {
 
 });
 
-define('modules/example',[
+/*
+ Copyright (c) 2010-2012, CloudMade, Vladimir Agafonkin
+ Leaflet is an open-source JavaScript library for mobile-friendly interactive maps.
+ http://leaflet.cloudmade.com
+*/
+(function(e,t){var n,r;typeof exports!=t+""?n=exports:(r=e.L,n={},n.noConflict=function(){return e.L=r,this},e.L=n),n.version="0.4.4",n.Util={extend:function(e){var t=Array.prototype.slice.call(arguments,1);for(var n=0,r=t.length,i;n<r;n++){i=t[n]||{};for(var s in i)i.hasOwnProperty(s)&&(e[s]=i[s])}return e},bind:function(e,t){var n=arguments.length>2?Array.prototype.slice.call(arguments,2):null;return function(){return e.apply(t,n||arguments)}},stamp:function(){var e=0,t="_leaflet_id";return function(n){return n[t]=n[t]||++e,n[t]}}(),limitExecByInterval:function(e,t,n){var r,i;return function s(){var o=arguments;if(r){i=!0;return}r=!0,setTimeout(function(){r=!1,i&&(s.apply(n,o),i=!1)},t),e.apply(n,o)}},falseFn:function(){return!1},formatNum:function(e,t){var n=Math.pow(10,t||5);return Math.round(e*n)/n},splitWords:function(e){return e.replace(/^\s+|\s+$/g,"").split(/\s+/)},setOptions:function(e,t){return e.options=n.Util.extend({},e.options,t),e.options},getParamString:function(e){var t=[];for(var n in e)e.hasOwnProperty(n)&&t.push(n+"="+e[n]);return"?"+t.join("&")},template:function(e,t){return e.replace(/\{ *([\w_]+) *\}/g,function(e,n){var r=t[n];if(!t.hasOwnProperty(n))throw Error("No value provided for variable "+e);return r})},emptyImageUrl:"data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="},function(){function t(t){var n,r,i=["webkit","moz","o","ms"];for(n=0;n<i.length&&!r;n++)r=e[i[n]+t];return r}function r(t){return e.setTimeout(t,1e3/60)}var i=e.requestAnimationFrame||t("RequestAnimationFrame")||r,s=e.cancelAnimationFrame||t("CancelAnimationFrame")||t("CancelRequestAnimationFrame")||function(t){e.clearTimeout(t)};n.Util.requestAnimFrame=function(t,s,o,u){t=n.Util.bind(t,s);if(!o||i!==r)return i.call(e,t,u);t()},n.Util.cancelAnimFrame=function(t){t&&s.call(e,t)}}(),n.Class=function(){},n.Class.extend=function(e){var t=function(){this.initialize&&this.initialize.apply(this,arguments)},r=function(){};r.prototype=this.prototype;var i=new r;i.constructor=t,t.prototype=i;for(var s in this)this.hasOwnProperty(s)&&s!=="prototype"&&(t[s]=this[s]);return e.statics&&(n.Util.extend(t,e.statics),delete e.statics),e.includes&&(n.Util.extend.apply(null,[i].concat(e.includes)),delete e.includes),e.options&&i.options&&(e.options=n.Util.extend({},i.options,e.options)),n.Util.extend(i,e),t},n.Class.include=function(e){n.Util.extend(this.prototype,e)},n.Class.mergeOptions=function(e){n.Util.extend(this.prototype.options,e)};var i="_leaflet_events";n.Mixin={},n.Mixin.Events={addEventListener:function(e,t,r){var s=this[i]=this[i]||{},o,u,a;if(typeof e=="object"){for(o in e)e.hasOwnProperty(o)&&this.addEventListener(o,e[o],t);return this}e=n.Util.splitWords(e);for(u=0,a=e.length;u<a;u++)s[e[u]]=s[e[u]]||[],s[e[u]].push({action:t,context:r||this});return this},hasEventListeners:function(e){return i in this&&e in this[i]&&this[i][e].length>0},removeEventListener:function(e,t,r){var s=this[i],o,u,a,f,l;if(typeof e=="object"){for(o in e)e.hasOwnProperty(o)&&this.removeEventListener(o,e[o],t);return this}e=n.Util.splitWords(e);for(u=0,a=e.length;u<a;u++)if(this.hasEventListeners(e[u])){f=s[e[u]];for(l=f.length-1;l>=0;l--)(!t||f[l].action===t)&&(!r||f[l].context===r)&&f.splice(l,1)}return this},fireEvent:function(e,t){if(!this.hasEventListeners(e))return this;var r=n.Util.extend({type:e,target:this},t),s=this[i][e].slice();for(var o=0,u=s.length;o<u;o++)s[o].action.call(s[o].context||this,r);return this}},n.Mixin.Events.on=n.Mixin.Events.addEventListener,n.Mixin.Events.off=n.Mixin.Events.removeEventListener,n.Mixin.Events.fire=n.Mixin.Events.fireEvent,function(){var r=navigator.userAgent.toLowerCase(),i=!!e.ActiveXObject,s=i&&!e.XMLHttpRequest,o=r.indexOf("webkit")!==-1,u=r.indexOf("gecko")!==-1,a=r.indexOf("chrome")!==-1,f=e.opera,l=r.indexOf("android")!==-1,c=r.search("android [23]")!==-1,h=typeof orientation!=t+""?!0:!1,p=document.documentElement,d=i&&"transition"in p.style,v=o&&"WebKitCSSMatrix"in e&&"m11"in new e.WebKitCSSMatrix,m=u&&"MozPerspective"in p.style,g=f&&"OTransition"in p.style,y=!e.L_NO_TOUCH&&function(){var e="ontouchstart";if(e in p)return!0;var t=document.createElement("div"),n=!1;return t.setAttribute?(t.setAttribute(e,"return;"),typeof t[e]=="function"&&(n=!0),t.removeAttribute(e),t=null,n):!1}(),b="devicePixelRatio"in e&&e.devicePixelRatio>1||"matchMedia"in e&&e.matchMedia("(min-resolution:144dpi)").matches;n.Browser={ua:r,ie:i,ie6:s,webkit:o,gecko:u,opera:f,android:l,android23:c,chrome:a,ie3d:d,webkit3d:v,gecko3d:m,opera3d:g,any3d:!e.L_DISABLE_3D&&(d||v||m||g),mobile:h,mobileWebkit:h&&o,mobileWebkit3d:h&&v,mobileOpera:h&&f,touch:y,retina:b}}(),n.Point=function(e,t,n){this.x=n?Math.round(e):e,this.y=n?Math.round(t):t},n.Point.prototype={add:function(e){return this.clone()._add(n.point(e))},_add:function(e){return this.x+=e.x,this.y+=e.y,this},subtract:function(e){return this.clone()._subtract(n.point(e))},_subtract:function(e){return this.x-=e.x,this.y-=e.y,this},divideBy:function(e,t){return new n.Point(this.x/e,this.y/e,t)},multiplyBy:function(e,t){return new n.Point(this.x*e,this.y*e,t)},distanceTo:function(e){e=n.point(e);var t=e.x-this.x,r=e.y-this.y;return Math.sqrt(t*t+r*r)},round:function(){return this.clone()._round()},_round:function(){return this.x=Math.round(this.x),this.y=Math.round(this.y),this},floor:function(){return this.clone()._floor()},_floor:function(){return this.x=Math.floor(this.x),this.y=Math.floor(this.y),this},clone:function(){return new n.Point(this.x,this.y)},toString:function(){return"Point("+n.Util.formatNum(this.x)+", "+n.Util.formatNum(this.y)+")"}},n.point=function(e,t,r){return e instanceof n.Point?e:e instanceof Array?new n.Point(e[0],e[1]):isNaN(e)?e:new n.Point(e,t,r)},n.Bounds=n.Class.extend({initialize:function(e,t){if(!e)return;var n=t?[e,t]:e;for(var r=0,i=n.length;r<i;r++)this.extend(n[r])},extend:function(e){return e=n.point(e),!this.min&&!this.max?(this.min=e.clone(),this.max=e.clone()):(this.min.x=Math.min(e.x,this.min.x),this.max.x=Math.max(e.x,this.max.x),this.min.y=Math.min(e.y,this.min.y),this.max.y=Math.max(e.y,this.max.y)),this},getCenter:function(e){return new n.Point((this.min.x+this.max.x)/2,(this.min.y+this.max.y)/2,e)},getBottomLeft:function(){return new n.Point(this.min.x,this.max.y)},getTopRight:function(){return new n.Point(this.max.x,this.min.y)},contains:function(e){var t,r;return typeof e[0]=="number"||e instanceof n.Point?e=n.point(e):e=n.bounds(e),e instanceof n.Bounds?(t=e.min,r=e.max):t=r=e,t.x>=this.min.x&&r.x<=this.max.x&&t.y>=this.min.y&&r.y<=this.max.y},intersects:function(e){e=n.bounds(e);var t=this.min,r=this.max,i=e.min,s=e.max,o=s.x>=t.x&&i.x<=r.x,u=s.y>=t.y&&i.y<=r.y;return o&&u}}),n.bounds=function(e,t){return!e||e instanceof n.Bounds?e:new n.Bounds(e,t)},n.Transformation=n.Class.extend({initialize:function(e,t,n,r){this._a=e,this._b=t,this._c=n,this._d=r},transform:function(e,t){return this._transform(e.clone(),t)},_transform:function(e,t){return t=t||1,e.x=t*(this._a*e.x+this._b),e.y=t*(this._c*e.y+this._d),e},untransform:function(e,t){return t=t||1,new n.Point((e.x/t-this._b)/this._a,(e.y/t-this._d)/this._c)}}),n.DomUtil={get:function(e){return typeof e=="string"?document.getElementById(e):e},getStyle:function(e,t){var n=e.style[t];!n&&e.currentStyle&&(n=e.currentStyle[t]);if(!n||n==="auto"){var r=document.defaultView.getComputedStyle(e,null);n=r?r[t]:null}return n==="auto"?null:n},getViewportOffset:function(e){var t=0,r=0,i=e,s=document.body;do{t+=i.offsetTop||0,r+=i.offsetLeft||0;if(i.offsetParent===s&&n.DomUtil.getStyle(i,"position")==="absolute")break;if(n.DomUtil.getStyle(i,"position")==="fixed"){t+=s.scrollTop||0,r+=s.scrollLeft||0;break}i=i.offsetParent}while(i);i=e;do{if(i===s)break;t-=i.scrollTop||0,r-=i.scrollLeft||0,i=i.parentNode}while(i);return new n.Point(r,t)},create:function(e,t,n){var r=document.createElement(e);return r.className=t,n&&n.appendChild(r),r},disableTextSelection:function(){document.selection&&document.selection.empty&&document.selection.empty(),this._onselectstart||(this._onselectstart=document.onselectstart,document.onselectstart=n.Util.falseFn)},enableTextSelection:function(){document.onselectstart=this._onselectstart,this._onselectstart=null},hasClass:function(e,t){return e.className.length>0&&RegExp("(^|\\s)"+t+"(\\s|$)").test(e.className)},addClass:function(e,t){n.DomUtil.hasClass(e,t)||(e.className+=(e.className?" ":"")+t)},removeClass:function(e,t){function n(e,n){return n===t?"":e}e.className=e.className.replace(/(\S+)\s*/g,n).replace(/(^\s+|\s+$)/,"")},setOpacity:function(e,t){if("opacity"in e.style)e.style.opacity=t;else if(n.Browser.ie){var r=!1,i="DXImageTransform.Microsoft.Alpha";try{r=e.filters.item(i)}catch(s){}t=Math.round(t*100),r?(r.Enabled=t!==100,r.Opacity=t):e.style.filter+=" progid:"+i+"(opacity="+t+")"}},testProp:function(e){var t=document.documentElement.style;for(var n=0;n<e.length;n++)if(e[n]in t)return e[n];return!1},getTranslateString:function(e){var t=n.Browser.webkit3d,r="translate"+(t?"3d":"")+"(",i=(t?",0":"")+")";return r+e.x+"px,"+e.y+"px"+i},getScaleString:function(e,t){var r=n.DomUtil.getTranslateString(t),i=" scale("+e+") ",s=n.DomUtil.getTranslateString(t.multiplyBy(-1));return r+i+s},setPosition:function(e,t,r){e._leaflet_pos=t,!r&&n.Browser.any3d?(e.style[n.DomUtil.TRANSFORM]=n.DomUtil.getTranslateString(t),n.Browser.mobileWebkit3d&&(e.style.WebkitBackfaceVisibility="hidden")):(e.style.left=t.x+"px",e.style.top=t.y+"px")},getPosition:function(e){return e._leaflet_pos}},n.Util.extend(n.DomUtil,{TRANSITION:n.DomUtil.testProp(["transition","webkitTransition","OTransition","MozTransition","msTransition"]),TRANSFORM:n.DomUtil.testProp(["transform","WebkitTransform","OTransform","MozTransform","msTransform"])}),n.LatLng=function(e,t,n){var r=parseFloat(e),i=parseFloat(t);if(isNaN(r)||isNaN(i))throw Error("Invalid LatLng object: ("+e+", "+t+")");n!==!0&&(r=Math.max(Math.min(r,90),-90),i=(i+180)%360+(i<-180||i===180?180:-180)),this.lat=r,this.lng=i},n.Util.extend(n.LatLng,{DEG_TO_RAD:Math.PI/180,RAD_TO_DEG:180/Math.PI,MAX_MARGIN:1e-9}),n.LatLng.prototype={equals:function(e){if(!e)return!1;e=n.latLng(e);var t=Math.max(Math.abs(this.lat-e.lat),Math.abs(this.lng-e.lng));return t<=n.LatLng.MAX_MARGIN},toString:function(){return"LatLng("+n.Util.formatNum(this.lat)+", "+n.Util.formatNum(this.lng)+")"},distanceTo:function(e){e=n.latLng(e);var t=6378137,r=n.LatLng.DEG_TO_RAD,i=(e.lat-this.lat)*r,s=(e.lng-this.lng)*r,o=this.lat*r,u=e.lat*r,a=Math.sin(i/2),f=Math.sin(s/2),l=a*a+f*f*Math.cos(o)*Math.cos(u);return t*2*Math.atan2(Math.sqrt(l),Math.sqrt(1-l))}},n.latLng=function(e,t,r){return e instanceof n.LatLng?e:e instanceof Array?new n.LatLng(e[0],e[1]):isNaN(e)?e:new n.LatLng(e,t,r)},n.LatLngBounds=n.Class.extend({initialize:function(e,t){if(!e)return;var n=t?[e,t]:e;for(var r=0,i=n.length;r<i;r++)this.extend(n[r])},extend:function(e){return typeof e[0]=="number"||e instanceof n.LatLng?e=n.latLng(e):e=n.latLngBounds(e),e instanceof n.LatLng?!this._southWest&&!this._northEast?(this._southWest=new n.LatLng(e.lat,e.lng,!0),this._northEast=new n.LatLng(e.lat,e.lng,!0)):(this._southWest.lat=Math.min(e.lat,this._southWest.lat),this._southWest.lng=Math.min(e.lng,this._southWest.lng),this._northEast.lat=Math.max(e.lat,this._northEast.lat),this._northEast.lng=Math.max(e.lng,this._northEast.lng)):e instanceof n.LatLngBounds&&(this.extend(e._southWest),this.extend(e._northEast)),this},pad:function(e){var t=this._southWest,r=this._northEast,i=Math.abs(t.lat-r.lat)*e,s=Math.abs(t.lng-r.lng)*e;return new n.LatLngBounds(new n.LatLng(t.lat-i,t.lng-s),new n.LatLng(r.lat+i,r.lng+s))},getCenter:function(){return new n.LatLng((this._southWest.lat+this._northEast.lat)/2,(this._southWest.lng+this._northEast.lng)/2)},getSouthWest:function(){return this._southWest},getNorthEast:function(){return this._northEast},getNorthWest:function(){return new n.LatLng(this._northEast.lat,this._southWest.lng,!0)},getSouthEast:function(){return new n.LatLng(this._southWest.lat,this._northEast.lng,!0)},contains:function(e){typeof e[0]=="number"||e instanceof n.LatLng?e=n.latLng(e):e=n.latLngBounds(e);var t=this._southWest,r=this._northEast,i,s;return e instanceof n.LatLngBounds?(i=e.getSouthWest(),s=e.getNorthEast()):i=s=e,i.lat>=t.lat&&s.lat<=r.lat&&i.lng>=t.lng&&s.lng<=r.lng},intersects:function(e){e=n.latLngBounds(e);var t=this._southWest,r=this._northEast,i=e.getSouthWest(),s=e.getNorthEast(),o=s.lat>=t.lat&&i.lat<=r.lat,u=s.lng>=t.lng&&i.lng<=r.lng;return o&&u},toBBoxString:function(){var e=this._southWest,t=this._northEast;return[e.lng,e.lat,t.lng,t.lat].join(",")},equals:function(e){return e?(e=n.latLngBounds(e),this._southWest.equals(e.getSouthWest())&&this._northEast.equals(e.getNorthEast())):!1}}),n.latLngBounds=function(e,t){return!e||e instanceof n.LatLngBounds?e:new n.LatLngBounds(e,t)},n.Projection={},n.Projection.SphericalMercator={MAX_LATITUDE:85.0511287798,project:function(e){var t=n.LatLng.DEG_TO_RAD,r=this.MAX_LATITUDE,i=Math.max(Math.min(r,e.lat),-r),s=e.lng*t,o=i*t;return o=Math.log(Math.tan(Math.PI/4+o/2)),new n.Point(s,o)},unproject:function(e){var t=n.LatLng.RAD_TO_DEG,r=e.x*t,i=(2*Math.atan(Math.exp(e.y))-Math.PI/2)*t;return new n.LatLng(i,r,!0)}},n.Projection.LonLat={project:function(e){return new n.Point(e.lng,e.lat)},unproject:function(e){return new n.LatLng(e.y,e.x,!0)}},n.CRS={latLngToPoint:function(e,t){var n=this.projection.project(e),r=this.scale(t);return this.transformation._transform(n,r)},pointToLatLng:function(e,t){var n=this.scale(t),r=this.transformation.untransform(e,n);return this.projection.unproject(r)},project:function(e){return this.projection.project(e)},scale:function(e){return 256*Math.pow(2,e)}},n.CRS.EPSG3857=n.Util.extend({},n.CRS,{code:"EPSG:3857",projection:n.Projection.SphericalMercator,transformation:new n.Transformation(.5/Math.PI,.5,-0.5/Math.PI,.5),project:function(e){var t=this.projection.project(e),n=6378137;return t.multiplyBy(n)}}),n.CRS.EPSG900913=n.Util.extend({},n.CRS.EPSG3857,{code:"EPSG:900913"}),n.CRS.EPSG4326=n.Util.extend({},n.CRS,{code:"EPSG:4326",projection:n.Projection.LonLat,transformation:new n.Transformation(1/360,.5,-1/360,.5)}),n.Map=n.Class.extend({includes:n.Mixin.Events,options:{crs:n.CRS.EPSG3857,fadeAnimation:n.DomUtil.TRANSITION&&!n.Browser.android23,trackResize:!0,markerZoomAnimation:n.DomUtil.TRANSITION&&n.Browser.any3d},initialize:function(e,r){r=n.Util.setOptions(this,r),this._initContainer(e),this._initLayout(),this._initHooks(),this._initEvents(),r.maxBounds&&this.setMaxBounds(r.maxBounds),r.center&&r.zoom!==t&&this.setView(n.latLng(r.center),r.zoom,!0),this._initLayers(r.layers)},setView:function(e,t){return this._resetView(n.latLng(e),this._limitZoom(t)),this},setZoom:function(e){return this.setView(this.getCenter(),e)},zoomIn:function(){return this.setZoom(this._zoom+1)},zoomOut:function(){return this.setZoom(this._zoom-1)},fitBounds:function(e){var t=this.getBoundsZoom(e);return this.setView(n.latLngBounds(e).getCenter(),t)},fitWorld:function(){var e=new n.LatLng(-60,-170),t=new n.LatLng(85,179);return this.fitBounds(new n.LatLngBounds(e,t))},panTo:function(e){return this.setView(e,this._zoom)},panBy:function(e){return this.fire("movestart"),this._rawPanBy(n.point(e)),this.fire("move"),this.fire("moveend")},setMaxBounds:function(e){e=n.latLngBounds(e),this.options.maxBounds=e;if(!e)return this._boundsMinZoom=null,this;var t=this.getBoundsZoom(e,!0);return this._boundsMinZoom=t,this._loaded&&(this._zoom<t?this.setView(e.getCenter(),t):this.panInsideBounds(e)),this},panInsideBounds:function(e){e=n.latLngBounds(e);var t=this.getBounds(),r=this.project(t.getSouthWest()),i=this.project(t.getNorthEast()),s=this.project(e.getSouthWest()),o=this.project(e.getNorthEast()),u=0,a=0;return i.y<o.y&&(a=o.y-i.y),i.x>o.x&&(u=o.x-i.x),r.y>s.y&&(a=s.y-r.y),r.x<s.x&&(u=s.x-r.x),this.panBy(new n.Point(u,a,!0))},addLayer:function(e){var t=n.Util.stamp(e);if(this._layers[t])return this;this._layers[t]=e,e.options&&!isNaN(e.options.maxZoom)&&(this._layersMaxZoom=Math.max(this._layersMaxZoom||0,e.options.maxZoom)),e.options&&!isNaN(e.options.minZoom)&&(this._layersMinZoom=Math.min(this._layersMinZoom||Infinity,e.options.minZoom)),this.options.zoomAnimation&&n.TileLayer&&e instanceof n.TileLayer&&(this._tileLayersNum++,this._tileLayersToLoad++,e.on("load",this._onTileLayerLoad,this));var r=function(){e.onAdd(this),this.fire("layeradd",{layer:e})};return this._loaded?r.call(this):this.on("load",r,this),this},removeLayer:function(e){var t=n.Util.stamp(e);if(!this._layers[t])return;return e.onRemove(this),delete this._layers[t],this.options.zoomAnimation&&n.TileLayer&&e instanceof n.TileLayer&&(this._tileLayersNum--,this._tileLayersToLoad--,e.off("load",this._onTileLayerLoad,this)),this.fire("layerremove",{layer:e})},hasLayer:function(e){var t=n.Util.stamp(e);return this._layers.hasOwnProperty(t)},invalidateSize:function(e){var t=this.getSize();this._sizeChanged=!0,this.options.maxBounds&&this.setMaxBounds(this.options.maxBounds);if(!this._loaded)return this;var r=t.subtract(this.getSize()).divideBy(2,!0);return e===!0?this.panBy(r):(this._rawPanBy(r),this.fire("move"),clearTimeout(this._sizeTimer),this._sizeTimer=setTimeout(n.Util.bind(this.fire,this,"moveend"),200)),this},addHandler:function(e,t){if(!t)return;return this[e]=new t(this),this.options[e]&&this[e].enable(),this},getCenter:function(){return this.layerPointToLatLng(this._getCenterLayerPoint())},getZoom:function(){return this._zoom},getBounds:function(){var e=this.getPixelBounds(),t=this.unproject(e.getBottomLeft()),r=this.unproject(e.getTopRight());return new n.LatLngBounds(t,r)},getMinZoom:function(){var e=this.options.minZoom||0,t=this._layersMinZoom||0,n=this._boundsMinZoom||0;return Math.max(e,t,n)},getMaxZoom:function(){var e=this.options.maxZoom===t?Infinity:this.options.maxZoom,n=this._layersMaxZoom===t?Infinity:this._layersMaxZoom;return Math.min(e,n)},getBoundsZoom:function(e,t){e=n.latLngBounds(e);var r=this.getSize(),i=this.options.minZoom||0,s=this.getMaxZoom(),o=e.getNorthEast(),u=e.getSouthWest(),a,f,l,c=!0;t&&i--;do i++,f=this.project(o,i),l=this.project(u,i),a=new n.Point(Math.abs(f.x-l.x),Math.abs(l.y-f.y)),t?c=a.x<r.x||a.y<r.y:c=a.x<=r.x&&a.y<=r.y;while(c&&i<=s);return c&&t?null:t?i:i-1},getSize:function(){if(!this._size||this._sizeChanged)this._size=new n.Point(this._container.clientWidth,this._container.clientHeight),this._sizeChanged=!1;return this._size},getPixelBounds:function(){var e=this._getTopLeftPoint();return new n.Bounds(e,e.add(this.getSize()))},getPixelOrigin:function(){return this._initialTopLeftPoint},getPanes:function(){return this._panes},getContainer:function(){return this._container},getZoomScale:function(e){var t=this.options.crs;return t.scale(e)/t.scale(this._zoom)},getScaleZoom:function(e){return this._zoom+Math.log(e)/Math.LN2},project:function(e,r){return r=r===t?this._zoom:r,this.options.crs.latLngToPoint(n.latLng(e),r)},unproject:function(e,r){return r=r===t?this._zoom:r,this.options.crs.pointToLatLng(n.point(e),r)},layerPointToLatLng:function(e){var t=n.point(e).add(this._initialTopLeftPoint);return this.unproject(t)},latLngToLayerPoint:function(e){var t=this.project(n.latLng(e))._round();return t._subtract(this._initialTopLeftPoint)},containerPointToLayerPoint:function(e){return n.point(e).subtract(this._getMapPanePos())},layerPointToContainerPoint:function(e){return n.point(e).add(this._getMapPanePos())},containerPointToLatLng:function(e){var t=this.containerPointToLayerPoint(n.point(e));return this.layerPointToLatLng(t)},latLngToContainerPoint:function(e){return this.layerPointToContainerPoint(this.latLngToLayerPoint(n.latLng(e)))},mouseEventToContainerPoint:function(e){return n.DomEvent.getMousePosition(e,this._container)},mouseEventToLayerPoint:function(e){return this.containerPointToLayerPoint(this.mouseEventToContainerPoint(e))},mouseEventToLatLng:function(e){return this.layerPointToLatLng(this.mouseEventToLayerPoint(e))},_initContainer:function(e){var t=this._container=n.DomUtil.get(e);if(t._leaflet)throw Error("Map container is already initialized.");t._leaflet=!0},_initLayout:function(){var e=this._container;e.innerHTML="",n.DomUtil.addClass(e,"leaflet-container"),n.Browser.touch&&n.DomUtil.addClass(e,"leaflet-touch"),this.options.fadeAnimation&&n.DomUtil.addClass(e,"leaflet-fade-anim");var t=n.DomUtil.getStyle(e,"position");t!=="absolute"&&t!=="relative"&&t!=="fixed"&&(e.style.position="relative"),this._initPanes(),this._initControlPos&&this._initControlPos()},_initPanes:function(){var e=this._panes={};this._mapPane=e.mapPane=this._createPane("leaflet-map-pane",this._container),this._tilePane=e.tilePane=this._createPane("leaflet-tile-pane",this._mapPane),this._objectsPane=e.objectsPane=this._createPane("leaflet-objects-pane",this._mapPane),e.shadowPane=this._createPane("leaflet-shadow-pane"),e.overlayPane=this._createPane("leaflet-overlay-pane"),e.markerPane=this._createPane("leaflet-marker-pane"),e.popupPane=this._createPane("leaflet-popup-pane");var t=" leaflet-zoom-hide";this.options.markerZoomAnimation||(n.DomUtil.addClass(e.markerPane,t),n.DomUtil.addClass(e.shadowPane,t),n.DomUtil.addClass(e.popupPane,t))},_createPane:function(e,t){return n.DomUtil.create("div",e,t||this._objectsPane)},_initializers:[],_initHooks:function(){var e,t;for(e=0,t=this._initializers.length;e<t;e++)this._initializers[e].call(this)},_initLayers:function(e){e=e?e instanceof Array?e:[e]:[],this._layers={},this._tileLayersNum=0;var t,n;for(t=0,n=e.length;t<n;t++)this.addLayer(e[t])},_resetView:function(e,t,r,i){var s=this._zoom!==t;i||(this.fire("movestart"),s&&this.fire("zoomstart")),this._zoom=t,this._initialTopLeftPoint=this._getNewTopLeftPoint(e),r?this._initialTopLeftPoint._add(this._getMapPanePos()):n.DomUtil.setPosition(this._mapPane,new n.Point(0,0)),this._tileLayersToLoad=this._tileLayersNum,this.fire("viewreset",{hard:!r}),this.fire("move"),(s||i)&&this.fire("zoomend"),this.fire("moveend",{hard:!r}),this._loaded||(this._loaded=!0,this.fire("load"))},_rawPanBy:function(e){n.DomUtil.setPosition(this._mapPane,this._getMapPanePos().subtract(e))},_initEvents:function(){if(!n.DomEvent)return;n.DomEvent.on(this._container,"click",this._onMouseClick,this);var t=["dblclick","mousedown","mouseup","mouseenter","mouseleave","mousemove","contextmenu"],r,i;for(r=0,i=t.length;r<i;r++)n.DomEvent.on(this._container,t[r],this._fireMouseEvent,this);this.options.trackResize&&n.DomEvent.on(e,"resize",this._onResize,this)},_onResize:function(){n.Util.cancelAnimFrame(this._resizeRequest),this._resizeRequest=n.Util.requestAnimFrame(this.invalidateSize,this,!1,this._container)},_onMouseClick:function(e){if(!this._loaded||this.dragging&&this.dragging.moved())return;this.fire("preclick"),this._fireMouseEvent(e)},_fireMouseEvent:function(e){if(!this._loaded)return;var t=e.type;t=t==="mouseenter"?"mouseover":t==="mouseleave"?"mouseout":t;if(!this.hasEventListeners(t))return;t==="contextmenu"&&n.DomEvent.preventDefault(e);var r=this.mouseEventToContainerPoint(e),i=this.containerPointToLayerPoint(r),s=this.layerPointToLatLng(i);this.fire(t,{latlng:s,layerPoint:i,containerPoint:r,originalEvent:e})},_onTileLayerLoad:function(){this._tileLayersToLoad--,this._tileLayersNum&&!this._tileLayersToLoad&&this._tileBg&&(clearTimeout(this._clearTileBgTimer),this._clearTileBgTimer=setTimeout(n.Util.bind(this._clearTileBg,this),500))},_getMapPanePos:function(){return n.DomUtil.getPosition(this._mapPane)},_getTopLeftPoint:function(){if(!this._loaded)throw Error("Set map center and zoom first.");return this._initialTopLeftPoint.subtract(this._getMapPanePos())},_getNewTopLeftPoint:function(e,t){var n=this.getSize().divideBy(2);return this.project(e,t)._subtract(n)._round()},_latLngToNewLayerPoint:function(e,t,n){var r=this._getNewTopLeftPoint(n,t).add(this._getMapPanePos());return this.project(e,t)._subtract(r)},_getCenterLayerPoint:function(){return this.containerPointToLayerPoint(this.getSize().divideBy(2))},_getCenterOffset:function(e){return this.latLngToLayerPoint(e).subtract(this._getCenterLayerPoint())},_limitZoom:function(e){var t=this.getMinZoom(),n=this.getMaxZoom();return Math.max(t,Math.min(n,e))}}),n.Map.addInitHook=function(e){var t=Array.prototype.slice.call(arguments,1),n=typeof e=="function"?e:function(){this[e].apply(this,t)};this.prototype._initializers.push(n)},n.map=function(e,t){return new n.Map(e,t)},n.Projection.Mercator={MAX_LATITUDE:85.0840591556,R_MINOR:6356752.3142,R_MAJOR:6378137,project:function(e){var t=n.LatLng.DEG_TO_RAD,r=this.MAX_LATITUDE,i=Math.max(Math.min(r,e.lat),-r),s=this.R_MAJOR,o=this.R_MINOR,u=e.lng*t*s,a=i*t,f=o/s,l=Math.sqrt(1-f*f),c=l*Math.sin(a);c=Math.pow((1-c)/(1+c),l*.5);var h=Math.tan(.5*(Math.PI*.5-a))/c;return a=-o*Math.log(h),new n.Point(u,a)},unproject:function(e){var t=n.LatLng.RAD_TO_DEG,r=this.R_MAJOR,i=this.R_MINOR,s=e.x*t/r,o=i/r,u=Math.sqrt(1-o*o),a=Math.exp(-e.y/i),f=Math.PI/2-2*Math.atan(a),l=15,c=1e-7,h=l,p=.1,d;while(Math.abs(p)>c&&--h>0)d=u*Math.sin(f),p=Math.PI/2-2*Math.atan(a*Math.pow((1-d)/(1+d),.5*u))-f,f+=p;return new n.LatLng(f*t,s,!0)}},n.CRS.EPSG3395=n.Util.extend({},n.CRS,{code:"EPSG:3395",projection:n.Projection.Mercator,transformation:function(){var e=n.Projection.Mercator,t=e.R_MAJOR,r=e.R_MINOR;return new n.Transformation(.5/(Math.PI*t),.5,-0.5/(Math.PI*r),.5)}()}),n.TileLayer=n.Class.extend({includes:n.Mixin.Events,options:{minZoom:0,maxZoom:18,tileSize:256,subdomains:"abc",errorTileUrl:"",attribution:"",zoomOffset:0,opacity:1,unloadInvisibleTiles:n.Browser.mobile,updateWhenIdle:n.Browser.mobile},initialize:function(e,t){t=n.Util.setOptions(this,t),t.detectRetina&&n.Browser.retina&&t.maxZoom>0&&(t.tileSize=Math.floor(t.tileSize/2),t.zoomOffset++,t.minZoom>0&&t.minZoom--,this.options.maxZoom--),this._url=e;var r=this.options.subdomains;typeof r=="string"&&(this.options.subdomains=r.split(""))},onAdd:function(e){this._map=e,this._initContainer(),this._createTileProto(),e.on({viewreset:this._resetCallback,moveend:this._update},this),this.options.updateWhenIdle||(this._limitedUpdate=n.Util.limitExecByInterval(this._update,150,this),e.on("move",this._limitedUpdate,this)),this._reset(),this._update()},addTo:function(e){return e.addLayer(this),this},onRemove:function(e){e._panes.tilePane.removeChild(this._container),e.off({viewreset:this._resetCallback,moveend:this._update},this),this.options.updateWhenIdle||e.off("move",this._limitedUpdate,this),this._container=null,this._map=null},bringToFront:function(){var e=this._map._panes.tilePane;return this._container&&(e.appendChild(this._container),this._setAutoZIndex(e,Math.max)),this},bringToBack:function(){var e=this._map._panes.tilePane;return this._container&&(e.insertBefore(this._container,e.firstChild),this._setAutoZIndex(e,Math.min)),this},getAttribution:function(){return this.options.attribution},setOpacity:function(e){return this.options.opacity=e,this._map&&this._updateOpacity(),this},setZIndex:function(e){return this.options.zIndex=e,this._updateZIndex(),this},setUrl:function(e,t){return this._url=e,t||this.redraw(),this},redraw:function(){return this._map&&(this._map._panes.tilePane.empty=!1,this._reset(!0),this._update()),this},_updateZIndex:function(){this._container&&this.options.zIndex!==t&&(this._container.style.zIndex=this.options.zIndex)},_setAutoZIndex:function(e,t){var n=e.getElementsByClassName("leaflet-layer"),r=-t(Infinity,-Infinity),i;for(var s=0,o=n.length;s<o;s++)n[s]!==this._container&&(i=parseInt(n[s].style.zIndex,10),isNaN(i)||(r=t(r,i)));this._container.style.zIndex=isFinite(r)?r+t(1,-1):""},_updateOpacity:function(){n.DomUtil.setOpacity(this._container,this.options.opacity);var e,t=this._tiles;if(n.Browser.webkit)for(e in t)t.hasOwnProperty(e)&&(t[e].style.webkitTransform+=" translate(0,0)")},_initContainer:function(){var e=this._map._panes.tilePane;if(!this._container||e.empty)this._container=n.DomUtil.create("div","leaflet-layer"),this._updateZIndex(),e.appendChild(this._container),this.options.opacity<1&&this._updateOpacity()},_resetCallback:function(e){this._reset(e.hard)},_reset:function(e){var t,n=this._tiles;for(t in n)n.hasOwnProperty(t)&&this.fire("tileunload",{tile:n[t]});this._tiles={},this._tilesToLoad=0,this.options.reuseTiles&&(this._unusedTiles=[]),e&&this._container&&(this._container.innerHTML=""),this._initContainer()},_update:function(e){if(this._map._panTransition&&this._map._panTransition._inProgress)return;var t=this._map.getPixelBounds(),r=this._map.getZoom(),i=this.options.tileSize;if(r>this.options.maxZoom||r<this.options.minZoom)return;var s=new n.Point(Math.floor(t.min.x/i),Math.floor(t.min.y/i)),o=new n.Point(Math.floor(t.max.x/i),Math.floor(t.max.y/i)),u=new n.Bounds(s,o);this._addTilesFromCenterOut(u),(this.options.unloadInvisibleTiles||this.options.reuseTiles)&&this._removeOtherTiles(u)},_addTilesFromCenterOut:function(e){var t=[],r=e.getCenter(),i,s,o;for(i=e.min.y;i<=e.max.y;i++)for(s=e.min.x;s<=e.max.x;s++)o=new n.Point(s,i),this._tileShouldBeLoaded(o)&&t.push(o);var u=t.length;if(u===0)return;t.sort(function(e,t){return e.distanceTo(r)-t.distanceTo(r)});var a=document.createDocumentFragment();this._tilesToLoad||this.fire("loading"),this._tilesToLoad+=u;for(s=0;s<u;s++)this._addTile(t[s],a);this._container.appendChild(a)},_tileShouldBeLoaded:function(e){if(e.x+":"+e.y in this._tiles)return!1;if(!this.options.continuousWorld){var t=this._getWrapTileNum();if(this.options.noWrap&&(e.x<0||e.x>=t)||e.y<0||e.y>=t)return!1}return!0},_removeOtherTiles:function(e){var t,n,r,i;for(i in this._tiles)this._tiles.hasOwnProperty(i)&&(t=i.split(":"),n=parseInt(t[0],10),r=parseInt(t[1],10),(n<e.min.x||n>e.max.x||r<e.min.y||r>e.max.y)&&this._removeTile(i))},_removeTile:function(e){var t=this._tiles[e];this.fire("tileunload",{tile:t,url:t.src}),this.options.reuseTiles?(n.DomUtil.removeClass(t,"leaflet-tile-loaded"),this._unusedTiles.push(t)):t.parentNode===this._container&&this._container.removeChild(t),n.Browser.android||(t.src=n.Util.emptyImageUrl),delete this._tiles[e]},_addTile:function(e,t){var r=this._getTilePos(e),i=this._getTile();n.DomUtil.setPosition(i,r,n.Browser.chrome||n.Browser.android23),this._tiles[e.x+":"+e.y]=i,this._loadTile(i,e),i.parentNode!==this._container&&t.appendChild(i)},_getZoomForUrl:function(){var e=this.options,t=this._map.getZoom();return e.zoomReverse&&(t=e.maxZoom-t),t+e.zoomOffset},_getTilePos:function(e){var t=this._map.getPixelOrigin(),n=this.options.tileSize;return e.multiplyBy(n).subtract(t)},getTileUrl:function(e){return this._adjustTilePoint(e),n.Util.template(this._url,n.Util.extend({s:this._getSubdomain(e),z:this._getZoomForUrl(),x:e.x,y:e.y},this.options))},_getWrapTileNum:function(){return Math.pow(2,this._getZoomForUrl())},_adjustTilePoint:function(e){var t=this._getWrapTileNum();!this.options.continuousWorld&&!this.options.noWrap&&(e.x=(e.x%t+t)%t),this.options.tms&&(e.y=t-e.y-1)},_getSubdomain:function(e){var t=(e.x+e.y)%this.options.subdomains.length;return this.options.subdomains[t]},_createTileProto:function(){var e=this._tileImg=n.DomUtil.create("img","leaflet-tile");e.galleryimg="no";var t=this.options.tileSize;e.style.width=t+"px",e.style.height=t+"px"},_getTile:function(){if(this.options.reuseTiles&&this._unusedTiles.length>0){var e=this._unusedTiles.pop();return this._resetTile(e),e}return this._createTile()},_resetTile:function(e){},_createTile:function(){var e=this._tileImg.cloneNode(!1);return e.onselectstart=e.onmousemove=n.Util.falseFn,e},_loadTile:function(e,t){e._layer=this,e.onload=this._tileOnLoad,e.onerror=this._tileOnError,e.src=this.getTileUrl(t)},_tileLoaded:function(){this._tilesToLoad--,this._tilesToLoad||this.fire("load")},_tileOnLoad:function(e){var t=this._layer;this.src!==n.Util.emptyImageUrl&&(n.DomUtil.addClass(this,"leaflet-tile-loaded"),t.fire("tileload",{tile:this,url:this.src})),t._tileLoaded()},_tileOnError:function(e){var t=this._layer;t.fire("tileerror",{tile:this,url:this.src});var n=t.options.errorTileUrl;n&&(this.src=n),t._tileLoaded()}}),n.tileLayer=function(e,t){return new n.TileLayer(e,t)},n.TileLayer.WMS=n.TileLayer.extend({defaultWmsParams:{service:"WMS",request:"GetMap",version:"1.1.1",layers:"",styles:"",format:"image/jpeg",transparent:!1},initialize:function(e,t){this._url=e;var r=n.Util.extend({},this.defaultWmsParams);t.detectRetina&&n.Browser.retina?r.width=r.height=this.options.tileSize*2:r.width=r.height=this.options.tileSize;for(var i in t)this.options.hasOwnProperty(i)||(r[i]=t[i]);this.wmsParams=r,n.Util.setOptions(this,t)},onAdd:function(e){var t=parseFloat(this.wmsParams.version)>=1.3?"crs":"srs";this.wmsParams[t]=e.options.crs.code,n.TileLayer.prototype.onAdd.call(this,e)},getTileUrl:function(e,t){var r=this._map,i=r.options.crs,s=this.options.tileSize,o=e.multiplyBy(s),u=o.add(new n.Point(s,s)),a=i.project(r.unproject(o,t)),f=i.project(r.unproject(u,t)),l=[a.x,f.y,f.x,a.y].join(","),c=n.Util.template(this._url,{s:this._getSubdomain(e)});return c+n.Util.getParamString(this.wmsParams)+"&bbox="+l},setParams:function(e,t){return n.Util.extend(this.wmsParams,e),t||this.redraw(),this}}),n.tileLayer.wms=function(e,t){return new n.TileLayer.WMS(e,t)},n.TileLayer.Canvas=n.TileLayer.extend({options:{async:!1},initialize:function(e){n.Util.setOptions(this,e)},redraw:function(){var e,t=this._tiles;for(e in t)t.hasOwnProperty(e)&&this._redrawTile(t[e])},_redrawTile:function(e){this.drawTile(e,e._tilePoint,e._zoom)},_createTileProto:function(){var e=this._canvasProto=n.DomUtil.create("canvas","leaflet-tile"),t=this.options.tileSize;e.width=t,e.height=t},_createTile:function(){var e=this._canvasProto.cloneNode(!1);return e.onselectstart=e.onmousemove=n.Util.falseFn,e},_loadTile:function(e,t,n){e._layer=this,e._tilePoint=t,e._zoom=n,this.drawTile(e,t,n),this.options.async||this.tileDrawn(e)},drawTile:function(e,t,n){},tileDrawn:function(e){this._tileOnLoad.call(e)}}),n.tileLayer.canvas=function(e){return new n.TileLayer.Canvas(e)},n.ImageOverlay=n.Class.extend({includes:n.Mixin.Events,options:{opacity:1},initialize:function(e,t,r){this._url=e,this._bounds=n.latLngBounds(t),n.Util.setOptions(this,r)},onAdd:function(e){this._map=e,this._image||this._initImage(),e._panes.overlayPane.appendChild(this._image),e.on("viewreset",this._reset,this),e.options.zoomAnimation&&n.Browser.any3d&&e.on("zoomanim",this._animateZoom,this),this._reset()},onRemove:function(e){e.getPanes().overlayPane.removeChild(this._image),e.off("viewreset",this._reset,this),e.options.zoomAnimation&&e.off("zoomanim",this._animateZoom,this)},addTo:function(e){return e.addLayer(this),this},setOpacity:function(e){return this.options.opacity=e,this._updateOpacity(),this},bringToFront:function(){return this._image&&this._map._panes.overlayPane.appendChild(this._image),this},bringToBack:function(){var e=this._map._panes.overlayPane;return this._image&&e.insertBefore(this._image,e.firstChild),this},_initImage:function(){this._image=n.DomUtil.create("img","leaflet-image-layer"),this._map.options.zoomAnimation&&n.Browser.any3d?n.DomUtil.addClass(this._image,"leaflet-zoom-animated"):n.DomUtil.addClass(this._image,"leaflet-zoom-hide"),this._updateOpacity(),n.Util.extend(this._image,{galleryimg:"no",onselectstart:n.Util.falseFn,onmousemove:n.Util.falseFn,onload:n.Util.bind(this._onImageLoad,this),src:this._url})},_animateZoom:function(e){var t=this._map,r=this._image,i=t.getZoomScale(e.zoom),s=this._bounds.getNorthWest(),o=this._bounds.getSouthEast(),u=t._latLngToNewLayerPoint(s,e.zoom,e.center),a=t._latLngToNewLayerPoint(o,e.zoom,e.center).subtract(u),f=t.latLngToLayerPoint(o).subtract(t.latLngToLayerPoint(s)),l=u.add(a.subtract(f).divideBy(2));r.style[n.DomUtil.TRANSFORM]=n.DomUtil.getTranslateString(l)+" scale("+i+") "},_reset:function(){var e=this._image,t=this._map.latLngToLayerPoint(this._bounds.getNorthWest()),r=this._map.latLngToLayerPoint(this._bounds.getSouthEast()).subtract(t);n.DomUtil.setPosition(e,t),e.style.width=r.x+"px",e.style.height=r.y+"px"},_onImageLoad:function(){this.fire("load")},_updateOpacity:function(){n.DomUtil.setOpacity(this._image,this.options.opacity)}}),n.imageOverlay=function(e,t,r){return new n.ImageOverlay(e,t,r)},n.Icon=n.Class.extend({options:{className:""},initialize:function(e){n.Util.setOptions(this,e)},createIcon:function(){return this._createIcon("icon")},createShadow:function(){return this._createIcon("shadow")},_createIcon:function(e){var t=this._getIconUrl(e);if(!t){if(e==="icon")throw Error("iconUrl not set in Icon options (see the docs).");return null}var n=this._createImg(t);return this._setIconStyles(n,e),n},_setIconStyles:function(e,t){var r=this.options,i=n.point(r[t+"Size"]),s;t==="shadow"?s=n.point(r.shadowAnchor||r.iconAnchor):s=n.point(r.iconAnchor),!s&&i&&(s=i.divideBy(2,!0)),e.className="leaflet-marker-"+t+" "+r.className,s&&(e.style.marginLeft=-s.x+"px",e.style.marginTop=-s.y+"px"),i&&(e.style.width=i.x+"px",e.style.height=i.y+"px")},_createImg:function(e){var t;return n.Browser.ie6?(t=document.createElement("div"),t.style.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+e+'")'):(t=document.createElement("img"),t.src=e),t},_getIconUrl:function(e){return this.options[e+"Url"]}}),n.icon=function(e){return new n.Icon(e)},n.Icon.Default=n.Icon.extend({options:{iconSize:new n.Point(25,41),iconAnchor:new n.Point(13,41),popupAnchor:new n.Point(1,-34),shadowSize:new n.Point(41,41)},_getIconUrl:function(e){var t=e+"Url";if(this.options[t])return this.options[t];var r=n.Icon.Default.imagePath;if(!r)throw Error("Couldn't autodetect L.Icon.Default.imagePath, set it manually.");return r+"/marker-"+e+".png"}}),n.Icon.Default.imagePath=function(){var e=document.getElementsByTagName("script"),t=/\/?leaflet[\-\._]?([\w\-\._]*)\.js\??/,n,r,i,s;for(n=0,r=e.length;n<r;n++){i=e[n].src,s=i.match(t);if(s)return i.split(t)[0]+"/images"}}(),n.Marker=n.Class.extend({includes:n.Mixin.Events,options:{icon:new n.Icon.Default,title:"",clickable:!0,draggable:!1,zIndexOffset:0,opacity:1},initialize:function(e,t){n.Util.setOptions(this,t),this._latlng=n.latLng(e)},onAdd:function(e){this._map=e,e.on("viewreset",this.update,this),this._initIcon(),this.update(),e.options.zoomAnimation&&e.options.markerZoomAnimation&&e.on("zoomanim",this._animateZoom,this)},addTo:function(e){return e.addLayer(this),this},onRemove:function(e){this._removeIcon(),this.closePopup&&this.closePopup(),e.off({viewreset:this.update,zoomanim:this._animateZoom},this),this._map=null},getLatLng:function(){return this._latlng},setLatLng:function(e){this._latlng=n.latLng(e),this.update(),this._popup&&this._popup.setLatLng(e)},setZIndexOffset:function(e){this.options.zIndexOffset=e,this.update()},setIcon:function(e){this._map&&this._removeIcon(),this.options.icon=e,this._map&&(this._initIcon(),this.update())},update:function(){if(!this._icon)return;var e=this._map.latLngToLayerPoint(this._latlng).round();this._setPos(e)},_initIcon:function(){var e=this.options,t=this._map,r=t.options.zoomAnimation&&t.options.markerZoomAnimation,i=r?"leaflet-zoom-animated":"leaflet-zoom-hide",s=!1;this._icon||(this._icon=e.icon.createIcon(),e.title&&(this._icon.title=e.title),this._initInteraction(),s=this.options.opacity<1,n.DomUtil.addClass(this._icon,i)),this._shadow||(this._shadow=e.icon.createShadow(),this._shadow&&(n.DomUtil.addClass(this._shadow,i),s=this.options.opacity<1)),s&&this._updateOpacity();var o=this._map._panes;o.markerPane.appendChild(this._icon),this._shadow&&o.shadowPane.appendChild(this._shadow)},_removeIcon:function(){var e=this._map._panes;e.markerPane.removeChild(this._icon),this._shadow&&e.shadowPane.removeChild(this._shadow),this._icon=this._shadow=null},_setPos:function(e){n.DomUtil.setPosition(this._icon,e),this._shadow&&n.DomUtil.setPosition(this._shadow,e),this._icon.style.zIndex=e.y+this.options.zIndexOffset},_animateZoom:function(e){var t=this._map._latLngToNewLayerPoint(this._latlng,e.zoom,e.center);this._setPos(t)},_initInteraction:function(){if(!this.options.clickable)return;var e=this._icon,t=["dblclick","mousedown","mouseover","mouseout"];n.DomUtil.addClass(e,"leaflet-clickable"),n.DomEvent.on(e,"click",this._onMouseClick,this);for(var r=0;r<t.length;r++)n.DomEvent.on(e,t[r],this._fireMouseEvent,this);n.Handler.MarkerDrag&&(this.dragging=new n.Handler.MarkerDrag(this),this.options.draggable&&this.dragging.enable())},_onMouseClick:function(e){n.DomEvent.stopPropagation(e);if(this.dragging&&this.dragging.moved())return;if(this._map.dragging&&this._map.dragging.moved())return;this.fire(e.type,{originalEvent:e})},_fireMouseEvent:function(e){this.fire(e.type,{originalEvent:e}),e.type!=="mousedown"&&n.DomEvent.stopPropagation(e)},setOpacity:function(e){this.options.opacity=e,this._map&&this._updateOpacity()},_updateOpacity:function(){n.DomUtil.setOpacity(this._icon,this.options.opacity),this._shadow&&n.DomUtil.setOpacity(this._shadow,this.options.opacity)}}),n.marker=function(e,t){return new n.Marker(e,t)},n.DivIcon=n.Icon.extend({options:{iconSize:new n.Point(12,12),className:"leaflet-div-icon"},createIcon:function(){var e=document.createElement("div"),t=this.options;return t.html&&(e.innerHTML=t.html),t.bgPos&&(e.style.backgroundPosition=-t.bgPos.x+"px "+ -t.bgPos.y+"px"),this._setIconStyles(e,"icon"),e},createShadow:function(){return null}}),n.divIcon=function(e){return new n.DivIcon(e)},n.Map.mergeOptions({closePopupOnClick:!0}),n.Popup=n.Class.extend({includes:n.Mixin.Events,options:{minWidth:50,maxWidth:300,maxHeight:null,autoPan:!0,closeButton:!0,offset:new n.Point(0,6),autoPanPadding:new n.Point(5,5),className:""},initialize:function(e,t){n.Util.setOptions(this,e),this._source=t},onAdd:function(e){this._map=e,this._container||this._initLayout(),this._updateContent();var t=e.options.fadeAnimation;t&&n.DomUtil.setOpacity(this._container,0),e._panes.popupPane.appendChild(this._container),e.on("viewreset",this._updatePosition,this),n.Browser.any3d&&e.on("zoomanim",this._zoomAnimation,this),e.options.closePopupOnClick&&e.on("preclick",this._close,this),this._update(),t&&n.DomUtil.setOpacity(this._container,1)},addTo:function(e){return e.addLayer(this),this},openOn:function(e){return e.openPopup(this),this},onRemove:function(e){e._panes.popupPane.removeChild(this._container),n.Util.falseFn(this._container.offsetWidth),e.off({viewreset:this._updatePosition,preclick:this._close,zoomanim:this._zoomAnimation},this),e.options.fadeAnimation&&n.DomUtil.setOpacity(this._container,0),this._map=null},setLatLng:function(e){return this._latlng=n.latLng(e),this._update(),this},setContent:function(e){return this._content=e,this._update(),this},_close:function(){var e=this._map;e&&(e._popup=null,e.removeLayer(this).fire("popupclose",{popup:this}))},_initLayout:function(){var e="leaflet-popup",t=this._container=n.DomUtil.create("div",e+" "+this.options.className+" leaflet-zoom-animated"),r;this.options.closeButton&&(r=this._closeButton=n.DomUtil.create("a",e+"-close-button",t),r.href="#close",r.innerHTML="&#215;",n.DomEvent.on(r,"click",this._onCloseButtonClick,this));var i=this._wrapper=n.DomUtil.create("div",e+"-content-wrapper",t);n.DomEvent.disableClickPropagation(i),this._contentNode=n.DomUtil.create("div",e+"-content",i),n.DomEvent.on(this._contentNode,"mousewheel",n.DomEvent.stopPropagation),this._tipContainer=n.DomUtil.create("div",e+"-tip-container",t),this._tip=n.DomUtil.create("div",e+"-tip",this._tipContainer)},_update:function(){if(!this._map)return;this._container.style.visibility="hidden",this._updateContent(),this._updateLayout(),this._updatePosition(),this._container.style.visibility="",this._adjustPan()},_updateContent:function(){if(!this._content)return;if(typeof this._content=="string")this._contentNode.innerHTML=this._content;else{while(this._contentNode.hasChildNodes())this._contentNode.removeChild(this._contentNode.firstChild);this._contentNode.appendChild(this._content)}this.fire("contentupdate")},_updateLayout:function(){var e=this._contentNode,t=e.style;t.width="",t.whiteSpace="nowrap";var r=e.offsetWidth;r=Math.min(r,this.options.maxWidth),r=Math.max(r,this.options.minWidth),t.width=r+1+"px",t.whiteSpace="",t.height="";var i=e.offsetHeight,s=this.options.maxHeight,o="leaflet-popup-scrolled";s&&i>s?(t.height=s+"px",n.DomUtil.addClass(e,o)):n.DomUtil.removeClass(e,o),this._containerWidth=this._container.offsetWidth},_updatePosition:function(){var e=this._map.latLngToLayerPoint(this._latlng),t=n.Browser.any3d,r=this.options.offset;t&&n.DomUtil.setPosition(this._container,e),this._containerBottom=-r.y-(t?0:e.y),this._containerLeft=-Math.round(this._containerWidth/2)+r.x+(t?0:e.x),this._container.style.bottom=this._containerBottom+"px",this._container.style.left=this._containerLeft+"px"},_zoomAnimation:function(e){var t=this._map._latLngToNewLayerPoint(this._latlng,e.zoom,e.center);n.DomUtil.setPosition(this._container,t)},_adjustPan:function(){if(!this.options.autoPan)return;var e=this._map,t=this._container.offsetHeight,r=this._containerWidth,i=new n.Point(this._containerLeft,-t-this._containerBottom);n.Browser.any3d&&i._add(n.DomUtil.getPosition(this._container));var s=e.layerPointToContainerPoint(i),o=this.options.autoPanPadding,u=e.getSize(),a=0,f=0;s.x<0&&(a=s.x-o.x),s.x+r>u.x&&(a=s.x+r-u.x+o.x),s.y<0&&(f=s.y-o.y),s.y+t>u.y&&(f=s.y+t-u.y+o.y),(a||f)&&e.panBy(new n.Point(a,f))},_onCloseButtonClick:function(e){this._close(),n.DomEvent.stop(e)}}),n.popup=function(e,t){return new n.Popup(e,t)},n.Marker.include({openPopup:function(){return this._popup&&this._map&&(this._popup.setLatLng(this._latlng),this._map.openPopup(this._popup)),this},closePopup:function(){return this._popup&&this._popup._close(),this},bindPopup:function(e,t){var r=n.point(this.options.icon.options.popupAnchor)||new n.Point(0,0);return r=r.add(n.Popup.prototype.options.offset),t&&t.offset&&(r=r.add(t.offset)),t=n.Util.extend({offset:r},t),this._popup||this.on("click",this.openPopup,this),this._popup=(new n.Popup(t,this)).setContent(e),this},unbindPopup:function(){return this._popup&&(this._popup=null,this.off("click",this.openPopup)),this}}),n.Map.include({openPopup:function(e){return this.closePopup(),this._popup=e,this.addLayer(e).fire("popupopen",{popup:this._popup})},closePopup:function(){return this._popup&&this._popup._close(),this}}),n.LayerGroup=n.Class.extend({initialize:function(e){this._layers={};var t,n;if(e)for(t=0,n=e.length;t<n;t++)this.addLayer(e[t])},addLayer:function(e){var t=n.Util.stamp(e);return this._layers[t]=e,this._map&&this._map.addLayer(e),this},removeLayer:function(e){var t=n.Util.stamp(e);return delete this._layers[t],this._map&&this._map.removeLayer(e),this},clearLayers:function(){return this.eachLayer(this.removeLayer,this),this},invoke:function(e){var t=Array.prototype.slice.call(arguments,1),n,r;for(n in this._layers)this._layers.hasOwnProperty(n)&&(r=this._layers[n],r[e]&&r[e].apply(r,t));return this},onAdd:function(e){this._map=e,this.eachLayer(e.addLayer,e)},onRemove:function(e){this.eachLayer(e.removeLayer,e),this._map=null},addTo:function(e){return e.addLayer(this),this},eachLayer:function(e,t){for(var n in this._layers)this._layers.hasOwnProperty(n)&&e.call(t,this._layers[n])}}),n.layerGroup=function(e){return new n.LayerGroup(e)},n.FeatureGroup=n.LayerGroup.extend({includes:n.Mixin.Events,addLayer:function(e){return this._layers[n.Util.stamp(e)]?this:(e.on("click dblclick mouseover mouseout mousemove contextmenu",this._propagateEvent,this),n.LayerGroup.prototype.addLayer.call(this,e),this._popupContent&&e.bindPopup&&e.bindPopup(this._popupContent),this)},removeLayer:function(e){return e.off("click dblclick mouseover mouseout mousemove contextmenu",this._propagateEvent,this),n.LayerGroup.prototype.removeLayer.call(this,e),this._popupContent?this.invoke("unbindPopup"):this},bindPopup:function(e){return this._popupContent=e,this.invoke("bindPopup",e)},setStyle:function(e){return this.invoke("setStyle",e)},bringToFront:function(){return this.invoke("bringToFront")},bringToBack:function(){return this.invoke("bringToBack")},getBounds:function(){var e=new n.LatLngBounds;return this.eachLayer(function(t){e.extend(t instanceof n.Marker?t.getLatLng():t.getBounds())},this),e},_propagateEvent:function(e){e.layer=e.target,e.target=this,this.fire(e.type,e)}}),n.featureGroup=function(e){return new n.FeatureGroup(e)},n.Path=n.Class.extend({includes:[n.Mixin.Events],statics:{CLIP_PADDING:n.Browser.mobile?Math.max(0,Math.min(.5,(1280/Math.max(e.innerWidth,e.innerHeight)-1)/2)):.5},options:{stroke:!0,color:"#0033ff",dashArray:null,weight:5,opacity:.5,fill:!1,fillColor:null,fillOpacity:.2,clickable:!0},initialize:function(e){n.Util.setOptions(this,e)},onAdd:function(e){this._map=e,this._container||(this._initElements(),this._initEvents()),this.projectLatlngs(),this._updatePath(),this._container&&this._map._pathRoot.appendChild(this._container),e.on({viewreset:this.projectLatlngs,moveend:this._updatePath},this)},addTo:function(e){return e.addLayer(this),this},onRemove:function(e){e._pathRoot.removeChild(this._container),this._map=null,n.Browser.vml&&(this._container=null,this._stroke=null,this._fill=null),e.off({viewreset:this.projectLatlngs,moveend:this._updatePath},this)},projectLatlngs:function(){},setStyle:function(e){return n.Util.setOptions(this,e),this._container&&this._updateStyle(),this},redraw:function(){return this._map&&(this.projectLatlngs(),this._updatePath()),this}}),n.Map.include({_updatePathViewport:function(){var e=n.Path.CLIP_PADDING,t=this.getSize(),r=n.DomUtil.getPosition(this._mapPane),i=r.multiplyBy(-1)._subtract(t.multiplyBy(e)),s=i.add(t.multiplyBy(1+e*2));this._pathViewport=new n.Bounds(i,s)}}),n.Path.SVG_NS="http://www.w3.org/2000/svg",n.Browser.svg=!!document.createElementNS&&!!document.createElementNS(n.Path.SVG_NS,"svg").createSVGRect,n.Path=n.Path.extend({statics:{SVG:n.Browser.svg},bringToFront:function(){return this._container&&this._map._pathRoot.appendChild(this._container),this},bringToBack:function(){if(this._container){var e=this._map._pathRoot;e.insertBefore(this._container,e.firstChild)}return this},getPathString:function(){},_createElement:function(e){return document.createElementNS(n.Path.SVG_NS,e)},_initElements:function(){this._map._initPathRoot(),this._initPath(),this._initStyle()},_initPath:function(){this._container=this._createElement("g"),this._path=this._createElement("path"),this._container.appendChild(this._path)},_initStyle:function(){this.options.stroke&&(this._path.setAttribute("stroke-linejoin","round"),this._path.setAttribute("stroke-linecap","round")),this.options.fill&&this._path.setAttribute("fill-rule","evenodd"),this._updateStyle()},_updateStyle:function(){this.options.stroke?(this._path.setAttribute("stroke",this.options.color),this._path.setAttribute("stroke-opacity",this.options.opacity),this._path.setAttribute("stroke-width",this.options.weight),this.options.dashArray?this._path.setAttribute("stroke-dasharray",this.options.dashArray):this._path.removeAttribute("stroke-dasharray")):this._path.setAttribute("stroke","none"),this.options.fill?(this._path.setAttribute("fill",this.options.fillColor||this.options.color),this._path.setAttribute("fill-opacity",this.options.fillOpacity)):this._path.setAttribute("fill","none")},_updatePath:function(){var e=this.getPathString();e||(e="M0 0"),this._path.setAttribute("d",e)},_initEvents:function(){if(this.options.clickable){(n.Browser.svg||!n.Browser.vml)&&this._path.setAttribute("class","leaflet-clickable"),n.DomEvent.on(this._container,"click",this._onMouseClick,this);var e=["dblclick","mousedown","mouseover","mouseout","mousemove","contextmenu"];for(var t=0;t<e.length;t++)n.DomEvent.on(this._container,e[t],this._fireMouseEvent,this)}},_onMouseClick:function(e){if(this._map.dragging&&this._map.dragging.moved())return;this._fireMouseEvent(e),n.DomEvent.stopPropagation(e)},_fireMouseEvent:function(e){if(!this.hasEventListeners(e.type))return;e.type==="contextmenu"&&n.DomEvent.preventDefault(e);var t=this._map,r=t.mouseEventToContainerPoint(e),i=t.containerPointToLayerPoint(r),s=t.layerPointToLatLng(i);this.fire(e.type,{latlng:s,layerPoint:i,containerPoint:r,originalEvent:e})}}),n.Map.include({_initPathRoot:function(){this._pathRoot||(this._pathRoot=n.Path.prototype._createElement("svg"),this._panes.overlayPane.appendChild(this._pathRoot),this.options.zoomAnimation&&n.Browser.any3d?(this._pathRoot.setAttribute("class"," leaflet-zoom-animated"),this.on({zoomanim:this._animatePathZoom,zoomend:this._endPathZoom})):this._pathRoot.setAttribute("class"," leaflet-zoom-hide"),this.on("moveend",this._updateSvgViewport),this._updateSvgViewport())},_animatePathZoom:function(e){var t=this.getZoomScale(e.zoom),r=this._getCenterOffset(e.center).divideBy(1-1/t),i=this.containerPointToLayerPoint(this.getSize().multiplyBy(-n.Path.CLIP_PADDING)),s=i.add(r).round();this._pathRoot.style[n.DomUtil.TRANSFORM]=n.DomUtil.getTranslateString(s.multiplyBy(-1).add(n.DomUtil.getPosition(this._pathRoot)).multiplyBy(t).add(s))+" scale("+t+") ",this._pathZooming=!0},_endPathZoom:function(){this._pathZooming=!1},_updateSvgViewport:function(){if(this._pathZooming)return;this._updatePathViewport();var e=this._pathViewport,t=e.min,r=e.max,i=r.x-t.x,s=r.y-t.y,o=this._pathRoot,u=this._panes.overlayPane;n.Browser.mobileWebkit&&u.removeChild(o),n.DomUtil.setPosition(o,t),o.setAttribute("width",i),o.setAttribute("height",s),o.setAttribute("viewBox",[t.x,t.y,i,s].join(" ")),n.Browser.mobileWebkit&&u.appendChild(o)}}),n.Path.include({bindPopup:function(e,t){if(!this._popup||this._popup.options!==t)this._popup=new n.Popup(t,this);return this._popup.setContent(e),this._openPopupAdded||(this.on("click",this._openPopup,this),this._openPopupAdded=!0),this},openPopup:function(e){return this._popup&&(e=e||this._latlng||this._latlngs[Math.floor(this._latlngs.length/2)],this._openPopup({latlng:e})),this},_openPopup:function(e){this._popup.setLatLng(e.latlng),this._map.openPopup(this._popup)}}),n.Browser.vml=function(){try{var e=document.createElement("div");e.innerHTML='<v:shape adj="1"/>';var t=e.firstChild;return t.style.behavior="url(#default#VML)",t&&typeof t.adj=="object"}catch(n){return!1}}(),n.Path=n.Browser.svg||!n.Browser.vml?n.Path:n.Path.extend({statics:{VML:!0,CLIP_PADDING:.02},_createElement:function(){try{return document.namespaces.add("lvml","urn:schemas-microsoft-com:vml"),function(e){return document.createElement("<lvml:"+e+' class="lvml">')}}catch(e){return function(e){return document.createElement("<"+e+' xmlns="urn:schemas-microsoft.com:vml" class="lvml">')}}}(),_initPath:function(){var e=this._container=this._createElement("shape");n.DomUtil.addClass(e,"leaflet-vml-shape"),this.options.clickable&&n.DomUtil.addClass(e,"leaflet-clickable"),e.coordsize="1 1",this._path=this._createElement("path"),e.appendChild(this._path),this._map._pathRoot.appendChild(e)},_initStyle:function(){this._updateStyle()},_updateStyle:function(){var e=this._stroke,t=this._fill,n=this.options,r=this._container;r.stroked=n.stroke,r.filled=n.fill,n.stroke?(e||(e=this._stroke=this._createElement("stroke"),e.endcap="round",r.appendChild(e)),e.weight=n.weight+"px",e.color=n.color,e.opacity=n.opacity,n.dashArray?e.dashStyle=n.dashArray.replace(/ *, */g," "):e.dashStyle=""):e&&(r.removeChild(e),this._stroke=null),n.fill?(t||(t=this._fill=this._createElement("fill"),r.appendChild(t)),t.color=n.fillColor||n.color,t.opacity=n.fillOpacity):t&&(r.removeChild(t),this._fill=null)},_updatePath:function(){var e=this._container.style;e.display="none",this._path.v=this.getPathString()+" ",e.display=""}}),n.Map.include(n.Browser.svg||!n.Browser.vml?{}:{_initPathRoot:function(){if(this._pathRoot)return;var e=this._pathRoot=document.createElement("div");e.className="leaflet-vml-container",this._panes.overlayPane.appendChild(e),this.on("moveend",this._updatePathViewport),this._updatePathViewport()}}),n.Browser.canvas=function(){return!!document.createElement("canvas").getContext}(),n.Path=n.Path.SVG&&!e.L_PREFER_CANVAS||!n.Browser.canvas?n.Path:n.Path.extend({statics:{CANVAS:!0,SVG:!1},redraw:function(){return this._map&&(this.projectLatlngs(),this._requestUpdate()),this},setStyle:function(e){return n.Util.setOptions(this,e),this._map&&(this._updateStyle(),this._requestUpdate()),this},onRemove:function(e){e.off("viewreset",this.projectLatlngs,this).off("moveend",this._updatePath,this),this._requestUpdate(),this._map=null},_requestUpdate:function(){this._map&&(n.Util.cancelAnimFrame(this._fireMapMoveEnd),this._updateRequest=n.Util.requestAnimFrame(this._fireMapMoveEnd,this._map))},_fireMapMoveEnd:function(){this.fire("moveend")},_initElements:function(){this._map._initPathRoot(),this._ctx=this._map._canvasCtx},_updateStyle:function(){var e=this.options;e.stroke&&(this._ctx.lineWidth=e.weight,this._ctx.strokeStyle=e.color),e.fill&&(this._ctx.fillStyle=e.fillColor||e.color)},_drawPath:function(){var e,t,r,i,s,o;this._ctx.beginPath();for(e=0,r=this._parts.length;e<r;e++){for(t=0,i=this._parts[e].length;t<i;t++)s=this._parts[e][t],o=(t===0?"move":"line")+"To",this._ctx[o](s.x,s.y);this instanceof n.Polygon&&this._ctx.closePath()}},_checkIfEmpty:function(){return!this._parts.length},_updatePath:function(){if(this._checkIfEmpty())return;var e=this._ctx,t=this.options;this._drawPath(),e.save(),this._updateStyle(),t.fill&&(t.fillOpacity<1&&(e.globalAlpha=t.fillOpacity),e.fill()),t.stroke&&(t.opacity<1&&(e.globalAlpha=t.opacity),e.stroke()),e.restore()},_initEvents:function(){this.options.clickable&&this._map.on("click",this._onClick,this)},_onClick:function(e){this._containsPoint(e.layerPoint)&&this.fire("click",e)}}),n.Map.include(n.Path.SVG&&!e.L_PREFER_CANVAS||!n.Browser.canvas?{}:{_initPathRoot:function(){var e=this._pathRoot,t;e||(e=this._pathRoot=document.createElement("canvas"),e.style.position="absolute",t=this._canvasCtx=e.getContext("2d"),t.lineCap="round",t.lineJoin="round",this._panes.overlayPane.appendChild(e),this.options.zoomAnimation&&(this._pathRoot.className="leaflet-zoom-animated",this.on("zoomanim",this._animatePathZoom),this.on("zoomend",this._endPathZoom)),this.on("moveend",this._updateCanvasViewport),this._updateCanvasViewport())},_updateCanvasViewport:function(){if(this._pathZooming)return;this._updatePathViewport();var e=this._pathViewport,t=e.min,r=e.max.subtract(t),i=this._pathRoot;n.DomUtil.setPosition(i,t),i.width=r.x,i.height=r.y,i.getContext("2d").translate(-t.x,-t.y)}}),n.LineUtil={simplify:function(e,t){if(!t||!e.length)return e.slice();var n=t*t;return e=this._reducePoints(e,n),e=this._simplifyDP(e,n),e},pointToSegmentDistance:function(e,t,n){return Math.sqrt(this._sqClosestPointOnSegment(e,t,n,!0))},closestPointOnSegment:function(e,t,n){return this._sqClosestPointOnSegment(e,t,n)},_simplifyDP:function(e,n){var r=e.length,i=typeof Uint8Array!=t+""?Uint8Array:Array,s=new i(r);s[0]=s[r-1]=1,this._simplifyDPStep(e,s,n,0,r-1);var o,u=[];for(o=0;o<r;o++)s[o]&&u.push(e[o]);return u},_simplifyDPStep:function(e,t,n,r,i){var s=0,o,u,a;for(u=r+1;u<=i-1;u++)a=this._sqClosestPointOnSegment(e[u],e[r],e[i],!0),a>s&&(o=u,s=a);s>n&&(t[o]=1,this._simplifyDPStep(e,t,n,r,o),this._simplifyDPStep(e,t,n,o,i))},_reducePoints:function(e,t){var n=[e[0]];for(var r=1,i=0,s=e.length;r<s;r++)this._sqDist(e[r],e[i])>t&&(n.push(e[r]),i=r);return i<s-1&&n.push(e[s-1]),n},clipSegment:function(e,t,n,r){var i=n.min,s=n.max,o=r?this._lastCode:this._getBitCode(e,n),u=this._getBitCode(t,n);this._lastCode=u;for(;;){if(!(o|u))return[e,t];if(o&u)return!1;var a=o||u,f=this._getEdgeIntersection(e,t,a,n),l=this._getBitCode(f,n);a===o?(e=f,o=l):(t=f,u=l)}},_getEdgeIntersection:function(e,t,r,i){var s=t.x-e.x,o=t.y-e.y,u=i.min,a=i.max;if(r&8)return new n.Point(e.x+s*(a.y-e.y)/o,a.y);if(r&4)return new n.Point(e.x+s*(u.y-e.y)/o,u.y);if(r&2)return new n.Point(a.x,e.y+o*(a.x-e.x)/s);if(r&1)return new n.Point(u.x,e.y+o*(u.x-e.x)/s)},_getBitCode:function(e,t){var n=0;return e.x<t.min.x?n|=1:e.x>t.max.x&&(n|=2),e.y<t.min.y?n|=4:e.y>t.max.y&&(n|=8),n},_sqDist:function(e,t){var n=t.x-e.x,r=t.y-e.y;return n*n+r*r},_sqClosestPointOnSegment:function(e,t,r,i){var s=t.x,o=t.y,u=r.x-s,a=r.y-o,f=u*u+a*a,l;return f>0&&(l=((e.x-s)*u+(e.y-o)*a)/f,l>1?(s=r.x,o=r.y):l>0&&(s+=u*l,o+=a*l)),u=e.x-s,a=e.y-o,i?u*u+a*a:new n.Point(s,o)}},n.Polyline=n.Path.extend({initialize:function(e,t){n.Path.prototype.initialize.call(this,t),this._latlngs=this._convertLatLngs(e),n.Handler.PolyEdit&&(this.editing=new n.Handler.PolyEdit(this),this.options.editable&&this.editing.enable())},options:{smoothFactor:1,noClip:!1},projectLatlngs:function(){this._originalPoints=[];for(var e=0,t=this._latlngs.length;e<t;e++)this._originalPoints[e]=this._map.latLngToLayerPoint(this._latlngs[e])},getPathString:function(){for(var e=0,t=this._parts.length,n="";e<t;e++)n+=this._getPathPartStr(this._parts[e]);return n},getLatLngs:function(){return this._latlngs},setLatLngs:function(e){return this._latlngs=this._convertLatLngs(e),this.redraw()},addLatLng:function(e){return this._latlngs.push(n.latLng(e)),this.redraw()},spliceLatLngs:function(e,t){var n=[].splice.apply(this._latlngs,arguments);return this._convertLatLngs(this._latlngs),this.redraw(),n},closestLayerPoint:function(e){var t=Infinity,r=this._parts,i,s,o=null;for(var u=0,a=r.length;u<a;u++){var f=r[u];for(var l=1,c=f.length;l<c;l++){i=f[l-1],s=f[l];var h=n.LineUtil._sqClosestPointOnSegment(e,i,s,!0);h<t&&(t=h,o=n.LineUtil._sqClosestPointOnSegment(e,i,s))}}return o&&(o.distance=Math.sqrt(t)),o},getBounds:function(){var e=new n.LatLngBounds,t=this.getLatLngs();for(var r=0,i=t.length;r<i;r++)e.extend(t[r]);return e},onAdd:function(e){n.Path.prototype.onAdd.call(this,e),this.editing&&this.editing.enabled()&&this.editing.addHooks()},onRemove:function(e){this.editing&&this.editing.enabled()&&this.editing.removeHooks(),n.Path.prototype.onRemove.call(this,e)},_convertLatLngs:function(e){var t,r;for(t=0,r=e.length;t<r;t++){if(e[t]instanceof Array&&typeof e[t][0]!="number")return;e[t]=n.latLng(e[t])}return e},_initEvents:function(){n.Path.prototype._initEvents.call(this)},_getPathPartStr:function(e){var t=n.Path.VML;for(var r=0,i=e.length,s="",o;r<i;r++)o=e[r],t&&o._round(),s+=(r?"L":"M")+o.x+" "+o.y;return s},_clipPoints:function(){var e=this._originalPoints,t=e.length,r,i,s;if(this.options.noClip){this._parts=[e];return}this._parts=[];var o=this._parts,u=this._map._pathViewport,a=n.LineUtil;for(r=0,i=0;r<t-1;r++){s=a.clipSegment(e[r],e[r+1],u,r);if(!s)continue;o[i]=o[i]||[],o[i].push(s[0]);if(s[1]!==e[r+1]||r===t-2)o[i].push(s[1]),i++}},_simplifyPoints:function(){var e=this._parts,t=n.LineUtil;for(var r=0,i=e.length;r<i;r++)e[r]=t.simplify(e[r],this.options.smoothFactor)},_updatePath:function(){if(!this._map)return;this._clipPoints(),this._simplifyPoints(),n.Path.prototype._updatePath.call(this)}}),n.polyline=function(e,t){return new n.Polyline(e,t)},n.PolyUtil={},n.PolyUtil.clipPolygon=function(e,t){var r=t.min,i=t.max,s,o=[1,4,2,8],u,a,f,l,c,h,p,d,v=n.LineUtil;for(u=0,h=e.length;u<h;u++)e[u]._code=v._getBitCode(e[u],t);for(f=0;f<4;f++){p=o[f],s=[];for(u=0,h=e.length,a=h-1;u<h;a=u++)l=e[u],c=e[a],l._code&p?c._code&p||(d=v._getEdgeIntersection(c,l,p,t),d._code=v._getBitCode(d,t),s.push(d)):(c._code&p&&(d=v._getEdgeIntersection(c,l,p,t),d._code=v._getBitCode(d,t),s.push(d)),s.push(l));e=s}return e},n.Polygon=n.Polyline.extend({options:{fill:!0},initialize:function(e,t){n.Polyline.prototype.initialize.call(this,e,t),e&&e[0]instanceof Array&&typeof e[0][0]!="number"&&(this._latlngs=this._convertLatLngs(e[0]),this._holes=e.slice(1))},projectLatlngs:function(){n.Polyline.prototype.projectLatlngs.call(this),this._holePoints=[];if(!this._holes)return;for(var e=0,t=this._holes.length,r;e<t;e++){this._holePoints[e]=[];for(var i=0,s=this._holes[e].length;i<s;i++)this._holePoints[e][i]=this._map.latLngToLayerPoint(this._holes[e][i])}},_clipPoints:function(){var e=this._originalPoints,t=[];this._parts=[e].concat(this._holePoints);if(this.options.noClip)return;for(var r=0,i=this._parts.length;r<i;r++){var s=n.PolyUtil.clipPolygon(this._parts[r],this._map._pathViewport);if(!s.length)continue;t.push(s)}this._parts=t},_getPathPartStr:function(e){var t=n.Polyline.prototype._getPathPartStr.call(this,e);return t+(n.Browser.svg?"z":"x")}}),n.polygon=function(e,t){return new n.Polygon(e,t)},function(){function e(e){return n.FeatureGroup.extend({initialize:function(e,t){this._layers={},this._options=t,this.setLatLngs(e)},setLatLngs:function(t){var n=0,r=t.length;this.eachLayer(function(e){n<r?e.setLatLngs(t[n++]):this.removeLayer(e)},this);while(n<r)this.addLayer(new e(t[n++],this._options));return this}})}n.MultiPolyline=e(n.Polyline),n.MultiPolygon=e(n.Polygon),n.multiPolyline=function(e,t){return new n.MultiPolyline(e,t)},n.multiPolygon=function(e,t){return new n.MultiPolygon(e,t)}}(),n.Rectangle=n.Polygon.extend({initialize:function(e,t){n.Polygon.prototype.initialize.call(this,this._boundsToLatLngs(e),t)},setBounds:function(e){this.setLatLngs(this._boundsToLatLngs(e))},_boundsToLatLngs:function(e){return e=n.latLngBounds(e),[e.getSouthWest(),e.getNorthWest(),e.getNorthEast(),e.getSouthEast(),e.getSouthWest()]}}),n.rectangle=function(e,t){return new n.Rectangle(e,t)},n.Circle=n.Path.extend({initialize:function(e,t,r){n.Path.prototype.initialize.call(this,r),this._latlng=n.latLng(e),this._mRadius=t},options:{fill:!0},setLatLng:function(e){return this._latlng=n.latLng(e),this.redraw()},setRadius:function(e){return this._mRadius=e,this.redraw()},projectLatlngs:function(){var e=this._getLngRadius(),t=new n.LatLng(this._latlng.lat,this._latlng.lng-e,!0),r=this._map.latLngToLayerPoint(t);this._point=this._map.latLngToLayerPoint(this._latlng),this._radius=Math.max(Math.round(this._point.x-r.x),1)},getBounds:function(){var e=this._map,t=this._radius*Math.cos(Math.PI/4),r=e.project(this._latlng),i=new n.Point(r.x-t,r.y+t),s=new n.Point(r.x+t,r.y-t),o=e.unproject(i),u=e.unproject(s);return new n.LatLngBounds(o,u)},getLatLng:function(){return this._latlng},getPathString:function(){var e=this._point,t=this._radius;return this._checkIfEmpty()?"":n.Browser.svg?"M"+e.x+","+(e.y-t)+"A"+t+","+t+",0,1,1,"+(e.x-.1)+","+(e.y-t)+" z":(e._round(),t=Math.round(t),"AL "+e.x+","+e.y+" "+t+","+t+" 0,"+23592600)},getRadius:function(){return this._mRadius},_getLngRadius:function(){var e=40075017,t=e*Math.cos(n.LatLng.DEG_TO_RAD*this._latlng.lat);return this._mRadius/t*360},_checkIfEmpty:function(){if(!this._map)return!1;var e=this._map._pathViewport,t=this._radius,n=this._point;return n.x-t>e.max.x||n.y-t>e.max.y||n.x+t<e.min.x||n.y+t<e.min.y}}),n.circle=function(e,t,r){return new n.Circle(e,t,r)},n.CircleMarker=n.Circle.extend({options:{radius:10,weight:2},initialize:function(e,t){n.Circle.prototype.initialize.call(this,e,null,t),this._radius=this.options.radius},projectLatlngs:function(){this._point=this._map.latLngToLayerPoint(this._latlng)},setRadius:function(e){return this._radius=e,this.redraw()}}),n.circleMarker=function(e,t){return new n.CircleMarker(e,t)},n.Polyline.include(n.Path.CANVAS?{_containsPoint:function(e,t){var r,i,s,o,u,a,f,l=this.options.weight/2;n.Browser.touch&&(l+=10);for(r=0,o=this._parts.length;r<o;r++){f=this._parts[r];for(i=0,u=f.length,s=u-1;i<u;s=i++){if(!t&&i===0)continue;a=n.LineUtil.pointToSegmentDistance(e,f[s],f[i]);if(a<=l)return!0}}return!1}}:{}),n.Polygon.include(n.Path.CANVAS?{_containsPoint:function(e){var t=!1,r,i,s,o,u,a,f,l;if(n.Polyline.prototype._containsPoint.call(this,e,!0))return!0;for(o=0,f=this._parts.length;o<f;o++){r=this._parts[o];for(u=0,l=r.length,a=l-1;u<l;a=u++)i=r[u],s=r[a],i.y>e.y!=s.y>e.y&&e.x<(s.x-i.x)*(e.y-i.y)/(s.y-i.y)+i.x&&(t=!t)}return t}}:{}),n.Circle.include(n.Path.CANVAS?{_drawPath:function(){var e=this._point;this._ctx.beginPath(),this._ctx.arc(e.x,e.y,this._radius,0,Math.PI*2,!1)},_containsPoint:function(e){var t=this._point,n=this.options.stroke?this.options.weight/2:0;return e.distanceTo(t)<=this._radius+n}}:{}),n.GeoJSON=n.FeatureGroup.extend({initialize:function(e,t){n.Util.setOptions(this,t),this._layers={},e&&this.addData(e)},addData:function(e){var t=e instanceof Array?e:e.features,r,i;if(t){for(r=0,i=t.length;r<i;r++)this.addData(t[r]);return this}var s=this.options;if(s.filter&&!s.filter(e))return;var o=n.GeoJSON.geometryToLayer(e,s.pointToLayer);return o.feature=e,this.resetStyle(o),s.onEachFeature&&s.onEachFeature(e,o),this.addLayer(o)},resetStyle:function(e){var t=this.options.style;t&&this._setLayerStyle(e,t)},setStyle:function(e){this.eachLayer(function(t){this._setLayerStyle(t,e)},this)},_setLayerStyle:function(e,t){typeof t=="function"&&(t=t(e.feature)),e.setStyle&&e.setStyle(t)}}),n.Util.extend(n.GeoJSON,{geometryToLayer:function(e,t){var r=e.type==="Feature"?e.geometry:e,i=r.coordinates,s=[],o,u,a,f,l;switch(r.type){case"Point":return o=this.coordsToLatLng(i),t?t(e,o):new n.Marker(o);case"MultiPoint":for(a=0,f=i.length;a<f;a++)o=this.coordsToLatLng(i[a]),l=t?t(e,o):new n.Marker(o),s.push(l);return new n.FeatureGroup(s);case"LineString":return u=this.coordsToLatLngs(i),new n.Polyline(u);case"Polygon":return u=this.coordsToLatLngs(i,1),new n.Polygon(u);case"MultiLineString":return u=this.coordsToLatLngs(i,1),new n.MultiPolyline(u);case"MultiPolygon":return u=this.coordsToLatLngs(i,2),new n.MultiPolygon(u);case"GeometryCollection":for(a=0,f=r.geometries.length;a<f;a++)l=this.geometryToLayer(r.geometries[a],t),s.push(l);return new n.FeatureGroup(s);default:throw Error("Invalid GeoJSON object.")}},coordsToLatLng:function(e,t){var r=parseFloat(e[t?0:1]),i=parseFloat(e[t?1:0]);return new n.LatLng(r,i,!0)},coordsToLatLngs:function(e,t,n){var r,i=[],s,o;for(s=0,o=e.length;s<o;s++)r=t?this.coordsToLatLngs(e[s],t-1,n):this.coordsToLatLng(e[s],n),i.push(r);return i}}),n.geoJson=function(e,t){return new n.GeoJSON(e,t)},n.DomEvent={addListener:function(e,t,r,i){var s=n.Util.stamp(r),o="_leaflet_"+t+s,u,a,f;return e[o]?this:(u=function(t){return r.call(i||e,t||n.DomEvent._getEvent())},n.Browser.touch&&t==="dblclick"&&this.addDoubleTapListener?this.addDoubleTapListener(e,u,s):("addEventListener"in e?t==="mousewheel"?(e.addEventListener("DOMMouseScroll",u,!1),e.addEventListener(t,u,!1)):t==="mouseenter"||t==="mouseleave"?(a=u,f=t==="mouseenter"?"mouseover":"mouseout",u=function(t){if(!n.DomEvent._checkMouse(e,t))return;return a(t)},e.addEventListener(f,u,!1)):e.addEventListener(t,u,!1):"attachEvent"in e&&e.attachEvent("on"+t,u),e[o]=u,this))},removeListener:function(e,t,r){var i=n.Util.stamp(r),s="_leaflet_"+t+i,o=e[s];if(!o)return;return n.Browser.touch&&t==="dblclick"&&this.removeDoubleTapListener?this.removeDoubleTapListener(e,i):"removeEventListener"in e?t==="mousewheel"?(e.removeEventListener("DOMMouseScroll",o,!1),e.removeEventListener(t,o,!1)):t==="mouseenter"||t==="mouseleave"?e.removeEventListener(t==="mouseenter"?"mouseover":"mouseout",o,!1):e.removeEventListener(t,o,!1):"detachEvent"in e&&e.detachEvent("on"+t,o),e[s]=null,this},stopPropagation:function(e){return e.stopPropagation?e.stopPropagation():e.cancelBubble=!0,this},disableClickPropagation:function(e){var t=n.DomEvent.stopPropagation;return n.DomEvent.addListener(e,n.Draggable.START,t).addListener(e,"click",t).addListener(e,"dblclick",t)},preventDefault:function(e){return e.preventDefault?e.preventDefault():e.returnValue=!1,this},stop:function(e){return n.DomEvent.preventDefault(e).stopPropagation(e)},getMousePosition:function(e,t){var r=document.body,i=document.documentElement,s=e.pageX?e.pageX:e.clientX+r.scrollLeft+i.scrollLeft,o=e.pageY?e.pageY:e.clientY+r.scrollTop+i.scrollTop,u=new n.Point(s,o);return t?u._subtract(n.DomUtil.getViewportOffset(t)):u},getWheelDelta:function(e){var t=0;return e.wheelDelta&&(t=e.wheelDelta/120),e.detail&&(t=-e.detail/3),t},_checkMouse:function(e,t){var n=t.relatedTarget;if(!n)return!0;try{while(n&&n!==e)n=n.parentNode}catch(r){return!1}return n!==e},_getEvent:function(){var t=e.event;if(!t){var n=arguments.callee.caller;while(n){t=n.arguments[0];if(t&&e.Event===t.constructor)break;n=n.caller}}return t}},n.DomEvent.on=n.DomEvent.addListener,n.DomEvent.off=n.DomEvent.removeListener,n.Draggable=n.Class.extend({includes:n.Mixin.Events,statics:{START:n.Browser.touch?"touchstart":"mousedown",END:n.Browser.touch?"touchend":"mouseup",MOVE:n.Browser.touch?"touchmove":"mousemove",TAP_TOLERANCE:15},initialize:function(e,t){this._element=e,this._dragStartTarget=t||e},enable:function(){if(this._enabled)return;n.DomEvent.on(this._dragStartTarget,n.Draggable.START,this._onDown,this),this._enabled=!0},disable:function(){if(!this._enabled)return;n.DomEvent.off(this._dragStartTarget,n.Draggable.START,this._onDown),this._enabled=!1,this._moved=!1},_onDown:function(e){if(!n.Browser.touch&&e.shiftKey||e.which!==1&&e.button!==1&&!e.touches)return;this._simulateClick=!0;if(e.touches&&e.touches.length>1){this._simulateClick=!1;return}var t=e.touches&&e.touches.length===1?e.touches[0]:e,r=t.target;n.DomEvent.preventDefault(e),n.Browser.touch&&r.tagName.toLowerCase()==="a"&&n.DomUtil.addClass(r,"leaflet-active"),this._moved=!1;if(this._moving)return;this._startPos=this._newPos=n.DomUtil.getPosition(this._element),this._startPoint=new n.Point(t.clientX,t.clientY),n.DomEvent.on(document,n.Draggable.MOVE,this._onMove,this),n.DomEvent.on(document,n.Draggable.END,this._onUp,this)},_onMove:function(e){if(e.touches&&e.touches.length>1)return;var t=e.touches&&e.touches.length===1?e.touches[0]:e,r=new n.Point(t.clientX,t.clientY),i=r.subtract(this._startPoint);if(!i.x&&!i.y)return;n.DomEvent.preventDefault(e),this._moved||(this.fire("dragstart"),this._moved=!0,n.Browser.touch||(n.DomUtil.disableTextSelection(),this._setMovingCursor())),this._newPos=this._startPos.add(i),this._moving=!0,n.Util.cancelAnimFrame(this._animRequest),this._animRequest=n.Util.requestAnimFrame(this._updatePosition,this,!0,this._dragStartTarget)},_updatePosition:function(){this.fire("predrag"),n.DomUtil.setPosition(this._element,this._newPos),this.fire("drag")},_onUp:function(e){if(this._simulateClick&&e.changedTouches){var t=e.changedTouches[0],r=t.target,i=this._newPos&&this._newPos.distanceTo(this._startPos)||0;r.tagName.toLowerCase()==="a"&&n.DomUtil.removeClass(r,"leaflet-active"),i<n.Draggable.TAP_TOLERANCE&&this._simulateEvent("click",t)}n.Browser.touch||(n.DomUtil.enableTextSelection(),this._restoreCursor()),n.DomEvent.off(document,n.Draggable.MOVE,this._onMove),n.DomEvent.off(document,n.Draggable.END,this._onUp),this._moved&&(n.Util.cancelAnimFrame(this._animRequest),this.fire("dragend")),this._moving=!1},_setMovingCursor:function(){n.DomUtil.addClass(document.body,"leaflet-dragging")},_restoreCursor:function(){n.DomUtil.removeClass(document.body,"leaflet-dragging")},_simulateEvent:function(t,n){var r=document.createEvent("MouseEvents");r.initMouseEvent(t,!0,!0,e,1,n.screenX,n.screenY,n.clientX,n.clientY,!1,!1,!1,!1,0,null),n.target.dispatchEvent(r)}}),n.Handler=n.Class.extend({initialize:function(e){this._map=e},enable:function(){if(this._enabled)return;this._enabled=!0,this.addHooks()},disable:function(){if(!this._enabled)return;this._enabled=!1,this.removeHooks()},enabled:function(){return!!this._enabled}}),n.Map.mergeOptions({dragging:!0,inertia:!n.Browser.android23,inertiaDeceleration:3e3,inertiaMaxSpeed:1500,inertiaThreshold:n.Browser.touch?32:14,worldCopyJump:!0}),n.Map.Drag=n.Handler.extend({addHooks:function(){if(!this._draggable){this._draggable=new n.Draggable(this._map._mapPane,this._map._container),this._draggable.on({dragstart:this._onDragStart,drag:this._onDrag,dragend:this._onDragEnd},this);var e=this._map.options;e.worldCopyJump&&(this._draggable.on("predrag",this._onPreDrag,this),this._map.on("viewreset",this._onViewReset,this))}this._draggable.enable()},removeHooks:function(){this._draggable.disable()},moved:function(){return this._draggable&&this._draggable._moved},_onDragStart:function(){var e=this._map;e.fire("movestart").fire("dragstart"),e._panTransition&&e._panTransition._onTransitionEnd(!0),e.options.inertia&&(this._positions=[],this._times=[])},_onDrag:function(){if(this._map.options.inertia){var e=this._lastTime=+(new Date),t=this._lastPos=this._draggable._newPos;this._positions.push(t),this._times.push(e),e-this._times[0]>200&&(this._positions.shift(),this._times.shift())}this._map.fire("move").fire("drag")},_onViewReset:function(){var e=this._map.getSize().divideBy(2),t=this._map.latLngToLayerPoint(new n.LatLng(0,0));this._initialWorldOffset=t.subtract(e).x,this._worldWidth=this._map.project(new n.LatLng(0,180)).x},_onPreDrag:function(){var e=this._map,t=this._worldWidth,n=Math.round(t/2),r=this._initialWorldOffset,i=this._draggable._newPos.x,s=(i-n+r)%t+n-r,o=(i+n+r)%t-n-r,u=Math.abs(s+r)<Math.abs(o+r)?s:o;this._draggable._newPos.x=u},_onDragEnd:function(){var e=this._map,r=e.options,i=+(new Date)-this._lastTime,s=!r.inertia||i>r.inertiaThreshold||this._positions[0]===t;if(s)e.fire("moveend");else{var o=this._lastPos.subtract(this._positions[0]),u=(this._lastTime+i-this._times[0])/1e3,a=o.multiplyBy(.58/u),f=a.distanceTo(new n.Point(0,0)),l=Math.min(r.inertiaMaxSpeed,f),c=a.multiplyBy(l/f),h=l/r.inertiaDeceleration,p=c.multiplyBy(-h/2).round(),d={duration:h,easing:"ease-out"};n.Util.requestAnimFrame(n.Util.bind(function(){this._map.panBy(p,d)},this))}e.fire("dragend"),r.maxBounds&&n.Util.requestAnimFrame(this._panInsideMaxBounds,e,!0,e._container)},_panInsideMaxBounds:function(){this.panInsideBounds(this.options.maxBounds)}}),n.Map.addInitHook("addHandler","dragging",n.Map.Drag),n.Map.mergeOptions({doubleClickZoom:!0}),n.Map.DoubleClickZoom=n.Handler.extend({addHooks:function(){this._map.on("dblclick",this._onDoubleClick)},removeHooks:function(){this._map.off("dblclick",this._onDoubleClick)},_onDoubleClick:function(e){this.setView(e.latlng,this._zoom+1)}}),n.Map.addInitHook("addHandler","doubleClickZoom",n.Map.DoubleClickZoom),n.Map.mergeOptions({scrollWheelZoom:!n.Browser.touch}),n.Map.ScrollWheelZoom=n.Handler.extend({addHooks:function(){n.DomEvent.on(this._map._container,"mousewheel",this._onWheelScroll,this),this._delta=0},removeHooks:function(){n.DomEvent.off(this._map._container,"mousewheel",this._onWheelScroll)},_onWheelScroll:function(e){var t=n.DomEvent.getWheelDelta(e);this._delta+=t,this._lastMousePos=this._map.mouseEventToContainerPoint(e),clearTimeout(this._timer),this._timer=setTimeout(n.Util.bind(this._performZoom,this),40),n.DomEvent.preventDefault(e)},_performZoom:function(){var e=this._map,t=Math.round(this._delta),n=e.getZoom();t=Math.max(Math.min(t,4),-4),t=e._limitZoom(n+t)-n,this._delta=0;if(!t)return;var r=n+t,i=this._getCenterForScrollWheelZoom(this._lastMousePos,r);e.setView(i,r)},_getCenterForScrollWheelZoom:function(e,t){var n=this._map,r=n.getZoomScale(t),i=n.getSize().divideBy(2),s=e.subtract(i).multiplyBy(1-1/r),o=n._getTopLeftPoint().add(i).add(s);return n.unproject(o)}}),n.Map.addInitHook("addHandler","scrollWheelZoom",n.Map.ScrollWheelZoom),n.Util.extend(n.DomEvent,{addDoubleTapListener:function(e,t,n){function l(e){if(e.touches.length!==1)return;var t=Date.now(),n=t-(r||t);o=e.touches[0],i=n>0&&n<=s,r=t}function c(e){i&&(o.type="dblclick",t(o),r=null)}var r,i=!1,s=250,o,u="_leaflet_",a="touchstart",f="touchend";return e[u+a+n]=l,e[u+f+n]=c,e.addEventListener(a,l,!1),e.addEventListener(f,c,!1),this},removeDoubleTapListener:function(e,t){var n="_leaflet_";return e.removeEventListener(e,e[n+"touchstart"+t],!1),e.removeEventListener(e,e[n+"touchend"+t],!1),this}}),n.Map.mergeOptions({touchZoom:n.Browser.touch&&!n.Browser.android23}),n.Map.TouchZoom=n.Handler.extend({addHooks:function(){n.DomEvent.on(this._map._container,"touchstart",this._onTouchStart,this)},removeHooks:function(){n.DomEvent.off(this._map._container,"touchstart",this._onTouchStart,this)},_onTouchStart:function(e){var t=this._map;if(!e.touches||e.touches.length!==2||t._animatingZoom||this._zooming)return;var r=t.mouseEventToLayerPoint(e.touches[0]),i=t.mouseEventToLayerPoint(e.touches[1]),s=t._getCenterLayerPoint();this._startCenter=r.add(i).divideBy(2,!0),this._startDist=r.distanceTo(i),this._moved=!1,this._zooming=!0,this._centerOffset=s.subtract(this._startCenter),n.DomEvent.on(document,"touchmove",this._onTouchMove,this).on(document,"touchend",this._onTouchEnd,this),n.DomEvent.preventDefault(e)},_onTouchMove:function(e){if(!e.touches||e.touches.length!==2)return;var t=this._map,r=t.mouseEventToLayerPoint(e.touches[0]),i=t.mouseEventToLayerPoint(e.touches[1]);this._scale=r.distanceTo(i)/this._startDist,this._delta=r.add(i).divideBy(2,!0).subtract(this._startCenter);if(this._scale===1)return;this._moved||(n.DomUtil.addClass(t._mapPane,"leaflet-zoom-anim leaflet-touching"),t.fire("movestart").fire("zoomstart")._prepareTileBg(),this._moved=!0),n.Util.cancelAnimFrame(this._animRequest),this._animRequest=n.Util.requestAnimFrame(this._updateOnMove,this,!0,this._map._container),n.DomEvent.preventDefault(e)},_updateOnMove:function(){var e=this._map,t=this._getScaleOrigin(),r=e.layerPointToLatLng(t);e.fire("zoomanim",{center:r,zoom:e.getScaleZoom(this._scale)}),e._tileBg.style[n.DomUtil.TRANSFORM]=n.DomUtil.getTranslateString(this._delta)+" "+n.DomUtil.getScaleString(this._scale,this._startCenter)},_onTouchEnd:function(e){if(!this._moved||!this._zooming)return;var t=this._map;this._zooming=!1,n.DomUtil.removeClass(t._mapPane,"leaflet-touching"),n.DomEvent.off(document,"touchmove",this._onTouchMove).off(document,"touchend",this._onTouchEnd);var r=this._getScaleOrigin(),i=t.layerPointToLatLng(r),s=t.getZoom(),o=t.getScaleZoom(this._scale)-s,u=o>0?Math.ceil(o):Math.floor(o),a=t._limitZoom(s+u);t.fire("zoomanim",{center:i,zoom:a}),t._runAnimation(i,a,t.getZoomScale(a)/this._scale,r,!0)},_getScaleOrigin:function(){var e=this._centerOffset.subtract(this._delta).divideBy(this._scale);return this._startCenter.add(e)}}),n.Map.addInitHook("addHandler","touchZoom",n.Map.TouchZoom),n.Map.mergeOptions({boxZoom:!0}),n.Map.BoxZoom=n.Handler.extend({initialize:function(e){this._map=e,this._container=e._container,this._pane=e._panes.overlayPane},addHooks:function(){n.DomEvent.on(this._container,"mousedown",this._onMouseDown,this)},removeHooks:function(){n.DomEvent.off(this._container,"mousedown",this._onMouseDown)},_onMouseDown:function(e){if(!e.shiftKey||e.which!==1&&e.button!==1)return!1;n.DomUtil.disableTextSelection(),this._startLayerPoint=this._map.mouseEventToLayerPoint(e),this._box=n.DomUtil.create("div","leaflet-zoom-box",this._pane),n.DomUtil.setPosition(this._box,this._startLayerPoint),this._container.style.cursor="crosshair",n.DomEvent.on(document,"mousemove",this._onMouseMove,this).on(document,"mouseup",this._onMouseUp,this).preventDefault(e),this._map.fire("boxzoomstart")},_onMouseMove:function(e){var t=this._startLayerPoint,r=this._box,i=this._map.mouseEventToLayerPoint(e),s=i.subtract(t),o=new n.Point(Math.min(i.x,t.x),Math.min(i.y,t.y));n.DomUtil.setPosition(r,o),r.style.width=Math.abs(s.x)-4+"px",r.style.height=Math.abs(s.y)-4+"px"},_onMouseUp:function(e){this._pane.removeChild(this._box),this._container.style.cursor="",n.DomUtil.enableTextSelection(),n.DomEvent.off(document,"mousemove",this._onMouseMove).off(document,"mouseup",this._onMouseUp);var t=this._map,r=t.mouseEventToLayerPoint(e),i=new n.LatLngBounds(t.layerPointToLatLng(this._startLayerPoint),t.layerPointToLatLng(r));t.fitBounds(i),t.fire("boxzoomend",{boxZoomBounds:i})}}),n.Map.addInitHook("addHandler","boxZoom",n.Map.BoxZoom),n.Map.mergeOptions({keyboard:!0,keyboardPanOffset:80,keyboardZoomOffset:1}),n.Map.Keyboard=n.Handler.extend({keyCodes:{left:[37],right:[39],down:[40],up:[38],zoomIn:[187,107,61],zoomOut:[189,109]},initialize:function(e){this._map=e,this._setPanOffset(e.options.keyboardPanOffset),this._setZoomOffset(e.options.keyboardZoomOffset)},addHooks:function(){var e=this._map._container;e.tabIndex===-1&&(e.tabIndex="0"),n.DomEvent.addListener(e,"focus",this._onFocus,this).addListener(e,"blur",this._onBlur,this).addListener(e,"mousedown",this._onMouseDown,this),this._map.on("focus",this._addHooks,this).on("blur",this._removeHooks,this)},removeHooks:function(){this._removeHooks();var e=this._map._container;n.DomEvent.removeListener(e,"focus",this._onFocus,this).removeListener(e,"blur",this._onBlur,this).removeListener(e,"mousedown",this._onMouseDown,this),this._map.off("focus",this._addHooks,this).off("blur",this._removeHooks,this)},_onMouseDown:function(){this._focused||this._map._container.focus()},_onFocus:function(){this._focused=!0,this._map.fire("focus")},_onBlur:function(){this._focused=!1,this._map.fire("blur")},_setPanOffset:function(e){var t=this._panKeys={},n=this.keyCodes,r,i;for(r=0,i=n.left.length;r<i;r++)t[n.left[r]]=[-1*e,0];for(r=0,i=n.right.length;r<i;r++)t[n.right[r]]=[e,0];for(r=0,i=n.down.length;r<i;r++)t[n.down[r]]=[0,e];for(r=0,i=n.up.length;r<i;r++)t[n.up[r]]=[0,-1*e]},_setZoomOffset:function(e){var t=this._zoomKeys={},n=this.keyCodes,r,i;for(r=0,i=n.zoomIn.length;r<i;r++)t[n.zoomIn[r]]=e;for(r=0,i=n.zoomOut.length;r<i;r++)t[n.zoomOut[r]]=-e},_addHooks:function(){n.DomEvent.addListener(document,"keydown",this._onKeyDown,this)},_removeHooks:function(){n.DomEvent.removeListener(document,"keydown",this._onKeyDown,this)},_onKeyDown:function(e){var t=e.keyCode;if(this._panKeys.hasOwnProperty(t))this._map.panBy(this._panKeys[t]);else{if(!this._zoomKeys.hasOwnProperty(t))return;this._map.setZoom(this._map.getZoom()+this._zoomKeys[t])}n.DomEvent.stop(e)}}),n.Map.addInitHook("addHandler","keyboard",n.Map.Keyboard),n.Handler.MarkerDrag=n.Handler.extend({initialize:function(e){this._marker=e},addHooks:function(){var e=this._marker._icon;this._draggable||(this._draggable=(new n.Draggable(e,e)).on("dragstart",this._onDragStart,this).on("drag",this._onDrag,this).on("dragend",this._onDragEnd,this)),this._draggable.enable()},removeHooks:function(){this._draggable.disable()},moved:function(){return this._draggable&&this._draggable._moved},_onDragStart:function(e){this._marker.closePopup().fire("movestart").fire("dragstart")},_onDrag:function(e){var t=n.DomUtil.getPosition(this._marker._icon);this._marker._shadow&&n.DomUtil.setPosition(this._marker._shadow,t),this._marker._latlng=this._marker._map.layerPointToLatLng(t),this._marker.fire("move").fire("drag")},_onDragEnd:function(){this._marker.fire("moveend").fire("dragend")}}),n.Handler.PolyEdit=n.Handler.extend({options:{icon:new n.DivIcon({iconSize:new n.Point(8,8),className:"leaflet-div-icon leaflet-editing-icon"})},initialize:function(e,t){this._poly=e,n.Util.setOptions(this,t)},addHooks:function(){this._poly._map&&(this._markerGroup||this._initMarkers(),this._poly._map.addLayer(this._markerGroup))},removeHooks:function(){this._poly._map&&(this._poly._map.removeLayer(this._markerGroup),delete this._markerGroup,delete this._markers)},updateMarkers:function(){this._markerGroup.clearLayers(),this._initMarkers()},_initMarkers:function(){this._markerGroup||(this._markerGroup=new n.LayerGroup),this._markers=[];var e=this._poly._latlngs,t,r,i,s;for(t=0,i=e.length;t<i;t++)s=this._createMarker(e[t],t),s.on("click",this._onMarkerClick,this),this._markers.push(s);var o,u;for(t=0,r=i-1;t<i;r=t++){if(t===0&&!(n.Polygon&&this._poly instanceof n.Polygon))continue;o=this._markers[r],u=this._markers[t],this._createMiddleMarker(o,u),this._updatePrevNext(o,u)}},_createMarker:function(e,t){var r=new n.Marker(e,{draggable:!0,icon:this.options.icon});return r._origLatLng=e,r._index=t,r.on("drag",this._onMarkerDrag,this),r.on("dragend",this._fireEdit,this),this._markerGroup.addLayer(r),r},_fireEdit:function(){this._poly.fire("edit")},_onMarkerDrag:function(e){var t=e.target;n.Util.extend(t._origLatLng,t._latlng),t._middleLeft&&t._middleLeft.setLatLng(this._getMiddleLatLng(t._prev,t)),t._middleRight&&t._middleRight.setLatLng(this._getMiddleLatLng(t,t._next)),this._poly.redraw()},_onMarkerClick:function(e){if(this._poly._latlngs.length<3)return;var t=e.target,n=t._index;t._prev&&t._next&&(this._createMiddleMarker(t._prev,t._next),this._updatePrevNext(t._prev,t._next)),this._markerGroup.removeLayer(t),t._middleLeft&&this._markerGroup.removeLayer(t._middleLeft),t._middleRight&&this._markerGroup.removeLayer(t._middleRight),this._markers.splice(n,1),this._poly.spliceLatLngs(n,1),this._updateIndexes(n,-1),this._poly.fire("edit")},_updateIndexes:function(e,t){this._markerGroup.eachLayer(function(n){n._index>e&&(n._index+=t)})},_createMiddleMarker:function(e,t){var n=this._getMiddleLatLng(e,t),r=this._createMarker(n),i,s,o;r.setOpacity(.6),e._middleRight=t._middleLeft=r,s=function(){var s=t._index;r._index=s,r.off("click",i).on("click",this._onMarkerClick,this),n.lat=r.getLatLng().lat,n.lng=r.getLatLng().lng,this._poly.spliceLatLngs(s,0,n),this._markers.splice(s,0,r),r.setOpacity(1),this._updateIndexes(s,1),t._index++,this._updatePrevNext(e,r),this._updatePrevNext(r,t)},o=function(){r.off("dragstart",s,this),r.off("dragend",o,this),this._createMiddleMarker(e,r),this._createMiddleMarker(r,t)},i=function(){s.call(this),o.call(this),this._poly.fire("edit")},r.on("click",i,this).on("dragstart",s,this).on("dragend",o,this),this._markerGroup.addLayer(r)},_updatePrevNext:function(e,t){e._next=t,t._prev=e},_getMiddleLatLng:function(e,t){var n=this._poly._map,r=n.latLngToLayerPoint(e.getLatLng()),i=n.latLngToLayerPoint(t.getLatLng());return n.layerPointToLatLng(r._add(i).divideBy(2))}}),n.Control=n.Class.extend({options:{position:"topright"},initialize:function(e){n.Util.setOptions(this,e)},getPosition:function(){return this.options.position},setPosition:function(e){var t=this._map;return t&&t.removeControl(this),this.options.position=e,t&&t.addControl(this),this},addTo:function(e){this._map=e;var t=this._container=this.onAdd(e),r=this.getPosition(),i=e._controlCorners[r];return n.DomUtil.addClass(t,"leaflet-control"),r.indexOf("bottom")!==-1?i.insertBefore(t,i.firstChild):i.appendChild(t),this},removeFrom:function(e){var t=this.getPosition(),n=e._controlCorners[t];return n.removeChild(this._container),this._map=null,this.onRemove&&this.onRemove(e),this}}),n.control=function(e){return new n.Control(e)},n.Map.include({addControl:function(e){return e.addTo(this),this},removeControl:function(e){return e.removeFrom(this),this},_initControlPos:function(){function i(i,s){var o=t+i+" "+t+s;e[i+s]=n.DomUtil.create("div",o,r)}var e=this._controlCorners={},t="leaflet-",r=this._controlContainer=n.DomUtil.create("div",t+"control-container",this._container);i("top","left"),i("top","right"),i("bottom","left"),i("bottom","right")}}),n.Control.Zoom=n.Control.extend({options:{position:"topleft"},onAdd:function(e){var t="leaflet-control-zoom",r=n.DomUtil.create("div",t);return this._createButton("Zoom in",t+"-in",r,e.zoomIn,e),this._createButton("Zoom out",t+"-out",r,e.zoomOut,e),r},_createButton:function(e,t,r,i,s){var o=n.DomUtil.create("a",t,r);return o.href="#",o.title=e,n.DomEvent.on(o,"click",n.DomEvent.stopPropagation).on(o,"click",n.DomEvent.preventDefault).on(o,"click",i,s).on(o,"dblclick",n.DomEvent.stopPropagation),o}}),n.Map.mergeOptions({zoomControl:!0}),n.Map.addInitHook(function(){this.options.zoomControl&&(this.zoomControl=new n.Control.Zoom,this.addControl(this.zoomControl))}),n.control.zoom=function(e){return new n.Control.Zoom(e)},n.Control.Attribution=n.Control.extend({options:{position:"bottomright",prefix:'Powered by <a href="http://leaflet.cloudmade.com">Leaflet</a>'},initialize:function(e){n.Util.setOptions(this,e),this._attributions={}},onAdd:function(e){return this._container=n.DomUtil.create("div","leaflet-control-attribution"),n.DomEvent.disableClickPropagation(this._container),e.on("layeradd",this._onLayerAdd,this).on("layerremove",this._onLayerRemove,this),this._update(),this._container},onRemove:function(e){e.off("layeradd",this._onLayerAdd).off("layerremove",this._onLayerRemove)},setPrefix:function(e){return this.options.prefix=e,this._update(),this},addAttribution:function(e){if(!e)return;return this._attributions[e]||(this._attributions[e]=0),this._attributions[e]++,this._update(),this},removeAttribution:function(e){if(!e)return;return this._attributions[e]--,this._update(),this},_update:function(){if(!this._map)return;var e=[];for(var t in this._attributions)this._attributions.hasOwnProperty(t)&&this._attributions[t]&&e.push(t);var n=[];this.options.prefix&&n.push(this.options.prefix),e.length&&n.push(e.join(", ")),this._container.innerHTML=n.join(" &#8212; ")},_onLayerAdd:function(e){e.layer.getAttribution&&this.addAttribution(e.layer.getAttribution())},_onLayerRemove:function(e){e.layer.getAttribution&&this.removeAttribution(e.layer.getAttribution())}}),n.Map.mergeOptions({attributionControl:!0}),n.Map.addInitHook(function(){this.options.attributionControl&&(this.attributionControl=(new n.Control.Attribution).addTo(this))}),n.control.attribution=function(e){return new n.Control.Attribution(e)},n.Control.Scale=n.Control.extend({options:{position:"bottomleft",maxWidth:100,metric:!0,imperial:!0,updateWhenIdle:!1},onAdd:function(e){this._map=e;var t="leaflet-control-scale",r=n.DomUtil.create("div",t),i=this.options;return this._addScales(i,t,r),e.on(i.updateWhenIdle?"moveend":"move",this._update,this),this._update(),r},onRemove:function(e){e.off(this.options.updateWhenIdle?"moveend":"move",this._update,this)},_addScales:function(e,t,r){e.metric&&(this._mScale=n.DomUtil.create("div",t+"-line",r)),e.imperial&&(this._iScale=n.DomUtil.create("div",t+"-line",r))},_update:function(){var e=this._map.getBounds(),t=e.getCenter().lat,n=6378137*Math.PI*Math.cos(t*Math.PI/180),r=n*(e.getNorthEast().lng-e.getSouthWest().lng)/180,i=this._map.getSize(),s=this.options,o=0;i.x>0&&(o=r*(s.maxWidth/i.x)),this._updateScales(s,o)},_updateScales:function(e,t){e.metric&&t&&this._updateMetric(t),e.imperial&&t&&this._updateImperial(t)},_updateMetric:function(e){var t=this._getRoundNum(e);this._mScale.style.width=this._getScaleWidth(t/e)+"px",this._mScale.innerHTML=t<1e3?t+" m":t/1e3+" km"},_updateImperial:function(e){var t=e*3.2808399,n=this._iScale,r,i,s;t>5280?(r=t/5280,i=this._getRoundNum(r),n.style.width=this._getScaleWidth(i/r)+"px",n.innerHTML=i+" mi"):(s=this._getRoundNum(t),n.style.width=this._getScaleWidth(s/t)+"px",n.innerHTML=s+" ft")},_getScaleWidth:function(e){return Math.round(this.options.maxWidth*e)-10},_getRoundNum:function(e){var t=Math.pow(10,(Math.floor(e)+"").length-1),n=e/t;return n=n>=10?10:n>=5?5:n>=3?3:n>=2?2:1,t*n}}),n.control.scale=function(e){return new n.Control.Scale(e)},n.Control.Layers=n.Control.extend({options:{collapsed:!0,position:"topright",autoZIndex:!0},initialize:function(e,t,r){n.Util.setOptions(this,r),this._layers={},this._lastZIndex=0;for(var i in e)e.hasOwnProperty(i)&&this._addLayer(e[i],i);for(i in t)t.hasOwnProperty(i)&&this._addLayer(t[i],i,!0)},onAdd:function(e){return this._initLayout(),this._update(),this._container},addBaseLayer:function(e,t){return this._addLayer(e,t),this._update(),this},addOverlay:function(e,t){return this._addLayer(e,t,!0),this._update(),this},removeLayer:function(e){var t=n.Util.stamp(e);return delete this._layers[t],this._update(),this},_initLayout:function(){var e="leaflet-control-layers",t=this._container=n.DomUtil.create("div",e);n.Browser.touch?n.DomEvent.on(t,"click",n.DomEvent.stopPropagation):n.DomEvent.disableClickPropagation(t);var r=this._form=n.DomUtil.create("form",e+"-list");if(this.options.collapsed){n.DomEvent.on(t,"mouseover",this._expand,this).on(t,"mouseout",this._collapse,this);var i=this._layersLink=n.DomUtil.create("a",e+"-toggle",t);i.href="#",i.title="Layers",n.Browser.touch?n.DomEvent.on(i,"click",n.DomEvent.stopPropagation).on(i,"click",n.DomEvent.preventDefault).on(i,"click",this._expand,this):n.DomEvent.on(i,"focus",this._expand,this),this._map.on("movestart",this._collapse,this)}else this._expand();this._baseLayersList=n.DomUtil.create("div",e+"-base",r),this._separator=n.DomUtil.create("div",e+"-separator",r),this._overlaysList=n.DomUtil.create("div",e+"-overlays",r),t.appendChild(r)},_addLayer:function(e,t,r){var i=n.Util.stamp(e);this._layers[i]={layer:e,name:t,overlay:r},this.options.autoZIndex&&e.setZIndex&&(this._lastZIndex++,e.setZIndex(this._lastZIndex))},_update:function(){if(!this._container)return;this._baseLayersList.innerHTML="",this._overlaysList.innerHTML="";var e=!1,t=!1;for(var n in this._layers)if(this._layers.hasOwnProperty(n)){var r=this._layers[n];this._addItem(r),t=t||r.overlay,e=e||!r.overlay}this._separator.style.display=t&&e?"":"none"},_createRadioElement:function(e,t){var n='<input type="radio" name="'+e+'"';t&&(n+=' checked="checked"'),n+="/>";var r=document.createElement("div");return r.innerHTML=n,r.firstChild},_addItem:function(e){var t=document.createElement("label"),r,i=this._map.hasLayer(e.layer);e.overlay?(r=document.createElement("input"),r.type="checkbox",r.defaultChecked=i):r=this._createRadioElement("leaflet-base-layers",i),r.layerId=n.Util.stamp(e.layer),n.DomEvent.on(r,"click",this._onInputClick,this);var s=document.createTextNode(" "+e.name);t.appendChild(r),t.appendChild(s);var o=e.overlay?this._overlaysList:this._baseLayersList;o.appendChild(t)},_onInputClick:function(){var e,t,n,r=this._form.getElementsByTagName("input"),i=r.length;for(e=0;e<i;e++)t=r[e],n=this._layers[t.layerId],t.checked?this._map.addLayer(n.layer,!n.overlay):this._map.removeLayer(n.layer)},_expand:function(){n.DomUtil.addClass(this._container,"leaflet-control-layers-expanded")},_collapse:function(){this._container.className=this._container.className.replace(" leaflet-control-layers-expanded","")}}),n.control.layers=function(e,t,r){return new n.Control.Layers(e,t,r)},n.Transition=n.Class.extend({includes:n.Mixin.Events,statics:{CUSTOM_PROPS_SETTERS:{position:n.DomUtil.setPosition},implemented:function(){return n.Transition.NATIVE||n.Transition.TIMER}},options:{easing:"ease",duration:.5},_setProperty:function(e,t){var r=n.Transition.CUSTOM_PROPS_SETTERS;e in r?r[e](this._el,t):this._el.style[e]=t}}),n.Transition=n.Transition.extend({statics:function(){var e=n.DomUtil.TRANSITION,t=e==="webkitTransition"||e==="OTransition"?e+"End":"transitionend";return{NATIVE:!!e,TRANSITION:e,PROPERTY:e+"Property",DURATION:e+"Duration",EASING:e+"TimingFunction",END:t,CUSTOM_PROPS_PROPERTIES:{position:n.Browser.any3d?n.DomUtil.TRANSFORM:"top, left"}}}(),options:{fakeStepInterval:100},initialize:function(e,t){this._el=e,n.Util.setOptions(this,t),n.DomEvent.on(e,n.Transition.END,this._onTransitionEnd,this),this._onFakeStep=n.Util.bind(this._onFakeStep,this)},run:function(e){var t,r=[],i=n.Transition.CUSTOM_PROPS_PROPERTIES;for(t in e)e.hasOwnProperty(t)&&(t=i[t]?i[t]:t,t=this._dasherize(t),r.push(t));this._el.style[n.Transition.DURATION]=this.options.duration+"s",this._el.style[n.Transition.EASING]=this.options.easing,this._el.style[n.Transition.PROPERTY]="all";for(t in e)e.hasOwnProperty(t)&&this._setProperty(t,e[t]);n.Util.falseFn(this._el.offsetWidth),this._inProgress=!0,n.Browser.mobileWebkit&&(this.backupEventFire=setTimeout(n.Util.bind(this._onBackupFireEnd,this),this.options.duration*1.2*1e3)),n.Transition.NATIVE?(clearInterval(this._timer),this._timer=setInterval(this._onFakeStep,this.options.fakeStepInterval)):this._onTransitionEnd()},_dasherize:function(){function t(e){return"-"+e.toLowerCase()}var e=/([A-Z])/g;return function(n){return n.replace(e,t)}}(),_onFakeStep:function(){this.fire("step")},_onTransitionEnd:function(e){this._inProgress&&(this._inProgress=!1,clearInterval(this._timer),this._el.style[n.Transition.TRANSITION]="",clearTimeout(this.backupEventFire),delete this.backupEventFire,this.fire("step"),e&&e.type&&this.fire("end"))},_onBackupFireEnd:function(){var e=document.createEvent("Event");e.initEvent(n.Transition.END,!0,!1),this._el.dispatchEvent(e)}}),n.Transition=n.Transition.NATIVE?n.Transition:n.Transition.extend({statics:{getTime:Date.now||function(){return+(new Date)},TIMER:!0,EASINGS:{linear:function(e){return e},"ease-out":function(e){return e*(2-e)}},CUSTOM_PROPS_GETTERS:{position:n.DomUtil.getPosition},UNIT_RE:/^[\d\.]+(\D*)$/},options:{fps:50},initialize:function(e,t){this._el=e,n.Util.extend(this.options,t),this._easing=n.Transition.EASINGS[this.options.easing]||n.Transition.EASINGS["ease-out"],this._step=n.Util.bind(this._step,this),this._interval=Math.round(1e3/this.options.fps)},run:function(e){this._props={};var t=n.Transition.CUSTOM_PROPS_GETTERS,r=n.Transition.UNIT_RE;this.fire("start");for(var i in e)if(e.hasOwnProperty(i)){var s={};if(i in t)s.from=t[i](this._el);else{var o=this._el.style[i].match(r);s.from=parseFloat(o[0]),s.unit=o[1]}s.to=e[i],this._props[i]=s}clearInterval(this._timer),this._timer=setInterval(this._step,this._interval),this._startTime=n.Transition.getTime()},_step:function(){var e=n.Transition.getTime(),t=e-this._startTime,r=this.options.duration*1e3;t<r?this._runFrame(this._easing(t/r)):(this._runFrame(1),this._complete())},_runFrame:function(e){var t=n.Transition.CUSTOM_PROPS_SETTERS,r,i,s;for(r in this._props)this._props.hasOwnProperty(r)&&(i=this._props[r],r in t?(s=i.to.subtract(i.from).multiplyBy(e).add(i.from),t[r](this._el,s)):this._el.style[r]=(i.to-i.from)*e+i.from+i.unit);this.fire("step")},_complete:function(){clearInterval(this._timer),this.fire("end")}}),n.Map.include(!n.Transition||!n.Transition.implemented()?{}:{setView:function(e,t,n){t=this._limitZoom(t);var r=this._zoom!==t;if(this._loaded&&!n&&this._layers){var i=r?this._zoomToIfClose&&this._zoomToIfClose(e,t):this._panByIfClose(e);if(i)return clearTimeout(this._sizeTimer),this}return this._resetView(e,t),this},panBy:function(e,t){return e=n.point(e),!e.x&&!e.y?this:(this._panTransition||(this._panTransition=new n.Transition(this._mapPane),this._panTransition.on({step:this._onPanTransitionStep,end:this._onPanTransitionEnd},this)),n.Util.setOptions(this._panTransition,n.Util.extend({duration:.25},t)),this.fire("movestart"),n.DomUtil.addClass(this._mapPane,"leaflet-pan-anim"),this._panTransition.run({position:n.DomUtil.getPosition(this._mapPane).subtract(e)}),this)},_onPanTransitionStep:function(){this.fire("move")},_onPanTransitionEnd:function(){n.DomUtil.removeClass(this._mapPane,"leaflet-pan-anim"),this.fire("moveend")},_panByIfClose:function(e){var t=this._getCenterOffset(e)._floor();return this._offsetIsWithinView(t)?(this.panBy(t),!0):!1},_offsetIsWithinView:function(e,t){var n=t||1,r=this.getSize();return Math.abs(e.x)<=r.x*n&&Math.abs(e.y)<=r.y*n}}),n.Map.mergeOptions({zoomAnimation:n.DomUtil.TRANSITION&&!n.Browser.android23&&!n.Browser.mobileOpera}),n.DomUtil.TRANSITION&&n.Map.addInitHook(function(){n.DomEvent.on(this._mapPane,n.Transition.END,this._catchTransitionEnd,this)}),n.Map.include(n.DomUtil.TRANSITION?{_zoomToIfClose:function(e,t){if(this._animatingZoom)return!0;if(!this.options.zoomAnimation)return!1;var r=this.getZoomScale(t),i=this._getCenterOffset(e).divideBy(1-1/r);if(!this._offsetIsWithinView(i,1))return!1;n.DomUtil.addClass(this._mapPane,"leaflet-zoom-anim"),this.fire("movestart").fire("zoomstart"),this.fire("zoomanim",{center:e,zoom:t});var s=this._getCenterLayerPoint().add(i);return this._prepareTileBg(),this._runAnimation(e,t,r,s),!0},_catchTransitionEnd:function(e){this._animatingZoom&&this._onZoomTransitionEnd()},_runAnimation:function(t,r,i,s,o){this._animateToCenter=t,this._animateToZoom=r,this._animatingZoom=!0;var u=n.DomUtil.TRANSFORM,a=this._tileBg;clearTimeout(this._clearTileBgTimer);if(n.Browser.gecko||e.opera)a.style[u]+=" translate(0,0)";n.Util.falseFn(a.offsetWidth);var f=n.DomUtil.getScaleString(i,s),l=a.style[u];a.style[u]=o?l+" "+f:f+" "+l},_prepareTileBg:function(){var e=this._tilePane,t=this._tileBg;if(t&&this._getLoadedTilesPercentage(t)>.5&&this._getLoadedTilesPercentage(e)<.5){e.style.visibility="hidden",e.empty=!0,this._stopLoadingImages(e);return}t||(t=this._tileBg=this._createPane("leaflet-tile-pane",this._mapPane),t.style.zIndex=1),t.style[n.DomUtil.TRANSFORM]="",t.style.visibility="hidden",t.empty=!0,e.empty=!1,this._tilePane=this._panes.tilePane=t;var r=this._tileBg=e;n.DomUtil.addClass(r,"leaflet-zoom-animated"),this._stopLoadingImages(r)},_getLoadedTilesPercentage:function(e){var t=e.getElementsByTagName("img"),n,r,i=0;for(n=0,r=t.length;n<r;n++)t[n].complete&&i++;return i/r},_stopLoadingImages:function(e){var t=Array.prototype.slice.call(e.getElementsByTagName("img")),r,i,s;for(r=0,i=t.length;r<i;r++)s=t[r],s.complete||(s.onload=n.Util.falseFn,s.onerror=n.Util.falseFn,s.src=n.Util.emptyImageUrl,s.parentNode.removeChild(s))},_onZoomTransitionEnd:function(){this._restoreTileFront(),n.Util.falseFn(this._tileBg.offsetWidth),this._resetView(this._animateToCenter,this._animateToZoom,!0,!0),n.DomUtil.removeClass(this._mapPane,"leaflet-zoom-anim"),this._animatingZoom=!1},_restoreTileFront:function(){this._tilePane.innerHTML="",this._tilePane.style.visibility="",this._tilePane.style.zIndex=2,this._tileBg.style.zIndex=1},_clearTileBg:function(){!this._animatingZoom&&!this.touchZoom._zooming&&(this._tileBg.innerHTML="")}}:{}),n.Map.include({_defaultLocateOptions:{watch:!1,setView:!1,maxZoom:Infinity,timeout:1e4,maximumAge:0,enableHighAccuracy:!1},locate:function(e){e=this._locationOptions=n.Util.extend(this._defaultLocateOptions,e);if(!navigator.geolocation)return this._handleGeolocationError({code:0,message:"Geolocation not supported."}),this;var t=n.Util.bind(this._handleGeolocationResponse,this),r=n.Util.bind(this._handleGeolocationError,this);return e.watch?this._locationWatchId=navigator.geolocation.watchPosition(t,r,e):navigator.geolocation.getCurrentPosition(t,r,e),this},stopLocate:function(){return navigator.geolocation&&navigator.geolocation.clearWatch(this._locationWatchId),this},_handleGeolocationError:function(e){var t=e.code,n=e.message||(t===1?"permission denied":t===2?"position unavailable":"timeout");this._locationOptions.setView&&!this._loaded&&this.fitWorld(),this.fire("locationerror",{code:t,message:"Geolocation error: "+n+"."})},_handleGeolocationResponse:function(e){var t=180*e.coords.accuracy/4e7,r=t*2,i=e.coords.latitude,s=e.coords.longitude,o=new n.LatLng(i,s),u=new n.LatLng(i-t,s-r),a=new n.LatLng(i+t,s+r),f=new n.LatLngBounds(u,a),l=this._locationOptions;if(l.setView){var c=Math.min(this.getBoundsZoom(f),l.maxZoom);this.setView(o,c)}this.fire("locationfound",{latlng:o,bounds:f,accuracy:e.coords.accuracy})}})})(this);
+define("libs/leaflet", function(){});
+
+define('modules/planet-takeout',[
   "zeega",
   // Libs
   "backbone",
-
-  // Modules
-  //"modules/player"
-
   // Plugins
-  'zeega_player'
+  'zeega_player',
+  'libs/leaflet'
 ],
 
-function(zeega, Backbone, Zeega) {
+function(Zeega, Backbone) {
 
   // Create a new module
-  var Example = zeega.module();
+  var App = Zeega.module();
 
-  // This will fetch the tutorial template and render it.
-  Example.Views.Tutorial = Backbone.View.extend({
-    manage: true,
-    template: "example",
 
-    events : {
-      'click #submit-button' : 'goToProject'
+  App.Collections = {};
+
+
+  App.Model = Backbone.Model.extend({
+
+    url : 'http://dev.zeega.org/joseph/web/api/projects/1316',
+
+    defaults : {
+      //appName : 'wayfinder',
+      mode :'standalone',
+
+      navbar_top : false,
+      navbar_bottom : false,
+      layerCitations : false,
+      playerCitation : false,
+      
+      branding : false,
+      social : false,
+      fullscreenEnabled : false,
+      fadeOutOverlays : false
     },
 
-    goToProject : function()
+    initialize : function()
     {
-      var dataloc = this.$('.dataloc').val();
-      if(dataloc) this.loadProject( dataloc );
-    },
-
-    loadProject : function( dataLoc )
-    {
+      console.log('pt init');
       var _this = this;
-      $.ajax({
-        url : dataLoc, //'http://dev.zeega.org/joseph/web/api/projects/1280',
-      }).done(function(data){ _this.loadPlayer(data) })
+      this.fetch().success(function(res){ _this.loadPlayer(); console.log(res); });
     },
 
-    loadPlayer : function(data)
+    loadPlayer : function()
     {
-      if(data.project)
-      {
-          var playerOptions = {
-            appName : 'wayfinder',
-            mode :'standalone',
-
-            navbar_top : true,
-            navbar_bottom : true,
-            layerCitations : true,
-            playerCitation : true,
-            
-            branding : false,
-            social : false,
-            fullscreenEnabled : true,
-            fadeOutOverlays : false
-
-          }
-          zeega.tester = true;
-          // the settings are extended in the data! this means the player attributes can be controlled by the data!
-          zeega.player = new Zeega.Player( _.extend(data.project,playerOptions) );
-          console.log('zeega', zeega)
-          zeega.player.play();
-
-          console.log('zeega', zeega)
-      }
-      else alert('bad data O_o')
+      //I'm trusting that I'm getting valid data back
+      // the settings are a part of the data! this means the player attributes can be controlled by the data!
+      Zeega.player = new Zeega.Player( this.toJSON() );
+      Zeega.player.play();
     }
 
   });
 
+  App.CollectionZeegaPlayerModel = Backbone.Model.extend({
+
+    url : function(){ return 'http://dev.zeega.org/planettakeout/web/api/items/'+ this.collection_id +'/project'; },
+
+    defaults : {
+      //appName : 'wayfinder',
+      mode :'standalone',
+
+      chromeless : true,
+
+      navbar_top : false,
+      navbar_bottom : false,
+      layerCitations : false,
+      playerCitation : false,
+      
+      branding : false,
+      social : false,
+      fullscreenEnabled : false,
+      fadeOutOverlays : false,
+
+      user_id : -1
+    }
+
+  });
+
+  App.NewTakeoutModel = Backbone.Model.extend({
+    // model for new takeout data (via 'participate')
+  });
+
+
+  App.Views.Base = Backbone.View.extend({
+    manage: true,
+    template: "base"
+  });
+
+  App.Views.UpperNavView = Backbone.View.extend({
+    manage : true,
+    template : 'upper-nav',
+
+    tagName : 'ul'
+  });
+
+
+/**********************
+
+        MODALS
+
+***********************/
+
+  App.Layouts.Modal = Backbone.Layout.extend({
+    template: "modal",
+
+    className : 'PT-modal-overlay',
+
+    defaults : {
+      title : 'default'
+    },
+
+    events : {
+      'click .close' : 'closeModal'
+    },
+
+    closeModal : function()
+    {
+      console.log('close modal');
+      this.remove();
+      //Zeega.router.navigate('/',{trigger:true})
+    },
+
+    initialize : function(opts)
+    {
+      this.settings = _.defaults(opts,this.defaults);
+    },
+
+    serialize : function(){ return this.settings; }
+
+  });
+
+  App.Layouts.ModalWide = Backbone.Layout.extend({
+    template: "modal-wide",
+
+    className : 'PT-modal-overlay',
+
+    defaults : {
+      title : 'default'
+    },
+
+    events : {
+      'click .close' : 'closeModal'
+    },
+
+    closeModal : function()
+    {
+      console.log('close modal');
+      this.remove();
+      Zeega.router.navigate('/',{trigger:true});
+    },
+
+    initialize : function(opts)
+    {
+      this.settings = _.defaults(opts,this.defaults);
+    },
+
+    serialize : function(){ return this.settings; }
+
+  });
+
+/**********************
+
+        PAGES
+
+***********************/
+
+  App.Views._Page = Backbone.LayoutView.extend({
+  });
+
+  App.Views.About = App.Views._Page.extend({
+    template: 'about'
+  });
+
+  App.Views.Participate = App.Views._Page.extend({
+    template: 'participate-0',
+    events: {
+      'click #findTakeout': 'geoLookup',
+      'click #savePov': 'saveStreetView'
+    },
+    initialize: function() {
+      _.bindAll(this, 'render', 'geoLookup', 'processGeocodeResults');
+      this.newTakeout = new App.NewTakeoutModel();
+      this.geocoder = new google.maps.Geocoder();
+    },
+    geoLookup: function() {
+      var nameField = $(this.el).find('#takeoutName').val(),
+          addressField = $(this.el).find('#takeoutAddress').val();
+
+      if (nameField && addressField) {
+        this.newTakeout.set({
+          takeoutName: nameField,
+          takeoutAddress: addressField
+        });
+        
+        this.geocoder.geocode({
+          address: addressField
+        }, this.processGeocodeResults);
+      } else {
+        alert("Please enter the takeout's name and address");
+      }
+    },
+    processGeocodeResults: function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        this.newTakeout.set('latlong', results[0].geometry.location);
+        this.showStreetView();
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    },
+    showStreetView: function(results) {
+      var marker;
+      var viewOptions = {
+        position: this.newTakeout.get('latlong'),
+        pov: {
+          heading: 34,
+          pitch: 10,
+          zoom: 1
+        }
+      };
+
+      $(this.el)
+        .find('#stepOne').hide()
+        .siblings('#stepTwo').show();
+
+      this.newTakeoutStreetView =  new google.maps.StreetViewPanorama(document.getElementById("streetView"), viewOptions);
+
+      marker = new google.maps.Marker({
+        position: this.newTakeout.get('latlong'),
+        map: this.newTakeoutStreetView,
+        title: this.newTakeout.get('takeoutName')
+      });
+    },
+    saveStreetView: function() {
+      this.newTakeout.set('streetViewPov', this.newTakeoutStreetView.pov);
+      console.log(this.newTakeout);
+    }
+  });
+
+  App.Views.Menu = App.Views._Page.extend({
+    template: 'menu',
+    className: 'PT-menu'
+  });
+
+
+/**********************
+
+        MAP
+
+***********************/
+
+  App.Views.Map = App.Views._Page.extend({
+    template: 'map',
+    id: 'PT-map-wrapper',
+
+    ptIconRed : L.icon({
+      iconUrl : 'assets/img/map-marker-00.png',
+      iconSize: [20,20],
+      iconAnchor : [11,0]
+    }),
+
+    serialize : function(){ return {rand_id: this.randomID  }; },
+
+    initialize : function()
+    {
+      // immediately fetch geotagged items for the map
+
+      this.collection = new App.Collections.MapItems();
+      this.collection.fetch();
+    },
+
+    afterRender : function()
+    {
+      this.renderMap();
+      this.renderCollectionMarkers();
+
+    },
+
+    renderMap : function()
+    {
+      var start = new L.LatLng(42.36431523548288, -71.07180118560791 );
+
+        this.map = L.map('PT-map',{
+            attributionControl:false
+        }).setView(start, 12);
+
+      L.tileLayer('http://{s}.tiles.mapbox.com/v2/mapbox.mapbox-streets/{z}/{x}/{y}.png', {
+          maxZoom: 18
+      }).addTo( this.map );
+    },
+
+    renderCollectionMarkers : function()
+    {
+      var _this = this;
+      var renderMarkers = function()
+      {
+        console.log('render makers', this);
+        this.collection.each(function(item){
+          item.marker = L.marker([ item.get('media_geo_latitude'), item.get('media_geo_longitude')], {icon: _this.ptIconRed} );
+          item.marker.itemID = item.id;
+          item.marker.addTo(_this.map);
+
+          item.marker.on('click', function(e){ _this.onMarkerClick(e); } );
+        });
+      };
+
+      //if collection hasn't finished fetching yet
+      if( this.collection.length === 0 ) this.collection.on('reset', renderMarkers, this);
+      else renderMarkers();
+    },
+
+    onMarkerClick : function(e)
+    {
+        console.log('clicked', e, e.target.getLatLng() );
+        var item = this.collection.get(e.target.itemID);
+        var content = new App.Views.MapPopup({model:item});
+        this.popup = L.popup();
+        this.popup.setLatLng([ e.target.getLatLng().lat, e.target.getLatLng().lng ])
+          .setContent( content.render().el )
+          .openOn(this.map);
+
+        $(this.popup._wrapper).css({
+          'background':'url('+ item.get('thumbnail_url') +')',
+          'background-size' : '100% auto'
+        });
+        console.log(this.popup);
+
+
+    }
+
+  });
+
+  App.Collections.MapItems = Backbone.Collection.extend({
+    url: function()
+    {
+      return 'http://dev.zeega.org/planettakeout/web/api/search?r_items=1&tags=planettakeout&geo_located=1&user=760&limit=10&sort=date-desc';
+    },
+
+    parse : function(res){ return res.items; }
+  });
+
+  App.Views.MapPopup = Backbone.View.extend({
+
+    className : 'map-popup',
+
+    render : function()
+    {
+      this.$el.html( _.template( this.template(), this.model.toJSON() ) );
+      return this;
+    },
+
+    events : {
+      'click .enter' : 'enterCollectionViewer'
+    },
+
+    enterCollectionViewer : function()
+    {
+      // for some reason, the relative url wasn't working correctly. navigate works though
+      Zeega.router.navigate('/collections/'+ this.model.id +'/view', {'trigger':true});
+      return false;
+    },
+
+    template : function()
+    {
+      var html = 
+
+        '<a href="#" class="heart"><img src="assets/img/icon-heart-white-sm.png" width="30px"/></a>'+
+        '<a href="/collections/<%= id %>/view" class="enter"><img src="assets/img/arrow-straight.png" width="40px"/></a>';        
+
+      return html;
+    }
+
+  });
+
+
+/**********************
+
+        GRID VIEWS
+
+***********************/
+
+  App.Layouts.GridView = Backbone.Layout.extend({
+    template: "collection-grid-layout",
+
+    initialize : function()
+    {
+      console.log(this.collection, this);
+      this.template = this.options.type == 'items' ? 'item-grid-layout' : 'collection-grid-layout';
+      if(Zeega.grid) Zeega.grid.remove();
+      //this.collection.on('all',function(e){console.log('event:',e)}, this);
+      this.collection.on('reset',this.onReset, this);
+    },
+
+    serialize : function()
+    {
+      if(this.collection.data.items) return this.collection.data.items[0];
+    },
+
+    onReset : function()
+    {
+      var _this = this;
+      var itemArray = _.reject( _.toArray(this.collection), function(item){ return item.get('rendered'); });
+      _.each( itemArray, function(item){
+        var itemView = _this.getView(item);
+         _this.insertView('ul.list', itemView );
+         itemView.render();
+      });
+    },
+
+    beforeRender : function()
+    {
+      console.log('before render', this);
+      var _this = this;
+      this.collection.each(function(item){
+        item.set('rendered', true);
+        _this.insertView( 'ul.list', _this.getView(item) );
+
+      });
+    },
+    afterRender : function()
+    {
+      var _this = this;
+
+      //this.getViews().each(function(view){ view.delegateEvents() });
+
+      // infinite scroll
+      this.$('#grid-view-slider').scroll(function(){
+        //console.log('scroll', _this.$('#grid-view-slider ul').height(), _this.$('#grid-view-slider ul').position().top, $('#grid-view-wrapper').height()  )
+
+        if( _this.$('#grid-view-slider ul').height() <= -_this.$('#grid-view-slider ul').position().top + $('#grid-view-wrapper').height() )
+        {
+          if(_this.collection.length < _this.collection.itemsCount )
+          {
+            console.log('infinitely load!');
+            _this.collection.page++;
+            _this.collection.fetch({add:true}).success(function(){ _this.collection.trigger('reset');});
+          }
+        }
+      });
+    },
+
+    getView : function( item )
+    {
+      var itemView;
+      if( item.get('media_type') == 'Collection')
+        {
+          itemView = new App.Views.CollectionView({model:item,attributes:{
+            'style':'background:url('+ item.get('thumbnail_url') +');background-size:100% 100%'
+          }});
+        }
+        else
+        {
+          itemView = new App.Views.ItemView({model:item,attributes:{
+            'style':'background:url('+ item.get('thumbnail_url') +');background-size:100% 100%'
+          }});
+         }
+         return itemView;
+    }
+
+  });
+
+  App.Views.ItemView = Backbone.LayoutView.extend({
+    template : 'item',
+    tagName : 'li',
+
+    className : 'item-view',
+
+    serialize : function(){ return this.model.toJSON(); }
+
+  });
+
+  App.Views.CollectionView = Backbone.LayoutView.extend({
+    template : 'collection',
+    tagName : 'li',
+    className : 'collection-view',
+
+    serialize : function(){ return this.model.toJSON(); }
+  });
+
+
+  App.Layouts.CitationDrawerLayout = Backbone.Layout.extend({
+    template: "citation-drawer-layout",
+    id: 'citation-drawer'
+
+  });
+
+  App.Views.CitationView = Backbone.LayoutView.extend({
+    template : 'citation-static',
+    className : 'citation-view',
+
+    initialize : function()
+    {
+      if(this.model.get('attr').media_type == 'Video') this.template = 'citation-player'; //swaps out the template if it's a video
+    },
+
+    events : {
+      'click .play-pause' : 'playPause'
+    },
+
+    playPause : function()
+    {
+      console.log('play pause', Zeega);
+
+      if(this.$('.play-pause i').hasClass('PT-icon-pause')) this.$('.play-pause i').removeClass('PT-icon-pause').addClass('PT-icon-play');
+      else this.$('.play-pause i').removeClass('PT-icon-play').addClass('PT-icon-pause');
+      Zeega.player.playPause();
+
+      return false;
+    },
+
+    serialize : function(){ return this.model.toJSON(); }
+  });
+
+
+
+
+/************************
+
+    Collections
+
+*************************/
+
+  App.Collections.Items = Backbone.Collection.extend({
+
+    page : 1,
+
+    url : function(){ return 'http://dev.zeega.org/planettakeout/web/api/items/'+ this.collectionID; },
+
+    parse : function( res )
+    {
+      this.data = res;
+      return res.items[0].child_items;
+    }
+  });
+
+  App.Collections.ItemCollections = Backbone.Collection.extend({
+
+    page : 1,
+
+    url : function(){ return 'http://dev.zeega.org/planettakeout/web/api/search?r_collections=1&page='+ this.page; },
+
+    parse : function( res )
+    {
+      this.data = res;
+      this.itemsCount = res.collections_count;
+      return res.collections;
+    }
+  });
+
+
+
   // Required, return the module for AMD compliance
-  return Example;
+  return App;
 
 });
 
 define('router',[
   // Application.
   "zeega",
-
   // Modules.
-  "modules/example"
+  'modules/planet-takeout' // this needs to be cusomized
 ],
 
-function(zeega, Example) {
+// generic App used
+function(Zeega, App) {
 
   // Defining the application router, you can attach sub routers here.
+  /*
+
+  the router is where your application/navigation logic goes
+
+  */
+  console.log('before router', this, Zeega, App);
   var Router = Backbone.Router.extend({
     routes: {
-      "": "index"
+
+      "" : "index",
+      "about" : 'about',
+
+      "collections" : 'collections',
+      'collections/' : 'collections',
+      'collections/:collection_id' : 'viewCollectionGrid',
+      'collections/:collection_id/' : 'viewCollectionGrid',
+      'collections/:collection_id/view' : 'viewCollectionPlayer',
+      'collections/:collection_id/view/' : 'viewCollectionPlayer',
+      'collections/:collection_id/view/:item_id' : 'viewCollectionPlayer',
+      
+      'map' : 'map',
+      'participate' : 'participate',
+      'menu' : 'menu',
+      'search' : 'search'
     },
 
-    index: function() {
-      // Create a layout and associate it with the #main div.
-      var layout = new Backbone.Layout({
-        
+    index: function()
+    {
+      initialize();
+      var player = new App.Model();  
+      console.log(Zeega.player);
+    },
 
-        el: "#main"
+    about : function()
+    {
+      console.log('go to about');
+      initialize();
+      renderPage('About');
+    },
+
+    collections : function()
+    {
+      console.log('go to grid');
+      initialize();
+      renderCollections();
+    },
+
+    viewCollectionGrid : function( collectionID )
+    {
+      console.log('rr     view collection grid', collectionID);
+      initialize();
+      goToItemCollection( collectionID );
+    },
+
+    viewCollectionPlayer : function( collectionID, itemID )
+    {
+      initialize();
+
+      if(Zeega.grid) Zeega.grid.remove();
+      
+      var player = new App.CollectionZeegaPlayerModel();  
+      player.collection_id = collectionID;
+      //Zeega.player = player;
+      console.log('mm     zeega player', player);
+      player.fetch().success(function(res){
+        console.log('mm     model fetched', res, itemID);
+
+        renderCitations();
+        if( !_.isUndefined(itemID) ) player.set('frameID', itemID );
+        console.log( player.toJSON() );
+        Zeega.player = new Zeega.Player( player.toJSON() );
+        Zeega.player.on('all', onPlayerEvent, this);
+        Zeega.player.play();
       });
 
-      // Insert the tutorial into the layout.
-      layout.insertView(new Example.Views.Tutorial());
-      
-      // Render the layout into the DOM.
-      layout.render();
+    },
+
+    map : function()
+    {
+      initialize();
+      renderMap();
+    },
+
+    participate : function()
+    {
+      console.log('go to participate');
+      initialize();
+      renderPage('Participate');
+     },
+
+    menu : function()
+    {
+      console.log('go to menu');
+      initialize();
+      renderMenu();
+
+    },
+
+    search : function()
+    {
+      console.log('go to search');
+      initialize();
+
     }
   });
+
+  /*
+
+  tasks to take care of before the application can load
+  esp inserting the layout into the dom!
+
+  */
+
+  function initialize()
+  {
+    initPT();
+    cleanup();
+  }
+
+  // makes sure this happens on ly once per load
+  var initPT = _.once( init );
+  function init()
+  {
+    renderBaseLayout();
+  }
+
+  // happens on every router change
+  function cleanup()
+  {
+    clearModals();
+    removeCitation();
+  }
+
+
+
+
+  function renderPage(pageName)
+  {
+    Zeega.page = new App.Layouts.Modal({title:pageName});
+    var pageView = new App.Views[pageName]();
+    Zeega.page.setView('.PT-modal-content', pageView );
+    Zeega.page.render();
+    $('body').append(Zeega.page.el);
+  }
+
+  function renderMenu()
+  {
+    Zeega.page = new App.Layouts.ModalWide({title:'Menu'});
+    var pageView = new App.Views.Menu();
+    Zeega.page.setView('.PT-modal-content', pageView );
+    Zeega.page.render();
+    $('body').append(Zeega.page.el);
+  }
+
+  function generateGrid( collection, type )
+  {
+      Zeega.grid = new App.Layouts.GridView({collection:collection, type:type});
+      Zeega.grid.render();
+      $('#app-base').append( Zeega.grid.el );
+  }
+
+  function goToItemCollection( collectionID )
+  {
+    console.log('rr     go to item Collection');
+
+    var items = new App.Collections.Items();
+    items.collectionID = collectionID;
+    items.fetch().success(function(res){
+      console.log('$$   items coll', res, items);
+      items.each(function(item){ item.set('collection_id',collectionID);});
+      generateGrid( items, 'items' );
+    });
+  }
+
+  function renderCollections()
+  {
+    removePlayer();
+    // make and render itemCollection
+    var itemCollectionsCollection = new App.Collections.ItemCollections();
+    itemCollectionsCollection.fetch().success(function(res){
+      console.log('$$   items coll', res, itemCollectionsCollection);
+      generateGrid( itemCollectionsCollection, 'collections' );
+      $('#app-base').append( Zeega.grid.el );
+    });
+  }
+
+
+  // this is the switch that interperes all incoming player events
+  function onPlayerEvent(e, opts)
+  {
+    /* lint error - replaced switch with if
+    switch(e)
+    {
+      case 'frame_rendered':
+        renderCitation(e,opts);
+        break;
+    }*/
+    if (e == 'frame_rendered')
+    {
+        renderCitation(e,opts);
+    }
+  }
+
+  function renderCitations()
+  {
+    var citationDrawer = new App.Layouts.CitationDrawerLayout();
+    Zeega.citation = citationDrawer;
+    //Zeega.citation.insertView( new App.Views.CitationView() );
+    Zeega.citation.render();
+    $('#nav-lower').html(Zeega.citation.el);
+  }
+
+  function renderCitation(e,model)
+  {
+    Zeega.citation.getViews().each(function(view){ view.remove(); });
+
+    var layer = model.layers.at(0);
+
+    Zeega.citation.insertView( new App.Views.CitationView({model:layer}));
+    Zeega.citation.render();    
+  }
+
+  function removeCitation()
+  {
+    if( Zeega.citation ) Zeega.citation.remove();
+  }
+
+  function renderMap()
+  {
+    console.log('render map');
+    Zeega.page = new App.Layouts.ModalWide({title:'Delicious World'});
+    var pageView = new App.Views.Map();
+    Zeega.page.setView('.PT-modal-content', pageView );
+    $('body').append(Zeega.page.el);
+    Zeega.page.render();
+  }
+
+  function clearModals()
+  {
+    if(Zeega.page) Zeega.page.remove();
+  }
+
+  function removePlayer()
+  {
+    if( Zeega.player ) Zeega.player.exit();
+  }
+
+  // this is a utility and should be elsewhere
+  function renderBaseLayout()
+  {
+
+    Zeega.baseLayout = new Backbone.Layout({
+      el: "#main"
+    });
+    // Insert the tutorial into the layout.
+    Zeega.baseLayout.insertView(new App.Views.Base() );
+    Zeega.baseLayout.setView('#nav-upper', new App.Views.UpperNavView() );
+    // Render the layout into the DOM.
+    Zeega.baseLayout.render();
+  }
+
 
   return Router;
 
 });
-
 require([
   // Application.
   "zeega",
@@ -17994,16 +30699,16 @@ require([
   "router"
 ],
 
-function(zeega, Router) {
-
+function(Zeega, Router) {
+  console.log('main.js', Zeega, Router);
   // Define your master router on the application namespace and trigger all
   // navigation from this instance.
-  zeega.router = new Router();
+  Zeega.router = new Router();
 
   // Trigger the initial route and enable HTML5 History API support, set the
   // root folder to '/' by default.  Change in app.js.
-  Backbone.history.start({ pushState: true, root: zeega.root });
-
+  //Backbone.history.start({ pushState: true, root: Zeega.root });
+ Backbone.history.start({ pushState: false, root: Zeega.root });
   // All navigation that is relative should be passed through the navigate
   // method, to be processed by the router. If the link has a `data-bypass`
   // attribute, bypass the delegation completely.
@@ -18011,7 +30716,7 @@ function(zeega, Router) {
     // Get the absolute anchor href.
     var href = { prop: $(this).prop("href"), attr: $(this).attr("href") };
     // Get the absolute root.
-    var root = location.protocol + "//" + location.host + app.root;
+    var root = location.protocol + "//" + location.host + Zeega.root;
 
     // Ensure the root is part of the anchor href, meaning it's relative.
     if (href.prop && href.prop.slice(0, root.length) === root) {
@@ -18053,8 +30758,7 @@ require.config({
     zeega_media_players: "../assets/js/zeega/player/plugins/players",
 
     //  Zeega
-    zeega_player: "../assets/js/zeega/player/zeega.player",
-
+    zeega_player: "../assets/js/zeega/player/zeega.player"
   },
 
   shim: {
@@ -18069,7 +30773,7 @@ require.config({
     'libs/spin' : ['jquery'],
     "vendor/imagesloaded/jquery.imagesloaded.min" : ['jquery'],
 
-    'zeega_base/player/plugins.layers' : ['lodash'],
+    'zeega_base/player/plugins.layers' : ['lodash']
   }
 
 });

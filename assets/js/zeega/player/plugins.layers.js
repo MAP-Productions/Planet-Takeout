@@ -2,16 +2,26 @@ var layerTypes = [
 	'image',
 	'rectangle',
 	'text',
-	'video'
+	'video',
+	'audio',
+	'link'
 ];
 
-define(
-	_.map(layerTypes,function(type){ return 'zeega_layers/'+type+'/'+type; }),
+define([
+	'zeega_layers/image/image',
+	'zeega_layers/rectangle/rectangle',
+	'zeega_layers/text/text',
+	'zeega_layers/video/video',
+	'zeega_layers/audio/audio',
+	'zeega_layers/link/link'
+],
 	function(
 		image,
 		rectangle,
 		text,
-		video
+		video,
+		audio,
+		link
 	)
 	{
 		eval('var Plugins = _.extend('+layerTypes.toString()+')');
