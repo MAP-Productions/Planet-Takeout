@@ -13,6 +13,9 @@ function(Zeega, Backbone) {
   var App = Zeega.module();
 
 
+  App.Collections = {};
+
+
   App.Model = Backbone.Model.extend({
 
     url : 'http://dev.zeega.org/joseph/web/api/projects/1316',
@@ -88,6 +91,12 @@ function(Zeega, Backbone) {
   })
 
 
+/**********************
+
+        MODALS
+
+***********************/
+
   App.Layouts.Modal = Backbone.Layout.extend({
     template: "modal",
 
@@ -146,6 +155,12 @@ function(Zeega, Backbone) {
 
   });
 
+/**********************
+
+        PAGES
+
+***********************/
+
   App.Views._Page = Backbone.LayoutView.extend({
   })
 
@@ -173,13 +188,18 @@ function(Zeega, Backbone) {
     template: 'map',
     id: 'PT-map-wrapper',
 
+    ptIconRed : L.icon({
+      iconUrl : 'assets/img/map-marker-00.png',
+      iconSize: [20,20],
+      iconAnchor : [11,0]
+    }),
+
     initialize : function()
     {
       // immediately fetch geotagged items for the map
-      this.collection = new App.Collections.MapItems()
+      this.collection = new App.Collections.MapItems();
       this.collection.fetch();
 
-      })
     },
 
     afterRender : function()
@@ -194,14 +214,10 @@ function(Zeega, Backbone) {
     {
       var start = new L.LatLng(42.36431523548288, -71.07180118560791 );
       this.map = L.map('PT-map',{
-        //dragging:false,
-          //zoomControl: false,
-          scrollWheelZoom: false,
           attributionControl:false
       }).setView(start, 12);
 
       L.tileLayer('http://{s}.tiles.mapbox.com/v2/mapbox.mapbox-streets/{z}/{x}/{y}.png', {
-          attribution: '<a href="http://www.josephbergen.com" target="blank">Joseph Bergen</a>',
           maxZoom: 18,
       }).addTo( this.map );
     },
@@ -211,25 +227,83 @@ function(Zeega, Backbone) {
       var _this = this;
       var renderMarkers = function()
       {
+        console.log('render makers', this)
         this.collection.each(function(item){
-          item.marker = L.marker([ item.get('media_geo_latitude'), item.get('media_geo_longitude')]);
+          item.marker = L.marker([ item.get('media_geo_latitude'), item.get('media_geo_longitude')], {icon: _this.ptIconRed} );
+          item.marker.itemID = item.id;
           item.marker.addTo(_this.map);
+
+          item.marker.on('click', function(e){ _this.onMarkerClick(e) } );
         })
       }
 
       //if collection hasn't finished fetching yet
       if( this.collection.length == 0 ) this.collection.on('reset', renderMarkers, this);
       else renderMarkers;
+    },
+
+    onMarkerClick : function(e)
+    {
+        console.log('clicked', e, e.target.getLatLng() )
+        var item = this.collection.get(e.target.itemID);
+        var content = new App.Views.MapPopup({model:item});
+        this.popup = L.popup();
+        this.popup.setLatLng([ e.target.getLatLng().lat, e.target.getLatLng().lng ])
+          .setContent( content.render().el )
+          .openOn(this.map);
+
+        $(this.popup._wrapper).css({
+          'background':'url('+ item.get('thumbnail_url') +')',
+          'background-size' : '100% auto'
+        })
+        console.log(this.popup)
+
+
     }
-
-
 
   })
 
   App.Collections.MapItems = Backbone.Collection.extend({
-    url: function(){ return '' }
+    url: function()
+    {
+      return 'http://dev.zeega.org/planettakeout/web/api/search?r_items=1&tags=planettakeout&geo_located=1&user=760&limit=10&sort=date-desc'
+    },
+
+    parse : function(res){ return res.items }
   })
 
+  App.Views.MapPopup = Backbone.View.extend({
+
+    className : 'map-popup',
+
+    render : function()
+    {
+      this.$el.html( _.template( this.template(), this.model.toJSON() ) );
+      return this;
+    },
+
+    events : {
+      'click .enter' : 'enterCollectionViewer'
+    },
+
+    enterCollectionViewer : function()
+    {
+      // for some reason, the relative url wasn't working correctly. navigate works though
+      Zeega.router.navigate('/collections/'+ this.model.id +'/view', {'trigger':true});
+      return false;
+    },
+
+    template : function()
+    {
+      var html = 
+
+        '<a href="#" class="heart"><img src="assets/img/icon-heart-white-sm.png" width="30px"/></a>'+
+        '<a href="/collections/<%= id %>/view" class="enter"><img src="assets/img/arrow-straight.png" width="40px"/></a>';        
+
+      return html;
+    }
+
+  })
 
 
 /**********************
@@ -317,12 +391,6 @@ function(Zeega, Backbone) {
 
   });
 
-  App.Layouts.CitationDrawerLayout = Backbone.Layout.extend({
-    template: "citation-drawer-layout",
-    id: 'citation-drawer'
-
-  })
-
   App.Views.ItemView = Backbone.LayoutView.extend({
     template : 'item',
     tagName : 'li',
@@ -341,12 +409,42 @@ function(Zeega, Backbone) {
     serialize : function(){ return this.model.toJSON() }
   })
 
+
+  App.Layouts.CitationDrawerLayout = Backbone.Layout.extend({
+    template: "citation-drawer-layout",
+    id: 'citation-drawer'
+
+  })
+
   App.Views.CitationView = Backbone.LayoutView.extend({
-    template : 'citation',
+    template : 'citation-static',
     className : 'citation-view',
 
-    serialize : function(){ console.log('citation attr', this.model.layers.at(0).toJSON()); return this.model.layers.at(0).toJSON() }
-  })  
+    initialize : function()
+    {
+      console.log('this', this)
+      if(this.model.get('attr').media_type == 'Video') this.template = 'citation-player'; //swaps out the template if it's a video
+    },
+
+    events : {
+      'click .play-pause' : 'playPause'
+    },
+
+    playPause : function()
+    {
+      console.log('play pause', Zeega);
+
+      if(this.$('.play-pause i').hasClass('PT-icon-pause')) this.$('.play-pause i').removeClass('PT-icon-pause').addClass('PT-icon-play');
+      else this.$('.play-pause i').removeClass('PT-icon-play').addClass('PT-icon-pause');
+      Zeega.player.playPause();
+
+      return false;
+    },
+
+    serialize : function(){ return this.model.toJSON() }
+  })
+
+
 
 
 /************************
@@ -354,9 +452,6 @@ function(Zeega, Backbone) {
     Collections
 
 *************************/
-
-
-  App.Collections = {};
 
   App.Collections.Items = Backbone.Collection.extend({
 

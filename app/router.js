@@ -221,7 +221,10 @@ function(Zeega, App) {
   function renderCitation(e,model)
   {
     Zeega.citation.getViews().each(function(view){ view.remove() });
-    Zeega.citation.insertView( new App.Views.CitationView({model:model}));
+
+    var layer = model.layers.at(0);
+
+    Zeega.citation.insertView( new App.Views.CitationView({model:layer}));
     Zeega.citation.render();    
   }
 
