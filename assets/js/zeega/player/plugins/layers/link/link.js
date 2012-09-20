@@ -112,7 +112,8 @@ function(zeega, Backbone, _Layer, Player){
 		
 		goClick : function()
 		{
-			zeegaPlayer.app.project.goToFrame(this.model.get('attr').to_frame);
+			console.log('click link',this);
+			zeega.player.project.goToFrame(this.model.get('attr').to_frame);
 		},
 		
 		goToSequenceFrame : function()
