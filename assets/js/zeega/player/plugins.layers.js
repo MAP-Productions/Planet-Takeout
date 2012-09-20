@@ -3,7 +3,8 @@ var layerTypes = [
 	'rectangle',
 	'text',
 	'video',
-	'audio'
+	'audio',
+	'link'
 ];
 
 define([
@@ -11,14 +12,16 @@ define([
 	'zeega_layers/rectangle/rectangle',
 	'zeega_layers/text/text',
 	'zeega_layers/video/video',
-	'zeega_layers/audio/audio'
+	'zeega_layers/audio/audio',
+	'zeega_layers/link/link'
 ],
 	function(
 		image,
 		rectangle,
 		text,
 		video,
-		audio
+		audio,
+		link
 	)
 	{
 		eval('var Plugins = _.extend('+layerTypes.toString()+')');

@@ -2,6 +2,7 @@ define([
   "zeega",
   // Libs
   "backbone",
+  'libs/modernizr',
   // Plugins
   'zeega_player',
   'libs/leaflet'
@@ -18,7 +19,7 @@ function(Zeega, Backbone) {
 
   App.Model = Backbone.Model.extend({
 
-    url : 'http://dev.zeega.org/joseph/web/api/projects/1316',
+    url : 'http://alpha.zeega.org/api/projects/1661',
 
     defaults : {
       //appName : 'wayfinder',

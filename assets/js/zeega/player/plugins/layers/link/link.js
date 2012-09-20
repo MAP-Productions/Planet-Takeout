@@ -1,14 +1,15 @@
-/************************************
+define([
+  "zeega",
+  "backbone",
+  'zeega_layers/_layer/_layer',
+  'zeega_media_players/plyr'
+],
 
-	LINK LAYER CHILD CLASS
+function(zeega, Backbone, _Layer, Player){
 
-************************************/
+	var Layer = zeega.module();
 
-define(['layerModel', 'layerView'], function(){
-
-(function(Layer){
-
-	Layer.Link = Layer.Model.extend({
+	Layer.Link = _Layer.extend({
 
 		layerType : 'Link',
 		layerPanel : $('#links-list'),
@@ -53,6 +54,7 @@ define(['layerModel', 'layerView'], function(){
 		
 	});
 	
+	/*
 	Layer.Views.Controls.Link = Layer.Views.Controls.extend({
 		
 		onLayerEnter : function()
@@ -72,8 +74,8 @@ define(['layerModel', 'layerView'], function(){
 		}
 		
 	});
-
-	Layer.Views.Visual.Link = Layer.Views.Visual.extend({
+*/
+	Layer.Link.Visual = _Layer.Visual.extend({
 		
 		preview : true,
 		
@@ -93,24 +95,9 @@ define(['layerModel', 'layerView'], function(){
 				'z-index' : 100
 			}
 			
-			if(!zeega.app.previewMode )
-			{
-				
-				var layerIndex = this.model.layerIndex || this.model.layerColor.length;
-				
-				_.extend( style, {
-					'border' : '2px dashed '+ this.model.layerColor[( layerIndex % this.model.layerColor.length )],
-					'border-radius' : '6px'
-				})
 
-				// if the editor is active, the remove the layer if it shouldn't be shown
-				//if( this.model.get('attr').to_frame == zeega.app.currentFrame.id && !zeega.app.previewMode ) this.remove();
-			}
-			else
-			{
 				this.delegateEvents({'click':'goClick'})
 				//$(this.el).addClass('go-to-sequence')
-			}
 			
 			$(this.el).html( this.getTemplate() ).css( style ).addClass('linked-layer');
 
@@ -186,6 +173,6 @@ define(['layerModel', 'layerView'], function(){
 		
 	});
 	
-})(zeega.module("layer"));
+	return Layer;
 
 })
