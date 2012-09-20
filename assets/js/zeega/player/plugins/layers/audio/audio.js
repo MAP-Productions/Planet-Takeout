@@ -7,8 +7,9 @@ define([
 
 function(zeega, Backbone, _Layer, Player){
 
+	var Layer = zeega.module();
 
-	Layer.Audio = Layer.Video.extend({
+	Layer.Audio = _Layer.extend({
 		
 		layerType : 'Audio',
 
@@ -32,6 +33,7 @@ function(zeega, Backbone, _Layer, Player){
 		
 	});
 	
+	/*
 	Layer.Views.Controls.Audio = Layer.Views.Controls.Video.extend({
 		
 			render : function()
@@ -84,8 +86,8 @@ function(zeega, Backbone, _Layer, Player){
 			}
 		
 	});
-	
-	Layer.Views.Visual.Audio = Layer.Views.Visual.Video.extend({
+	*/
+	Layer.Audio.Visual = _Layer.Visual.extend({
 		draggable : false,
 		linkable : false,
 		render : function(){ return this },
