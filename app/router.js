@@ -46,7 +46,6 @@ function(Zeega, App) {
     {
       console.log('go to about');
       initialize();
-      clearModals();
       renderPage('About');
     },
 
@@ -54,7 +53,6 @@ function(Zeega, App) {
     {
       console.log('go to grid');
       initialize();
-      clearModals();
       renderCollections();
     },
 
@@ -69,9 +67,6 @@ function(Zeega, App) {
     {
       initialize();
 
-      itemID = itemID || 'first';
-      console.log('rr     view collection player', collectionID, itemID, Zeega.grid );
-
       if(Zeega.grid) Zeega.grid.remove();
       
       var player = new App.CollectionZeegaPlayerModel();  
@@ -82,6 +77,8 @@ function(Zeega, App) {
         console.log('mm     model fetched', res, itemID);
 
         renderCitations();
+        if( !_.isUndefined(itemID) ) player.set('frameID', itemID );
+        console.log( player.toJSON() );
         Zeega.player = new Zeega.Player( player.toJSON() );
         Zeega.player.on('all', onPlayerEvent, this);
         Zeega.player.play();
@@ -99,7 +96,6 @@ function(Zeega, App) {
     {
       console.log('go to participate');
       initialize();
-      clearModals();
       renderPage('Participate');
      },
 
@@ -107,7 +103,6 @@ function(Zeega, App) {
     {
       console.log('go to menu');
       initialize();
-      clearModals();
       renderMenu();
 
     },
@@ -116,7 +111,6 @@ function(Zeega, App) {
     {
       console.log('go to search');
       initialize();
-      renderBaseLayout();
 
     }
   });
@@ -127,12 +121,29 @@ function(Zeega, App) {
   esp inserting the layout into the dom!
 
   */
-  var initialize = _.once( init );
+
+  function initialize()
+  {
+    initPT();
+    cleanup();
+  }
+
+  // makes sure this happens on ly once per load
+  var initPT = _.once( init );
   function init()
   {
     renderBaseLayout();
-    Zeega.isInitialized = true;
   }
+
+  // happens on every router change
+  function cleanup()
+  {
+    clearModals();
+    removeCitation();
+  }
+
+
+
 
   function renderPage(pageName)
   {
@@ -184,6 +195,8 @@ function(Zeega, App) {
     });
   }
 
+
+  // this is the switch that interperes all incoming player events
   function onPlayerEvent(e, opts)
   {
     /* lint error - replaced switch with if
@@ -211,8 +224,16 @@ function(Zeega, App) {
   function renderCitation(e,model)
   {
     Zeega.citation.getViews().each(function(view){ view.remove(); });
-    Zeega.citation.insertView( new App.Views.CitationView({model:model}));
+
+    var layer = model.layers.at(0);
+
+    Zeega.citation.insertView( new App.Views.CitationView({model:layer}));
     Zeega.citation.render();    
+  }
+
+  function removeCitation()
+  {
+    if( Zeega.citation ) Zeega.citation.remove();
   }
 
   function renderMap()
@@ -221,8 +242,8 @@ function(Zeega, App) {
     Zeega.page = new App.Layouts.ModalWide({title:'Delicious World'});
     var pageView = new App.Views.Map();
     Zeega.page.setView('.PT-modal-content', pageView );
-    Zeega.page.render();
     $('body').append(Zeega.page.el);
+    Zeega.page.render();
   }
 
   function clearModals()

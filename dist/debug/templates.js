@@ -16,12 +16,42 @@ __p+='<div id=\'nav-upper\'></div>\n<div id=\'nav-lower\'></div>\n<div id=\'app-
 return __p;
 };
 
-this['JST']['app/templates/citation.html'] = function(obj){
+this['JST']['app/templates/citation-player.html'] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<div class=\'citation-top clearfix\'>\n\t<a href=\'#\' class=\'play-pause pull-left\'><i class=\'PT-icon-pause\'></i></a>\n\t<h2 class=\'citation-title pull-left\'>'+
+( attr.title )+
+'</h2>\n\t<div class=\'citation-attribution pull-left\'>by '+
+( attr.media_creator_realname )+
+' via <a href=\''+
+( attr.attribution_uri )+
+'\' target=\'blank\'>'+
+( attr.archive )+
+'</a></div>\n\t<div class=\'citation-geo pull-right\'><a href=\'#\'>'+
+( attr.location )+
+'</a> '+
+( attr.location )+
+' <i class=\'icon-map-marker icon-white\'></i></div>\n</div>\n<div class=\'citation-bottom\'>\n\t<div class=\'pull-left\'>Tidbits > Exteriors</div>\n</div>';
+}
+return __p;
+};
+
+this['JST']['app/templates/citation-static.html'] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
 __p+='<div class=\'citation-top clearfix\'>\n\t<h2 class=\'citation-title pull-left\'>'+
 ( attr.title )+
-'</h2>\n\t<div class=\'citation-attribution pull-left\'>by kellyisawesome via <a href=\'#\' target=\'blank\'>flickr</a></div>\n\t<div class=\'citation-geo pull-right\'><a href=\'#\'>Yum Mee</a> 160 Columbus Ave, Boston, MA <i class=\'icon-map-marker icon-white\'></i></div>\n</div>\n<div class=\'citation-bottom\'>\n\t<div class=\'pull-left\'>Tidbits > Exteriors</div>\n</div>';
+'</h2>\n\t<div class=\'citation-attribution pull-left\'>by '+
+( attr.media_creator_realname )+
+' via <a href=\''+
+( attr.attribution_uri )+
+'\' target=\'blank\'>'+
+( attr.archive )+
+'</a></div>\n\t<div class=\'citation-geo pull-right\'><a href=\'#\'>'+
+( attr.location )+
+'</a> '+
+( attr.location )+
+' <i class=\'icon-map-marker icon-white\'></i></div>\n</div>\n<div class=\'citation-bottom\'>\n\t<div class=\'pull-left\'>Tidbits > Exteriors</div>\n</div>';
 }
 return __p;
 };
@@ -113,7 +143,7 @@ return __p;
 this['JST']['app/templates/map.html'] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<div id=\'PT-map\'>map goes here</div>';
+__p+='<div class=\'leaflet-map\' id=\'PT-map\'>map goes here</div>';
 }
 return __p;
 };

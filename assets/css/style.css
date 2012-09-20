@@ -25,6 +25,30 @@
 
 }
 
+
+/*    sprites       */
+
+i.PT-icon-pause
+{
+  background: url(../img/sprite_play-pause-30.png);
+  background-position: 34px 0;
+  width:30px;
+  height:30px;
+  overflow:hidden;
+  display:inline-block;
+}
+i.PT-icon-pause:hover{ background-position: 34px 34px}
+i.PT-icon-play
+{
+  background: url(../img/sprite_play-pause-30.png);
+  background-position: 0 0;
+  width:30px;
+  height:30px;
+  overflow:hidden;
+  display:inline-block;
+}
+i.PT-icon-play:hover{ background-position: 0 34px}
+
 html{ background:black;}
 
 h1,h2,h3,h4,h5,h6{ font-family: 'PT-black', sans-serif;}
@@ -435,9 +459,49 @@ button.close{
 
 /*  map */
 
+.leaflet-map,
 #PT-map,
 #PT-map-wrapper
 {
   height : 500px;
   width:100%;
+}
+
+
+.leaflet-popup-content-wrapper
+{
+  height: 110px;
+  width: 180px;
+}
+
+.leaflet-popup-tip
+{
+
+}
+
+.map-popup .heart,
+.map-popup .ent
+{ opacity: 0.75 ;}
+
+.map-popup .heart:hover,
+.map-popup .ent:hover
+{ opacity: 1 ;}
+
+.map-popup .heart
+{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.map-popup .enter
+{
+  text-align: center;
+  position: absolute;
+  bottom: 25px;
+  left: 70px;
+}
+
+.play-pause
+{
+  margin-right:10px;
 }
