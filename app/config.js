@@ -21,7 +21,7 @@ require.config({
     zeega_media_players: "../assets/js/zeega/player/plugins/players",
 
     //  Zeega
-    zeega_player: "../assets/js/zeega/player/zeega.player",
+    zeega_player: "../assets/js/zeega/player/zeega.player"
 
   },
 

@@ -20,7 +20,7 @@ function($, _, Backbone) {
     // The root path to run the application.
     root: "/",
 
-    isInitialized : false,
+    isInitialized : false
   };
 
   // Localize or create a new JavaScript Template object.
