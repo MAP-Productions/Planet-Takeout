@@ -239,8 +239,8 @@ function(Zeega, App) {
     Zeega.page = new App.Layouts.ModalWide({title:'Delicious World'});
     var pageView = new App.Views.Map();
     Zeega.page.setView('.PT-modal-content', pageView );
-    Zeega.page.render();
     $('body').append(Zeega.page.el);
+    Zeega.page.render();
   }
 
   function clearModals()

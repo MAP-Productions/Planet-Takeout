@@ -259,17 +259,18 @@ function(Zeega, Backbone) {
       iconAnchor : [11,0]
     }),
 
+    serialize : function(){ return {rand_id: this.randomID  }},
+
     initialize : function()
     {
       // immediately fetch geotagged items for the map
+
       this.collection = new App.Collections.MapItems();
       this.collection.fetch();
-
     },
 
     afterRender : function()
     {
-      console.log('after render map')
       this.renderMap();
       this.renderCollectionMarkers();
 
@@ -278,9 +279,10 @@ function(Zeega, Backbone) {
     renderMap : function()
     {
       var start = new L.LatLng(42.36431523548288, -71.07180118560791 );
-      this.map = L.map('PT-map',{
-          attributionControl:false
-      }).setView(start, 12);
+
+        this.map = L.map('PT-map',{
+            attributionControl:false
+        }).setView(start, 12);
 
       L.tileLayer('http://{s}.tiles.mapbox.com/v2/mapbox.mapbox-streets/{z}/{x}/{y}.png', {
           maxZoom: 18,

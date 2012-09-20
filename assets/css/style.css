@@ -459,6 +459,7 @@ button.close{
 
 /*  map */
 
+.leaflet-map,
 #PT-map,
 #PT-map-wrapper
 {
