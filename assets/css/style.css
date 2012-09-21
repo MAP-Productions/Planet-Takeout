@@ -512,13 +512,17 @@ button.close{
   position: absolute;
   bottom: 0;
   z-index: 100000;
-  background: rgba(0, 0, 0, 0.75);
   width:100%;
   color: white;
 }
-.citation-view
+.citation-wrapper
 {
-  padding:10px 40px;
+  margin: 0 auto;
+}
+
+.citation-inner
+{
+  background: rgba(0, 0, 0, 0.75);  
 }
 
 .citation-attribution,
@@ -527,6 +531,15 @@ button.close{
   position: relative;
   bottom: -1em;
   margin-left: 10px;
+}
+
+#PT-preview-left
+{
+  float:left;
+}
+#PT-preview-right
+{
+  float:right;
 }
 
 /*  map */

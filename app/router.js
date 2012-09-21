@@ -199,6 +199,8 @@ function(Zeega, App) {
   // this is the switch that interperes all incoming player events
   function onPlayerEvent(e, opts)
   {
+
+    console.log('player event:',e)
     /* lint error - replaced switch with if
     switch(e)
     {
@@ -209,6 +211,10 @@ function(Zeega, App) {
     if (e == 'frame_rendered')
     {
         renderCitation(e,opts);
+    }
+    else if( e == 'preview_resize' )
+    {
+      $('.citation-wrapper').css({ width : Zeega.player.getSize().width +'px' })
     }
   }
 
@@ -227,7 +233,8 @@ function(Zeega, App) {
 
     var layer = model.layers.at(0);
 
-    Zeega.citation.insertView( new App.Views.CitationView({model:layer}));
+    Zeega.citation.insertView( '.nav-controls', new App.Views.NavControls({model:layer}));
+    Zeega.citation.insertView( '.citation-inner', new App.Views.CitationView({model:layer}));
     Zeega.citation.render();    
   }
 

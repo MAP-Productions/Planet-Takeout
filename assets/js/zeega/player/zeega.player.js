@@ -31,6 +31,7 @@ function(Zeega, Backbone, Layer) {
 		defaults : {
 			appName : null,
 			branding : true,
+			chromeless : false,
 			fadeOutOverlays : true,
 			frameID : null,
 			fullscreenEnabled : true,
@@ -40,7 +41,7 @@ function(Zeega, Backbone, Layer) {
             navbar_bottom : true,
             navbar_top : true,
  			playerCitation : false,
-			social : true,
+			social : true
 		},
 
 		play : function()
@@ -110,13 +111,45 @@ function(Zeega, Backbone, Layer) {
 		},
 
 
+		/*********
+
+			API fxns
+
+		************/
 
 		playPause : function()
 		{
 			console.log('zeega player  play pause', this)
 			this.project.playPause();
-		}
+		},
 
+		next : function()
+		{
+			this.project.goRight();
+		},
+
+		prev : function()
+		{
+			this.project.goLeft();
+		},
+
+		getSize : function()
+		{
+			var _this = this;
+			var playerView = this.project.layout.getView(function(view){ return view.model === _this.project });
+			var size = {
+				height : playerView.$('#preview-media').height(),
+				width : playerView.$('#preview-media').width()
+			};
+			return size;
+		},
+
+		getPosition : function()
+		{
+			var _this = this;
+			var playerView = this.project.layout.getView(function(view){ return view.model === _this.project });
+			return playerView.$('#preview-media').position();
+		}
 
 	})
 
@@ -672,7 +705,7 @@ function(Zeega, Backbone, Layer) {
 			window.onresize = function(event)
 			{
 				//constrain proportions in player
-				_this.$('#preview-media').clearQueue().animate( _this.getWindowSize() ,500 );
+				_this.$('#preview-media').clearQueue().animate( _this.getWindowSize() ,500, function(){_this.model.trigger('preview_resize');} );
 			}
 
 			if( Zeega.player.get('fadeOutOverlays') )
