@@ -176,6 +176,7 @@ function(Zeega, Backbone) {
   App.Views.Participate = App.Views._Page.extend({
     template: 'participate-0',
     events: {
+      'click ul.tabs li': 'switchTab',
       'click #findTakeout': 'geoLookup',
       'click #savePov': 'saveStreetView'
     },
@@ -183,6 +184,13 @@ function(Zeega, Backbone) {
       _.bindAll(this, 'render', 'geoLookup', 'processGeocodeResults');
       this.newTakeout = new App.NewTakeoutModel();
       this.geocoder = new google.maps.Geocoder();
+    },
+    switchTab: function(e) {
+      var index = $(e.target).index();
+      $(this.el)
+        .find('.tab')
+        .eq(index).show()
+        .siblings('.tab').hide();
     },
     geoLookup: function() {
       var nameField = $(this.el).find('#takeoutName').val(),
@@ -233,8 +241,11 @@ function(Zeega, Backbone) {
       });
     },
     saveStreetView: function() {
+      $(this.el).find('#takeoutName').text( this.newTakeout.get('takeoutName') );
       this.newTakeout.set('streetViewPov', this.newTakeoutStreetView.pov);
-      console.log(this.newTakeout);
+      $(this.el)
+        .find('#stepTwo').hide()
+        .siblings('#thanks').show();
     }
   });
 

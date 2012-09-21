@@ -1,17 +1,30 @@
-<ul class="steps">
+<ul class="tabs">
 	<li class="active">Add a new Takeout</li>
 	<li>Add photos, videos & sounds</li>
-	<li>Tell your story</li></ul>
-<div id='stepOne'>
-	<input placeholder="Takeout name" type="text" id="takeoutName" />
-	<input placeholder="Address" type="text" id="takeoutAddress" />
-	<button id='findTakeout' class='btn'>Find <i class='icon-search'></i></button>
+	<li>Tell your story</li>
+	<li>Stay in touch</li>
+</ul>
+<div class="tab" id="addTakeout">
+	<div id='stepOne'>
+		<input placeholder="Takeout name" type="text" id="takeoutName" />
+		<input placeholder="Address" type="text" id="takeoutAddress" />
+		<button id='findTakeout' class='btn'>Find <i class='icon-search'></i></button>
+	</div>
+	<div id="stepTwo" style="display: none;">
+		<div id="streetView" style="width: 510px; height: 370px;"></div>
+		<p>Use your mouse to move Streetview to the best frame.</p>
+		<button id='savePov' class='btn'>Submit</button>
+	</div>
+	<div id="thanks" style="display: none;">
+		<h1>Thanks for submitting <strong id="takeoutName"></strong>!.</h1>
+	</div>
 </div>
-<div id="stepTwo" style="display: none;">
-	<div id="streetView" style="width: 510px; height: 370px;"></div>
-	<p>Use your mouse to move Streetview to the best frame.</p>
-	<button id='savePov' class='btn'>Submit</button>
+<div class="tab" id="addPhotos" style="display: none;">
+	<p>tab2</p>
 </div>
-<div id="thanks" style="display: none;">
-	<p>Street View info saved.</p>
+<div class="tab" id="tellStory" style="display: none;">
+	<p>tab3</p>
+</div>
+<div class="tab" id="stayInTouch" style=	"display: none;">
+	<p>tab4</p>
 </div>

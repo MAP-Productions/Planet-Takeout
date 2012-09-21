@@ -193,24 +193,26 @@ button.close{
 }
 
 
-.PT-modal-content ul.steps
+.PT-modal-content ul.tabs
 {
   margin-bottom:20px;
   position: relative;
   top: -10px;
 }
 
-.PT-modal-content ul.steps li
+.PT-modal-content ul.tabs li
 {
   color:rgba(211,32,26,0.6);
+  cursor: pointer;
   display: inline;
   font-family: 'PT-black', sans-serif;
   font-size: 13px;
   margin-right: 20px;
 }
 
-.PT-modal-content ul.steps li.active {
+.PT-modal-content ul.tabs li.active {
   color:rgba(211,32,26,1);
+  cursor: default;
 }
 
 .PT-modal-content #stepOne input[type=text] {
