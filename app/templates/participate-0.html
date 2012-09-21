@@ -1,10 +1,10 @@
-<ul class="tabs">
+<ul class="participate-tabs-head">
 	<li class="active">Add a new Takeout</li>
 	<li>Add photos, videos & sounds</li>
 	<li>Tell your story</li>
 	<li>Stay in touch</li>
 </ul>
-<div class="tab" id="addTakeout">
+<div class="participate-tab" id="addTakeout">
 	<div id='stepOne'>
 		<input placeholder="Takeout name" type="text" id="takeoutName" />
 		<input placeholder="Address" type="text" id="takeoutAddress" />
@@ -12,19 +12,90 @@
 	</div>
 	<div id="stepTwo" style="display: none;">
 		<div id="streetView" style="width: 510px; height: 370px;"></div>
-		<p>Use your mouse to move Streetview to the best frame.</p>
+		<p class="explanation">Use your mouse to move Streetview to the best frame.</p>
 		<button id='savePov' class='btn'>Submit</button>
 	</div>
 	<div id="thanks" style="display: none;">
 		<h1>Thanks for submitting <strong id="takeoutName"></strong>!.</h1>
 	</div>
 </div>
-<div class="tab" id="addPhotos" style="display: none;">
-	<p>tab2</p>
+<div class="participate-tab" id="addPhotos" style="display: none;">
+	<h2>Tag them as you take them!</h2>
+	<div class="left-column">
+		<span class="social-icon camera section-icon"></span>
+		<ol>
+			<li>Upload your media to <a href="http://www.flickr.com/">Flickr</a>, <a href="http://www.youtube.com/">Youtube</a>, <a href="http://www.tumblr.com/">Tumblr</a> or <a href="http://www.soundcloud.com/">Soundcloud</a></li>
+			<li>Tag <strong>#planettakeout</strong> and other descriptive tags</li>
+			<li>Geolocate or include the takeout name and location</li>
+		</ol>
+		<h2>Add them to our Facebook Wall!</h2>
+		<span class="social-icon facebook section-icon"></span>
+		<ol>
+			<li>Visit our <a href="#">facebook page</a>.</li>
+			<li>Add your photo or video.</li>
+			<li>Include the name and location.</li>
+		</ol>
+		<h2>Email them!</h2>
+		<span class="social-icon email section-icon"></span>
+		<ol>
+			<li>Email val@planettakeout.org with your photos or mp3s as attachments.</li>
+			<li>Be sure to tell us the location, takeout name, and any other fun facts.</li>
+		</ol>
+	</div>
+	<div class="right-column">
+		<ul class="info-tab-icons">
+			<li class="social-icon flickr"></li>
+			<li class="social-icon youtube"></li>
+			<li class="social-icon tumblr"></li>
+			<li class="social-icon soundcloud"></li>
+		</ul>
+		<div class="info-tab default">
+			<p>Select an icon above for detailed instructions</p>
+		</div>
+		<div class="info-tab media flickr" style="display: none;">
+			<span class="carat"></span>
+			<div class="content">
+				<p>1) Login or create an account (it’s quick and free)</p>
+				<p>2) Join the Planet Takeout group</p>
+				<p>3) Upload your photographs</p>
+				<p>4) Tag Your Photos with planettakeout and the name of the takeout. If the name is two words, be sure to put the name in quotations (i.e. “Peking House”)</p>
+				<p>This step is really important. If you don’t tag your photos properly, we will not be able to display them on our site.</p>
+				<p>Also tag any words you feel describe the image or videos (e.g. fortune, waiting, altar). These tags open up new collections and views!</p>
+			</div>
+		</div>
+		<div class="info-tab media youtube" style="display: none;">
+			<span class="carat"></span>
+			<div class="content">
+				<p>Youtube info</p>
+			</div>
+		</div>
+		<div class="info-tab media tumblr" style="display: none;">
+			<span class="carat"></span>
+			<div class="content">
+				<p>Tumblr info</p>
+			</div>
+		</div>
+		<div class="info-tab media soundcloud" style="display: none;">
+			<span class="carat"></span>
+			<div class="content">
+				<p>Soundcloud info</p>
+			</div>
+		</div>
+	</div>
 </div>
-<div class="tab" id="tellStory" style="display: none;">
-	<p>tab3</p>
+<div class="participate-tab" id="tellStory" style="display: none;">
+	<h2>We want to hear your story about Chinese takeouts.</h2>
+	<p>We are looking for everyday stories of how your local takeout fits into your life</p>
+	<ol>
+		<li>What did you order today? Do you always order the same dish?</li>
+		<li>Is this takeout a part of your life or routine? How so?</li>
+		<li>What is your relationship like with the takeout staff?</li>
+		<li>Do you have childhood memories of eating Chinese takeout food?</li>
+	</ol>
 </div>
-<div class="tab" id="stayInTouch" style=	"display: none;">
-	<p>tab4</p>
+<div class="participate-tab" id="keepInTouch" style="display: none;">
+	<h2>Like Us on Facebook</h2>
+	<p>Facebook like embed here</p>
+	<h2>Sign Up for Exclusive Emails</h2>
+	<p>Receive the latest updates and exclusive stories from Planet Takeout</p>
 </div>
