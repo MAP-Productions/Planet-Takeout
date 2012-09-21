@@ -99,7 +99,25 @@ function(zeega, Backbone, _Layer, Player){
 				this.delegateEvents({'click':'goClick'})
 				//$(this.el).addClass('go-to-sequence')
 			
-			$(this.el).html( this.getTemplate() ).css( style ).addClass('linked-layer');
+			if(this.model.get('attr').link_type == 'arrow_left')
+				this.$el.html( this.getTemplate_ArrowLeft() ).css( style );
+			else if(this.model.get('attr').link_type == 'arrow_right')
+				this.$el.html( this.getTemplate_ArrowRight() ).css( style );
+			else if(this.model.get('attr').link_type == 'arrow_up')
+				this.$el.html( this.getTemplate_ArrowUp() ).css( style );
+			else
+			{
+				if(!this.preview )
+				{
+					_.extend( style, {
+						'height' : this.model.get('attr').height +'%',
+						'width' : this.model.get('attr').width +'%',
+						'border' : '2px dashed orangered',
+						'border-radius' : '6px'
+					})
+				}
+				this.$el.html( this.getTemplate_Rectangle() ).css( style ).addClass('linked-layer');
+			}
 
 			return this;
 		},
@@ -161,14 +179,27 @@ function(zeega, Backbone, _Layer, Player){
 			this.delegateEvents({'click':'goClick'})
 		},
 		
-		getTemplate : function()
+		getTemplate_Rectangle : function()
 		{
 			var html = '';
-			
-				//if(!this.preview) html += '<i class="icon-remove delete-link"></i>';
-				if( !this.preview && !_.isNull( this.model.get('attr').to_sequence ) ) html += '<i class="icon-share go-to-sequence"></i>';
-				
+				if( !this.preview && !_.isNull( this.model.get('attr').to_sequence ) ) html += '<i class="icon-share go-to-sequence"></i>';		
 			return html;
+		},
+		getTemplate_ArrowRight : function()
+		{
+			return  '<img src="../../../images/link_arrow-right.png"/>';
+		},
+		getTemplate_ArrowLeft : function()
+		{
+			return  '<img src="../../../images/link_arrow-left.png"/>';
+		},
+		getTemplate_ArrowUp : function()
+		{
+			return  '<img src="../../../images/link_arrow-up.png"/>';
+		},
+		getTemplate_ArrowDown : function()
+		{
+			return  '<img src="../../../images/link_arrow-down.png"/>';
 		}
 		
 		
