@@ -546,6 +546,8 @@ button.close{
 {
   height: 110px;
   width: 180px;
+  border: 8px solid whiteSmoke;
+  box-sizing: border-box;
 }
 
 .leaflet-popup-tip
