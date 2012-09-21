@@ -198,7 +198,8 @@ button.close{
   border-radius: 11px;
   color: #fff;
   height: 30px;
-  vertical-align: top;
+  vertical-align: middle;
+  margin-right: 15px;
 }
 
 .PT-modal-content .left-column
@@ -277,6 +278,11 @@ button.close{
   padding: 7px 15px;
   margin: 0 30px 20px 0;
   width: 480px;
+  vertical-align: middle;
+}
+
+.PT-modal-content #addTakeout #stepOne .btn {
+  margin-bottom: 20px;
 }
 
 .PT-modal-content #addTakeout #streetView {
@@ -305,13 +311,34 @@ button.close{
   width: 26%;
 }
 
+.PT-modal-content .participate-tab h2 {
+  text-align: left;
+  line-height: 1.2em;
+  margin-bottom: 15px;
+}
+
 .PT-modal-content .participate-tab a {
   color:rgba(211,32,26,1);
 }
 
+.PT-modal-content .participate-tab p {
+  font-size: 14px;
+  margin: 15px 0;
+}
+
+.PT-modal-content .participate-tab p.small {
+  color: #999;
+  font-size: 11px;
+  width: 60%;
+}
+
 .PT-modal-content .participate-tab ol {
-    margin-left: 50px;
-    list-style-position: inside;
+  list-style-position: inside;
+  margin: 0 0 15px;
+}
+
+.PT-modal-content #addPhotos ol {
+  margin-left: 50px;
 }
 
 .PT-modal-content .participate-tab ol li {
