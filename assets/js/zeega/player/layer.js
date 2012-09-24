@@ -35,7 +35,6 @@ function(zeega, Backbone, Layers){
 
 		load : function()
 		{
-			console.log('layer load', this);
 			this.typeModel = new Layers[this.get('type')]({parent:this});
 			this.typeVisual = new Layers[this.get('type')].Visual({model:this, attributes:{
 				id: 'layer-visual-'+this.id,

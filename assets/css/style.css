@@ -214,6 +214,54 @@ button.close{
   margin: 5px 15px 20px 0;
 }
 
+<<<<<<< HEAD
+=======
+.PT-modal-content .left-column
+{
+  width:20%;
+  float:left;
+}
+
+.PT-modal-content .right-column
+{
+  width:75%;
+  float:right;
+}
+
+.PT-modal-content .sponsor-drawer
+{
+  background: white;
+  height: 260px;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  clear:both;
+}
+
+.PT-modal .sponsor-drawer{}
+
+.PT-modal .sponsor-drawer ul
+{
+  margin:0;
+  list-style: none;
+  padding:20px;
+}
+
+
+.PT-modal .sponsor-drawer li
+{
+  float: left;
+  text-align: center;
+  height: 125px;
+  width: 143px;
+}
+.PT-modal .sponsor-drawer img
+{
+  width:110px;
+}
+
+/* PARTICIPATE */
+
 .PT-modal-content ul.modal-tabs-head
 {
   left: 0;
@@ -621,6 +669,12 @@ button.close{
 
 
 /*  citations */
+
+.nav-controls,
+.citation-inner
+{
+  padding:10px;
+}
 
 #citation-drawer
 {
