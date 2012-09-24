@@ -272,9 +272,9 @@ function(Zeega, Backbone) {
       });
     },
     saveStreetView: function() {
-      this.newTakeout.set('streetViewPov', this.newTakeoutStreetView.pov);
+      //this.newTakeout.set('streetViewPov', this.newTakeoutStreetView.pov);
       $(this.el)
-        .find('#stepTwo').hide()
+        .find('#find').hide()
         .siblings('#thanks').show()
         .find('#takeoutName').text( this.newTakeout.get('takeoutName') );
     }

@@ -1,7 +1,7 @@
 <ul class="modal-tabs-head">
 	<li id="addPhotosTab" class="active">Add photos, videos & sounds</li>
-	<li id="tellStoryTab">Tell your story</li>
 	<li id="addTakeoutTab">Add a new Takeout</li>
+	<li id="tellStoryTab">Tell your story</li>
 	<li id="keepInTouchTab">Keep in touch</li>
 </ul>
 <div class="modal-tabs">
@@ -69,19 +69,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal-tab" id="tellStory" style="display: none;">
-		<h2>We want to hear your story about Chinese takeouts.</h2>
-		<p>We are looking for everyday stories of how your local takeout fits into your life</p>
-		<ol>
-			<li>What did you order today? Do you always order the same dish?</li>
-			<li>Is this takeout a part of your life or routine? How so?</li>
-			<li>What is your relationship like with the takeout staff?</li>
-			<li>Do you have childhood memories of eating Chinese takeout food?</li>
-		</ol>
-		<h2>We'd love to hear your voice!</h2>
-		<p><button class="btn">Record</button> Or call 617.477.8688</p>
-		<p class="small">Click the “Record” button to begin recording. A SoundCloud account and the Flash plug-in are required. If you don’t yet have a SoundCloud account, you’ll have the opportunity to create one during the process.</p>
-	</div>
 	<div class="modal-tab" id="addTakeout" style="display: none;">
 		<div id='find'>
 			<h2>What should we call this takeout?</h2>
@@ -95,12 +82,27 @@
 				<div id="map"></div>
 				<div id="streetView"></div>
 			</div>
-			</div>
 			<button id='saveTakeout' class='btn'>Submit</button>
 		</div>
 		<div id="thanks" style="display: none;">
-			<h1>Thanks for submitting <strong id="takeoutName"></strong>!.</h1>
+			<h1>Thanks for submitting<br/> <strong id="takeoutName"></strong>!.</h1>
+			<p>Receive the latest updates and exclusive stories from Planet Takeout</p>
+			<input placeholder="Your email" type="text" id="email" />
+			<button type="submit" name="planetTakeoutEmailSignup-1347988840500" id='submitEmail' class='btn'>Submit</button>
 		</div>
+	</div>
+	<div class="modal-tab" id="tellStory" style="display: none;">
+		<h2>We want to hear your story about Chinese takeouts.</h2>
+		<p>We are looking for everyday stories of how your local takeout fits into your life</p>
+		<ol>
+			<li>What did you order today? Do you always order the same dish?</li>
+			<li>Is this takeout a part of your life or routine? How so?</li>
+			<li>What is your relationship like with the takeout staff?</li>
+			<li>Do you have childhood memories of eating Chinese takeout food?</li>
+		</ol>
+		<h2>We'd love to hear your voice!</h2>
+		<p><!--<button class="btn">Record</button>--> Or call 617.477.8688</p>
+		<p class="small">Click the “Record” button to begin recording. A SoundCloud account and the Flash plug-in are required. If you don’t yet have a SoundCloud account, you’ll have the opportunity to create one during the process.</p>
 	</div>
 	<div class="modal-tab" id="keepInTouch" style="display: none;">
 		<h2>Like Us on Facebook</h2>
