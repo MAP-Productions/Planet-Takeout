@@ -170,28 +170,15 @@ function(Zeega, Backbone) {
   App.Views._Page = Backbone.LayoutView.extend({
   });
 
-  App.Views.About = App.Views._Page.extend({
-    template: 'about'
-  });
+/**********************
 
-  /**********************
+        TABBED MODAL PAGES
 
-        PARTICIPATE
+***********************/
 
-  ***********************/
-
-  App.Views.Participate = App.Views._Page.extend({
-    template: 'participate-0',
+  App.Views.TabbedModal = App.Views._Page.extend({
     events: {
-      'click ul.participate-tabs-head li': 'switchTab',
-      'click ul.info-tab-icons li': 'switchInfoTab',
-      'click #findTakeout': 'geoLookup',
-      'click #savePov': 'saveStreetView'
-    },
-    initialize: function() {
-      _.bindAll(this, 'render', 'geoLookup', 'processGeocodeResults', 'showStreetView', 'saveStreetView');
-      this.newTakeout = new App.NewTakeoutModel();
-      this.geocoder = new google.maps.Geocoder();
+      'click ul.modal-tabs-head li': 'switchTab'
     },
     switchTab: function(e) {
       var clicked = $(e.target);
@@ -200,9 +187,43 @@ function(Zeega, Backbone) {
         .siblings().removeClass('active');
 
       $(this.el)
-        .find('.participate-tab')
+        .find('.modal-tab')
         .eq(clicked.index()).show()
-        .siblings('.participate-tab').hide();
+        .siblings('.modal-tab').hide();
+    }
+  });
+
+/**********************
+
+      ABOUT
+
+***********************/
+
+  App.Views.About = App.Views.TabbedModal.extend({
+    template: 'about',
+    initialize: function() {
+      this.events = _.extend({},this.events, App.Views.TabbedModal.prototype.events)
+    }
+  });
+
+  /**********************
+
+        PARTICIPATE
+
+  ***********************/
+
+  App.Views.Participate = App.Views.TabbedModal.extend({
+    template: 'participate-0',
+    initialize: function() {
+      this.events = _.extend({},this.events, App.Views.TabbedModal.prototype.events)
+      _.bindAll(this, 'render', 'geoLookup', 'initAddTakeout', 'showStreetView', 'saveStreetView');
+      this.newTakeout = new App.NewTakeoutModel();
+      this.geocoder = new google.maps.Geocoder();
+    },
+    events: {
+        'click ul.info-tab-icons li': 'switchInfoTab',
+        'click #addTakeoutTab': 'initAddTakeout',
+        'click #saveTakeout': 'saveStreetView'
     },
     switchInfoTab: function(e) {
         var clicked = $(e.target),
@@ -221,32 +242,15 @@ function(Zeega, Backbone) {
             .eq(clicked.index()).show()
             .siblings('.info-tab').hide();
         }
-
     },
-    geoLookup: function() {
-      var nameField = $(this.el).find('#takeoutName').val(),
-          addressField = $(this.el).find('#takeoutAddress').val();
+    initAddTakeout: function() {
+      var mapOptions = {
+          center: new google.maps.LatLng(42.354485,-71.061802),
+          zoom: 13,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
 
-      if (nameField && addressField) {
-        this.newTakeout.set({
-          takeoutName: nameField,
-          takeoutAddress: addressField
-        });
-        
-        this.geocoder.geocode({
-          address: addressField
-        }, this.processGeocodeResults);
-      } else {
-        alert("Please enter the takeout's name and address");
-      }
-    },
-    processGeocodeResults: function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        this.newTakeout.set('latlong', results[0].geometry.location);
-        this.showStreetView();
-      } else {
-        alert("Geocode was not successful for the following reason: " + status);
-      }
+      this.map = new google.maps.Map(document.getElementById("map"), mapOptions);
     },
     showStreetView: function(results) {
       var marker;
@@ -258,10 +262,6 @@ function(Zeega, Backbone) {
           zoom: 1
         }
       };
-
-      $(this.el)
-        .find('#stepOne').hide()
-        .siblings('#stepTwo').show();
 
       this.newTakeoutStreetView =  new google.maps.StreetViewPanorama(document.getElementById("streetView"), viewOptions);
 

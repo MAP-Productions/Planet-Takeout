@@ -191,7 +191,7 @@ button.close{
   overflow: hidden;
 }
 
-.PT-modal-content .participate-tab input[type=text] {
+.PT-modal-content .modal-tab input[type=text] {
   border: none;
   border-radius: 12px;
   display: inline-block;
@@ -258,14 +258,14 @@ button.close{
 
 /* PARTICIPATE */
 
-.PT-modal-content ul.participate-tabs-head
+.PT-modal-content ul.modal-tabs-head
 {
   margin-bottom:20px;
   position: relative;
   top: -10px;
 }
 
-.PT-modal-content ul.participate-tabs-head li
+.PT-modal-content ul.modal-tabs-head li
 {
   color:rgba(211,32,26,0.6);
   cursor: pointer;
@@ -275,29 +275,104 @@ button.close{
   margin-right: 20px;
 }
 
-.PT-modal-content ul.participate-tabs-head li.active {
+.PT-modal-content ul.modal-tabs-head li.active {
   color:rgba(211,32,26,1);
   cursor: default;
 }
 
-.PT-modal-content #addTakeout #stepOne .btn {
-  margin-bottom: 20px;
+.PT-modal-content .modal-tab h2 {
+  text-align: left;
+  line-height: 1.2em;
+  margin-bottom: 15px;
 }
 
-.PT-modal-content #addTakeout #streetView {
+.PT-modal-content .modal-tab a {
+  color:rgba(211,32,26,1);
+}
+
+.PT-modal-content .modal-tab p {
+  font-size: 14px;
+  margin: 15px 0;
+}
+
+.PT-modal-content .modal-tab p.small {
+  color: #999;
+  font-size: 11px;
+  width: 60%;
+}
+
+.PT-modal-content .modal-tab ol {
+  list-style-position: inside;
+  margin: 0 0 15px;
+}
+
+.PT-modal-content .modal-tab ol li {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.PT-modal-content .modal-tab .social-icon.section-icon {
+  position: relative;
+  top: 40px;
+  margin-top: -30px;
+}
+
+.PT-modal-content .modal-tab .info-tab-icons {
+  overflow:hidden;
+}
+
+.PT-modal-content .modal-tab .info-tab-icons li {
+  cursor: pointer;
   float: left;
+  margin: 0 8px 0 8px;
 }
 
-.PT-modal-content #addTakeout #stepTwo .btn {
-  clear: both;
-  display: block;
-  margin-top: 20px;
+.PT-modal-content .modal-tab .info-tab.media .carat {
+  height: 0px;
+  width: 0px;
+  display:block;
+  border-width: 0px 12px 11px 12px;
+  border-color: transparent transparent #fff transparent;
+  border-style: none solid solid solid;
+  position: relative;
+}
+.PT-modal-content .modal-tab .info-tab.flickr .carat {
+  left:11px;
 }
 
-.PT-modal-content #addTakeout #stepTwo p.explanation {
-  float: right;
-  margin-right: 40px;
-  width: 130px;
+.PT-modal-content .modal-tab .info-tab.youtube .carat {
+  left:57px;
+}
+
+.PT-modal-content .modal-tab .info-tab.tumblr .carat {
+  left:103px;
+}
+
+.PT-modal-content .modal-tab .info-tab.soundcloud .carat {
+  left:149px;
+}
+
+.PT-modal-content .modal-tab .info-tab.media .content {
+  background: #fff;
+  border-radius: 14px;
+  padding: 30px 10px;
+}
+
+.PT-modal-content .modal-tab .info-tab.media p {
+  color: #666;
+  font-size: 11px;
+  text-align: left;
+}
+
+.PT-modal-content .modal-tab .info-tab.default p {
+  color: #666;
+  font-size: 15px;
+  text-align: left;
+  margin: 11px;
+}
+
+.PT-modal-content #addPhotos ol {
+  margin-left: 50px;
 }
 
 .PT-modal-content #addPhotos .left-column {
@@ -310,99 +385,46 @@ button.close{
   width: 26%;
 }
 
-.PT-modal-content .participate-tab h2 {
-  text-align: left;
-  line-height: 1.2em;
-  margin-bottom: 15px;
+.PT-modal-content #addTakeout ol.explanation {
+  margin-bottom: 0;
+  overflow: hidden;
 }
 
-.PT-modal-content .participate-tab a {
-  color:rgba(211,32,26,1);
-}
-
-.PT-modal-content .participate-tab p {
-  font-size: 14px;
-  margin: 15px 0;
-}
-
-.PT-modal-content .participate-tab p.small {
-  color: #999;
-  font-size: 11px;
-  width: 60%;
-}
-
-.PT-modal-content .participate-tab ol {
-  list-style-position: inside;
-  margin: 0 0 15px;
-}
-
-.PT-modal-content #addPhotos ol {
-  margin-left: 50px;
-}
-
-.PT-modal-content .participate-tab ol li {
-  font-size: 14px;
-  margin: 5px 0;
-}
-
-.PT-modal-content .participate-tab .social-icon.section-icon {
-  position: relative;
-  top: 40px;
-  margin-top: -30px;
-}
-
-.PT-modal-content .participate-tab .info-tab-icons {
-  overflow:hidden;
-}
-
-.PT-modal-content .participate-tab .info-tab-icons li {
-  cursor: pointer;
+.PT-modal-content #addTakeout ol.explanation li {
   float: left;
-  margin: 0 8px 0 8px;
-}
-
-.PT-modal-content .participate-tab .info-tab.media .carat {
-  height: 0px;
-  width: 0px;
-  display:block;
-  border-width: 0px 12px 11px 12px;
-  border-color: transparent transparent #fff transparent;
-  border-style: none solid solid solid;
-  position: relative;
-}
-.PT-modal-content .participate-tab .info-tab.flickr .carat {
-  left:11px;
-}
-
-.PT-modal-content .participate-tab .info-tab.youtube .carat {
-  left:57px;
-}
-
-.PT-modal-content .participate-tab .info-tab.tumblr .carat {
-  left:103px;
-}
-
-.PT-modal-content .participate-tab .info-tab.soundcloud .carat {
-  left:149px;
-}
-
-.PT-modal-content .participate-tab .info-tab.media .content {
-  background: #fff;
-  border-radius: 14px;
-  padding: 30px 10px;
-}
-
-.PT-modal-content .participate-tab .info-tab.media p {
-  color: #666;
-  font-size: 11px;
-  text-align: left;
-}
-
-.PT-modal-content .participate-tab .info-tab.default p {
-  color: #666;
   font-size: 15px;
+  list-style-position: outside;
+  margin-left: 20px;
   text-align: left;
-  margin: 11px;
+}
+
+.PT-modal-content #addTakeout ol.explanation li.step-1 {
+  width: 280px;
+}
+
+.PT-modal-content #addTakeout ol.explanation li.step-2 {
+  margin-left: 32px;
+  width: 330px;
+}
+
+.PT-modal-content #addTakeout #gViews {
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.PT-modal-content #addTakeout #map {
+  background: #aaa;
+  float: left;
+  height: 300px;
+  width: 300px;
+}
+
+.PT-modal-content #addTakeout #streetView {
+  background: #aaa;
+  float: left;
+  height: 300px;
+  width: 350px;
+  margin-left: 12px;
 }
 
 /*  MENU    */
