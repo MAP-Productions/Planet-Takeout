@@ -406,7 +406,6 @@ function(Zeega, Backbone) {
     {
       var html = 
 
-        '<a href="#" class="heart"><img src="assets/img/icon-heart-white-sm.png" width="30px"/></a>'+
         '<a href="/collections/<%= id %>/view" class="enter"><img src="assets/img/arrow-straight.png" width="40px"/></a>';        
 
       return html;
