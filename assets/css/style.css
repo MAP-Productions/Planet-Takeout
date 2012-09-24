@@ -281,36 +281,6 @@ button.close{
   cursor: default;
 }
 
-.PT-modal-content #addTakeout #stepOne .btn {
-  margin-bottom: 20px;
-}
-
-.PT-modal-content #addTakeout #streetView {
-  float: left;
-}
-
-.PT-modal-content #addTakeout #stepTwo .btn {
-  clear: both;
-  display: block;
-  margin-top: 20px;
-}
-
-.PT-modal-content #addTakeout #stepTwo p.explanation {
-  float: right;
-  margin-right: 40px;
-  width: 130px;
-}
-
-.PT-modal-content #addPhotos .left-column {
-  float: left;
-  width: 73%;
-}
-
-.PT-modal-content #addPhotos .right-column {
-  float: right;
-  width: 26%;
-}
-
 .PT-modal-content .participate-tab h2 {
   text-align: left;
   line-height: 1.2em;
@@ -335,10 +305,6 @@ button.close{
 .PT-modal-content .participate-tab ol {
   list-style-position: inside;
   margin: 0 0 15px;
-}
-
-.PT-modal-content #addPhotos ol {
-  margin-left: 50px;
 }
 
 .PT-modal-content .participate-tab ol li {
@@ -404,6 +370,62 @@ button.close{
   font-size: 15px;
   text-align: left;
   margin: 11px;
+}
+
+.PT-modal-content #addPhotos ol {
+  margin-left: 50px;
+}
+
+.PT-modal-content #addPhotos .left-column {
+  float: left;
+  width: 73%;
+}
+
+.PT-modal-content #addPhotos .right-column {
+  float: right;
+  width: 26%;
+}
+
+.PT-modal-content #addTakeout ol.explanation {
+  margin-bottom: 0;
+  overflow: hidden;
+}
+
+.PT-modal-content #addTakeout ol.explanation li {
+  float: left;
+  font-size: 15px;
+  list-style-position: outside;
+  margin-left: 20px;
+  text-align: left;
+}
+
+.PT-modal-content #addTakeout ol.explanation li.step-1 {
+  width: 280px;
+}
+
+.PT-modal-content #addTakeout ol.explanation li.step-2 {
+  margin-left: 32px;
+  width: 330px;
+}
+
+.PT-modal-content #addTakeout #gViews {
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.PT-modal-content #addTakeout #map {
+  background: red;
+  float: left;
+  height: 300px;
+  width: 300px;
+}
+
+.PT-modal-content #addTakeout #streetView {
+  background: #aaa;
+  float: left;
+  height: 300px;
+  width: 350px;
+  margin-left: 12px;
 }
 
 /*  MENU    */

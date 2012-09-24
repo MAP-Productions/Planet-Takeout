@@ -184,11 +184,11 @@ function(Zeega, Backbone) {
     events: {
       'click ul.participate-tabs-head li': 'switchTab',
       'click ul.info-tab-icons li': 'switchInfoTab',
-      'click #findTakeout': 'geoLookup',
-      'click #savePov': 'saveStreetView'
+      'click #addTakeoutTab': 'initAddTakeout',
+      'click #saveTakeout': 'saveStreetView'
     },
     initialize: function() {
-      _.bindAll(this, 'render', 'geoLookup', 'processGeocodeResults', 'showStreetView', 'saveStreetView');
+        _.bindAll(this, 'render', 'geoLookup', 'initAddTakeout', 'showStreetView', 'saveStreetView');
       this.newTakeout = new App.NewTakeoutModel();
       this.geocoder = new google.maps.Geocoder();
     },
@@ -222,30 +222,14 @@ function(Zeega, Backbone) {
         }
 
     },
-    geoLookup: function() {
-      var nameField = $(this.el).find('#takeoutName').val(),
-          addressField = $(this.el).find('#takeoutAddress').val();
+    initAddTakeout: function() {
+      var mapOptions = {
+          center: new google.maps.LatLng(42.354485,-71.061802),
+          zoom: 13,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
 
-      if (nameField && addressField) {
-        this.newTakeout.set({
-          takeoutName: nameField,
-          takeoutAddress: addressField
-        });
-        
-        this.geocoder.geocode({
-          address: addressField
-        }, this.processGeocodeResults);
-      } else {
-        alert("Please enter the takeout's name and address");
-      }
-    },
-    processGeocodeResults: function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        this.newTakeout.set('latlong', results[0].geometry.location);
-        this.showStreetView();
-      } else {
-        alert("Geocode was not successful for the following reason: " + status);
-      }
+      this.map = new google.maps.Map(document.getElementById("map"), mapOptions);
     },
     showStreetView: function(results) {
       var marker;
@@ -257,10 +241,6 @@ function(Zeega, Backbone) {
           zoom: 1
         }
       };
-
-      $(this.el)
-        .find('#stepOne').hide()
-        .siblings('#stepTwo').show();
 
       this.newTakeoutStreetView =  new google.maps.StreetViewPanorama(document.getElementById("streetView"), viewOptions);
 

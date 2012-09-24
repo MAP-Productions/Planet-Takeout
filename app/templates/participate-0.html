@@ -1,25 +1,10 @@
 <ul class="participate-tabs-head">
-	<li class="active">Add a new Takeout</li>
-	<li>Add photos, videos & sounds</li>
-	<li>Tell your story</li>
-	<li>Stay in touch</li>
+	<li id="addPhotosTab" class="active">Add photos, videos & sounds</li>
+	<li id="tellStoryTab">Tell your story</li>
+	<li id="addTakeoutTab">Add a new Takeout</li>
+	<li id="keepInTouchTab">Keep in touch</li>
 </ul>
-<div class="participate-tab" id="addTakeout">
-	<div id='stepOne'>
-		<input placeholder="Takeout name" type="text" id="takeoutName" />
-		<input placeholder="Address" type="text" id="takeoutAddress" />
-		<button id='findTakeout' class='btn'>Find <i class='icon-search'></i></button>
-	</div>
-	<div id="stepTwo" style="display: none;">
-		<div id="streetView" style="width: 510px; height: 370px;"></div>
-		<p class="explanation">Use your mouse to move Streetview to the best frame.</p>
-		<button id='savePov' class='btn'>Submit</button>
-	</div>
-	<div id="thanks" style="display: none;">
-		<h1>Thanks for submitting <strong id="takeoutName"></strong>!.</h1>
-	</div>
-</div>
-<div class="participate-tab" id="addPhotos" style="display: none;">
+<div class="participate-tab" id="addPhotos">
 	<h2>Tag them as you take them!</h2>
 	<div class="left-column">
 		<span class="social-icon camera section-icon"></span>
@@ -95,6 +80,26 @@
 	<h2>We'd love to hear your voice!</h2>
 	<p><button class="btn">Record</button> Or call 617.477.8688</p>
 	<p class="small">Click the “Record” button to begin recording. A SoundCloud account and the Flash plug-in are required. If you don’t yet have a SoundCloud account, you’ll have the opportunity to create one during the process.</p>
+</div>
+<div class="participate-tab" id="addTakeout" style="display: none;">
+	<div id='find'>
+		<h2>What should we call this takeout?</h2>
+		<input placeholder="Takeout Name" type="text" id="takeoutName" />
+		<h2>Search the map and help us find the best view</h2>
+		<ol class="explanation">
+			<li class="step-1">Search the takeout's address or nearby streets to move the marker.</li>
+			<li class="step-2">Use your mouse to pan streetview until you find the best image!
+		</ol>
+		<div id="gViews">
+			<div id="map"></div>
+			<div id="streetView"></div>
+		</div>
+		</div>
+		<button id='saveTakeout' class='btn'>Submit</button>
+	</div>
+	<div id="thanks" style="display: none;">
+		<h1>Thanks for submitting <strong id="takeoutName"></strong>!.</h1>
+	</div>
 </div>
 <div class="participate-tab" id="keepInTouch" style="display: none;">
 	<h2>Like Us on Facebook</h2>
