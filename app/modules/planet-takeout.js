@@ -30,6 +30,7 @@ function(Zeega, Backbone) {
       layerCitations : false,
       playerCitation : false,
       
+      chromeless : true,
       branding : false,
       social : false,
       fullscreenEnabled : false,
@@ -40,7 +41,10 @@ function(Zeega, Backbone) {
     {
       console.log('pt init');
       var _this = this;
-      this.fetch().success(function(res){ _this.loadPlayer(); console.log(res); });
+      this.fetch().success(function(res){
+        _this.loadPlayer();
+        _this.trigger('ready');
+      });
     },
 
     loadPlayer : function()
@@ -55,7 +59,7 @@ function(Zeega, Backbone) {
 
   App.CollectionZeegaPlayerModel = Backbone.Model.extend({
 
-    url : function(){ return 'http://dev.zeega.org/planettakeout/web/api/items/'+ this.collection_id +'/project'; },
+    url : function(){ return 'http://alpha.zeega.org/api/items/'+ this.collection_id +'/project'; },
 
     defaults : {
       //appName : 'wayfinder',
@@ -309,7 +313,6 @@ function(Zeega, Backbone) {
       // immediately fetch geotagged items for the map
 
       this.collection = new App.Collections.MapItems();
-      this.collection.fetch();
     },
 
     afterRender : function()
@@ -335,10 +338,10 @@ function(Zeega, Backbone) {
     renderCollectionMarkers : function()
     {
       var _this = this;
+
       var renderMarkers = function()
       {
-        console.log('render makers', this);
-        this.collection.each(function(item){
+        _this.collection.each(function(item){
           item.marker = L.marker([ item.get('media_geo_latitude'), item.get('media_geo_longitude')], {icon: _this.ptIconRed} );
           item.marker.itemID = item.id;
           item.marker.addTo(_this.map);
@@ -347,9 +350,9 @@ function(Zeega, Backbone) {
         });
       };
 
-      //if collection hasn't finished fetching yet
-      if( this.collection.length === 0 ) this.collection.on('reset', renderMarkers, this);
-      else renderMarkers();
+      this.collection.fetch().success(function(){
+        renderMarkers();
+      });
     },
 
     onMarkerClick : function(e)
@@ -374,12 +377,13 @@ function(Zeega, Backbone) {
   });
 
   App.Collections.MapItems = Backbone.Collection.extend({
+    initialize : function(){ console.log('colection init')},
     url: function()
     {
-      return 'http://dev.zeega.org/planettakeout/web/api/search?r_items=1&tags=planettakeout&geo_located=1&user=760&limit=10&sort=date-desc';
+      return 'http://alpha.zeega.org/api/items/46086/items';
     },
 
-    parse : function(res){ return res.items; }
+    parse : function(res){ console.log('parse:',res, res.items); return res.items; }
   });
 
   App.Views.MapPopup = Backbone.View.extend({
@@ -393,12 +397,13 @@ function(Zeega, Backbone) {
     },
 
     events : {
-      'click .enter' : 'enterCollectionViewer'
+      'click' : 'enterCollectionViewer'
     },
 
     enterCollectionViewer : function()
     {
       // for some reason, the relative url wasn't working correctly. navigate works though
+      console.log('enter collectoin', this)
       Zeega.router.navigate('/collections/'+ this.model.id +'/view', {'trigger':true});
       return false;
     },
@@ -597,7 +602,7 @@ function(Zeega, Backbone) {
 
     page : 1,
 
-    url : function(){ return 'http://dev.zeega.org/planettakeout/web/api/items/'+ this.collectionID; },
+    url : function(){ return 'http://alpha.zeega.org/api/items/'+ this.collectionID; },
 
     parse : function( res )
     {
@@ -610,7 +615,7 @@ function(Zeega, Backbone) {
 
     page : 1,
 
-    url : function(){ return 'http://dev.zeega.org/planettakeout/web/api/search?r_collections=1&page='+ this.page; },
+    url : function(){ return 'http://alpha.zeega.org/api/search?r_collections=1&page='+ this.page; },
 
     parse : function( res )
     {
