@@ -181,7 +181,6 @@ button.close{
 .PT-modal-content
 {
   position:relative;
-  /* min-height: 500px; */
   padding: 20px;
   overflow: hidden;
 }
@@ -229,10 +228,10 @@ button.close{
 {
   background: white;
   height: 260px;
-  position: absolute;
   bottom: 0;
   width: 100%;
   left: 0;
+  clear:both;
 }
 
 .PT-modal .sponsor-drawer{}

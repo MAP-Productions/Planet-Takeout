@@ -244,13 +244,11 @@ function(Zeega, App) {
 
   function renderCitation(e,model)
   {
-    Zeega.citation.getViews().each(function(view){ console.log(view);view.remove(); });
+    Zeega.citation.getViews().each(function(view){ view.remove(); });
 
     var layer = model.layers.at(0);
-
-    var navView = new App.Views.NavControls({model:layer});
-    var citView = new App.Views.CitationView({model:layer});
-
+    var navView = new App.Views.NavControls({model:layer, arrowState:model.arrowState});
+    var citView = new App.Views.CitationView({model:layer,player:Zeega.player.toJSON() });
     Zeega.citation.insertView( '.nav-controls', navView);
     Zeega.citation.insertView( '.citation-inner', citView);
     Zeega.citation.render();

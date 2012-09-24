@@ -555,15 +555,16 @@ function(Zeega, Backbone) {
       return false;
     },
 
-    serialize : function(){ return this.model.toJSON(); }
+    serialize : function(){ return _.extend({},this.model.toJSON(),this.options.player); }
   });
 
   App.Views.NavControls = Backbone.LayoutView.extend({
     template : 'player-navigation',
     className : '',
 
-    initialize : function()
+    serialize : function()
     {
+      return this.options;
     },
 
     events : {
