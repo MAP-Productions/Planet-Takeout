@@ -619,6 +619,12 @@ button.close{
 
 /*  citations */
 
+.nav-controls,
+.citation-inner
+{
+  padding:10px;
+}
+
 #citation-drawer
 {
   position: absolute;
