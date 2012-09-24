@@ -747,16 +747,13 @@ function(Zeega, Backbone, Layer) {
 			var initial_size = {};
 			if(this.viewportFull)
 			{
-					console.log('width>height', viewWidth, viewHeight)
 				if(viewWidth / viewHeight > this.viewportRatio)
 				{
-					console.log('width>height')
 					initial_size.height = (viewWidth / this.viewportRatio)  +'px'; // 4/3
 					initial_size.width = viewWidth +'px';
 				}
 				else
 				{
-					console.log('width<height')
 					initial_size.height = viewHeight  +'px'; // 4/3
 					initial_size.width = viewHeight * this.viewportRatio +'px';
 				}

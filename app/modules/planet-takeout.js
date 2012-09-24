@@ -120,6 +120,7 @@ function(Zeega, Backbone) {
       console.log('close modal');
       this.remove();
       //Zeega.router.navigate('/',{trigger:true})
+      return false;
     },
 
     initialize : function(opts)
