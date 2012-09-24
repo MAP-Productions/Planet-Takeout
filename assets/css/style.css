@@ -646,13 +646,17 @@ button.close{
   position: absolute;
   bottom: 0;
   z-index: 100000;
-  background: rgba(0, 0, 0, 0.75);
   width:100%;
   color: white;
 }
-.citation-view
+.citation-wrapper
 {
-  padding:10px 40px;
+  margin: 0 auto;
+}
+
+.citation-inner
+{
+  background: rgba(0, 0, 0, 0.75);  
 }
 
 .citation-attribution,
@@ -661,6 +665,15 @@ button.close{
   position: relative;
   bottom: -1em;
   margin-left: 10px;
+}
+
+#PT-preview-left
+{
+  float:left;
+}
+#PT-preview-right
+{
+  float:right;
 }
 
 /*  map */
@@ -682,10 +695,36 @@ button.close{
   box-sizing: border-box;
 }
 
+.leaflet-popup-content-wrapper, .leaflet-popup-tip
+{
+  background:transparent;
+}
+.leaflet-popup-tip-container
+{
+  height:auto;
+  width:auto;
+}
+
 .leaflet-popup-tip
 {
+  border-width: 55px 22px 0;
+  border-style: solid;
+  border-color: #fff transparent;
+  display: block;
+  width: 0;
 
+  -moz-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
 }
+
+
 
 .map-popup .heart,
 .map-popup .ent
@@ -713,6 +752,7 @@ button.close{
 {
   margin-right:10px;
 }
+
 
 /* social media icons sprite */
 .social-icon {

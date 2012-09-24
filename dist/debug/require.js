@@ -435,7 +435,7 @@ return __p;
 this['JST']['app/templates/layouts/citation-drawer-layout.html'] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='';
+__p+='<div class=\'citation-wrapper\'>\n\t<div class=\'nav-controls clearfix\'></div>\n\t<div class=\'citation-inner clearfix\'></div>\n</div>';
 }
 return __p;
 };
@@ -489,7 +489,7 @@ return __p;
 this['JST']['app/templates/menu.html'] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<div class=\'PT-menu-column\'>\n\t<h2>Tidbits</h2>\n\t<img src=\'assets/img/menu_platter.png\' width=\'100px\'/>\n\t<img src=\'assets/img/menu_rose.png\'  width=\'100px\'/>\n</div>\n\n<div class=\'PT-menu-column\'>\n\t<h2>Stories</h2>\n\t<img src=\'assets/img/menu_flourish.png\'/>\n</div>\n\n<div class=\'PT-menu-column\'>\n\t<h2>Takeouts</h2>\n\t<img src=\'assets/img/menu_chef.png\' width=\'100px\'/>\n\t<img src=\'assets/img/menu_junk.png\' width=\'100px\'/>\n</div>\n';
+__p+='<div class=\'PT-menu-column\'>\n\t<h2>Tidbits</h2>\n\t<ul class="menu-items">\n\t\t<li>\n\t\t\t<a href="#">Lucky Animal</a>\n\t\t\t<span>121</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Gumball Machine</a>\n\t\t\t<span>118</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Exterior</a>\n\t\t\t<span>89</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Fortune</a>\n\t\t\t<span>89</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Neon</a>\n\t\t\t<span>72</span>\n\t\t</li>\n\t</ul>\n\t<img class="flourish" src=\'assets/img/menu_platter.png\' width=\'77px\'/>\n\t<h3>All Tidbits</h3>\n\t<ul class="menu-items">\n\t\t<li>\n\t\t\t<a href="#">Delivery</a>\n\t\t\t<span>55</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Snow</a>\n\t\t\t<span>47</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Plows</a>\n\t\t\t<span>43</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Summershack</a>\n\t\t\t<span>43</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Snow</a>\n\t\t\t<span>47</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Plows</a>\n\t\t\t<span>43</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Summershack</a>\n\t\t\t<span>43</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">This</a>\n\t\t\t<span>47</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">That</a>\n\t\t\t<span>47</span>\n\t\t</li>\n\t</ul>\n\t<img class="flourish" src=\'assets/img/menu_rose.png\'  width=\'75px\'/>\n\t<ul class="menu-items">\n\t\t<li>\n\t\t\t<a href="#">Uncle</a>\n\t\t\t<span>7</span>\n\t\t</li>\n\t</ul>\n</div>\n\n<div class=\'PT-menu-column\'>\n\t<h2>Stories</h2>\n\t<h3>Running a Takeout</h3>\n\t<ul class="menu-items">\n\t\t<li>\n\t\t\t<a href="#">Getting Access</a>\n\t\t\t<span>6:32</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Restaurant English</a>\n\t\t\t<span>4:32</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">A Day In The Life</a>\n\t\t\t<span>7:57</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Learning Restaurant English</a>\n\t\t\t<span>2:21</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Robbed at Gunpoint</a>\n\t\t\t<span>5:17</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Making Crab Rangoon</a>\n\t\t\t<span>4:22</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">The Broken Window</a>\n\t\t\t<span>3:13</span>\n\t\t</li>\n\t</ul>\n\t<h3>Regulars</h3>\n\t<ul class="menu-items">\n\t\t<li>\n\t\t\t<a href="#">Regulars</a>\n\t\t\t<span>5:19</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Food Wall Fanatics</a>\n\t\t\t<span>4:50</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Barflys</a>\n\t\t\t<span>3:57</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Teenagers</a>\n\t\t\t<span>6:19</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Homeless Men</a>\n\t\t\t<span>7:20</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">A Favorite Deliveryman</a>\n\t\t\t<span>5:15</span>\n\t\t</li>\n\t</ul>\n\t<img class="flourish" src=\'assets/img/menu_flourish.png\' width="237px" />\n\t<h3>Neighbors</h3>\n\t<ul class="menu-items">\n\t\t<li>\n\t\t\t<a href="#">Starting a Takeout</a>\n\t\t\t<span>5:15</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Neighborhood Relations</a>\n\t\t\t<span>5:15</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Giving Back</a>\n\t\t\t<span>5:15</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">What is Jamaica Plain</a>\n\t\t\t<span>5:15</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Who is Alan</a>\n\t\t\t<span>5:15</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Takeouts En Español</a>\n\t\t\t<span>5:15</span>\n\t\t</li>\n\t</ul>\n\t<h3>Generations</h3>\n\t<ul class="menu-items">\n\t\t<li>\n\t\t\t<a href="#">Generations</a>\n\t\t\t<span>4:23</span>\n\t\t</li>\n\t</ul>\n</div>\n\n<div class=\'PT-menu-column\'>\n\t<h2>Takeouts</h2>\n\t<ul class="menu-items specials">\n\t\t<li>\n\t\t\t<a href="#">Delivery</a>\n\t\t\t<span>55</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Snow</a>\n\t\t\t<span>47</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Plows</a>\n\t\t\t<span>43</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Summershack</a>\n\t\t\t<span>43</span>\n\t\t</li>\n\t</ul>\n\t<img class="flourish" src=\'assets/img/menu_chef.png\' width=\'77px\'/>\n\t<h3>By Neighborhood</h3>\n\t<ul class="menu-items">\n\t\t<li>\n\t\t\t<a href="#">Allston/Brighton</a>\n\t\t\t<span>12</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Back Bay/Fenway</a>\n\t\t\t<span>7</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Chinatown</a>\n\t\t\t<span>4</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Fields Corner</a>\n\t\t\t<span>8</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Hyde Park</a>\n\t\t\t<span>13</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Beacon Hill</a>\n\t\t\t<span>3</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Brookline</a>\n\t\t\t<span>9</span>\n\t\t</li>\n\t</ul>\n\t<img class="flourish" src=\'assets/img/menu_junk.png\' width=\'77px\'/>\n\t<ul class="menu-items">\n\t\t<li>\n\t\t\t<a href="#">Cambridge</a>\n\t\t\t<span>11</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Charlestown</a>\n\t\t\t<span>20</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Dorchester</a>\n\t\t\t<span>31</span>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="#">Jamaica Plain</a>\n\t\t\t<span>8</span>\n\t\t</li>\n\t</ul>\n</div>\n';
 }
 return __p;
 };
@@ -497,7 +497,15 @@ return __p;
 this['JST']['app/templates/participate-0.html'] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<ul class="steps">\n\t<li class="active">Add a new Takeout</li>\n\t<li>Add photos, videos & sounds</li>\n\t<li>Tell your story</li></ul>\n<div id=\'stepOne\'>\n\t<input placeholder="Takeout name" type="text" id="takeoutName" />\n\t<input placeholder="Address" type="text" id="takeoutAddress" />\n\t<button id=\'findTakeout\' class=\'btn\'>Find <i class=\'icon-search\'></i></button>\n</div>\n<div id="stepTwo" style="display: none;">\n\t<div id="streetView" style="width: 510px; height: 370px;"></div>\n\t<p>Use your mouse to move Streetview to the best frame.</p>\n\t<button id=\'savePov\' class=\'btn\'>Submit</button>\n</div>\n<div id="thanks" style="display: none;">\n\t<p>Street View info saved.</p>\n</div>';
+__p+='<ul class="participate-tabs-head">\n\t<li class="active">Add a new Takeout</li>\n\t<li>Add photos, videos & sounds</li>\n\t<li>Tell your story</li>\n\t<li>Stay in touch</li>\n</ul>\n<div class="participate-tab" id="addTakeout">\n\t<div id=\'stepOne\'>\n\t\t<input placeholder="Takeout name" type="text" id="takeoutName" />\n\t\t<input placeholder="Address" type="text" id="takeoutAddress" />\n\t\t<button id=\'findTakeout\' class=\'btn\'>Find <i class=\'icon-search\'></i></button>\n\t</div>\n\t<div id="stepTwo" style="display: none;">\n\t\t<div id="streetView" style="width: 510px; height: 370px;"></div>\n\t\t<p class="explanation">Use your mouse to move Streetview to the best frame.</p>\n\t\t<button id=\'savePov\' class=\'btn\'>Submit</button>\n\t</div>\n\t<div id="thanks" style="display: none;">\n\t\t<h1>Thanks for submitting <strong id="takeoutName"></strong>!.</h1>\n\t</div>\n</div>\n<div class="participate-tab" id="addPhotos" style="display: none;">\n\t<h2>Tag them as you take them!</h2>\n\t<div class="left-column">\n\t\t<span class="social-icon camera section-icon"></span>\n\t\t<ol>\n\t\t\t<li>Upload your media to <a href="http://www.flickr.com/">Flickr</a>, <a href="http://www.youtube.com/">Youtube</a>, <a href="http://www.tumblr.com/">Tumblr</a> or <a href="http://www.soundcloud.com/">Soundcloud</a></li>\n\t\t\t<li>Tag <strong>#planettakeout</strong> and other descriptive tags</li>\n\t\t\t<li>Geolocate or include the takeout name and location</li>\n\t\t</ol>\n\t\t<h2>Add them to our Facebook Wall!</h2>\n\t\t<span class="social-icon facebook section-icon"></span>\n\t\t<ol>\n\t\t\t<li>Visit our <a href="#">facebook page</a>.</li>\n\t\t\t<li>Add your photo or video.</li>\n\t\t\t<li>Include the name and location.</li>\n\t\t</ol>\n\t\t<h2>Email them!</h2>\n\t\t<span class="social-icon email section-icon"></span>\n\t\t<ol>\n\t\t\t<li>Email val@planettakeout.org with your photos or mp3s as attachments.</li>\n\t\t\t<li>Be sure to tell us the location, takeout name, and any other fun facts.</li>\n\t\t</ol>\n\t</div>\n\t<div class="right-column">\n\t\t<ul class="info-tab-icons">\n\t\t\t<li class="social-icon flickr"></li>\n\t\t\t<li class="social-icon youtube"></li>\n\t\t\t<li class="social-icon tumblr"></li>\n\t\t\t<li class="social-icon soundcloud"></li>\n\t\t</ul>\n\t\t<div class="info-tab default">\n\t\t\t<p>Select an icon above for detailed instructions</p>\n\t\t</div>\n\t\t<div class="info-tab media flickr" style="display: none;">\n\t\t\t<span class="carat"></span>\n\t\t\t<div class="content">\n\t\t\t\t<p>1) Login or create an account (it’s quick and free)</p>\n\t\t\t\t<p>2) Join the Planet Takeout group</p>\n\t\t\t\t<p>3) Upload your photographs</p>\n\t\t\t\t<p>4) Tag Your Photos with planettakeout and the name of the takeout. If the name is two words, be sure to put the name in quotations (i.e. “Peking House”)</p>\n\t\t\t\t<p>This step is really important. If you don’t tag your photos properly, we will not be able to display them on our site.</p>\n\t\t\t\t<p>Also tag any words you feel describe the image or videos (e.g. fortune, waiting, altar). These tags open up new collections and views!</p>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class="info-tab media youtube" style="display: none;">\n\t\t\t<span class="carat"></span>\n\t\t\t<div class="content">\n\t\t\t\t<p>Youtube info</p>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class="info-tab media tumblr" style="display: none;">\n\t\t\t<span class="carat"></span>\n\t\t\t<div class="content">\n\t\t\t\t<p>Tumblr info</p>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class="info-tab media soundcloud" style="display: none;">\n\t\t\t<span class="carat"></span>\n\t\t\t<div class="content">\n\t\t\t\t<p>Soundcloud info</p>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n<div class="participate-tab" id="tellStory" style="display: none;">\n\t<h2>We want to hear your story about Chinese takeouts.</h2>\n\t<p>We are looking for everyday stories of how your local takeout fits into your life</p>\n\t<ol>\n\t\t<li>What did you order today? Do you always order the same dish?</li>\n\t\t<li>Is this takeout a part of your life or routine? How so?</li>\n\t\t<li>What is your relationship like with the takeout staff?</li>\n\t\t<li>Do you have childhood memories of eating Chinese takeout food?</li>\n\t</ol>\n\t<h2>We\'d love to hear your voice!</h2>\n\t<p><button class="btn">Record</button> Or call 617.477.8688</p>\n\t<p class="small">Click the “Record” button to begin recording. A SoundCloud account and the Flash plug-in are required. If you don’t yet have a SoundCloud account, you’ll have the opportunity to create one during the process.</p>\n</div>\n<div class="participate-tab" id="keepInTouch" style="display: none;">\n\t<h2>Like Us on Facebook</h2>\n\t<p>Facebook like embed here</p>\n\t<h2>Sign Up for Exclusive Emails</h2>\n\t<p>Receive the latest updates and exclusive stories from Planet Takeout</p>\n\t<input placeholder="Your email" type="text" id="email" />\n\t<button type="submit" name="planetTakeoutEmailSignup-1347988840500" id=\'submitEmail\' class=\'btn\'>Submit</button>\n</div>';
+}
+return __p;
+};
+
+this['JST']['app/templates/player-navigation.html'] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<a href=\'#\' id=\'PT-preview-left\'>\n\t<img src=\'assets/img/arrow-right.png\' style=\'-webkit-transform:rotate(180deg)\'/>\n</a>\n<a href=\'#\' id=\'PT-preview-right\'>\n\t<img src=\'assets/img/arrow-right.png\'/>\n</a>\n';
 }
 return __p;
 };
@@ -506,15 +514,15 @@ this['JST']['app/templates/player.html'] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
 __p+='<div class=\'player-header player-overlay\'>\n\n';
- if( mode != 'standalone' ) { 
+ if( mode != 'standalone' && chromeless == false ) { 
 ;__p+=' \n\t<a id=\'preview-close\' class=\'close pull-right\' href=\'\' >&times;</a>\n';
  } 
 ;__p+='\n\n';
- if( mode != 'embed' && fullscreenEnabled ) { 
+ if( mode != 'embed' && fullscreenEnabled && chromeless == false) { 
 ;__p+='\n\t<a href=\'#\' class=\'fullscreen pull-right\' target=\'blank\'><i class=\'zicon-go-fullscreen\'></i></a>\n';
  } 
 ;__p+='\n\n';
- if( mode != 'editor' && social ) { 
+ if( mode != 'editor' && social  && chromeless == false) { 
 ;__p+='\n\t<a href=\'https://twitter.com/intent/tweet?original_referer='+
 ( url_base )+
 ''+
@@ -532,15 +540,19 @@ __p+='<div class=\'player-header player-overlay\'>\n\n';
 '\' class=\'share-facebook pull-right\' target=\'blank\'><i class=\'zitem-facebook zitem-30 loaded\'></i></a>\n';
  } 
 ;__p+='\n\n</div><!-- .player-header -->\n\n';
- if( branding ) { 
+ if( branding && chromeless == false ) { 
 ;__p+='\n<div class=\'player-zeega-icon player-overlay\'><a href=\''+
 ( url_base )+
 'user/'+
 ( user_id )+
 '\' target=\'blank\' class=\'zeega-user\'><i class=\'zitem-zeega00 zitem-30 loaded\'></i></a></div>\n';
  } 
-;__p+='\n\n<div id=\'preview-left\' class=\'hidden preview-nav-arrow preview-nav\'>\n\t<div class=\'arrow-background\'></div>\n</div>\n<div id=\'preview-right\' class=\'hidden preview-nav-arrow preview-nav\'>\n\t<div class=\'arrow-background\'></div>\n</div>\n<div id=\'preview-media\' ></div>\n<div id=\'loader-tray\' class=\'\'></div>\n\n';
- if( navbar_bottom ) { 
+;__p+='\n\n';
+ if( chromeless == false ) { 
+;__p+='\n\t<div id=\'preview-left\' class=\'hidden preview-nav-arrow preview-nav\'>\n\t\t<div class=\'arrow-background\'></div>\n\t</div>\n\t<div id=\'preview-right\' class=\'hidden preview-nav-arrow preview-nav\'>\n\t\t<div class=\'arrow-background\'></div>\n\t</div>\n\n';
+ } 
+;__p+='\n\n<div id=\'preview-media\' ></div>\n<div id=\'loader-tray\' class=\'\'></div>\n\n';
+ if( navbar_bottom && chromeless == false ) { 
 ;__p+='\n\t<div class=\'zeega-player-menu menu-bottom\'>"\n\t\t<div id=\'citation-tray\' class=\'player-overlay\'></div>\n\t';
  if( playerCitation ) { 
 ;__p+='}\n\t\t<div id=\'player-citation\' class=\'player-overlay\'>\n\t\t';
@@ -16569,6 +16581,666 @@ function($, _, Backbone) {
 
 });
 
+/* Modernizr 2.6.2 (Custom Build) | MIT & BSD
+ * Build: http://modernizr.com/download/#-applicationcache-canvas-canvastext-draganddrop-hashchange-history-audio-video-input-inputtypes-localstorage-postmessage-sessionstorage-websockets-websqldatabase-webworkers-geolocation-inlinesvg-smil-svg-svgclippaths-touch-webgl-shiv-mq-teststyles-hasevent-prefixes-domprefixes
+ */
+;
+
+
+
+window.Modernizr = (function( window, document, undefined ) {
+
+    var version = '2.6.2',
+
+    Modernizr = {},
+
+
+    docElement = document.documentElement,
+
+    mod = 'modernizr',
+    modElem = document.createElement(mod),
+    mStyle = modElem.style,
+
+    inputElem  = document.createElement('input')  ,
+
+    smile = ':)',
+
+    toString = {}.toString,
+
+    prefixes = ' -webkit- -moz- -o- -ms- '.split(' '),
+
+
+
+    omPrefixes = 'Webkit Moz O ms',
+
+    cssomPrefixes = omPrefixes.split(' '),
+
+    domPrefixes = omPrefixes.toLowerCase().split(' '),
+
+    ns = {'svg': 'http://www.w3.org/2000/svg'},
+
+    tests = {},
+    inputs = {},
+    attrs = {},
+
+    classes = [],
+
+    slice = classes.slice,
+
+    featureName, 
+
+
+    injectElementWithStyles = function( rule, callback, nodes, testnames ) {
+
+      var style, ret, node, docOverflow,
+          div = document.createElement('div'),
+                body = document.body,
+                fakeBody = body || document.createElement('body');
+
+      if ( parseInt(nodes, 10) ) {
+                      while ( nodes-- ) {
+              node = document.createElement('div');
+              node.id = testnames ? testnames[nodes] : mod + (nodes + 1);
+              div.appendChild(node);
+          }
+      }
+
+                style = ['&#173;','<style id="s', mod, '">', rule, '</style>'].join('');
+      div.id = mod;
+          (body ? div : fakeBody).innerHTML += style;
+      fakeBody.appendChild(div);
+      if ( !body ) {
+                fakeBody.style.background = '';
+                fakeBody.style.overflow = 'hidden';
+          docOverflow = docElement.style.overflow;
+          docElement.style.overflow = 'hidden';
+          docElement.appendChild(fakeBody);
+      }
+
+      ret = callback(div, rule);
+        if ( !body ) {
+          fakeBody.parentNode.removeChild(fakeBody);
+          docElement.style.overflow = docOverflow;
+      } else {
+          div.parentNode.removeChild(div);
+      }
+
+      return !!ret;
+
+    },
+
+    testMediaQuery = function( mq ) {
+
+      var matchMedia = window.matchMedia || window.msMatchMedia;
+      if ( matchMedia ) {
+        return matchMedia(mq).matches;
+      }
+
+      var bool;
+
+      injectElementWithStyles('@media ' + mq + ' { #' + mod + ' { position: absolute; } }', function( node ) {
+        bool = (window.getComputedStyle ?
+                  getComputedStyle(node, null) :
+                  node.currentStyle)['position'] == 'absolute';
+      });
+
+      return bool;
+
+     },
+ 
+
+    isEventSupported = (function() {
+
+      var TAGNAMES = {
+        'select': 'input', 'change': 'input',
+        'submit': 'form', 'reset': 'form',
+        'error': 'img', 'load': 'img', 'abort': 'img'
+      };
+
+      function isEventSupported( eventName, element ) {
+
+        element = element || document.createElement(TAGNAMES[eventName] || 'div');
+        eventName = 'on' + eventName;
+
+            var isSupported = eventName in element;
+
+        if ( !isSupported ) {
+                if ( !element.setAttribute ) {
+            element = document.createElement('div');
+          }
+          if ( element.setAttribute && element.removeAttribute ) {
+            element.setAttribute(eventName, '');
+            isSupported = is(element[eventName], 'function');
+
+                    if ( !is(element[eventName], 'undefined') ) {
+              element[eventName] = undefined;
+            }
+            element.removeAttribute(eventName);
+          }
+        }
+
+        element = null;
+        return isSupported;
+      }
+      return isEventSupported;
+    })(),
+
+
+    _hasOwnProperty = ({}).hasOwnProperty, hasOwnProp;
+
+    if ( !is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined') ) {
+      hasOwnProp = function (object, property) {
+        return _hasOwnProperty.call(object, property);
+      };
+    }
+    else {
+      hasOwnProp = function (object, property) { 
+        return ((property in object) && is(object.constructor.prototype[property], 'undefined'));
+      };
+    }
+
+
+    if (!Function.prototype.bind) {
+      Function.prototype.bind = function bind(that) {
+
+        var target = this;
+
+        if (typeof target != "function") {
+            throw new TypeError();
+        }
+
+        var args = slice.call(arguments, 1),
+            bound = function () {
+
+            if (this instanceof bound) {
+
+              var F = function(){};
+              F.prototype = target.prototype;
+              var self = new F();
+
+              var result = target.apply(
+                  self,
+                  args.concat(slice.call(arguments))
+              );
+              if (Object(result) === result) {
+                  return result;
+              }
+              return self;
+
+            } else {
+
+              return target.apply(
+                  that,
+                  args.concat(slice.call(arguments))
+              );
+
+            }
+
+        };
+
+        return bound;
+      };
+    }
+
+    function setCss( str ) {
+        mStyle.cssText = str;
+    }
+
+    function setCssAll( str1, str2 ) {
+        return setCss(prefixes.join(str1 + ';') + ( str2 || '' ));
+    }
+
+    function is( obj, type ) {
+        return typeof obj === type;
+    }
+
+    function contains( str, substr ) {
+        return !!~('' + str).indexOf(substr);
+    }
+
+
+    function testDOMProps( props, obj, elem ) {
+        for ( var i in props ) {
+            var item = obj[props[i]];
+            if ( item !== undefined) {
+
+                            if (elem === false) return props[i];
+
+                            if (is(item, 'function')){
+                                return item.bind(elem || obj);
+                }
+
+                            return item;
+            }
+        }
+        return false;
+    }    tests['canvas'] = function() {
+        var elem = document.createElement('canvas');
+        return !!(elem.getContext && elem.getContext('2d'));
+    };
+
+    tests['canvastext'] = function() {
+        return !!(Modernizr['canvas'] && is(document.createElement('canvas').getContext('2d').fillText, 'function'));
+    };
+
+
+
+    tests['webgl'] = function() {
+        return !!window.WebGLRenderingContext;
+    };
+
+
+    tests['touch'] = function() {
+        var bool;
+
+        if(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+          bool = true;
+        } else {
+          injectElementWithStyles(['@media (',prefixes.join('touch-enabled),('),mod,')','{#modernizr{top:9px;position:absolute}}'].join(''), function( node ) {
+            bool = node.offsetTop === 9;
+          });
+        }
+
+        return bool;
+    };
+
+
+
+    tests['geolocation'] = function() {
+        return 'geolocation' in navigator;
+    };
+
+
+    tests['postmessage'] = function() {
+      return !!window.postMessage;
+    };
+
+
+    tests['websqldatabase'] = function() {
+      return !!window.openDatabase;
+    };
+
+
+    tests['hashchange'] = function() {
+      return isEventSupported('hashchange', window) && (document.documentMode === undefined || document.documentMode > 7);
+    };
+
+    tests['history'] = function() {
+      return !!(window.history && history.pushState);
+    };
+
+    tests['draganddrop'] = function() {
+        var div = document.createElement('div');
+        return ('draggable' in div) || ('ondragstart' in div && 'ondrop' in div);
+    };
+
+    tests['websockets'] = function() {
+        return 'WebSocket' in window || 'MozWebSocket' in window;
+    };
+
+
+
+    tests['video'] = function() {
+        var elem = document.createElement('video'),
+            bool = false;
+
+            try {
+            if ( bool = !!elem.canPlayType ) {
+                bool      = new Boolean(bool);
+                bool.ogg  = elem.canPlayType('video/ogg; codecs="theora"')      .replace(/^no$/,'');
+
+                            bool.h264 = elem.canPlayType('video/mp4; codecs="avc1.42E01E"') .replace(/^no$/,'');
+
+                bool.webm = elem.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/^no$/,'');
+            }
+
+        } catch(e) { }
+
+        return bool;
+    };
+
+    tests['audio'] = function() {
+        var elem = document.createElement('audio'),
+            bool = false;
+
+        try {
+            if ( bool = !!elem.canPlayType ) {
+                bool      = new Boolean(bool);
+                bool.ogg  = elem.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/,'');
+                bool.mp3  = elem.canPlayType('audio/mpeg;')               .replace(/^no$/,'');
+
+                                                    bool.wav  = elem.canPlayType('audio/wav; codecs="1"')     .replace(/^no$/,'');
+                bool.m4a  = ( elem.canPlayType('audio/x-m4a;')            ||
+                              elem.canPlayType('audio/aac;'))             .replace(/^no$/,'');
+            }
+        } catch(e) { }
+
+        return bool;
+    };
+
+
+    tests['localstorage'] = function() {
+        try {
+            localStorage.setItem(mod, mod);
+            localStorage.removeItem(mod);
+            return true;
+        } catch(e) {
+            return false;
+        }
+    };
+
+    tests['sessionstorage'] = function() {
+        try {
+            sessionStorage.setItem(mod, mod);
+            sessionStorage.removeItem(mod);
+            return true;
+        } catch(e) {
+            return false;
+        }
+    };
+
+
+    tests['webworkers'] = function() {
+        return !!window.Worker;
+    };
+
+
+    tests['applicationcache'] = function() {
+        return !!window.applicationCache;
+    };
+
+
+    tests['svg'] = function() {
+        return !!document.createElementNS && !!document.createElementNS(ns.svg, 'svg').createSVGRect;
+    };
+
+    tests['inlinesvg'] = function() {
+      var div = document.createElement('div');
+      div.innerHTML = '<svg/>';
+      return (div.firstChild && div.firstChild.namespaceURI) == ns.svg;
+    };
+
+    tests['smil'] = function() {
+        return !!document.createElementNS && /SVGAnimate/.test(toString.call(document.createElementNS(ns.svg, 'animate')));
+    };
+
+
+    tests['svgclippaths'] = function() {
+        return !!document.createElementNS && /SVGClipPath/.test(toString.call(document.createElementNS(ns.svg, 'clipPath')));
+    };
+
+    function webforms() {
+                                            Modernizr['input'] = (function( props ) {
+            for ( var i = 0, len = props.length; i < len; i++ ) {
+                attrs[ props[i] ] = !!(props[i] in inputElem);
+            }
+            if (attrs.list){
+                                  attrs.list = !!(document.createElement('datalist') && window.HTMLDataListElement);
+            }
+            return attrs;
+        })('autocomplete autofocus list placeholder max min multiple pattern required step'.split(' '));
+                            Modernizr['inputtypes'] = (function(props) {
+
+            for ( var i = 0, bool, inputElemType, defaultView, len = props.length; i < len; i++ ) {
+
+                inputElem.setAttribute('type', inputElemType = props[i]);
+                bool = inputElem.type !== 'text';
+
+                                                    if ( bool ) {
+
+                    inputElem.value         = smile;
+                    inputElem.style.cssText = 'position:absolute;visibility:hidden;';
+
+                    if ( /^range$/.test(inputElemType) && inputElem.style.WebkitAppearance !== undefined ) {
+
+                      docElement.appendChild(inputElem);
+                      defaultView = document.defaultView;
+
+                                        bool =  defaultView.getComputedStyle &&
+                              defaultView.getComputedStyle(inputElem, null).WebkitAppearance !== 'textfield' &&
+                                                                                  (inputElem.offsetHeight !== 0);
+
+                      docElement.removeChild(inputElem);
+
+                    } else if ( /^(search|tel)$/.test(inputElemType) ){
+                                                                                    } else if ( /^(url|email)$/.test(inputElemType) ) {
+                                        bool = inputElem.checkValidity && inputElem.checkValidity() === false;
+
+                    } else {
+                                        bool = inputElem.value != smile;
+                    }
+                }
+
+                inputs[ props[i] ] = !!bool;
+            }
+            return inputs;
+        })('search tel url email datetime date month week time datetime-local number range color'.split(' '));
+        }
+    for ( var feature in tests ) {
+        if ( hasOwnProp(tests, feature) ) {
+                                    featureName  = feature.toLowerCase();
+            Modernizr[featureName] = tests[feature]();
+
+            classes.push((Modernizr[featureName] ? '' : 'no-') + featureName);
+        }
+    }
+
+    Modernizr.input || webforms();
+
+
+     Modernizr.addTest = function ( feature, test ) {
+       if ( typeof feature == 'object' ) {
+         for ( var key in feature ) {
+           if ( hasOwnProp( feature, key ) ) {
+             Modernizr.addTest( key, feature[ key ] );
+           }
+         }
+       } else {
+
+         feature = feature.toLowerCase();
+
+         if ( Modernizr[feature] !== undefined ) {
+                                              return Modernizr;
+         }
+
+         test = typeof test == 'function' ? test() : test;
+
+         if (typeof enableClasses !== "undefined" && enableClasses) {
+           docElement.className += ' ' + (test ? '' : 'no-') + feature;
+         }
+         Modernizr[feature] = test;
+
+       }
+
+       return Modernizr; 
+     };
+
+
+    setCss('');
+    modElem = inputElem = null;
+
+    ;(function(window, document) {
+        var options = window.html5 || {};
+
+        var reSkip = /^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i;
+
+        var saveClones = /^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i;
+
+        var supportsHtml5Styles;
+
+        var expando = '_html5shiv';
+
+        var expanID = 0;
+
+        var expandoData = {};
+
+        var supportsUnknownElements;
+
+      (function() {
+        try {
+            var a = document.createElement('a');
+            a.innerHTML = '<xyz></xyz>';
+                    supportsHtml5Styles = ('hidden' in a);
+
+            supportsUnknownElements = a.childNodes.length == 1 || (function() {
+                        (document.createElement)('a');
+              var frag = document.createDocumentFragment();
+              return (
+                typeof frag.cloneNode == 'undefined' ||
+                typeof frag.createDocumentFragment == 'undefined' ||
+                typeof frag.createElement == 'undefined'
+              );
+            }());
+        } catch(e) {
+          supportsHtml5Styles = true;
+          supportsUnknownElements = true;
+        }
+
+      }());        function addStyleSheet(ownerDocument, cssText) {
+        var p = ownerDocument.createElement('p'),
+            parent = ownerDocument.getElementsByTagName('head')[0] || ownerDocument.documentElement;
+
+        p.innerHTML = 'x<style>' + cssText + '</style>';
+        return parent.insertBefore(p.lastChild, parent.firstChild);
+      }
+
+        function getElements() {
+        var elements = html5.elements;
+        return typeof elements == 'string' ? elements.split(' ') : elements;
+      }
+
+          function getExpandoData(ownerDocument) {
+        var data = expandoData[ownerDocument[expando]];
+        if (!data) {
+            data = {};
+            expanID++;
+            ownerDocument[expando] = expanID;
+            expandoData[expanID] = data;
+        }
+        return data;
+      }
+
+        function createElement(nodeName, ownerDocument, data){
+        if (!ownerDocument) {
+            ownerDocument = document;
+        }
+        if(supportsUnknownElements){
+            return ownerDocument.createElement(nodeName);
+        }
+        if (!data) {
+            data = getExpandoData(ownerDocument);
+        }
+        var node;
+
+        if (data.cache[nodeName]) {
+            node = data.cache[nodeName].cloneNode();
+        } else if (saveClones.test(nodeName)) {
+            node = (data.cache[nodeName] = data.createElem(nodeName)).cloneNode();
+        } else {
+            node = data.createElem(nodeName);
+        }
+
+                                    return node.canHaveChildren && !reSkip.test(nodeName) ? data.frag.appendChild(node) : node;
+      }
+
+        function createDocumentFragment(ownerDocument, data){
+        if (!ownerDocument) {
+            ownerDocument = document;
+        }
+        if(supportsUnknownElements){
+            return ownerDocument.createDocumentFragment();
+        }
+        data = data || getExpandoData(ownerDocument);
+        var clone = data.frag.cloneNode(),
+            i = 0,
+            elems = getElements(),
+            l = elems.length;
+        for(;i<l;i++){
+            clone.createElement(elems[i]);
+        }
+        return clone;
+      }
+
+        function shivMethods(ownerDocument, data) {
+        if (!data.cache) {
+            data.cache = {};
+            data.createElem = ownerDocument.createElement;
+            data.createFrag = ownerDocument.createDocumentFragment;
+            data.frag = data.createFrag();
+        }
+
+
+        ownerDocument.createElement = function(nodeName) {
+                if (!html5.shivMethods) {
+              return data.createElem(nodeName);
+          }
+          return createElement(nodeName, ownerDocument, data);
+        };
+
+        ownerDocument.createDocumentFragment = Function('h,f', 'return function(){' +
+          'var n=f.cloneNode(),c=n.createElement;' +
+          'h.shivMethods&&(' +
+                    getElements().join().replace(/\w+/g, function(nodeName) {
+              data.createElem(nodeName);
+              data.frag.createElement(nodeName);
+              return 'c("' + nodeName + '")';
+            }) +
+          ');return n}'
+        )(html5, data.frag);
+      }        function shivDocument(ownerDocument) {
+        if (!ownerDocument) {
+            ownerDocument = document;
+        }
+        var data = getExpandoData(ownerDocument);
+
+        if (html5.shivCSS && !supportsHtml5Styles && !data.hasCSS) {
+          data.hasCSS = !!addStyleSheet(ownerDocument,
+                    'article,aside,figcaption,figure,footer,header,hgroup,nav,section{display:block}' +
+                    'mark{background:#FF0;color:#000}'
+          );
+        }
+        if (!supportsUnknownElements) {
+          shivMethods(ownerDocument, data);
+        }
+        return ownerDocument;
+      }        var html5 = {
+
+            'elements': options.elements || 'abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup mark meter nav output progress section summary time video',
+
+            'shivCSS': (options.shivCSS !== false),
+
+            'supportsUnknownElements': supportsUnknownElements,
+
+            'shivMethods': (options.shivMethods !== false),
+
+            'type': 'default',
+
+            'shivDocument': shivDocument,
+
+            createElement: createElement,
+
+            createDocumentFragment: createDocumentFragment
+      };        window.html5 = html5;
+
+        shivDocument(document);
+
+    }(this, document));
+
+    Modernizr._version      = version;
+
+    Modernizr._prefixes     = prefixes;
+    Modernizr._domPrefixes  = domPrefixes;
+    Modernizr._cssomPrefixes  = cssomPrefixes;
+
+    Modernizr.mq            = testMediaQuery;
+
+    Modernizr.hasEvent      = isEventSupported;    Modernizr.testStyles    = injectElementWithStyles;
+    return Modernizr;
+
+})(this, this.document);
+;
+define("libs/modernizr", function(){});
+
 define('zeega_layers/_layer/_layer',[
   //"zeega",
   "backbone",
@@ -28327,27 +28999,617 @@ function(zeega, Backbone, _Layer, Player){
 	return Layer;
 
 });
+define('zeega_layers/audio/audio',[
+  "zeega",
+  "backbone",
+  'zeega_layers/_layer/_layer',
+  'zeega_media_players/plyr'
+],
+
+function(zeega, Backbone, _Layer, Player){
+
+	var Layer = zeega.module();
+
+	Layer.Audio = _Layer.extend({
+		
+		layerType : 'Audio',
+
+		defaultAttributes : 
+		{
+			'title' : 'Audio Layer',
+			'url' : 'none',
+			'left' : 0,
+			'top' : 0,
+			'height' : 100,
+			'width' : 100,
+			'volume' : 0.5,
+			'cue_in'  : 0,
+			'cue_out' : null,
+			'fade_in'  : 0,
+			'fade_out' : 0,
+			'opacity':1,
+			'dimension':1.5,
+			'citation':true,
+		}
+		
+	});
+	
+	/*
+	Layer.Views.Controls.Audio = Layer.Views.Controls.Video.extend({
+		
+			render : function()
+			{
+
+				var playbackControls = new Layer.Views.Lib.Target({
+					model : this.model
+				});
+
+				var volumeSlider = new Layer.Views.Lib.Slider({
+					property : 'volume',
+					model: this.model,
+					label : 'Volume',
+					min : 0,
+					max : 1,
+					step : 0.01,
+					css : false
+				});
+				
+							
+			var fadeInSlider = new Layer.Views.Lib.Slider({
+				property : 'fade_in',
+				model: this.model,
+				label : 'Fade In (sec)',
+				min : 0,
+				max :5,
+				step : 0.1,
+				css : false
+			});
+			
+			
+			var fadeOutSlider = new Layer.Views.Lib.Slider({
+				property : 'fade_out',
+				model: this.model,
+				label : 'Fade Out (sec)',
+				min : 0,
+				max : 5,
+				step : 0.1,
+				css : false
+			});
+
+				this.controls
+					.append( playbackControls.getControl() )
+					.append( volumeSlider.getControl() )
+					.append( fadeInSlider.getControl() )
+					.append( fadeOutSlider.getControl() );
+					
+				return this;
+
+			}
+		
+	});
+	*/
+	Layer.Audio.Visual = _Layer.Visual.extend({
+		draggable : false,
+		linkable : false,
+		render : function(){ return this },
+	});
+
+	return Layer;
+
+});
+define('zeega_layers/link/link',[
+  "zeega",
+  "backbone",
+  'zeega_layers/_layer/_layer',
+  'zeega_media_players/plyr'
+],
+
+function(zeega, Backbone, _Layer, Player){
+
+	var Layer = zeega.module();
+
+	Layer.Link = _Layer.extend({
+
+		layerType : 'Link',
+		layerPanel : $('#links-list'),
+		hasControls : false,
+		defaultControls : false,
+		displayCitation : false,
+		
+		
+		
+		defaultAttributes : {
+			'title' : 'Link Layer',
+			'to_sequence' : null,
+			'from_sequence' : null,
+			'to_frame' : null,
+			'from_frame' : null,
+			'left' : 25,
+			'top' : 25,
+			'height' : 50,
+			'width' : 50
+		},
+		
+		init : function(options)
+		{
+			//check to see if link layer is broken
+			/*
+			var a = this.get('attr');
+			if( !_.isNull(a.from_frame) || !_.isNull(a.from_sequencee) || !_.isNull(a.to_frame) || !_.isNull(a.to_sequence) )
+			{
+				console.log('link layer is broken! delete meeee!')
+				this.destroy();
+			}
+			*/
+		},
+		
+		setToFrame : function(sequenceID, frameID)
+		{
+			this.get('attr').to_sequence = sequenceID;
+			this.get('attr').to_frame = frameID;
+			this.get('attr').title = 'Link to sequence '+sequenceID;
+			this.save();
+		}
+		
+	});
+	
+	/*
+	Layer.Views.Controls.Link = Layer.Views.Controls.extend({
+		
+		onLayerEnter : function()
+		{
+			var layerIndex = this.model.layerIndex || this.model.layerColor.length;
+			
+			$(this.el).find('.zicon-link').css({'background-color': this.model.layerColor[( layerIndex % this.model.layerColor.length )] })
+			if(this.model.get('attr').to_frame == zeega.app.currentFrame.id)
+			{
+				this.remove();
+			}
+		},
+		
+		render : function()
+		{
+			return this;
+		}
+		
+	});
+*/
+	Layer.Link.Visual = _Layer.Visual.extend({
+		
+		preview : true,
+		
+		init : function()
+		{
+			//this.preview = zeega.app.previewMode;
+		},
+		
+		render : function()
+		{
+			var _this = this;
+			
+			
+			var style = {
+				'height' : this.model.get('attr').height +'%',
+				'cursor' : 'pointer',
+				'z-index' : 100
+			}
+			
+
+				this.delegateEvents({'click':'goClick'})
+				//$(this.el).addClass('go-to-sequence')
+			
+			if(this.model.get('attr').link_type == 'arrow_left')
+				this.$el.html( this.getTemplate_ArrowLeft() ).css( style );
+			else if(this.model.get('attr').link_type == 'arrow_right')
+				this.$el.html( this.getTemplate_ArrowRight() ).css( style );
+			else if(this.model.get('attr').link_type == 'arrow_up')
+				this.$el.html( this.getTemplate_ArrowUp() ).css( style );
+			else
+			{
+				if(!this.preview )
+				{
+					_.extend( style, {
+						'height' : this.model.get('attr').height +'%',
+						'width' : this.model.get('attr').width +'%',
+						'border' : '2px dashed orangered',
+						'border-radius' : '6px'
+					})
+				}
+				this.$el.html( this.getTemplate_Rectangle() ).css( style ).addClass('linked-layer');
+			}
+
+			return this;
+		},
+		
+		events : {
+			'click .go-to-sequence' : 'goToSequenceFrame',
+			'click .delete-link' : 'deleteLink',
+			'mousedown .show-controls' : 'showControls'
+		},
+		
+		goClick : function()
+		{
+			console.log('click link',this);
+			zeega.player.project.goToFrame(this.model.get('attr').to_frame);
+		},
+		
+		goToSequenceFrame : function()
+		{
+			if(zeega.app.previewMode) zeega.app.project.goToFrame(this.model.get('attr').to_frame);
+			else zeega.app.router.navigate("editor/sequence/"+this.model.get('attr').to_sequence+"/frame/"+this.model.get('attr').to_frame,{trigger:true})
+		},
+		
+		deleteLink : function(e)
+		{
+			if( confirm('delete link?') )
+			{
+				this.model.trigger('editor_removeLayerFromFrame', this.model);
+				this.remove();
+			}
+		},
+		
+		showControls : function(e)
+		{
+			
+		},
+		
+		onLayerEnter : function()
+		{
+			var _this = this;
+			this.$el.resizable({
+				stop: function(e,ui)
+				{
+					_this.model.update({
+						'width' : $(this).width() / $(this).parent().width() * 100,
+						'height' : $(this).height() / $(this).parent().height() * 100
+					})
+				}
+			})
+			this.delegateEvents();
+		},
+		
+		onPlay : function()
+		{
+			this.render();
+			/*
+			if(this.model.get('attr').to_frame == zeega.app.player.currentFrame.id)
+				this.moveOffStage()
+			*/
+			this.delegateEvents({'click':'goClick'})
+		},
+		
+		getTemplate_Rectangle : function()
+		{
+			var html = '';
+				if( !this.preview && !_.isNull( this.model.get('attr').to_sequence ) ) html += '<i class="icon-share go-to-sequence"></i>';		
+			return html;
+		},
+		getTemplate_ArrowRight : function()
+		{
+			return  '<img src="../../../images/link_arrow-right.png"/>';
+		},
+		getTemplate_ArrowLeft : function()
+		{
+			return  '<img src="../../../images/link_arrow-left.png"/>';
+		},
+		getTemplate_ArrowUp : function()
+		{
+			return  '<img src="../../../images/link_arrow-up.png"/>';
+		},
+		getTemplate_ArrowDown : function()
+		{
+			return  '<img src="../../../images/link_arrow-down.png"/>';
+		}
+		
+		
+	});
+	
+	return Layer;
+
+});
+define('zeega_layers/popup/popup',[
+  "zeega",
+  "backbone",
+  'zeega_layers/_layer/_layer',
+  'zeega_media_players/plyr'
+],
+
+function(zeega, Backbone, _Layer, Player){
+
+	var Layer = zeega.module();
+
+	Layer.Popup = _Layer.extend({
+			
+		layerType : 'Popup',
+
+		hasControls : true,
+		defaultControls : false,
+		displayCitation : false,
+
+		defaultAttributes : {
+			'title' : 'Popup Layer',
+			'url' : 'none',
+			'left' : 0,
+			'top' : 0,
+			'height' : 25,
+			'width' : 25,
+			'opacity':1,
+			'citation':false,
+			'linkable' : false
+		}
+
+	});
+	
+	/*
+	Layer.Views.Controls.Popup = Layer.Views.Controls.extend({
+		
+		render : function()
+		{
+
+			// needs two droppables
+			// one for the popup item
+			// one for the trigger image
+			var popupContentDrop = new Layer.Views.Lib.Droppable({
+				model: this.model,
+				attribute: 'popup_content',
+				label : 'Media to Show'
+			});
+			var popupTargettDrop = new Layer.Views.Lib.Droppable({
+				model: this.model,
+				attribute: 'popup_target',
+				label : 'Media Target to Show'
+			});
+			var opacitySlider = new Layer.Views.Lib.Slider({
+				property : 'opacity',
+				model: this.model,
+				label : 'Target Opacity',
+				step : 0.01,
+				min : 0,
+				max : 1,
+			});
+			
+			$(this.controls)
+				.append( popupContentDrop.getControl() )
+				.append( popupTargettDrop.getControl() )
+				.append( opacitySlider.getControl() );
+			return this;
+		
+		}
+		
+	});
+*/
+
+	Layer.Popup.Visual = _Layer.Visual.extend({
+		
+		draggable : true,
+		
+		template : '<a href="#"></a>',
+
+		init : function()
+		{
+			//this.model.on('all', function(e){console.log('e',e)})
+			this.model.on('update', this.onUpdate, this);
+		},
+
+		render : function()
+		{
+			this.$el.html( _.template(this.template, this.model.toJSON() ) )
+				.css({
+					height : this.model.get('attr').height +'%',
+					'border' : 'none',
+					'height' : this.model.get('attr').height +'%',
+					'border-radius' : '0',
+				});
+
+			if( this.model.get('attr').popup_target )
+			{
+				this.$('a').html('<img src="'+ this.model.get('attr').popup_target.uri  +'" height="100%" width="100%"/>');
+			}
+			else
+			{
+				
+				this.$el.css({
+					'width' : this.model.get('attr').width +'%',
+					'border' : '2px dashed orangered',
+					'border-radius' : '6px',
+					'height' : '25%'
+				})
+
+			}
+			return this;
+		},
+
+		onUpdate : function()
+		{
+			this.$el.resizable('destroy');
+			this.render();
+			this.makeResizable();
+		},
+
+		makeResizable : function()
+		{
+			var _this = this;
+			this.$el.resizable({
+				handles: 'all',
+				stop : function()
+				{
+					var attr = {
+						'width' : $(this).width() / $(this).parent().width() * 100,
+						'height' : $(this).height() / $(this).parent().height() * 100
+					};
+					console.log('save attr', attr);
+					_this.model.update(attr);
+				}
+			});
+		},
+
+		events : {
+			'click' : 'onClick'
+		},
+
+		onClick : function()
+		{
+			console.log('popup clicked');
+			//launch overlay
+			if( zeega.app.previewMode )
+				this.popup = new Layer.Views.Visual.Popup.Modal({model:this.model});
+
+
+			return false;
+		},
+
+		onLayerEnter: function()
+		{
+			this.makeResizable();
+
+		},
+
+		onExit : function()
+		{
+			if(this.popup) this.popup.cleanup()
+		},
+		
+		onPreload : function()
+		{
+			
+/*
+			var img = this.$el.imagesLoaded();
+			img.done(function(){
+				_this.model.trigger('ready',_this.model.id);
+			});
+			img.fail(function(){
+				_this.model.trigger('error',_this.model.id);
+			});
+*/
+			this.model.trigger('ready',this.model.id);
+		}
+	});
+
+
+	Layer.Popup.Visual.Modal = Backbone.View.extend({
+		className : 'popup-layer-modal',
+
+		initialize : function()
+		{
+
+			var Model = Backbone.Model.extend();
+			this.contentModel = new Model( this.model.get('attr').popup_content );
+			this.contentModel.set('attr', this.model.get('attr').popup_content ); // redundant. this should be changed later
+
+
+			console.log('popupview init', this)
+			$('body').append(this.render().el)
+			this.afterRender();
+		},
+
+		render : function()
+		{
+			console.log('render',this)
+			var style = {
+				//background: 'rgba(255,255,255,0.25)',
+				width: '1000px',
+				height: '500px',
+				'z-index': 10000,
+				position: 'relative',
+				margin: '50px auto',
+				overflow: 'hidden'
+			};
+			this.$el.html(this.template());
+			console.log( this.template() );
+			this.$('.popup-target').css(style);
+
+			// image
+			if(this.contentModel.get('media_type') == 'Image')
+			{
+				this.$('.popup-target').html('<img src="'+ this.contentModel.get('uri') +'" width="100%"/>');
+			}
+			// video
+			else if(this.contentModel.get('media_type') == 'Video')
+			{
+				var Player = zeega.module('player');
+				this.player = new Player.Views.Player({
+					model: this.contentModel,
+					control_mode : 'standard',
+					media_target : '.popup-target'
+				});
+				this.player.model.on('ready', function(){_this.player.play()})
+				//this.$('.popup-target').html('<img src="'+ this.contentModel.get('uri') +'"/>');
+			}
+
+			return this;
+		},
+
+		afterRender : function()
+		{
+			if(this.contentModel.get('media_type') == 'Video')
+			{
+				this.$('.popup-target').html( this.player.render().el );
+				this.player.placePlayer();
+			}
+		},
+
+		cleanup : function()
+		{
+			if(this.player)
+			{
+				this.player.pause();
+				this.player.destroy();
+			}
+			this.remove();
+		},
+
+		events : {
+			'click' : 'onClick'
+		},
+
+		onClick : function()
+		{
+			this.cleanup();
+			this.remove();
+			return false
+		},
+
+		template : function()
+		{
+			html = '<div class="popup-target"></div>';
+			return html;
+
+		}
+	})
+
+	return Layer;
+
+});
 var layerTypes = [
 	'image',
 	'rectangle',
 	'text',
-	'video'
+	'video',
+	'audio',
+	'link',
+	'popup'
 ];
 
 define('zeega_base/player/plugins.layers',[
 	'zeega_layers/image/image',
 	'zeega_layers/rectangle/rectangle',
 	'zeega_layers/text/text',
-	'zeega_layers/video/video'
+	'zeega_layers/video/video',
+	'zeega_layers/audio/audio',
+	'zeega_layers/link/link',
+	'zeega_layers/popup/popup'
 ],
 	function(
 		image,
 		rectangle,
 		text,
-		video
+		video,
+		audio,
+		link,
+		popup
 	)
 	{
-		eval('var Plugins = _.extend('+layerTypes.toString()+')');
+		eval('var Plugins = _.extend('+ layerTypes.toString() +')');
 		return Plugins;
 	}
 );
@@ -28388,6 +29650,7 @@ function(zeega, Backbone, Layers){
 
 		load : function()
 		{
+			console.log('layer load', this);
 			this.typeModel = new Layers[this.get('type')]({parent:this});
 			this.typeVisual = new Layers[this.get('type')].Visual({model:this, attributes:{
 				id: 'layer-visual-'+this.id,
@@ -28938,6 +30201,7 @@ function(Zeega, Backbone, Layer) {
 		defaults : {
 			appName : null,
 			branding : true,
+			chromeless : false,
 			fadeOutOverlays : true,
 			frameID : null,
 			fullscreenEnabled : true,
@@ -28947,7 +30211,7 @@ function(Zeega, Backbone, Layer) {
             navbar_bottom : true,
             navbar_top : true,
  			playerCitation : false,
-			social : true,
+			social : true
 		},
 
 		play : function()
@@ -29017,13 +30281,50 @@ function(Zeega, Backbone, Layer) {
 		},
 
 
+		/*********
+
+			API fxns
+
+		************/
 
 		playPause : function()
 		{
 			console.log('zeega player  play pause', this)
 			this.project.playPause();
-		}
+		},
 
+		pause : function()
+		{
+			this.project.pause();
+		},
+
+		next : function()
+		{
+			this.project.goRight();
+		},
+
+		prev : function()
+		{
+			this.project.goLeft();
+		},
+
+		getSize : function()
+		{
+			var _this = this;
+			var playerView = this.project.layout.getView(function(view){ return view.model === _this.project });
+			var size = {
+				height : playerView.$('#preview-media').height(),
+				width : playerView.$('#preview-media').width()
+			};
+			return size;
+		},
+
+		getPosition : function()
+		{
+			var _this = this;
+			var playerView = this.project.layout.getView(function(view){ return view.model === _this.project });
+			return playerView.$('#preview-media').position();
+		}
 
 	})
 
@@ -29148,6 +30449,16 @@ function(Zeega, Backbone, Layer) {
 			if( this.currentFrame.after ) this.goToFrame( this.currentFrame.after );
 		},
 
+		play : function()
+		{
+
+		},
+
+		pause : function()
+		{
+
+		},
+
 		/*
 			play and pause layer media
 			also will pick up and reset the timer for layers that have advance attributes set.
@@ -29174,6 +30485,7 @@ function(Zeega, Backbone, Layer) {
 			}
 			this.currentFrame.playPause();
 		},
+
 		
 		setFrameAdvance : function( id )
 		{
@@ -29538,7 +30850,8 @@ function(Zeega, Backbone, Layer) {
 
 		isFullscreen : false,
 		overlaysVisible : true,
-		viewportRatio : 1.5,
+		viewportRatio : 4/3,
+		viewportFull : true,
 
 		id : 'zeega-player',
 
@@ -29579,7 +30892,7 @@ function(Zeega, Backbone, Layer) {
 			window.onresize = function(event)
 			{
 				//constrain proportions in player
-				_this.$('#preview-media').clearQueue().animate( _this.getWindowSize() ,500 );
+				_this.$('#preview-media').clearQueue().animate( _this.getWindowSize() ,500, function(){_this.model.trigger('preview_resize');} );
 			}
 
 			if( Zeega.player.get('fadeOutOverlays') )
@@ -29602,15 +30915,31 @@ function(Zeega, Backbone, Layer) {
 			var viewHeight = window.innerHeight;
 
 			var initial_size = {};
-			if( viewWidth / viewHeight > this.viewportRatio )
+			if(this.viewportFull)
 			{
-				initial_size.height = viewHeight +'px';
-				initial_size.width = viewHeight * this.viewportRatio +'px'
+				if(viewWidth / viewHeight > this.viewportRatio)
+				{
+					initial_size.height = (viewWidth / this.viewportRatio)  +'px'; // 4/3
+					initial_size.width = viewWidth +'px';
+				}
+				else
+				{
+					initial_size.height = viewHeight  +'px'; // 4/3
+					initial_size.width = viewHeight * this.viewportRatio +'px';
+				}
 			}
 			else
 			{
-				initial_size.height = viewWidth / this.viewportRatio +'px';
-				initial_size.width = viewWidth +'px'
+				if( viewWidth / viewHeight > this.viewportRatio )
+				{
+					initial_size.height = viewHeight +'px';
+					initial_size.width = viewHeight * this.viewportRatio +'px'
+				}
+				else
+				{
+					initial_size.height = viewWidth / this.viewportRatio +'px';
+					initial_size.width = viewWidth +'px'
+				}
 			}
 			return initial_size;
 		},
@@ -29863,6 +31192,7 @@ define('modules/planet-takeout',[
   "zeega",
   // Libs
   "backbone",
+  'libs/modernizr',
   // Plugins
   'zeega_player',
   'libs/leaflet'
@@ -29879,7 +31209,7 @@ function(Zeega, Backbone) {
 
   App.Model = Backbone.Model.extend({
 
-    url : 'http://dev.zeega.org/joseph/web/api/projects/1316',
+    url : 'http://alpha.zeega.org/api/projects/1661',
 
     defaults : {
       //appName : 'wayfinder',
@@ -29938,8 +31268,8 @@ function(Zeega, Backbone) {
 
   });
 
+  // model for new takeout data (via 'participate')
   App.NewTakeoutModel = Backbone.Model.extend({
-    // model for new takeout data (via 'participate')
   });
 
 
@@ -29980,6 +31310,7 @@ function(Zeega, Backbone) {
       console.log('close modal');
       this.remove();
       //Zeega.router.navigate('/',{trigger:true})
+      return false;
     },
 
     initialize : function(opts)
@@ -30033,16 +31364,54 @@ function(Zeega, Backbone) {
     template: 'about'
   });
 
+  /**********************
+
+        PARTICIPATE
+
+  ***********************/
+
   App.Views.Participate = App.Views._Page.extend({
     template: 'participate-0',
     events: {
+      'click ul.participate-tabs-head li': 'switchTab',
+      'click ul.info-tab-icons li': 'switchInfoTab',
       'click #findTakeout': 'geoLookup',
       'click #savePov': 'saveStreetView'
     },
     initialize: function() {
-      _.bindAll(this, 'render', 'geoLookup', 'processGeocodeResults');
+      _.bindAll(this, 'render', 'geoLookup', 'processGeocodeResults', 'showStreetView', 'saveStreetView');
       this.newTakeout = new App.NewTakeoutModel();
       this.geocoder = new google.maps.Geocoder();
+    },
+    switchTab: function(e) {
+      var clicked = $(e.target);
+      clicked
+        .addClass('active')
+        .siblings().removeClass('active');
+
+      $(this.el)
+        .find('.participate-tab')
+        .eq(clicked.index()).show()
+        .siblings('.participate-tab').hide();
+    },
+    switchInfoTab: function(e) {
+        var clicked = $(e.target),
+            defaultTab = $(e.target).parent().siblings('.info-tab.default'),
+            tabs = $(e.target).parent().siblings('.info-tab.media');
+
+        if (clicked.hasClass('active')) {
+          clicked.removeClass('active');
+          tabs.hide();
+          defaultTab.show();
+        } else {
+          clicked
+            .addClass('active')
+            .siblings().removeClass('active');
+          tabs
+            .eq(clicked.index()).show()
+            .siblings('.info-tab').hide();
+        }
+
     },
     geoLookup: function() {
       var nameField = $(this.el).find('#takeoutName').val(),
@@ -30094,7 +31463,10 @@ function(Zeega, Backbone) {
     },
     saveStreetView: function() {
       this.newTakeout.set('streetViewPov', this.newTakeoutStreetView.pov);
-      console.log(this.newTakeout);
+      $(this.el)
+        .find('#stepTwo').hide()
+        .siblings('#thanks').show()
+        .find('#takeoutName').text( this.newTakeout.get('takeoutName') );
     }
   });
 
@@ -30225,7 +31597,6 @@ function(Zeega, Backbone) {
     {
       var html = 
 
-        '<a href="#" class="heart"><img src="assets/img/icon-heart-white-sm.png" width="30px"/></a>'+
         '<a href="/collections/<%= id %>/view" class="enter"><img src="assets/img/arrow-straight.png" width="40px"/></a>';        
 
       return html;
@@ -30341,7 +31712,12 @@ function(Zeega, Backbone) {
 
   App.Layouts.CitationDrawerLayout = Backbone.Layout.extend({
     template: "citation-drawer-layout",
-    id: 'citation-drawer'
+    id: 'citation-drawer',
+
+    afterRender : function()
+    {
+       $('.citation-wrapper').css({ width : Zeega.player.getSize().width +'px' });
+    }
 
   });
 
@@ -30370,6 +31746,31 @@ function(Zeega, Backbone) {
     },
 
     serialize : function(){ return this.model.toJSON(); }
+  });
+
+  App.Views.NavControls = Backbone.LayoutView.extend({
+    template : 'player-navigation',
+    className : '',
+
+    initialize : function()
+    {
+    },
+
+    events : {
+      'click #PT-preview-left' : 'goLeft',
+      'click #PT-preview-right' : 'goRight'
+    },
+    goLeft : function()
+    {
+      Zeega.player.prev();
+      return false;
+    },
+    goRight : function()
+    {
+      Zeega.player.next();
+      return false;
+    }
+
   });
 
 
@@ -30455,34 +31856,33 @@ function(Zeega, App) {
     index: function()
     {
       initialize();
-      var player = new App.Model();  
-      console.log(Zeega.player);
+      var player = new App.Model(); 
     },
 
     about : function()
     {
       console.log('go to about');
-      initialize();
+      initialize({player:'pause'});
       renderPage('About');
     },
 
     collections : function()
     {
       console.log('go to grid');
-      initialize();
+      initialize({player:'exit'});
       renderCollections();
     },
 
     viewCollectionGrid : function( collectionID )
     {
       console.log('rr     view collection grid', collectionID);
-      initialize();
+      initialize({player:'exit'});
       goToItemCollection( collectionID );
     },
 
     viewCollectionPlayer : function( collectionID, itemID )
     {
-      initialize();
+      initialize({player:'exit'});
 
       if(Zeega.grid) Zeega.grid.remove();
       
@@ -30505,21 +31905,21 @@ function(Zeega, App) {
 
     map : function()
     {
-      initialize();
+      initialize({player:'pause'});
       renderMap();
     },
 
     participate : function()
     {
       console.log('go to participate');
-      initialize();
+      initialize({player:'pause'});
       renderPage('Participate');
      },
 
     menu : function()
     {
       console.log('go to menu');
-      initialize();
+      initialize({player:'pause'});
       renderMenu();
 
     },
@@ -30527,7 +31927,7 @@ function(Zeega, App) {
     search : function()
     {
       console.log('go to search');
-      initialize();
+      initialize({player:'pause'});
 
     }
   });
@@ -30539,10 +31939,10 @@ function(Zeega, App) {
 
   */
 
-  function initialize()
+  function initialize(attr)
   {
     initPT();
-    cleanup();
+    cleanup(attr);
   }
 
   // makes sure this happens on ly once per load
@@ -30553,13 +31953,25 @@ function(Zeega, App) {
   }
 
   // happens on every router change
-  function cleanup()
+  function cleanup(attr)
   {
     clearModals();
     removeCitation();
+
+    // attr= { player : pause', 'exit' }
+    if(attr && attr.player && Zeega.player)
+    {
+      switch(attr.player)
+      {
+        case 'pause':
+          Zeega.player.playPause();
+          break;
+        case 'exit':
+          Zeega.player.exit();
+          break;
+      }
+    }
   }
-
-
 
 
   function renderPage(pageName)
@@ -30616,6 +32028,7 @@ function(Zeega, App) {
   // this is the switch that interperes all incoming player events
   function onPlayerEvent(e, opts)
   {
+
     /* lint error - replaced switch with if
     switch(e)
     {
@@ -30626,6 +32039,10 @@ function(Zeega, App) {
     if (e == 'frame_rendered')
     {
         renderCitation(e,opts);
+    }
+    else if( e == 'preview_resize' )
+    {
+      $('.citation-wrapper').css({ width : Zeega.player.getSize().width +'px' });
     }
   }
 
@@ -30644,7 +32061,8 @@ function(Zeega, App) {
 
     var layer = model.layers.at(0);
 
-    Zeega.citation.insertView( new App.Views.CitationView({model:layer}));
+    Zeega.citation.insertView( '.nav-controls', new App.Views.NavControls({model:layer}));
+    Zeega.citation.insertView( '.citation-inner', new App.Views.CitationView({model:layer}));
     Zeega.citation.render();    
   }
 

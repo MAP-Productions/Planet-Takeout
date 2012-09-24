@@ -120,6 +120,7 @@ function(Zeega, Backbone) {
       console.log('close modal');
       this.remove();
       //Zeega.router.navigate('/',{trigger:true})
+      return false;
     },
 
     initialize : function(opts)
@@ -386,7 +387,6 @@ function(Zeega, Backbone) {
     {
       var html = 
 
-        '<a href="#" class="heart"><img src="assets/img/icon-heart-white-sm.png" width="30px"/></a>'+
         '<a href="/collections/<%= id %>/view" class="enter"><img src="assets/img/arrow-straight.png" width="40px"/></a>';        
 
       return html;
@@ -502,7 +502,12 @@ function(Zeega, Backbone) {
 
   App.Layouts.CitationDrawerLayout = Backbone.Layout.extend({
     template: "citation-drawer-layout",
-    id: 'citation-drawer'
+    id: 'citation-drawer',
+
+    afterRender : function()
+    {
+       $('.citation-wrapper').css({ width : Zeega.player.getSize().width +'px' });
+    }
 
   });
 
@@ -531,6 +536,31 @@ function(Zeega, Backbone) {
     },
 
     serialize : function(){ return this.model.toJSON(); }
+  });
+
+  App.Views.NavControls = Backbone.LayoutView.extend({
+    template : 'player-navigation',
+    className : '',
+
+    initialize : function()
+    {
+    },
+
+    events : {
+      'click #PT-preview-left' : 'goLeft',
+      'click #PT-preview-right' : 'goRight'
+    },
+    goLeft : function()
+    {
+      Zeega.player.prev();
+      return false;
+    },
+    goRight : function()
+    {
+      Zeega.player.next();
+      return false;
+    }
+
   });
 
 

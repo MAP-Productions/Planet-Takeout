@@ -31,6 +31,7 @@ function(Zeega, Backbone, Layer) {
 		defaults : {
 			appName : null,
 			branding : true,
+			chromeless : false,
 			fadeOutOverlays : true,
 			frameID : null,
 			fullscreenEnabled : true,
@@ -40,7 +41,7 @@ function(Zeega, Backbone, Layer) {
             navbar_bottom : true,
             navbar_top : true,
  			playerCitation : false,
-			social : true,
+			social : true
 		},
 
 		play : function()
@@ -110,13 +111,50 @@ function(Zeega, Backbone, Layer) {
 		},
 
 
+		/*********
+
+			API fxns
+
+		************/
 
 		playPause : function()
 		{
 			console.log('zeega player  play pause', this)
 			this.project.playPause();
-		}
+		},
 
+		pause : function()
+		{
+			this.project.pause();
+		},
+
+		next : function()
+		{
+			this.project.goRight();
+		},
+
+		prev : function()
+		{
+			this.project.goLeft();
+		},
+
+		getSize : function()
+		{
+			var _this = this;
+			var playerView = this.project.layout.getView(function(view){ return view.model === _this.project });
+			var size = {
+				height : playerView.$('#preview-media').height(),
+				width : playerView.$('#preview-media').width()
+			};
+			return size;
+		},
+
+		getPosition : function()
+		{
+			var _this = this;
+			var playerView = this.project.layout.getView(function(view){ return view.model === _this.project });
+			return playerView.$('#preview-media').position();
+		}
 
 	})
 
@@ -241,6 +279,16 @@ function(Zeega, Backbone, Layer) {
 			if( this.currentFrame.after ) this.goToFrame( this.currentFrame.after );
 		},
 
+		play : function()
+		{
+
+		},
+
+		pause : function()
+		{
+
+		},
+
 		/*
 			play and pause layer media
 			also will pick up and reset the timer for layers that have advance attributes set.
@@ -267,6 +315,7 @@ function(Zeega, Backbone, Layer) {
 			}
 			this.currentFrame.playPause();
 		},
+
 		
 		setFrameAdvance : function( id )
 		{
@@ -631,7 +680,8 @@ function(Zeega, Backbone, Layer) {
 
 		isFullscreen : false,
 		overlaysVisible : true,
-		viewportRatio : 1.5,
+		viewportRatio : 4/3,
+		viewportFull : true,
 
 		id : 'zeega-player',
 
@@ -672,7 +722,7 @@ function(Zeega, Backbone, Layer) {
 			window.onresize = function(event)
 			{
 				//constrain proportions in player
-				_this.$('#preview-media').clearQueue().animate( _this.getWindowSize() ,500 );
+				_this.$('#preview-media').clearQueue().animate( _this.getWindowSize() ,500, function(){_this.model.trigger('preview_resize');} );
 			}
 
 			if( Zeega.player.get('fadeOutOverlays') )
@@ -695,15 +745,31 @@ function(Zeega, Backbone, Layer) {
 			var viewHeight = window.innerHeight;
 
 			var initial_size = {};
-			if( viewWidth / viewHeight > this.viewportRatio )
+			if(this.viewportFull)
 			{
-				initial_size.height = viewHeight +'px';
-				initial_size.width = viewHeight * this.viewportRatio +'px'
+				if(viewWidth / viewHeight > this.viewportRatio)
+				{
+					initial_size.height = (viewWidth / this.viewportRatio)  +'px'; // 4/3
+					initial_size.width = viewWidth +'px';
+				}
+				else
+				{
+					initial_size.height = viewHeight  +'px'; // 4/3
+					initial_size.width = viewHeight * this.viewportRatio +'px';
+				}
 			}
 			else
 			{
-				initial_size.height = viewWidth / this.viewportRatio +'px';
-				initial_size.width = viewWidth +'px'
+				if( viewWidth / viewHeight > this.viewportRatio )
+				{
+					initial_size.height = viewHeight +'px';
+					initial_size.width = viewHeight * this.viewportRatio +'px'
+				}
+				else
+				{
+					initial_size.height = viewWidth / this.viewportRatio +'px';
+					initial_size.width = viewWidth +'px'
+				}
 			}
 			return initial_size;
 		},
