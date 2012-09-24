@@ -170,28 +170,15 @@ function(Zeega, Backbone) {
   App.Views._Page = Backbone.LayoutView.extend({
   });
 
-  App.Views.About = App.Views._Page.extend({
-    template: 'about'
-  });
+/**********************
 
-  /**********************
+        TABBED MODAL PAGES
 
-        PARTICIPATE
+***********************/
 
-  ***********************/
-
-  App.Views.Participate = App.Views._Page.extend({
-    template: 'participate-0',
+  App.Views.TabbedModal = App.Views._Page.extend({
     events: {
-      'click ul.participate-tabs-head li': 'switchTab',
-      'click ul.info-tab-icons li': 'switchInfoTab',
-      'click #addTakeoutTab': 'initAddTakeout',
-      'click #saveTakeout': 'saveStreetView'
-    },
-    initialize: function() {
-        _.bindAll(this, 'render', 'geoLookup', 'initAddTakeout', 'showStreetView', 'saveStreetView');
-      this.newTakeout = new App.NewTakeoutModel();
-      this.geocoder = new google.maps.Geocoder();
+      'click ul.modal-tabs-head li': 'switchTab'
     },
     switchTab: function(e) {
       var clicked = $(e.target);
@@ -200,9 +187,43 @@ function(Zeega, Backbone) {
         .siblings().removeClass('active');
 
       $(this.el)
-        .find('.participate-tab')
+        .find('.modal-tab')
         .eq(clicked.index()).show()
-        .siblings('.participate-tab').hide();
+        .siblings('.modal-tab').hide();
+    }
+  });
+
+/**********************
+
+      ABOUT
+
+***********************/
+
+  App.Views.About = App.Views.TabbedModal.extend({
+    template: 'about',
+    initialize: function() {
+      this.events = _.extend({},this.events, App.Views.TabbedModal.prototype.events)
+    }
+  });
+
+  /**********************
+
+        PARTICIPATE
+
+  ***********************/
+
+  App.Views.Participate = App.Views.TabbedModal.extend({
+    template: 'participate-0',
+    initialize: function() {
+      this.events = _.extend({},this.events, App.Views.TabbedModal.prototype.events)
+      _.bindAll(this, 'render', 'geoLookup', 'initAddTakeout', 'showStreetView', 'saveStreetView');
+      this.newTakeout = new App.NewTakeoutModel();
+      this.geocoder = new google.maps.Geocoder();
+    },
+    events: {
+        'click ul.info-tab-icons li': 'switchInfoTab',
+        'click #addTakeoutTab': 'initAddTakeout',
+        'click #saveTakeout': 'saveStreetView'
     },
     switchInfoTab: function(e) {
         var clicked = $(e.target),
@@ -221,7 +242,6 @@ function(Zeega, Backbone) {
             .eq(clicked.index()).show()
             .siblings('.info-tab').hide();
         }
-
     },
     initAddTakeout: function() {
       var mapOptions = {

@@ -192,7 +192,7 @@ button.close{
   overflow: hidden;
 }
 
-.PT-modal-content .participate-tab input[type=text] {
+.PT-modal-content .modal-tab input[type=text] {
   border: none;
   border-radius: 12px;
   display: inline-block;
@@ -225,48 +225,16 @@ button.close{
   float:right;
 }
 
-.PT-modal-content .sponsor-drawer
-{
-  background: white;
-  height: 260px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  left: 0;
-}
-
-.PT-modal .sponsor-drawer{}
-
-.PT-modal .sponsor-drawer ul
-{
-  margin:0;
-  list-style: none;
-  padding:20px;
-}
-
-
-.PT-modal .sponsor-drawer li
-{
-  float: left;
-  text-align: center;
-  height: 125px;
-  width: 143px;
-}
-.PT-modal .sponsor-drawer img
-{
-  width:110px;
-}
-
 /* PARTICIPATE */
 
-.PT-modal-content ul.participate-tabs-head
+.PT-modal-content ul.modal-tabs-head
 {
   margin-bottom:20px;
   position: relative;
   top: -10px;
 }
 
-.PT-modal-content ul.participate-tabs-head li
+.PT-modal-content ul.modal-tabs-head li
 {
   color:rgba(211,32,26,0.6);
   cursor: pointer;
@@ -276,59 +244,59 @@ button.close{
   margin-right: 20px;
 }
 
-.PT-modal-content ul.participate-tabs-head li.active {
+.PT-modal-content ul.modal-tabs-head li.active {
   color:rgba(211,32,26,1);
   cursor: default;
 }
 
-.PT-modal-content .participate-tab h2 {
+.PT-modal-content .modal-tab h2 {
   text-align: left;
   line-height: 1.2em;
   margin-bottom: 15px;
 }
 
-.PT-modal-content .participate-tab a {
+.PT-modal-content .modal-tab a {
   color:rgba(211,32,26,1);
 }
 
-.PT-modal-content .participate-tab p {
+.PT-modal-content .modal-tab p {
   font-size: 14px;
   margin: 15px 0;
 }
 
-.PT-modal-content .participate-tab p.small {
+.PT-modal-content .modal-tab p.small {
   color: #999;
   font-size: 11px;
   width: 60%;
 }
 
-.PT-modal-content .participate-tab ol {
+.PT-modal-content .modal-tab ol {
   list-style-position: inside;
   margin: 0 0 15px;
 }
 
-.PT-modal-content .participate-tab ol li {
+.PT-modal-content .modal-tab ol li {
   font-size: 14px;
   margin: 5px 0;
 }
 
-.PT-modal-content .participate-tab .social-icon.section-icon {
+.PT-modal-content .modal-tab .social-icon.section-icon {
   position: relative;
   top: 40px;
   margin-top: -30px;
 }
 
-.PT-modal-content .participate-tab .info-tab-icons {
+.PT-modal-content .modal-tab .info-tab-icons {
   overflow:hidden;
 }
 
-.PT-modal-content .participate-tab .info-tab-icons li {
+.PT-modal-content .modal-tab .info-tab-icons li {
   cursor: pointer;
   float: left;
   margin: 0 8px 0 8px;
 }
 
-.PT-modal-content .participate-tab .info-tab.media .carat {
+.PT-modal-content .modal-tab .info-tab.media .carat {
   height: 0px;
   width: 0px;
   display:block;
@@ -337,35 +305,35 @@ button.close{
   border-style: none solid solid solid;
   position: relative;
 }
-.PT-modal-content .participate-tab .info-tab.flickr .carat {
+.PT-modal-content .modal-tab .info-tab.flickr .carat {
   left:11px;
 }
 
-.PT-modal-content .participate-tab .info-tab.youtube .carat {
+.PT-modal-content .modal-tab .info-tab.youtube .carat {
   left:57px;
 }
 
-.PT-modal-content .participate-tab .info-tab.tumblr .carat {
+.PT-modal-content .modal-tab .info-tab.tumblr .carat {
   left:103px;
 }
 
-.PT-modal-content .participate-tab .info-tab.soundcloud .carat {
+.PT-modal-content .modal-tab .info-tab.soundcloud .carat {
   left:149px;
 }
 
-.PT-modal-content .participate-tab .info-tab.media .content {
+.PT-modal-content .modal-tab .info-tab.media .content {
   background: #fff;
   border-radius: 14px;
   padding: 30px 10px;
 }
 
-.PT-modal-content .participate-tab .info-tab.media p {
+.PT-modal-content .modal-tab .info-tab.media p {
   color: #666;
   font-size: 11px;
   text-align: left;
 }
 
-.PT-modal-content .participate-tab .info-tab.default p {
+.PT-modal-content .modal-tab .info-tab.default p {
   color: #666;
   font-size: 15px;
   text-align: left;
@@ -414,7 +382,7 @@ button.close{
 }
 
 .PT-modal-content #addTakeout #map {
-  background: red;
+  background: #aaa;
   float: left;
   height: 300px;
   width: 300px;
