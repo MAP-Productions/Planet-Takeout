@@ -526,7 +526,7 @@ function(Zeega, Backbone) {
 
     afterRender : function()
     {
-       $('.citation-wrapper').css({ width : Zeega.player.getSize().width +'px' });
+       //$('.citation-wrapper').css({ width : Zeega.player.getSize().width +'px' });
     }
 
   });

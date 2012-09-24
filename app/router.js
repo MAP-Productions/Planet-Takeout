@@ -38,7 +38,7 @@ function(Zeega, App) {
     index: function()
     {
       initialize();
-      var player = new App.Model(); 
+      renderIndex();
     },
 
     about : function()
@@ -155,6 +155,10 @@ function(Zeega, App) {
     }
   }
 
+  function renderIndex()
+  {
+      var player = new App.Model(); 
+  }
 
   function renderPage(pageName)
   {
@@ -224,7 +228,7 @@ function(Zeega, App) {
     }
     else if( e == 'preview_resize' )
     {
-      $('.citation-wrapper').css({ width : Zeega.player.getSize().width +'px' });
+      //$('.citation-wrapper').css({ width : Zeega.player.getSize().width +'px' });
     }
   }
 
@@ -233,19 +237,25 @@ function(Zeega, App) {
     var citationDrawer = new App.Layouts.CitationDrawerLayout();
     Zeega.citation = citationDrawer;
     //Zeega.citation.insertView( new App.Views.CitationView() );
+
     Zeega.citation.render();
     $('#nav-lower').html(Zeega.citation.el);
   }
 
   function renderCitation(e,model)
   {
-    Zeega.citation.getViews().each(function(view){ view.remove(); });
+    Zeega.citation.getViews().each(function(view){ console.log(view);view.remove(); });
 
     var layer = model.layers.at(0);
 
-    Zeega.citation.insertView( '.nav-controls', new App.Views.NavControls({model:layer}));
-    Zeega.citation.insertView( '.citation-inner', new App.Views.CitationView({model:layer}));
-    Zeega.citation.render();    
+    var navView = new App.Views.NavControls({model:layer});
+    var citView = new App.Views.CitationView({model:layer});
+
+    Zeega.citation.insertView( '.nav-controls', navView);
+    Zeega.citation.insertView( '.citation-inner', citView);
+    Zeega.citation.render();
+    navView.render();
+    citView.render();
   }
 
   function removeCitation()
