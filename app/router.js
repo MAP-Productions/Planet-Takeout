@@ -211,7 +211,6 @@ function(Zeega, App) {
   function onPlayerEvent(e, opts)
   {
 
-    console.log('player event:',e)
     /* lint error - replaced switch with if
     switch(e)
     {
@@ -225,7 +224,7 @@ function(Zeega, App) {
     }
     else if( e == 'preview_resize' )
     {
-      $('.citation-wrapper').css({ width : Zeega.player.getSize().width +'px' })
+      $('.citation-wrapper').css({ width : Zeega.player.getSize().width +'px' });
     }
   }
 

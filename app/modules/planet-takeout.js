@@ -526,7 +526,7 @@ function(Zeega, Backbone) {
 
     afterRender : function()
     {
-       $('.citation-wrapper').css({ width : Zeega.player.getSize().width +'px' })
+       $('.citation-wrapper').css({ width : Zeega.player.getSize().width +'px' });
     }
 
   });
@@ -573,7 +573,7 @@ function(Zeega, Backbone) {
     goLeft : function()
     {
       Zeega.player.prev();
-      return false
+      return false;
     },
     goRight : function()
     {
