@@ -78,8 +78,8 @@ function(Zeega, Backbone) {
 
   });
 
+  // model for new takeout data (via 'participate')
   App.NewTakeoutModel = Backbone.Model.extend({
-    // model for new takeout data (via 'participate')
   });
 
 
@@ -173,16 +173,54 @@ function(Zeega, Backbone) {
     template: 'about'
   });
 
+  /**********************
+
+        PARTICIPATE
+
+  ***********************/
+
   App.Views.Participate = App.Views._Page.extend({
     template: 'participate-0',
     events: {
+      'click ul.participate-tabs-head li': 'switchTab',
+      'click ul.info-tab-icons li': 'switchInfoTab',
       'click #findTakeout': 'geoLookup',
       'click #savePov': 'saveStreetView'
     },
     initialize: function() {
-      _.bindAll(this, 'render', 'geoLookup', 'processGeocodeResults');
+      _.bindAll(this, 'render', 'geoLookup', 'processGeocodeResults', 'showStreetView', 'saveStreetView');
       this.newTakeout = new App.NewTakeoutModel();
       this.geocoder = new google.maps.Geocoder();
+    },
+    switchTab: function(e) {
+      var clicked = $(e.target);
+      clicked
+        .addClass('active')
+        .siblings().removeClass('active');
+
+      $(this.el)
+        .find('.participate-tab')
+        .eq(clicked.index()).show()
+        .siblings('.participate-tab').hide();
+    },
+    switchInfoTab: function(e) {
+        var clicked = $(e.target),
+            defaultTab = $(e.target).parent().siblings('.info-tab.default'),
+            tabs = $(e.target).parent().siblings('.info-tab.media');
+
+        if (clicked.hasClass('active')) {
+          clicked.removeClass('active');
+          tabs.hide();
+          defaultTab.show();
+        } else {
+          clicked
+            .addClass('active')
+            .siblings().removeClass('active');
+          tabs
+            .eq(clicked.index()).show()
+            .siblings('.info-tab').hide();
+        }
+
     },
     geoLookup: function() {
       var nameField = $(this.el).find('#takeoutName').val(),
@@ -234,7 +272,10 @@ function(Zeega, Backbone) {
     },
     saveStreetView: function() {
       this.newTakeout.set('streetViewPov', this.newTakeoutStreetView.pov);
-      console.log(this.newTakeout);
+      $(this.el)
+        .find('#stepTwo').hide()
+        .siblings('#thanks').show()
+        .find('#takeoutName').text( this.newTakeout.get('takeoutName') );
     }
   });
 
