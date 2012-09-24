@@ -123,6 +123,11 @@ function(Zeega, Backbone, Layer) {
 			this.project.playPause();
 		},
 
+		pause : function()
+		{
+			this.project.pause();
+		},
+
 		next : function()
 		{
 			this.project.goRight();
@@ -274,6 +279,16 @@ function(Zeega, Backbone, Layer) {
 			if( this.currentFrame.after ) this.goToFrame( this.currentFrame.after );
 		},
 
+		play : function()
+		{
+
+		},
+
+		pause : function()
+		{
+
+		},
+
 		/*
 			play and pause layer media
 			also will pick up and reset the timer for layers that have advance attributes set.
@@ -300,6 +315,7 @@ function(Zeega, Backbone, Layer) {
 			}
 			this.currentFrame.playPause();
 		},
+
 		
 		setFrameAdvance : function( id )
 		{
@@ -664,7 +680,8 @@ function(Zeega, Backbone, Layer) {
 
 		isFullscreen : false,
 		overlaysVisible : true,
-		viewportRatio : 1.5,
+		viewportRatio : 4/3,
+		viewportFull : true,
 
 		id : 'zeega-player',
 
@@ -728,15 +745,34 @@ function(Zeega, Backbone, Layer) {
 			var viewHeight = window.innerHeight;
 
 			var initial_size = {};
-			if( viewWidth / viewHeight > this.viewportRatio )
+			if(this.viewportFull)
 			{
-				initial_size.height = viewHeight +'px';
-				initial_size.width = viewHeight * this.viewportRatio +'px'
+					console.log('width>height', viewWidth, viewHeight)
+				if(viewWidth / viewHeight > this.viewportRatio)
+				{
+					console.log('width>height')
+					initial_size.height = (viewWidth / this.viewportRatio)  +'px'; // 4/3
+					initial_size.width = viewWidth +'px';
+				}
+				else
+				{
+					console.log('width<height')
+					initial_size.height = viewHeight  +'px'; // 4/3
+					initial_size.width = viewHeight * this.viewportRatio +'px';
+				}
 			}
 			else
 			{
-				initial_size.height = viewWidth / this.viewportRatio +'px';
-				initial_size.width = viewWidth +'px'
+				if( viewWidth / viewHeight > this.viewportRatio )
+				{
+					initial_size.height = viewHeight +'px';
+					initial_size.width = viewHeight * this.viewportRatio +'px'
+				}
+				else
+				{
+					initial_size.height = viewWidth / this.viewportRatio +'px';
+					initial_size.width = viewWidth +'px'
+				}
 			}
 			return initial_size;
 		},

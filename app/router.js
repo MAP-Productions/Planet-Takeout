@@ -38,34 +38,33 @@ function(Zeega, App) {
     index: function()
     {
       initialize();
-      var player = new App.Model();  
-      console.log(Zeega.player);
+      var player = new App.Model(); 
     },
 
     about : function()
     {
       console.log('go to about');
-      initialize();
+      initialize({player:'pause'});
       renderPage('About');
     },
 
     collections : function()
     {
       console.log('go to grid');
-      initialize();
+      initialize({player:'exit'});
       renderCollections();
     },
 
     viewCollectionGrid : function( collectionID )
     {
       console.log('rr     view collection grid', collectionID);
-      initialize();
+      initialize({player:'exit'});
       goToItemCollection( collectionID );
     },
 
     viewCollectionPlayer : function( collectionID, itemID )
     {
-      initialize();
+      initialize({player:'exit'});
 
       if(Zeega.grid) Zeega.grid.remove();
       
@@ -88,21 +87,21 @@ function(Zeega, App) {
 
     map : function()
     {
-      initialize();
+      initialize({player:'pause'});
       renderMap();
     },
 
     participate : function()
     {
       console.log('go to participate');
-      initialize();
+      initialize({player:'pause'});
       renderPage('Participate');
      },
 
     menu : function()
     {
       console.log('go to menu');
-      initialize();
+      initialize({player:'pause'});
       renderMenu();
 
     },
@@ -110,7 +109,7 @@ function(Zeega, App) {
     search : function()
     {
       console.log('go to search');
-      initialize();
+      initialize({player:'pause'});
 
     }
   });
@@ -122,10 +121,10 @@ function(Zeega, App) {
 
   */
 
-  function initialize()
+  function initialize(attr)
   {
     initPT();
-    cleanup();
+    cleanup(attr);
   }
 
   // makes sure this happens on ly once per load
@@ -136,13 +135,25 @@ function(Zeega, App) {
   }
 
   // happens on every router change
-  function cleanup()
+  function cleanup(attr)
   {
     clearModals();
     removeCitation();
+
+    // attr= { player : pause', 'exit' }
+    if(attr && attr.player && Zeega.player)
+    {
+      switch(attr.player)
+      {
+        case 'pause':
+          Zeega.player.playPause();
+          break;
+        case 'exit':
+          Zeega.player.exit();
+          break;
+      }
+    }
   }
-
-
 
 
   function renderPage(pageName)
