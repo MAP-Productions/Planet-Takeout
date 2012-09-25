@@ -1,317 +1,330 @@
 define([
-  // Application.
-  "zeega",
-  // Modules.
-  'modules/planet-takeout' // this needs to be cusomized
+	// Application.
+	"zeega",
+	// Modules.
+	'modules/planet-takeout' // this needs to be cusomized
 ],
 
 // generic App used
 function(Zeega, App) {
 
-  // Defining the application router, you can attach sub routers here.
-  /*
+	// Defining the application router, you can attach sub routers here.
+	/*
 
-  the router is where your application/navigation logic goes
-
-  */
-  console.log('before router', this, Zeega, App);
-  var Router = Backbone.Router.extend({
-    routes: {
-
-      "" : "index",
-      "about" : 'about',
-
-      "collections" : 'collections',
-      'collections/' : 'collections',
-      'collections/:collection_id' : 'viewCollectionGrid',
-      'collections/:collection_id/' : 'viewCollectionGrid',
-      'collections/:collection_id/view' : 'viewCollectionPlayer',
-      'collections/:collection_id/view/' : 'viewCollectionPlayer',
-      'collections/:collection_id/view/:item_id' : 'viewCollectionPlayer',
-      'collections/:collection_id/view/:item_id/' : 'viewCollectionPlayer',
-      
-      'map' : 'map',
-      'participate' : 'participate',
-      'menu' : 'menu',
-      'search' : 'search'
-    },
-
-    index: function()
-    {
-      initialize();
-      renderIndex();
-    },
-
-    about : function()
-    {
-      console.log('go to about');
-      initialize({player:'pause'});
-      renderPage('About');
-    },
-
-    collections : function()
-    {
-      console.log('go to grid');
-      initialize({player:'exit'});
-      renderCollections();
-    },
-
-    viewCollectionGrid : function( collectionID )
-    {
-      console.log('rr     view collection grid', collectionID);
-      initialize({player:'exit'});
-      goToItemCollection( collectionID );
-    },
-
-    viewCollectionPlayer : function( collectionID, itemID )
-    {
-      initialize({player:'exit'});
-
-      if(Zeega.grid) Zeega.grid.remove();
-      
-      var player = new App.CollectionZeegaPlayerModel();  
-      player.collection_id = collectionID;
-      //Zeega.player = player;
-      console.log('mm     zeega player', player);
-      player.fetch().success(function(res){
-        console.log('mm     model fetched', res, itemID);
-
-        renderCitations();
-        if( !_.isUndefined(itemID) ) player.set('frameID', itemID );
-        console.log( player.toJSON() );
-        Zeega.player = new Zeega.Player( player.toJSON() );
-        Zeega.player.on('all', onPlayerEvent, this);
-        Zeega.player.play();
-      });
-
-    },
-
-    map : function()
-    {
-      initialize({player:'pause'});
-      renderMap();
-    },
-
-    participate : function()
-    {
-      console.log('go to participate');
-      initialize({player:'pause'});
-      renderPage('Participate');
-     },
-
-    menu : function()
-    {
-      console.log('go to menu');
-      initialize({player:'pause'});
-      renderMenu();
-
-    },
-
-    search : function()
-    {
-      console.log('go to search');
-      initialize({player:'pause'});
-
-    }
-  });
-
-  /*
-
-  tasks to take care of before the application can load
-  esp inserting the layout into the dom!
+	the router is where your application/navigation logic goes
 
   */
+	console.log('before router', this, Zeega, App);
+	var Router = Backbone.Router.extend({
+		routes: {
 
-  function initialize(attr)
-  {
-    initPT();
-    cleanup(attr);
-  }
+			"" : "index",
+			"about" : 'about',
 
-  // makes sure this happens on ly once per load
-  var initPT = _.once( init );
-  function init()
-  {
-    renderBaseLayout();
-  }
+			"collections" : 'collections',
+			'collections/' : 'collections',
+			'collections/:collection_id' : 'viewCollectionGrid',
+			'collections/:collection_id/' : 'viewCollectionGrid',
+			'collections/:collection_id/view' : 'viewCollectionPlayer',
+			'collections/:collection_id/view/' : 'viewCollectionPlayer',
+			'collections/:collection_id/view/:item_id' : 'viewCollectionPlayer',
+			'collections/:collection_id/view/:item_id/' : 'viewCollectionPlayer',
 
-  // happens on every router change
-  function cleanup(attr)
-  {
-    clearModals();
-    removeCitation();
+			'map' : 'map',
+			'participate' : 'participate',
+			'menu' : 'menu',
+			'search' : 'search'
+		},
 
-    // attr= { player : pause', 'exit' }
-    if(attr && attr.player && Zeega.player)
-    {
-      switch(attr.player)
-      {
-        case 'pause':
-          Zeega.player.playPause();
-          break;
-        case 'exit':
-          Zeega.player.exit();
-          break;
-      }
-    }
-  }
+		index: function()
+		{
+			initialize();
+			renderIndex();
+		},
 
-  function renderIndex()
-  {
-      var _this  = this;
-      var player = new App.Model();
-      player.on('ready', function(){
-        renderFeaturedCitation();
-      });
-  }
+		about : function()
+		{
+			console.log('go to about');
+			initialize({player:'pause'});
+			renderPage('About');
+		},
 
-  function renderFeaturedCitation()
-  {
+		collections : function()
+		{
+			console.log('go to grid');
+			initialize({player:'exit'});
+			renderCollections();
+		},
 
-  }
+		viewCollectionGrid : function( collectionID )
+		{
+			console.log('rr     view collection grid', collectionID);
+			initialize({player:'exit'});
+			goToItemCollection( collectionID );
+		},
 
-  function renderPage(pageName)
-  {
-    Zeega.page = new App.Layouts.Modal({title:pageName});
-    var pageView = new App.Views[pageName]();
-    Zeega.page.setView('.PT-modal-content', pageView );
-    Zeega.page.render();
-    $('body').append(Zeega.page.el);
-  }
+		viewCollectionPlayer : function( collectionID, itemID )
+		{
+			initialize({player:'exit'});
 
-  function renderMenu()
-  {
-    Zeega.page = new App.Layouts.ModalWide({title:'Menu'});
-    var pageView = new App.Views.Menu();
-    Zeega.page.setView('.PT-modal-content', pageView );
-    Zeega.page.render();
-    $('body').append(Zeega.page.el);
-  }
+			if(Zeega.grid) Zeega.grid.remove();
 
-  function generateGrid( collection, type )
-  {
-      Zeega.grid = new App.Layouts.GridView({collection:collection, type:type});
-      Zeega.grid.render();
-      $('#app-base').append( Zeega.grid.el );
-  }
+			// check to see if an identical player exists
+			console.log('player stuffz', !Zeega.player, Zeega.player, collectionID )
+			if( !Zeega.player || Zeega.player && Zeega.player.collection_id != collectionID)
+			{
+				var player = new App.CollectionZeegaPlayerModel();  
+				player.collection_id = collectionID;
+				//Zeega.player = player;
+				console.log('mm     zeega player', player);
+				player.fetch().success(function(res){
+					console.log('mm     model fetched', res, itemID);
 
-  function goToItemCollection( collectionID )
-  {
-    console.log('rr     go to item Collection');
+					renderCitations();
+					if( !_.isUndefined(itemID) ) player.set('frameID', itemID );
+					console.log( player.toJSON() );
+					Zeega.player = new Zeega.Player( player.toJSON() );
+					Zeega.player.on('all', onPlayerEvent, this);
+					Zeega.player.play();
+				});
+			}
 
-    var items = new App.Collections.Items();
-    items.collectionID = collectionID;
-    items.fetch().success(function(res){
-      console.log('$$   items coll', res, items);
-      items.each(function(item){ item.set('collection_id',collectionID);});
-      
-      var Model = Backbone.Model.extend({ url: 'http://alpha.zeega.org/api/items/'+ collectionID });
-      var it = new Model();
-      it.fetch().success(function(){
-        items.collectionInfo = it.toJSON();
-        generateGrid( items, 'items' );
-      });
-    });
-  }
+		},
 
-  function renderCollections()
-  {
-    removePlayer();
-    // make and render itemCollection
-    var itemCollectionsCollection = new App.Collections.ItemCollections();
-    itemCollectionsCollection.fetch().success(function(res){
-      console.log('$$   items coll', res, itemCollectionsCollection);
-      generateGrid( itemCollectionsCollection, 'collections' );
-      $('#app-base').append( Zeega.grid.el );
-    });
-  }
+		map : function()
+		{
+			initialize({player:'pause'});
+			renderMap();
+		},
+
+		participate : function()
+		{
+			console.log('go to participate');
+			initialize({player:'pause'});
+			renderPage('Participate');
+		},
+
+		menu : function()
+		{
+			console.log('go to menu');
+			initialize({player:'pause'});
+			renderMenu();
+
+		},
+
+		search : function()
+		{
+			console.log('go to search');
+			initialize({player:'pause'});
+
+		}
+	});
+
+/*
+
+tasks to take care of before the application can load
+esp inserting the layout into the dom!
+
+*/
+
+	function initialize(attr)
+	{
+		initPT();
+		cleanup(attr);
+	}
+
+	// makes sure this happens on ly once per load
+	var initPT = _.once( init );
+	function init()
+	{
+		renderBaseLayout();
+	}
+
+	// happens on every router change
+	function cleanup(attr)
+	{
+		console.log('if there are modals, then remove them', Zeega.page, Zeega.player)
+		// if a modal exists && a player exists, remove the modal but do not remove the player
+		// if a modal exists, but no player exists, then go back
+		if(Zeega.page && Zeega.player)
+		{
+			Zeega.page.remove();
+			Zeega.page = null;
+		}
+
+		removeCitation();
+
+		// attr= { player : pause', 'exit' }
+		if(attr && attr.player && Zeega.player)
+		{
+			switch(attr.player)
+			{
+				case 'pause':
+					Zeega.player.playPause();
+					break;
+				case 'exit':
+					Zeega.player.exit();
+				break;
+			}
+		}
+	}
+
+	function renderIndex()
+	{
+		var _this  = this;
+		var player = new App.Model();
+		player.on('ready', function(){
+			renderFeaturedCitation();
+		});
+	}
+
+	function renderFeaturedCitation()
+	{
+
+	}
+
+	function renderPage(pageName)
+	{
+		Zeega.page = new App.Layouts.Modal({title:pageName});
+		var pageView = new App.Views[pageName]();
+		Zeega.page.setView('.PT-modal-content', pageView );
+		Zeega.page.render();
+		$('body').append(Zeega.page.el);
+	}
+
+	function renderMenu()
+	{
+		Zeega.page = new App.Layouts.ModalWide({title:'Menu'});
+		var pageView = new App.Views.Menu();
+		Zeega.page.setView('.PT-modal-content', pageView );
+		Zeega.page.render();
+		$('body').append(Zeega.page.el);
+	}
+
+	function generateGrid( collection, type )
+	{
+		Zeega.grid = new App.Layouts.GridView({collection:collection, type:type});
+		Zeega.grid.render();
+		$('#app-base').append( Zeega.grid.el );
+	}
+
+	function goToItemCollection( collectionID )
+	{
+		console.log('rr     go to item Collection');
+
+		var items = new App.Collections.Items();
+		items.collectionID = collectionID;
+		items.fetch().success(function(res){
+			console.log('$$   items coll', res, items);
+			items.each(function(item){ item.set('collection_id',collectionID);});
+
+			var Model = Backbone.Model.extend({ url: 'http://alpha.zeega.org/api/items/'+ collectionID });
+			var it = new Model();
+			it.fetch().success(function(){
+				items.collectionInfo = it.toJSON();
+				generateGrid( items, 'items' );
+			});
+		});
+	}
+
+	function renderCollections()
+	{
+		removePlayer();
+		// make and render itemCollection
+		var itemCollectionsCollection = new App.Collections.ItemCollections();
+		itemCollectionsCollection.fetch().success(function(res){
+			console.log('$$   items coll', res, itemCollectionsCollection);
+			generateGrid( itemCollectionsCollection, 'collections' );
+			$('#app-base').append( Zeega.grid.el );
+		});
+	}
 
 
   // this is the switch that interperes all incoming player events
-  function onPlayerEvent(e, opts)
-  {
+	function onPlayerEvent(e, opts)
+	{
 
-    /* lint error - replaced switch with if
-    switch(e)
-    {
-      case 'frame_rendered':
-        renderCitation(e,opts);
-        break;
-    }*/
-    if (e == 'frame_rendered')
-    {
-        renderCitation(e,opts);
-    }
-    else if( e == 'preview_resize' )
-    {
-      //$('.citation-wrapper').css({ width : Zeega.player.getSize().width +'px' });
-    }
-  }
+		/* lint error - replaced switch with if
+		switch(e)
+		{
+		case 'frame_rendered':
+		renderCitation(e,opts);
+		break;
+		}*/
+		if (e == 'frame_rendered')
+		{
+			renderCitation(e,opts);
+		}
+		else if( e == 'preview_resize' )
+		{
+			//$('.citation-wrapper').css({ width : Zeega.player.getSize().width +'px' });
+		}
+	}
 
-  function renderCitations()
-  {
-    var citationDrawer = new App.Layouts.CitationDrawerLayout();
-    Zeega.citation = citationDrawer;
-    //Zeega.citation.insertView( new App.Views.CitationView() );
+	function renderCitations()
+	{
+		var citationDrawer = new App.Layouts.CitationDrawerLayout();
+		Zeega.citation = citationDrawer;
+		//Zeega.citation.insertView( new App.Views.CitationView() );
 
-    Zeega.citation.render();
-    $('#nav-lower').html(Zeega.citation.el);
-  }
+		Zeega.citation.render();
+		$('#nav-lower').html(Zeega.citation.el);
+	}
 
-  function renderCitation(e,model)
-  {
-    Zeega.citation.getViews().each(function(view){ view.remove(); });
+	function renderCitation(e,model)
+	{
+		Zeega.citation.getViews().each(function(view){ view.remove(); });
 
-    var layer = model.layers.at(0);
-    var navView = new App.Views.NavControls({model:layer, arrowState:model.arrowState});
-    var citView = new App.Views.CitationView({model:layer,player:Zeega.player.toJSON() });
-    Zeega.citation.insertView( '.nav-controls', navView);
-    Zeega.citation.insertView( '.citation-inner', citView);
-    Zeega.citation.render();
-    navView.render();
-    citView.render();
-  }
+		var layer = model.layers.at(0);
+		var navView = new App.Views.NavControls({model:layer, arrowState:model.arrowState});
+		var citView = new App.Views.CitationView({model:layer,player:Zeega.player.toJSON() });
+		Zeega.citation.insertView( '.nav-controls', navView);
+		Zeega.citation.insertView( '.citation-inner', citView);
+		Zeega.citation.render();
+		navView.render();
+		citView.render();
+	}
 
-  function removeCitation()
-  {
-    if( Zeega.citation ) Zeega.citation.remove();
-  }
+	function removeCitation()
+	{
+		if( Zeega.citation ) Zeega.citation.remove();
+	}
 
-  function renderMap()
-  {
-    console.log('render map');
-    Zeega.page = new App.Layouts.ModalWide({title:'Delicious World'});
-    var pageView = new App.Views.Map();
-    Zeega.page.setView('.PT-modal-content', pageView );
-    $('body').append(Zeega.page.el);
-    Zeega.page.render();
-  }
+	function renderMap()
+	{
+		console.log('render map');
+		Zeega.page = new App.Layouts.ModalWide({title:'Delicious World'});
+		var pageView = new App.Views.Map();
+		Zeega.page.setView('.PT-modal-content', pageView );
+		$('body').append(Zeega.page.el);
+		Zeega.page.render();
+	}
 
-  function clearModals()
-  {
-    if(Zeega.page) Zeega.page.remove();
-  }
+	function clearModals()
+	{
+		if(Zeega.page) Zeega.page.remove();
+	}
 
-  function removePlayer()
-  {
-    if( Zeega.player ) Zeega.player.exit();
-  }
+	function removePlayer()
+	{
+		if( Zeega.player ) Zeega.player.exit();
+	}
 
   // this is a utility and should be elsewhere
-  function renderBaseLayout()
-  {
+	function renderBaseLayout()
+	{
 
-    Zeega.baseLayout = new Backbone.Layout({
-      el: "#main"
-    });
-    // Insert the tutorial into the layout.
-    Zeega.baseLayout.insertView(new App.Views.Base() );
-    Zeega.baseLayout.setView('#nav-upper', new App.Views.UpperNavView() );
-    // Render the layout into the DOM.
-    Zeega.baseLayout.render();
-  }
+		Zeega.baseLayout = new Backbone.Layout({
+			el: "#main"
+		});
+		// Insert the tutorial into the layout.
+		Zeega.baseLayout.insertView(new App.Views.Base() );
+		Zeega.baseLayout.setView('#nav-upper', new App.Views.UpperNavView() );
+		// Render the layout into the DOM.
+		Zeega.baseLayout.render();
+	}
 
 
-  return Router;
+	return Router;
 
 });
