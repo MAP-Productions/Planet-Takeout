@@ -692,15 +692,13 @@ function(Zeega, Backbone) {
 
     page : 1,
 
-    url : function(){ return 'http://alpha.zeega.org/api/search?r_collections=1&user=760&page='+ this.page; },
-//    url : function(){ return 'http://alpha.zeega.org/api/search?r_items&tags=pt_grid&page='+ this.page; },
+    url : function(){ return 'http://alpha.zeega.org/api/search?r_itemswithcollections&tags=pt_grid&page='+ this.page; },
 
     parse : function( res )
     {
       this.data = res;
-      this.itemsCount = res.collections_count;
-      console.log('ressponse',res)
-      return res.collections;
+      this.itemsCount = res.items_count;
+      return res.items;
     }
   });
 
