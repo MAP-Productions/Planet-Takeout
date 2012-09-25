@@ -153,7 +153,7 @@ function(Zeega, Backbone) {
     {
       console.log('close modal');
       this.remove();
-      Zeega.router.navigate('/',{trigger:true});
+      //Zeega.router.navigate('/',{trigger:true});
     },
 
     initialize : function(opts)
@@ -682,7 +682,7 @@ function(Zeega, Backbone) {
 
     page : 1,
 
-    url : function(){ return 'http://alpha.zeega.org/api/search?r_collections=1&page='+ this.page; },
+    url : function(){ return 'http://alpha.zeega.org/api/search?r_collections=1&user=760&page='+ this.page; },
 
     parse : function( res )
     {
