@@ -227,14 +227,22 @@ esp inserting the layout into the dom!
 		var _this  = this;
 		var player = new App.Model();
 		player.on('ready', function(){
-			console.log('player ready')
-			//renderFeaturedCitation();
+			renderFeaturedCitation();
 		});
 
 	}
 
 	function renderFeaturedCitation()
 	{
+		var citationDrawer = new App.Layouts.CitationDrawerLayout();
+		Zeega.citation = citationDrawer;
+		console.log('player', Zeega.player)
+		var citView = new App.Views.FeaturedCitationView({ model: Zeega.player });
+		citationDrawer.insertView( '.citation-inner', citView);
+
+		Zeega.citation.render();
+		$('#nav-lower').html(Zeega.citation.el);
+		citView.render();
 
 	}
 
