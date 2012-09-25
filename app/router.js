@@ -204,7 +204,14 @@ function(Zeega, App) {
     items.fetch().success(function(res){
       console.log('$$   items coll', res, items);
       items.each(function(item){ item.set('collection_id',collectionID);});
-      generateGrid( items, 'items' );
+      
+      var Model = Backbone.Model.extend({ url: 'http://alpha.zeega.org/api/items/'+ collectionID });
+      var it = new Model();
+      it.fetch().success(function(){
+        items.collectionInfo = it.toJSON();
+        generateGrid( items, 'items' );
+      
+      })
     });
   }
 
