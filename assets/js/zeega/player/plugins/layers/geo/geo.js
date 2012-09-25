@@ -37,6 +37,175 @@ function(Zeega, Backbone, _Layer){
 		}
 
 	});
+
+	Layer.Geo.Visual = _Layer.Visual.extend({
+		
+		draggable : false,
+		linkable : true,
+		
+		init : function()
+		{
+			console.log('	GEO INIT')
+			var _this = this;
+			this.model.on('update', this.updateVisual, this)
+		},
+		
+		render : function()
+		{
+
+			var map = $('<div id="gmap-container-'+ this.model.id+'">')
+				.css({
+					'height': this.model.get('attr').height +'%'
+				});
+
+			this.$el.html( map ).css({height:this.model.get('attr').height+'%'});
+			console.log('@@		streetview render')
+						
+			return this;
+		},
+		
+		updateVisual : function()
+		{
+			console.log('	update visual')
+			console.log(this)
+			var center = new google.maps.LatLng( this.model.get('attr').lat, this.model.get('attr').lng);
+			var pov = {
+					'heading' : this.model.get('attr').heading,
+					'pitch' : this.model.get('attr').pitch,
+					'zoom' : this.model.get('attr').streetZoom,
+			}
+			
+			this.streetview.setPosition( center );
+			this.streetview.setPov( pov );
+			
+		},
+		
+		onLayerEnter : function()
+		{
+			console.log('##		geo layer enter', $(this.el).find('.gmap-container')[0], $( $(this.el).find('.gmap-container')[0]).is(':visible')+'' )
+			var center = new google.maps.LatLng( this.model.get('attr').lat, this.model.get('attr').lng);
+
+			var mapOptions = {
+				
+				addressControl : false,
+				addressControlOptions : false,
+				clickToGo : true,
+				disableDoubleClickZoom : false,
+				enableCloseButton : false,
+				imageDateControl : false,
+				linksControl : false,
+				panControl : true,
+				panControlOptions : true,
+				//pano : '',
+				position : center,
+				visible :true,
+				zoomControl :true,
+				zoomControlOptions :true,
+				
+				pov : {
+						'heading' : this.model.get('attr').heading,
+						'pitch' : this.model.get('attr').pitch,
+						'zoom' : this.model.get('attr').streetZoom,
+				}
+			};
+			console.log('##		map options', mapOptions)
+			
+			this.streetview = new google.maps.StreetViewPanorama( $(this.el).find('.gmap-container')[0], mapOptions);
+			this.initMapListeners();
+		},
+		
+		initMapListeners : function()
+		{
+			var _this = this;
+			
+			google.maps.event.addListener( this.streetview, 'position_changed', function(){
+				delayedUpdate();
+			});
+
+			google.maps.event.addListener( this.streetview, 'pov_changed', function(){
+				delayedUpdate();
+			});
+
+			// need this so we don't spam the servers
+			var delayedUpdate = _.debounce( function(){
+				
+				var a = _this.model.get('attr');
+				
+				if( a.heading != _this.streetview.getPov().heading || a.pitch !=  _this.streetview.getPov().pitch || a.streetZoom != _this.streetview.getPov().zoom || Math.floor(a.lat*1000) != Math.floor(_this.streetview.getPosition().lat()*1000) || Math.floor(a.lng*1000) != Math.floor(_this.streetview.getPosition().lng()*1000)  )
+				{
+					_this.model.update({
+						heading : _this.streetview.getPov().heading,
+						pitch : _this.streetview.getPov().pitch,
+						streetZoom : Math.floor( _this.streetview.getPov().zoom ),
+						lat : _this.streetview.getPosition().lat(),
+						lng : _this.streetview.getPosition().lng()
+					
+					})
+				}
+				
+				
+			} , 1000);
+		},
+		
+		onLayerExit : function()
+		{
+			//this destroys the map every time the frame is changed. there is probably a better way to do this
+			this.map = null;
+			$(this.el).find('.gmap-container').remove();
+			console.log('on layer exit streetview',this, this.map)
+		},
+		
+		player_onPreload : function()
+		{
+			
+			
+			this.model.trigger('ready', this.model.id)
+			
+		},
+
+		player_onPlay : function()
+		{
+			var _this = this;
+			console.log('after render', $(this.$('#gmap-container-'+this.model.id)).width()+'px', $(this.$('#gmap-container-'+this.model.id)).height()+'px', this.$('#gmap-container-'+this.model.id) )
+			console.log(this.$el.width(), this.$el.height(), this.$el.is(':visible') );
+			if( !this.isLoaded )
+			{
+				var center = new google.maps.LatLng( this.model.get('attr').lat, this.model.get('attr').lng);
+
+				var mapOptions = {
+					
+					addressControl : false,
+					addressControlOptions : false,
+					clickToGo : true,
+					disableDoubleClickZoom : false,
+					enableCloseButton : false,
+					imageDateControl : false,
+					linksControl : false,
+					panControl : true,
+					panControlOptions : true,
+					//pano : '',
+					position : center,
+					visible :true,
+					zoomControl :true,
+					zoomControlOptions :true,
+					
+					pov : {
+							'heading' : this.model.get('attr').heading,
+							'pitch' : this.model.get('attr').pitch,
+							'zoom' : this.model.get('attr').streetZoom,
+					}
+					
+				};
+				
+				_this.streetview = new google.maps.StreetViewPanorama( this.$('#gmap-container-'+_this.model.id)[0], mapOptions);
+				
+				
+				this.isLoaded = true;
+			}
+		}
+		
+	});
+
 /*	
 	Layer.Views.Controls.Geo = Layer.Views.Controls.extend({
 		
@@ -111,167 +280,6 @@ function(Zeega, Backbone, _Layer){
 	});
 */
 
-	Layer.Geo.Visual = _Layer.Visual.extend({
-		
-		draggable : false,
-		linkable : true,
-		
-		init : function()
-		{
-			console.log('	GEO INIT')
-			var _this = this;
-			this.model.on('update', this.updateVisual, this)
-		},
-		
-		render : function()
-		{
-			
-			var map = $('<div class="gmap-container">')
-				.css({
-					'width':'100%',
-					'height':'100%'
-				});
-
-			$(this.el).html( map ).css({height:this.attr.height+'%'});
-			console.log('@@		streetview render')
-						
-			return this;
-		},
-		
-		updateVisual : function()
-		{
-			console.log('	update visual')
-			console.log(this)
-			var center = new google.maps.LatLng( this.model.get('attr').lat, this.model.get('attr').lng);
-			var pov = {
-					'heading' : this.model.get('attr').heading,
-					'pitch' : this.model.get('attr').pitch,
-					'zoom' : this.model.get('attr').streetZoom,
-			}
-			
-			this.streetview.setPosition( center );
-			this.streetview.setPov( pov );
-			
-		},
-		
-		onLayerEnter : function()
-		{
-			console.log('##		geo layer enter', $(this.el).find('.gmap-container')[0], $( $(this.el).find('.gmap-container')[0]).is(':visible')+'' )
-
-			var center = new google.maps.LatLng( this.model.get('attr').lat, this.model.get('attr').lng);
-
-			var mapOptions = {
-				
-				addressControl : false,
-				addressControlOptions : false,
-				clickToGo : true,
-				disableDoubleClickZoom : false,
-				enableCloseButton : false,
-				imageDateControl : false,
-				linksControl : false,
-				panControl : true,
-				panControlOptions : true,
-				//pano : '',
-				position : center,
-				visible :true,
-				zoomControl :true,
-				zoomControlOptions :true,
-				
-				pov : {
-						'heading' : this.model.get('attr').heading,
-						'pitch' : this.model.get('attr').pitch,
-						'zoom' : this.model.get('attr').streetZoom,
-				}
-			};
-			console.log('##		map options', mapOptions)
-			
-			this.streetview = new google.maps.StreetViewPanorama( $(this.el).find('.gmap-container')[0], mapOptions);
-			this.initMapListeners();
-		},
-		
-		initMapListeners : function()
-		{
-			var _this = this;
-			
-			google.maps.event.addListener( this.streetview, 'position_changed', function(){
-				delayedUpdate();
-			});
-
-			google.maps.event.addListener( this.streetview, 'pov_changed', function(){
-				delayedUpdate();
-			});
-
-			// need this so we don't spam the servers
-			var delayedUpdate = _.debounce( function(){
-				
-				var a = _this.model.get('attr');
-				
-				if( a.heading != _this.streetview.getPov().heading || a.pitch !=  _this.streetview.getPov().pitch || a.streetZoom != _this.streetview.getPov().zoom || Math.floor(a.lat*1000) != Math.floor(_this.streetview.getPosition().lat()*1000) || Math.floor(a.lng*1000) != Math.floor(_this.streetview.getPosition().lng()*1000)  )
-				{
-					_this.model.update({
-						heading : _this.streetview.getPov().heading,
-						pitch : _this.streetview.getPov().pitch,
-						streetZoom : Math.floor( _this.streetview.getPov().zoom ),
-						lat : _this.streetview.getPosition().lat(),
-						lng : _this.streetview.getPosition().lng()
-					
-					})
-				}
-				
-				
-			} , 1000);
-		},
-		
-		onLayerExit : function()
-		{
-			//this destroys the map every time the frame is changed. there is probably a better way to do this
-			this.map = null;
-			$(this.el).find('.gmap-container').remove();
-			console.log('on layer exit streetview',this, this.map)
-		},
-		
-		onPreload : function()
-		{
-			if( !this.isLoaded )
-			{
-				var center = new google.maps.LatLng( this.model.get('attr').lat, this.model.get('attr').lng);
-
-				var mapOptions = {
-					
-					addressControl : false,
-					addressControlOptions : false,
-					clickToGo : true,
-					disableDoubleClickZoom : false,
-					enableCloseButton : false,
-					imageDateControl : false,
-					linksControl : false,
-					panControl : true,
-					panControlOptions : true,
-					//pano : '',
-					position : center,
-					visible :true,
-					zoomControl :true,
-					zoomControlOptions :true,
-					
-					pov : {
-							'heading' : this.model.get('attr').heading,
-							'pitch' : this.model.get('attr').pitch,
-							'zoom' : this.model.get('attr').streetZoom,
-					}
-					
-				};
-				
-				//console.log($(this.el).find($(this.el).find('.gmap-container')[0]);
-				this.streetview = {}
-				this.streetview = new google.maps.StreetViewPanorama( $(this.el).find('.gmap-container')[0], mapOptions);
-				
-				this.isLoaded = true;
-			}
-			
-			this.model.trigger('ready', this.model.id)
-		}
-		
-	});
 
 	return Layer;
 
