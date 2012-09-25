@@ -14,7 +14,6 @@ function(Zeega, App) {
 	the router is where your application/navigation logic goes
 
   */
-	console.log('before router', this, Zeega, App);
 	var Router = Backbone.Router.extend({
 		routes: {
 
@@ -65,28 +64,28 @@ function(Zeega, App) {
 
 		viewCollectionPlayer : function( collectionID, itemID )
 		{
-			initialize({player:'exit'});
+			initialize();
 
 			if(Zeega.grid) Zeega.grid.remove();
 
 			// check to see if an identical player exists
-			console.log('player stuffz', !Zeega.player, Zeega.player, collectionID )
-			if( !Zeega.player || Zeega.player && Zeega.player.collection_id != collectionID)
+
+			if( !Zeega.player || Zeega.player && Zeega.player.id != collectionID)
 			{
 				var player = new App.CollectionZeegaPlayerModel();  
 				player.collection_id = collectionID;
-				//Zeega.player = player;
-				console.log('mm     zeega player', player);
 				player.fetch().success(function(res){
-					console.log('mm     model fetched', res, itemID);
-
 					renderCitations();
 					if( !_.isUndefined(itemID) ) player.set('frameID', itemID );
-					console.log( player.toJSON() );
 					Zeega.player = new Zeega.Player( player.toJSON() );
 					Zeega.player.on('all', onPlayerEvent, this);
 					Zeega.player.play();
 				});
+			}
+			else
+			{
+				renderCitations();
+				Zeega.player.trigger('frame_rendered', Zeega.player.project.currentFrame);
 			}
 
 		},
@@ -154,19 +153,20 @@ esp inserting the layout into the dom!
 
 		removeCitation();
 
-		// attr= { player : pause', 'exit' }
-		if(attr && attr.player && Zeega.player)
-		{
-			switch(attr.player)
-			{
-				case 'pause':
-					Zeega.player.playPause();
-					break;
-				case 'exit':
-					Zeega.player.exit();
-				break;
-			}
-		}
+
+		// // attr= { player : pause', 'exit' }
+		// if(attr && attr.player && Zeega.player)
+		// {
+		// 	switch(attr.player)
+		// 	{
+		// 		case 'pause':
+		// 			Zeega.player.playPause();
+		// 			break;
+		// 		case 'exit':
+		// 			Zeega.player.exit();
+		// 		break;
+		// 	}
+		// }
 	}
 
 	function renderIndex()
