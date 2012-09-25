@@ -30,6 +30,9 @@ function(Zeega, App) {
       'collections/:collection_id/view/:item_id' : 'viewCollectionPlayer',
       'collections/:collection_id/view/:item_id/' : 'viewCollectionPlayer',
       
+      'feature/:feature_id' : 'viewFeature',
+      'feature/:feature_id/' : 'viewFeature',
+      
       'map' : 'map',
       'participate' : 'participate',
       'menu' : 'menu',
@@ -40,6 +43,10 @@ function(Zeega, App) {
     {
       initialize();
       renderIndex();
+    },
+    viewFeature: function(feature_id){
+    	initialize();
+    	renderIndex(feature_id);
     },
 
     about : function()
@@ -156,10 +163,12 @@ function(Zeega, App) {
     }
   }
 
-  function renderIndex()
+  function renderIndex(feature_id)
   {
+  		var features=[1666,1665,1664,1663];
+  		if(!_.include(features,feature_id)) feature_id=features[Math.floor(4*Math.random())];
       var _this  = this;
-      var player = new App.Model();
+      var player = new App.Model({id:feature_id});
       player.on('ready', function(){
         renderFeaturedCitation();
       });
@@ -204,7 +213,13 @@ function(Zeega, App) {
     items.fetch().success(function(res){
       console.log('$$   items coll', res, items);
       items.each(function(item){ item.set('collection_id',collectionID);});
-      generateGrid( items, 'items' );
+      
+      var Model = Backbone.Model.extend({ url: 'http://alpha.zeega.org/api/items/'+ collectionID });
+      var it = new Model();
+      it.fetch().success(function(){
+        items.collectionInfo = it.toJSON();
+        generateGrid( items, 'items' );
+      });
     });
   }
 

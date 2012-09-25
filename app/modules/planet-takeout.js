@@ -19,7 +19,9 @@ function(Zeega, Backbone) {
 
   App.Model = Backbone.Model.extend({
 
-    url : 'http://alpha.zeega.org/api/projects/1762',
+    url : function(){
+    	return 'http://alpha.zeega.org/api/projects/'+this.id;
+    },
 
     defaults : {
       //appName : 'wayfinder',
@@ -298,20 +300,10 @@ function(Zeega, Backbone) {
        
     },
 
-    events : {
-      'click a' : 'onClick'
-    },
-
-    onClick : function(e)
+    loadMenu :function()
     {
-      console.log('e click', e, $(e.target))
-    },
-
-    loadMenu :function(){
-    
-    
-      var n=0;
-      var t=0;
+      var n = 0;
+      var t = 0;
       this.collection.each(function(item){
       	var wrapper = false;  
     	if(_.include(item.get('tags'),'pt_tidbits')){        
@@ -329,6 +321,7 @@ function(Zeega, Backbone) {
 			else  wrapper=	$('#neighborhood-two');
 		}
 		if(wrapper) wrapper.append(_.template('<li><a href="/collections/<%=id%>/"><%=title %></a><span><%= child_items_count %></span></li>', item.toJSON()));
+
       });
     
     }
@@ -415,7 +408,7 @@ function(Zeega, Backbone) {
           .openOn(this.map);
 
         $(this.popup._wrapper).css({
-          'background':'url('+ item.get('thumbnail_url') +')',
+          'background': item.get('thumbnail_url') ? 'url('+ item.get('thumbnail_url') +')' : 'grey',
           'background-size' : '100% auto'
         });
         console.log(this.popup);
@@ -501,7 +494,7 @@ function(Zeega, Backbone) {
 
     serialize : function()
     {
-      if(this.collection.data.items) return this.collection.data.items[0];
+      if(this.collection.collectionInfo) return this.collection.collectionInfo.items[0];
     },
 
     onReset : function()
@@ -676,13 +669,13 @@ function(Zeega, Backbone) {
 
     page : 1,
 
-    url : function(){ return 'http://alpha.zeega.org/api/search?r_collections=1&user=760&page='+ this.page; },
+    url : function(){ return 'http://alpha.zeega.org/api/search?r_itemswithcollections&tags=pt_grid&page='+ this.page; },
 
     parse : function( res )
     {
       this.data = res;
-      this.itemsCount = res.collections_count;
-      return res.collections;
+      this.itemsCount = res.items_count;
+      return res.items;
     }
   });
 

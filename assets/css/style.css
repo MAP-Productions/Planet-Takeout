@@ -49,6 +49,16 @@ i.PT-icon-play
 }
 i.PT-icon-play:hover{ background-position: 0 34px}
 
+i.PT-featured
+{
+  background: url(../img/featured.png);
+  background-position: 0 0;
+  width:31px;
+  height:15px;
+  overflow:hidden;
+  display:inline-block;
+}
+
 html{ background:black;}
 
 h1,h2,h3,h4,h5,h6{ font-family: 'PT-black', sans-serif;}
@@ -633,7 +643,15 @@ button.close{
 
 #grid-view-slider>ul>li a
 {
-  text-decoration: none
+  text-decoration: none;
+  position:relative;
+}
+
+#grid-view-slider>ul>li .featured-icon
+{
+  position: absolute;
+  top:-8px;
+  left:-15px;
 }
 
 .item-title
@@ -824,3 +842,23 @@ button.close{
 .social-icon.camera {
   background-position: -270px;
 }
+
+
+.PT-feature-thumb {
+
+	width:120px;
+	height:120px;
+	padding-right:10px;
+	padding-bottom:10px;
+	float:left;
+}
+.PT-feature-thumb img {
+
+	outline: 1px solid white;
+
+
+}
+
+
+
+

@@ -1,4 +1,5 @@
 <a href='/collections/<%= id %>'>
+	<% if( _.include(tags, 'pt_radiostory') ){ %><i class='PT-featured featured-icon'></i><% } %>
 	<% if( thumbnail_url ) {%>
 		<div class='item-title' style='background:url(<%= thumbnail_url %>);background-size:100% 100%;'><h1><%= title %></h1></div>
 	<% } else { %>

@@ -404,6 +404,10 @@ with(obj||{}){
 __p+='<a href=\'/collections/'+
 ( id )+
 '\'>\n\t';
+ if( _.include(tags, 'pt_radiostory') ){ 
+;__p+='<i class=\'PT-featured featured-icon\'></i>';
+ } 
+;__p+='\n\t';
  if( thumbnail_url ) {
 ;__p+='\n\t\t<div class=\'item-title\' style=\'background:url('+
 ( thumbnail_url )+
@@ -517,7 +521,7 @@ return __p;
 this['JST']['app/templates/participate-0.html'] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<ul class="modal-tabs-head">\n\t<li id="addPhotosTab" class="active">Add photos, videos & sounds</li>\n\t<li id="addTakeoutTab">Add a new Takeout</li>\n\t<li id="tellStoryTab">Tell your story</li>\n\t<li id="keepInTouchTab">Keep in touch</li>\n</ul>\n<div class="modal-tabs">\n\t<div class="modal-tab" id="addPhotos">\n\t\t<h2>Tag them as you take them!</h2>\n\t\t<div class="left-column">\n\t\t\t<span class="social-icon camera section-icon"></span>\n\t\t\t<ol>\n\t\t\t\t<li>Upload your media to <a href="http://www.flickr.com/">Flickr</a>, <a href="http://www.youtube.com/">Youtube</a>, <a href="http://www.tumblr.com/">Tumblr</a> or <a href="http://www.soundcloud.com/">Soundcloud</a></li>\n\t\t\t\t<li>Tag <strong>#planettakeout</strong> and other descriptive tags</li>\n\t\t\t\t<li>Geolocate or include the takeout name and location</li>\n\t\t\t</ol>\n\t\t\t<h2>Add them to our Facebook Wall!</h2>\n\t\t\t<span class="social-icon facebook section-icon"></span>\n\t\t\t<ol>\n\t\t\t\t<li>Visit our <a href="#">facebook page</a>.</li>\n\t\t\t\t<li>Add your photo or video.</li>\n\t\t\t\t<li>Include the name and location.</li>\n\t\t\t</ol>\n\t\t\t<h2>Email them!</h2>\n\t\t\t<span class="social-icon email section-icon"></span>\n\t\t\t<ol>\n\t\t\t\t<li>Email val@planettakeout.org with your photos or mp3s as attachments.</li>\n\t\t\t\t<li>Be sure to tell us the location, takeout name, and any other fun facts.</li>\n\t\t\t</ol>\n\t\t</div>\n\t\t<div class="right-column">\n\t\t\t<ul class="info-tab-icons">\n\t\t\t\t<li class="social-icon flickr"></li>\n\t\t\t\t<li class="social-icon youtube"></li>\n\t\t\t\t<li class="social-icon tumblr"></li>\n\t\t\t\t<li class="social-icon soundcloud"></li>\n\t\t\t</ul>\n\t\t\t<div class="info-tab default">\n\t\t\t\t<p>Select an icon above for detailed instructions</p>\n\t\t\t</div>\n\t\t\t<div class="info-tab media flickr" style="display: none;">\n\t\t\t\t<span class="carat"></span>\n\t\t\t\t<div class="content">\n\t\t\t\t\t<p>1) Login or create an account (it’s quick and free)</p>\n\t\t\t\t\t<p>2) Join the Planet Takeout group</p>\n\t\t\t\t\t<p>3) Upload your photographs</p>\n\t\t\t\t\t<p>4) Tag Your Photos with planettakeout and the name of the takeout. If the name is two words, be sure to put the name in quotations (i.e. “Peking House”)</p>\n\t\t\t\t\t<p>This step is really important. If you don’t tag your photos properly, we will not be able to display them on our site.</p>\n\t\t\t\t\t<p>Also tag any words you feel describe the image or videos (e.g. fortune, waiting, altar). These tags open up new collections and views!</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class="info-tab media youtube" style="display: none;">\n\t\t\t\t<span class="carat"></span>\n\t\t\t\t<div class="content">\n\t\t\t\t\t<p>Youtube info</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class="info-tab media tumblr" style="display: none;">\n\t\t\t\t<span class="carat"></span>\n\t\t\t\t<div class="content">\n\t\t\t\t\t<p>Tumblr info</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class="info-tab media soundcloud" style="display: none;">\n\t\t\t\t<span class="carat"></span>\n\t\t\t\t<div class="content">\n\t\t\t\t\t<p>Soundcloud info</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class="modal-tab" id="addTakeout" style="display: none;">\n\t\t<div id=\'find\'>\n\t\t\t<h2>What should we call this takeout?</h2>\n\t\t\t<input placeholder="Takeout Name" type="text" id="takeoutName" />\n\t\t\t<h2>Search the map and help us find the best view</h2>\n\t\t\t<ol class="explanation">\n\t\t\t\t<li class="step-1">Search the takeout\'s address or nearby streets to move the marker.</li>\n\t\t\t\t<li class="step-2">Use your mouse to pan streetview until you find the best image!\n\t\t\t</ol>\n\t\t\t<div id="gViews">\n\t\t\t\t<div id="map"></div>\n\t\t\t\t<div id="streetView"></div>\n\t\t\t</div>\n\t\t\t<button id=\'saveTakeout\' class=\'btn\'>Submit</button>\n\t\t</div>\n\t\t<div id="thanks" style="display: none;">\n\t\t\t<h1>Thanks for submitting<br/> <strong id="takeoutName"></strong>!.</h1>\n\t\t\t<p>Receive the latest updates and exclusive stories from Planet Takeout</p>\n\t\t\t<form method="post" name="planetTakeoutEmailSignup-1347988840500" action="https://s2785.t.eloqua.com/e/f2" id="form102">\n\t\t\t\t<input value="planetTakeoutEmailSignup-1347988840500" type="hidden" name="elqFormName" />\n\t\t\t\t<input value="2785" type="hidden" name="elqSiteId" />\n\t\t\t\t<input name="elqCampaignId" type="hidden" />\n\n\t\t\t\t<input id="field0" value="" type="text" name="emailAddress" class="" />\n\n\t\t\t\t<button class="btn" id="field1" type="submit">Submit</button>\n\t\t\t</form>\n\t\t</div>\n\t</div>\n\t<div class="modal-tab" id="tellStory" style="display: none;">\n\t\t<h2>We want to hear your story about Chinese takeouts.</h2>\n\t\t<p>We are looking for everyday stories of how your local takeout fits into your life</p>\n\t\t<ol>\n\t\t\t<li>What did you order today? Do you always order the same dish?</li>\n\t\t\t<li>Is this takeout a part of your life or routine? How so?</li>\n\t\t\t<li>What is your relationship like with the takeout staff?</li>\n\t\t\t<li>Do you have childhood memories of eating Chinese takeout food?</li>\n\t\t</ol>\n\t\t<h2>We\'d love to hear your voice!</h2>\n\t\t<p><!--<button class="btn">Record</button>--> Or call 617.477.8688</p>\n\t\t<!--<p class="small">Click the “Record” button to begin recording. A SoundCloud account and the Flash plug-in are required. If you don’t yet have a SoundCloud account, you’ll have the opportunity to create one during the process.</p>-->\n\t</div>\n\t<div class="modal-tab" id="keepInTouch" style="display: none;">\n\t\t<h2>Like Us on Facebook</h2>\n\t\t<p>Facebook like embed here</p>\n\t\t<h2>Sign Up for Exclusive Emails</h2>\n\t\t<p>Receive the latest updates and exclusive stories from Planet Takeout</p>\n\t\t\t\n\t\t<form method="post" name="planetTakeoutEmailSignup-1347988840500" action="https://s2785.t.eloqua.com/e/f2" id="form102">\n\t\t\t<input value="planetTakeoutEmailSignup-1347988840500" type="hidden" name="elqFormName" />\n\t\t\t<input value="2785" type="hidden" name="elqSiteId" />\n\t\t\t<input name="elqCampaignId" type="hidden" />\n\n\t\t\t<input id="field0" value="" type="text" name="emailAddress" class="" />\n\n\t\t\t<button class="btn" id="field1" type="submit">Submit</button>\n\t\t</form>\n\t  \n\t</div>\n</div>';
+__p+='<ul class="modal-tabs-head">\n\t<li id="addPhotosTab" class="active">Add photos, videos & sounds</li>\n\t<li id="addTakeoutTab">Add a new Takeout</li>\n\t<li id="tellStoryTab">Tell your story</li>\n\t<li id="keepInTouchTab">Keep in touch</li>\n</ul>\n<div class="modal-tabs">\n\t<div class="modal-tab" id="addPhotos">\n\t\t<h2>Tag them as you take them!</h2>\n\t\t<div class="left-column">\n\t\t\t<span class="social-icon camera section-icon"></span>\n\t\t\t<ol>\n\t\t\t\t<li>Upload your media to <a href="http://www.flickr.com/">Flickr</a>, <a href="http://www.youtube.com/">Youtube</a>, <a href="http://www.tumblr.com/">Tumblr</a> or <a href="http://www.soundcloud.com/">Soundcloud</a></li>\n\t\t\t\t<li>Tag <strong>#planettakeout</strong> and other descriptive tags</li>\n\t\t\t\t<li>Geolocate or include the takeout name and location</li>\n\t\t\t</ol>\n\t\t\t<h2>Add them to our Facebook Wall!</h2>\n\t\t\t<span class="social-icon facebook section-icon"></span>\n\t\t\t<ol>\n\t\t\t\t<li>Visit our <a href="#">facebook page</a>.</li>\n\t\t\t\t<li>Add your photo or video.</li>\n\t\t\t\t<li>Include the name and location.</li>\n\t\t\t</ol>\n\t\t\t<h2>Email them!</h2>\n\t\t\t<span class="social-icon email section-icon"></span>\n\t\t\t<ol>\n\t\t\t\t<li>Email val@planettakeout.org with your photos or mp3s as attachments.</li>\n\t\t\t\t<li>Be sure to tell us the location, takeout name, and any other fun facts.</li>\n\t\t\t</ol>\n\t\t</div>\n\t\t<div class="right-column">\n\t\t\t<ul class="info-tab-icons">\n\t\t\t\t<li class="social-icon flickr"></li>\n\t\t\t\t<li class="social-icon youtube"></li>\n\t\t\t\t<li class="social-icon tumblr"></li>\n\t\t\t\t<li class="social-icon soundcloud"></li>\n\t\t\t</ul>\n\t\t\t<div class="info-tab default">\n\t\t\t\t<p>Select an icon above for detailed instructions</p>\n\t\t\t</div>\n\t\t\t<div class="info-tab media flickr" style="display: none;">\n\t\t\t\t<span class="carat"></span>\n\t\t\t\t<div class="content">\n\t\t\t\t\t<p>1) Login or create an account (it’s quick and free)</p>\n\t\t\t\t\t<p>2) Join the Planet Takeout group</p>\n\t\t\t\t\t<p>3) Upload your photographs</p>\n\t\t\t\t\t<p>4) Tag Your Photos with planettakeout and the name of the takeout. If the name is two words, be sure to put the name in quotations (i.e. “Peking House”)</p>\n\t\t\t\t\t<p>This step is really important. If you don’t tag your photos properly, we will not be able to display them on our site.</p>\n\t\t\t\t\t<p>Also tag any words you feel describe the image or videos (e.g. fortune, waiting, altar). These tags open up new collections and views!</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class="info-tab media youtube" style="display: none;">\n\t\t\t\t<span class="carat"></span>\n\t\t\t\t<div class="content">\n\t\t\t\t\t<p>Youtube info</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class="info-tab media tumblr" style="display: none;">\n\t\t\t\t<span class="carat"></span>\n\t\t\t\t<div class="content">\n\t\t\t\t\t<p>Tumblr info</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class="info-tab media soundcloud" style="display: none;">\n\t\t\t\t<span class="carat"></span>\n\t\t\t\t<div class="content">\n\t\t\t\t\t<p>Soundcloud info</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class="modal-tab" id="addTakeout" style="display: none;">\n\t\t<div id=\'find\'>\n\t\t\t<h2>What should we call this takeout?</h2>\n\t\t\t<input placeholder="Takeout Name" type="text" id="takeoutName" />\n\t\t\t<h2>Search the map and help us find the best view</h2>\n\t\t\t<ol class="explanation">\n\t\t\t\t<li class="step-1">Search the takeout\'s address or nearby streets to move the marker.</li>\n\t\t\t\t<li class="step-2">Use your mouse to pan streetview until you find the best image!\n\t\t\t</ol>\n\t\t\t<div id="gViews">\n\t\t\t\t<div id="map"></div>\n\t\t\t\t<div id="streetView"></div>\n\t\t\t</div>\n\t\t\t<button id=\'saveTakeout\' class=\'btn\'>Submit</button>\n\t\t</div>\n\t\t<div id="thanks" style="display: none;">\n\t\t\t<h1>Thanks for submitting<br/> <strong id="takeoutName"></strong>!.</h1>\n\t\t\t<p>Receive the latest updates and exclusive stories from Planet Takeout</p>\n\t\t\t<form method="post" name="planetTakeoutEmailSignup-1347988840500" action="https://s2785.t.eloqua.com/e/f2" id="form102">\n\t\t\t\t<input value="planetTakeoutEmailSignup-1347988840500" type="hidden" name="elqFormName" />\n\t\t\t\t<input value="2785" type="hidden" name="elqSiteId" />\n\t\t\t\t<input name="elqCampaignId" type="hidden" />\n\n\t\t\t\t<input id="field0" value="" type="text" name="emailAddress" class="" />\n\n\t\t\t\t<button class="btn" id="field1" type="submit">Submit</button>\n\t\t\t</form>\n\t\t</div>\n\t</div>\n\t<div class="modal-tab" id="tellStory" style="display: none;">\n\t\t<h2>We want to hear your story about Chinese takeouts.</h2>\n\t\t<p>We are looking for everyday stories of how your local takeout fits into your life</p>\n\t\t<ol>\n\t\t\t<li>What did you order today? Do you always order the same dish?</li>\n\t\t\t<li>Is this takeout a part of your life or routine? How so?</li>\n\t\t\t<li>What is your relationship like with the takeout staff?</li>\n\t\t\t<li>Do you have childhood memories of eating Chinese takeout food?</li>\n\t\t</ol>\n\t\t<h2>We\'d love to hear your voice!</h2>\n\t\t<p><!--<button class="btn">Record</button>--> Or call 617.477.8688</p>\n\t\t<!--<p class="small">Click the “Record” button to begin recording. A SoundCloud account and the Flash plug-in are required. If you don’t yet have a SoundCloud account, you’ll have the opportunity to create one during the process.</p>-->\n\t</div>\n\t<div class="modal-tab" id="keepInTouch" style="display: none;">\n\t\t<h2>Like Us on Facebook</h2>\n\t\t\n\t\t\n\t\t<div class="fb-like" data-href="http://planettakeout.org" data-send="false" data-width="450" data-show-faces="true"></div>\n\t\t\n\t\t\n\t\t<h2>Sign Up for Exclusive Emails</h2>\n\t\t<p>Receive the latest updates and exclusive stories from Planet Takeout</p>\n\t\t\t\n\t\t<form method="post" name="planetTakeoutEmailSignup-1347988840500" action="https://s2785.t.eloqua.com/e/f2" id="form102">\n\t\t\t<input value="planetTakeoutEmailSignup-1347988840500" type="hidden" name="elqFormName" />\n\t\t\t<input value="2785" type="hidden" name="elqSiteId" />\n\t\t\t<input name="elqCampaignId" type="hidden" />\n\n\t\t\t<input id="field0" value="" type="text" name="emailAddress" class="" />\n\n\t\t\t<button class="btn" id="field1" type="submit">Submit</button>\n\t\t</form>\n\t  \n\t</div>\n</div>';
 }
 return __p;
 };
@@ -31236,7 +31240,7 @@ function(Zeega, Backbone) {
 
   App.Model = Backbone.Model.extend({
 
-    url : 'http://alpha.zeega.org/api/projects/1661',
+    url : 'http://alpha.zeega.org/api/projects/1762',
 
     defaults : {
       //appName : 'wayfinder',
@@ -31370,7 +31374,7 @@ function(Zeega, Backbone) {
     {
       console.log('close modal');
       this.remove();
-      Zeega.router.navigate('/',{trigger:true});
+      //Zeega.router.navigate('/',{trigger:true});
     },
 
     initialize : function(opts)
@@ -31514,44 +31518,51 @@ function(Zeega, Backbone) {
       });
        
     },
-    loadMenu :function(){
-    
-    
-      var n=0;
-      var t=0;
+
+    loadMenu :function()
+    {
+      var n = 0;
+      var t = 0;
       this.collection.each(function(item){
         var wrapper = false;  
-      if(_.include(item.get('tags'),'pt_tidbits')){
-        
-        if(_.include(item.get('tags'),'pt_feature')) wrapper= $('#feature-tidbits');
-          else{
+        if(_.include(item.get('tags'),'pt_tidbits'))
+        {
+          
+          if(_.include(item.get('tags'),'pt_feature')) wrapper= $('#feature-tidbits');
+          else
+          {
             t++;
-            
-					if(t<5) wrapper=	$('#all-tidbits-one');
-          else if(t<12) wrapper=	$('#all-tidbits-two');
+              
+            if(t<5) wrapper=	$('#all-tidbits-one');
+            else if(t<12) wrapper=	$('#all-tidbits-two');
+          }
         }
-      }
         else if(_.include(item.get('tags'),'pt_housespecial')) wrapper= $('#house-special');
-			else if(_.include(item.get('tags'),'pt_neighborhood')){
-				n++;
-				if(n<7) wrapper=	$('#neighborhood-one');
-				else if(n<13)  wrapper=	$('#neighborhood-two');
-			}
-			else if(_.include(item.get('tags'),'pt_running')){
-				$('#running').append(_.template('<li><a href="#collection/46156/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
-			}
-			else if(_.include(item.get('tags'),'pt_regulars')){
-				wrapperTwo=	$('#regulars').append(_.template('<li><a href="#collection/46157/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
-			}
-			else if(_.include(item.get('tags'),'pt_hoods')){
-				$('#hoods').append(_.template('<li><a href="#collection/46158/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
-			}
-			else if(_.include(item.get('tags'),'pt_generations')){
-				$('#generations').append(_.template('<li><a href="#collection/46159/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
-      }
+        else if(_.include(item.get('tags'),'pt_neighborhood'))
+        {
+          n++;
+          if(n<7) wrapper=	$('#neighborhood-one');
+          else if(n<13)  wrapper=	$('#neighborhood-two');
+        }
+        else if(_.include(item.get('tags'),'pt_running'))
+        {
+          $('#running').append(_.template('<li><a href="/collections/46156/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
+        }
+        else if(_.include(item.get('tags'),'pt_regulars'))
+        {
+          wrapperTwo=	$('#regulars').append(_.template('<li><a href="/collections/46157/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
+        }
+        else if(_.include(item.get('tags'),'pt_hoods'))
+        {
+          $('#hoods').append(_.template('<li><a href="/collections/46158/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
+        }
+        else if(_.include(item.get('tags'),'pt_generations'))
+        {
+          $('#generations').append(_.template('<li><a href="/collections/46159/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
+        }
 
-      if(wrapper) wrapper.append(_.template('<li><a href="#collection/<%=id%>/"><%=title %></a><span><%= child_items_count %></span></li>', item.toJSON()));
-    
+        if(wrapper) wrapper.append(_.template('<li><a href="/collections/<%=id%>/"><%=title %></a><span><%= child_items_count %></span></li>', item.toJSON()));
+      
       });
     
     }
@@ -31638,7 +31649,7 @@ function(Zeega, Backbone) {
           .openOn(this.map);
 
         $(this.popup._wrapper).css({
-          'background':'url('+ item.get('thumbnail_url') +')',
+          'background': item.get('thumbnail_url') ? 'url('+ item.get('thumbnail_url') +')' : 'grey',
           'background-size' : '100% auto'
         });
         console.log(this.popup);
@@ -31724,7 +31735,7 @@ function(Zeega, Backbone) {
 
     serialize : function()
     {
-      if(this.collection.data.items) return this.collection.data.items[0];
+      if(this.collection.collectionInfo) return this.collection.collectionInfo.items[0];
     },
 
     onReset : function()
@@ -31899,13 +31910,13 @@ function(Zeega, Backbone) {
 
     page : 1,
 
-    url : function(){ return 'http://alpha.zeega.org/api/search?r_collections=1&page='+ this.page; },
+    url : function(){ return 'http://alpha.zeega.org/api/search?r_itemswithcollections&tags=pt_grid&page='+ this.page; },
 
     parse : function( res )
     {
       this.data = res;
-      this.itemsCount = res.collections_count;
-      return res.collections;
+      this.itemsCount = res.items_count;
+      return res.items;
     }
   });
 
@@ -31946,6 +31957,7 @@ function(Zeega, App) {
       'collections/:collection_id/view' : 'viewCollectionPlayer',
       'collections/:collection_id/view/' : 'viewCollectionPlayer',
       'collections/:collection_id/view/:item_id' : 'viewCollectionPlayer',
+      'collections/:collection_id/view/:item_id/' : 'viewCollectionPlayer',
       
       'map' : 'map',
       'participate' : 'participate',
@@ -32084,7 +32096,7 @@ function(Zeega, App) {
 
   function renderFeaturedCitation()
   {
-    
+
   }
 
   function renderPage(pageName)
@@ -32121,7 +32133,13 @@ function(Zeega, App) {
     items.fetch().success(function(res){
       console.log('$$   items coll', res, items);
       items.each(function(item){ item.set('collection_id',collectionID);});
-      generateGrid( items, 'items' );
+      
+      var Model = Backbone.Model.extend({ url: 'http://alpha.zeega.org/api/items/'+ collectionID });
+      var it = new Model();
+      it.fetch().success(function(){
+        items.collectionInfo = it.toJSON();
+        generateGrid( items, 'items' );
+      });
     });
   }
 
