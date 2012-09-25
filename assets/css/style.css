@@ -542,25 +542,25 @@ button.close{
 
 #grid-view-wrapper
 {
-  position: absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
   background: rgba(194, 217, 214, 1);
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(154, 235, 231, 1)), to(rgba(255, 216, 171, 1)));
   background-image: -webkit-linear-gradient(top, rgba(255, 216, 171, 1), rgba(154, 235, 231, 1) ); 
   background-image:    -moz-linear-gradient(top, rgba(255, 216, 171, 1), rgba(154, 235, 231, 1) );
   background-image:     -ms-linear-gradient(top, rgba(255, 216, 171, 1), rgba(154, 235, 231, 1) );
   background-image:      -o-linear-gradient(top, rgba(255, 216, 171, 1), rgba(154, 235, 231, 1) );
+
+  height:100%;
+  left:0;
+  overflow: auto;
+  position: absolute;
+  top:0;
+  width:100%;
 }
 
 
 #grid-view-slider
 {
   width: 100%;
-  height: 100%;
-  overflow: auto;
   width: 1000px;
   margin: 0 auto;
   padding: 0 12px;
@@ -731,27 +731,18 @@ button.close{
 
 
 
-.map-popup .heart,
-.map-popup .ent
-{ opacity: 0.75 ;}
-
-.map-popup .heart:hover,
-.map-popup .ent:hover
-{ opacity: 1 ;}
-
-.map-popup .heart
-{
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
 .map-popup .enter
 {
   text-align: center;
   position: absolute;
-  bottom: 25px;
+  bottom: 80px;
   left: 70px;
+  opacity: 0.75;
 }
+
+.map-popup .enter:hover
+{ opacity: 1 ;}
+
 
 .play-pause
 {

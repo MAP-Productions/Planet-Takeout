@@ -157,7 +157,16 @@ function(Zeega, App) {
 
   function renderIndex()
   {
-      var player = new App.Model(); 
+      var _this  = this;
+      var player = new App.Model();
+      player.on('ready', function(){
+        renderFeaturedCitation();
+      });
+  }
+
+  function renderFeaturedCitation()
+  {
+    
   }
 
   function renderPage(pageName)
