@@ -626,10 +626,9 @@ button.close{
   float: left;
   width: 142px;
   height: 100px;
-  background: white;
+  background: rgba(0,0,0,0.5);
   margin: 12px;
   background-size:100% 100%;
-  background-color:white;
 }
 
 #grid-view-slider>ul>li a
@@ -654,7 +653,7 @@ button.close{
   left:-24px;
   height:148px;
   width:190px;
-  background-color:white;
+  background: rgba(0,0,0,0.5);
 }
 
 
