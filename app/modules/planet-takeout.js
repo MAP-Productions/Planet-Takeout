@@ -286,7 +286,62 @@ function(Zeega, Backbone) {
 
   App.Views.Menu = App.Views._Page.extend({
     template: 'menu',
-    className: 'PT-menu'
+    className: 'PT-menu',
+    initialize : function()
+    {
+      
+		var _this=this;
+      this.collection = new App.Collections.MenuItems();
+      this.collection.fetch().success(function(response){
+      	_this.loadMenu();
+      });
+       
+    },
+    loadMenu :function(){
+    
+    
+    	var n=0;
+    	var t=0;
+    	this.collection.each(function(item){
+    		
+    		
+    		if(_.include(item.get('tags'),'pt_hoods'))console.log(item);
+    		
+    		if(_.include(item.get('tags'),'pt_tidbits')){
+    			if(_.include(item.get('tags'),'pt_feature')) var wrapper= $('#feature-tidbits');
+    			else{
+    				t++;	
+					if(t<5) var wrapper=	$('#all-tidbits-one');
+					else if(t<12) var wrapper=	$('#all-tidbits-two');
+				}
+    		}
+    		else if(_.include(item.get('tags'),'pt_housespecial'))var wrapper= $('#house-special');
+			else if(_.include(item.get('tags'),'pt_neighborhood')){
+				n++;
+				if(n<7)var wrapper=	$('#neighborhood-one');
+				else if(n<13) var wrapper=	$('#neighborhood-two');
+			}
+			else if(_.include(item.get('tags'),'pt_running')){
+				$('#running').append(_.template('<li><a href="#collection/46156/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
+			}
+			else if(_.include(item.get('tags'),'pt_regulars')){
+				wrapperTwo=	$('#regulars').append(_.template('<li><a href="#collection/46157/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
+			}
+			else if(_.include(item.get('tags'),'pt_hoods')){
+				$('#hoods').append(_.template('<li><a href="#collection/46158/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
+			}
+			else if(_.include(item.get('tags'),'pt_generations')){
+				$('#generations').append(_.template('<li><a href="#collection/46159/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
+    		}
+    		
+    		if(wrapper) wrapper.append(_.template('<li><a href="#collection/<%=id%>/"><%=title %></a><span><%= child_items_count %></span></li>', item.toJSON()));
+    
+    	});
+    
+    }
+   
+    
+    
   });
 
 
@@ -381,12 +436,23 @@ function(Zeega, Backbone) {
     initialize : function(){ console.log('colection init')},
     url: function()
     {
+
       return 'http://alpha.zeega.org/api/items/46086/items';
-//      return 'http://alpha.zeega.org/api/items/46086/items';
+    },
+
+    parse : function(res){ return res.items; }
+  });
+  
+  App.Collections.MenuItems = Backbone.Collection.extend({
+    url: function()
+    {
+      return 'http://alpha.zeega.org/api/items/46082/items';
+
     },
 
     parse : function(res){ console.log('parse:',res, res.items); return res.items; }
   });
+  
 
   App.Views.MapPopup = Backbone.View.extend({
 
