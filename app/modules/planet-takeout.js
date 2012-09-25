@@ -431,7 +431,7 @@ function(Zeega, Backbone) {
           .openOn(this.map);
 
         $(this.popup._wrapper).css({
-          'background':'url('+ item.get('thumbnail_url') +')',
+          'background': item.get('thumbnail_url') ? 'url('+ item.get('thumbnail_url') +')' : 'grey',
           'background-size' : '100% auto'
         });
         console.log(this.popup);
@@ -693,6 +693,7 @@ function(Zeega, Backbone) {
     page : 1,
 
     url : function(){ return 'http://alpha.zeega.org/api/search?r_collections=1&user=760&page='+ this.page; },
+//    url : function(){ return 'http://alpha.zeega.org/api/search?r_items&tags=pt_grid&page='+ this.page; },
 
     parse : function( res )
     {
