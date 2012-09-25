@@ -28,6 +28,7 @@ function(Zeega, App) {
       'collections/:collection_id/view' : 'viewCollectionPlayer',
       'collections/:collection_id/view/' : 'viewCollectionPlayer',
       'collections/:collection_id/view/:item_id' : 'viewCollectionPlayer',
+      'collections/:collection_id/view/:item_id/' : 'viewCollectionPlayer',
       
       'map' : 'map',
       'participate' : 'participate',
@@ -166,7 +167,7 @@ function(Zeega, App) {
 
   function renderFeaturedCitation()
   {
-    
+
   }
 
   function renderPage(pageName)

@@ -19,7 +19,7 @@ function(Zeega, Backbone) {
 
   App.Model = Backbone.Model.extend({
 
-    url : 'http://alpha.zeega.org/api/projects/1661',
+    url : 'http://alpha.zeega.org/api/projects/1762',
 
     defaults : {
       //appName : 'wayfinder',
@@ -297,6 +297,16 @@ function(Zeega, Backbone) {
       });
        
     },
+
+    events : {
+      'click a' : 'onClick'
+    },
+
+    onClick : function(e)
+    {
+      console.log('e click', e, $(e.target))
+    },
+
     loadMenu :function(){
     
     
@@ -321,19 +331,19 @@ function(Zeega, Backbone) {
 				else if(n<13)  wrapper=	$('#neighborhood-two');
 			}
 			else if(_.include(item.get('tags'),'pt_running')){
-				$('#running').append(_.template('<li><a href="#collection/46156/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
+				$('#running').append(_.template('<li><a href="/collections/46156/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
 			}
 			else if(_.include(item.get('tags'),'pt_regulars')){
-				wrapperTwo=	$('#regulars').append(_.template('<li><a href="#collection/46157/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
+				wrapperTwo=	$('#regulars').append(_.template('<li><a href="/collections/46157/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
 			}
 			else if(_.include(item.get('tags'),'pt_hoods')){
-				$('#hoods').append(_.template('<li><a href="#collection/46158/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
+				$('#hoods').append(_.template('<li><a href="/collections/46158/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
 			}
 			else if(_.include(item.get('tags'),'pt_generations')){
-				$('#generations').append(_.template('<li><a href="#collection/46159/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
+				$('#generations').append(_.template('<li><a href="/collections/46159/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
       }
 
-      if(wrapper) wrapper.append(_.template('<li><a href="#collection/<%=id%>/"><%=title %></a><span><%= child_items_count %></span></li>', item.toJSON()));
+      if(wrapper) wrapper.append(_.template('<li><a href="/collections/<%=id%>/"><%=title %></a><span><%= child_items_count %></span></li>', item.toJSON()));
     
       });
     
