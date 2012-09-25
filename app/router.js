@@ -67,6 +67,7 @@ function(Zeega, App) {
 
 			if( !Zeega.player || Zeega.player && Zeega.player.id != collectionID )
 			{
+	
 
 				var newPlayer = function()
 				{
