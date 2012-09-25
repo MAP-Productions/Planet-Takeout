@@ -74,9 +74,15 @@ function(Zeega, App) {
 				player.fetch().success(function(res){
 					renderCitations();
 					if( !_.isUndefined(itemID) ) player.set('frameID', itemID );
-					Zeega.player = new Zeega.Player( player.toJSON() );
-					Zeega.player.on('all', onPlayerEvent, this);
-					Zeega.player.play();
+					if(player.get('frames').length>0){
+						console.log('collection has content');
+						Zeega.player = new Zeega.Player( player.toJSON() );
+						Zeega.player.on('all', onPlayerEvent, this);
+						Zeega.player.play();
+					}
+					else{
+						gotoStreetviewProject(player,collectionID);
+					}
 				});
 			}
 			else
@@ -118,6 +124,37 @@ tasks to take care of before the application can load
 esp inserting the layout into the dom!
 
 */
+
+	function gotoStreetviewProject(player,collectionID){
+		console.log('collection has no content');
+		var Model = Backbone.Model.extend({ url: 'http://alpha.zeega.org/api/items/'+ collectionID });
+		var it = new Model();
+		it.fetch().success(function(resp){
+			console.log(resp);
+			var layer = {
+				id:2,
+				type:geo,
+			}
+			var frame = {
+				id:3,
+				layers:[2],
+			
+			}
+			var p = player.toJson;
+			p.layers[0]=layer;
+			p.frame[0]=frame;
+			p.sequence.frames=[3];
+			Zeega.player = new Zeega.Player( p );
+			Zeega.player.on('all', onPlayerEvent, this);
+			Zeega.player.play();
+		
+		
+		});
+		
+		
+		
+	
+	}
 
 	function initialize(attr)
 	{
