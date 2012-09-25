@@ -115,7 +115,7 @@ button.close{
   position: absolute;
   right: 0;
   top: 0;
-  padding: 10px; float:
+  padding: 8px 12px 0 0;
 }
 
 .PT-modal-content-head
@@ -137,7 +137,7 @@ button.close{
 
 .PT-modal
 {
-  width: 750px;
+  width: 770px;
   margin: 80px auto;
 }
 
@@ -159,8 +159,6 @@ button.close{
   padding-left: 40px;
 }
 
-
-
 .PT-modal-title h1{ font-size: 4em; }
 
 .PT-modal-content-wrapper
@@ -172,9 +170,7 @@ button.close{
   background-image:    -moz-linear-gradient(top, rgba(154, 235, 231, 1), rgba(255, 216, 171, 1));
   background-image:     -ms-linear-gradient(top, rgba(154, 235, 231, 1), rgba(255, 216, 171, 1));
   background-image:      -o-linear-gradient(top, rgba(154, 235, 231, 1), rgba(255, 216, 171, 1));
-
   box-shadow: 0 0 9px;
-  /*padding:20px;*/
   text-align: justify;
 }
 
@@ -182,13 +178,19 @@ button.close{
 {
   position:relative;
   padding: 20px;
-  overflow: hidden;
 }
 
 .PT-modal-wide .PT-modal-content
 {
   padding: 0;
-  overflow: hidden;
+  overflow: auto;
+}
+
+.PT-modal-content .modal-tabs {
+  overflow: auto;
+  max-height: 500px;
+  margin-top: 12px;
+  padding: 0 10px;
 }
 
 .PT-modal-content .modal-tab input[type=text] {
@@ -260,9 +262,11 @@ button.close{
 
 .PT-modal-content ul.modal-tabs-head
 {
-  margin-bottom:20px;
-  position: relative;
-  top: -10px;
+  left: 0;
+  right: 0;
+  padding: 10px 30px;
+  position: absolute;
+  top: 0;
 }
 
 .PT-modal-content ul.modal-tabs-head li
@@ -280,10 +284,38 @@ button.close{
   cursor: default;
 }
 
+.PT-modal-content .wrap-columns {
+  overflow: hidden;
+}
+
+.PT-modal-content .left-column {
+  float: left;
+  width: 72%;
+}
+
+.PT-modal-content .right-column {
+  float: right;
+  width: 25%;
+}
+
+.PT-modal-content .right-column h3 {
+  color: #666;
+  font-family: 'PT-regular', Arial, sans-serif;
+  font-size: 15px;
+  margin: 15px 0;
+  line-height: 1;
+}
+
+.PT-modal-content .right-column img {
+  display: block;
+  margin: 30px auto;
+  width: 75%;
+}
+
 .PT-modal-content .modal-tab h2 {
   text-align: left;
   line-height: 1.2em;
-  margin-bottom: 15px;
+  margin: 15px 0;
 }
 
 .PT-modal-content .modal-tab a {
@@ -318,44 +350,47 @@ button.close{
 }
 
 .PT-modal-content .modal-tab .info-tab-icons {
-  overflow:hidden;
+  overflow: hidden;
 }
 
 .PT-modal-content .modal-tab .info-tab-icons li {
   cursor: pointer;
   float: left;
-  margin: 0 8px 0 8px;
+  margin: 0 3%;
 }
 
 .PT-modal-content .modal-tab .info-tab.media .carat {
-  height: 0px;
-  width: 0px;
-  display:block;
-  border-width: 0px 12px 11px 12px;
   border-color: transparent transparent #fff transparent;
   border-style: none solid solid solid;
+  border-width: 0px 12px 11px 12px;
+  display: block;
+  height: 0px;
+  left:15.82%;
   position: relative;
+  margin-left: -6px;
+  width: 0px;
 }
+
 .PT-modal-content .modal-tab .info-tab.flickr .carat {
-  left:11px;
+  left:15.82%;
 }
 
 .PT-modal-content .modal-tab .info-tab.youtube .carat {
-  left:57px;
+  left:31%;
 }
 
 .PT-modal-content .modal-tab .info-tab.tumblr .carat {
-  left:103px;
+  left:57%;
 }
 
 .PT-modal-content .modal-tab .info-tab.soundcloud .carat {
-  left:149px;
+  left:81%;
 }
 
 .PT-modal-content .modal-tab .info-tab.media .content {
   background: #fff;
   border-radius: 14px;
-  padding: 30px 10px;
+  padding: 10px;
 }
 
 .PT-modal-content .modal-tab .info-tab.media p {
@@ -371,18 +406,11 @@ button.close{
   margin: 11px;
 }
 
+/* PARTICIPATE */
+
+
 .PT-modal-content #addPhotos ol {
   margin-left: 50px;
-}
-
-.PT-modal-content #addPhotos .left-column {
-  float: left;
-  width: 73%;
-}
-
-.PT-modal-content #addPhotos .right-column {
-  float: right;
-  width: 26%;
 }
 
 .PT-modal-content #addTakeout ol.explanation {
