@@ -698,6 +698,7 @@ function(Zeega, Backbone) {
     {
       this.data = res;
       this.itemsCount = res.collections_count;
+      console.log('ressponse',res)
       return res.collections;
     }
   });
