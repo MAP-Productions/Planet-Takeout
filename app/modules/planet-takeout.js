@@ -23,8 +23,9 @@ function(Zeega, Backbone) {
     {
 
       var projects = [1666,1665,1664,1663];
-
-      return 'http://alpha.zeega.org/api/projects/'+ projects[Math.floor(Math.random()*projects.length)];
+		console.log('returning url');
+      //return 'http://alpha.zeega.org/api/projects/'+ projects[Math.floor(Math.random()*projects.length)];
+      return 'http://alpha.zeega.org/api/projects/1775';
     },
 
     defaults : {
@@ -343,7 +344,7 @@ function(Zeega, Backbone) {
      
       this.model.set({
       	title: $('#takeoutName').val(),
-      	attr:{
+      	attributes:{
       			tags:$('#takeoutName').val().split(' ').join('').split('\'').join('').toLowerCase(),
       			pov: {
 				  heading : this.newTakeoutStreetView.getPov().heading,

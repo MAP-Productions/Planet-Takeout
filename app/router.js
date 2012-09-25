@@ -81,7 +81,7 @@ function(Zeega, App) {
 						Zeega.player.play();
 					}
 					else{
-						gotoStreetviewProject(player,collectionID);
+						gotoStreetviewProject(player.toJSON(),collectionID);
 					}
 				});
 			}
@@ -130,21 +130,34 @@ esp inserting the layout into the dom!
 		var Model = Backbone.Model.extend({ url: 'http://alpha.zeega.org/api/items/'+ collectionID });
 		var it = new Model();
 		it.fetch().success(function(resp){
-			console.log(resp);
-			var layer = {
+			console.log("#########",resp);
+			player.layers[0]= {
 				id:2,
-				type:geo,
+				type:"Geo",
+				attr:{
+					archive:'',
+					height:100,
+					width:100,
+					lat:resp.items[0].media_geo_latitude,
+					lng:resp.items[0].media_geo_longitude,
+					//streetZoom : resp.items[0].attributes.pov.streetZoom,
+					//heading : resp.items[0].attributes.pov.heading,
+					//pitch : resp.items[0].attributes.pov.pitch,
+					title: resp.items[0].title,
+
+				}
 			}
-			var frame = {
+			player.frames[0]= {
 				id:3,
 				layers:[2],
+				attr:{
+					advance:0
+					}
 			
 			}
-			var p = player.toJson;
-			p.layers[0]=layer;
-			p.frame[0]=frame;
-			p.sequence.frames=[3];
-			Zeega.player = new Zeega.Player( p );
+			player.sequences[0].frames=[3];
+			
+			Zeega.player = new Zeega.Player( player );
 			Zeega.player.on('all', onPlayerEvent, this);
 			Zeega.player.play();
 		
