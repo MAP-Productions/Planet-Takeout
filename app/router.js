@@ -210,8 +210,7 @@ function(Zeega, App) {
       it.fetch().success(function(){
         items.collectionInfo = it.toJSON();
         generateGrid( items, 'items' );
-      
-      })
+      });
     });
   }
 

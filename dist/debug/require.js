@@ -31735,7 +31735,7 @@ function(Zeega, Backbone) {
 
     serialize : function()
     {
-      if(this.collection.data.items) return this.collection.data.items[0];
+      if(this.collection.collectionInfo) return this.collection.collectionInfo.items[0];
     },
 
     onReset : function()
@@ -32133,7 +32133,13 @@ function(Zeega, App) {
     items.fetch().success(function(res){
       console.log('$$   items coll', res, items);
       items.each(function(item){ item.set('collection_id',collectionID);});
-      generateGrid( items, 'items' );
+      
+      var Model = Backbone.Model.extend({ url: 'http://alpha.zeega.org/api/items/'+ collectionID });
+      var it = new Model();
+      it.fetch().success(function(){
+        items.collectionInfo = it.toJSON();
+        generateGrid( items, 'items' );
+      });
     });
   }
 
