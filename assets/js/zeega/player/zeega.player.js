@@ -54,11 +54,12 @@ function(Zeega, Backbone, Layer) {
 
 			this.project.on('ready', this.onProjectReady, this );
 			this.project.renderPlayer();
-
+			console.log('player at', this)
 		},
 		
 		onProjectReady : function()
 		{
+			console.log('PROJECT READY')
 			this.project.off('ready', this.playProject );
 			if(this.get('mode') != 'editor') this.startRouter();
 			this.project.goToFrame( this.get('frameID') );
@@ -89,6 +90,8 @@ function(Zeega, Backbone, Layer) {
 
 			//Backbone.history.stop();
 
+			this.trigger('player_exit');
+			console.log('player exit and removed')
 			return false;
 		},
 
@@ -195,7 +198,11 @@ function(Zeega, Backbone, Layer) {
 		{
 			var _this = this;
 			this.layout = new Backbone.Layout({
-				el: "body"
+				el: "body",
+				afterRender : function()
+				{
+					_this.trigger('ready');
+				}
 			});
 
 			var playerView = new Zeega.Player.PlayerView({model:this})
@@ -204,7 +211,6 @@ function(Zeega, Backbone, Layer) {
 			// Render the layout into the DOM.
 			this.layout.render(function(){
 				playerView.initEvents();
-				_this.trigger('ready');
 			});
 			
 		},
@@ -219,6 +225,7 @@ function(Zeega, Backbone, Layer) {
 		
 		goToFrame : function( frameID )
 		{
+			console.log('on project go to frame', frameID)
 
 			this.cancelFrameAdvance();
 			if(this.currentFrame) this.currentFrame.unrender( frameID );
@@ -251,6 +258,7 @@ function(Zeega, Backbone, Layer) {
 			var _this = this;
 			_.each( fr.framesToPreload, function(frameID){
 				var frame = _this.frames.get(frameID);
+				console.log('preload frame:',frameID, frame)
 				if(frame.status == 'waiting') frame.preload();
 			})
 		},
@@ -416,6 +424,7 @@ function(Zeega, Backbone, Layer) {
 			_.each( _.toArray(this.layers), function(layer){
 				if(layer.status == 'waiting')
 				{
+					console.log('preload layer', layer)
 					layer.on('ready', _this.onLayerReady, _this);
 					layer.on('error', _this.onLayerError, _this);
 

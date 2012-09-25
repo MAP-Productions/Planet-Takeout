@@ -67,7 +67,7 @@ function(Zeega, Backbone) {
   App.CollectionZeegaPlayerModel = Backbone.Model.extend({
 
     url : function(){ return 'http://alpha.zeega.org/api/items/'+ this.collection_id +'/project'; },
-
+    initialize : function(){console.log('collection',this)},
     defaults : {
       //appName : 'wayfinder',
       mode :'standalone',
@@ -93,7 +93,7 @@ function(Zeega, Backbone) {
   App.NewTakeoutModel = Backbone.Model.extend({
   
   defaults:{
-  
+
   	  tags:  "pt_takout",
       media_type:'Collection',
       layer_type:'Dynamic'
@@ -459,7 +459,7 @@ function(Zeega, Backbone) {
       var renderMarkers = function()
       {
         _this.collection.each(function(item){
-          console.log('lat lng', _this.collection, item, [ item.get('media_geo_latitude'), item.get('media_geo_longitude')]);
+//          console.log('lat lng', _this.collection, item, [ item.get('media_geo_latitude'), item.get('media_geo_longitude')]);
           item.marker = L.marker([ item.get('media_geo_latitude') || 0, item.get('media_geo_longitude') || 0 ], {icon: _this.ptIconRed} );
           item.marker.itemID = item.id;
           item.marker.addTo(_this.map);

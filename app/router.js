@@ -61,32 +61,42 @@ function(Zeega, App) {
 
 		viewCollectionPlayer : function( collectionID, itemID )
 		{
-			initialize();
-
 			if(Zeega.grid) Zeega.grid.remove();
 
 			// check to see if an identical player exists
 
-			if( !Zeega.player || Zeega.player && Zeega.player.id != collectionID)
+			if( !Zeega.player || Zeega.player && Zeega.player.id != collectionID )
 			{
-				var player = new App.CollectionZeegaPlayerModel();  
-				player.collection_id = collectionID;
-				player.fetch().success(function(res){
-					renderCitations();
-					if( !_.isUndefined(itemID) ) player.set('frameID', itemID );
-					if(player.get('frames').length>0){
-						console.log('collection has content');
-						Zeega.player = new Zeega.Player( player.toJSON() );
-						Zeega.player.on('all', onPlayerEvent, this);
-						Zeega.player.play();
-					}
-					else{
-						gotoStreetviewProject(player.toJSON(),collectionID);
-					}
-				});
+
+
+				initialize({player:'exit'});
+				var newPlayer = function()
+				{
+					var player = new App.CollectionZeegaPlayerModel();  
+					player.collection_id = collectionID;
+					player.fetch().success(function(res){
+						console.log('data returned', res)
+						renderCitations();
+						if( !_.isUndefined(itemID) ) player.set('frameID', itemID );
+						if(player.get('frames').length>0){
+							Zeega.player = new Zeega.Player( player.toJSON() );
+							Zeega.player.on('all', onPlayerEvent, this);
+							Zeega.player.play();
+						}
+						else{
+							gotoStreetviewProject(player.toJSON(),collectionID);
+						}
+					});
+				}
+
+				if( Zeega.player ) Zeega.player.on('player_exit', newPlayer)
+				else newPlayer();
+
+
 			}
 			else
 			{
+				initialize({player:'pause'});
 				renderCitations();
 				Zeega.player.trigger('frame_rendered', Zeega.player.project.currentFrame);
 			}
@@ -200,9 +210,11 @@ esp inserting the layout into the dom!
 			switch(attr.player)
 			{
 				case 'pause':
+					console.log('player pause')
 					Zeega.player.playPause();
 					break;
 				case 'exit':
+					console.log('player exit')
 					Zeega.player.exit();
 				break;
 			}
