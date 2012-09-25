@@ -514,7 +514,7 @@ function(Zeega, Backbone) {
 
     serialize : function()
     {
-      return this.collection.collectionInfo.items[0];
+      if(this.collection.collectionInfo) return this.collection.collectionInfo.items[0];
     },
 
     onReset : function()
