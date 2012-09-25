@@ -135,16 +135,14 @@ esp inserting the layout into the dom!
 	// happens on every router change
 	function cleanup(attr)
 	{
-		// if a modal exists && a player exists, remove the modal but do not remove the player
-		// if a modal exists, but no player exists, then go back
-		if(Zeega.page && Zeega.player)
+		// remove modal if it exists
+		if(Zeega.page)
 		{
 			Zeega.page.remove();
 			Zeega.page = null;
 		}
 
 		removeCitation();
-
 
 		// attr= { player : pause', 'exit' }
 		if(attr && attr.player && Zeega.player)
