@@ -91,12 +91,15 @@ function(Zeega, Backbone) {
 
   // model for new takeout data (via 'participate')
   App.NewTakeoutModel = Backbone.Model.extend({
-  
+  url: "takeout.php",
   defaults:{
-
-  	  tags:  "pt_takout",
+  	  tags:  "pt_takeout",
       media_type:'Collection',
-      layer_type:'Dynamic'
+      layer_type:'Dynamic',
+      attribution_uri: 'default',
+      child_items_count:0,
+      archive:'Planet Takeout',
+      user_id:760,
   }
   
   });
@@ -342,7 +345,7 @@ function(Zeega, Backbone) {
     },
     saveStreetView: function() {
      
-      this.model.set({
+      this.model.save({
       	title: $('#takeoutName').val(),
       	attributes:{
       			tags:$('#takeoutName').val().split(' ').join('').split('\'').join('').toLowerCase(),
@@ -368,7 +371,7 @@ function(Zeega, Backbone) {
     initialize : function()
     {
       
-		var _this=this;
+	  var _this=this;
       this.collection = new App.Collections.MenuItems();
       this.collection.fetch().success(function(response){
       _this.loadMenu();
@@ -396,9 +399,11 @@ function(Zeega, Backbone) {
 			if(n<7) wrapper=	$('#neighborhood-one');
 			else  wrapper=	$('#neighborhood-two');
 		}
-		if(wrapper) wrapper.append(_.template('<li><a href="/collections/<%=id%>/"><%=title %></a><span><%= child_items_count %></span></li>', item.toJSON()));
-
+		if(wrapper) wrapper.append(_.template('<li style="display:none;"><a href="/collections/<%=id%>/"><%=title %></a><span><%= child_items_count %></span></li>', item.toJSON()));
+		
       });
+      
+      $('.PT-menu li').fadeIn('fast');
     
     }
    

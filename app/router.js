@@ -67,9 +67,9 @@ function(Zeega, App) {
 
 			if( !Zeega.player || Zeega.player && Zeega.player.id != collectionID )
 			{
+	
 
-
-				initialize({player:'exit'});
+			
 				var newPlayer = function()
 				{
 					var player = new App.CollectionZeegaPlayerModel();  
@@ -91,7 +91,7 @@ function(Zeega, App) {
 
 				if( Zeega.player ) Zeega.player.on('player_exit', newPlayer)
 				else newPlayer();
-
+				initialize({player:'exit'});
 
 			}
 			else
