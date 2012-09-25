@@ -68,13 +68,11 @@ function(Zeega, App) {
 			if( !Zeega.player || Zeega.player && Zeega.player.id != collectionID )
 			{
 
-				initialize({player:'exit'});
 				var newPlayer = function()
 				{
 					var player = new App.CollectionZeegaPlayerModel();  
 					player.collection_id = collectionID;
 					player.fetch().success(function(res){
-						console.log('data returned', res)
 						renderCitations();
 						if( !_.isUndefined(itemID) ) player.set('frameID', itemID );
 						Zeega.player = new Zeega.Player( player.toJSON() );
@@ -83,10 +81,11 @@ function(Zeega, App) {
 					});
 				}
 
-				if( Zeega.player ) Zeega.player.on('player_exit', newPlayer)
+
+				if( Zeega.player ) Zeega.player.on('player_exit', newPlayer);
 				else newPlayer();
 
-				
+				initialize({player:'exit'});
 			}
 			else
 			{
@@ -145,15 +144,6 @@ esp inserting the layout into the dom!
 	// happens on every router change
 	function cleanup(attr)
 	{
-		// remove modal if it exists
-		if(Zeega.page)
-		{
-			Zeega.page.remove();
-			Zeega.page = null;
-		}
-
-		removeCitation();
-
 		// attr= { player : pause', 'exit' }
 		if(attr && attr.player && Zeega.player)
 		{
@@ -169,6 +159,15 @@ esp inserting the layout into the dom!
 				break;
 			}
 		}
+				// remove modal if it exists
+		if(Zeega.page)
+		{
+			Zeega.page.remove();
+			Zeega.page = null;
+		}
+
+		removeCitation();
+
 	}
 
 	function renderIndex()

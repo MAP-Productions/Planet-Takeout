@@ -47,19 +47,14 @@ function(Zeega, Backbone, Layer) {
 		play : function()
 		{
 			this.parseProject( this.toJSON() );
-			console.log('after parsed', this)
 			this.set( 'frameID', this.get('frameID') || this.project.sequences.at(0).frames.at(0).id );
-
-			console.log('%%		start player at', this.get('frameID'))
 
 			this.project.on('ready', this.onProjectReady, this );
 			this.project.renderPlayer();
-			console.log('player at', this)
 		},
 		
 		onProjectReady : function()
 		{
-			console.log('PROJECT READY')
 			this.project.off('ready', this.playProject );
 			if(this.get('mode') != 'editor') this.startRouter();
 			this.project.goToFrame( this.get('frameID') );
@@ -90,8 +85,7 @@ function(Zeega, Backbone, Layer) {
 
 			//Backbone.history.stop();
 
-			this.trigger('player_exit');
-			console.log('player exit and removed')
+			//this.trigger('player_exit');
 			return false;
 		},
 
@@ -220,13 +214,14 @@ function(Zeega, Backbone, Layer) {
 			var _this = this;
 			this.currentFrame.unrender();
 			var playerView = this.layout.getView(function(view){ return view.model === _this });
-			playerView.$el.fadeOut( 450, function(){ playerView.remove() });
+			playerView.$el.fadeOut( 450, function(){
+				playerView.remove();
+				_this.trigger('player_exit');
+			});
 		},
 		
 		goToFrame : function( frameID )
 		{
-			console.log('on project go to frame', frameID)
-
 			this.cancelFrameAdvance();
 			if(this.currentFrame) this.currentFrame.unrender( frameID );
 
@@ -258,7 +253,6 @@ function(Zeega, Backbone, Layer) {
 			var _this = this;
 			_.each( fr.framesToPreload, function(frameID){
 				var frame = _this.frames.get(frameID);
-				console.log('preload frame:',frameID, frame)
 				if(frame.status == 'waiting') frame.preload();
 			})
 		},
@@ -424,7 +418,6 @@ function(Zeega, Backbone, Layer) {
 			_.each( _.toArray(this.layers), function(layer){
 				if(layer.status == 'waiting')
 				{
-					console.log('preload layer', layer)
 					layer.on('ready', _this.onLayerReady, _this);
 					layer.on('error', _this.onLayerError, _this);
 
