@@ -24,8 +24,8 @@ function(Zeega, Backbone) {
 
       var projects = [1666,1665,1664,1663];
 		console.log('returning url');
-      //return 'http://alpha.zeega.org/api/projects/'+ projects[Math.floor(Math.random()*projects.length)];
-      return 'http://alpha.zeega.org/api/projects/1775';
+      return 'http://alpha.zeega.org/api/projects/'+ projects[Math.floor(Math.random()*projects.length)];
+      //return 'http://alpha.zeega.org/api/projects/1775';
     },
 
     defaults : {
@@ -651,6 +651,16 @@ function(Zeega, Backbone) {
 
   });
 
+   App.Views.ItemFeaturedView = Backbone.LayoutView.extend({
+    template : 'item-featured',
+    tagName : 'li',
+
+    className : 'item-view',
+
+    serialize : function(){ return this.model.toJSON(); }
+
+  });
+
   App.Views.CollectionView = Backbone.LayoutView.extend({
     template : 'collection',
     tagName : 'li',
@@ -670,6 +680,50 @@ function(Zeega, Backbone) {
     }
 
   });
+
+/*************
+
+  FEATURED CITATION
+
+***************/
+
+  App.Views.FeaturedCitationView = Backbone.LayoutView.extend({
+    template : 'citation-featured',
+    className : 'featured-citation-view',
+
+    afterRender : function()
+    {
+      var _this = this;
+      var Collection = Backbone.Collection.extend({
+        url : 'http://alpha.zeega.org/api/search?r_itemswithcollections',
+        parse : function(res){ return res.items }
+      })
+      this.collection = new Collection();
+      this.collection.fetch().success(function(){
+        console.log('$$   citation collection', _this.collection);
+        _this.collection.each(function(item){
+          var iv = new App.Views.ItemFeaturedView({model:item});
+          _this.$('.citation-bottom').append( iv.render().el );
+        })
+      })
+    },
+
+
+
+    serialize : function(){ console.log('%%   ser',_.extend({},this.model.toJSON())); return _.extend({},this.model.toJSON()); }
+  });
+
+  App.Views.FeaturedCitationItem = Backbone.LayoutView.extend({
+
+
+  })
+
+
+/*************
+
+  regular CITATION
+
+***************/
 
   App.Views.CitationView = Backbone.LayoutView.extend({
     template : 'citation-static',

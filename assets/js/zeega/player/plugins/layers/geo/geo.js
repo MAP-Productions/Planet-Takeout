@@ -189,6 +189,7 @@ function(Zeega, Backbone, _Layer){
 					zoomControl :true,
 					zoomControlOptions :true,
 					
+					
 					pov : {
 							'heading' : this.model.get('attr').heading,
 							'pitch' : this.model.get('attr').pitch,
