@@ -230,11 +230,13 @@ function(Zeega, Backbone) {
 
   App.Views.Participate = App.Views.TabbedModal.extend({
     template: 'participate-0',
+    
     initialize: function() {
       this.events = _.extend({},this.events, App.Views.TabbedModal.prototype.events);
       _.bindAll(this, 'render', 'geoLookup', 'initAddTakeout', 'showStreetView', 'saveStreetView');
       this.model = new App.NewTakeoutModel();
       this.geocoder = new google.maps.Geocoder();
+      this.newTakeoutStreetView=false;
     },
     events: {
         'click ul.info-tab-icons li': 'switchInfoTab',
@@ -291,7 +293,7 @@ function(Zeega, Backbone) {
 		
 		});
 		
-		this.showStreetView();
+		if(!this.newTakeoutStreetView)this.showStreetView();
 				
     },
     
