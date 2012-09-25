@@ -131,8 +131,9 @@ function(Zeega, Backbone) {
 
     closeModal : function()
     {
-      console.log('close modal');
-      this.remove();
+      console.log('close modal // back');
+      window.history.back();
+      //this.remove();
       //Zeega.router.navigate('/',{trigger:true})
       return false;
     },
@@ -162,7 +163,8 @@ function(Zeega, Backbone) {
     closeModal : function()
     {
       console.log('close modal');
-      this.remove();
+      window.history.back();
+//this.remove();
       //Zeega.router.navigate('/',{trigger:true});
     },
 

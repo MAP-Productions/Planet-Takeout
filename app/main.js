@@ -7,7 +7,6 @@ require([
 ],
 
 function(Zeega, Router) {
-  console.log('main.js', Zeega, Router);
   // Define your master router on the application namespace and trigger all
   // navigation from this instance.
   Zeega.router = new Router();

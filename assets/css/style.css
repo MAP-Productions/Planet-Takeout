@@ -25,6 +25,9 @@
 
 }
 
+/* google maps image size override */
+
+#map img { max-width:none; }
 
 /*    sprites       */
 
