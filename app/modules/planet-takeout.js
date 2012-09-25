@@ -206,7 +206,7 @@ function(Zeega, Backbone) {
   App.Views.About = App.Views.TabbedModal.extend({
     template: 'about',
     initialize: function() {
-      this.events = _.extend({},this.events, App.Views.TabbedModal.prototype.events)
+      this.events = _.extend({},this.events, App.Views.TabbedModal.prototype.events);
     }
   });
 
@@ -219,7 +219,7 @@ function(Zeega, Backbone) {
   App.Views.Participate = App.Views.TabbedModal.extend({
     template: 'participate-0',
     initialize: function() {
-      this.events = _.extend({},this.events, App.Views.TabbedModal.prototype.events)
+      this.events = _.extend({},this.events, App.Views.TabbedModal.prototype.events);
       _.bindAll(this, 'render', 'geoLookup', 'initAddTakeout', 'showStreetView', 'saveStreetView');
       this.newTakeout = new App.NewTakeoutModel();
       this.geocoder = new google.maps.Geocoder();
@@ -293,33 +293,32 @@ function(Zeega, Backbone) {
 		var _this=this;
       this.collection = new App.Collections.MenuItems();
       this.collection.fetch().success(function(response){
-      	_this.loadMenu();
+      _this.loadMenu();
       });
        
     },
     loadMenu :function(){
     
     
-    	var n=0;
-    	var t=0;
-    	this.collection.each(function(item){
-    		
-    		
-    		if(_.include(item.get('tags'),'pt_hoods'))console.log(item);
-    		
-    		if(_.include(item.get('tags'),'pt_tidbits')){
-    			if(_.include(item.get('tags'),'pt_feature')) var wrapper= $('#feature-tidbits');
-    			else{
-    				t++;	
-					if(t<5) var wrapper=	$('#all-tidbits-one');
-					else if(t<12) var wrapper=	$('#all-tidbits-two');
-				}
-    		}
-    		else if(_.include(item.get('tags'),'pt_housespecial'))var wrapper= $('#house-special');
+      var n=0;
+      var t=0;
+      this.collection.each(function(item){
+        var wrapper = false;  
+      if(_.include(item.get('tags'),'pt_tidbits')){
+        
+        if(_.include(item.get('tags'),'pt_feature')) wrapper= $('#feature-tidbits');
+          else{
+            t++;
+            
+					if(t<5) wrapper=	$('#all-tidbits-one');
+          else if(t<12) wrapper=	$('#all-tidbits-two');
+        }
+      }
+        else if(_.include(item.get('tags'),'pt_housespecial')) wrapper= $('#house-special');
 			else if(_.include(item.get('tags'),'pt_neighborhood')){
 				n++;
-				if(n<7)var wrapper=	$('#neighborhood-one');
-				else if(n<13) var wrapper=	$('#neighborhood-two');
+				if(n<7) wrapper=	$('#neighborhood-one');
+				else if(n<13)  wrapper=	$('#neighborhood-two');
 			}
 			else if(_.include(item.get('tags'),'pt_running')){
 				$('#running').append(_.template('<li><a href="#collection/46156/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
@@ -332,11 +331,11 @@ function(Zeega, Backbone) {
 			}
 			else if(_.include(item.get('tags'),'pt_generations')){
 				$('#generations').append(_.template('<li><a href="#collection/46159/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
-    		}
-    		
-    		if(wrapper) wrapper.append(_.template('<li><a href="#collection/<%=id%>/"><%=title %></a><span><%= child_items_count %></span></li>', item.toJSON()));
+      }
+
+      if(wrapper) wrapper.append(_.template('<li><a href="#collection/<%=id%>/"><%=title %></a><span><%= child_items_count %></span></li>', item.toJSON()));
     
-    	});
+      });
     
     }
    
@@ -433,7 +432,7 @@ function(Zeega, Backbone) {
   });
 
   App.Collections.MapItems = Backbone.Collection.extend({
-    initialize : function(){ console.log('colection init')},
+    initialize : function(){ console.log('colection init');},
     url: function()
     {
 
@@ -471,7 +470,7 @@ function(Zeega, Backbone) {
     enterCollectionViewer : function()
     {
       // for some reason, the relative url wasn't working correctly. navigate works though
-      console.log('enter collectoin', this)
+      console.log('enter collectoin', this);
       Zeega.router.navigate('/collections/'+ this.model.id +'/view', {'trigger':true});
       return false;
     },
