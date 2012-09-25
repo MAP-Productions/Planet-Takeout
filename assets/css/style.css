@@ -453,14 +453,14 @@ button.close{
 .PT-modal-content #addTakeout #map {
   background: #aaa;
   float: left;
-  height: 300px;
+  height: 200px;
   width: 300px;
 }
 
 .PT-modal-content #addTakeout #streetView {
   background: #aaa;
   float: left;
-  height: 300px;
+  height: 200px;
   width: 350px;
   margin-left: 12px;
 }
@@ -859,6 +859,30 @@ button.close{
 
 }
 
+#PT-newtakout-map-wrapper{
+	position:relative;
+	float: left;
+}
 
+#PT-newtakout-map-search {
+	border: none;
+	border-radius: 12px;
+	display: inline-block;
+	font-size: 12px;
+	padding: 5px 10px;
+	margin: 0px 10px 30px 5px;
+	float:left;
+}
+
+#PT-newtakout-search-wrapper{
+	z-index: 1000;
+	position: absolute;
+	top: 168px;
+	left: 0px;	
+}
+
+#PT-newtakout-search-submit{
+	margin:0px 0px 0px 0px !important;	
+}
 
 
