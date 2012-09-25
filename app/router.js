@@ -30,8 +30,8 @@ function(Zeega, App) {
       'collections/:collection_id/view/:item_id' : 'viewCollectionPlayer',
       'collections/:collection_id/view/:item_id/' : 'viewCollectionPlayer',
       
-      'feature/:feature_id' : 'viewFeature',
-      'feature/:feature_id/' : 'viewFeature',
+      'features/:feature_id' : 'viewFeature',
+      'features/:feature_id/' : 'viewFeature',
       
       'map' : 'map',
       'participate' : 'participate',
