@@ -342,7 +342,8 @@ function(Zeega, Backbone) {
       var renderMarkers = function()
       {
         _this.collection.each(function(item){
-          item.marker = L.marker([ item.get('media_geo_latitude'), item.get('media_geo_longitude')], {icon: _this.ptIconRed} );
+          console.log('lat lng', _this.collection, item, [ item.get('media_geo_latitude'), item.get('media_geo_longitude')]);
+          item.marker = L.marker([ item.get('media_geo_latitude') || 0, item.get('media_geo_longitude') || 0 ], {icon: _this.ptIconRed} );
           item.marker.itemID = item.id;
           item.marker.addTo(_this.map);
 
@@ -381,6 +382,7 @@ function(Zeega, Backbone) {
     url: function()
     {
       return 'http://alpha.zeega.org/api/items/46086/items';
+//      return 'http://alpha.zeega.org/api/items/46086/items';
     },
 
     parse : function(res){ console.log('parse:',res, res.items); return res.items; }
@@ -602,12 +604,12 @@ function(Zeega, Backbone) {
 
     page : 1,
 
-    url : function(){ return 'http://alpha.zeega.org/api/items/'+ this.collectionID; },
+    url : function(){ return 'http://alpha.zeega.org/api/items/'+ this.collectionID +'/items'; },
 
     parse : function( res )
     {
       this.data = res;
-      return res.items[0].child_items;
+      return res.items;
     }
   });
 
