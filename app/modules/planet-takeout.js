@@ -100,6 +100,7 @@ function(Zeega, Backbone) {
       child_items_count:0,
       archive:'Planet Takeout',
       user_id:760,
+      uri:"default"
   }
   
   });
