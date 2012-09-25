@@ -161,11 +161,14 @@ esp inserting the layout into the dom!
 
 	function renderIndex()
 	{
+		console.log('render index')
 		var _this  = this;
 		var player = new App.Model();
 		player.on('ready', function(){
-			renderFeaturedCitation();
+			console.log('player ready')
+			//renderFeaturedCitation();
 		});
+
 	}
 
 	function renderFeaturedCitation()

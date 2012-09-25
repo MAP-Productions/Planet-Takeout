@@ -19,8 +19,12 @@ function(Zeega, Backbone) {
 
   App.Model = Backbone.Model.extend({
 
-    url : function(){
-      return 'http://alpha.zeega.org/api/projects/'+this.id;
+    url : function()
+    {
+
+      var projects = [1666,1665,1664,1663];
+
+      return 'http://alpha.zeega.org/api/projects/'+ projects[Math.floor(Math.random()*projects.length)];
     },
 
     defaults : {
