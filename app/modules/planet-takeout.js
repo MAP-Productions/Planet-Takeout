@@ -19,7 +19,9 @@ function(Zeega, Backbone) {
 
   App.Model = Backbone.Model.extend({
 
-    url : 'http://alpha.zeega.org/api/projects/1762',
+    url : function(){
+      return 'http://alpha.zeega.org/api/projects/'+this.id;
+    },
 
     defaults : {
       //appName : 'wayfinder',
@@ -305,45 +307,23 @@ function(Zeega, Backbone) {
       var n = 0;
       var t = 0;
       this.collection.each(function(item){
-        var wrapper = false;  
-        if(_.include(item.get('tags'),'pt_tidbits'))
-        {
-          
-          if(_.include(item.get('tags'),'pt_feature')) wrapper= $('#feature-tidbits');
-          else
-          {
-            t++;
-              
-            if(t<5) wrapper=	$('#all-tidbits-one');
-            else if(t<12) wrapper=	$('#all-tidbits-two');
-          }
-        }
+      var wrapper = false;  
+      if(_.include(item.get('tags'),'pt_tidbits')){        
+			if(_.include(item.get('tags'),'pt_feature')) wrapper= $('#feature-tidbits');
+			else{
+				t++;
+				if(t<5) wrapper=	$('#all-tidbits-one');
+				else wrapper=	$('#all-tidbits-two');
+			}
+		}
         else if(_.include(item.get('tags'),'pt_housespecial')) wrapper= $('#house-special');
-        else if(_.include(item.get('tags'),'pt_neighborhood'))
-        {
-          n++;
-          if(n<7) wrapper=	$('#neighborhood-one');
-          else if(n<13)  wrapper=	$('#neighborhood-two');
-        }
-        else if(_.include(item.get('tags'),'pt_running'))
-        {
-          $('#running').append(_.template('<li><a href="/collections/46156/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
-        }
-        else if(_.include(item.get('tags'),'pt_regulars'))
-        {
-          wrapperTwo=	$('#regulars').append(_.template('<li><a href="/collections/46157/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
-        }
-        else if(_.include(item.get('tags'),'pt_hoods'))
-        {
-          $('#hoods').append(_.template('<li><a href="/collections/46158/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
-        }
-        else if(_.include(item.get('tags'),'pt_generations'))
-        {
-          $('#generations').append(_.template('<li><a href="/collections/46159/view/<%=id%>/"><%=title %></a><span></span></li>', item.toJSON()));
-        }
+		else if(_.include(item.get('tags'),'pt_neighborhood')){
+			n++;
+			if(n<7) wrapper=	$('#neighborhood-one');
+			else  wrapper=	$('#neighborhood-two');
+		}
+		if(wrapper) wrapper.append(_.template('<li><a href="/collections/<%=id%>/"><%=title %></a><span><%= child_items_count %></span></li>', item.toJSON()));
 
-        if(wrapper) wrapper.append(_.template('<li><a href="/collections/<%=id%>/"><%=title %></a><span><%= child_items_count %></span></li>', item.toJSON()));
-      
       });
     
     }

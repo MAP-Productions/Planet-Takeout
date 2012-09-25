@@ -239,7 +239,6 @@ esp inserting the layout into the dom!
 		});
 	}
 
-
   // this is the switch that interperes all incoming player events
 	function onPlayerEvent(e, opts)
 	{
