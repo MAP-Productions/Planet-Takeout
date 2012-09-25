@@ -709,7 +709,18 @@ button.close{
 
 .citation-inner
 {
-  background: rgba(0, 0, 0, 0.75);  
+  background: rgba(0, 0, 0, 0.75);
+  position: relative; 
+}
+
+.elapsed
+{
+  background-color: red;
+position: absolute;
+height: 100%;
+width: 100%;
+top: 0px;
+left: 0;
 }
 
 .citation-attribution,

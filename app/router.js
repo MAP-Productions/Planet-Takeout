@@ -230,6 +230,7 @@ esp inserting the layout into the dom!
 	function onPlayerEvent(e, opts)
 	{
 
+		//console.log('player e:', e, opts)
 		/* lint error - replaced switch with if
 		switch(e)
 		{
@@ -244,6 +245,11 @@ esp inserting the layout into the dom!
 		else if( e == 'preview_resize' )
 		{
 			//$('.citation-wrapper').css({ width : Zeega.player.getSize().width +'px' });
+		}
+		else if( e== 'timeupdate')
+		{
+			//console.log('%:', opts.elapsed /opts.duration )
+			$('.citation-top .elapsed').css({width: (opts.elapsed /opts.duration*100) +'%' })
 		}
 	}
 

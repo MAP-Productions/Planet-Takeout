@@ -257,11 +257,13 @@ function(Zeega, Backbone, Layer) {
 		
 		renderFrame : function(frameID)
 		{
+			var _this = this;
 			var frame = this.frames.get(frameID);
 			var fromFrameID = this.currentFrame ? this.currentFrame.id : frameID;
 			frame.render( fromFrameID );
 
-			this.trigger('frame_rendered', frame)
+			this.trigger('frame_rendered', frame);
+			frame.on('timeupdate', function(opts){ _this.trigger('timeupdate',opts) })
 			this.setFrameAdvance( frameID );
 		},
 		
@@ -419,6 +421,7 @@ function(Zeega, Backbone, Layer) {
 
 					layer.status = 'loading';
 					layer.player_onPreload();
+					layer.on('timeupdate', function(opts){_this.trigger('timeupdate', opts)}); //relay timeupdates to the frame
 				}
 			})
 		},
