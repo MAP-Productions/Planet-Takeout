@@ -20,7 +20,7 @@ function(Zeega, Backbone) {
   App.Model = Backbone.Model.extend({
 
     url : function(){
-    	return 'http://alpha.zeega.org/api/projects/'+this.id;
+      return 'http://alpha.zeega.org/api/projects/'+this.id;
     },
 
     defaults : {
@@ -305,8 +305,8 @@ function(Zeega, Backbone) {
       var n = 0;
       var t = 0;
       this.collection.each(function(item){
-      	var wrapper = false;  
-    	if(_.include(item.get('tags'),'pt_tidbits')){        
+      var wrapper = false;  
+      if(_.include(item.get('tags'),'pt_tidbits')){        
 			if(_.include(item.get('tags'),'pt_feature')) wrapper= $('#feature-tidbits');
 			else{
 				t++;

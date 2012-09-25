@@ -45,8 +45,8 @@ function(Zeega, App) {
       renderIndex();
     },
     viewFeature: function(feature_id){
-    	initialize();
-    	renderIndex(feature_id);
+        initialize();
+        renderIndex(feature_id);
     },
 
     about : function()
@@ -165,8 +165,8 @@ function(Zeega, App) {
 
   function renderIndex(feature_id)
   {
-  		var features=[1666,1665,1664,1663];
-  		if(!_.include(features,feature_id)) feature_id=features[Math.floor(4*Math.random())];
+      var features=[1666,1665,1664,1663];
+      if(!_.include(features,feature_id)) feature_id=features[Math.floor(4*Math.random())];
       var _this  = this;
       var player = new App.Model({id:feature_id});
       player.on('ready', function(){
