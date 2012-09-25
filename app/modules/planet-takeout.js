@@ -86,6 +86,14 @@ function(Zeega, Backbone) {
 
   // model for new takeout data (via 'participate')
   App.NewTakeoutModel = Backbone.Model.extend({
+  
+  defaults:{
+  
+  	  tags:  "pt_takout",
+      media_type:'Collection',
+      layer_type:'Dynamic'
+  }
+  
   });
 
 
@@ -217,16 +225,19 @@ function(Zeega, Backbone) {
 
   App.Views.Participate = App.Views.TabbedModal.extend({
     template: 'participate-0',
+    
     initialize: function() {
       this.events = _.extend({},this.events, App.Views.TabbedModal.prototype.events);
       _.bindAll(this, 'render', 'geoLookup', 'initAddTakeout', 'showStreetView', 'saveStreetView');
-      this.newTakeout = new App.NewTakeoutModel();
+      this.model = new App.NewTakeoutModel();
       this.geocoder = new google.maps.Geocoder();
+      this.newTakeoutStreetView=false;
     },
     events: {
         'click ul.info-tab-icons li': 'switchInfoTab',
         'click #addTakeoutTab': 'initAddTakeout',
-        'click #saveTakeout': 'saveStreetView'
+        'click #saveTakeout': 'saveStreetView',
+        'click #PT-newtakout-map-submit' : 'lookup',
     },
     switchInfoTab: function(e) {
         var clicked = $(e.target),
@@ -247,18 +258,73 @@ function(Zeega, Backbone) {
         }
     },
     initAddTakeout: function() {
+      var _this=this;
       var mapOptions = {
           center: new google.maps.LatLng(42.354485,-71.061802),
           zoom: 13,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          streetViewControl:false,
       };
-
       this.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+      this.marker = new google.maps.Marker({
+					  position: new google.maps.LatLng(42.354485,-71.061802),
+					  map: this.map,
+					  
+
+		});
+	
+		this.marker.setDraggable(true);
+		google.maps.event.addListener(this.marker, 'dragend', function(){
+			 	var center = _this.marker.getPosition();
+				_this.model.set({
+					media_geo_lat : center.lat(),
+					media_geo_lng : center.lng()
+				});
+				_this.newTakeoutStreetView.setPosition(center);
+		});
+		
+		$('#PT-newtakout-map-search').keypress(function(e){
+			if(e.which==13) _this.lookup();
+		
+		});
+		
+		if(!this.newTakeoutStreetView)this.showStreetView();
+				
     },
+    
+    lookup : function(  )
+		{
+			
+			var location = $('#PT-newtakout-map-search').val();
+			var _this = this;
+			this.geocoder.geocode( { 'address': location}, function(results, status) {
+				if ( status == google.maps.GeocoderStatus.OK )
+				{
+					if( _this.map.getStreetView().getVisible() ) _this.map.getStreetView().setVisible( false );
+					var center = results[0].geometry.location;
+					_this.map.setCenter( center );
+					_this.marker.setPosition(center);
+					_this.newTakeoutStreetView.setPosition(center);
+					
+					_this.model.set({
+						media_geo_lat : center.lat(),
+						media_geo_lng : center.lng()
+					});
+					
+					console.log('new geocoded location')
+				}
+				else console.log("Geocoder failed at address look for "+ $('#PT-newtakout-map-submit').val()+": " + status);
+			});
+			
+			
+		},
+    
+    
+    
     showStreetView: function(results) {
-      var marker;
+    	console.log("showing street view");
       var viewOptions = {
-        position: this.newTakeout.get('latlong'),
+        position:  new google.maps.LatLng(42.354485,-71.061802),
         pov: {
           heading: 34,
           pitch: 10,
@@ -268,18 +334,26 @@ function(Zeega, Backbone) {
 
       this.newTakeoutStreetView =  new google.maps.StreetViewPanorama(document.getElementById("streetView"), viewOptions);
 
-      marker = new google.maps.Marker({
-        position: this.newTakeout.get('latlong'),
-        map: this.newTakeoutStreetView,
-        title: this.newTakeout.get('takeoutName')
-      });
     },
     saveStreetView: function() {
-      //this.newTakeout.set('streetViewPov', this.newTakeoutStreetView.pov);
+     
+      this.model.set({
+      	title: $('#takeoutName').val(),
+      	attr:{
+      			tags:$('#takeoutName').val().split(' ').join('').split('\'').join('').toLowerCase(),
+      			pov: {
+				  heading : this.newTakeoutStreetView.getPov().heading,
+				  pitch : this.newTakeoutStreetView.getPov().pitch,
+				  streetZoom : Math.floor( this.newTakeoutStreetView.getPov().zoom )
+				}
+      		},
+      	thumbnail_url:"http://cbk0.google.com/cbk?output=thumbnail&w=200&h=200&ll="+this.newTakeoutStreetView.getPosition().lat()+","+this.newTakeoutStreetView.getPosition().lng(), 
+      	});
+      console.log(this.model);
       $(this.el)
         .find('#find').hide()
         .siblings('#thanks').show()
-        .find('#takeoutName').text( this.newTakeout.get('takeoutName') );
+        .find('#takeoutName').text( this.model.get('title') );
     }
   });
 
