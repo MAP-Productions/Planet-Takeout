@@ -709,7 +709,20 @@ button.close{
 
 .citation-inner
 {
-  background: rgba(0, 0, 0, 0.75);  
+  background: rgba(0, 0, 0, 0.75);
+  position: relative; 
+}
+
+.elapsed
+{
+  background: rgba(189, 237, 234,0.35);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0;
+  height:45px;
+  z-index: 0;
 }
 
 .citation-attribution,
@@ -718,6 +731,14 @@ button.close{
   position: relative;
   bottom: -1em;
   margin-left: 10px;
+  z-index: 1;
+}
+
+.play-pause,
+.citation-title
+{
+  position: relative;
+  z-index: 1;
 }
 
 #PT-preview-left

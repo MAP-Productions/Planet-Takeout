@@ -163,9 +163,15 @@ function(zeega, Backbone, _Layer, Player){
 		
 		onTimeUpdate : function()
 		{
+			//this.model.trigger('timeupdate');
+			this.model.trigger('timeupdate',{
+				'model':this.model,
+				'elapsed':this.model.typeModel.player.getCurrentTime(),
+				'duration':this.model.typeModel.player.getDuration()
+			});
 			//Fades
 			
-			if(this.model.get('attr').cue_out==0) var out = this.model.player.getDuration();
+			if(this.model.get('attr').cue_out==0) var out = this.model.typeModel.player.getDuration();
 			else var out = this.model.get('attr').cue_out;
 			var t = this.model.typeModel.player.getCurrentTime();
 			var f = parseFloat(this.model.get('attr').cue_in)+parseFloat(this.model.get('attr').fade_in);

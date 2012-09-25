@@ -1,8 +1,14 @@
-define(['layerModel', 'layerView'], function(){
+define([
+  "zeega",
+  "backbone",
+  'zeega_layers/_layer/_layer'
+],
 
-(function(Layer){
+function(Zeega, Backbone, _Layer){
 
-	Layer.Geo = Layer.Model.extend({
+	var Layer = Zeega.module();
+
+	Layer.Geo = _Layer.extend({
 			
 		layerType : 'Geo',
 
@@ -31,7 +37,7 @@ define(['layerModel', 'layerView'], function(){
 		}
 
 	});
-	
+/*	
 	Layer.Views.Controls.Geo = Layer.Views.Controls.extend({
 		
 		render : function()
@@ -103,8 +109,9 @@ define(['layerModel', 'layerView'], function(){
 		}
 		
 	});
+*/
 
-	Layer.Views.Visual.Geo = Layer.Views.Visual.extend({
+	Layer.Geo.Visual = _Layer.Visual.extend({
 		
 		draggable : false,
 		linkable : true,
@@ -266,6 +273,6 @@ define(['layerModel', 'layerView'], function(){
 		
 	});
 
-})(zeega.module("layer"));
+	return Layer;
 
 })

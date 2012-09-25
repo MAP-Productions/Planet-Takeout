@@ -5,7 +5,8 @@ var layerTypes = [
 	'video',
 	'audio',
 	'link',
-	'popup'
+	'popup',
+	'geo'
 ];
 
 define([
@@ -15,7 +16,8 @@ define([
 	'zeega_layers/video/video',
 	'zeega_layers/audio/audio',
 	'zeega_layers/link/link',
-	'zeega_layers/popup/popup'
+	'zeega_layers/popup/popup',
+	'zeega_layers/geo/geo'
 ],
 	function(
 		image,
@@ -24,7 +26,8 @@ define([
 		video,
 		audio,
 		link,
-		popup
+		popup,
+		geo
 	)
 	{
 		eval('var Plugins = _.extend('+ layerTypes.toString() +')');

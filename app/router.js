@@ -172,16 +172,14 @@ esp inserting the layout into the dom!
 	// happens on every router change
 	function cleanup(attr)
 	{
-		// if a modal exists && a player exists, remove the modal but do not remove the player
-		// if a modal exists, but no player exists, then go back
-		if(Zeega.page && Zeega.player)
+		// remove modal if it exists
+		if(Zeega.page)
 		{
 			Zeega.page.remove();
 			Zeega.page = null;
 		}
 
 		removeCitation();
-
 
 		// attr= { player : pause', 'exit' }
 		if(attr && attr.player && Zeega.player)
@@ -200,11 +198,14 @@ esp inserting the layout into the dom!
 
 	function renderIndex()
 	{
+		console.log('render index')
 		var _this  = this;
 		var player = new App.Model();
 		player.on('ready', function(){
-			renderFeaturedCitation();
+			console.log('player ready')
+			//renderFeaturedCitation();
 		});
+
 	}
 
 	function renderFeaturedCitation()
@@ -269,6 +270,7 @@ esp inserting the layout into the dom!
 	function onPlayerEvent(e, opts)
 	{
 
+		//console.log('player e:', e, opts)
 		/* lint error - replaced switch with if
 		switch(e)
 		{
@@ -283,6 +285,11 @@ esp inserting the layout into the dom!
 		else if( e == 'preview_resize' )
 		{
 			//$('.citation-wrapper').css({ width : Zeega.player.getSize().width +'px' });
+		}
+		else if( e== 'timeupdate')
+		{
+			//console.log('%:', opts.elapsed /opts.duration )
+			$('.citation-top .elapsed').css({width: (opts.elapsed /opts.duration*100) +'%' })
 		}
 	}
 
