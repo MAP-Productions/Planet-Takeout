@@ -43,21 +43,18 @@ function(Zeega, App) {
 
 		about : function()
 		{
-			console.log('go to about');
 			initialize({player:'pause'});
 			renderPage('About');
 		},
 
 		collections : function()
 		{
-			console.log('go to grid');
 			initialize({player:'exit'});
 			renderCollections();
 		},
 
 		viewCollectionGrid : function( collectionID )
 		{
-			console.log('rr     view collection grid', collectionID);
 			initialize({player:'exit'});
 			goToItemCollection( collectionID );
 		},
@@ -98,14 +95,12 @@ function(Zeega, App) {
 
 		participate : function()
 		{
-			console.log('go to participate');
 			initialize({player:'pause'});
 			renderPage('Participate');
 		},
 
 		menu : function()
 		{
-			console.log('go to menu');
 			initialize({player:'pause'});
 			renderMenu();
 
@@ -113,9 +108,7 @@ function(Zeega, App) {
 
 		search : function()
 		{
-			console.log('go to search');
 			initialize({player:'pause'});
-
 		}
 	});
 
@@ -142,7 +135,6 @@ esp inserting the layout into the dom!
 	// happens on every router change
 	function cleanup(attr)
 	{
-		console.log('if there are modals, then remove them', Zeega.page, Zeega.player)
 		// if a modal exists && a player exists, remove the modal but do not remove the player
 		// if a modal exists, but no player exists, then go back
 		if(Zeega.page && Zeega.player)
@@ -154,19 +146,19 @@ esp inserting the layout into the dom!
 		removeCitation();
 
 
-		// // attr= { player : pause', 'exit' }
-		// if(attr && attr.player && Zeega.player)
-		// {
-		// 	switch(attr.player)
-		// 	{
-		// 		case 'pause':
-		// 			Zeega.player.playPause();
-		// 			break;
-		// 		case 'exit':
-		// 			Zeega.player.exit();
-		// 		break;
-		// 	}
-		// }
+		// attr= { player : pause', 'exit' }
+		if(attr && attr.player && Zeega.player)
+		{
+			switch(attr.player)
+			{
+				case 'pause':
+					Zeega.player.playPause();
+					break;
+				case 'exit':
+					Zeega.player.exit();
+				break;
+			}
+		}
 	}
 
 	function renderIndex()
@@ -210,12 +202,10 @@ esp inserting the layout into the dom!
 
 	function goToItemCollection( collectionID )
 	{
-		console.log('rr     go to item Collection');
 
 		var items = new App.Collections.Items();
 		items.collectionID = collectionID;
 		items.fetch().success(function(res){
-			console.log('$$   items coll', res, items);
 			items.each(function(item){ item.set('collection_id',collectionID);});
 
 			var Model = Backbone.Model.extend({ url: 'http://alpha.zeega.org/api/items/'+ collectionID });
@@ -233,7 +223,6 @@ esp inserting the layout into the dom!
 		// make and render itemCollection
 		var itemCollectionsCollection = new App.Collections.ItemCollections();
 		itemCollectionsCollection.fetch().success(function(res){
-			console.log('$$   items coll', res, itemCollectionsCollection);
 			generateGrid( itemCollectionsCollection, 'collections' );
 			$('#app-base').append( Zeega.grid.el );
 		});
@@ -291,7 +280,6 @@ esp inserting the layout into the dom!
 
 	function renderMap()
 	{
-		console.log('render map');
 		Zeega.page = new App.Layouts.ModalWide({title:'Delicious World'});
 		var pageView = new App.Views.Map();
 		Zeega.page.setView('.PT-modal-content', pageView );

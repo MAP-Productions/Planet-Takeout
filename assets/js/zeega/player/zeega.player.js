@@ -89,8 +89,6 @@ function(Zeega, Backbone, Layer) {
 
 			//Backbone.history.stop();
 
-			console.log('pp 		player exit')
-
 			return false;
 		},
 
@@ -119,7 +117,6 @@ function(Zeega, Backbone, Layer) {
 
 		playPause : function()
 		{
-			console.log('zeega player  play pause', this)
 			this.project.playPause();
 		},
 
@@ -216,7 +213,6 @@ function(Zeega, Backbone, Layer) {
 		{
 			var _this = this;
 			this.currentFrame.unrender();
-			console.log('pp 		unrender player', this);
 			var playerView = this.layout.getView(function(view){ return view.model === _this });
 			playerView.$el.fadeOut( 450, function(){ playerView.remove() });
 		},
@@ -458,7 +454,6 @@ function(Zeega, Backbone, Layer) {
 		playPause : function()
 		{
 			this.isPlaying = !this.isPlaying;
-			console.log('frame play pause', this, this.layers)
 			_.each( _.toArray(this.layers), function(layer){
 				layer.typeVisual.playPause();
 			})
@@ -890,7 +885,6 @@ function(Zeega, Backbone, Layer) {
 		
 		onMouseover : function()
 		{
-			console.log('mosueover')
 			if(this.model.status != 'error') this.$el.find('.citation-icon i').addClass('loaded');
 			this.$el.find('.player-citation-bubble').show();
 		},
