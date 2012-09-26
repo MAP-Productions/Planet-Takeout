@@ -12,6 +12,7 @@ define([
 	'modules/participate',
 	'modules/players',
 	'modules/search'
+
 ],
 
 // generic App used
@@ -26,7 +27,8 @@ function(
 	Navigation,
 	Participate,
 	Players,
-	Search
+	Search,
+	loadingSpinner
 
 	) {
 
@@ -413,6 +415,13 @@ esp inserting the layout into the dom!
 		Zeega.baseLayout.render();
 	}
 
+	function showLoadingSpinner() {
+		$('#loading').show();
+	}
+
+	function hideLoadingSpinner() {
+		$('#loading').hide();
+	}
 
 	return Router;
 
