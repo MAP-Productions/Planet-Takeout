@@ -909,4 +909,12 @@ button.close{
 	margin:0px 0px 0px 0px !important;	
 }
 
+.PT-menu i.PT-featured{
+	background-repeat: no-repeat;
+	background-size: 80%;
+	float: left;
+	margin-top: 9px;
+	height:11px;
+	width:28px;
+}
 

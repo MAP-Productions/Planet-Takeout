@@ -406,7 +406,7 @@ function(Zeega, Backbone) {
 			if(n<7) wrapper=	$('#neighborhood-one');
 			else  wrapper=	$('#neighborhood-two');
 		}
-		if(wrapper) wrapper.append(_.template('<li style="display:none;"><a href="/collections/<%=id%>/"><%=title %></a><span><%= child_items_count %></span></li>', item.toJSON()));
+		if(wrapper)wrapper.append(_.template('<li style="display:none;"><a href="/collections/<%=id%>/"><%=title %></a><span><%= child_items_count %></span></li>', item.toJSON()));
 		
       });
       
@@ -524,7 +524,7 @@ function(Zeega, Backbone) {
 
     },
 
-    parse : function(res){ console.log('parse:',res, res.items); return res.items; }
+    parse : function(res){  return res.items; }
   });
   
 
