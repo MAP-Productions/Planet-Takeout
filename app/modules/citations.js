@@ -2,13 +2,17 @@ define([
 	"zeega",
 	// Libs
 	"backbone",
+	//submodules
+	'modules/submodules/modals',
+
+	//libraries
 	'libs/modernizr',
+	'libs/leaflet',
 	// Plugins
-	'zeega_player',
-	'libs/leaflet'
+	'zeega_player'
 ],
 
-function(Zeega, Backbone)
+function(Zeega, Backbone, Modal)
 {
 
 	// Create a new module
@@ -110,32 +114,6 @@ function(Zeega, Backbone)
 		},
 
 		serialize : function(){ return _.extend({},this.model.toJSON(),this.options.player); }
-	});
-
-	App.Views.NavControls = Backbone.LayoutView.extend({
-		template : 'player-navigation',
-		className : '',
-
-		serialize : function()
-		{
-			return this.options;
-		},
-
-		events : {
-			'click #PT-preview-left' : 'goLeft',
-			'click #PT-preview-right' : 'goRight'
-		},
-		goLeft : function()
-		{
-			Zeega.player.prev();
-			return false;
-		},
-		goRight : function()
-		{
-			Zeega.player.next();
-			return false;
-		}
-
 	});
 
 

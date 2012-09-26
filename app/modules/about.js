@@ -2,13 +2,17 @@ define([
 	"zeega",
 	// Libs
 	"backbone",
+	//submodules
+	'modules/submodules/modals',
+
+	//libraries
 	'libs/modernizr',
+	'libs/leaflet',
 	// Plugins
-	'zeega_player',
-	'libs/leaflet'
+	'zeega_player'
 ],
 
-function(Zeega, Backbone)
+function(Zeega, Backbone, Modal)
 {
 
 	// Create a new module
@@ -18,7 +22,7 @@ function(Zeega, Backbone)
 	App.Collections = {};
 
 
-	App.Views.About = App.Views.TabbedModal.extend({
+	App.Views.About = Modal.Views.TabbedModal.extend({
 		template: 'about',
 		initialize: function()
 		{

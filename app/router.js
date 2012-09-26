@@ -8,7 +8,6 @@ define([
 	'modules/index',
 	'modules/map',
 	'modules/menu',
-	'modules/modals',
 	'modules/navigation',
 	'modules/participate',
 	'modules/players',
@@ -16,7 +15,20 @@ define([
 ],
 
 // generic App used
-function(Zeega, App) {
+function(
+	Zeega,
+	About,
+	Citations,
+	Grid,
+	Index,
+	Map,
+	Menu,
+	Navigation,
+	Participate,
+	Players,
+	Search
+
+	) {
 
 	// Defining the application router, you can attach sub routers here.
 	/*
@@ -81,7 +93,7 @@ function(Zeega, App) {
 
 				var newPlayer = function()
 				{
-					var player = new App.CollectionZeegaPlayerModel();  
+					var player = new Players.CollectionZeegaPlayerModel();  
 					player.collection_id = collectionID;
 					player.fetch().success(function(res){
 						renderCitations();
@@ -183,9 +195,6 @@ esp inserting the layout into the dom!
 		
 		
 		});
-		
-		
-		
 	
 	}
 
@@ -235,7 +244,7 @@ esp inserting the layout into the dom!
 	{
 		console.log('render index')
 		var _this  = this;
-		var player = new App.Model();
+		var player = new Players.Model();
 		player.on('ready', function(){
 			renderFeaturedCitation();
 		});
@@ -244,10 +253,10 @@ esp inserting the layout into the dom!
 
 	function renderFeaturedCitation()
 	{
-		var citationDrawer = new App.Layouts.CitationDrawerLayout();
+		var citationDrawer = new Citations.Layouts.CitationDrawerLayout();
 		Zeega.citation = citationDrawer;
 		console.log('player', Zeega.player)
-		var citView = new App.Views.FeaturedCitationView({ model: Zeega.player });
+		var citView = new Citations.Views.FeaturedCitationView({ model: Zeega.player });
 		citationDrawer.insertView( '.citation-inner', citView);
 
 		Zeega.citation.render();
@@ -258,25 +267,29 @@ esp inserting the layout into the dom!
 
 	function renderPage(pageName)
 	{
+		/*
 		Zeega.page = new App.Layouts.Modal({title:pageName});
 		var pageView = new App.Views[pageName]();
 		Zeega.page.setView('.PT-modal-content', pageView );
 		Zeega.page.render();
 		$('body').append(Zeega.page.el);
+		*/
 	}
 
 	function renderMenu()
 	{
+		/*
 		Zeega.page = new App.Layouts.ModalWide({title:'Menu'});
 		var pageView = new App.Views.Menu();
 		Zeega.page.setView('.PT-modal-content', pageView );
 		Zeega.page.render();
 		$('body').append(Zeega.page.el);
+		*/
 	}
 
 	function generateGrid( collection, type )
 	{
-		Zeega.grid = new App.Layouts.GridView({collection:collection, type:type});
+		Zeega.grid = new Grid.Layouts.GridView({collection:collection, type:type});
 		Zeega.grid.render();
 		$('#app-base').append( Zeega.grid.el );
 	}
@@ -284,7 +297,7 @@ esp inserting the layout into the dom!
 	function goToItemCollection( collectionID )
 	{
 
-		var items = new App.Collections.Items();
+		var items = new Grid.Collections.Items();
 		items.collectionID = collectionID;
 		items.fetch().success(function(res){
 			items.each(function(item){ item.set('collection_id',collectionID);});
@@ -302,7 +315,7 @@ esp inserting the layout into the dom!
 	{
 		removePlayer();
 		// make and render itemCollection
-		var itemCollectionsCollection = new App.Collections.ItemCollections();
+		var itemCollectionsCollection = new Grid.Collections.ItemCollections();
 		itemCollectionsCollection.fetch().success(function(res){
 			generateGrid( itemCollectionsCollection, 'collections' );
 			$('#app-base').append( Zeega.grid.el );
@@ -338,9 +351,9 @@ esp inserting the layout into the dom!
 
 	function renderCitations()
 	{
-		var citationDrawer = new App.Layouts.CitationDrawerLayout();
+		var citationDrawer = new Citations.Layouts.CitationDrawerLayout();
 		Zeega.citation = citationDrawer;
-		//Zeega.citation.insertView( new App.Views.CitationView() );
+		//Zeega.citation.insertView( new Citations.Views.CitationView() );
 
 		Zeega.citation.render();
 		$('#nav-lower').html(Zeega.citation.el);
@@ -351,8 +364,8 @@ esp inserting the layout into the dom!
 		Zeega.citation.getViews().each(function(view){ view.remove(); });
 
 		var layer = model.layers.at(0);
-		var navView = new App.Views.NavControls({model:layer, arrowState:model.arrowState});
-		var citView = new App.Views.CitationView({model:layer,player:Zeega.player.toJSON() });
+		var navView = new Navigation.Views.NavControls({model:layer, arrowState:model.arrowState});
+		var citView = new Citations.Views.CitationView({model:layer,player:Zeega.player.toJSON() });
 		Zeega.citation.insertView( '.nav-controls', navView);
 		Zeega.citation.insertView( '.citation-inner', citView);
 		Zeega.citation.render();
@@ -367,11 +380,13 @@ esp inserting the layout into the dom!
 
 	function renderMap()
 	{
+		/*
 		Zeega.page = new App.Layouts.ModalWide({title:'Delicious World'});
 		var pageView = new App.Views.Map();
 		Zeega.page.setView('.PT-modal-content', pageView );
 		$('body').append(Zeega.page.el);
 		Zeega.page.render();
+		*/
 	}
 
 	function clearModals()
@@ -392,8 +407,8 @@ esp inserting the layout into the dom!
 			el: "#main"
 		});
 		// Insert the tutorial into the layout.
-		Zeega.baseLayout.insertView(new App.Views.Base() );
-		Zeega.baseLayout.setView('#nav-upper', new App.Views.UpperNavView() );
+		Zeega.baseLayout.insertView(new Index.Views.Base() );
+		Zeega.baseLayout.setView('#nav-upper', new Navigation.Views.UpperNavView() );
 		// Render the layout into the DOM.
 		Zeega.baseLayout.render();
 	}

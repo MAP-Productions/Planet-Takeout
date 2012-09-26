@@ -2,13 +2,17 @@ define([
 	"zeega",
 	// Libs
 	"backbone",
+	//submodules
+	'modules/submodules/modals',
+
+	//libraries
 	'libs/modernizr',
+	'libs/leaflet',
 	// Plugins
-	'zeega_player',
-	'libs/leaflet'
+	'zeega_player'
 ],
 
-function(Zeega, Backbone)
+function(Zeega, Backbone, Modal)
 {
 
 	// Create a new module
@@ -33,7 +37,7 @@ function(Zeega, Backbone)
 		}
 	});
 
-	App.Views.Participate = App.Views.TabbedModal.extend({
+	App.Views.Participate = Modal.Views.TabbedModal.extend({
 		template: 'participate-0',
 
 		initialize: function()

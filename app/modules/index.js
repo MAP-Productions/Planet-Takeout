@@ -22,13 +22,6 @@ function(Zeega, Backbone) {
 		template: "base"
 	});
 
-
-
-	App.Views._Page = Backbone.LayoutView.extend({
-	});
-
-
-
 	// Required, return the module for AMD compliance
 	return App;
 

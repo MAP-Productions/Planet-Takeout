@@ -2,13 +2,17 @@ define([
 	"zeega",
 	// Libs
 	"backbone",
+	//submodules
+	'modules/submodules/modals',
+
+	//libraries
 	'libs/modernizr',
+	'libs/leaflet',
 	// Plugins
-	'zeega_player',
-	'libs/leaflet'
+	'zeega_player'
 ],
 
-function(Zeega, Backbone)
+function(Zeega, Backbone, Modal)
 {
 
 	// Create a new module
@@ -17,7 +21,7 @@ function(Zeega, Backbone)
 
 	App.Collections = {};
 
-	App.Views.Map = App.Views._Page.extend({
+	App.Views.Map = Modal.Views._Page.extend({
 		template: 'map',
 		id: 'PT-map-wrapper',
 
