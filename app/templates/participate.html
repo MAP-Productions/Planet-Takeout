@@ -1,0 +1,142 @@
+<ul class="modal-tabs-head">
+	<li id="addPhotosTab" class="active">Add photos, videos & sounds</li>
+	<li id="addTakeoutTab">Add a new Takeout</li>
+	<li id="tellStoryTab">Tell your story</li>
+	<li id="keepInTouchTab">Keep in touch</li>
+</ul>
+<div class="modal-tabs">
+	<div class="modal-tab" id="addPhotos">
+		<h2>Tag them as you take them!</h2>
+		<div class="left-column">
+			<span class="social-icon camera section-icon"></span>
+			<ol>
+				<li>Upload your media to <a href="http://www.flickr.com/">Flickr</a>, <a href="http://www.youtube.com/">Youtube</a>, <a href="http://www.tumblr.com/">Tumblr</a> or <a href="http://www.soundcloud.com/">Soundcloud</a></li>
+				<li>Tag <strong>#planettakeout</strong> and other descriptive tags</li>
+				<li>Geolocate or include the takeout name and location</li>
+			</ol>
+			<h2>Add them to our Facebook Wall!</h2>
+			<span class="social-icon facebook section-icon"></span>
+			<ol>
+				<li>Visit our <a href="#">facebook page</a>.</li>
+				<li>Add your photo or video.</li>
+				<li>Include the name and location.</li>
+			</ol>
+			<h2>Email them!</h2>
+			<span class="social-icon email section-icon"></span>
+			<ol>
+				<li>Email val@planettakeout.org with your photos or mp3s as attachments.</li>
+				<li>Be sure to tell us the location, takeout name, and any other fun facts.</li>
+			</ol>
+		</div>
+		<div class="right-column">
+			<ul class="info-tab-icons">
+				<li class="social-icon flickr"></li>
+				<li class="social-icon youtube"></li>
+				<li class="social-icon tumblr"></li>
+				<li class="social-icon soundcloud"></li>
+			</ul>
+			<div class="info-tab default">
+				<p>Select an icon above for detailed instructions</p>
+			</div>
+			<div class="info-tab media flickr" style="display: none;">
+				<span class="carat"></span>
+				<div class="content">
+					<p>1) Login or create an account (it’s quick and free)</p>
+					<p>2) Join the Planet Takeout group</p>
+					<p>3) Upload your photographs</p>
+					<p>4) Tag Your Photos with planettakeout and the name of the takeout. If the name is two words, be sure to put the name in quotations (i.e. “Peking House”)</p>
+					<p>This step is really important. If you don’t tag your photos properly, we will not be able to display them on our site.</p>
+					<p>Also tag any words you feel describe the image or videos (e.g. fortune, waiting, altar). These tags open up new collections and views!</p>
+				</div>
+			</div>
+			<div class="info-tab media youtube" style="display: none;">
+				<span class="carat"></span>
+				<div class="content">
+					<p>Youtube info</p>
+				</div>
+			</div>
+			<div class="info-tab media tumblr" style="display: none;">
+				<span class="carat"></span>
+				<div class="content">
+					<p>Tumblr info</p>
+				</div>
+			</div>
+			<div class="info-tab media soundcloud" style="display: none;">
+				<span class="carat"></span>
+				<div class="content">
+					<p>Soundcloud info</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-tab" id="addTakeout" style="display: none;">
+		<div id='find'>
+			<h2>What should we call this takeout?</h2>
+			<input placeholder="Takeout Name" type="text" id="takeoutName" />
+			<h2>Search the map and help us find the best view</h2>
+			<ol class="explanation">
+				<li class="step-1">Search the takeout's address or nearby streets to move the marker.</li>
+				<li class="step-2">Use your mouse to pan streetview until you find the best image!
+			</ol>
+			<div id="gViews">
+					
+				<div id="PT-newtakout-map-wrapper">
+					<div id="PT-newtakout-search-wrapper">
+					<input placeholder="search address" id="PT-newtakout-map-search"/>
+					<button id="PT-newtakout-search-submit" class="btn">GO</button>
+				</div>
+					<div id="map"></div>
+				</div>
+				<div id="streetView"></div>
+			</div>
+			<button id='saveTakeout' class='btn'>Submit</button>
+		</div>
+		<div id="thanks" style="display: none;">
+			<h1>Thanks for submitting<br/> <strong id="takeoutName"></strong>!.</h1>
+			<p>Receive the latest updates and exclusive stories from Planet Takeout</p>
+			<form method="post" name="planetTakeoutEmailSignup-1347988840500" action="https://s2785.t.eloqua.com/e/f2" id="form102">
+				<input value="planetTakeoutEmailSignup-1347988840500" type="hidden" name="elqFormName" />
+				<input value="2785" type="hidden" name="elqSiteId" />
+				<input name="elqCampaignId" type="hidden" />
+
+				<input id="field0" value="" type="text" name="emailAddress" class="" />
+
+				<button class="btn" id="field1" type="submit">Submit</button>
+			</form>
+		</div>
+	</div>
+	<div class="modal-tab" id="tellStory" style="display: none;">
+		<h2>We want to hear your story about Chinese takeouts.</h2>
+		<p>We are looking for everyday stories of how your local takeout fits into your life</p>
+		<ol>
+			<li>What did you order today? Do you always order the same dish?</li>
+			<li>Is this takeout a part of your life or routine? How so?</li>
+			<li>What is your relationship like with the takeout staff?</li>
+			<li>Do you have childhood memories of eating Chinese takeout food?</li>
+		</ol>
+		<h2>We'd love to hear your voice!</h2>
+		<p><!--<button class="btn">Record</button>--> Call 617.477.8688</p>
+		<!--<p class="small">Click the “Record” button to begin recording. A SoundCloud account and the Flash plug-in are required. If you don’t yet have a SoundCloud account, you’ll have the opportunity to create one during the process.</p>-->
+	</div>
+	<div class="modal-tab" id="keepInTouch" style="display: none;">
+		<h2>Like Us on Facebook</h2>
+		
+		
+		<div class="fb-like" data-href="http://www.facebook.com/PlanetTakeout" data-send="true" data-width="450" data-show-faces="true"></div>
+		
+		
+		<h2>Sign Up for Exclusive Emails</h2>
+		<p>Receive the latest updates and exclusive stories from Planet Takeout</p>
+			
+		<form method="post" name="planetTakeoutEmailSignup-1347988840500" action="https://s2785.t.eloqua.com/e/f2" id="form102">
+			<input value="planetTakeoutEmailSignup-1347988840500" type="hidden" name="elqFormName" />
+			<input value="2785" type="hidden" name="elqSiteId" />
+			<input name="elqCampaignId" type="hidden" />
+
+			<input id="field0" value="" type="text" name="emailAddress" class="" />
+
+			<button class="btn" id="field1" type="submit">Submit</button>
+		</form>
+	  
+	</div>
+</div>
