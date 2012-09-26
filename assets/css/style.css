@@ -918,6 +918,16 @@ button.close{
   margin-right: 20px;
 }
 
+.PT-menu i.PT-featured
+{
+	background-repeat: no-repeat;
+	background-size: 80%;
+	float: left;
+	margin-top: 9px;
+	height:11px;
+	width:28px;
+}
+
 .featured-citation-bottom li
 {
   display: inline-block;

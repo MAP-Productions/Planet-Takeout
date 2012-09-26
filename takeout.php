@@ -1,7 +1,7 @@
 	<?php
 	
 		$post_data = file_get_contents("php://input");
-		$post_data = json_decode($post_data,true);	
+		$fields = json_decode($post_data,true);	
 		
 		
 		$url = 'http://staging.zeega.org/items';
@@ -21,6 +21,7 @@
 		//execute post
 		$result = curl_exec($ch);
 		
+		print_r($result);
 		//close connection
 		curl_close($ch);
 		

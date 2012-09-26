@@ -100,6 +100,7 @@ console.log(localStorage.api);
       child_items_count:0,
       archive:'Planet Takeout',
       user_id:760,
+      uri:"default"
   }
   
   });
@@ -245,7 +246,7 @@ console.log(localStorage.api);
         'click ul.info-tab-icons li': 'switchInfoTab',
         'click #addTakeoutTab': 'initAddTakeout',
         'click #saveTakeout': 'saveStreetView',
-        'click #PT-newtakout-map-submit' : 'lookup',
+        'click #PT-newtakout-search-submit' : 'lookup',
     },
     switchInfoTab: function(e) {
         var clicked = $(e.target),
@@ -272,6 +273,7 @@ console.log(localStorage.api);
           zoom: 13,
           mapTypeId: google.maps.MapTypeId.ROADMAP,
           streetViewControl:false,
+          mapTypeControl:false,
       };
       this.map = new google.maps.Map(document.getElementById("map"), mapOptions);
       this.marker = new google.maps.Marker({
@@ -332,12 +334,17 @@ console.log(localStorage.api);
     showStreetView: function(results) {
     	console.log("showing street view");
       var viewOptions = {
+      	addressControl:false,
+      	panControl:false,
         position:  new google.maps.LatLng(42.354485,-71.061802),
         pov: {
           heading: 34,
           pitch: 10,
           zoom: 1
-        }
+        },
+        zoomControlOptions: {
+			position: google.maps.ControlPosition.TOP_RIGHT
+		  },
       };
 
       this.newTakeoutStreetView =  new google.maps.StreetViewPanorama(document.getElementById("streetView"), viewOptions);
@@ -399,7 +406,7 @@ console.log(localStorage.api);
 			if(n<7) wrapper=	$('#neighborhood-one');
 			else  wrapper=	$('#neighborhood-two');
 		}
-		if(wrapper) wrapper.append(_.template('<li style="display:none;"><a href="/collections/<%=id%>/"><%=title %></a><span><%= child_items_count %></span></li>', item.toJSON()));
+		if(wrapper)wrapper.append(_.template('<li style="display:none;"><a href="/collections/<%=id%>/"><%=title %></a><span><%= child_items_count %></span></li>', item.toJSON()));
 		
       });
       
@@ -517,7 +524,7 @@ console.log(localStorage.api);
 
     },
 
-    parse : function(res){ console.log('parse:',res, res.items); return res.items; }
+    parse : function(res){  return res.items; }
   });
   
 

@@ -95,11 +95,14 @@ function(Zeega, Backbone, _Layer){
 				imageDateControl : false,
 				linksControl : false,
 				panControl : true,
-				panControlOptions : true,
+				panControlOptions : {
+					position: google.maps.ControlPosition.TOP_RIGHT
+				
+				},
 				//pano : '',
 				position : center,
 				visible :true,
-				zoomControl :true,
+				zoomControl :false,
 				zoomControlOptions :true,
 				
 				pov : {
@@ -181,13 +184,14 @@ function(Zeega, Backbone, _Layer){
 					enableCloseButton : false,
 					imageDateControl : false,
 					linksControl : false,
-					panControl : true,
-					panControlOptions : true,
-					//pano : '',
+					panControl : false,
+					panControlOptions : {
+						position: google.maps.ControlPosition.TOP_RIGHT
+					
+					},
 					position : center,
 					visible :true,
-					zoomControl :true,
-					zoomControlOptions :true,
+					zoomControl :false,
 					
 					
 					pov : {
