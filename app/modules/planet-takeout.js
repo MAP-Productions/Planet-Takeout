@@ -237,7 +237,7 @@ function(Zeega, Backbone) {
     
     initialize: function() {
       this.events = _.extend({},this.events, App.Views.TabbedModal.prototype.events);
-      _.bindAll(this, 'render', 'geoLookup', 'initAddTakeout', 'showStreetView', 'saveStreetView');
+      _.bindAll(this, 'render', 'geoLookup', 'initAddTakeout', 'showStreetView', 'saveStreetView', 'initKeepInTouch');
       this.model = new App.NewTakeoutModel();
       this.geocoder = new google.maps.Geocoder();
       this.newTakeoutStreetView=false;
@@ -245,6 +245,7 @@ function(Zeega, Backbone) {
     events: {
         'click ul.info-tab-icons li': 'switchInfoTab',
         'click #addTakeoutTab': 'initAddTakeout',
+        'click #keepInTouchTab': 'initKeepInTouch',
         'click #saveTakeout': 'saveStreetView',
         'click #PT-newtakout-search-submit' : 'lookup',
     },
@@ -369,6 +370,13 @@ function(Zeega, Backbone) {
         .find('#find').hide()
         .siblings('#thanks').show()
         .find('#takeoutName').text( this.model.get('title') );
+    },
+    initKeepInTouch: function() {
+      if ( $(this.el).find('.fb-like').attr('fb-xfbml-state') !== 'rendered' ) {
+        try{
+          FB.XFBML.parse();
+        } catch(ex) {}
+      }
     }
   });
 
