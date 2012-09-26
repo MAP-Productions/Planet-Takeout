@@ -909,4 +909,43 @@ button.close{
 	margin:0px 0px 0px 0px !important;	
 }
 
+.featured-citation-bottom
+{
+  width: 90%;
+  overflow: hidden;
+  white-space: nowrap;
+  float: left;
+  margin-right: 20px;
+}
 
+.featured-citation-bottom li
+{
+  display: inline-block;
+  height: 50px;
+  width: 75px;
+  margin-right: 10px;
+}
+
+
+#info-hover
+{
+  position: relative;
+}
+.info-box
+{
+  position: absolute;
+  background: red;
+  color: white;
+  width: 150px;
+  padding: 5px;
+  bottom: 50px;
+  left: -64px;
+  border-radius: 3px;
+  font-style: italic;
+
+}
+
+#info-hover:hover .info-box 
+{
+  display:block;
+}

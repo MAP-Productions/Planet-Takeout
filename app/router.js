@@ -137,7 +137,7 @@ esp inserting the layout into the dom!
 
 	function gotoStreetviewProject(player,collectionID){
 		console.log('collection has no content');
-		var Model = Backbone.Model.extend({ url: 'http://alpha.zeega.org/api/items/'+ collectionID });
+		var Model = Backbone.Model.extend({ url: localStorage.root + '/items/'+ collectionID });
 		var it = new Model();
 		it.fetch().success(function(resp){
 			console.log("#########",resp);
@@ -279,7 +279,7 @@ esp inserting the layout into the dom!
 		items.fetch().success(function(res){
 			items.each(function(item){ item.set('collection_id',collectionID);});
 
-			var Model = Backbone.Model.extend({ url: 'http://alpha.zeega.org/api/items/'+ collectionID });
+			var Model = Backbone.Model.extend({ url: localStorage.root + '/items/'+ collectionID });
 			var it = new Model();
 			it.fetch().success(function(){
 				items.collectionInfo = it.toJSON();

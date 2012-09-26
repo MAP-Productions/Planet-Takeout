@@ -16,7 +16,7 @@ function(Zeega, Backbone) {
 
   App.Collections = {};
 
-
+console.log(localStorage.root);
   App.Model = Backbone.Model.extend({
 
     url : function()
@@ -24,8 +24,8 @@ function(Zeega, Backbone) {
 
       var projects = [1666,1665,1664,1663];
 		console.log('returning url');
-      return 'http://alpha.zeega.org/api/projects/'+ projects[Math.floor(Math.random()*projects.length)];
-      //return 'http://alpha.zeega.org/api/projects/1775';
+      return localStorage.root + '/projects/'+ projects[Math.floor(Math.random()*projects.length)];
+      //return localStorage.root + '/projects/1775';
     },
 
     defaults : {
@@ -66,7 +66,7 @@ function(Zeega, Backbone) {
 
   App.CollectionZeegaPlayerModel = Backbone.Model.extend({
 
-    url : function(){ return 'http://alpha.zeega.org/api/items/'+ this.collection_id +'/project'; },
+    url : function(){ return localStorage.root + '/items/'+ this.collection_id +'/project'; },
     initialize : function(){console.log('collection',this)},
     defaults : {
       //appName : 'wayfinder',
@@ -504,7 +504,7 @@ function(Zeega, Backbone) {
     url: function()
     {
 
-      return 'http://alpha.zeega.org/api/items/46086/items';
+      return localStorage.root + '/items/46086/items';
     },
 
     parse : function(res){ return res.items; }
@@ -513,7 +513,7 @@ function(Zeega, Backbone) {
   App.Collections.MenuItems = Backbone.Collection.extend({
     url: function()
     {
-      return 'http://alpha.zeega.org/api/items/46082/items';
+      return localStorage.root + '/items/46082/items';
 
     },
 
@@ -695,15 +695,21 @@ function(Zeega, Backbone) {
     {
       var _this = this;
       var Collection = Backbone.Collection.extend({
-        url : 'http://alpha.zeega.org/api/search?r_itemswithcollections',
+        url : localStorage.root + '/search?r_itemswithcollections',
         parse : function(res){ return res.items }
       })
       this.collection = new Collection();
       this.collection.fetch().success(function(){
         console.log('$$   citation collection', _this.collection);
-        _this.collection.each(function(item){
-          var iv = new App.Views.ItemFeaturedView({model:item});
-          _this.$('.citation-bottom').append( iv.render().el );
+
+        _this.collection.each(function(item, i){
+
+          if( i > 20 ) return false;
+          var iv = new App.Views.ItemFeaturedView({model:item, attributes:{
+            'style': item.get('thumbnail_url') ? 'background:url('+ item.get('thumbnail_url') +');background-size:100% 100%' : ''
+          }});
+          iv.render();
+          _this.$('.featured-citation-bottom').append( iv.el );
         })
       })
     },
@@ -791,7 +797,7 @@ function(Zeega, Backbone) {
 
     page : 1,
 
-    url : function(){ return 'http://alpha.zeega.org/api/items/'+ this.collectionID +'/items'; },
+    url : function(){ return localStorage.root + '/items/'+ this.collectionID +'/items'; },
 
     parse : function( res )
     {
@@ -804,7 +810,7 @@ function(Zeega, Backbone) {
 
     page : 1,
 
-    url : function(){ return 'http://alpha.zeega.org/api/search?r_itemswithcollections&tags=pt_grid&page='+ this.page; },
+    url : function(){ return localStorage.root + '/search?r_itemswithcollections&tags=pt_grid&page='+ this.page; },
 
     parse : function( res )
     {
