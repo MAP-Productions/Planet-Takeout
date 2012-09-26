@@ -14,21 +14,31 @@ function(Zeega, Backbone)
 {
 
 	// Create a new module
-	var App = Zeega.module();
+	var Modal = Zeega.module();
 
-
-	App.Collections = {};
-
-	App.Views._Page = Backbone.LayoutView.extend({});
-
-	App.Layouts.Modal = Backbone.Layout.extend({
-		template: "modal",
-
-		className : 'PT-modal-overlay',
+	Modal.Model = Backbone.Model.extend({
 
 		defaults : {
-			title : 'default'
+			title : 'Planet Takeout!',
+			modalTemplate : 'modal'
 		},
+
+		getLayout : function()
+		{
+			var layout = new modalLayout({ model: this });
+			layout.template = this.get('modalTemplate');
+			return layout;
+		},
+
+		remove : function()
+		{
+			this.layout.remove();
+		}
+	});
+
+	var modalLayout = Backbone.Layout.extend({
+
+		className : 'PT-modal-overlay',
 
 		events : {
 			'click .close' : 'closeModal'
@@ -40,44 +50,11 @@ function(Zeega, Backbone)
 			return false;
 		},
 
-		initialize : function(opts)
-		{
-			this.settings = _.defaults(opts,this.defaults);
-		},
-
-		serialize : function(){ return this.settings; }
+		serialize : function(){ return this.model.toJSON(); }
 
 	});
 
-	App.Layouts.ModalWide = Backbone.Layout.extend({
-		template: "modal-wide",
-
-		className : 'PT-modal-overlay',
-
-		defaults : {
-			title : 'default'
-		},
-
-		events : {
-			'click .close' : 'closeModal'
-		},
-
-		closeModal : function()
-		{
-			window.history.back();
-			return false;
-		},
-
-		initialize : function(opts)
-		{
-			this.settings = _.defaults(opts,this.defaults);
-		},
-
-		serialize : function(){ return this.settings; }
-
-	});
-
-	App.Views.TabbedModal = App.Views._Page.extend({
+	Modal.Views.TabbedModal = Backbone.LayoutView.extend({
 		
 		events: {
 			'click ul.modal-tabs-head li': 'switchTab'
@@ -96,5 +73,5 @@ function(Zeega, Backbone)
 	});
 
 	// Required, return the module for AMD compliance
-	return App;
+	return Modal;
 });

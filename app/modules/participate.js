@@ -14,37 +14,35 @@ define([
 
 function(Zeega, Backbone, Modal)
 {
+	var Participate = Zeega.module();
 
-	// Create a new module
-	var App = Zeega.module();
+	Participate.Model = Modal.Model.extend({
 
-
-	App.Collections = {};
-
-
-	// model for new takeout data (via 'participate')
-	App.NewTakeoutModel = Backbone.Model.extend({
-		url : "takeout.php",
 		defaults : {
-			tags:  "pt_takeout",
-			media_type:'Collection',
-			layer_type:'Dynamic',
-			attribution_uri: 'default',
-			child_items_count:0,
-			archive:'Planet Takeout',
-			user_id:760,
-			uri:"default"
+			title : 'Participate',
+			modalTemplate : 'modal'
+		},
+
+		initialize : function()
+		{
+			this.layout = this.getLayout();
+			this.layout.setView('.PT-modal-content', new participateView() );
+			this.layout.render();
+			$('body').append( this.layout.el );
 		}
 	});
 
-	App.Views.Participate = Modal.Views.TabbedModal.extend({
-		template: 'participate-0',
+	var participateView = Modal.Views.TabbedModal.extend({
+
+		template: 'participate',
 
 		initialize: function()
 		{
-			this.events = _.extend({},this.events, App.Views.TabbedModal.prototype.events);
+			console.log('part view', this)
+			this.events = _.extend({},this.events, Modal.Views.TabbedModal.prototype.events);
+			
 			_.bindAll(this, 'render', 'geoLookup', 'initAddTakeout', 'showStreetView', 'saveStreetView', 'initKeepInTouch');
-			this.model = new App.NewTakeoutModel();
+			this.model = new newTakeoutModel();
 			this.geocoder = new google.maps.Geocoder();
 			this.newTakeoutStreetView=false;
 		},
@@ -139,8 +137,6 @@ function(Zeega, Backbone, Modal)
 			
 		},
     
-    
-    
 		showStreetView: function(results)
 		{
 			console.log("showing street view");
@@ -193,6 +189,21 @@ function(Zeega, Backbone, Modal)
 	    
 	});
 
+	// model for new takeout data (via 'participate')
+	var newTakeoutModel = Backbone.Model.extend({
+		url : "takeout.php",
+		defaults : {
+			tags:  "pt_takeout",
+			media_type:'Collection',
+			layer_type:'Dynamic',
+			attribution_uri: 'default',
+			child_items_count:0,
+			archive:'Planet Takeout',
+			user_id:760,
+			uri:"default"
+		}
+	});
+
 	// Required, return the module for AMD compliance
-	return App;
+	return Participate;
 });

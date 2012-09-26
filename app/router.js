@@ -66,7 +66,7 @@ function(
 		about : function()
 		{
 			initialize({player:'pause'});
-			renderPage('About');
+			renderAbout();
 		},
 
 		collections : function()
@@ -134,7 +134,7 @@ function(
 		participate : function()
 		{
 			initialize({player:'pause'});
-			renderPage('Participate');
+			renderParticipate();
 		},
 
 		menu : function()
@@ -265,26 +265,24 @@ esp inserting the layout into the dom!
 
 	}
 
-	function renderPage(pageName)
+	function renderAbout()
 	{
-		/*
-		Zeega.page = new App.Layouts.Modal({title:pageName});
-		var pageView = new App.Views[pageName]();
-		Zeega.page.setView('.PT-modal-content', pageView );
-		Zeega.page.render();
-		$('body').append(Zeega.page.el);
-		*/
+		Zeega.page = new About.Model();
 	}
 
 	function renderMenu()
 	{
-		/*
-		Zeega.page = new App.Layouts.ModalWide({title:'Menu'});
-		var pageView = new App.Views.Menu();
-		Zeega.page.setView('.PT-modal-content', pageView );
-		Zeega.page.render();
-		$('body').append(Zeega.page.el);
-		*/
+		Zeega.page = new Menu.Model();
+	}
+
+	function renderMap()
+	{
+		Zeega.page = new Map.Model();
+	}
+
+	function renderParticipate()
+	{
+		Zeega.page = new Participate.Model();		
 	}
 
 	function generateGrid( collection, type )
@@ -378,16 +376,7 @@ esp inserting the layout into the dom!
 		if( Zeega.citation ) Zeega.citation.remove();
 	}
 
-	function renderMap()
-	{
-		/*
-		Zeega.page = new App.Layouts.ModalWide({title:'Delicious World'});
-		var pageView = new App.Views.Map();
-		Zeega.page.setView('.PT-modal-content', pageView );
-		$('body').append(Zeega.page.el);
-		Zeega.page.render();
-		*/
-	}
+	
 
 	function clearModals()
 	{

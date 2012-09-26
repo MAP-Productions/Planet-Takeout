@@ -16,12 +16,26 @@ function(Zeega, Backbone, Modal)
 {
 
 	// Create a new module
-	var App = Zeega.module();
+	var Map = Zeega.module();
 
+	Map.Model = Modal.Model.extend({
 
-	App.Collections = {};
+		defaults : {
+			title : 'Delicious World',
+			modalTemplate: 'modal-wide'
+		},
 
-	App.Views.Map = Modal.Views._Page.extend({
+		initialize : function()
+		{
+			this.layout = this.getLayout();
+			this.layout.setView('.PT-modal-content', new mapView() );
+			this.layout.render();
+			$('body').append( this.layout.el );
+		}
+	});
+
+	var mapView = Backbone.LayoutView.extend({
+
 		template: 'map',
 		id: 'PT-map-wrapper',
 
@@ -35,7 +49,7 @@ function(Zeega, Backbone, Modal)
 
 		initialize : function()
 		{
-			this.collection = new App.Collections.MapItems();
+			this.collection = new mapItemCollection();
 		},
 
 		afterRender : function()
@@ -64,7 +78,6 @@ function(Zeega, Backbone, Modal)
 			var renderMarkers = function()
 			{
 				_this.collection.each(function(item){
-					//          console.log('lat lng', _this.collection, item, [ item.get('media_geo_latitude'), item.get('media_geo_longitude')]);
 					item.marker = L.marker([ item.get('media_geo_latitude') || 0, item.get('media_geo_longitude') || 0 ], {icon: _this.ptIconRed} );
 					item.marker.itemID = item.id;
 					item.marker.addTo(_this.map);
@@ -82,7 +95,7 @@ function(Zeega, Backbone, Modal)
 		{
 			console.log('clicked', e, e.target.getLatLng() );
 			var item = this.collection.get(e.target.itemID);
-			var content = new App.Views.MapPopup({model:item});
+			var content = new mapPopup({model:item});
 			this.popup = L.popup();
 			this.popup.setLatLng([ e.target.getLatLng().lat, e.target.getLatLng().lng ])
 				.setContent( content.render().el )
@@ -92,24 +105,16 @@ function(Zeega, Backbone, Modal)
 				'background': item.get('thumbnail_url') ? 'url('+ item.get('thumbnail_url') +')' : 'grey',
 				'background-size' : '100% auto'
 			});
-			console.log(this.popup);
-
-
 		}
 
 	});
 
-	App.Collections.MapItems = Backbone.Collection.extend({
-		initialize : function(){ console.log('colection init');},
-		url: function()
-		{
-			return localStorage.api + '/items/46086/items';
-		},
-
+	var mapItemCollection = Backbone.Collection.extend({
+		url: function(){ return localStorage.api + '/items/46086/items'; },
 		parse : function(res){ return res.items; }
 	});
 
-	App.Views.MapPopup = Backbone.View.extend({
+	var mapPopup = Backbone.View.extend({
 
 		className : 'map-popup',
 
@@ -126,23 +131,18 @@ function(Zeega, Backbone, Modal)
 		enterCollectionViewer : function()
 		{
 			// for some reason, the relative url wasn't working correctly. navigate works though
-			console.log('enter collectoin', this);
 			Zeega.router.navigate('/collections/'+ this.model.id +'/view', {'trigger':true});
 			return false;
 		},
 
 		template : function()
 		{
-			var html = 
-
-			'<a href="/collections/<%= id %>/view" class="enter"><img src="assets/img/arrow-straight.png" width="40px"/></a>';        
-
-			return html;
+			return '<a href="/collections/<%= id %>/view" class="enter"><img src="assets/img/arrow-straight.png" width="40px"/></a>';        
 		}
 
 	});
 
 
 	// Required, return the module for AMD compliance
-	return App;
+	return Map;
 });
