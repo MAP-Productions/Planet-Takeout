@@ -66,7 +66,7 @@ function(
 		about : function()
 		{
 			initialize({player:'pause'});
-			renderAbout();
+			Zeega.page = new About.Model();
 		},
 
 		collections : function()
@@ -128,25 +128,26 @@ function(
 		map : function()
 		{
 			initialize({player:'pause'});
-			renderMap();
+			Zeega.page = new Map.Model();
 		},
 
 		participate : function()
 		{
 			initialize({player:'pause'});
-			renderParticipate();
+			Zeega.page = new Participate.Model();
 		},
 
 		menu : function()
 		{
 			initialize({player:'pause'});
-			renderMenu();
+			Zeega.page = new Menu.Model();
 
 		},
 
 		search : function()
 		{
 			initialize({player:'pause'});
+			// search does not exist yet
 		}
 	});
 
@@ -240,8 +241,10 @@ esp inserting the layout into the dom!
 
 	}
 
+
 	function renderIndex()
 	{
+		// fix this
 		console.log('render index')
 		var _this  = this;
 		var player = new Players.Model();
@@ -250,6 +253,9 @@ esp inserting the layout into the dom!
 		});
 
 	}
+
+
+
 
 	function renderFeaturedCitation()
 	{
@@ -265,25 +271,7 @@ esp inserting the layout into the dom!
 
 	}
 
-	function renderAbout()
-	{
-		Zeega.page = new About.Model();
-	}
 
-	function renderMenu()
-	{
-		Zeega.page = new Menu.Model();
-	}
-
-	function renderMap()
-	{
-		Zeega.page = new Map.Model();
-	}
-
-	function renderParticipate()
-	{
-		Zeega.page = new Participate.Model();		
-	}
 
 	function generateGrid( collection, type )
 	{
