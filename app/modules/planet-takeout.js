@@ -246,7 +246,7 @@ function(Zeega, Backbone) {
         'click ul.info-tab-icons li': 'switchInfoTab',
         'click #addTakeoutTab': 'initAddTakeout',
         'click #saveTakeout': 'saveStreetView',
-        'click #PT-newtakout-map-submit' : 'lookup',
+        'click #PT-newtakout-search-submit' : 'lookup',
     },
     switchInfoTab: function(e) {
         var clicked = $(e.target),
@@ -273,6 +273,7 @@ function(Zeega, Backbone) {
           zoom: 13,
           mapTypeId: google.maps.MapTypeId.ROADMAP,
           streetViewControl:false,
+          mapTypeControl:false,
       };
       this.map = new google.maps.Map(document.getElementById("map"), mapOptions);
       this.marker = new google.maps.Marker({
@@ -333,12 +334,17 @@ function(Zeega, Backbone) {
     showStreetView: function(results) {
     	console.log("showing street view");
       var viewOptions = {
+      	addressControl:false,
+      	panControl:false,
         position:  new google.maps.LatLng(42.354485,-71.061802),
         pov: {
           heading: 34,
           pitch: 10,
           zoom: 1
-        }
+        },
+        zoomControlOptions: {
+			position: google.maps.ControlPosition.TOP_RIGHT
+		  },
       };
 
       this.newTakeoutStreetView =  new google.maps.StreetViewPanorama(document.getElementById("streetView"), viewOptions);
