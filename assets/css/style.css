@@ -909,32 +909,47 @@ button.close{
 	margin:0px 0px 0px 0px !important;	
 }
 
-.featured-citation-bottom
+.PT-menu i.PT-featured
+{
+  background-repeat: no-repeat;
+  background-size: 80%;
+  float: left;
+  margin-top: 9px;
+  height:11px;
+  width:28px;
+}
+
+
+/* featured items drawer */
+
+#featured-items-drawer
 {
   width: 90%;
   overflow: hidden;
   white-space: nowrap;
   float: left;
-  margin-right: 20px;
+  margin: 0 10px 0 0;
 }
 
-.PT-menu i.PT-featured
-{
-	background-repeat: no-repeat;
-	background-size: 80%;
-	float: left;
-	margin-top: 9px;
-	height:11px;
-	width:28px;
-}
-
-.featured-citation-bottom li
+#featured-items-drawer>li
 {
   display: inline-block;
   height: 50px;
-  width: 75px;
   margin-right: 10px;
+  position: relative;
+  width: 75px;
 }
+
+#featured-items-drawer>li a
+{
+  display: inline-block;
+  height: 50px;
+  margin-right: 10px;
+  position:absolute;
+  width: 75px;
+}
+
+/* end featured items drawer */
 
 
 #info-hover
@@ -948,11 +963,24 @@ button.close{
   color: white;
   width: 150px;
   padding: 5px;
-  bottom: 50px;
-  left: -64px;
+  bottom: 38px;
+  left: -70px;
   border-radius: 3px;
   font-style: italic;
 
+}
+
+.info-box:after
+{
+  content: '';
+  background: transparent;
+  display: block;
+  width: 0;
+  position: absolute;
+  border-top: 20px solid red;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  left: 65px;
 }
 
 #info-hover:hover .info-box 

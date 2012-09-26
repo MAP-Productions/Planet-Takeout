@@ -14,12 +14,8 @@ define([
 
 function(Zeega, Backbone, Modal)
 {
-
-	// Create a new module
 	var App = Zeega.module();
 
-
-	App.Collections = {};
 
 	App.Layouts.GridView = Backbone.Layout.extend({
 		template: "collection-grid-layout",

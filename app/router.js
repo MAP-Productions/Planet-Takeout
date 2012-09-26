@@ -60,13 +60,13 @@ function(
 		index: function()
 		{
 			initialize();
-			renderIndex();
+			Zeega.page = new Index.Model();
 		},
 
 		about : function()
 		{
 			initialize({player:'pause'});
-			Zeega.page = new About.Model();
+			Zeega.modal = new About.Model();
 		},
 
 		collections : function()
@@ -100,7 +100,7 @@ function(
 						if( !_.isUndefined(itemID) ) player.set('frameID', itemID );
 						if(player.get('frames').length>0){
 							Zeega.player = new Zeega.Player( player.toJSON() );
-							Zeega.player.on('all', onPlayerEvent, this);
+							//Zeega.player.on('all', onPlayerEvent, this);
 							Zeega.player.play();
 						}
 						else{
@@ -128,19 +128,19 @@ function(
 		map : function()
 		{
 			initialize({player:'pause'});
-			Zeega.page = new Map.Model();
+			Zeega.modal = new Map.Model();
 		},
 
 		participate : function()
 		{
 			initialize({player:'pause'});
-			Zeega.page = new Participate.Model();
+			Zeega.modal = new Participate.Model();
 		},
 
 		menu : function()
 		{
 			initialize({player:'pause'});
-			Zeega.page = new Menu.Model();
+			Zeega.modal = new Menu.Model();
 
 		},
 
@@ -151,12 +151,69 @@ function(
 		}
 	});
 
+/*******************	BEGIN PRIMARY		**********************/
+
 /*
 
 tasks to take care of before the application can load
 esp inserting the layout into the dom!
 
 */
+
+	function initialize(attr)
+	{
+		initPT();
+		cleanup(attr);
+	}
+
+	// makes sure this happens on ly once per load
+	var initPT = _.once( init );
+	function init()
+	{
+		// render the base layout into the dom
+		var baseLayout = new Backbone.Layout({ el: "#main" });
+		var baseView = Backbone.LayoutView.extend({ template: "base" });
+		baseLayout.insertView(new baseView() );
+		var nav = new Navigation.Views.UpperNavView();
+		baseLayout.setView('#nav-upper', nav );
+		baseLayout.render();
+		nav.render();
+	}
+
+	// happens on every router change
+	function cleanup(attr)
+	{
+		// attr= { player : pause', 'exit' }
+		if(attr && attr.player && Zeega.player)
+		{
+			switch(attr.player)
+			{
+				case 'pause':
+					console.log('player pause')
+					Zeega.player.playPause();
+					break;
+				case 'exit':
+					console.log('player exit')
+					Zeega.player.exit();
+				break;
+			}
+		}
+				// remove modal if it exists
+		if(Zeega.modal)
+		{
+			Zeega.modal.remove();
+			Zeega.modal = null;
+		}
+
+		if( Zeega.citation ) Zeega.citation.remove();
+
+	}
+
+
+
+/*******************	END PRIMARY		**********************/
+
+
 
 	function gotoStreetviewProject(player,collectionID){
 		console.log('collection has no content');
@@ -191,87 +248,13 @@ esp inserting the layout into the dom!
 			player.sequences[0].frames=[3];
 			
 			Zeega.player = new Zeega.Player( player );
-			Zeega.player.on('all', onPlayerEvent, this);
+			//Zeega.player.on('all', onPlayerEvent, this);
 			Zeega.player.play();
 		
 		
 		});
 	
 	}
-
-	function initialize(attr)
-	{
-		initPT();
-		cleanup(attr);
-	}
-
-	// makes sure this happens on ly once per load
-	var initPT = _.once( init );
-	function init()
-	{
-		renderBaseLayout();
-	}
-
-	// happens on every router change
-	function cleanup(attr)
-	{
-		// attr= { player : pause', 'exit' }
-		if(attr && attr.player && Zeega.player)
-		{
-			switch(attr.player)
-			{
-				case 'pause':
-					console.log('player pause')
-					Zeega.player.playPause();
-					break;
-				case 'exit':
-					console.log('player exit')
-					Zeega.player.exit();
-				break;
-			}
-		}
-				// remove modal if it exists
-		if(Zeega.page)
-		{
-			Zeega.page.remove();
-			Zeega.page = null;
-		}
-
-		removeCitation();
-
-	}
-
-
-	function renderIndex()
-	{
-		// fix this
-		console.log('render index')
-		var _this  = this;
-		var player = new Players.Model();
-		player.on('ready', function(){
-			renderFeaturedCitation();
-		});
-
-	}
-
-
-
-
-	function renderFeaturedCitation()
-	{
-		var citationDrawer = new Citations.Layouts.CitationDrawerLayout();
-		Zeega.citation = citationDrawer;
-		console.log('player', Zeega.player)
-		var citView = new Citations.Views.FeaturedCitationView({ model: Zeega.player });
-		citationDrawer.insertView( '.citation-inner', citView);
-
-		Zeega.citation.render();
-		$('#nav-lower').html(Zeega.citation.el);
-		citView.render();
-
-	}
-
-
 
 	function generateGrid( collection, type )
 	{
@@ -299,7 +282,7 @@ esp inserting the layout into the dom!
 
 	function renderCollections()
 	{
-		removePlayer();
+		if( Zeega.player ) Zeega.player.exit();
 		// make and render itemCollection
 		var itemCollectionsCollection = new Grid.Collections.ItemCollections();
 		itemCollectionsCollection.fetch().success(function(res){
@@ -311,15 +294,7 @@ esp inserting the layout into the dom!
   // this is the switch that interperes all incoming player events
 	function onPlayerEvent(e, opts)
 	{
-
-		//console.log('player e:', e, opts)
-		/* lint error - replaced switch with if
-		switch(e)
-		{
-		case 'frame_rendered':
-		renderCitation(e,opts);
-		break;
-		}*/
+		/*
 		if (e == 'frame_rendered')
 		{
 			renderCitation(e,opts);
@@ -333,20 +308,24 @@ esp inserting the layout into the dom!
 			//console.log('%:', opts.elapsed /opts.duration )
 			$('.citation-top .elapsed').css({width: (opts.elapsed /opts.duration*100) +'%' })
 		}
+		*/
 	}
 
 	function renderCitations()
 	{
+		/*
 		var citationDrawer = new Citations.Layouts.CitationDrawerLayout();
 		Zeega.citation = citationDrawer;
 		//Zeega.citation.insertView( new Citations.Views.CitationView() );
 
 		Zeega.citation.render();
 		$('#nav-lower').html(Zeega.citation.el);
+		*/
 	}
 
 	function renderCitation(e,model)
 	{
+		/*
 		Zeega.citation.getViews().each(function(view){ view.remove(); });
 
 		var layer = model.layers.at(0);
@@ -357,37 +336,7 @@ esp inserting the layout into the dom!
 		Zeega.citation.render();
 		navView.render();
 		citView.render();
-	}
-
-	function removeCitation()
-	{
-		if( Zeega.citation ) Zeega.citation.remove();
-	}
-
-	
-
-	function clearModals()
-	{
-		if(Zeega.page) Zeega.page.remove();
-	}
-
-	function removePlayer()
-	{
-		if( Zeega.player ) Zeega.player.exit();
-	}
-
-  // this is a utility and should be elsewhere
-	function renderBaseLayout()
-	{
-
-		Zeega.baseLayout = new Backbone.Layout({
-			el: "#main"
-		});
-		// Insert the tutorial into the layout.
-		Zeega.baseLayout.insertView(new Index.Views.Base() );
-		Zeega.baseLayout.setView('#nav-upper', new Navigation.Views.UpperNavView() );
-		// Render the layout into the DOM.
-		Zeega.baseLayout.render();
+		*/
 	}
 
 
