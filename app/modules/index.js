@@ -8,8 +8,7 @@ define([
 	'libs/leaflet'
 ],
 
-function(Zeega, Backbone)
-{
+function(Zeega, Backbone) {
 
 	// Create a new module
 	var App = Zeega.module();
@@ -18,14 +17,19 @@ function(Zeega, Backbone)
 	App.Collections = {};
 
 
-	App.Views.UpperNavView = Backbone.View.extend({
-		manage : true,
-		template : 'upper-nav',
-
-		tagName : 'ul'
+	App.Views.Base = Backbone.View.extend({
+		manage: true,
+		template: "base"
 	});
+
+
+
+	App.Views._Page = Backbone.LayoutView.extend({
+	});
+
 
 
 	// Required, return the module for AMD compliance
 	return App;
+
 });

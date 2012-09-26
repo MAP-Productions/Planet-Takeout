@@ -2,7 +2,17 @@ define([
 	// Application.
 	"zeega",
 	// Modules.
-	'modules/planet-takeout' // this needs to be cusomized
+	'modules/about',
+	'modules/citations',
+	'modules/grid',
+	'modules/index',
+	'modules/map',
+	'modules/menu',
+	'modules/modals',
+	'modules/navigation',
+	'modules/participate',
+	'modules/players',
+	'modules/search'
 ],
 
 // generic App used
