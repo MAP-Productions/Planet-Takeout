@@ -14,22 +14,35 @@ define([
 
 function(Zeega, Backbone, Modal)
 {
-
 	// Create a new module
-	var App = Zeega.module();
+	var About = Zeega.module();
+	
+	About.Model = Modal.Model.extend({
 
+		defaults : {
+			title : 'About',
+			modalTemplate : 'modal'
+		},
 
-	App.Collections = {};
+		initialize : function()
+		{
+			this.layout = this.getLayout();
+			this.layout.setView('.PT-modal-content', new aboutView() );
+			this.layout.render();
+			$('body').append( this.layout.el );
+		}
+	});
 
+	var aboutView = Modal.Views.TabbedModal.extend({
 
-	App.Views.About = Modal.Views.TabbedModal.extend({
 		template: 'about',
+
 		initialize: function()
 		{
-			this.events = _.extend({},this.events, App.Views.TabbedModal.prototype.events);
+			this.events = _.extend({},this.events, Modal.Views.TabbedModal.prototype.events);
 		}
 	});
 
 	// Required, return the module for AMD compliance
-	return App;
+	return About;
 });

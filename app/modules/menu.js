@@ -14,20 +14,35 @@ define([
 
 function(Zeega, Backbone, Modal)
 {
-
 	// Create a new module
-	var App = Zeega.module();
+	var Menu = Zeega.module();
 
+	Menu.Model = Modal.Model.extend({
 
-	App.Collections = {};
+		defaults : {
+			title : 'Menu',
+			modalTemplate : 'modal-wide'
+		},
 
-	App.Views.Menu = Modal.Views._Page.extend({
+		initialize : function()
+		{
+			this.layout = this.getLayout();
+			this.layout.setView('.PT-modal-content', new menuView() );
+			this.layout.render();
+			$('body').append( this.layout.el );
+			console.log('mm 		modal init', Zeega, this)
+		}
+	});
+
+	var menuView = Backbone.LayoutView.extend({
+		
 		template: 'menu',
 		className: 'PT-menu',
+
 		initialize : function()
 		{
 			var _this=this;
-			this.collection = new App.Collections.MenuItems();
+			this.collection = new menuItemCollection();
 			this.collection.fetch().success(function(response){
 				_this.loadMenu();
 			});
@@ -63,7 +78,7 @@ function(Zeega, Backbone, Modal)
 		}
 	});
 
-	App.Collections.MenuItems = Backbone.Collection.extend({
+	var menuItemCollection = Backbone.Collection.extend({
 		url: function()
 		{
 			return localStorage.api + '/items/46082/items';
@@ -73,5 +88,5 @@ function(Zeega, Backbone, Modal)
 	});
 
 	// Required, return the module for AMD compliance
-	return App;
+	return Menu;
 });
