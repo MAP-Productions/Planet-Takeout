@@ -11,7 +11,10 @@ define([
 	'modules/navigation',
 	'modules/participate',
 	'modules/players',
-	'modules/search'
+	'modules/search',
+
+	// Submodules.
+	'modules/submodules/loadingspinner'
 
 ],
 
@@ -300,6 +303,7 @@ esp inserting the layout into the dom!
 	{
 
 		var items = new Grid.Collections.Items();
+
 		items.collectionID = collectionID;
 		items.fetch().success(function(res){
 			items.each(function(item){ item.set('collection_id',collectionID);});
@@ -318,9 +322,11 @@ esp inserting the layout into the dom!
 		removePlayer();
 		// make and render itemCollection
 		var itemCollectionsCollection = new Grid.Collections.ItemCollections();
+		loadingSpinner.show();
 		itemCollectionsCollection.fetch().success(function(res){
 			generateGrid( itemCollectionsCollection, 'collections' );
 			$('#app-base').append( Zeega.grid.el );
+			loadingSpinner.hide();
 		});
 	}
 
@@ -413,14 +419,7 @@ esp inserting the layout into the dom!
 		Zeega.baseLayout.setView('#nav-upper', new Navigation.Views.UpperNavView() );
 		// Render the layout into the DOM.
 		Zeega.baseLayout.render();
-	}
-
-	function showLoadingSpinner() {
-		$('#loading').show();
-	}
-
-	function hideLoadingSpinner() {
-		$('#loading').hide();
+		console.log('renderBaseLayout');
 	}
 
 	return Router;
