@@ -403,6 +403,9 @@ esp inserting the layout into the dom!
 		Zeega.baseLayout = new Backbone.Layout({
 			el: "#main"
 		});
+		Zeega.baseLayout.afterRender = function() {
+			loadingSpinner.show();
+		};
 		// Insert the tutorial into the layout.
 		Zeega.baseLayout.insertView(new Index.Views.Base() );
 		Zeega.baseLayout.setView('#nav-upper', new Navigation.Views.UpperNavView() );

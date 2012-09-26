@@ -1,10 +1,12 @@
 define([
 	"zeega",
 	// Libs
-	"backbone"
+	"backbone",
+	
+	'libs/spin'
 ],
 
-function(Zeega, Backbone)
+function(Zeega, Backbone,spin)
 {
 
 	// Create a new module
@@ -12,12 +14,16 @@ function(Zeega, Backbone)
 
 	App.show = function() {
 		console.log('spinner show');
-		$('#loading').show();
+		$('#loading')
+			.show()
+			.children('#spinner').spin('pt','#fff');
 	}
 
 	App.hide = function() {
 		console.log('spinner hide');
-		$('#loading').hide();
+		$('#loading')
+			.hide()
+			.children('#spinner').spin(false);
 	}
 
 	// Required, return the module for AMD compliance

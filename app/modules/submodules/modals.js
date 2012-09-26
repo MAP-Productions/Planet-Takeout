@@ -2,15 +2,19 @@ define([
 	"zeega",
 	// Libs
 	"backbone",
+	
+	// Submodules
+	"modules/submodules/loadingspinner",
 
 	//libraries
 	'libs/modernizr',
 	'libs/leaflet',
 	// Plugins
-	'zeega_player'
+	'zeega_player',
+	'libs/spin'
 ],
 
-function(Zeega, Backbone)
+function(Zeega, Backbone, loadingSpinner)
 {
 
 	// Create a new module
@@ -42,6 +46,14 @@ function(Zeega, Backbone)
 
 		events : {
 			'click .close' : 'closeModal'
+		},
+
+		initialize: function() {
+			loadingSpinner.show();
+		},
+
+		afterRender: function() {
+			loadingSpinner.hide();
 		},
 
 		closeModal : function()

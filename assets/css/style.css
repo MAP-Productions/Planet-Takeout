@@ -967,6 +967,12 @@ button.close{
   right: 0;
   top: 0;
   bottom: 0;
-  background: red;
   z-index: 150000;
+}
+
+#loading #spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -
 }
