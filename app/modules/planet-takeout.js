@@ -16,7 +16,7 @@ function(Zeega, Backbone) {
 
   App.Collections = {};
 
-console.log(localStorage.root);
+console.log(localStorage.api);
   App.Model = Backbone.Model.extend({
 
     url : function()
@@ -24,8 +24,8 @@ console.log(localStorage.root);
 
       var projects = [1666,1665,1664,1663];
 		console.log('returning url');
-      return localStorage.root + '/projects/'+ projects[Math.floor(Math.random()*projects.length)];
-      //return localStorage.root + '/projects/1775';
+      return localStorage.api + '/projects/'+ projects[Math.floor(Math.random()*projects.length)];
+      //return localStorage.api + '/projects/1775';
     },
 
     defaults : {
@@ -66,7 +66,7 @@ console.log(localStorage.root);
 
   App.CollectionZeegaPlayerModel = Backbone.Model.extend({
 
-    url : function(){ return localStorage.root + '/items/'+ this.collection_id +'/project'; },
+    url : function(){ return localStorage.api + '/items/'+ this.collection_id +'/project'; },
     initialize : function(){console.log('collection',this)},
     defaults : {
       //appName : 'wayfinder',
@@ -504,7 +504,7 @@ console.log(localStorage.root);
     url: function()
     {
 
-      return localStorage.root + '/items/46086/items';
+      return localStorage.api + '/items/46086/items';
     },
 
     parse : function(res){ return res.items; }
@@ -513,7 +513,7 @@ console.log(localStorage.root);
   App.Collections.MenuItems = Backbone.Collection.extend({
     url: function()
     {
-      return localStorage.root + '/items/46082/items';
+      return localStorage.api + '/items/46082/items';
 
     },
 
@@ -695,7 +695,7 @@ console.log(localStorage.root);
     {
       var _this = this;
       var Collection = Backbone.Collection.extend({
-        url : localStorage.root + '/search?r_itemswithcollections',
+        url : localStorage.api + '/search?r_itemswithcollections',
         parse : function(res){ return res.items }
       })
       this.collection = new Collection();
@@ -797,7 +797,7 @@ console.log(localStorage.root);
 
     page : 1,
 
-    url : function(){ return localStorage.root + '/items/'+ this.collectionID +'/items'; },
+    url : function(){ return localStorage.api + '/items/'+ this.collectionID +'/items'; },
 
     parse : function( res )
     {
@@ -810,7 +810,7 @@ console.log(localStorage.root);
 
     page : 1,
 
-    url : function(){ return localStorage.root + '/search?r_itemswithcollections&tags=pt_grid&page='+ this.page; },
+    url : function(){ return localStorage.api + '/search?r_itemswithcollections&tags=pt_grid&page='+ this.page; },
 
     parse : function( res )
     {
