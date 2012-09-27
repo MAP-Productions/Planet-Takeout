@@ -53,9 +53,8 @@ function(Zeega, Backbone, Modal)
 			//this.getViews().each(function(view){ view.delegateEvents() });
 
 			// infinite scroll
-			this.$('#grid-view-slider').scroll(function(){
-				//console.log('scroll', _this.$('#grid-view-slider ul').height(), _this.$('#grid-view-slider ul').position().top, $('#grid-view-wrapper').height()  )
-
+			this.$('#grid-view-slider').scroll(function()
+			{
 				if( _this.$('#grid-view-slider ul').height() <= -_this.$('#grid-view-slider ul').position().top + $('#grid-view-wrapper').height() )
 				{
 					if(_this.collection.length < _this.collection.itemsCount )

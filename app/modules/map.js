@@ -52,6 +52,7 @@ function(Zeega, Backbone, Modal)
 		{
 			this.renderMap();
 			this.renderCollectionMarkers();
+			console.log('after map render');
 		},
 
 		renderMap : function()
