@@ -12,6 +12,24 @@ h6 {
 ul.horizontal-list li {
   float: left;
 }
+/* loading spinner */
+#loading {
+  background: rgba(0, 0, 0, 0.75);
+  display: none;
+  position: absolute;
+  z-index: 150000;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+#loading #spinner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
 /* social media icons sprite */
 .social-icon {
   background: url(../img/sprite_social-red.png);
@@ -448,7 +466,7 @@ button.close {
 }
 .PT-modal {
   width: 770px;
-  margin: 80px auto;
+  margin: 68px auto;
 }
 .PT-modal-wide {
   width: 1000px;
@@ -459,7 +477,7 @@ button.close {
 }
 .PT-modal-title {
   color: white;
-  padding-bottom: 30px;
+  padding-bottom: 22px;
   padding-left: 40px;
 }
 .PT-modal-title h1 {
@@ -486,7 +504,7 @@ button.close {
 }
 .PT-modal-content .modal-tabs {
   overflow: auto;
-  max-height: 500px;
+  max-height: 467px;
   margin-top: 12px;
   padding: 0 10px;
 }
@@ -539,6 +557,7 @@ button.close {
 .PT-modal .sponsor-drawer img {
   width: 110px;
 }
+
 /* PARTICIPATE */
 .PT-modal-content ul.modal-tabs-head {
   left: 0;
@@ -618,7 +637,7 @@ button.close {
 .PT-modal-content .modal-tab .info-tab-icons li {
   cursor: pointer;
   float: left;
-  margin: 0 3%;
+  margin: 0 3.65%;
 }
 .PT-modal-content .modal-tab .info-tab.media .carat {
   border-color: transparent transparent #fff transparent;
@@ -632,7 +651,7 @@ button.close {
   width: 0px;
 }
 .PT-modal-content .modal-tab .info-tab.flickr .carat {
-  left: 15.82%;
+  left: 9%;
 }
 .PT-modal-content .modal-tab .info-tab.youtube .carat {
   left: 31%;
@@ -652,6 +671,16 @@ button.close {
   color: #666;
   font-size: 11px;
   text-align: left;
+}
+.PT-modal-content #addPhotos .info-tab.media ol {
+  margin-left: 0;
+}
+.PT-modal-content #addPhotos .info-tab.media li {
+  color: #666;
+  font-size: 11px;
+  text-align: left;
+  list-style-position: outside;
+  margin-left: 1.5em;
 }
 .PT-modal-content .modal-tab .info-tab.default p {
   color: #666;
@@ -761,4 +790,9 @@ button.close {
   margin-top: 9px;
   height: 11px;
   width: 28px;
+}
+
+/* prevent scrollbars on add takeout tab */
+#addTakeout #saveTakeout {
+  margin-bottom: 0;
 }
