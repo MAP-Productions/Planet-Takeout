@@ -52,6 +52,11 @@ function(
 			'collections/:collection_id/view/:item_id' : 'viewCollectionPlayer',
 			'collections/:collection_id/view/:item_id/' : 'viewCollectionPlayer',
 
+			'featured' : 'index',
+			'featured/' : 'index',
+			'featured/:featured_id' : 'viewFeatured',
+			'featured/:featured_id/' : 'viewFeatured',
+
 			'map' : 'map',
 			'participate' : 'participate',
 			'menu' : 'menu',
@@ -62,6 +67,11 @@ function(
 		{
 			initialize('player');
 			Zeega.page = new Index.Model();
+		},
+
+		viewFeatured : function(featuredID)
+		{
+			console.log('go to featured:',featuredID)
 		},
 
 		about : function()
