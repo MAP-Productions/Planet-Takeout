@@ -191,7 +191,7 @@ function(Zeega, Backbone, Modal)
 	var newTakeoutModel = Backbone.Model.extend({
 		url : "takeout.php",
 		defaults : {
-			tags:  "pt_takeout",
+			tags:  ["pt_takeout"],
 			media_type:'Collection',
 			layer_type:'Dynamic',
 			attribution_uri: 'default',
