@@ -73,13 +73,13 @@ function(Zeega, Backbone, Modal)
 			if( item.get('media_type') == 'Collection')
 			{
 				itemView = new App.Views.CollectionView({model:item,attributes:{
-					'style': item.get('thumbnail_url') ? 'background:url('+ item.get('thumbnail_url') +');background-size:100% 100%' : ''
+					'style': item.get('thumbnail_url') ? 'background:url('+ item.get('thumbnail_url') +');background-size:100% auto' : ''
 				}});
 			}
 			else
 			{
 				itemView = new App.Views.ItemView({model:item,attributes:{
-					'style': item.get('thumbnail_url') ? 'background:url('+ item.get('thumbnail_url') +');background-size:100% 100%' : ''
+					'style': item.get('thumbnail_url') ? 'background:url('+ item.get('thumbnail_url') +');background-size:100% auto' : ''
 				}});
 			}
 			return itemView;
