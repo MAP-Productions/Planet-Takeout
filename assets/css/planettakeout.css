@@ -517,28 +517,7 @@ button.close {
   width: 75%;
   float: right;
 }
-.PT-modal-content .sponsor-drawer {
-  background: white;
-  height: 260px;
-  bottom: 0;
-  width: 100%;
-  left: 0;
-  clear: both;
-}
-.PT-modal .sponsor-drawer ul {
-  margin: 0;
-  list-style: none;
-  padding: 20px;
-}
-.PT-modal .sponsor-drawer li {
-  float: left;
-  text-align: center;
-  height: 125px;
-  width: 143px;
-}
-.PT-modal .sponsor-drawer img {
-  width: 110px;
-}
+
 /* PARTICIPATE */
 .PT-modal-content ul.modal-tabs-head {
   left: 0;
@@ -580,7 +559,6 @@ button.close {
 .PT-modal-content .right-column img {
   display: block;
   margin: 30px auto;
-  width: 75%;
 }
 .PT-modal-content .modal-tab h2 {
   text-align: left;
