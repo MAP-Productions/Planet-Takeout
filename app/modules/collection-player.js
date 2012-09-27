@@ -33,7 +33,6 @@ function(Zeega, Backbone) {
 		{
 			if( this.citationDrawer ) $('#nav-lower').html( this.citationDrawer.el );
 			
-				console.log('render citation layout', this)
 			this.citationDrawer = new citationLayout({ model: this.project });
 			this.citationDrawer.player = this.player;
 			Zeega.citation = this.citationDrawer; // I don't like this

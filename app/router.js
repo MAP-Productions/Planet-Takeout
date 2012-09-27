@@ -85,7 +85,6 @@ function(
 			{
 				var createNewPlayer = function()
 				{
-					console.log('create new player')
 					Zeega.page = new CollectionPlayer.Model({id: collectionID, frameID: itemID });
 				}
 
@@ -274,7 +273,7 @@ esp inserting the layout into the dom!
 		if( Zeega.player ) Zeega.player.exit();
 		// make and render itemCollection
 		var itemCollectionsCollection = new Grid.Collections.ItemCollections();
-		itemCollectionsCollection.fetch().success(function(res){
+		itemCollectionsCollection.fetch().success(function(){
 			generateGrid( itemCollectionsCollection, 'collections' );
 			$('#app-base').append( Zeega.grid.el );
 		});
