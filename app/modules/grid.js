@@ -127,7 +127,7 @@ function(Zeega, Backbone, Modal)
 		{
 			this.data = res;
 			this.itemsCount = res.items_count;
-			return res.items;
+			return _.shuffle(res.items);
 		}
 	});
 	// Required, return the module for AMD compliance
