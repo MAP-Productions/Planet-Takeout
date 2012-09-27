@@ -17,14 +17,14 @@ function(Zeega, Backbone,spin)
 		$('#loading')
 			.show()
 			.children('#spinner').spin('pt','#fff');
-	}
+	};
 
 	App.hide = function() {
 		console.log('spinner hide');
 		$('#loading')
 			.hide()
 			.children('#spinner').spin(false);
-	}
+	};
 
 	// Required, return the module for AMD compliance
 	return App;
