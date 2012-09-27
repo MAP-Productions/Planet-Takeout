@@ -206,7 +206,9 @@ module.exports = function(grunt) {
 					files: {
 						"dist/release/fonts/": "assets/css/fonts/**", // includes files in dir
 					}
+                                       , options: { "basePath" : "/", "flatten" : true }
 				}
+
 		},
 
 		removelogging: { 
@@ -236,6 +238,7 @@ module.exports = function(grunt) {
 	// The release task will run the debug tasks and then minify the
 	// dist/debug/require.js file and CSS files.
 	grunt.registerTask("release", "debug min mincss copy");
+        grunt.registerTask("copyfonts", "copy");
 
 
 };
