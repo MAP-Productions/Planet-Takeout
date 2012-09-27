@@ -3,13 +3,7 @@ define([
 	// Libs
 	"backbone",
 	//submodules
-	'modules/submodules/modals',
-
-	//libraries
-	'libs/modernizr',
-	'libs/leaflet',
-	// Plugins
-	'zeega_player'
+	'modules/submodules/modals'
 ],
 
 function(Zeega, Backbone, Modal)
@@ -30,7 +24,6 @@ function(Zeega, Backbone, Modal)
 			this.layout.setView('.PT-modal-content', new menuView() );
 			this.layout.render();
 			$('body').append( this.layout.el );
-			console.log('mm 		modal init', Zeega, this)
 		}
 	});
 
@@ -55,7 +48,7 @@ function(Zeega, Backbone, Modal)
 			this.collection.each(function(item){
 				var wrapper = false;  
 				if(_.include(item.get('tags'),'pt_tidbits'))
-				{        
+				{
 					if(_.include(item.get('tags'),'pt_feature')) wrapper= $('#feature-tidbits');
 					else
 					{

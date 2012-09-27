@@ -2,16 +2,9 @@ define([
 	"zeega",
 	// Libs
 	"backbone",
-	
-	// Submodules
-	"modules/submodules/loadingspinner",
 
-	//libraries
-	'libs/modernizr',
-	'libs/leaflet',
-	// Plugins
-	'zeega_player',
-	'libs/spin'
+	// Submodules
+	"modules/submodules/loadingspinner"
 ],
 
 function(Zeega, Backbone, loadingSpinner)
@@ -72,7 +65,8 @@ function(Zeega, Backbone, loadingSpinner)
 			'click ul.modal-tabs-head li': 'switchTab'
 		},
 		
-		switchTab: function(e){
+		switchTab: function(e)
+		{
 			var clicked = $(e.target);
 			clicked
 				.addClass('active')
@@ -81,6 +75,7 @@ function(Zeega, Backbone, loadingSpinner)
 			this.$('.modal-tab')
 				.eq(clicked.index()).show()
 				.siblings('.modal-tab').hide();
+			return false;
 		}
 	});
 

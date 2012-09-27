@@ -3,36 +3,32 @@ define([
 	"zeega",
 	// Modules.
 	'modules/about',
-	'modules/citations',
 	'modules/grid',
 	'modules/index',
 	'modules/map',
 	'modules/menu',
 	'modules/navigation',
 	'modules/participate',
-	'modules/players',
+	'modules/collection-player',
 	'modules/search',
 
 	// Submodules.
 	'modules/submodules/loadingspinner'
-
 ],
 
 // generic App used
 function(
 	Zeega,
 	About,
-	Citations,
 	Grid,
 	Index,
 	Map,
 	Menu,
 	Navigation,
 	Participate,
-	Players,
+	CollectionPlayer,
 	Search,
 	loadingSpinner
-
 	) {
 
 	// Defining the application router, you can attach sub routers here.
@@ -64,96 +60,77 @@ function(
 
 		index: function()
 		{
-			initialize();
-			renderIndex();
+			initialize('player');
+			Zeega.page = new Index.Model();
 		},
 
 		about : function()
 		{
-			initialize({player:'pause'});
-			renderAbout();
+			initialize('modal');
+			Zeega.modal = new About.Model();
 		},
 
 		collections : function()
 		{
-			initialize({player:'exit'});
+			initialize('page');
 			renderCollections();
 		},
 
 		viewCollectionGrid : function( collectionID )
 		{
-			initialize({player:'exit'});
+			initialize('page');
 			goToItemCollection( collectionID );
 		},
 
 		viewCollectionPlayer : function( collectionID, itemID )
 		{
-			if(Zeega.grid) Zeega.grid.remove();
-
-			// check to see if an identical player exists
-
-			if( !Zeega.player || Zeega.player && Zeega.player.id != collectionID )
+			if( !Zeega.page || Zeega.page.player && Zeega.page.player.id != collectionID )
 			{
-	
-
-				var newPlayer = function()
+				var createNewPlayer = function()
 				{
-					var player = new Players.CollectionZeegaPlayerModel();  
-					player.collection_id = collectionID;
-					player.fetch().success(function(res){
-						renderCitations();
-						if( !_.isUndefined(itemID) ) player.set('frameID', itemID );
-						if(player.get('frames').length>0){
-							Zeega.player = new Zeega.Player( player.toJSON() );
-							Zeega.player.on('all', onPlayerEvent, this);
-							Zeega.player.play();
-						}
-						else{
-							gotoStreetviewProject(player.toJSON(),collectionID);
-						}
-					});
-				}
+					Zeega.page = new CollectionPlayer.Model({id: collectionID, frameID: itemID });
+				};
 
+				if( Zeega.player ) Zeega.player.on('player_exit', createNewPlayer);
+				else createNewPlayer();
 
-				if( Zeega.player ) Zeega.player.on('player_exit', newPlayer);
-				else newPlayer();
-
-				initialize({player:'exit'});
+				initialize('player');
 
 			}
 			else
 			{
-				initialize({player:'pause'});
-				renderCitations();
-				Zeega.player.trigger('frame_rendered', Zeega.player.project.currentFrame);
+				initialize('resume');
 			}
 
 		},
 
 		map : function()
 		{
-			initialize({player:'pause'});
-			renderMap();
+			initialize('modal');
+			Zeega.modal = new Map.Model();
 		},
 
 		participate : function()
 		{
-			initialize({player:'pause'});
-			renderParticipate();
+			initialize('modal');
+			Zeega.modal = new Participate.Model();
 		},
 
 		menu : function()
 		{
-			initialize({player:'pause'});
-			renderMenu();
+			initialize('modal');
+			Zeega.modal = new Menu.Model();
 
 		},
 
 		search : function()
 		{
-			initialize({player:'pause'});
+			initialize();
+			// search does not exist yet
 		}
 	});
+
+/*******************	BEGIN PRIMARY		**********************/
 
 /*
 
@@ -161,6 +138,70 @@ tasks to take care of before the application can load
 esp inserting the layout into the dom!
 
 */
+
+	function initialize(to)
+	{
+		initPT();
+		cleanup(to);
+	}
+
+	// makes sure this happens on ly once per load
+	var initPT = _.once( init );
+	function init()
+	{
+		// render the base layout into the dom
+		// this happens only once
+		var baseLayout = new Backbone.Layout({ el: "#main" });
+		var baseView = Backbone.LayoutView.extend({ template: "base" });
+		baseLayout.insertView(new baseView() );
+		var nav = new Navigation.Views.UpperNavView();
+		baseLayout.setView('#nav-upper', nav );
+		baseLayout.render();
+		nav.render();
+	}
+
+	// happens on every router change
+	function cleanup(to)
+	{
+		// if going to a modal, make sure the player is paused
+		// if going to a grid, exit the player
+		// if closing a modal, and a player exists, then make the player play
+		// modal, page, return, player 
+
+		if( Zeega.page && Zeega.page.player )
+		{
+			switch(to)
+			{
+				case 'modal':
+					Zeega.page.player.pause();
+					break;
+				case 'page':
+					Zeega.page.exit();
+					break;
+				case 'player':
+					Zeega.page.exit();
+					break;
+				case 'resume':
+					Zeega.page.player.play();
+					break;
+			}
+		}
+
+		// remove modal if it exists
+		if(Zeega.modal)
+		{
+			Zeega.modal.remove();
+			Zeega.modal = null;
+		}
+
+	}
+
+
+
+/*******************	END PRIMARY		**********************/
+
+
+// move this to collection-player.js ???
 
 	function gotoStreetviewProject(player,collectionID){
 		console.log('collection has no content');
@@ -180,114 +221,25 @@ esp inserting the layout into the dom!
 					//streetZoom : resp.items[0].attributes.pov.streetZoom,
 					//heading : resp.items[0].attributes.pov.heading,
 					//pitch : resp.items[0].attributes.pov.pitch,
-					title: resp.items[0].title,
+					title: resp.items[0].title
 
 				}
-			}
-			player.frames[0]= {
+			};
+			player.frames[0] = {
 				id:3,
 				layers:[2],
-				attr:{
-					advance:0
-					}
+				attr:{ advance:0 }
 			
-			}
+			};
 			player.sequences[0].frames=[3];
 			
 			Zeega.player = new Zeega.Player( player );
-			Zeega.player.on('all', onPlayerEvent, this);
+			//Zeega.player.on('all', onPlayerEvent, this);
 			Zeega.player.play();
 		
 		
 		});
 	
-	}
-
-	function initialize(attr)
-	{
-		initPT();
-		cleanup(attr);
-	}
-
-	// makes sure this happens on ly once per load
-	var initPT = _.once( init );
-	function init()
-	{
-		renderBaseLayout();
-	}
-
-	// happens on every router change
-	function cleanup(attr)
-	{
-		// attr= { player : pause', 'exit' }
-		if(attr && attr.player && Zeega.player)
-		{
-			switch(attr.player)
-			{
-				case 'pause':
-					console.log('player pause')
-					Zeega.player.playPause();
-					break;
-				case 'exit':
-					console.log('player exit')
-					Zeega.player.exit();
-				break;
-			}
-		}
-				// remove modal if it exists
-		if(Zeega.page)
-		{
-			Zeega.page.remove();
-			Zeega.page = null;
-		}
-
-		removeCitation();
-
-	}
-
-	function renderIndex()
-	{
-		console.log('render index')
-		var _this  = this;
-		var player = new Players.Model();
-		player.on('ready', function(){
-			renderFeaturedCitation();
-		});
-
-	}
-
-	function renderFeaturedCitation()
-	{
-		var citationDrawer = new Citations.Layouts.CitationDrawerLayout();
-		Zeega.citation = citationDrawer;
-		console.log('player', Zeega.player)
-		var citView = new Citations.Views.FeaturedCitationView({ model: Zeega.player });
-		citationDrawer.insertView( '.citation-inner', citView);
-
-		Zeega.citation.render();
-		$('#nav-lower').html(Zeega.citation.el);
-		citView.render();
-
-	}
-
-	function renderAbout()
-	{
-		Zeega.page = new About.Model();
-	}
-
-	function renderMenu()
-	{
-		Zeega.page = new Menu.Model();
-	}
-
-	function renderMap()
-	{
-		Zeega.page = new Map.Model();
-	}
-
-	function renderParticipate()
-	{
-		Zeega.page = new Participate.Model();		
 	}
 
 	function generateGrid( collection, type )
@@ -317,102 +269,17 @@ esp inserting the layout into the dom!
 
 	function renderCollections()
 	{
-		removePlayer();
-		// make and render itemCollection
+		if( Zeega.player ) Zeega.player.exit();
+		// make and ` itemCollection
 		var itemCollectionsCollection = new Grid.Collections.ItemCollections();
 		loadingSpinner.show();
-		itemCollectionsCollection.fetch().success(function(res){
+		itemCollectionsCollection.fetch().success(function(){
 			generateGrid( itemCollectionsCollection, 'collections' );
 			$('#app-base').append( Zeega.grid.el );
 			loadingSpinner.hide();
 		});
 	}
 
-  // this is the switch that interperes all incoming player events
-	function onPlayerEvent(e, opts)
-	{
-
-		//console.log('player e:', e, opts)
-		/* lint error - replaced switch with if
-		switch(e)
-		{
-		case 'frame_rendered':
-		renderCitation(e,opts);
-		break;
-		}*/
-		if (e == 'frame_rendered')
-		{
-			renderCitation(e,opts);
-		}
-		else if( e == 'preview_resize' )
-		{
-			//$('.citation-wrapper').css({ width : Zeega.player.getSize().width +'px' });
-		}
-		else if( e== 'timeupdate')
-		{
-			//console.log('%:', opts.elapsed /opts.duration )
-			$('.citation-top .elapsed').css({width: (opts.elapsed /opts.duration*100) +'%' })
-		}
-	}
-
-	function renderCitations()
-	{
-		var citationDrawer = new Citations.Layouts.CitationDrawerLayout();
-		Zeega.citation = citationDrawer;
-		//Zeega.citation.insertView( new Citations.Views.CitationView() );
-
-		Zeega.citation.render();
-		$('#nav-lower').html(Zeega.citation.el);
-	}
-
-	function renderCitation(e,model)
-	{
-		Zeega.citation.getViews().each(function(view){ view.remove(); });
-
-		var layer = model.layers.at(0);
-		var navView = new Navigation.Views.NavControls({model:layer, arrowState:model.arrowState});
-		var citView = new Citations.Views.CitationView({model:layer,player:Zeega.player.toJSON() });
-		Zeega.citation.insertView( '.nav-controls', navView);
-		Zeega.citation.insertView( '.citation-inner', citView);
-		Zeega.citation.render();
-		navView.render();
-		citView.render();
-	}
-
-	function removeCitation()
-	{
-		if( Zeega.citation ) Zeega.citation.remove();
-	}
-
-	
-
-	function clearModals()
-	{
-		if(Zeega.page) Zeega.page.remove();
-	}
-
-	function removePlayer()
-	{
-		if( Zeega.player ) Zeega.player.exit();
-	}
-
-  // this is a utility and should be elsewhere
-	function renderBaseLayout()
-	{
-
-		Zeega.baseLayout = new Backbone.Layout({
-			el: "#main"
-		});
-		Zeega.baseLayout.afterRender = function() {
-			loadingSpinner.show();
-		};
-		// Insert the tutorial into the layout.
-		Zeega.baseLayout.insertView(new Index.Views.Base() );
-		Zeega.baseLayout.setView('#nav-upper', new Navigation.Views.UpperNavView() );
-		// Render the layout into the DOM.
-		Zeega.baseLayout.render();
-		console.log('renderBaseLayout');
-	}
 
 	return Router;
 

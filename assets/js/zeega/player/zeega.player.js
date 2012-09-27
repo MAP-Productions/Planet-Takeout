@@ -22,6 +22,7 @@ define([
   // Plugins
   'zeega_base/player/layer',
   //'zeega_base/player/layer.view.visual'
+  'libs/modernizr'
 ],
 
 function(Zeega, Backbone, Layer) {
@@ -44,7 +45,7 @@ function(Zeega, Backbone, Layer) {
 			social : true
 		},
 
-		play : function()
+		init : function()
 		{
 			this.parseProject( this.toJSON() );
 			this.set( 'frameID', this.get('frameID') || this.project.sequences.at(0).frames.at(0).id );
@@ -115,6 +116,10 @@ function(Zeega, Backbone, Layer) {
 		playPause : function()
 		{
 			this.project.playPause();
+		},
+		play : function()
+		{
+			this.project.play();
 		},
 
 		pause : function()
@@ -281,12 +286,29 @@ function(Zeega, Backbone, Layer) {
 
 		play : function()
 		{
-
+			if( !this.currentFrame.isPlaying )
+			{
+				console.log('current frame', this.currentFrame, this.elapsedTime )
+				var _this = this;
+				//var remainingTime = this.currentFrame.get('attr').advance - this.elapsedTime;
+				//this.timerStarted = new Date(); 
+				//this.timer = setTimeout( function(){ _this.goRight() }, remainingTime );
+				if( this.currentFrame.get('attr').advance > 0 )
+					this.timer = setTimeout( function(){ _this.goRight() }, this.currentFrame.get('attr').advance )
+				this.currentFrame.play();
+			}
 		},
 
 		pause : function()
 		{
-
+			if( this.currentFrame.isPlaying )
+			{
+				this.cancelFrameAdvance();
+				// var now = new Date();
+				// var et = new Date( now - this.timerStarted );
+				// this.elapsedTime += et.getTime();
+				this.currentFrame.pause();
+			}
 		},
 
 		/*
@@ -454,6 +476,22 @@ function(Zeega, Backbone, Layer) {
 		{
 			this.status = 'ready';
 			this.trigger('ready',this.id);
+		},
+
+		play : function()
+		{
+			this.isPlaying = true;
+			_.each( _.toArray(this.layers), function(layer){
+				layer.typeVisual.play();
+			})
+		},
+
+		pause : function()
+		{
+			this.isPlaying = false;
+			_.each( _.toArray(this.layers), function(layer){
+				layer.typeVisual.pause();
+			})
 		},
 
 		playPause : function()

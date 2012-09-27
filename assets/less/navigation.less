@@ -1,0 +1,36 @@
+#nav-upper
+{
+	z-index: 1000000;
+	position: absolute;
+	height: 100px;
+	width: 100%;
+	background: url(../img/top-fade.png);
+	background-size: 100% 100%;
+	min-width: 1000px;
+	padding:20px 0;
+
+	ul
+	{
+		list-style: none;
+		margin: 0 auto;
+		width: 1000px;
+	}
+	a
+	{
+		opacity:0.85;
+
+		&:hover{ opacity:1; }
+	}
+
+	li
+	{
+		float: left;
+		margin-left: 155px;
+
+		&:first-child{ margin-left:0; }
+	}
+
+	.pt-logo{ width:60px; }
+
+	.nav-icon{ width:30px; }
+}

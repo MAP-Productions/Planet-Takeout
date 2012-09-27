@@ -3,13 +3,7 @@ define([
 	// Libs
 	"backbone",
 	//submodules
-	'modules/submodules/modals',
-
-	//libraries
-	'libs/modernizr',
-	'libs/leaflet',
-	// Plugins
-	'zeega_player'
+	'modules/submodules/modals'
 ],
 
 function(Zeega, Backbone, Modal)

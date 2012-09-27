@@ -100,6 +100,15 @@ module.exports = function(grunt) {
       }
     },
 
+    less: {
+      main: {
+        files: {
+          'assets/css/planettakeout.css' : 'assets/less/_all.less'
+        }
+      }
+    },
+
+
     // Takes the built require.js file and minifies it for filesize benefits.
     min: {
       "dist/release/require.js": [

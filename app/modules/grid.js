@@ -3,33 +3,21 @@ define([
 	// Libs
 	"backbone",
 	//submodules
-	'modules/submodules/modals',
-
-	//libraries
-	'libs/modernizr',
-	'libs/leaflet',
-	// Plugins
-	'zeega_player'
+	'modules/submodules/modals'
 ],
 
 function(Zeega, Backbone, Modal)
 {
-
-	// Create a new module
 	var App = Zeega.module();
 
-
-	App.Collections = {};
 
 	App.Layouts.GridView = Backbone.Layout.extend({
 		template: "collection-grid-layout",
 
 		initialize : function()
 		{
-			console.log(this.collection, this);
 			this.template = this.options.type == 'items' ? 'item-grid-layout' : 'collection-grid-layout';
 			if(Zeega.grid) Zeega.grid.remove();
-			//this.collection.on('all',function(e){console.log('event:',e)}, this);
 			this.collection.on('reset',this.onReset, this);
 		},
 
