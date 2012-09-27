@@ -70,7 +70,19 @@ function(Zeega, Backbone, Modal)
 		getView : function( item )
 		{
 			var itemView;
-			if( item.get('media_type') == 'Collection')
+			if( _.include(item.get('tags'), 'pt_animatefeature') )
+			{
+				var info = jQuery.parseJSON( item.get('description') );
+				item.set({
+					'thumbnail_url': info.gif,
+					'featured_id' : info.projectID
+				});
+	
+				itemView = new App.Views.AnimatedItemView({model:item,attributes:{
+					'style': info.gif ? 'background:url(assets/img/gifs/'+ info.gif +');background-size:100% auto' : ''
+				}});
+			}
+			else if( item.get('media_type') == 'Collection')
 			{
 				itemView = new App.Views.CollectionView({model:item,attributes:{
 					'style': item.get('thumbnail_url') ? 'background:url('+ item.get('thumbnail_url') +');background-size:100% auto' : ''
@@ -104,6 +116,14 @@ function(Zeega, Backbone, Modal)
 		serialize : function(){ return this.model.toJSON(); }
 	});
 
+	App.Views.AnimatedItemView = Backbone.LayoutView.extend({
+		template : 'featured-animated',
+		tagName : 'li',
+		className : 'collection-view',
+
+		serialize : function(){ return this.model.toJSON(); }
+	});
+
 	App.Collections.Items = Backbone.Collection.extend({
 
 		page : 1,
@@ -127,6 +147,7 @@ function(Zeega, Backbone, Modal)
 		{
 			this.data = res;
 			this.itemsCount = res.items_count;
+//			return res.items;
 			return _.shuffle(res.items);
 		}
 	});
