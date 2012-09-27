@@ -2,12 +2,6 @@ define([
 	"zeega",
 	// Libs
 	"backbone",
-
-	//libraries
-	'libs/modernizr',
-	'libs/leaflet',
-	// Plugins
-	'zeega_player'
 ],
 
 function(Zeega, Backbone)

@@ -3,13 +3,7 @@ define([
 	// Libs
 	"backbone",
 	//submodules
-	'modules/submodules/modals',
-
-	//libraries
-	'libs/modernizr',
-	'libs/leaflet',
-	// Plugins
-	'zeega_player'
+	'modules/submodules/modals'
 ],
 
 function(Zeega, Backbone, Modal)
@@ -22,10 +16,8 @@ function(Zeega, Backbone, Modal)
 
 		initialize : function()
 		{
-			console.log(this.collection, this);
 			this.template = this.options.type == 'items' ? 'item-grid-layout' : 'collection-grid-layout';
 			if(Zeega.grid) Zeega.grid.remove();
-			//this.collection.on('all',function(e){console.log('event:',e)}, this);
 			this.collection.on('reset',this.onReset, this);
 		},
 
