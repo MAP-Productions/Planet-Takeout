@@ -5,7 +5,7 @@ define([
 	//submodules
 	'modules/submodules/modals',
 
-	'libs/leaflet',
+	'libs/leaflet'
 ],
 
 function(Zeega, Backbone, Modal)

@@ -23,8 +23,8 @@ function(Zeega, Backbone) {
 				Zeega.player = new Zeega.Player( _this.project.toJSON() );
 				_this.player = Zeega.player; // I want to remove this
 				_this.player.on('ready', _this.renderCitationLayout, _this);
-				_this.player.on('timeupdate', function(opts){ _this.updateElapsed(opts) }, _this);
-				_this.player.on('frame_rendered', function(layer){ _this.renderCitation(layer) }, _this);
+				_this.player.on('timeupdate', function(opts){ _this.updateElapsed(opts); }, _this);
+				_this.player.on('frame_rendered', function(layer){ _this.renderCitation(layer); }, _this);
 				_this.player.init();
 			});
 		},
@@ -81,7 +81,7 @@ function(Zeega, Backbone) {
 
 		updateElapsed : function(opts)
 		{
-			this.citationDrawer.$('.elapsed').css({width: (opts.elapsed /opts.duration*100) +'%' })
+			this.citationDrawer.$('.elapsed').css({width: (opts.elapsed /opts.duration*100) +'%' });
 		},
 
 		exit : function()
@@ -97,7 +97,7 @@ function(Zeega, Backbone) {
 		template: "citation-drawer-layout",
 		id: 'citation-drawer-layout',
 
-		serialize : function(){ return this.model.toJSON() },
+		serialize : function(){ return this.model.toJSON(); },
 
 		events : {
 			'click #PT-preview-left' : 'goLeft',

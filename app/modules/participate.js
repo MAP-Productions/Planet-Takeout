@@ -36,7 +36,6 @@ function(Zeega, Backbone, Modal)
 
 		initialize: function()
 		{
-			console.log('part view', this)
 			this.events = _.extend({},this.events, Modal.Views.TabbedModal.prototype.events);
 			
 			_.bindAll(this, 'render', 'geoLookup', 'initAddTakeout', 'showStreetView', 'saveStreetView', 'initKeepInTouch');
@@ -84,12 +83,12 @@ function(Zeega, Backbone, Modal)
 				zoom: 13,
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
 				streetViewControl:false,
-				mapTypeControl:false,
+				mapTypeControl:false
 			};
 			this.map = new google.maps.Map(document.getElementById("map"), mapOptions);
 			this.marker = new google.maps.Marker({
 				position: new google.maps.LatLng(42.354485,-71.061802),
-				map: this.map,
+				map: this.map
 			});
 
 			this.marker.setDraggable(true);
@@ -128,7 +127,6 @@ function(Zeega, Backbone, Modal)
 						media_geo_lng : center.lng()
 					});
 					
-					console.log('new geocoded location')
 				}
 				else console.log("Geocoder failed at address look for "+ $('#PT-newtakout-map-submit').val()+": " + status);
 			});
@@ -168,7 +166,7 @@ function(Zeega, Backbone, Modal)
 						streetZoom : Math.floor( this.newTakeoutStreetView.getPov().zoom )
 					}
 				},
-				thumbnail_url:"http://cbk0.google.com/cbk?output=thumbnail&w=200&h=200&ll="+this.newTakeoutStreetView.getPosition().lat()+","+this.newTakeoutStreetView.getPosition().lng(), 
+				thumbnail_url:"http://cbk0.google.com/cbk?output=thumbnail&w=200&h=200&ll="+this.newTakeoutStreetView.getPosition().lat()+","+this.newTakeoutStreetView.getPosition().lng()
 			});
 			console.log(this.model);
 			$(this.el)
@@ -177,14 +175,16 @@ function(Zeega, Backbone, Modal)
 				.find('#takeoutName').text( this.model.get('title') );
 		},
 
-	    initKeepInTouch: function() {
-	      if ( $(this.el).find('.fb-like').attr('fb-xfbml-state') !== 'rendered' ) {
-	        try{
-	          FB.XFBML.parse();
-	        } catch(ex) {}
-	      }
-	    }
-	    
+		initKeepInTouch: function()
+		{
+			if ( $(this.el).find('.fb-like').attr('fb-xfbml-state') !== 'rendered' )
+			{
+				try{
+					FB.XFBML.parse();
+				} catch(ex) {}
+			}
+		}
+
 	});
 
 	// model for new takeout data (via 'participate')

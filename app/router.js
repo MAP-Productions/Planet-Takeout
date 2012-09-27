@@ -86,7 +86,7 @@ function(
 				var createNewPlayer = function()
 				{
 					Zeega.page = new CollectionPlayer.Model({id: collectionID, frameID: itemID });
-				}
+				};
 
 				if( Zeega.player ) Zeega.player.on('player_exit', createNewPlayer);
 				else createNewPlayer();
@@ -96,7 +96,6 @@ function(
 			}
 			else
 			{
-				console.log('resume old player')
 				initialize('resume');
 			}
 
@@ -171,7 +170,6 @@ esp inserting the layout into the dom!
 			switch(to)
 			{
 				case 'modal':
-					console.log('going to modal. pause the player')
 					Zeega.page.player.pause();
 					break;
 				case 'page':
@@ -181,7 +179,6 @@ esp inserting the layout into the dom!
 					Zeega.page.exit();
 					break;
 				case 'resume':
-					console.log('return from modal. play the player')
 					Zeega.page.player.play();
 					break;
 			}
@@ -221,18 +218,16 @@ esp inserting the layout into the dom!
 					//streetZoom : resp.items[0].attributes.pov.streetZoom,
 					//heading : resp.items[0].attributes.pov.heading,
 					//pitch : resp.items[0].attributes.pov.pitch,
-					title: resp.items[0].title,
+					title: resp.items[0].title
 
 				}
-			}
-			player.frames[0]= {
+			};
+			player.frames[0] = {
 				id:3,
 				layers:[2],
-				attr:{
-					advance:0
-					}
+				attr:{ advance:0 }
 			
-			}
+			};
 			player.sequences[0].frames=[3];
 			
 			Zeega.player = new Zeega.Player( player );

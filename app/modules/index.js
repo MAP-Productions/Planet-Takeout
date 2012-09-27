@@ -43,7 +43,7 @@ function(Zeega, Backbone) {
 		template: "citation-featured",
 		id: 'citation-drawer',
 
-		serialize : function(){ return this.model.toJSON() },
+		serialize : function(){ return this.model.toJSON(); },
 
 		afterRender : function()
 		{
@@ -63,8 +63,8 @@ function(Zeega, Backbone) {
 					});
 					iv.render();
 					_this.$('#featured-items-drawer').append( iv.el );
-				})
-			})
+				});
+			});
 		}
 
 	});
@@ -75,8 +75,8 @@ function(Zeega, Backbone) {
 		{
 			return localStorage.api + '/items/'+ this.id +'/items';
 		},
-		parse : function(res){ return res.items }
-	})
+		parse : function(res){ return res.items; }
+	});
 
 	var featuredItemView = Backbone.LayoutView.extend({
 		template : 'item-featured',
