@@ -17,6 +17,7 @@ function(Zeega, Backbone) {
 		{
 			var _this = this;
 			this.project = new Project();
+			this.project.id = this.get('featuredID');
 			this.project.fetch().success(function(){
 				// I should not have to put this in Zeega.player!
 				// want this in _this.player !!
@@ -98,8 +99,12 @@ function(Zeega, Backbone) {
 
 		url : function()
 		{
-			var projects = [1666,1665,1664,1663];
-			return localStorage.api + '/projects/'+ projects[Math.floor(Math.random() * projects.length)];
+			if( this.isNew() )
+			{
+				var projects = [1666,1665,1664,1663];
+				return localStorage.api + '/projects/'+ projects[Math.floor(Math.random() * projects.length)];
+			}
+			else return localStorage.api + '/projects/'+ this.id;
 		},
 
 		defaults : {

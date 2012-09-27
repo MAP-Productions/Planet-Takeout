@@ -71,7 +71,8 @@ function(
 
 		viewFeatured : function(featuredID)
 		{
-			console.log('go to featured:',featuredID)
+			initialize('player');
+			Zeega.page = new Index.Model({featuredID: featuredID });
 		},
 
 		about : function()
