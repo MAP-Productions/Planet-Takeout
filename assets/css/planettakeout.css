@@ -517,7 +517,6 @@ button.close {
   width: 75%;
   float: right;
 }
-
 /* PARTICIPATE */
 .PT-modal-content ul.modal-tabs-head {
   left: 0;
@@ -631,6 +630,16 @@ button.close {
   font-size: 11px;
   text-align: left;
 }
+.PT-modal-content #addPhotos .info-tab.media ol {
+  margin-left: 0;
+}
+.PT-modal-content #addPhotos .info-tab.media li {
+  color: #666;
+  font-size: 11px;
+  text-align: left;
+  list-style-position: outside;
+  margin-left: 1.5em;
+}
 .PT-modal-content .modal-tab .info-tab.default p {
   color: #666;
   font-size: 15px;
@@ -739,21 +748,4 @@ button.close {
   margin-top: 9px;
   height: 11px;
   width: 28px;
-}
-
-/* loading spinner */
-#loading {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 150000;
-}
-
-#loading #spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -
 }
