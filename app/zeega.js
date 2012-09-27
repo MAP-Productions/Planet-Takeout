@@ -9,7 +9,7 @@ define([
   // Plugins.
   "plugins/backbone.layoutmanager",
   "vendor/imagesloaded/jquery.imagesloaded.min",
-  'libs/spin'
+  "libs/spin"
 ],
 
 function($, _, Backbone) {

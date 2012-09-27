@@ -10,7 +10,10 @@ define([
 	'modules/navigation',
 	'modules/participate',
 	'modules/collection-player',
-	'modules/search'
+	'modules/search',
+
+	// Submodules.
+	'modules/submodules/loadingspinner'
 ],
 
 // generic App used
@@ -24,8 +27,8 @@ function(
 	Navigation,
 	Participate,
 	CollectionPlayer,
-	Search
-
+	Search,
+	loadingSpinner
 	) {
 
 	// Defining the application router, you can attach sub routers here.
@@ -250,6 +253,7 @@ esp inserting the layout into the dom!
 	{
 
 		var items = new Grid.Collections.Items();
+
 		items.collectionID = collectionID;
 		items.fetch().success(function(res){
 			items.each(function(item){ item.set('collection_id',collectionID);});
@@ -266,11 +270,13 @@ esp inserting the layout into the dom!
 	function renderCollections()
 	{
 		if( Zeega.player ) Zeega.player.exit();
-		// make and render itemCollection
+		// make and ` itemCollection
 		var itemCollectionsCollection = new Grid.Collections.ItemCollections();
+		loadingSpinner.show();
 		itemCollectionsCollection.fetch().success(function(){
 			generateGrid( itemCollectionsCollection, 'collections' );
 			$('#app-base').append( Zeega.grid.el );
+			loadingSpinner.hide();
 		});
 	}
 

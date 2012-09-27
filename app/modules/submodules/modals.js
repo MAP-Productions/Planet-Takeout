@@ -1,10 +1,13 @@
 define([
 	"zeega",
 	// Libs
-	"backbone"
+	"backbone",
+
+	// Submodules
+	"modules/submodules/loadingspinner"
 ],
 
-function(Zeega, Backbone)
+function(Zeega, Backbone, loadingSpinner)
 {
 
 	// Create a new module
@@ -36,6 +39,14 @@ function(Zeega, Backbone)
 
 		events : {
 			'click .close' : 'closeModal'
+		},
+
+		initialize: function() {
+			loadingSpinner.show();
+		},
+
+		afterRender: function() {
+			loadingSpinner.hide();
 		},
 
 		closeModal : function()
