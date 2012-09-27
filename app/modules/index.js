@@ -23,7 +23,7 @@ function(Zeega, Backbone) {
 				Zeega.player = new Zeega.Player( _this.project.toJSON() );
 				_this.player = Zeega.player; // I want to remove this
 				_this.player.on('ready', _this.renderCitation, _this);
-				_this.player.play();
+				_this.player.init();
 			});
 		},
 

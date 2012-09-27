@@ -60,7 +60,8 @@ function(Zeega, Backbone)
 			'click ul.modal-tabs-head li': 'switchTab'
 		},
 		
-		switchTab: function(e){
+		switchTab: function(e)
+		{
 			var clicked = $(e.target);
 			clicked
 				.addClass('active')
@@ -69,6 +70,7 @@ function(Zeega, Backbone)
 			this.$('.modal-tab')
 				.eq(clicked.index()).show()
 				.siblings('.modal-tab').hide();
+			return false
 		}
 	});
 
