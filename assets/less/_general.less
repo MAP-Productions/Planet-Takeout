@@ -12,8 +12,9 @@ ul.horizontal-list li{ float:left; }
 	z-index: 150000;
 	left: 0;
 	top: 0;
-	right: 0;
+	width: 100%;
 	bottom: 0;
+	overflow: hidden;
 }
 
 #loading #spinner {
@@ -21,5 +22,18 @@ ul.horizontal-list li{ float:left; }
 	left: 0;
 	top: 0;
 	right: 0;
-	bottom: 0;
+	bottom: 20%;
+}
+
+#loading #loadingText {
+	top: 55%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: 0 12%;
+	line-height: 1.6em;
+	text-align: center;
+	font-family: 'PT_italic';
+	color: #fff;
+	font-size: 75px;
 }

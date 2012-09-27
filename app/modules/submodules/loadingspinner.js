@@ -12,9 +12,13 @@ function(Zeega, Backbone,spin)
 	// Create a new module
 	var App = Zeega.module();
 
-	App.show = function() {
+	App.show = function(loadingText) {
 		console.log('spinner show');
-		$('#loading')
+		var $elem = $('#loading');
+		if (loadingText) {
+			$elem.find('#loadingWhat').text(loadingText);
+		}
+		$elem
 			.show()
 			.children('#spinner').spin('pt','#fff');
 	}
@@ -23,7 +27,8 @@ function(Zeega, Backbone,spin)
 		console.log('spinner hide');
 		$('#loading')
 			.hide()
-			.children('#spinner').spin(false);
+			.find('#loadingWhat').text('')
+			.siblings('#spinner').spin(false);
 	}
 
 	// Required, return the module for AMD compliance

@@ -42,7 +42,7 @@ function(Zeega, Backbone, loadingSpinner)
 		},
 
 		initialize: function() {
-			loadingSpinner.show();
+			loadingSpinner.show( this.model.get('title') );
 		},
 
 		afterRender: function() {
