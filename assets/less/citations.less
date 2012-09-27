@@ -1,0 +1,157 @@
+
+.nav-controls,
+.citation-inner
+{
+  padding:10px;
+}
+
+.citation-wrapper
+{
+  margin: 0 auto;
+}
+
+.citation-inner
+{
+  background: rgba(0, 0, 0, 0.75);
+  position: relative; 
+}
+
+.elapsed
+{
+  background: rgba(189, 237, 234,0.35);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0;
+  height:45px;
+  z-index: 0;
+}
+
+.citation-attribution,
+.citation-geo
+{
+  position: relative;
+  bottom: -1em;
+  margin-left: 10px;
+  z-index: 1;
+}
+
+.play-pause,
+.citation-title
+{
+  position: relative;
+  z-index: 1;
+}
+
+#PT-preview-left
+{
+  float:left;
+}
+#PT-preview-right
+{
+  float:right;
+}
+
+
+/* featured items drawer */
+
+#featured-items-drawer
+{
+  width: 90%;
+  overflow: hidden;
+  white-space: nowrap;
+  float: left;
+  margin: 0 10px 0 0;
+}
+
+#featured-items-drawer>li
+{
+  display: inline-block;
+  height: 50px;
+  margin-right: 10px;
+  position: relative;
+  width: 75px;
+}
+
+#featured-items-drawer>li a
+{
+  display: inline-block;
+  height: 50px;
+  margin-right: 10px;
+  position:absolute;
+  width: 75px;
+}
+
+/* end featured items drawer */
+
+
+/*  citations */
+
+#nav-lower
+{
+  position: absolute;
+  bottom: 0;
+  z-index: 100000;
+  width:100%;
+  color: white;
+}
+
+.collection-player-nav
+{
+  padding:10px;
+}
+
+.collection-citation-content
+{
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  position: relative;
+}
+
+
+
+
+.play-pause
+{
+  margin-right:10px;
+}
+
+
+
+// could be it's own module
+#info-hover
+{
+  position: relative;
+}
+.info-box
+{
+  position: absolute;
+  background: red;
+  color: white;
+  width: 150px;
+  padding: 5px;
+  bottom: 38px;
+  left: -70px;
+  border-radius: 3px;
+  font-style: italic;
+
+}
+
+.info-box:after
+{
+  content: '';
+  background: transparent;
+  display: block;
+  width: 0;
+  position: absolute;
+  border-top: 20px solid red;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  left: 65px;
+}
+
+#info-hover:hover .info-box 
+{
+  display:block;
+}

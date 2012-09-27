@@ -2,6 +2,6 @@
 @import "bootstrap.css";
 @import "../vendor/leaflet/dist/leaflet.css";
 @import "../js/zeega/player/css/bootstrap.css";
-@import "style.css";
+@import "planettakeout.css";
 
 /* Put development-only CSS below this line. */

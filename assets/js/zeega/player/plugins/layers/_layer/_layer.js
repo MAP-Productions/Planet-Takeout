@@ -68,6 +68,19 @@ function(Backbone){
 		editor_onControlsOpen : function(){},
 		editor_onControlsClosed : function(){},
 
+
+		play : function()
+		{
+			this.isPlaying = true;
+			this.player_onPlay()
+		},
+
+		pause : function()
+		{
+			this.isPlaying = false;
+			this.player_onPause();
+		},
+
 		playPause : function()
 		{
 			console.log('play pause layer', this)

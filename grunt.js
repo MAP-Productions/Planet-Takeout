@@ -100,6 +100,15 @@ module.exports = function(grunt) {
       }
     },
 
+    less: {
+      main: {
+        files: {
+          'assets/css/planettakeout.css' : 'assets/less/_all.less'
+        }
+      }
+    },
+
+
     // Takes the built require.js file and minifies it for filesize benefits.
     min: {
       "dist/release/require.js": [
@@ -189,10 +198,18 @@ module.exports = function(grunt) {
     watch: {
       files: ["grunt.js", "assets/**/*", "app/**/*"],
       tasks: "styles"
+    },
+
+    copy: {
+        dist: {
+          files: {
+            "dist/release/fonts/": "assets/css/fonts/**", // includes files in dir
+          }
+        }
     }
 
   });
-
+  
   // The debug task will remove all contents inside the dist/ folder, lint
   // all your code, precompile all the underscore templates into
   // dist/debug/templates.js, compile all the application code into
@@ -202,6 +219,6 @@ module.exports = function(grunt) {
 
   // The release task will run the debug tasks and then minify the
   // dist/debug/require.js file and CSS files.
-  grunt.registerTask("release", "debug min mincss");
+  grunt.registerTask("release", "debug min mincss copy");
 
 };
