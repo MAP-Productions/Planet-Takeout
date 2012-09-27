@@ -688,13 +688,7 @@ button.close{
 
 /*  citations */
 
-.nav-controls,
-.citation-inner
-{
-  padding:10px;
-}
-
-#citation-drawer
+#nav-lower
 {
   position: absolute;
   bottom: 0;
@@ -702,6 +696,26 @@ button.close{
   width:100%;
   color: white;
 }
+
+.collection-player-nav
+{
+  padding:10px;
+}
+
+.collection-citation-content
+{
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+}
+
+
+
+.nav-controls,
+.citation-inner
+{
+  padding:10px;
+}
+
 .citation-wrapper
 {
   margin: 0 auto;

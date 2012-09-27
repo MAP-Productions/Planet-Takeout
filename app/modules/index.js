@@ -3,8 +3,7 @@ define([
 	// Libs
 	"backbone",
 	// Plugins
-	'zeega_player',
-	'libs/leaflet'
+	'zeega_player'
 ],
 
 function(Zeega, Backbone) {
@@ -30,7 +29,6 @@ function(Zeega, Backbone) {
 
 		renderCitation : function()
 		{
-			console.log('IIIII		render featured citation', this, this.project)
 			this.citationDrawer = new featuredCitationLayout({ model: this.project });
 			Zeega.citation = this.citationDrawer; // I don't like this
 
@@ -50,7 +48,6 @@ function(Zeega, Backbone) {
 		afterRender : function()
 		{
 			var _this = this;
-			console.log('featured cit after', this.model)
 			this.collection = new featuredItemCollection();
 			this.collection.id = this.model.get('description');
 			this.collection.fetch().success(function(){

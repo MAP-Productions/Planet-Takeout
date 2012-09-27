@@ -3,14 +3,13 @@ define([
 	"zeega",
 	// Modules.
 	'modules/about',
-	'modules/citations',
 	'modules/grid',
 	'modules/index',
 	'modules/map',
 	'modules/menu',
 	'modules/navigation',
 	'modules/participate',
-	'modules/players',
+	'modules/collection-player',
 	'modules/search'
 ],
 
@@ -18,14 +17,13 @@ define([
 function(
 	Zeega,
 	About,
-	Citations,
 	Grid,
 	Index,
 	Map,
 	Menu,
 	Navigation,
 	Participate,
-	Players,
+	CollectionPlayer,
 	Search
 
 	) {
@@ -83,6 +81,12 @@ function(
 
 		viewCollectionPlayer : function( collectionID, itemID )
 		{
+			initialize();
+			Zeega.page = new CollectionPlayer.Model({id: collectionID, frameID: itemID });
+
+
+			/*
+
 			if(Zeega.grid) Zeega.grid.remove();
 
 			// check to see if an identical player exists
@@ -93,7 +97,7 @@ function(
 
 				var newPlayer = function()
 				{
-					var player = new Players.CollectionZeegaPlayerModel();  
+					var player = new CollectionPlayer.CollectionZeegaPlayerModel();  
 					player.collection_id = collectionID;
 					player.fetch().success(function(res){
 						renderCitations();
@@ -122,6 +126,7 @@ function(
 				renderCitations();
 				Zeega.player.trigger('frame_rendered', Zeega.player.project.currentFrame);
 			}
+			*/
 
 		},
 
