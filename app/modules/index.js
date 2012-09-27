@@ -35,6 +35,12 @@ function(Zeega, Backbone) {
 			this.citationDrawer.render();
 			$('#nav-lower').html( this.citationDrawer.el );
 
+		},
+
+		exit : function()
+		{
+			this.player.exit();
+			this.citationDrawer.remove();
 		}
 
 	});

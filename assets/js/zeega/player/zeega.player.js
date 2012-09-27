@@ -22,6 +22,7 @@ define([
   // Plugins
   'zeega_base/player/layer',
   //'zeega_base/player/layer.view.visual'
+  'libs/modernizr'
 ],
 
 function(Zeega, Backbone, Layer) {
