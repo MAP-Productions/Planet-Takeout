@@ -79,19 +79,19 @@ function(Zeega, Backbone, Modal)
 				});
 	
 				itemView = new App.Views.AnimatedItemView({model:item,attributes:{
-					'style': info.gif ? 'background:url(assets/img/gifs/'+ info.gif +');background-size:100% auto' : ''
+					'style': info.gif ? 'background:url(assets/img/gifs/'+ info.gif +');background-size:115% auto;background:position' : ''
 				}});
 			}
 			else if( item.get('media_type') == 'Collection')
 			{
 				itemView = new App.Views.CollectionView({model:item,attributes:{
-					'style': item.get('thumbnail_url') ? 'background:url('+ item.get('thumbnail_url') +');background-size:100% auto' : ''
+					'style': item.get('thumbnail_url') ? 'background:url('+ item.get('thumbnail_url') +');background-size:115% auto;background:position' : ''
 				}});
 			}
 			else
 			{
 				itemView = new App.Views.ItemView({model:item,attributes:{
-					'style': item.get('thumbnail_url') ? 'background:url('+ item.get('thumbnail_url') +');background-size:100% auto' : ''
+					'style': item.get('thumbnail_url') ? 'background:url('+ item.get('thumbnail_url') +');background-size:115% auto;background:position' : ''
 				}});
 			}
 			return itemView;
