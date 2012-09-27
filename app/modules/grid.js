@@ -53,9 +53,8 @@ function(Zeega, Backbone, Modal)
 			//this.getViews().each(function(view){ view.delegateEvents() });
 
 			// infinite scroll
-			this.$('#grid-view-slider').scroll(function(){
-				//console.log('scroll', _this.$('#grid-view-slider ul').height(), _this.$('#grid-view-slider ul').position().top, $('#grid-view-wrapper').height()  )
-
+			this.$('#grid-view-slider').scroll(function()
+			{
 				if( _this.$('#grid-view-slider ul').height() <= -_this.$('#grid-view-slider ul').position().top + $('#grid-view-wrapper').height() )
 				{
 					if(_this.collection.length < _this.collection.itemsCount )
@@ -74,13 +73,13 @@ function(Zeega, Backbone, Modal)
 			if( item.get('media_type') == 'Collection')
 			{
 				itemView = new App.Views.CollectionView({model:item,attributes:{
-					'style': item.get('thumbnail_url') ? 'background:url('+ item.get('thumbnail_url') +');background-size:100% 100%' : ''
+					'style': item.get('thumbnail_url') ? 'background:url('+ item.get('thumbnail_url') +');background-size:100% auto' : ''
 				}});
 			}
 			else
 			{
 				itemView = new App.Views.ItemView({model:item,attributes:{
-					'style': item.get('thumbnail_url') ? 'background:url('+ item.get('thumbnail_url') +');background-size:100% 100%' : ''
+					'style': item.get('thumbnail_url') ? 'background:url('+ item.get('thumbnail_url') +');background-size:100% auto' : ''
 				}});
 			}
 			return itemView;
@@ -128,7 +127,7 @@ function(Zeega, Backbone, Modal)
 		{
 			this.data = res;
 			this.itemsCount = res.items_count;
-			return res.items;
+			return _.shuffle(res.items);
 		}
 	});
 	// Required, return the module for AMD compliance

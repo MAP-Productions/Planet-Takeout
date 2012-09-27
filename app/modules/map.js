@@ -25,8 +25,8 @@ function(Zeega, Backbone, Modal)
 		{
 			this.layout = this.getLayout();
 			this.layout.setView('.PT-modal-content', new mapView() );
-			this.layout.render();
 			$('body').append( this.layout.el );
+			this.layout.render();
 		}
 	});
 
@@ -52,12 +52,12 @@ function(Zeega, Backbone, Modal)
 		{
 			this.renderMap();
 			this.renderCollectionMarkers();
+			console.log('after map render');
 		},
 
 		renderMap : function()
 		{
 			var start = new L.LatLng(42.36431523548288, -71.07180118560791 );
-
 			this.map = L.map('PT-map',{
 				attributionControl:false
 			}).setView(start, 12);
