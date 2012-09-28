@@ -65,7 +65,7 @@ function(Zeega, Backbone) {
 					var iv = new featuredItemView({
 						model:item,
 						attributes: {
-							'style': item.get('thumbnail_url') ? 'background:url('+ item.get('thumbnail_url') +');background-size:100% 100%' : ''
+							'style': item.get('thumbnail_url') ? 'background:url('+ item.get('thumbnail_url') +');background-size:115% auto; background-position:center' : ''
 						}
 					});
 					iv.render();
