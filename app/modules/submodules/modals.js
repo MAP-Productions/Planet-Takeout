@@ -75,7 +75,7 @@ function(Zeega, Backbone, loadingSpinner)
 			this.$('.modal-tab')
 				.eq(clicked.index()).show()
 				.siblings('.modal-tab').hide();
-			return false;
+			//return false;
 		}
 	});
 

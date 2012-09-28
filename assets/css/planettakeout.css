@@ -576,29 +576,6 @@ button.close {
   width: 75%;
   float: right;
 }
-.PT-modal-content .sponsor-drawer {
-  background: white;
-  height: 260px;
-  bottom: 0;
-  width: 100%;
-  left: 0;
-  clear: both;
-}
-.PT-modal .sponsor-drawer ul {
-  margin: 0;
-  list-style: none;
-  padding: 20px;
-}
-.PT-modal .sponsor-drawer li {
-  float: left;
-  text-align: center;
-  height: 125px;
-  width: 143px;
-}
-.PT-modal .sponsor-drawer img {
-  width: 110px;
-}
-
 /* PARTICIPATE */
 .PT-modal-content ul.modal-tabs-head {
   left: 0;
@@ -640,7 +617,6 @@ button.close {
 .PT-modal-content .right-column img {
   display: block;
   margin: 30px auto;
-  width: 75%;
 }
 .PT-modal-content .modal-tab h2 {
   text-align: left;
@@ -768,6 +744,13 @@ button.close {
   width: 350px;
   margin-left: 12px;
 }
+.modal-tabs-head a:link,
+.modal-tabs-head a:hover,
+.modal-tabs-head a:active,
+.modal-tabs-head a:visited {
+  text-decoration: none;
+  color: rgba(211, 32, 26, 0.6);
+}
 #nav-upper {
   z-index: 1000000;
   position: absolute;
@@ -832,7 +815,6 @@ button.close {
   height: 11px;
   width: 28px;
 }
-
 /* prevent scrollbars on add takeout tab */
 #addTakeout #saveTakeout {
   margin-bottom: 0;
