@@ -30,11 +30,9 @@ function(zeega, Backbone){
 		
 		initialize : function(options)
 		{
-			console.log('pp 		player init', this, options)		
 			if(!_.isUndefined(this.model))
 			{
 				this.settings = _.defaults( _.extend({},this.model.toJSON(), options), this.defaults );
-				console.log('pp 		this settings',this, this.settings)
 				//_.extend( this.defaults, this.options );
 				//if there is a model then figure out what kind it is
 				if( !_.isUndefined(this.model.get('uri')) )
@@ -52,7 +50,6 @@ function(zeega, Backbone){
 				}
 				else
 				{
-					console.log('I dont know what kind of media this is :(');
 				}
 			}
 			
@@ -65,11 +62,9 @@ function(zeega, Backbone){
 			this.$el.css({ 'width':'100%', 'height':'100%'}); // move this to the CSS !!!  .media-player-container{ height, width}
 			// choose which template to use
 			var format = this.templates[this.format] ? this.format : 'default';
-			console.log('template', _.template( this.templates[format](), this.settings ))
 			this.$el.html( _.template( this.templates[format](), this.settings ));
 			
 			
-			console.log('player settings', this)
 			//attach controls. is this the right place?
 			this.controls = new Player.Controls[this.settings.control_mode]({
 				model:this.model,
@@ -78,7 +73,6 @@ function(zeega, Backbone){
 			//draw the controls
 			if( _.isNull(this.settings.controls_target) ) this.$el.append( this.controls.render().el );
 			else $( this.settings.controls_target ).html( this.controls.render().el )
-			console.log('## controls', this.settings.controls_target, this, this.controls, this.controls.el)
 			return this;
 		},
 		
@@ -87,11 +81,9 @@ function(zeega, Backbone){
 			if( !this.isVideoLoaded)
 			{
 				var _this = this;
-				console.log('format',this.format)
 				switch( this.format )
 				{
 					case 'html5':
-						console.log('mm 		modernizer', Modernizr, Modernizr.video)
 						if ( Modernizr.video.h264 == 'probably') this.useHTML5();
 						else this.useFlash();
 						break;
@@ -104,8 +96,6 @@ function(zeega, Backbone){
 					case 'vimeo':
 						this.useVimeo();
 						break;
-					default:
-						console.log('none set');
 				}
 
 				this.initPopcornEvents();
@@ -139,7 +129,6 @@ function(zeega, Backbone){
 		
 		useHTML5 : function()
 		{
-			console.log('add html5 popcorn, target', this, '#media-player-html5-'+ this.model.id, $('#media-player-html5-'+ this.model.id) )
 			var _this = this;
 			var target = '#media-player-html5-'+ this.model.id;
 			
@@ -168,7 +157,6 @@ function(zeega, Backbone){
 		},
 		useYoutube : function()
 		{
-			console.log('add YOUTUBE to this shizzzz', this.model)
 			
 			var _this = this;
 			var target = '#media-player-'+ this.model.id;
@@ -264,7 +252,6 @@ function(zeega, Backbone){
 		pause : function(){ if( this.popcorn && !this.popcorn.paused() ) this.popcorn.pause() },
 		playPause : function()
 		{
-			console.log('##		playpause')
 			if(this.popcorn)
 			{
 				if(this.popcorn.paused()) this.popcorn.play();
@@ -276,7 +263,6 @@ function(zeega, Backbone){
 		{
 			if(this.popcorn)
 			{
-				console.log('##		destroy',this.popcorn, this.el)
 				this.popcorn.pause();
 				
 				Popcorn.destroy( this.popcorn );
@@ -286,7 +272,6 @@ function(zeega, Backbone){
 		
 		getFormat : function(url)
 		{
-			console.log('get format',url)
 			//separated to make it easier to isolate and update this list
 			var format = '';
 			if( url.match(/^http:\/\/(?:www\.)?youtube.com\/watch\?(?=.*v=\w+)(?:\S+)?$/) ) format = 'youtube'
@@ -340,7 +325,6 @@ function(zeega, Backbone){
 		
 		initialize : function()
 		{
-			console.log('controls init',this)
 			if(this.options.detached_controls) this.$el.addClass('playback-layer-controls')
 			if(this.model.get('uri')) this.item_mode = true;
 			this.init();
@@ -389,7 +373,6 @@ function(zeega, Backbone){
 		
 		updateCues : function()
 		{
-			console.log('update cues',this, this.item_mode, this.model.get('cue_in') )
 			this.cueIn = this.item_mode == true ? this.model.get('cue_in') : this.model.get('attr').cue_in;
 			this.cueOut = (this.item_mode == true ? this.model.get('cue_out') : this.model.get('attr').cue_out) || this.duration;
 		},
@@ -499,7 +482,6 @@ function(zeega, Backbone){
 			this.popcorn.listen('timeupdate',function(){ _this.updateElapsed() });
 			this.popcorn.listen('playing',function(){ _this.onPlaying() });
 			this.popcorn.listen('pause',function(){ _this.onPause() });
-			//this.popcorn.listen('progress',function(){ console.log( 'buffered',_this.popcorn.buffered(), _this.popcorn.buffered().end(0) ) })
 		},
 		
 		events : {
@@ -537,7 +519,6 @@ function(zeega, Backbone){
 		},
 		updateElapsed : function()
 		{
-			console.log('update elapsed', this.popcorn.currentTime())
 			var elapsed = this.popcorn.currentTime();
 			this.$el.find('.media-time-elapsed').html( convertTime( elapsed ) );
 			this.$el.find('.media-scrubber').slider('value', elapsed);
@@ -551,7 +532,6 @@ function(zeega, Backbone){
 		},
 		seek : function( time )
 		{
-			console.log('## seek to: ',time, this.cueIn,this.cueOut)
 			var wasPlaying = !this.popcorn.paused();
 			if(wasPlaying) this.popcorn.pause();
 
@@ -570,7 +550,6 @@ function(zeega, Backbone){
 				this.$el.find('.media-scrubber').slider('value',time);
 			}
 			
-			console.log('## seek to: ',time, 'was playing?',!this.popcorn.paused())
 
 			this.popcorn.currentTime(time);
 			if(wasPlaying) this.popcorn.play();
@@ -604,7 +583,6 @@ function(zeega, Backbone){
 			this.popcorn.listen('timeupdate',function(){ _this.updateElapsed() });
 			this.popcorn.listen('playing',function(){ _this.onPlaying() });
 			this.popcorn.listen('pause',function(){ _this.onPause() });
-			//this.popcorn.listen('progress',function(){ console.log( 'buffered',_this.popcorn.buffered(), _this.popcorn.buffered().end(0) ) })
 		},
 		
 		events : {
@@ -663,7 +641,6 @@ function(zeega, Backbone){
 					{
 						case 13:
 							var sec = _this.convertToSeconds($(this).text());
-							console.log('seconds', sec)
 							if(sec === false)
 							{
 								$(this).text( convertTime(_this.model.get('cue_in')) )
