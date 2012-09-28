@@ -57,7 +57,7 @@ function(Zeega, Backbone, Modal)
 
 		renderMap : function()
 		{
-			var start = new L.LatLng(42.36431523548288, -71.07180118560791 );
+			var start = new L.LatLng(42.33722984357811, -71.0650634765625 );
 			this.map = L.map('PT-map',{
 				attributionControl:false
 			}).setView(start, 12);
@@ -65,6 +65,13 @@ function(Zeega, Backbone, Modal)
 			L.tileLayer('http://{s}.tiles.mapbox.com/v2/mapbox.mapbox-streets/{z}/{x}/{y}.png', {
 				maxZoom: 18
 			}).addTo( this.map );
+
+			//this.map.on('click', this.onMapClick);
+		},
+
+		onMapClick : function(e)
+		{
+			console.log(e.latlng.lat,e.latlng.lng);
 		},
 
 		renderCollectionMarkers : function()
