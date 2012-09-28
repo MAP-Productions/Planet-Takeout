@@ -204,7 +204,9 @@ module.exports = function(grunt) {
 		copy: {
 				dist: {
 					files: {
-						"dist/release/fonts/": "assets/css/fonts/**", // includes files in dir
+						"dist/release/fonts/": "assets/css/fonts/**", // includes files in dir,
+                                                "dist/release/img/": "assets/img/**", // includes files in dir
+                                                "dist/release/img/": "assets/js/zeega/player/img/**", // includes files in dir
 					}
                                        , options: { "basePath" : "/", "flatten" : true }
 				}
