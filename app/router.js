@@ -214,44 +214,6 @@ esp inserting the layout into the dom!
 
 // move this to collection-player.js ???
 
-	function gotoStreetviewProject(player,collectionID){
-		console.log('collection has no content');
-		var Model = Backbone.Model.extend({ url: localStorage.api + '/items/'+ collectionID });
-		var it = new Model();
-		it.fetch().success(function(resp){
-			console.log("#########",resp);
-			player.layers[0]= {
-				id:2,
-				type:"Geo",
-				attr:{
-					archive:'',
-					height:100,
-					width:100,
-					lat:resp.items[0].media_geo_latitude,
-					lng:resp.items[0].media_geo_longitude,
-					//streetZoom : resp.items[0].attributes.pov.streetZoom,
-					//heading : resp.items[0].attributes.pov.heading,
-					//pitch : resp.items[0].attributes.pov.pitch,
-					title: resp.items[0].title
-
-				}
-			};
-			player.frames[0] = {
-				id:3,
-				layers:[2],
-				attr:{ advance:0 }
-			
-			};
-			player.sequences[0].frames=[3];
-			
-			Zeega.player = new Zeega.Player( player );
-			//Zeega.player.on('all', onPlayerEvent, this);
-			Zeega.player.play();
-		
-		
-		});
-	
-	}
 
 	function generateGrid( collection, type )
 	{

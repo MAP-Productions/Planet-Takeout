@@ -17,16 +17,22 @@ function(Zeega, Backbone) {
 		{
 			var _this = this;
 			this.project = new Project( this.toJSON() );
-			this.project.fetch().success(function(){
-				// I should not have to put this in Zeega.player!
-				// want this in _this.player !!
-				Zeega.player = new Zeega.Player( _this.project.toJSON() );
-				_this.player = Zeega.player; // I want to remove this
-				_this.player.on('ready', _this.renderCitationLayout, _this);
-				_this.player.on('timeupdate', function(opts){ _this.updateElapsed(opts); }, _this);
-				_this.player.on('frame_rendered', function(layer){ _this.renderCitation(layer); }, _this);
-				_this.player.init();
-			});
+			this.project.on('project_loaded', this.startPlayer, this );
+			console.log('cp initi', this);
+			this.project.fetch().success(function(){ _this.project.trigger('sync'); });
+		},
+
+		startPlayer : function()
+		{
+			// I should not have to put this in Zeega.player!
+			// I want this in _this.player !!
+			console.log('start player', this.project.toJSON() );
+			Zeega.player = new Zeega.Player( this.project.toJSON() );
+			this.player = Zeega.player; // I want to remove this
+			this.player.on('ready', this.renderCitationLayout, this);
+			this.player.on('timeupdate', function(opts){ this.updateElapsed(opts); }, this);
+			this.player.on('frame_rendered', function(layer){ this.renderCitation(layer); }, this);
+			this.player.init();
 		},
 
 		renderCitationLayout : function()
@@ -168,9 +174,72 @@ function(Zeega, Backbone) {
 			social : false,
 			fullscreenEnabled : false,
 			fadeOutOverlays : false
+		},
+
+		initialize : function()
+		{
+			//this.on('all', function(e){console.log('all',e)} , this );
+			this.on('sync', this.loadProject, this );
+		},
+
+		loadProject : function()
+		{
+			console.log('project loaded', this)
+			if( this.get('frames').length > 0 ) this.trigger('project_loaded');
+			else this.generateStreetViewProject();
+
+		},
+
+		generateStreetViewProject : function()
+		{
+			var _this = this;
+			this.url = localStorage.api + '/items/'+ this.id;
+
+			this.fetch().success(function(){
+
+				var seq = [{
+					id: 1,
+					frames : [1],
+					persistLayers: []
+				}];
+
+				var fra = [{
+					id : 1,
+					layers: [1],
+					attr: { advance:0 }
+				}];
+
+				var lay = [{
+					id:1,
+					type:"Geo",
+					attr:{
+						archive:'',
+						height:100,
+						width:100,
+						lat: _this.get('items')[0].media_geo_latitude,
+						lng: _this.get('items')[0].media_geo_longitude,
+						//streetZoom : resp.items[0].attributes.pov.streetZoom,
+						heading : _this.get('items')[0].attributes.pov.heading,
+						//pitch : resp.items[0].attributes.pov.pitch,
+						title: _this.get('items')[0].title
+					}
+				}];
+
+				_this.set({
+					sequences : seq,
+					frames : fra,
+					layers : lay
+				});
+
+				_this.trigger('project_loaded');
+
+			});
 		}
 
+
 	});
+
+	
 
 	return CPlayer;
 
