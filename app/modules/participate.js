@@ -95,8 +95,8 @@ function(Zeega, Backbone, Modal)
 			google.maps.event.addListener(this.marker, 'dragend', function(){
 				var center = _this.marker.getPosition();
 				_this.model.set({
-					media_geo_lat : center.lat(),
-					media_geo_lng : center.lng()
+					media_geo_latitude : center.lat(),
+					media_geo_longitude : center.lng()
 				});
 				_this.newTakeoutStreetView.setPosition(center);
 			});
@@ -123,8 +123,8 @@ function(Zeega, Backbone, Modal)
 					_this.newTakeoutStreetView.setPosition(center);
 					
 					_this.model.set({
-						media_geo_lat : center.lat(),
-						media_geo_lng : center.lng()
+						media_geo_latitude : center.lat(),
+						media_geo_longitude : center.lng()
 					});
 					
 				}
@@ -166,7 +166,9 @@ function(Zeega, Backbone, Modal)
 						streetZoom : Math.floor( this.newTakeoutStreetView.getPov().zoom )
 					}
 				},
-				thumbnail_url:"http://cbk0.google.com/cbk?output=thumbnail&w=200&h=200&ll="+this.newTakeoutStreetView.getPosition().lat()+","+this.newTakeoutStreetView.getPosition().lng()
+				thumbnail_url:"http://cbk0.google.com/cbk?output=thumbnail&w=200&h=200&ll="+this.newTakeoutStreetView.getPosition().lat()+","+this.newTakeoutStreetView.getPosition().lng(),
+				media_geo_latitude: this.newTakeoutStreetView.getPosition().lat(),
+				media_geo_longitude: this.newTakeoutStreetView.getPosition().lng()
 			});
 			console.log(this.model);
 			$(this.el)
