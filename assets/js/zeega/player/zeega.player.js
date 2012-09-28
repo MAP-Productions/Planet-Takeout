@@ -730,7 +730,7 @@ function(Zeega, Backbone, Layer) {
 		isFullscreen : false,
 		overlaysVisible : true,
 		viewportRatio : 4/3,
-		viewportFull : false,
+		viewportFull : true,
 
 		id : 'zeega-player',
 
