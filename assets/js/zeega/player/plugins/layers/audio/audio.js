@@ -90,7 +90,11 @@ function(zeega, Backbone, _Layer, Player){
 	Layer.Audio.Visual = _Layer.Visual.extend({
 		draggable : false,
 		linkable : false,
-		render : function(){ return this; }
+		render : function()
+		{
+			this.$el.append('<img src="/assets/img/audio-default.png" height="100%" width="100%">');
+			return this;
+		}
 	});
 
 	return Layer;
