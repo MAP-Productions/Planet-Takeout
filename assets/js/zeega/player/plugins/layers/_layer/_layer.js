@@ -1,6 +1,6 @@
 define([
   //"zeega",
-  "backbone",
+  "backbone"
 ],
 
 function(Backbone){
@@ -14,7 +14,7 @@ function(Backbone){
 		defaults : {
 			hasControls : true,
 			defaultControls : true,
-			showCitation : true,
+			showCitation : true
 		},
 		defaultAttributes : {},
 
@@ -35,7 +35,7 @@ function(Backbone){
 		editor_onLayerEnter : function(){},
 		editor_onLayerExit : function(){},
 		editor_onControlsOpen : function(){},
-		editor_onControlsClosed : function(){},
+		editor_onControlsClosed : function(){}
 
 	});
 
@@ -54,9 +54,9 @@ function(Backbone){
 		init : function(){},
 		render : function(){},
 
-		verifyReady : function(){ this.model.trigger('ready',this.model.id) },
+		verifyReady : function(){ this.model.trigger('ready',this.model.id); },
 
-		player_onPreload : function(){ this.verifyReady() },
+		player_onPreload : function(){ this.verifyReady(); },
 		player_onPlay : function(){},
 		player_onPause : function(){},
 		player_onExit : function(){},
@@ -72,7 +72,7 @@ function(Backbone){
 		play : function()
 		{
 			this.isPlaying = true;
-			this.player_onPlay()
+			this.player_onPlay();
 		},
 
 		pause : function()
@@ -83,8 +83,7 @@ function(Backbone){
 
 		playPause : function()
 		{
-			console.log('play pause layer', this)
-			if( this.isPlaying != false )
+			if( this.isPlaying !== false )
 			{
 				this.isPlaying = false;
 				this.player_onPause();
@@ -92,15 +91,15 @@ function(Backbone){
 			else
 			{
 				this.isPlaying = true;
-				this.player_onPlay()
+				this.player_onPlay();
 			}
 		},
 
-		getAttr : function(key){ return this.model.get('attr')[key] }, // convenience method
+		getAttr : function(key){ return this.model.get('attr')[key]; } // convenience method
 
 
 	});
 
 	return _Layer;
 
-})
+});

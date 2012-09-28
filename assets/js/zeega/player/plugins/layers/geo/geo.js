@@ -14,13 +14,10 @@ function(Zeega, Backbone, _Layer){
 
 		defaultAttributes : {
 			'title' : 'Streetview Layer',
-			'height' : 100,
-			'width' : 100,
 			'lat' : 42.3735626,
 			'lng' : -71.1189639,
 			'zoom' : 10,
 			'streetZoom' : 1,
-			'heading' : 0,
 			'pitch' : 0,
 			'mapType' : 'satellite',
 			
@@ -45,9 +42,8 @@ function(Zeega, Backbone, _Layer){
 		
 		init : function()
 		{
-			console.log('	GEO INIT')
 			var _this = this;
-			this.model.on('update', this.updateVisual, this)
+			this.model.on('update', this.updateVisual, this);
 		},
 		
 		render : function()
@@ -59,30 +55,25 @@ function(Zeega, Backbone, _Layer){
 				});
 
 			this.$el.html( map ).css({height:this.model.get('attr').height+'%'});
-			console.log('@@		streetview render')
 						
 			return this;
 		},
 		
 		updateVisual : function()
 		{
-			console.log('	update visual')
-			console.log(this)
 			var center = new google.maps.LatLng( this.model.get('attr').lat, this.model.get('attr').lng);
 			var pov = {
 					'heading' : this.model.get('attr').heading,
 					'pitch' : this.model.get('attr').pitch,
-					'zoom' : this.model.get('attr').streetZoom,
-			}
+					'zoom' : this.model.get('attr').streetZoom
+			};
 			
 			this.streetview.setPosition( center );
 			this.streetview.setPov( pov );
-			
 		},
 		
 		onLayerEnter : function()
 		{
-			console.log('##		geo layer enter', $(this.el).find('.gmap-container')[0], $( $(this.el).find('.gmap-container')[0]).is(':visible')+'' )
 			var center = new google.maps.LatLng( this.model.get('attr').lat, this.model.get('attr').lng);
 
 			var mapOptions = {
@@ -97,7 +88,6 @@ function(Zeega, Backbone, _Layer){
 				panControl : true,
 				panControlOptions : {
 					position: google.maps.ControlPosition.TOP_RIGHT
-				
 				},
 				//pano : '',
 				position : center,
@@ -108,11 +98,9 @@ function(Zeega, Backbone, _Layer){
 				pov : {
 						'heading' : this.model.get('attr').heading,
 						'pitch' : this.model.get('attr').pitch,
-						'zoom' : this.model.get('attr').streetZoom,
+						'zoom' : this.model.get('attr').streetZoom
 				}
-			};
-			console.log('##		map options', mapOptions)
-			
+			};			
 			this.streetview = new google.maps.StreetViewPanorama( $(this.el).find('.gmap-container')[0], mapOptions);
 			this.initMapListeners();
 		},
@@ -143,7 +131,7 @@ function(Zeega, Backbone, _Layer){
 						lat : _this.streetview.getPosition().lat(),
 						lng : _this.streetview.getPosition().lng()
 					
-					})
+					});
 				}
 				
 				
@@ -155,22 +143,16 @@ function(Zeega, Backbone, _Layer){
 			//this destroys the map every time the frame is changed. there is probably a better way to do this
 			this.map = null;
 			$(this.el).find('.gmap-container').remove();
-			console.log('on layer exit streetview',this, this.map)
 		},
 		
 		player_onPreload : function()
 		{
-			
-			
-			this.model.trigger('ready', this.model.id)
-			
+			this.model.trigger('ready', this.model.id);
 		},
 
 		player_onPlay : function()
 		{
 			var _this = this;
-			console.log('after render', $(this.$('#gmap-container-'+this.model.id)).width()+'px', $(this.$('#gmap-container-'+this.model.id)).height()+'px', this.$('#gmap-container-'+this.model.id) )
-			console.log(this.$el.width(), this.$el.height(), this.$el.is(':visible') );
 			if( !this.isLoaded )
 			{
 				var center = new google.maps.LatLng( this.model.get('attr').lat, this.model.get('attr').lng);
@@ -197,7 +179,7 @@ function(Zeega, Backbone, _Layer){
 					pov : {
 							'heading' : this.model.get('attr').heading,
 							'pitch' : this.model.get('attr').pitch,
-							'zoom' : this.model.get('attr').streetZoom,
+							'zoom' : this.model.get('attr').streetZoom
 					}
 					
 				};
@@ -288,4 +270,4 @@ function(Zeega, Backbone, _Layer){
 
 	return Layer;
 
-})
+});

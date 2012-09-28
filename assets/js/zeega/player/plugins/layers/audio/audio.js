@@ -28,7 +28,7 @@ function(zeega, Backbone, _Layer, Player){
 			'fade_out' : 0,
 			'opacity':1,
 			'dimension':1.5,
-			'citation':true,
+			'citation':true
 		}
 		
 	});
@@ -90,9 +90,9 @@ function(zeega, Backbone, _Layer, Player){
 	Layer.Audio.Visual = _Layer.Visual.extend({
 		draggable : false,
 		linkable : false,
-		render : function(){ return this },
+		render : function(){ return this; }
 	});
 
 	return Layer;
 
-})
+});

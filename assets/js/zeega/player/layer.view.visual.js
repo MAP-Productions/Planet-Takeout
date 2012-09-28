@@ -31,25 +31,23 @@ function(zeega, Backbone, Layer){
 			
 			this.initListeners();
 			
-			this.attr = this.model.get('attr')
+			this.attr = this.model.get('attr');
 			
-			
-			
-			$(this.el).css({
-				'position' : 'absolute',
-				'overflow' : 'hidden',
-				
-				'width' : _this.model.get('attr').width+'%',
-				'opacity' : _this.model.get('attr').opacity,
-				
-				// if previewing, then set way off stage somewhere
-				'top' : (this.model.player) ? '-1000%' : _this.model.get('attr').top +'%',
-				'left' : (this.model.player) ? '-1000%' : _this.model.get('attr').left+'%'
+			this.$el.css({
+					'position' : 'absolute',
+					'overflow' : 'hidden',
+					
+					'width' : _this.model.get('attr').width+'%',
+					'opacity' : _this.model.get('attr').opacity,
+					
+					// if previewing, then set way off stage somewhere
+					'top' : (this.model.player) ? '-1000%' : _this.model.get('attr').top +'%',
+					'left' : (this.model.player) ? '-1000%' : _this.model.get('attr').left+'%'
 				})
 				.addClass('layer-'+ this.model.layerType.toLowerCase() )
 				.attr('id', 'layer-visual-'+this.model.id);
-			$(this.el).addClass(this.layerClassName);
-				
+			this.$el.addClass(this.layerClassName);
+
 			this.init();
 		},
 		
@@ -88,7 +86,7 @@ function(zeega, Backbone, Layer){
 		
 		onLayerExit : function()
 		{
-			this.model.trigger('editor_readyToRemove')
+			this.model.trigger('editor_readyToRemove');
 		},
 		
 		onControlsOpen : function(){},
@@ -111,13 +109,13 @@ function(zeega, Backbone, Layer){
 			if(this.attr.link)
 			{
 				$(this.el).click(function(){
-					window.location = 'http://'+ _this.attr.link
+					window.location = 'http://'+ _this.attr.link;
 				})
 				.addClass('linked-layer');
 
 			}
 			
-			this.model.trigger('ready',this.model.id)
+			this.model.trigger('ready',this.model.id);
 		},
 		
 		private_renderError : function()
@@ -132,7 +130,6 @@ function(zeega, Backbone, Layer){
 
 		playPause : function()
 		{
-			console.log('$$		play pause status', this.isPlaying)
 			if( this.isPlaying )
 			{
 				this.isPlaying = false;
@@ -141,7 +138,7 @@ function(zeega, Backbone, Layer){
 			else
 			{
 				this.isPlaying = true;
-				this.onPlay()
+				this.onPlay();
 			}
 		},
 
@@ -168,7 +165,7 @@ function(zeega, Backbone, Layer){
 		
 		private_onLayerExit : function()
 		{
-			this.model.on('editor_readyToRemove', this.remove, this )
+			this.model.on('editor_readyToRemove', this.remove, this );
 			this.onLayerExit();
 		},
 		
@@ -202,7 +199,7 @@ function(zeega, Backbone, Layer){
 					_this.model.update({
 						top: topCent,
 						left: leftCent
-					})
+					});
 				}
 			});
 		},
@@ -225,12 +222,12 @@ function(zeega, Backbone, Layer){
 			this.timer = setTimeout(function(){
 				if(_this.model.status != 'ready')
 				{
-					console.log('ERROR: LAYER TIMEOUT!! '+_this.model.id)
-					_this.model.status = 'error'
-					_this.model.trigger('error', _this.model.id)
+					console.log('ERROR: LAYER TIMEOUT!! '+_this.model.id);
+					_this.model.status = 'error';
+					_this.model.trigger('error', _this.model.id);
 				}
 				//else console.log('no error! loaded normally!!')
-			},this.LAYER_TIMEOUT)
+			},this.LAYER_TIMEOUT);
 		},
 		
 		private_onPlay : function( z )
@@ -238,12 +235,12 @@ function(zeega, Backbone, Layer){
 			this.isPlaying = true;
 			if(!this.onStage)
 			{
-				this.onStage=true;
-				if(this.attr.dissolve) $(this.el).clearQueue().css({opacity:.01});
+				this.onStage = true;
+				if(this.attr.dissolve) $(this.el).clearQueue().css({ opacity: 0.01 });
 			}
 			this.moveOnStage();
 
-			if(z) this.updateZIndex( z )
+			if(z) this.updateZIndex( z );
 
 			if(this.model.status != 'error' ) this.onPlay();
 
@@ -256,8 +253,8 @@ function(zeega, Backbone, Layer){
 			if(this.attr.link || this.model.get('type') == 'Link')
 			{
 				var _this = this;
-				setTimeout( function(){ $(_this.el).addClass('link-blink') }, 250 );
-				setTimeout( function(){ $(_this.el).removeClass('link-blink') }, 2000 );
+				setTimeout( function(){ $(_this.el).addClass('link-blink'); }, 250 );
+				setTimeout( function(){ $(_this.el).removeClass('link-blink'); }, 2000 );
 			}
 		},
 		
@@ -290,7 +287,7 @@ function(zeega, Backbone, Layer){
 		
 		updateZIndex : function( z )
 		{
-			$(this.el).css('z-index', z)
+			$(this.el).css('z-index', z);
 		},
 		
 		moveOffStage :function()
@@ -304,4 +301,4 @@ function(zeega, Backbone, Layer){
 	});
 
 	return Layer;
-})
+});

@@ -37,11 +37,11 @@ function(zeega, Backbone, Layers){
 		{
 			this.typeModel = new Layers[this.get('type')]({parent:this});
 			this.typeVisual = new Layers[this.get('type')].Visual({model:this, attributes:{
-				id: 'layer-visual-'+this.id,
-				class: 'visual-element layer-'+ this.get('type').toLowerCase()
+				'id': 'layer-visual-'+this.id,
+				'class': 'visual-element layer-'+ this.get('type').toLowerCase()
 			}});
 
-			var def = _.defaults( this.get('attr'), this.typeModel.defaultAttributes )
+			var def = _.defaults( this.get('attr'), this.typeModel.defaultAttributes );
 			this.set('attr',def); // set the layer default attr if they don't exist in the layer
 
 			//this.controls = new // figure this out later
@@ -73,7 +73,7 @@ function(zeega, Backbone, Layers){
 		onReady : function(){},
 
 
-		/*	player actions 	*/
+		/*	player actions	*/
 
 		player_onPreload : function()
 		{
@@ -110,7 +110,7 @@ function(zeega, Backbone, Layers){
 			else
 			{
 				this.isPlaying = true;
-				this.player_onPlay()
+				this.player_onPlay();
 			}
 		},
 		player_onExit : function()
@@ -130,9 +130,9 @@ function(zeega, Backbone, Layers){
 			this.typeVisual.player_onRenderError();
 		},
 
-		/*	editor actions 	*/
+		/*	editor actions	*/
 
-		/*		needs implementation		*/
+		/*	needs implementation	*/
 
 		editor_onLayerEnter : function()
 		{
@@ -171,133 +171,9 @@ function(zeega, Backbone, Layers){
 
 		updateZIndex : function( z )
 		{
-			this.typeClass.$el.css('z-index', z)
-		},
-		
-		
-
-		/*
-		generateNewViews : function()
-		{
-			if( !_.isNull( this.layerType ) )
-			{
-				//create visual view
-				//this.visual = new Layer.Views.Visual[this.layerType]({model:this});
-				
-				this.visual = new Layer.Views.Visual({model:this});
-				console.log('vv		visual:',this, this.visual )
-
-				//create control view
-				if( !this.player ) this.controls = new Layer.Views.Controls[this.layerType]({model:this})
-			}
-			else alert('MISSING LAYER TYPE')
-		},
-		
-		//called at the end of initialize. we don't want to override it
-		init : function(){},
-		
-		onControlsOpen : function(){},
-		
-		onControlsClosed : function(){},
-		*/
-		
-		/*
-		renderLayerInEditor : function( i )
-		{
-			this.visual.render().$el.css('zIndex',i+1);
-			if(this.isNew()) 
-			{
-				this.visual.render().$el.css('zIndex',1000);
-				$('#visual-editor-workspace').append( this.visual.el );
-			}
-			else $('#visual-editor-workspace').append( this.visual.render().el );
-			if(this.controls) this.layerPanel.prepend( this.controls.render().el );
-			
-			this.trigger('editor_rendered editor_layerEnter');
-		},
-		
-		unrenderLayerFromEditor : function()
-		{
-			if( this.hasChanged() ) this.save();
-			this.trigger('editor_layerExit')
-		},
-		
-		*/
-		
-		/*
-		refreshView : function()
-		{
-			this.visual.$el.attr('id','layer-visual-'+this.id)
-			if(this.controls) this.controls.$el.attr('id','layer-'+this.id)
-		},
-
-		update : function( newAttr, silent )
-		{
-			var _this = this;
-			var a = _.extend( this.toJSON().attr, newAttr, {model:null} );
-			this.set( 'attr' , a );
-			if( !silent )
-			{
-
-				this.save({},{
-					success : function(){ _this.trigger('update') }
-				});
-				
-				
-			}
-		},
-
-		// draws the thumb?
-		thumb : function()
-		{
-			var img = $('<img>')
-				.attr('src', this.attr.thumbnail_url)
-				.css({'width':'100%'});
-
-			this.thumbnail.append( img );
-		},
-*/
-/*
-		// updates the z-index for the visual element
-		updateZIndex : function(z){},
-*/
-
-		////////// player
-/*
-		// triggers ready for the player
-		preload : function()
-		{
-			$('#zeega-player').trigger('ready',{'id':this.id});
-		},
-
-		// player :: puts the visual element offscreen
-		stash : function(){},
-
-		// player :: fallback for media that may not work for some reason (browsers)
-		playUnsupported : function(){},
-
-		// player :: triggers when the frame exits
-		onExit : function(){},
-
-		// utlities
-
-		//sets the z-index ??
-		setZIndex : function(z){ this.visualEditorElement.css( 'z-index', z ) },
-
-		// ??
-		onStateChange : function(){},
-
-		// ??
-		onError : function(){},
-
-		//////////////////
-	
-		//remove formatting from titles (esp important for text layer!)
-		validate : function(attrs)
-		{
-			if( attrs.title ) attrs.title = attrs.title.replace(/(<([^>]+)>)/ig, "");
+			this.typeClass.$el.css('z-index', z);
 		}
-*/
+
 	});
 
 	Layer.Views.Visual = Backbone.View.extend({
@@ -349,7 +225,7 @@ function(zeega, Backbone, Layers){
 		
 		onLayerExit : function()
 		{
-			this.model.trigger('editor_readyToRemove')
+			this.model.trigger('editor_readyToRemove');
 		},
 		
 		onControlsOpen : function(){},
@@ -378,7 +254,6 @@ function(zeega, Backbone, Layers){
 
 		playPause : function()
 		{
-			console.log('$$		play pause status', this.isPlaying)
 			if( this.isPlaying )
 			{
 				this.isPlaying = false;
@@ -387,7 +262,7 @@ function(zeega, Backbone, Layers){
 			else
 			{
 				this.isPlaying = true;
-				this.onPlay()
+				this.onPlay();
 			}
 		},
 
@@ -414,7 +289,7 @@ function(zeega, Backbone, Layers){
 		
 		private_onLayerExit : function()
 		{
-			this.model.on('editor_readyToRemove', this.remove, this )
+			this.model.on('editor_readyToRemove', this.remove, this );
 			this.onLayerExit();
 		},
 		
@@ -448,7 +323,7 @@ function(zeega, Backbone, Layers){
 					_this.model.update({
 						top: topCent,
 						left: leftCent
-					})
+					});
 				}
 			});
 		},
@@ -469,12 +344,12 @@ function(zeega, Backbone, Layers){
 			this.timer = setTimeout(function(){
 				if(_this.model.status != 'ready')
 				{
-					console.log('ERROR: LAYER TIMEOUT!! '+_this.model.id)
-					_this.model.status = 'error'
-					_this.model.trigger('error', _this.model.id)
+					console.log('ERROR: LAYER TIMEOUT!! '+_this.model.id);
+					_this.model.status = 'error';
+					_this.model.trigger('error', _this.model.id);
 				}
-				//else console.log('no error! loaded normally!!')
-			},this.LAYER_TIMEOUT)
+				//else console.log('no error! loaded normally!!');
+			},this.LAYER_TIMEOUT);
 		},
 		
 		private_onPlay : function( z )
@@ -483,11 +358,11 @@ function(zeega, Backbone, Layers){
 			if(!this.onStage)
 			{
 				this.onStage = true;
-				if(this.model.get('attr').dissolve) $(this.el).clearQueue().css({opacity:.01});
+				if(this.model.get('attr').dissolve) $(this.el).clearQueue().css({opacity:0.01});
 			}
 			this.moveOnStage();
 
-			if(z) this.updateZIndex( z )
+			if(z) this.updateZIndex( z );
 
 			if(this.model.status != 'error' ) this.model.layerTypeModel.onPlay();
 
@@ -500,8 +375,8 @@ function(zeega, Backbone, Layers){
 			if(this.model.get('attr').link || this.model.get('type') == 'Link')
 			{
 				var _this = this;
-				setTimeout( function(){ $(_this.el).addClass('link-blink') }, 250 );
-				setTimeout( function(){ $(_this.el).removeClass('link-blink') }, 2000 );
+				setTimeout( function(){ $(_this.el).addClass('link-blink'); }, 250 );
+				setTimeout( function(){ $(_this.el).removeClass('link-blink'); }, 2000 );
 			}
 		},
 		
@@ -534,7 +409,7 @@ function(zeega, Backbone, Layers){
 		
 		updateZIndex : function( z )
 		{
-			this.typeClass.$el.css('z-index', z)
+			this.typeClass.$el.css('z-index', z);
 		},
 		
 		moveOffStage :function()
@@ -549,5 +424,4 @@ function(zeega, Backbone, Layers){
 
 	return Layer;
 
-})
-
+});
