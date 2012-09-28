@@ -185,7 +185,7 @@ function(Zeega, Backbone) {
 
 		loadProject : function()
 		{
-			console.log('project loaded', this)
+			console.log('project loaded', this);
 			if( this.get('frames').length > 0 ) this.trigger('project_loaded');
 			else this.generateStreetViewProject();
 
