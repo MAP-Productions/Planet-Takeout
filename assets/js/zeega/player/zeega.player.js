@@ -44,7 +44,9 @@ function(Zeega, Backbone, Layer) {
             navbar_bottom : true,
             navbar_top : true,
  			playerCitation : false,
-			social : true
+			social : true,
+			viewportRatio : 4/3,
+			viewportFull : true,
 		},
 
 		init : function()
@@ -722,7 +724,7 @@ function(Zeega, Backbone, Layer) {
 		isFullscreen : false,
 		overlaysVisible : true,
 		viewportRatio : 4/3,
-		viewportFull : true,
+		viewportFull : false,
 
 		id : 'zeega-player',
 
