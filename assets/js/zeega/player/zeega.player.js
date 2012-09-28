@@ -169,8 +169,9 @@ function(Zeega, Backbone, Layer) {
 	Zeega.Player.ProjectModel = Backbone.Model.extend({
 			
 		editor : true,
+		has_played : false,
 		PRELOAD_ON_SEQUENCE : 2, // will preload n frames ahead/behind in sequence
-		DELAY_AFTER_LOAD : 1000,
+		DELAY_AFTER_LOAD : 5000,
 
 		initialize : function()
 		{
@@ -270,13 +271,15 @@ function(Zeega, Backbone, Layer) {
 		renderFrame : function(frameID)
 		{
 			var _this = this;
+
 			var frame = this.frames.get(frameID);
 			var fromFrameID = this.currentFrame ? this.currentFrame.id : frameID;
 			frame.render( fromFrameID );
 
 			this.trigger('frame_rendered', frame);
-			frame.on('timeupdate', function(opts){ _this.trigger('timeupdate',opts) })
+			frame.on('timeupdate', function(opts){ _this.trigger('timeupdate',opts); })
 			this.setFrameAdvance( frameID );
+
 		},
 		
 		goLeft : function()
@@ -479,8 +482,11 @@ function(Zeega, Backbone, Layer) {
 
 		onFrameLoaded : function()
 		{
-			this.status = 'ready';
-			this.trigger('ready',this.id);
+			var _this = this;
+			_.delay(function(){
+				_this.status = 'ready';
+				_this.trigger('ready',_this.id);
+			},5000);
 		},
 
 		play : function()
@@ -1015,13 +1021,13 @@ function(Zeega, Backbone, Layer) {
 				.animate({width : this.loadedCount/this.model.get('layers').length * 100 +'%' },2000)
 				.animate({width : this.loadedCount*1.5/this.model.get('layers').length * 100 +'%' },100000);
 			
-			if(this.model.isLoaded() ) this.fadeOut();
+			if(this.model.isLoaded() ) _.delay( function(){_this.fadeOut()}, 5000 );
 		},
 		
 		fadeOut : function()
 		{
 			var _this = this;
-			$(this.el).fadeOut('slow', function(){ _this.remove() });
+			$(this.el).fadeOut('slow', function(){ _this.remove(); });
 		},
 
 		getTemplate : function()
@@ -1029,23 +1035,26 @@ function(Zeega, Backbone, Layer) {
 			html =
 			
 				"<div class='progress-head'>"+
-					"<h3 class='estimate'>Estimated time to experience this project. . .</h3>"+
-					"<h3 class='time'><%= estimated_time %></h3>"+
-				"</div>"+
+					"<h3 class='estimate'>Planet Takeout is a participatory documentary project about the Chinese takeout as a vital cultural crossroads in Boston and beyond.</h3><br/><h6>Please be patient while we load this immersive experience.</h6>"+
+				"</div></br>"+
 				"<div class='progress progress-striped active progress-danger'>"+
 					"<div class='bar' style='width:0'></div>"+
-				"</div>"+
-				"<div class='progress-types'>"+
-					"<ul></ul>"+
 				"</div>";
+
+				// "<div class='progress-head'>"+
+				// 	"<h3 class='estimate'>Estimated time to experience this project. . .</h3>"+
+				// 	"<h3 class='time'><%= estimated_time %></h3>"+
+				// "</div>"+
+				// "<div class='progress progress-striped active progress-danger'>"+
+				// 	"<div class='bar' style='width:0'></div>"+
+				// "</div>"+
+				// "<div class='progress-types'>"+
+				// 	"<ul></ul>"+
+				// "</div>";
 			
 			return html;
 		}
 	});	
-
-
-
-
 
 
 	return Zeega;
