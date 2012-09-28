@@ -5,9 +5,9 @@ define([
   'zeega_media_players/plyr'
 ],
 
-function(zeega, Backbone, _Layer, Player){
+function(Zeega, Backbone, _Layer, Player){
 
-	var Layer = zeega.module();
+	var Layer = Zeega.module();
 
 	Layer.Link = _Layer.extend({
 
@@ -16,8 +16,6 @@ function(zeega, Backbone, _Layer, Player){
 		hasControls : false,
 		defaultControls : false,
 		displayCitation : false,
-		
-		
 		
 		defaultAttributes : {
 			'title' : 'Link Layer',
@@ -28,7 +26,11 @@ function(zeega, Backbone, _Layer, Player){
 			'left' : 25,
 			'top' : 25,
 			'height' : 50,
-			'width' : 50
+			'width' : 50,
+			'opacity' : 1,
+			'opacity_hover' : 1,
+			'blink_on_start' : true,
+			'glow_on_hover' : true
 		},
 		
 		init : function(options)
@@ -62,7 +64,7 @@ function(zeega, Backbone, _Layer, Player){
 			var layerIndex = this.model.layerIndex || this.model.layerColor.length;
 			
 			$(this.el).find('.zicon-link').css({'background-color': this.model.layerColor[( layerIndex % this.model.layerColor.length )] })
-			if(this.model.get('attr').to_frame == zeega.app.currentFrame.id)
+			if(this.model.get('attr').to_frame == Zeega.player.currentFrame.id)
 			{
 				this.remove();
 			}
@@ -81,63 +83,89 @@ function(zeega, Backbone, _Layer, Player){
 		
 		init : function()
 		{
-			//this.preview = zeega.app.previewMode;
+			var _this = this;
+			this.model.on('update', this.onUpdate, this);
+		},
+
+		onUpdate : function()
+		{
+			this.$el.resizable('destroy');
+			this.render();
+			this.makeResizable();
 		},
 		
 		render : function()
 		{
 			var _this = this;
-			
-			
 			var style = {
-				'height' : this.model.get('attr').height +'%',
+				'overflow' : 'visible',
 				'cursor' : 'pointer',
-				'z-index' : 100
+				'z-index' : 100,
+				'width' : 'auto',
+				'height' : 'auto',
+				'border' : 'none',
+				'border-radius' : '0',
+				'height' : this.model.get('attr').height +'%',
+				'width' : this.model.get('attr').width +'%'
 			}
-			
 
-				this.delegateEvents({'click':'goClick'})
-				//$(this.el).addClass('go-to-sequence')
-			
+			this.$el.removeClass('link-arrow-right link-arrow-down link-arrow-up link-arrow-left');
+
+
+
+			if( this.preview ) this.delegateEvents({'click':'goClick'});
+
 			if(this.model.get('attr').link_type == 'arrow_left')
-				this.$el.html( this.getTemplate_ArrowLeft() ).css( style );
+				this.$el.html( this.getTemplate() ).css( style ).addClass('link-arrow-left');
 			else if(this.model.get('attr').link_type == 'arrow_right')
-				this.$el.html( this.getTemplate_ArrowRight() ).css( style );
+				this.$el.html( this.getTemplate() ).css( style ).addClass('link-arrow-right');
 			else if(this.model.get('attr').link_type == 'arrow_up')
-				this.$el.html( this.getTemplate_ArrowUp() ).css( style );
-			else
-			{
-				if(!this.preview )
-				{
-					_.extend( style, {
-						'height' : this.model.get('attr').height +'%',
-						'width' : this.model.get('attr').width +'%',
-						'border' : '2px dashed orangered',
-						'border-radius' : '6px'
-					})
-				}
-				this.$el.html( this.getTemplate_Rectangle() ).css( style ).addClass('linked-layer');
-			}
+				this.$el.html( this.getTemplate() ).css( style ).addClass('link-arrow-up');
 
+			if( this.model.get('attr').glow_on_hover ) this.$el.addClass('linked-layer-glow');
+
+			if(!this.preview )
+			{
+				_.extend( style, {
+					'border' : '2px dashed orangered',
+					'border-radius' : '6px'
+				})
+			}
+			
+			
+			this.$el.html( this.getTemplate() ).css( style ).addClass('linked-layer');
 			return this;
 		},
 		
 		events : {
 			'click .go-to-sequence' : 'goToSequenceFrame',
 			'click .delete-link' : 'deleteLink',
-			'mousedown .show-controls' : 'showControls'
+			'mousedown .show-controls' : 'showControls',
+			'mouseover' : 'onMouseOver',
+			'mouseout' : 'onMouseOut'
+		},
+
+		onMouseOver : function()
+		{
+			console.log('link on mouseover')
+			this.$el.stop().fadeTo( 500, this.model.get('attr').opacity_hover );
+		},
+
+		onMouseOut : function()
+		{
+			console.log('link on mouseover')
+			this.$el.stop().fadeTo( 500, this.model.get('attr').opacity );
 		},
 		
 		goClick : function()
 		{
-			console.log('click link',this);
-			zeega.player.project.goToFrame(this.model.get('attr').to_frame);
+			Zeega.player.project.goToFrame(this.model.get('attr').to_frame);
 		},
 		
 		goToSequenceFrame : function()
 		{
-			if(zeega.app.previewMode) zeega.app.project.goToFrame(this.model.get('attr').to_frame);
-			else zeega.app.router.navigate("editor/sequence/"+this.model.get('attr').to_sequence+"/frame/"+this.model.get('attr').to_frame,{trigger:true})
+			if(this.preview) Zeega.player.project.goToFrame(this.model.get('attr').to_frame);
+			else Zeega.player.goToFrame(this.model.get('attr').to_frame);
 		},
 		
 		deleteLink : function(e)
@@ -157,6 +185,8 @@ function(zeega, Backbone, _Layer, Player){
 		onLayerEnter : function()
 		{
 			var _this = this;
+
+			this.$el.resizable('destroy');
 			this.$el.resizable({
 				stop: function(e,ui)
 				{
@@ -166,40 +196,45 @@ function(zeega, Backbone, _Layer, Player){
 					})
 				}
 			})
+		
+			this.makeResizable();
 			this.delegateEvents();
 		},
-		
-		onPlay : function()
+
+		makeResizable : function()
 		{
-			this.render();
-			/*
-			if(this.model.get('attr').to_frame == zeega.app.player.currentFrame.id)
-				this.moveOffStage()
-			*/
-			this.delegateEvents({'click':'goClick'})
+			var _this = this;
+			var linkType = this.model.get('attr').link_type;
+
+			this.$el.resizable({
+				handles: 'all',
+				stop : function()
+				{
+					var attr = {
+						'width' : $(this).width() / $(this).parent().width() * 100,
+						'height' : $(this).height() / $(this).parent().height() * 100
+					};
+					console.log('save attr', attr);
+					_this.model.update(attr);
+				}
+			});
 		},
 		
-		getTemplate_Rectangle : function()
+		player_onPlay : function()
+		{
+			this.render();
+			this.delegateEvents({
+				'click':'goClick',
+				'mouseover' : 'onMouseOver',
+				'mouseout' : 'onMouseOut'
+			})
+		},
+		
+		getTemplate : function()
 		{
 			var html = '';
 				if( !this.preview && !_.isNull( this.model.get('attr').to_sequence ) ) html += '<i class="icon-share go-to-sequence"></i>';		
 			return html;
-		},
-		getTemplate_ArrowRight : function()
-		{
-			return  '<img src="../../../images/link_arrow-right.png"/>';
-		},
-		getTemplate_ArrowLeft : function()
-		{
-			return  '<img src="../../../images/link_arrow-left.png"/>';
-		},
-		getTemplate_ArrowUp : function()
-		{
-			return  '<img src="../../../images/link_arrow-up.png"/>';
-		},
-		getTemplate_ArrowDown : function()
-		{
-			return  '<img src="../../../images/link_arrow-down.png"/>';
 		}
 		
 		

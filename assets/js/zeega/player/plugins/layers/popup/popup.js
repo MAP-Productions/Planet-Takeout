@@ -101,7 +101,7 @@ function(zeega, Backbone, _Layer, Player){
 				
 				this.$el.css({
 					'width' : this.model.get('attr').width +'%',
-					'border' : '2px dashed orangered',
+					//'border' : '2px dashed orangered',
 					'border-radius' : '6px',
 					'height' : '25%'
 				})

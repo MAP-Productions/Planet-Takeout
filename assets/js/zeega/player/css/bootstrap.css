@@ -735,10 +735,6 @@
   box-shadow: 0 0 12px transparent;
   -webkit-transition: box-shadow 0.5s linear;
 }
-.linked-layer:hover {
-  box-shadow: 0 0 12px white;
-  -webkit-transition: box-shadow 0.25s linear;
-}
 .link-blink {
   box-shadow: 0 0 24px white;
   -webkit-transition: box-shadow 1s linear;
@@ -750,5 +746,63 @@
 .media-element.media-type-Audio {
   height: 0;
   width: 0;
+}
+
+
+.linked-layer{cursor:pointer;}
+.linked-layer>:first-child{ margin-bottom:-4px; }
+
+
+
+.linked-layer-glow:hover
+{
+  box-shadow: 0 0 12px white;
+  -webkit-transition: box-shadow .25s linear;
+}
+
+.link-blink
+{
+  box-shadow: 0 0 24px white;
+  -webkit-transition: box-shadow 1s linear;
+}
+
+
+.popup-layer-modal
+{
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.75);
+  height: 100%;
+  width: 100%;
+  z-index: 1000000;
+}
+
+
+.link-arrow-up
+{
+  background: url('../img/link_arrow-up.png');
+}
+.link-arrow-right
+{
+  background: url('../img/link_arrow-right.png');
+}
+
+.link-arrow-down
+{
+  background: url('../img/link_arrow-down.png');
+}
+.link-arrow-left
+{
+  background: url('../img/link_arrow-left.png');
+}
+
+.link-arrow-up,
+.link-arrow-right,
+.link-arrow-down,
+.link-arrow-left
+{
+  background-repeat: no-repeat;
+  background-position: center;
 }
 /************* end preview window styles ****************/
