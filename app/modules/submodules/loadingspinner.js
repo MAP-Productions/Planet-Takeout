@@ -12,9 +12,13 @@ function(Zeega, Backbone,spin)
 	// Create a new module
 	var App = Zeega.module();
 
-	App.show = function() {
+	App.show = function(loadingText) {
 		console.log('spinner show');
-		$('#loading')
+		var $elem = $('#loading');
+		if (loadingText) {
+			$elem.find('#loadingWhat').text(loadingText);
+		}
+		$elem
 			.show()
 			.children('#spinner').spin('pt','#fff');
 	};

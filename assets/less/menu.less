@@ -13,6 +13,7 @@
   float: left;
   border-left: 1px solid #999;
   padding:15px;
+  position: relative;
 
   background: rgba(194, 217, 214, 1);
   background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, from(rgba(154, 235, 231, 1)), to(rgba(255, 216, 171, 1)));
@@ -45,6 +46,20 @@
   margin-top: 16px;
 }
 
+.PT-menu .story-key {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  text-align: right;
+  padding-left: 27px;
+  background: url(../img/featured.png) no-repeat 0 6px;
+  background-size: 25px 12px;
+  color: #de3620;
+  font-size: 12px;
+  font-family: 'PT-black';
+  line-height: 26px;
+}
+
 .PT-menu .menu-items {
   overflow: hidden;
   padding-bottom: 2px;
@@ -60,8 +75,9 @@
 .PT-menu .menu-items li {
   border-bottom: 2px dotted black;
   font-family: 'PT-black';
-  font-size: 13px;
+  font-size: 12px;
   height: 19px;
+  width: 297px; /* required due to browser error with fractional widths */
 }
 
 .PT-menu .menu-items a {
@@ -75,12 +91,24 @@
   background-position: -10px 0; 
   color: #de3620;
   float: left;
-  padding-right: 20px;
+  padding-right: 15px;
   position: relative;
   top: 3px;
   height: 20px;
   vertical-align: bottom;
   line-height: 28px;
+}
+
+.PT-menu .menu-items a.radio-story {
+  padding-left: 30px;
+  background-image: url(../img/featured.png), -webkit-gradient(linear, 0% 0%, 100% 0%, from(rgba(154, 235, 231, 1)), to(rgba(255, 216, 171, 1)));
+  background-image: url(../img/featured.png), -webkit-linear-gradient(left, rgba(154, 235, 231, 1), rgba(255, 216, 171, 1)); 
+  background-image: url(../img/featured.png),    -moz-linear-gradient(left, rgba(154, 235, 231, 1), rgba(255, 216, 171, 1));
+  background-image: url(../img/featured.png),     -ms-linear-gradient(left, rgba(154, 235, 231, 1), rgba(255, 216, 171, 1));
+  background-image: url(../img/featured.png),      -o-linear-gradient(left, rgba(154, 235, 231, 1), rgba(255, 216, 171, 1));
+  background-size: 25px 12px, 312px 20px;
+  background-repeat: no-repeat, no-repeat;
+  background-position: 0 6px, -10px 0;
 }
 
 .PT-menu .menu-items span {

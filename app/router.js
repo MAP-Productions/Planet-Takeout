@@ -283,7 +283,7 @@ esp inserting the layout into the dom!
 		if( Zeega.player ) Zeega.player.exit();
 		// make and ` itemCollection
 		var itemCollectionsCollection = new Grid.Collections.ItemCollections();
-		loadingSpinner.show();
+		loadingSpinner.show('Takeouts');
 		itemCollectionsCollection.fetch().success(function(){
 			generateGrid( itemCollectionsCollection, 'collections' );
 			$('#app-base').append( Zeega.grid.el );
