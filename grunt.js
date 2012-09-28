@@ -211,22 +211,22 @@ module.exports = function(grunt) {
 
 		},
 
-		removelogging: { 
+		// removelogging: { 
 
-			dist: {
-				src: "dist/debug/require.js", dest: "dist/debug/require.js",
+		// 	dist: {
+		// 		src: "dist/debug/require.js", dest: "dist/debug/require.js",
 
-			options: {
-				// see below for options. this is optional.
-				//replaceWith : 'foo'
-			}
-		}
-	} 
+		// 		options: {
+		// 			// see below for options. this is optional.
+		// 			//replaceWith : 'foo'
+		// 		}
+		// 	}
+		// } 
 
 
 	});
 	
-	grunt.loadNpmTasks("grunt-remove-logging");
+	//grunt.loadNpmTasks("grunt-remove-logging");
 
 	// The debug task will remove all contents inside the dist/ folder, lint
 	// all your code, precompile all the underscore templates into
