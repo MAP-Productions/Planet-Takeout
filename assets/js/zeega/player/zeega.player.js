@@ -29,6 +29,8 @@ function(Zeega, Backbone, Layer) {
 
 	Zeega.Player = Backbone.Model.extend({
 
+		ready : false,
+		
 		defaults : {
 			appName : null,
 			branding : true,
@@ -56,6 +58,7 @@ function(Zeega, Backbone, Layer) {
 		
 		onProjectReady : function()
 		{
+			this.ready = true;
 			this.project.off('ready', this.playProject );
 			if(this.get('mode') != 'editor') this.startRouter();
 			this.project.goToFrame( this.get('frameID') );

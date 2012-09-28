@@ -26,12 +26,13 @@ function(Zeega, Backbone) {
 		{
 			// I should not have to put this in Zeega.player!
 			// I want this in _this.player !!
-			console.log('start player', this.project.toJSON() );
 			Zeega.player = new Zeega.Player( this.project.toJSON() );
 			this.player = Zeega.player; // I want to remove this
-			this.player.on('ready', this.renderCitationLayout, this);
+			
+			if( this.player.ready ) this.renderCitationLayout();
+			else this.player.on('ready', this.renderCitationLayout, this);
+			
 			this.player.on('timeupdate', function(opts){ this.updateElapsed(opts); }, this);
-			this.player.on('frame_rendered', function(layer){ this.renderCitation(layer); }, this);
 			this.player.init();
 		},
 
@@ -45,7 +46,7 @@ function(Zeega, Backbone) {
 
 			this.citationDrawer.render();
 			$('#nav-lower').html( this.citationDrawer.el );
-
+			this.player.on('frame_rendered', function(layer){ this.renderCitation(layer); }, this);
 		},
 
 		renderCitation : function(model)
@@ -219,7 +220,7 @@ function(Zeega, Backbone) {
 						lat: _this.get('items')[0].media_geo_latitude,
 						lng: _this.get('items')[0].media_geo_longitude,
 						//streetZoom : resp.items[0].attributes.pov.streetZoom,
-						heading : _this.get('items')[0].attributes.pov.heading,
+						heading : 0, //_this.get('items')[0].attributes.pov.heading,
 						//pitch : resp.items[0].attributes.pov.pitch,
 						title: _this.get('items')[0].title
 					}
