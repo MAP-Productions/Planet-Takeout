@@ -74,7 +74,7 @@ function(Zeega, Backbone, Modal)
 	var menuItemCollection = Backbone.Collection.extend({
 		url: function()
 		{
-			return localStorage.api + '/items/46082/items';
+			return localStorage.api + '/items/46082/items?r_counts=1';
 		},
 
 		parse : function(res){  return res.items; }
