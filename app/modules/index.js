@@ -25,6 +25,7 @@ function(Zeega, Backbone) {
 				_this.player = Zeega.player; // I want to remove this
 				_this.player.on('ready', _this.renderCitation, _this);
 				_this.player.init();
+				console.log('feature', _this );
 			});
 		},
 
