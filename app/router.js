@@ -166,16 +166,16 @@ esp inserting the layout into the dom!
 		switch(to)
 			{
 				case 'mobile':
-					var baseLayout = new Backbone.Layout({ el: "#main" });
+					var mobileLayout = new Backbone.Layout({ el: "#main" });
 					var mobileView = Backbone.LayoutView.extend({ template: "mobile" });
-					baseLayout.insertView(new mobileView() );
-					baseLayout.render();
+					mobileLayout.insertView(new mobileView() );
+					mobileLayout.render();
 					break;
 				case 'browser':
-					var baseLayout = new Backbone.Layout({ el: "#main" });
+					var browserLayout = new Backbone.Layout({ el: "#main" });
 					var browserView = Backbone.LayoutView.extend({ template: "browser" });
-					baseLayout.insertView(new browserView() );
-					baseLayout.render();
+					browserLayout.insertView(new browserView() );
+					browserLayout.render();
 					break;
 				default:
 					initPT();
