@@ -42,6 +42,8 @@ function(
 
 			"" : "index",
 			"about" : 'about',
+			"browser" : 'browser',
+			"mobile" : 'mobile',
 
 			"collections" : 'collections',
 			'collections/' : 'collections',
@@ -79,6 +81,15 @@ function(
 		{
 			initialize('modal');
 			Zeega.modal = new About.Model();
+		},
+		browser : function()
+		{
+			initialize('browser');
+		},
+		
+		mobile : function()
+		{
+			initialize('mobile');
 		},
 
 		collections : function()
@@ -152,14 +163,31 @@ esp inserting the layout into the dom!
 
 	function initialize(to)
 	{
-		initPT();
-		cleanup(to);
+		switch(to)
+			{
+				case 'mobile':
+					var mobileLayout = new Backbone.Layout({ el: "#main" });
+					var mobileView = Backbone.LayoutView.extend({ template: "mobile" });
+					mobileLayout.insertView(new mobileView() );
+					mobileLayout.render();
+					break;
+				case 'browser':
+					var browserLayout = new Backbone.Layout({ el: "#main" });
+					var browserView = Backbone.LayoutView.extend({ template: "browser" });
+					browserLayout.insertView(new browserView() );
+					browserLayout.render();
+					break;
+				default:
+					initPT();
+					cleanup(to);
+			}
 	}
 
 	// makes sure this happens on ly once per load
 	var initPT = _.once( init );
 	function init()
 	{
+		console.log('initing');
 		// render the base layout into the dom
 		// this happens only once
 		var baseLayout = new Backbone.Layout({ el: "#main" });
