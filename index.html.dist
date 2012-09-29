@@ -7,6 +7,26 @@
 
 	<title>Planet Takeout</title>
 
+
+	<!-- begin Google Analytics Tracking code -->
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	  	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		var WGBHpageTracker = _gat._getTracker("UA-339013-1");
+		WGBHpageTracker._setDomainName("none");
+		WGBHpageTracker._setAllowLinker(true);
+		WGBHpageTracker._initData();
+		WGBHpageTracker._trackPageview();
+		var IMApageTracker = _gat._getTracker("UA-1741309-53");
+		IMApageTracker._setDomainName("none");
+		IMApageTracker._setAllowLinker(true);
+		IMApageTracker._initData();
+		IMApageTracker._trackPageview();
+	</script>
+	<!-- end Google Analytics Tracking code -->
+	
 	<script>
 		localStorage.api = 'http://my.server.org/api'
 	</script>
