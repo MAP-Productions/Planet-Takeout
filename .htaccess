@@ -8,6 +8,7 @@ RewriteEngine on
 RewriteRule ^app/(.*)$ dist/release/$1 [NC,L]
 RewriteRule ^assets/js/libs/(.*)$ dist/release/$1 [NC,L]
 RewriteRule ^assets/css/(.*)$ dist/release/$1 [NC,L]
+RewriteRule ^zeegaapi/(.*)$ http://alpha.zeega.org/api/$1 [P]
 
 # These conditions ensure that the file does not exist and that the current
 # request URI is not the index.
@@ -16,4 +17,5 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !index
 
 # Redirect remaining requests to the index.html file
-RewriteRule (.*) index.html [NC,L]
+Redirect /index.html /comingsoon.html
+RewriteRule (.*) comingsoon.html [NC,L]
