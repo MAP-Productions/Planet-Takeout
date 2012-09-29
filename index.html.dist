@@ -28,7 +28,8 @@
 	<!-- end Google Analytics Tracking code -->
 	
 	<script>
-		localStorage.api = 'http://my.server.org/api'
+		localStorage.api = 'http://my.server.org/api';
+                if (!window.console) console = {log: function() {}};
 	</script>
 
 	<!-- Application root. -->
