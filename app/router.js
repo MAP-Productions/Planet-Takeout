@@ -43,7 +43,7 @@ function(
 			"" : "index",
 			"about" : 'about',
 			"browser" : 'browser',
-			"mobile" : 'moible',
+			"mobile" : 'mobile',
 
 			"collections" : 'collections',
 			'collections/' : 'collections',
@@ -87,7 +87,7 @@ function(
 			initialize('browser');
 		},
 		
-		moblie : function()
+		mobile : function()
 		{
 			initialize('mobile');
 		},
