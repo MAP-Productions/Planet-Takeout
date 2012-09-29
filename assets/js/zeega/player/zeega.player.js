@@ -650,7 +650,15 @@ function(Zeega, Backbone, Layer) {
 				if( layer.get('type') == 'Link' && !_.isUndefined(layer.get('attr').from_frame) && !_.isUndefined(layer.get('attr').to_frame)  )
 				{
 					if( layer.get('attr').from_frame == _this.id ) _this.linksOut.push( layer.get('attr').to_frame );
-					else if( layer.get('attr').to_frame == _this.id ) _this.linksIn.push( layer.get('attr').from_frame );
+					else if( layer.get('attr').to_frame == _this.id )
+					{
+						// remove from this layer's link array too
+						var layerArray = _this.get('layers');
+						_this.set({layers: _.without(layerArray,layer.id)});
+						_this.layers.remove(layer);
+						_this.linksIn.push( layer.get('attr').from_frame );
+					}
+				
 				}
 			})
 		},
