@@ -302,7 +302,7 @@ function(zeega, Backbone){
 			default : function()
 			{
 				html =
-				"<div id='media-player-<%= id %>' class='media-container'></div>";
+				"<div id='media-player-<%= id %>' style='width:100%;height:100%;' class='media-container'></div>";
 				return html;
 			}
 			
