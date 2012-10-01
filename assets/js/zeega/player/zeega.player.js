@@ -758,7 +758,7 @@ function(Zeega, Backbone, Layer) {
 			    switch(e.which)
 				{
 					case 27:
-						if(_this.model.editor) _this.exit(); //don't close if standalone player
+						//if(_this.model.editor) _this.exit(); //don't close if standalone player
 						break;
 					case 8:
 						if(_this.model.editor) _this.exit(); //don't close if standalone player
