@@ -1,24 +1,6 @@
-# Remove the trailing slash from routes
-DirectorySlash Off
 
 # Enable the RewriteEngine
 RewriteEngine on
-
-# Map resources to release distribution
-RewriteRule ^app/(.*)$ dist/release/$1 [NC,L]
-RewriteRule ^assets/js/libs/(.*)$ dist/release/$1 [NC,L]
-RewriteRule ^assets/css/(.*)$ dist/release/$1 [NC,L]
-RewriteRule ^zeegaapi/(.*)$ http://50.57.99.175/api/$1 [P]
-
-# These conditions ensure that the file does not exist and that the current
-# request URI is not the index.
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !index
-
-# Redirect remaining requests to the index.html file
-#Redirect /index.html /comingsoon.html
-#RewriteRule (.*) comingsoon.html [NC,L]
 
 RewriteBase /
 # Check if this is the noredirect query string
@@ -52,5 +34,25 @@ RewriteCond %{REQUEST_URI} !mobile
 #RewriteCond %{HTTP_COOKIE}        !^.*mredir=0.*$ [NC]
 
 # Now redirect to the mobile site
-RewriteRule ^ http://planettakeout.org/mobile [R,L,NE]
+RewriteRule ^ /mobile.html [R,L,NE]
+
+# Remove the trailing slash from routes
+DirectorySlash Off
+
+
+# Map resources to release distribution
+RewriteRule ^app/(.*)$ dist/release/$1 [NC,L]
+RewriteRule ^assets/js/libs/(.*)$ dist/release/$1 [NC,L]
+RewriteRule ^assets/css/(.*)$ dist/release/$1 [NC,L]
+RewriteRule ^zeegaapi/(.*)$ http://50.57.99.175/api/$1 [P]
+
+# These conditions ensure that the file does not exist and that the current
+# request URI is not the index.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !index
+
+# Redirect remaining requests to the index.html file
+#Redirect /index.html /comingsoon.html
+RewriteRule (.*) index.html [NC,L]
 
