@@ -26,7 +26,7 @@ function(Zeega, Backbone) {
 		{
 			// I should not have to put this in Zeega.player!
 			// I want this in _this.player !!
-			Zeega.player = new Zeega.Player( this.project.toJSON() );
+			Zeega.player = new Zeega.Player( _.extend(this.project.toJSON(),{viewportFull : false}) );
 			this.player = Zeega.player; // I want to remove this
 			
 			if( this.player.ready ) this.renderCitationLayout();

@@ -802,7 +802,8 @@ function(Zeega, Backbone, Layer) {
 			var viewHeight = window.innerHeight;
 
 			var initial_size = {};
-			if(this.viewportFull)
+			console.log('vf ``		viewport full', this)
+			if(this.model.get('viewportFull'))
 			{
 				if(viewWidth / viewHeight > this.viewportRatio)
 				{
