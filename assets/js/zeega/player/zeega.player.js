@@ -225,10 +225,8 @@ function(Zeega, Backbone, Layer) {
 			var _this = this;
 			this.currentFrame.unrender();
 			var playerView = this.layout.getView(function(view){ return view.model === _this });
-			playerView.$el.fadeOut( 450, function(){
-				playerView.remove();
-				_this.trigger('player_exit');
-			});
+			playerView.remove();
+			_this.trigger('player_exit');
 		},
 		
 		goToFrame : function( frameID )
