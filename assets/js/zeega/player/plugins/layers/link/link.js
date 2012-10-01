@@ -227,6 +227,10 @@ function(Zeega, Backbone, _Layer, Player){
 				'click':'goClick',
 				'mouseover' : 'onMouseOver',
 				'mouseout' : 'onMouseOut'
+			});
+			var _this = this;
+			this.$el.animate({opacity:1},1000,function(){
+				_this.$el.animate({opacity:0},1000);
 			})
 		},
 		
