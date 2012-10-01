@@ -243,6 +243,13 @@ i.PT-featured {
 #info-hover:hover .info-box {
   display: block;
 }
+.grid-key {
+  font-weight: bold;
+  color: #D3201A;
+}
+.grid-key .pull-right {
+  margin: 12px 15px 0 0;
+}
 .item-title h1 {
   font-size: 5.9em;
   line-height: 1em;
@@ -271,7 +278,7 @@ i.PT-featured {
 .grid-view-title {
   color: white;
   margin-top: 100px;
-  padding-left: 211px;
+  padding-left: 178px;
 }
 .grid-view-title h2 {
   font-size: 19px;
@@ -389,7 +396,7 @@ i.PT-featured {
   border-left: none;
 }
 .PT-modal-wide .PT-modal-title {
-  padding-left: 212px;
+  padding-left: 174px;
 }
 .PT-modal-wide .PT-modal-content-wrapper {
   padding: 0;
@@ -775,7 +782,7 @@ button.close {
 }
 #nav-upper li {
   float: left;
-  margin-left: 155px;
+  margin-left: 165px;
 }
 #nav-upper li:first-child {
   margin-left: 0;
