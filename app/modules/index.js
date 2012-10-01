@@ -53,6 +53,35 @@ function(Zeega, Backbone) {
 
 		serialize : function(){ return this.model.toJSON(); },
 
+		initialize : function()
+		{
+			var _this = this;
+			var showCitation = function()
+			{
+				if(_this.$el.is(':hidden'))
+					_this.$el.show('blind',{direction:'vertical'},500);
+			};
+			var closeCitation = function()
+			{
+				if(_this.$el.is(':visible'))
+					_this.$el.hide('blind',{direction:'vertical'},1000);
+			};
+
+			var showThrottled = _.throttle(showCitation, 1000);
+			var hideDebounce = _.debounce(closeCitation, 5000);
+
+
+			$(window).mousemove(showThrottled);
+			$(window).mousemove(hideDebounce);
+		},
+
+		cleanup : function()
+		{
+			$(window).unbind('mousemove');
+
+			//this.timeout = 
+		},
+
 		afterRender : function()
 		{
 			var _this = this;
