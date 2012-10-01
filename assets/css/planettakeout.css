@@ -246,6 +246,7 @@ i.PT-featured {
 .item-title h1 {
   font-size: 5.9em;
   line-height: 1em;
+  word-wrap: break-word;
 }
 #grid-view-wrapper {
   background: #c2d9d6;
@@ -819,10 +820,3 @@ button.close {
 #addTakeout #saveTakeout {
   margin-bottom: 0;
 }
-
-#house-special li {
-	width:272px;
-
-}
-
-
