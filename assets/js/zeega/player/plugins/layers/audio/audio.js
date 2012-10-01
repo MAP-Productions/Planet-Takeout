@@ -1,15 +1,14 @@
 define([
   "zeega",
   "backbone",
-  'zeega_layers/_layer/_layer',
-  'zeega_media_players/plyr'
+  'zeega_layers/video/video'
 ],
 
-function(zeega, Backbone, _Layer, Player){
+function(zeega, Backbone, Video){
 
 	var Layer = zeega.module();
 
-	Layer.Audio = _Layer.extend({
+	Layer.Audio = Video.Video.extend({
 		
 		layerType : 'Audio',
 
@@ -87,13 +86,12 @@ function(zeega, Backbone, _Layer, Player){
 		
 	});
 	*/
-	Layer.Audio.Visual = _Layer.Visual.extend({
+	Layer.Audio.Visual = Video.Video.Visual.extend({
 		draggable : false,
 		linkable : false,
-		render : function()
+		afterRender : function()
 		{
-			this.$el.append('<img src="/assets/img/audio-default.png" height="100%" width="100%">');
-			return this;
+			this.$el.append('<img src="/assets/img/audio-default.png" height="100%" width="100%" style="position:absolute; top:0;left:0">');
 		}
 	});
 

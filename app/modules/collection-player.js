@@ -133,7 +133,7 @@ function(Zeega, Backbone) {
 		initialize : function()
 		{
 			//swaps out the template if it's a video
-			if(this.model.get('attr').media_type == 'Video') this.template = 'citation-player';
+			if(this.model.get('attr').media_type == 'Video' || this.model.get('attr').media_type == 'Audio' ) this.template = 'citation-player';
 		},
 
 		events : {
