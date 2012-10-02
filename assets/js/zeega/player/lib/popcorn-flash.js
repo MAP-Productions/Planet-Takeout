@@ -9625,9 +9625,9 @@ Popcorn.player( "youtube", {
          {
 
           //  FORCING PLAYER SUCCESS
-          state = 1;
+          //state = 1;
           // stateChangeEventHandler has an error in it
-          console.log('pop flash- YT ready', state, stateChangeEventHandler)
+         // console.log('pop flash- YT ready', state, stateChangeEventHandler)
 
           if ( state === 1&&media.canPlay==0)
           { 
