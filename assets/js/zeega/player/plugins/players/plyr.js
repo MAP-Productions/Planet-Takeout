@@ -2,7 +2,7 @@ define([
   "zeega",
   "backbone",
 
-  'zeega_base/player/lib/popcorn-flash'
+  'libs/popcorn/popcorn-flash'
 ],
 
 function(zeega, Backbone){
