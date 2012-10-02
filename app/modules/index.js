@@ -84,24 +84,24 @@ function(Zeega, Backbone) {
 
 		afterRender : function()
 		{
-			var _this = this;
-			this.collection = new featuredItemCollection();
-			this.collection.id = this.model.get('description');
-			this.collection.fetch().success(function(){
+			// var _this = this;
+			// this.collection = new featuredItemCollection();
+			// this.collection.id = this.model.get('description');
+			// this.collection.fetch().success(function(){
 
-				_this.collection.each(function(item, i){
-					if( i > 20 ) return false;
-					item.set('collection_id', _this.collection.id);
-					var iv = new featuredItemView({
-						model:item,
-						attributes: {
-							'style': item.get('thumbnail_url') ? 'background:url('+ item.get('thumbnail_url') +');background-size:115% auto; background-position:center' : ''
-						}
-					});
-					iv.render();
-					_this.$('#featured-items-drawer').append( iv.el );
-				});
-			});
+			// 	_this.collection.each(function(item, i){
+			// 		if( i > 20 ) return false;
+			// 		item.set('collection_id', _this.collection.id);
+			// 		var iv = new featuredItemView({
+			// 			model:item,
+			// 			attributes: {
+			// 				'style': item.get('thumbnail_url') ? 'background:url('+ item.get('thumbnail_url') +');background-size:115% auto; background-position:center' : ''
+			// 			}
+			// 		});
+			// 		iv.render();
+			// 		_this.$('#featured-items-drawer').append( iv.el );
+			// 	});
+			// });
 		}
 
 	});
@@ -129,12 +129,15 @@ function(Zeega, Backbone) {
 
 		url : function()
 		{
+			return 'http://alpha.zeega.org/api/projects/1935';
+			/*
 			if( this.isNew() )
 			{
 				var projects = [1666,1665,1664,1663];
 				return localStorage.api + '/projects/'+ projects[Math.floor(Math.random() * projects.length)];
 			}
 			else return localStorage.api + '/projects/'+ this.id;
+			*/
 		},
 
 		defaults : {
