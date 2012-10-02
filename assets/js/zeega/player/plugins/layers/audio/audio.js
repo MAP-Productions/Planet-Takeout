@@ -91,7 +91,7 @@ function(zeega, Backbone, Video){
 		linkable : false,
 		afterRender : function()
 		{
-			this.$el.append('<img src="/assets/img/audio-default.png" height="100%" width="100%" style="position:absolute; top:0;left:0">');
+			this.$el.append('<img src="assets/img/audio-default.png" height="100%" width="100%" style="position:absolute; top:0;left:0">');
 		}
 	});
 
