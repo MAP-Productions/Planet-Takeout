@@ -43,6 +43,18 @@ ul.horizontal-list li {
   color: #fff;
   font-size: 75px;
 }
+#loader-tray {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  padding-top: 20%;
+}
+#loader-tray .progress-bar {
+  top: auto;
+  left: auto;
+  position: relative;
+  margin: 0 auto;
+}
 /* social media icons sprite */
 .social-icon {
   background: url(../img/sprite_social-red.png);
@@ -252,7 +264,7 @@ i.PT-featured {
 }
 .item-title h1 {
   font-size: 5.9em;
-  line-height: 1em;
+  line-height: 1.3em;
   word-wrap: break-word;
 }
 #grid-view-wrapper {
@@ -282,11 +294,11 @@ i.PT-featured {
 }
 .grid-view-title h2 {
   font-size: 19px;
-  line-height: 1em;
+  line-height: 1.3em;
 }
 .grid-view-title h1 {
   font-size: 4em;
-  line-height: 1em;
+  line-height: 1.3em;
 }
 #grid-view-slider ul {
   margin: 0;
