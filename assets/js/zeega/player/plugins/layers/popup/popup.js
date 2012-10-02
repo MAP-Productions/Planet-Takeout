@@ -143,8 +143,9 @@ function(zeega, Backbone, _Layer, Player){
 			console.log('popup clicked');
 			//launch overlay
 			
-				this.popup = new Layer.Popup.Visual.Modal({model:this.model});
+			this.popup = new Layer.Popup.Visual.Modal({model:this.model});
 
+			zeega.player.playPause();
 
 			return false;
 		},
@@ -245,6 +246,8 @@ function(zeega, Backbone, _Layer, Player){
 
 		cleanup : function()
 		{
+			zeega.player.playPause();
+
 			if(this.player)
 			{
 				this.player.pause();
