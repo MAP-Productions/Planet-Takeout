@@ -169,22 +169,23 @@ function(zeega, Backbone){
 			this.setVolume(0);
 
 			console.log('youtube stuff', _this, this.model.get('autoplay'))
+			
+			
 			this.popcorn.listen('canplaythrough',function(){
-				console.log('youtube can play', _this, this.model.get('autoplay'))
+				console.log('youtube can play', _this, _this.model.get('autoplay'))
 				_this.$el.spin(false);
 				
 				_this.model.can_play = true;
-				
-				console.log('youtube can play', _this, this.model.get('autoplay'))
-				if(this.model.get('autoplay') === false)
+
+				if(_this.model.get('autoplay') === true)
+				{
+					_this.popcorn.play();
+				}
+				else
 				{
 					console.log('youtube pause')
 					_this.popcorn.play();
 					_this.popcorn.pause();
-				}
-				else
-				{
-					_this.popcorn.play();
 				}
 				_this.model.trigger('ready', _this.model.id ) ;
 				
