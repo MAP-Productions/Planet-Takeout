@@ -9600,6 +9600,7 @@ Popcorn.player( "youtube", {
     _.each(Popcorn.guid().toString().split(''), function(num){
       guid += 'abcdefghijklmnopqrstuvwxyz'[num]
     })
+    console.log('guid:',guid);
     media.youtubeId = guid;//Math.floor( Math.random()*1000).toString(16);
   
     media.appendChild( container );
@@ -9622,6 +9623,12 @@ Popcorn.player( "youtube", {
         // more youtube callback nonsense
          stateChangeEventHandler[media.youtubeId] = function( state )
          {
+
+          //  FORCING PLAYER SUCCESS
+          state = 1;
+          // stateChangeEventHandler has an error in it
+          console.log('pop flash- YT ready', state, stateChangeEventHandler)
+
           if ( state === 1&&media.canPlay==0)
           { 
             media.canPlay=1;

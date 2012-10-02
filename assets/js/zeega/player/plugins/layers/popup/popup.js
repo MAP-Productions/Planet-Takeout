@@ -219,10 +219,11 @@ function(zeega, Backbone, _Layer, Player){
 				console.log('player', Player)
 				this.player = new Player.Player({
 					model: this.contentModel,
-					control_mode : 'standard',
-					media_target : '.popup-target'
+					control_mode : 'none',
+					media_target : '.popup-target',
+					autoplay : true
 				});
-				this.player.model.on('ready', function(){_this.player.play()})
+				//this.player.model.on('ready', function(){_this.player.play()})
 				//this.$('.popup-target').html('<img src="'+ this.contentModel.get('uri') +'"/>');
 			}
 

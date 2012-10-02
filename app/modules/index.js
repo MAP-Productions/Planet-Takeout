@@ -129,14 +129,14 @@ function(Zeega, Backbone) {
 
 		url : function()
 		{
-			//return 'http://alpha.zeega.org/api/projects/1935';
+			return 'http://alpha.zeega.org/api/projects/1935';
 			
-			if( this.isNew() )
-			{
-				var projects = [1666,1665,1664,1663];
-				return localStorage.api + '/projects/'+ projects[Math.floor(Math.random() * projects.length)];
-			}
-			else return localStorage.api + '/projects/'+ this.id;
+			// if( this.isNew() )
+			// {
+			// 	var projects = [1666,1665,1664,1663];
+			// 	return localStorage.api + '/projects/'+ projects[Math.floor(Math.random() * projects.length)];
+			// }
+			// else return localStorage.api + '/projects/'+ this.id;
 		},
 
 		defaults : {
