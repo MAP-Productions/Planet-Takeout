@@ -137,7 +137,7 @@ function(Zeega, Backbone) {
 
 		url : function()
 		{
-			//return 'http://alpha.zeega.org/api/projects/1935'; //debug project
+			return 'http://alpha.zeega.org/api/projects/1838'; //debug project
 			
 			if( this.isNew() )
 			{
