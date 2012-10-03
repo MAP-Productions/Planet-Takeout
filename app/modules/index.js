@@ -59,7 +59,10 @@ function(Zeega, Backbone) {
 			var showCitation = function()
 			{
 				if(_this.$el.is(':hidden'))
+				{
 					_this.$el.show('blind',{direction:'vertical'},500);
+					hideDebounce();
+				}
 			};
 			var closeCitation = function()
 			{
@@ -71,8 +74,13 @@ function(Zeega, Backbone) {
 			var hideDebounce = _.debounce(closeCitation, 5000);
 
 
-			$(window).mousemove(showThrottled);
-			$(window).mousemove(hideDebounce);
+			$(window).mousemove(function(e){
+				if(window.innerHeight - e.pageY < 111) showThrottled();
+			});	
+			$(window).mousemove(function(e){
+				if(window.innerHeight - e.pageY < 111) hideDebounce();
+			});
+			hideDebounce();
 		},
 
 		cleanup : function()
