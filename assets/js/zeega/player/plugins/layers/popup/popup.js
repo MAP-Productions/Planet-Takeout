@@ -142,9 +142,10 @@ function(zeega, Backbone, _Layer, Player){
 		{
 			console.log('popup clicked');
 			//launch overlay
-			if( zeega.app.previewMode )
-				this.popup = new Layer.Views.Visual.Popup.Modal({model:this.model});
+			
+			this.popup = new Layer.Popup.Visual.Modal({model:this.model});
 
+			zeega.player.playPause();
 
 			return false;
 		},
@@ -202,8 +203,7 @@ function(zeega, Backbone, _Layer, Player){
 				height: '500px',
 				'z-index': 10000,
 				position: 'relative',
-				margin: '50px auto',
-				overflow: 'hidden'
+				margin: '50px auto'
 			};
 			this.$el.html(this.template());
 			console.log( this.template() );
@@ -212,18 +212,19 @@ function(zeega, Backbone, _Layer, Player){
 			// image
 			if(this.contentModel.get('media_type') == 'Image')
 			{
-				this.$('.popup-target').html('<img src="'+ this.contentModel.get('uri') +'" width="100%"/>');
+				this.$('.popup-target').html('<img src="'+ this.contentModel.get('uri') +'" height="100%" style=""/>');
 			}
 			// video
 			else if(this.contentModel.get('media_type') == 'Video')
 			{
-				var Player = zeega.module('player');
-				this.player = new Player.Views.Player({
+				console.log('player', Player)
+				this.player = new Player.Player({
 					model: this.contentModel,
-					control_mode : 'standard',
-					media_target : '.popup-target'
+					control_mode : 'none',
+					media_target : '.popup-target',
+					autoplay : true
 				});
-				this.player.model.on('ready', function(){_this.player.play()})
+				//this.player.model.on('ready', function(){_this.player.play()})
 				//this.$('.popup-target').html('<img src="'+ this.contentModel.get('uri') +'"/>');
 			}
 
@@ -234,13 +235,19 @@ function(zeega, Backbone, _Layer, Player){
 		{
 			if(this.contentModel.get('media_type') == 'Video')
 			{
+				var _this = this;
 				this.$('.popup-target').html( this.player.render().el );
 				this.player.placePlayer();
+				this.player.popcorn.play();
+
+				//_.delay( this.player.playPause, 2000 );
 			}
 		},
 
 		cleanup : function()
 		{
+			zeega.player.playPause();
+
 			if(this.player)
 			{
 				this.player.pause();
@@ -262,7 +269,7 @@ function(zeega, Backbone, _Layer, Player){
 
 		template : function()
 		{
-			html = '<div class="popup-target"></div>';
+			html = '<div class="popup-target" style="overflow:visible;text-align:center"></div>';
 			return html;
 
 		}

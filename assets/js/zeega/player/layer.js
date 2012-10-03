@@ -89,8 +89,10 @@ function(zeega, Backbone, Layers){
 			this.typeModel.player_onPreload();
 			this.typeVisual.player_onPreload();
 		},
-		player_onPlay : function()
+		player_onPlay : function(z)
 		{
+			this.updateZIndex( z );
+
 			this.moveOnStage();
 			this.typeModel.player_onPlay();
 			this.typeVisual.player_onPlay();
@@ -171,7 +173,7 @@ function(zeega, Backbone, Layers){
 
 		updateZIndex : function( z )
 		{
-			this.typeClass.$el.css('z-index', z);
+			this.typeVisual.$el.css('z-index', z);
 		}
 
 	});

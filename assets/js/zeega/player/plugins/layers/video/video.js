@@ -90,9 +90,10 @@ function(zeega, Backbone, _Layer, Player){
 				.css({'width':'100%'});
 
 			this.$el.html( img ).css('height', this.model.get('attr').height+'%');
-			
 			return this;
 		},
+
+		afterRender : function(){},
 		
 		
 		editor_onLayerEnter : function(){},
@@ -148,6 +149,8 @@ function(zeega, Backbone, _Layer, Player){
 				this.model.typeModel.player.popcorn.listen('timeupdate',function(){ _this.onTimeUpdate() })
 				
 				this.model.player_loaded = true;
+				this.afterRender();
+
 			}
 			else
 			{

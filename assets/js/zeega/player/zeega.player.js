@@ -225,10 +225,8 @@ function(Zeega, Backbone, Layer) {
 			var _this = this;
 			this.currentFrame.unrender();
 			var playerView = this.layout.getView(function(view){ return view.model === _this });
-			playerView.$el.fadeOut( 450, function(){
-				playerView.remove();
-				_this.trigger('player_exit');
-			});
+			playerView.remove();
+			_this.trigger('player_exit');
 		},
 		
 		goToFrame : function( frameID )
@@ -758,7 +756,7 @@ function(Zeega, Backbone, Layer) {
 			    switch(e.which)
 				{
 					case 27:
-						if(_this.model.editor) _this.exit(); //don't close if standalone player
+						//if(_this.model.editor) _this.exit(); //don't close if standalone player
 						break;
 					case 8:
 						if(_this.model.editor) _this.exit(); //don't close if standalone player
@@ -802,7 +800,8 @@ function(Zeega, Backbone, Layer) {
 			var viewHeight = window.innerHeight;
 
 			var initial_size = {};
-			if(this.viewportFull)
+			console.log('vf ``		viewport full', this)
+			if(this.model.get('viewportFull'))
 			{
 				if(viewWidth / viewHeight > this.viewportRatio)
 				{

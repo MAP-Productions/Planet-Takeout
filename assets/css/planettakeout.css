@@ -43,6 +43,18 @@ ul.horizontal-list li {
   color: #fff;
   font-size: 75px;
 }
+#loader-tray {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  padding-top: 20%;
+}
+#loader-tray .progress-bar {
+  top: auto;
+  left: auto;
+  position: relative;
+  margin: 0 auto;
+}
 /* social media icons sprite */
 .social-icon {
   background: url(../img/sprite_social-red.png);
@@ -243,9 +255,17 @@ i.PT-featured {
 #info-hover:hover .info-box {
   display: block;
 }
+.grid-key {
+  font-weight: bold;
+  color: #D3201A;
+}
+.grid-key .pull-right {
+  margin: 12px 15px 0 0;
+}
 .item-title h1 {
   font-size: 5.9em;
-  line-height: 1em;
+  line-height: 1.3em;
+  word-wrap: break-word;
 }
 #grid-view-wrapper {
   background: #c2d9d6;
@@ -270,15 +290,15 @@ i.PT-featured {
 .grid-view-title {
   color: white;
   margin-top: 100px;
-  padding-left: 211px;
+  padding-left: 178px;
 }
 .grid-view-title h2 {
   font-size: 19px;
-  line-height: 1em;
+  line-height: 1.3em;
 }
 .grid-view-title h1 {
   font-size: 4em;
-  line-height: 1em;
+  line-height: 1.3em;
 }
 #grid-view-slider ul {
   margin: 0;
@@ -388,7 +408,7 @@ i.PT-featured {
   border-left: none;
 }
 .PT-modal-wide .PT-modal-title {
-  padding-left: 212px;
+  padding-left: 174px;
 }
 .PT-modal-wide .PT-modal-content-wrapper {
   padding: 0;
@@ -774,7 +794,7 @@ button.close {
 }
 #nav-upper li {
   float: left;
-  margin-left: 155px;
+  margin-left: 165px;
 }
 #nav-upper li:first-child {
   margin-left: 0;
@@ -819,10 +839,3 @@ button.close {
 #addTakeout #saveTakeout {
   margin-bottom: 0;
 }
-
-#house-special li {
-	width:272px;
-
-}
-
-

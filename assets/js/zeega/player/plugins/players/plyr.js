@@ -2,7 +2,7 @@ define([
   "zeega",
   "backbone",
 
-  'zeega_base/player/lib/popcorn-flash'
+  'libs/popcorn/popcorn-flash'
 ],
 
 function(zeega, Backbone){
@@ -168,14 +168,25 @@ function(zeega, Backbone){
 			this.addPopcornToControls();
 			this.setVolume(0);
 
+			console.log('youtube stuff', _this, this.model.get('autoplay'))
+			
+			
 			this.popcorn.listen('canplaythrough',function(){
+				console.log('youtube can play', _this, _this.model.get('autoplay'))
 				_this.$el.spin(false);
 				
 				_this.model.can_play = true;
-				
-				_this.popcorn.play();
-				_this.popcorn.pause();
 
+				if(_this.model.get('autoplay') === true)
+				{
+					_this.popcorn.play();
+				}
+				else
+				{
+					console.log('youtube pause')
+					_this.popcorn.play();
+					_this.popcorn.pause();
+				}
 				_this.model.trigger('ready', _this.model.id ) ;
 				
 				if(_this.model.get('attr').fade_in==0) _this.volume(_this.model.get('attr').volume);
@@ -210,12 +221,14 @@ function(zeega, Backbone){
 		},
 		private_onCanPlay : function()
 		{
+			console.log('vvvvvvvvvvvv can play',this.settings.autoplay && this.popcorn )
 			this.model.set('duration', this.popcorn.duration() );
 			if( _.isNull(this.model.get('cue_out')) ) this.model.set('cue_out', this.popcorn.duration() );
 			
 		},
 		onCanplay : function()
 		{
+			console.log('vvvvvvvvvvvv can play',this.settings.autoplay && this.popcorn )
 			if(this.settings.autoplay && this.popcorn) this.popcorn.play();
 		},
 		

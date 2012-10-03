@@ -3,7 +3,8 @@ define([
 	// Libs
 	"backbone",
 	// Plugins
-	'zeega_player'
+	'zeega_player',
+	'libs/jquery-ui'
 ],
 
 function(Zeega, Backbone) {
@@ -26,7 +27,7 @@ function(Zeega, Backbone) {
 		{
 			// I should not have to put this in Zeega.player!
 			// I want this in _this.player !!
-			Zeega.player = new Zeega.Player( this.project.toJSON() );
+			Zeega.player = new Zeega.Player( _.extend(this.project.toJSON(),{viewportFull : false}) );
 			this.player = Zeega.player; // I want to remove this
 			
 			if( this.player.ready ) this.renderCitationLayout();
@@ -106,6 +107,35 @@ function(Zeega, Backbone) {
 
 		serialize : function(){ return this.model.toJSON(); },
 
+		initialize : function()
+		{
+			var _this = this;
+			var showCitation = function()
+			{
+				if(_this.$('.collection-citation-content').is(':hidden'))
+					_this.$('.collection-citation-content').show('blind',{direction:'vertical'},500);
+			};
+			var closeCitation = function()
+			{
+				if(_this.$('.collection-citation-content').is(':visible'))
+					_this.$('.collection-citation-content').hide('blind',{direction:'vertical'},1000);
+			};
+
+			var showThrottled = _.throttle(showCitation, 1000);
+			var hideDebounce = _.debounce(closeCitation, 5000);
+
+
+			$(window).mousemove(showThrottled);
+			$(window).mousemove(hideDebounce);
+		},
+
+		cleanup : function()
+		{
+			$(window).unbind('mousemove');
+
+			//this.timeout = 
+		},
+
 		events : {
 			'click #PT-preview-left' : 'goLeft',
 			'click #PT-preview-right' : 'goRight'		
@@ -129,12 +159,17 @@ function(Zeega, Backbone) {
 
 		template : 'citation-static',
 		className : 'citation-view',
+		fadeOutAfter : 1000,
 
 		initialize : function()
 		{
 			//swaps out the template if it's a video
-			if(this.model.get('attr').media_type == 'Video') this.template = 'citation-player';
+			if(this.model.get('attr').media_type == 'Video' || this.model.get('attr').media_type == 'Audio' ) this.template = 'citation-player';
+			//fadeout code
+			
 		},
+
+
 
 		events : {
 			'click .play-pause' : 'playPause'
