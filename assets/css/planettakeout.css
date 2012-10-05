@@ -800,10 +800,61 @@ button.close {
   margin-left: 0;
 }
 #nav-upper .pt-logo {
-  width: 60px;
+  width: 30px;
+  height: 30px;
 }
 #nav-upper .nav-icon {
   width: 30px;
+}
+#nav-upper .pt-logo.home {
+  background-image: url("../img/pt_logo-white.png");
+  width: 60px;
+  height: 102px;
+  background-size: 100%;
+}
+#nav-upper .pt-logo.home:hover {
+  background-image: url("../img/pt_logo-red.png");
+  background-size: 100%;
+}
+#nav-upper .pt-logo.collections {
+  background-image: url("../img/icon_grid.png");
+  background-size: 100%;
+}
+#nav-upper .pt-logo.collections:hover {
+  background-image: url("../img/icon_grid-red.png");
+  background-size: 100%;
+}
+#nav-upper .pt-logo.map {
+  background-image: url("../img/icon_map.png");
+  background-size: 100%;
+}
+#nav-upper .pt-logo.map:hover {
+  background-image: url("../img/icon_map-red.png");
+  background-size: 100%;
+}
+#nav-upper .pt-logo.participate {
+  background-image: url("../img/icon_comment.png");
+  background-size: 100%;
+}
+#nav-upper .pt-logo.participate:hover {
+  background-image: url("../img/icon_comment-red.png");
+  background-size: 100%;
+}
+#nav-upper .pt-logo.menu {
+  background-image: url("../img/icon_menu.png");
+  background-size: 100%;
+}
+#nav-upper .pt-logo.menu:hover {
+  background-image: url("../img/icon_menu-red.png");
+  background-size: 100%;
+}
+#nav-upper .pt-logo.about {
+  background-image: url("../img/icon_about.png");
+  background-size: 100%;
+}
+#nav-upper .pt-logo.about:hover {
+  background-image: url("../img/icon_about-red.png");
+  background-size: 100%;
 }
 #PT-newtakout-map-wrapper {
   position: relative;
