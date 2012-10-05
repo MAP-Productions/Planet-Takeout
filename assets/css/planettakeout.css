@@ -348,6 +348,11 @@ i.PT-featured {
   font-size: 13px;
   text-align: center;
 }
+.PT-icon-play.grid {
+  position: absolute;
+  top: 35px;
+  left: 56px;
+}
 #map img {
   max-width: none;
 }
