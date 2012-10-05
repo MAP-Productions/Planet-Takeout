@@ -49,10 +49,13 @@ function(Zeega, Backbone, Modal)
 		afterRender : function()
 		{
 			var _this = this;
-
+			console.log('afterRender',this.collection.length,this.collection.itemsCount);
+			if(this.collection.length<10){
+				this.$('ul').append('<li class="call-to-participate"><div class="participate-text">add #planettakeout to your photos and videos to participate</div></li>');
+			}
 			//this.getViews().each(function(view){ view.delegateEvents() });
 
-			// infinite scroll
+			// infinite scroll needs some work!
 			this.$('#grid-view-slider').scroll(function()
 			{
 				if( _this.$('#grid-view-slider ul').height() <= -_this.$('#grid-view-slider ul').position().top + $('#grid-view-wrapper').height() )
@@ -128,11 +131,12 @@ function(Zeega, Backbone, Modal)
 
 		page : 1,
 
-		url : function(){ return localStorage.api + '/items/'+ this.collectionID +'/items'; },
+		url : function(){ return localStorage.api + '/items/'+ this.collectionID +'/items?page='+this.page; },
 
 		parse : function( res )
 		{
 			this.data = res;
+			this.itemsCount=res.items_count;
 			return res.items;
 		}
 	});
