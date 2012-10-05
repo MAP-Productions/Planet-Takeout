@@ -69,22 +69,29 @@ function(
 		{
 			initialize('player');
 			Zeega.page = new Index.Model();
+			$('.selected').removeClass('selected'); 
+			$('#pt-nav-home').addClass('selected');
 		},
 
 		viewFeatured : function(featuredID)
 		{
 			initialize('player');
 			Zeega.page = new Index.Model({featuredID: featuredID });
+			$('.selected').removeClass('selected'); 
+			$('#pt-nav-home').addClass('selected');
 		},
 
 		about : function()
 		{
 			initialize('modal');
 			Zeega.modal = new About.Model();
+			$('.selected').removeClass('selected'); 
+			$('#pt-nav-about').addClass('selected');
 		},
 		browser : function()
 		{
 			initialize('browser');
+
 		},
 		
 		mobile : function()
@@ -96,12 +103,16 @@ function(
 		{
 			initialize('page');
 			renderCollections();
+			$('.selected').removeClass('selected'); 
+			$('#pt-nav-collections').addClass('selected');
 		},
 
 		viewCollectionGrid : function( collectionID )
 		{
 			initialize('page');
 			goToItemCollection( collectionID );
+			$('.selected').removeClass('selected'); 
+			$('#pt-nav-collections').addClass('selected');
 		},
 
 		viewCollectionPlayer : function( collectionID, itemID )
@@ -130,18 +141,24 @@ function(
 		{
 			initialize('modal');
 			Zeega.modal = new Map.Model();
+			$('.selected').removeClass('selected'); 
+			$('#pt-nav-map').addClass('selected');
 		},
 
 		participate : function()
 		{
 			initialize('modal');
 			Zeega.modal = new Participate.Model();
+			$('.selected').removeClass('selected'); 
+			$('#pt-nav-participate').addClass('selected');
 		},
 
 		menu : function()
 		{
 			initialize('modal');
 			Zeega.modal = new Menu.Model();
+			$('.selected').removeClass('selected'); 
+			$('#pt-nav-menu').addClass('selected');
 
 		},
 
@@ -253,6 +270,8 @@ esp inserting the layout into the dom!
 	function goToItemCollection( collectionID )
 	{
 
+		$('.selected').removeClass('selected'); 
+		$('#pt-nav-collections').addClass('selected');
 		var items = new Grid.Collections.Items();
 
 		items.collectionID = collectionID;
