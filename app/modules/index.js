@@ -141,7 +141,7 @@ function(Zeega, Backbone) {
 			
 			if( this.isNew() )
 			{
-				var projects = [1666,1665,1664,1663];
+				var projects = [1666,1665,1992,1663];
 				return localStorage.api + '/projects/'+ projects[Math.floor(Math.random() * projects.length)];
 			}
 			else return localStorage.api + '/projects/'+ this.id;
