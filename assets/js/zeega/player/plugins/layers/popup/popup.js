@@ -212,7 +212,7 @@ function(zeega, Backbone, _Layer, Player){
 			// image
 			if(this.contentModel.get('media_type') == 'Image')
 			{
-				this.$('.popup-target').html('<img src="'+ this.contentModel.get('uri') +'" height="100%" style=""/><a style="z-index:10000;color:white;cursor:pointer;position:absolute;top:0px;right:5px;" >X</a>');
+				this.$('.popup-target').html('<img src="'+ this.contentModel.get('uri') +'" height="100%" style=""/>');
 			}
 			// video
 			else if(this.contentModel.get('media_type') == 'Video')
@@ -228,6 +228,8 @@ function(zeega, Backbone, _Layer, Player){
 				//this.$('.popup-target').html('<img src="'+ this.contentModel.get('uri') +'"/>');
 			}
 
+
+
 			return this;
 		},
 
@@ -242,6 +244,7 @@ function(zeega, Backbone, _Layer, Player){
 
 				//_.delay( this.player.playPause, 2000 );
 			}
+			this.$('.popup-target').append('<a style="z-index:10000;color:white;cursor:pointer;position:absolute;top:0px;right:5px;" >X</a>');
 		},
 
 		cleanup : function()
