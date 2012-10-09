@@ -163,7 +163,6 @@ function(Zeega, Backbone) {
 		},
 
 		parse : function(resp){
-			console.log(resp,eval("(" + resp.items[0].text + ')'));
 			return eval("(" + resp.items[0].text + ')');
 		}
 
