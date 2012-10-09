@@ -75,7 +75,9 @@ function(Zeega, Backbone, Modal)
 			var itemView;
 			if( _.include(item.get('tags'), 'pt_animatefeature') )
 			{
+
 				var info = jQuery.parseJSON( item.get('description') );
+				console.log("-------->",item,info);
 				item.set({
 					'thumbnail_url': info.gif,
 					'featured_id' : info.projectID

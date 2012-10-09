@@ -181,11 +181,11 @@ i.PT-featured {
 }
 #PT-preview-left {
   float: left;
-  opacity: .6;
+  opacity: 0.6;
 }
 #PT-preview-right {
   float: right;
-  opacity: .6;
+  opacity: 0.6;
 }
 /* featured items drawer */
 #featured-items-drawer {
@@ -265,9 +265,11 @@ i.PT-featured {
   margin: 12px 15px 0 0;
 }
 .item-title h1 {
-  font-size: 5.9em;
-  line-height: 1.3em;
+  font-size: 6.4em;
+  line-height: 1em;
   word-wrap: break-word;
+  margin: -5px;
+  margin: -5px;
 }
 #grid-view-wrapper {
   background: #c2d9d6;
