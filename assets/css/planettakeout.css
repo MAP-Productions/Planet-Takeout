@@ -181,9 +181,11 @@ i.PT-featured {
 }
 #PT-preview-left {
   float: left;
+  opacity: .6;
 }
 #PT-preview-right {
   float: right;
+  opacity: .6;
 }
 /* featured items drawer */
 #featured-items-drawer {

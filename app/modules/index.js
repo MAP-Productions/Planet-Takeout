@@ -137,14 +137,14 @@ function(Zeega, Backbone) {
 
 		url : function()
 		{
-			return 'http://alpha.zeega.org/api/projects/1767'; //debug project
+			//return 'http://alpha.zeega.org/api/items/46332'; //debug project
 			
 			if( this.isNew() )
 			{
-				var projects = [1666,1665,1992,1663];
-				return localStorage.api + '/projects/'+ projects[Math.floor(Math.random() * projects.length)];
+				var projects = [46332,47838,46333,46335];
+				return localStorage.api + '/items/'+ projects[Math.floor(Math.random() * projects.length)];
 			}
-			else return localStorage.api + '/projects/'+ this.id;
+			else return localStorage.api + '/items/'+ this.id;
 		},
 
 		defaults : {
@@ -160,6 +160,11 @@ function(Zeega, Backbone) {
 			social : false,
 			fullscreenEnabled : false,
 			fadeOutOverlays : false
+		},
+
+		parse : function(resp){
+			console.log(resp,eval("(" + resp.items[0].text + ')'));
+			return eval("(" + resp.items[0].text + ')');
 		}
 
 	});
