@@ -90,7 +90,7 @@ function(zeega, Backbone, _Layer, Player){
 					'border' : 'none',
 					'height' : this.model.get('attr').height +'%',
 					'border-radius' : '0',
-				});
+				}).addClass('zeega-popup-layer');
 
 			if( this.model.get('attr').popup_target )
 			{
@@ -212,7 +212,7 @@ function(zeega, Backbone, _Layer, Player){
 			// image
 			if(this.contentModel.get('media_type') == 'Image')
 			{
-				this.$('.popup-target').html('<img src="'+ this.contentModel.get('uri') +'" height="100%" style=""/>');
+				this.$('.popup-target').html('<img src="'+ this.contentModel.get('uri') +'" height="100%" style=""/><a style="z-index:10000;color:white;cursor:pointer;position:absolute;top:0px;right:5px;" >X</a>');
 			}
 			// video
 			else if(this.contentModel.get('media_type') == 'Video')

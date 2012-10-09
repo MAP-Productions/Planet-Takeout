@@ -897,6 +897,9 @@ button.close {
   background-image: url("../img/icon_about-red.png");
   background-size: 100%;
 }
+.zeega-popup-layer:hover {
+  opacity: 1 !important;
+}
 #PT-newtakout-map-wrapper {
   position: relative;
   float: left;
