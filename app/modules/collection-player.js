@@ -143,7 +143,7 @@ function(Zeega, Backbone) {
 
 		events : {
 			'click #PT-preview-left' : 'goLeft',
-			'click #PT-preview-right' : 'goRight'		
+			'click #PT-preview-right' : 'goRight'
 		},
 
 		goLeft : function()
@@ -157,8 +157,9 @@ function(Zeega, Backbone) {
 			return false;
 		}
 
-	});
+		
 
+	});
 
 	var CitationView = Backbone.LayoutView.extend({
 
@@ -174,10 +175,9 @@ function(Zeega, Backbone) {
 			
 		},
 
-
-
 		events : {
-			'click .play-pause' : 'playPause'
+			'click .play-pause' : 'playPause',
+			'click .share-item' : 'shareItem'	
 		},
 
 		playPause : function()
@@ -191,9 +191,36 @@ function(Zeega, Backbone) {
 			return false;
 		},
 
+		shareItem : function()
+		{
+			var shareModal = new ShareModal({model:this.model});
+			shareModal.render();
+			$('body').append(shareModal.el);
+			return false;
+		},
+
 		serialize : function(){ return this.model.toJSON(); }
 	});
 
+	var ShareModal = Backbone.LayoutView.extend({
+
+		template : 'share',
+		className : 'modal-share PT-modal-overlay',
+		serialize: function()
+		{
+			return this.model.toJSON();
+		},
+
+		events : {
+			'click .close-modal' : 'closeModal'
+		},
+
+		closeModal : function()
+		{
+			this.remove();
+			return false;
+		}
+	});
 
 	var Project = Backbone.Model.extend({
 

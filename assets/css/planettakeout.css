@@ -804,6 +804,20 @@ button.close {
   text-decoration: none;
   color: rgba(211, 32, 26, 0.6);
 }
+.PT-modal-content-wrapper-plain {
+  text-align: center;
+}
+.PT-modal-content-wrapper-plain .share-icons img {
+  width: 150px;
+  opacity: 0.75;
+}
+.PT-modal-content-wrapper-plain .share-icons img:hover {
+  opacity: 1;
+}
+.PT-modal-content-wrapper-plain .close-modal {
+  float: right;
+  color: white;
+}
 #nav-upper {
   z-index: 1000000;
   position: absolute;
