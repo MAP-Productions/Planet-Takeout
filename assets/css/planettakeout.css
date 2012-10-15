@@ -357,6 +357,12 @@ i.PT-featured {
   top: 35px;
   left: 56px;
 }
+.collection-featured-chile {
+  position: absolute;
+  text-align: center;
+  left: 16px;
+  top: 20px;
+}
 #map img {
   max-width: none;
 }
