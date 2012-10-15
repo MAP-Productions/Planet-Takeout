@@ -125,8 +125,13 @@ function(Zeega, Backbone) {
 			var hideDebounce = _.debounce(closeCitation, 5000);
 
 
-			$(window).mousemove(showThrottled);
-			$(window).mousemove(hideDebounce);
+			$(window).mousemove(function(e){
+				if(window.innerHeight - e.pageY < 111) showThrottled();
+			});	
+			$(window).mousemove(function(e){
+				if(window.innerHeight - e.pageY < 111) hideDebounce();
+			});
+			hideDebounce();
 		},
 
 		cleanup : function()
