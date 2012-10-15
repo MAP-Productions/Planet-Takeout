@@ -363,6 +363,12 @@ i.PT-featured {
   left: 16px;
   top: 20px;
 }
+.video-item-overlay {
+  position: absolute;
+  text-align: center;
+  left: 38px;
+  top: 23px;
+}
 #map img {
   max-width: none;
 }
