@@ -171,7 +171,7 @@ function(Zeega, Backbone, Layer) {
 		editor : true,
 		has_played : false,
 		PRELOAD_ON_SEQUENCE : 2, // will preload n frames ahead/behind in sequence
-		DELAY_AFTER_LOAD : 5000,
+		DELAY_AFTER_LOAD : 0,
 
 		initialize : function()
 		{
@@ -484,7 +484,7 @@ function(Zeega, Backbone, Layer) {
 			_.delay(function(){
 				_this.status = 'ready';
 				_this.trigger('ready',_this.id);
-			},5000);
+			},10);
 		},
 
 		play : function()
@@ -1028,7 +1028,12 @@ function(Zeega, Backbone, Layer) {
 				.animate({width : this.loadedCount/this.model.get('layers').length * 100 +'%' },2000)
 				.animate({width : this.loadedCount*1.5/this.model.get('layers').length * 100 +'%' },100000);
 			
-			if(this.model.isLoaded() ) _.delay( function(){_this.fadeOut()}, 5000 );
+			//if(this.model.isLoaded() ) _.delay( function(){_this.fadeOut()}, 10 );
+			if(this.model.isLoaded()){
+				var _this = this;
+				$(this.el).hide();
+				this.remove(); 
+			}
 		},
 		
 		fadeOut : function()
