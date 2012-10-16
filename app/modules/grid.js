@@ -51,7 +51,7 @@ function(Zeega, Backbone, Modal)
 			var _this = this;
 			console.log('afterRender',this.collection.length,this.collection.itemsCount);
 			if(this.collection.length<10){
-				this.$('ul').append('<li class="call-to-participate"><div class="participate-text">add #planettakeout to your photos and videos to participate</div></li>');
+				this.$('ul').append('<li class="call-to-participate"><div class="participate-text"><a href ="#participate">add #planettakeout to your photos and videos to participate</a></div></li>');
 			}
 			//this.getViews().each(function(view){ view.delegateEvents() });
 

@@ -347,10 +347,13 @@ i.PT-featured {
   background-repeat: no-repeat !important;
 }
 .participate-text {
-  font-weight: bold;
   padding: 8px;
-  font-size: 13px;
   text-align: center;
+}
+.participate-text a {
+  font-weight: bold;
+  color: red;
+  font-size: 13px;
 }
 .PT-icon-play.grid {
   position: absolute;
@@ -805,21 +808,28 @@ button.close {
   text-decoration: none;
   color: rgba(211, 32, 26, 0.6);
 }
-.PT-modal-content-wrapper-plain {
-  text-align: center;
+/*
+.PT-modal-content-wrapper-plain
+{
+  text-align:center;
+
+  .share-icons img
+  {
+    width:150px;
+    opacity:0.75;
+    &:hover
+    {
+      opacity:1;
+    }
+  }
+  .close-modal
+  {
+    float:right;
+    color:white;
+  }
 }
-.PT-modal-content-wrapper-plain .share-icons img {
-  width: 150px;
-  opacity: 0.75;
-}
-.PT-modal-content-wrapper-plain .share-icons img:hover {
-  opacity: 1;
-}
-.PT-modal-content-wrapper-plain .close-modal {
-  float: right;
-  color: white;
-}
-#nav-upper {
+
+*/#nav-upper {
   z-index: 1000000;
   position: absolute;
   height: 100px;
