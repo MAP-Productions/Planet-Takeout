@@ -430,6 +430,7 @@ i.PT-featured {
   border-left: 1px solid #999;
   padding: 15px;
   position: relative;
+  min-height: 900px;
   background: #c2d9d6;
   background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, from(#9aebe7), to(#ffd8ab));
   background-image: -webkit-linear-gradient(left, #9aebe7, #ffd8ab);
