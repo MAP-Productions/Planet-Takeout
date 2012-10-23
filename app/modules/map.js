@@ -92,6 +92,10 @@ function(Zeega, Backbone, Modal)
 			this.collection.fetch().success(function(){
 				renderMarkers();
 			});
+
+			$('#PT-map-search').keypress(function(e){
+				if(e.which==13) _this.lookup();
+			});
 		},
 
 		onMarkerClick : function(e)
@@ -108,7 +112,22 @@ function(Zeega, Backbone, Modal)
 				'background': item.get('thumbnail_url') ? 'url('+ item.get('thumbnail_url') +')' : 'grey',
 				'background-size' : '100% auto'
 			});
-		}
+		},
+		lookup : function(  )
+		{
+			var geocoder = new google.maps.Geocoder();
+			var location = $('#PT-map-search').val();
+			var map = this.map;
+			geocoder.geocode( { 'address': location}, function(results, status) {
+				if ( status == google.maps.GeocoderStatus.OK )
+				{
+					var center = new L.LatLng(results[0].geometry.location.lat(),results[0].geometry.location.lng());
+					map.setView( center,13,true );
+				}
+				else console.log("Geocoder failed at address look for "+ $('#PT-newtakout-map-submit').val()+": " + status);
+			});
+			
+		},
 
 	});
 
