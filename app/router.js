@@ -53,6 +53,7 @@ function(
 			'collections/:collection_id/view/' : 'viewCollectionPlayer',
 			'collections/:collection_id/view/:item_id' : 'viewCollectionPlayer',
 			'collections/:collection_id/view/:item_id/' : 'viewCollectionPlayer',
+			'collections/:collection_id/view/:item_id/page/:page' : 'viewCollectionPlayer',
 
 			'featured' : 'index',
 			'featured/' : 'index',
@@ -115,13 +116,14 @@ function(
 			$('#pt-nav-collections').addClass('selected');
 		},
 
-		viewCollectionPlayer : function( collectionID, itemID )
+		viewCollectionPlayer : function( collectionID, itemID, page )
 		{
+			
 			if( !Zeega.page || Zeega.page.player && Zeega.page.player.id != collectionID )
 			{
 				var createNewPlayer = function()
 				{
-					Zeega.page = new CollectionPlayer.Model({id: collectionID, frameID: itemID });
+					Zeega.page = new CollectionPlayer.Model({id: collectionID, frameID: itemID,page:page });
 				};
 
 				if( Zeega.player ) Zeega.player.on('player_exit', createNewPlayer);

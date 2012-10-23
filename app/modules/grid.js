@@ -16,6 +16,7 @@ function(Zeega, Backbone, Modal)
 
 		initialize : function()
 		{
+			this.scrollActive=true;
 			this.template = this.options.type == 'items' ? 'item-grid-layout' : 'collection-grid-layout';
 			if(Zeega.grid) Zeega.grid.remove();
 			this.collection.on('reset',this.onReset, this);
@@ -28,13 +29,23 @@ function(Zeega, Backbone, Modal)
 
 		onReset : function()
 		{
+
 			var _this = this;
 			var itemArray = _.reject( _.toArray(this.collection), function(item){ return item.get('rendered'); });
-			_.each( itemArray, function(item){
-				var itemView = _this.getView(item);
-				_this.insertView('ul.list', itemView );
-				itemView.render();
+			this.collection.each(function(item){
+				if(_.isUndefined(item.get('rendered'))){
+					item.set('rendered', true);
+					item.set('page',_this.collection.page);
+					item.set('collection_id', _this.collection.collectionID);
+					console.log('insertingview',_this.getView(item));
+					console.log(item);
+					var view = _this.getView(item);
+					_this.$el.find( 'ul.list').append(view.el);
+					view.render();
+				}
 			});
+
+
 		},
 
 		beforeRender : function()
@@ -42,6 +53,7 @@ function(Zeega, Backbone, Modal)
 			var _this = this;
 			this.collection.each(function(item){
 				item.set('rendered', true);
+				item.set('page',_this.collection.page);
 				_this.insertView( 'ul.list', _this.getView(item) );
 			});
 		},
@@ -56,15 +68,17 @@ function(Zeega, Backbone, Modal)
 			//this.getViews().each(function(view){ view.delegateEvents() });
 
 			// infinite scroll needs some work!
-			this.$('#grid-view-slider').scroll(function()
+			this.$('#grid-view-wrapper').scroll(function()
 			{
-				if( _this.$('#grid-view-slider ul').height() <= -_this.$('#grid-view-slider ul').position().top + $('#grid-view-wrapper').height() )
+				if(_this.scrollActive&&(_this.$('#grid-view-slider ul').height() <= -_this.$('#grid-view-slider ul').position().top + $('#grid-view-wrapper').height()) )
 				{
-					if(_this.collection.length < _this.collection.itemsCount )
+					
+					if((_this.collection.length < _this.collection.itemsCount) )
 					{
+						_this.scrollActive=false;
 						console.log('infinitely load!');
 						_this.collection.page++;
-						_this.collection.fetch({add:true}).success(function(){ _this.collection.trigger('reset');});
+						_this.collection.fetch({add:true}).success(function(){ console.log(_this.collection);_this.onReset(); _this.scrollActive=true;});
 					}
 				}
 			});
