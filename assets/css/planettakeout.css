@@ -432,6 +432,8 @@ i.PT-featured {
   width: 100%;
 }
 .PT-menu-column {
+  font-family: 'PT-black', sans-serif;
+  font-size: 10px;
   width: 33.3333%;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -439,7 +441,7 @@ i.PT-featured {
   border-left: 1px solid #999;
   padding: 15px;
   position: relative;
-  min-height: 900px;
+  min-height: 950px;
   background: #c2d9d6;
   background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, from(#9aebe7), to(#ffd8ab));
   background-image: -webkit-linear-gradient(left, #9aebe7, #ffd8ab);
@@ -551,7 +553,7 @@ i.PT-featured {
   background-position: -25px -25px;
   width: 85px;
   height: 45px;
-  top: 60px;
+  top: 82px;
   left: 0px;
 }
 .PT-menu .house-specials-splash {
