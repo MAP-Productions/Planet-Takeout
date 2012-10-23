@@ -544,6 +544,26 @@ i.PT-featured {
   vertical-align: bottom;
   line-height: 28px;
 }
+.PT-menu .featured-splash {
+  position: absolute;
+  z-index: 100;
+  background-image: url(../img/featured_specials.png);
+  background-position: -25px -25px;
+  width: 85px;
+  height: 45px;
+  top: 60px;
+  left: 0px;
+}
+.PT-menu .house-specials-splash {
+  position: absolute;
+  z-index: 100;
+  background-image: url(../img/featured_specials.png);
+  background-position: -25px -102px;
+  width: 91px;
+  height: 55px;
+  top: 66px;
+  left: 4px;
+}
 .PT-menu img.flourish {
   display: block;
   margin: 0 auto;
