@@ -384,23 +384,28 @@ i.PT-featured {
 .leaflet-popup-content-wrapper {
   height: 110px;
   width: 180px;
-  border: 8px solid whiteSmoke;
+  border: 8px solid;
   box-sizing: border-box;
 }
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
   background: transparent;
+  border-color:rgba(222,55,31,1);
+
 }
 .leaflet-popup-tip-container {
   height: auto;
   width: auto;
+
 }
 .leaflet-popup-tip {
   border-width: 55px 22px 0;
   border-style: solid;
-  border-color: #fff transparent;
+  border-color: #de371f transparent;
+
   display: block;
   width: 0;
+ 
   -moz-transform: rotate(0deg);
   -webkit-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
@@ -808,28 +813,21 @@ button.close {
   text-decoration: none;
   color: rgba(211, 32, 26, 0.6);
 }
-/*
-.PT-modal-content-wrapper-plain
-{
-  text-align:center;
-
-  .share-icons img
-  {
-    width:150px;
-    opacity:0.75;
-    &:hover
-    {
-      opacity:1;
-    }
-  }
-  .close-modal
-  {
-    float:right;
-    color:white;
-  }
+.PT-modal-content-wrapper-plain {
+  text-align: center;
 }
-
-*/#nav-upper {
+.PT-modal-content-wrapper-plain .share-icons img {
+  width: 150px;
+  opacity: 0.75;
+}
+.PT-modal-content-wrapper-plain .share-icons img:hover {
+  opacity: 1;
+}
+.PT-modal-content-wrapper-plain .close-modal {
+  float: right;
+  color: white;
+}
+#nav-upper {
   z-index: 1000000;
   position: absolute;
   height: 100px;
