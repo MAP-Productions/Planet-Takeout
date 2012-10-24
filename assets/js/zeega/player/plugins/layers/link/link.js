@@ -229,9 +229,12 @@ function(Zeega, Backbone, _Layer, Player){
 				'mouseout' : 'onMouseOut'
 			});
 			var _this = this;
+			/*
 			this.$el.animate({opacity:1},1000,function(){
 				_this.$el.animate({opacity:0},1000);
 			})
+*/
+
 		},
 		
 		getTemplate : function()
