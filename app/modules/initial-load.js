@@ -17,13 +17,13 @@ function(Zeega, Backbone) {
 
 			this.elem = {
 				progressBar : this.$('#progressBar'),
-				slides : this.$('#slides div')
+				slides : this.$('#loaderSlides div')
 			};
 
 			this.numSlides = this.elem.slides.length;
 			this.currentSlide = 1;
 
-			var animLength = 6000; // how long to spend animating the cat and going through the info slides
+			var animLength = 18000; // how long to spend animating the cat and going through the info slides
 
 
 			this.elem.progressBar.animate({
@@ -39,7 +39,7 @@ function(Zeega, Backbone) {
 			if (position > this.currentSlide) {
 				this.currentSlide = position;
 
-				this.elem.slides.eq(position - 1).fadeIn(400).siblings().fadeOut(400);
+				this.elem.slides.eq(position - 1).fadeIn(500).siblings('div').fadeOut(500);
 			}
 		}
 	});

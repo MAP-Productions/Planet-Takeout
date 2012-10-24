@@ -55,46 +55,6 @@ ul.horizontal-list li {
   position: relative;
   margin: 0 auto;
 }
-#initialLoadOverlay {
-  background: #040707;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 3000000;
-}
-#initialLoad {
-  width: 705px;
-  height: 507px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: -352px;
-  margin-top: -253px;
-}
-#catProgress {
-  width: 246px;
-  height: 321px;
-  background: url(../img/progress-cats.png);
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-#catProgress #progressBar {
-  background: url(../img/progress-cats.png) bottom;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 246px;
-  height: 0%;
-}
-#slides {
-  margin-left: 300px;
-}
-#slides div {
-  color: #fff;
-}
 /* social media icons sprite */
 .social-icon {
   background: url(../img/sprite_social-red.png);
@@ -175,6 +135,89 @@ i.PT-featured {
   src: url('fonts/equo_black_ps-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/equo_black_ps-webfont.woff') format('woff'), url('fonts/equo_black_ps-webfont.ttf') format('truetype'), url('fonts/equo_black_ps-webfont.svg#equo_psblack') format('svg');
   font-weight: normal;
   font-style: normal;
+}
+#initialLoadOverlay {
+  background: #040707;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 3000000;
+}
+#initialLoad {
+  width: 705px;
+  height: 507px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -352px;
+  margin-top: -253px;
+}
+#initialLoad .logos {
+  position: absolute;
+  bottom: 0;
+  left: 110px;
+}
+#initialLoad #catProgress {
+  width: 246px;
+  height: 321px;
+  background: url(../img/progress-cats.png);
+  position: absolute;
+  left: 0;
+  top: 30px;
+}
+#catProgress #progressBar {
+  background: url(../img/progress-cats.png) bottom;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 246px;
+  height: 0%;
+}
+#initialLoad #loaderSlides {
+  margin-left: 300px;
+  width: 395px;
+  height: 200px;
+  border-radius: 18px;
+  background: #c0c1c1;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+#initialLoad #loaderSlides .tab {
+  width: 41px;
+  height: 35px;
+  background: url(../img/intro-slides-tab.png);
+  position: absolute;
+  left: -41px;
+  top: 84px;
+}
+#initialLoad #loaderSlides div {
+  color: #fff;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 18px;
+}
+#initialLoad #loaderSlides p {
+  color: #040707;
+  font-size: 26px;
+  line-height: 1.5em;
+  font-family: 'PT-Black';
+}
+#initialLoad #loaderSlides h1 {
+  color: #040707;
+  font-size: 26px;
+  line-height: 1.5em;
+  font-family: 'PT-Black';
+  font-weight: normal;
+  margin-top: 1em;
+}
+#initialLoad #loaderSlides h1 strong {
+  display: block;
+  font-size: 1.5em;
+  line-height: 1.5em;
 }
 .PT-feature-thumb {
   width: 120px;
