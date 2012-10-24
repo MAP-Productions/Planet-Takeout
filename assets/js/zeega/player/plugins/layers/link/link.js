@@ -101,13 +101,11 @@ function(Zeega, Backbone, _Layer, Player){
 				'overflow' : 'visible',
 				'cursor' : 'pointer',
 				'z-index' : 100,
-				'width' : 'auto',
-				'height' : 'auto',
 				'border' : 'none',
 				'border-radius' : '0',
 				'height' : this.model.get('attr').height +'%',
 				'width' : this.model.get('attr').width +'%'
-			}
+			};
 
 			this.$el.removeClass('link-arrow-right link-arrow-down link-arrow-up link-arrow-left');
 
@@ -129,7 +127,7 @@ function(Zeega, Backbone, _Layer, Player){
 				_.extend( style, {
 					'border' : '2px dashed orangered',
 					'border-radius' : '6px'
-				})
+				});
 			}
 			
 			
@@ -147,13 +145,13 @@ function(Zeega, Backbone, _Layer, Player){
 
 		onMouseOver : function()
 		{
-			console.log('link on mouseover')
+			console.log('link on mouseover');
 			this.$el.stop().fadeTo( 500, this.model.get('attr').opacity_hover );
 		},
 
 		onMouseOut : function()
 		{
-			console.log('link on mouseover')
+			console.log('link on mouseover');
 			this.$el.stop().fadeTo( 500, this.model.get('attr').opacity );
 		},
 		
@@ -193,9 +191,9 @@ function(Zeega, Backbone, _Layer, Player){
 					_this.model.update({
 						'width' : $(this).width() / $(this).parent().width() * 100,
 						'height' : $(this).height() / $(this).parent().height() * 100
-					})
+					});
 				}
-			})
+			});
 		
 			this.makeResizable();
 			this.delegateEvents();
@@ -240,7 +238,10 @@ function(Zeega, Backbone, _Layer, Player){
 		getTemplate : function()
 		{
 			var html = '';
-				if( !this.preview && !_.isNull( this.model.get('attr').to_sequence ) ) html += '<i class="icon-share go-to-sequence"></i>';		
+				if( !this.preview && !_.isNull( this.model.get('attr').to_sequence ) )
+				{
+					html += '<i class="icon-share go-to-sequence"></i>';
+				}
 			return html;
 		}
 		
@@ -249,4 +250,4 @@ function(Zeega, Backbone, _Layer, Player){
 	
 	return Layer;
 
-})
+});
