@@ -2,6 +2,7 @@ define([
 	// Application.
 	"zeega",
 	// Modules.
+	'modules/initial-load',
 	'modules/about',
 	'modules/grid',
 	'modules/index',
@@ -19,6 +20,7 @@ define([
 // generic App used
 function(
 	Zeega,
+	InitialLoad,
 	About,
 	Grid,
 	Index,
@@ -216,6 +218,11 @@ esp inserting the layout into the dom!
 		baseLayout.setView('#nav-upper', nav );
 		baseLayout.render();
 		nav.render();
+
+		// temporary for initial loading screen with cat
+		var loader = new InitialLoad.View();
+		baseLayout.setView('#app-base', loader );
+		loader.render();
 	}
 
 	// happens on every router change

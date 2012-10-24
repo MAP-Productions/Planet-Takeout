@@ -55,6 +55,46 @@ ul.horizontal-list li {
   position: relative;
   margin: 0 auto;
 }
+#initialLoadOverlay {
+  background: #040707;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 3000000;
+}
+#initialLoad {
+  width: 705px;
+  height: 507px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -352px;
+  margin-top: -253px;
+}
+#catProgress {
+  width: 246px;
+  height: 321px;
+  background: url(../img/progress-cats.png);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#catProgress #progressBar {
+  background: url(../img/progress-cats.png) bottom;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 246px;
+  height: 0%;
+}
+#slides {
+  margin-left: 300px;
+}
+#slides div {
+  color: #fff;
+}
 /* social media icons sprite */
 .social-icon {
   background: url(../img/sprite_social-red.png);
