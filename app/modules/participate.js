@@ -50,7 +50,11 @@ function(Zeega, Backbone, Modal)
 			'click #addTakeoutTab': 'initAddTakeout',
 			'click #keepInTouchTab': 'initKeepInTouch',
 			'click #saveTakeout': 'saveStreetView',
-			'click #PT-newtakout-search-submit' : 'lookup'
+			'click #PT-newtakout-search-submit' : 'lookup',
+			'click #tell-your-story':'tellYourStory'
+		},
+		tellYourStory:function(){
+			$('#tellStoryTab').trigger('click');
 		},
 
 		switchInfoTab: function(e)
