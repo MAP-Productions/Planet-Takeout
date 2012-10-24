@@ -461,6 +461,9 @@ i.PT-featured {
 .PT-menu h2 {
   margin: 11px 0 16px;
 }
+#house-special li {
+  width: 270px !important;
+}
 .PT-menu h3 {
   font-size: 13px;
   line-height: 1em;
