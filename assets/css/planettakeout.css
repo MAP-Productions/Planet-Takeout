@@ -960,14 +960,28 @@ button.close {
   width: 1000px;
 }
 #nav-upper a {
-  opacity: 0.85;
+  position: relative;
+}
+#nav-upper a span {
+  color: #de3620;
+  display: none;
+  font-family: 'PT-black';
+  letter-spacing: 0.05em;
+  position: absolute;
+  right: 7px;
+  text-align: right;
+  top: -25px;
+  width: 145px;
 }
 #nav-upper a:hover {
   opacity: 1;
 }
+#nav-upper a:hover span {
+  display: block;
+}
 #nav-upper li {
   float: left;
-  margin-left: 165px;
+  margin-left: 158px;
 }
 #nav-upper li:first-child {
   margin-left: 0;
