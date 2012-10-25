@@ -11,7 +11,7 @@ function(Zeega, Backbone) {
 	InitialLoad.View = Backbone.LayoutView.extend({
 		template : 'initial-load',
 		initialize : function() {
-			_.bindAll(this, 'afterRender', 'onAnimStep');
+			_.bindAll(this, 'afterRender', 'cycleSlides');
 		},
 		afterRender : function() {
 			var _this=this;
@@ -21,22 +21,21 @@ function(Zeega, Backbone) {
 			};
 
 			this.numSlides = this.elem.slides.length;
-			this.currentSlide = 1;
+			this.currentSlide = 0;
+			this.animLength = 15000; // how long to spend animating the cat and going through the info slides
 
-			var animLength = 14000; // how long to spend animating the cat and going through the info slides
 			function setCookie(c_name,value,exdays){
 				var exdate=new Date();
 				exdate.setDate(exdate.getDate() + exdays);
-				var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+				var c_value=escape(value) + ((exdays===null) ? "" : "; expires="+exdate.toUTCString());
 				document.cookie=c_name + "=" + c_value;
 			}
-
+			this.cycleSlides();
 			this.elem.progressBar.animate({
 				height: '100%'
 			},
 			{
-				duration: animLength,
-				step: this.onAnimStep,
+				duration: this.animLength,
 				complete:function(){
 					console.log('finished anim');
 					_this.remove();
@@ -45,15 +44,15 @@ function(Zeega, Backbone) {
 					if(Zeega.player) Zeega.player.play();
 
 				}
-			}, animLength);
+			});
 		},
-		onAnimStep: function(now, fx) {
-
-			var position =  Math.ceil(now/100 * this.numSlides);
-			if (position > this.currentSlide) {
-				this.currentSlide = position;
-
-				this.elem.slides.eq(position - 1).fadeIn(500).siblings('div').fadeOut(500);
+		cycleSlides : function() {
+			if (this.currentSlide > 0) {
+				this.elem.slides.eq(this.currentSlide).fadeIn(400).siblings().fadeOut(400);
+			}
+			if (this.currentSlide < (this.numSlides - 1) ) {
+				this.currentSlide += 1
+				setTimeout(this.cycleSlides, (this.animLength / this.numSlides));
 			}
 		}
 	});
