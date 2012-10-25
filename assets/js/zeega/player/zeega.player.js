@@ -517,7 +517,7 @@ function(Zeega, Backbone, Layer) {
 
 		isLoaded : function()
 		{
-			var statusArray = _.map(_.toArray(this.layers),function(layer){ return layer.status });
+			var statusArray = _.map(_.toArray(this.layers),function(layer){ return layer.status; });
 			if( _.include(statusArray,'loading') || _.include(statusArray,'waiting') ) return false;
 			else return true;
 		},
@@ -537,7 +537,8 @@ function(Zeega, Backbone, Layer) {
 			// draw and update layer media
 			_.each( this.get('layers'), function(layerID,z){
 				var layer = _this.layers.get(layerID);
-				if( _.include(_this.commonLayers, layerID) ) layer.updateZIndex( z );
+				//console.log('++++++++++render layer',_this.commonLayers,_this.commonLayers[fromFrameID], _this, fromFrameID, layerID,z,_.include(_this.commonLayers, layerID) );
+				if( _.include(_this.commonLayers[fromFrameID], layerID) ) layer.updateZIndex( z );
 				else layer.trigger('player_play', z );
 			});
 
@@ -548,7 +549,7 @@ function(Zeega, Backbone, Layer) {
 			var _this = this;
 			this.isPlaying = false;
 
-			var layersToUnrender = _.without( this.get('layers'), this.commonLayers[toFrameID] );
+			var layersToUnrender = _.difference( this.get('layers'), this.commonLayers[toFrameID] );
 			_.each( layersToUnrender, function(layerID){
 				_this.layers.get( layerID ).trigger('player_exit');
 			});
@@ -561,7 +562,7 @@ function(Zeega, Backbone, Layer) {
 		
 		load : function()
 		{
-			var layerModels = _.map( this.get('layers'), function(layerID){ return Zeega.player.project.layers.get(layerID) });
+			var layerModels = _.map( this.get('layers'), function(layerID){ return Zeega.player.project.layers.get(layerID); });
 			this.layers = new Zeega.Player.LayerCollection( layerModels );
 
 			if(this.layers.length === 0) this.status = 'ready';
