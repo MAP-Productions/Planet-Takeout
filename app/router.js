@@ -3,6 +3,7 @@ define([
 	"zeega",
 	// Modules.
 	'modules/initial-load',
+	'modules/featured-intro',
 	'modules/about',
 	'modules/grid',
 	'modules/index',
@@ -21,6 +22,7 @@ define([
 function(
 	Zeega,
 	InitialLoad,
+	FeaturedIntro,
 	About,
 	Grid,
 	Index,
@@ -235,6 +237,15 @@ esp inserting the layout into the dom!
 			loader.render();
 			
 		}
+
+		/* temp! this is to show how to use the FeaturedIntro view */
+		/*
+		var featuredIntro = new FeaturedIntro.View();
+		featuredIntro.takeoutName = 'Peking House';
+
+		baseLayout.setView('#app-base', featuredIntro );
+		featuredIntro.render();
+		*/
 
 		$(window).bind('project_loaded',function(){
 			loadingSpinner.hide();
