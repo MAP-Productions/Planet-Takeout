@@ -43,10 +43,10 @@ function(Zeega, Backbone, Layer) {
 			navbar : false,
             navbar_bottom : true,
             navbar_top : true,
- 			playerCitation : false,
+			playerCitation : false,
 			social : true,
 			viewportRatio : 4/3,
-			viewportFull : true,
+			viewportFull : true
 		},
 
 		init : function()
@@ -60,17 +60,19 @@ function(Zeega, Backbone, Layer) {
 		
 		onProjectReady : function()
 		{
+			
 			this.ready = true;
 			this.project.off('ready', this.playProject );
 			if(this.get('mode') != 'editor') this.startRouter();
 			this.project.goToFrame( this.get('frameID') );
+
 		},
 
 		parseProject : function(data)
 		{
 			this.project = new Zeega.Player.ProjectModel( data );
 			var _this = this;
-			this.project.on('all', function(e,opts){ _this.trigger(e,opts) }); //pass along events from the project model
+			this.project.on('all', function(e,opts){ _this.trigger(e,opts); }); //pass along events from the project model
 			this.project.load();
 		},
 		
@@ -104,7 +106,7 @@ function(Zeega, Backbone, Layer) {
 					//'frame/:frameID' : 'goToFrame'
 				},
 
-				goToFrame : function( frameID ){ _this.project.goToFrame(frameID) }
+				goToFrame : function( frameID ){ _this.project.goToFrame(frameID); }
 
 			});
 			this.router = new Router();
@@ -145,7 +147,7 @@ function(Zeega, Backbone, Layer) {
 		getSize : function()
 		{
 			var _this = this;
-			var playerView = this.project.layout.getView(function(view){ return view.model === _this.project });
+			var playerView = this.project.layout.getView(function(view){ return view.model === _this.project; });
 			var size = {
 				height : playerView.$('#preview-media').height(),
 				width : playerView.$('#preview-media').width()
@@ -156,15 +158,13 @@ function(Zeega, Backbone, Layer) {
 		getPosition : function()
 		{
 			var _this = this;
-			var playerView = this.project.layout.getView(function(view){ return view.model === _this.project });
+			var playerView = this.project.layout.getView(function(view){ return view.model === _this.project; });
 			return playerView.$('#preview-media').position();
 		}
 
-	})
+	});
 
-
-
-	/*	MODELS 	*/
+	/* MODELS */
 
 	Zeega.Player.ProjectModel = Backbone.Model.extend({
 			
@@ -179,7 +179,7 @@ function(Zeega, Backbone, Layer) {
 			var layerArray = [];
 			_.each( this.get('layers'), function( layerData ){
 				var layer = new Layer.Model( layerData, {player:true} );
-				layer.id = parseInt(layer.id);
+				layer.id = parseInt(layer.id,10);
 				layerArray.push( layer );
 			});
 
@@ -210,7 +210,7 @@ function(Zeega, Backbone, Layer) {
 				}
 			});
 
-			var playerView = new Zeega.Player.PlayerView({model:this})
+			var playerView = new Zeega.Player.PlayerView({model:this});
 			this.layout.insertView( playerView );
       
 			// Render the layout into the DOM.
@@ -224,7 +224,7 @@ function(Zeega, Backbone, Layer) {
 		{
 			var _this = this;
 			this.currentFrame.unrender();
-			var playerView = this.layout.getView(function(view){ return view.model === _this });
+			var playerView = this.layout.getView(function(view){ return view.model === _this; });
 			playerView.remove();
 			_this.trigger('player_exit');
 		},
@@ -241,7 +241,7 @@ function(Zeega, Backbone, Layer) {
 				frame.on('ready',this.renderFrame, this);
 				frame.renderLoader();
 			}
-			else if( frame.status = 'ready')
+			else if( frame.status == 'ready')
 			{
 				this.renderFrame( frameID );
 			}
@@ -263,7 +263,7 @@ function(Zeega, Backbone, Layer) {
 			_.each( fr.framesToPreload, function(frameID){
 				var frame = _this.frames.get(frameID);
 				if(frame.status == 'waiting') frame.preload();
-			})
+			});
 		},
 		
 		renderFrame : function(frameID)
@@ -275,7 +275,7 @@ function(Zeega, Backbone, Layer) {
 			frame.render( fromFrameID );
 
 			this.trigger('frame_rendered', frame);
-			frame.on('timeupdate', function(opts){ _this.trigger('timeupdate',opts); })
+			frame.on('timeupdate', function(opts){ _this.trigger('timeupdate',opts); });
 			this.setFrameAdvance( frameID );
 
 		},
@@ -292,15 +292,16 @@ function(Zeega, Backbone, Layer) {
 
 		play : function()
 		{
+
 			if( !this.currentFrame.isPlaying )
 			{
-				console.log('current frame', this.currentFrame, this.elapsedTime )
+				console.log('current frame', this.currentFrame, this.elapsedTime );
 				var _this = this;
 				//var remainingTime = this.currentFrame.get('attr').advance - this.elapsedTime;
-				//this.timerStarted = new Date(); 
+				//this.timerStarted = new Date();
 				//this.timer = setTimeout( function(){ _this.goRight() }, remainingTime );
 				if( this.currentFrame.get('attr').advance > 0 )
-					this.timer = setTimeout( function(){ _this.goRight() }, this.currentFrame.get('attr').advance )
+					this.timer = setTimeout( function(){ _this.goRight(); }, this.currentFrame.get('attr').advance );
 				this.currentFrame.play();
 			}
 		},
@@ -337,8 +338,8 @@ function(Zeega, Backbone, Layer) {
 				else
 				{
 					var remainingTime = this.currentFrame.get('attr').advance - this.elapsedTime;
-					this.timerStarted = new Date(); 
-					this.timer = setTimeout( function(){ _this.goRight() },remainingTime )
+					this.timerStarted = new Date();
+					this.timer = setTimeout( function(){ _this.goRight(); },remainingTime );
 				}
 			}
 			this.currentFrame.playPause();
@@ -349,15 +350,15 @@ function(Zeega, Backbone, Layer) {
 		{
 			var frame = id ? this.frames.get(id) : this.currentFrame;
 
-			if(this.timer) clearTimeout( this.t )
+			if(this.timer) clearTimeout( this.t );
 			var adv = frame.get('attr').advance;
 			if( adv > 0) //after n milliseconds
 			{
 				var _this = this;
 				this.autoAdvance = true;
 				this.elapsedTime = 0;
-				this.timerStarted = new Date(); 
-				this.timer = setTimeout( function(){ _this.goRight() },adv )
+				this.timerStarted = new Date();
+				this.timer = setTimeout( function(){ _this.goRight() },adv );
 			}
 			else this.autoAdvance = false;
 
@@ -400,13 +401,13 @@ function(Zeega, Backbone, Layer) {
 		{
 			//	make sure all referenced frames are valid
 
-			var brokenFrames = _.map( this.get('frames'), function(frameID){ 
+			var brokenFrames = _.map(this.get('frames'), function(frameID){ 
 				if( _.isUndefined( project.frames.get(frameID) ) ) return frameID;
 			});
 			if( _.compact(brokenFrames).length )
 			{
 				var frameArray = _.without( this.get('frames'), _.compact(brokenFrames) );
-				this.set('frames', frameArray)
+				this.set('frames', frameArray);
 			}
 
 			return this;
@@ -419,7 +420,7 @@ function(Zeega, Backbone, Layer) {
 
 		load : function( project )
 		{
-			this.each(function(sequence){ sequence.verify( project ).load() })
+			this.each(function(sequence){ sequence.verify( project ).load() });
 		}
 	});
 
@@ -451,9 +452,9 @@ function(Zeega, Backbone, Layer) {
 
 					layer.status = 'loading';
 					layer.player_onPreload();
-					layer.on('timeupdate', function(opts){_this.trigger('timeupdate', opts)}); //relay timeupdates to the frame
+					layer.on('timeupdate', function(opts){_this.trigger('timeupdate', opts);}); //relay timeupdates to the frame
 				}
-			})
+			});
 		},
 		
 		onLayerReady : function(id)
@@ -484,15 +485,17 @@ function(Zeega, Backbone, Layer) {
 			_.delay(function(){
 				_this.status = 'ready';
 				_this.trigger('ready',_this.id);
+				$(window).trigger('project_loaded');
 			},10);
 		},
 
 		play : function()
 		{
+			console.log('now playing this ZEEEEEEGA');
 			this.isPlaying = true;
 			_.each( _.toArray(this.layers), function(layer){
 				layer.typeVisual.play();
-			})
+			});
 		},
 
 		pause : function()
@@ -500,15 +503,16 @@ function(Zeega, Backbone, Layer) {
 			this.isPlaying = false;
 			_.each( _.toArray(this.layers), function(layer){
 				layer.typeVisual.pause();
-			})
+			});
 		},
 
 		playPause : function()
 		{
+			console.log('now playing this ZEEEEEEGA');
 			this.isPlaying = !this.isPlaying;
 			_.each( _.toArray(this.layers), function(layer){
 				layer.typeVisual.playPause();
-			})
+			});
 		},
 
 		isLoaded : function()
@@ -532,10 +536,10 @@ function(Zeega, Backbone, Layer) {
 
 			// draw and update layer media
 			_.each( this.get('layers'), function(layerID,z){
-				var layer = _this.layers.get(layerID)
+				var layer = _this.layers.get(layerID);
 				if( _.include(_this.commonLayers, layerID) ) layer.updateZIndex( z );
 				else layer.trigger('player_play', z );
-			})
+			});
 
 		},
 
@@ -547,7 +551,7 @@ function(Zeega, Backbone, Layer) {
 			var layersToUnrender = _.without( this.get('layers'), this.commonLayers[toFrameID] );
 			_.each( layersToUnrender, function(layerID){
 				_this.layers.get( layerID ).trigger('player_exit');
-			})
+			});
 		},
 
 		renderLoader : function()
@@ -560,8 +564,7 @@ function(Zeega, Backbone, Layer) {
 			var layerModels = _.map( this.get('layers'), function(layerID){ return Zeega.player.project.layers.get(layerID) });
 			this.layers = new Zeega.Player.LayerCollection( layerModels );
 
-			if( this.layers.length == 0 ) this.status = 'ready';
-
+			if(this.layers.length === 0) this.status = 'ready';
 			// determine and store connected and linked frames
 			this.getLinks();
 			// determine and store arrow state for frame (l, r, lr, none)
@@ -593,7 +596,7 @@ function(Zeega, Backbone, Layer) {
 			if( _.compact(brokenLayers).length )
 			{
 				var frameArray = _.without( this.get('frames'), _.compact(brokenLayers) );
-				this.set('layers', frameArray)
+				this.set('layers', frameArray);
 			}
 
 			return this;
@@ -621,7 +624,7 @@ function(Zeega, Backbone, Layer) {
 
 					targetArray = _.compact([before,after]);
 					_this.framesToPreload = _.union(_this.framesToPreload,targetArray,linksOut, linksIn);
-				})
+				});
 			}
 			this.framesToPreload = _.uniq(this.framesToPreload);
 
@@ -753,7 +756,7 @@ function(Zeega, Backbone, Layer) {
 			this.$('#preview-media').css( this.getWindowSize() );
 
 			$(window).bind( 'keydown', function(e){
-			    switch(e.which)
+				switch(e.which)
 				{
 					case 27:
 						//if(_this.model.editor) _this.exit(); //don't close if standalone player
@@ -762,10 +765,10 @@ function(Zeega, Backbone, Layer) {
 						if(_this.model.editor) _this.exit(); //don't close if standalone player
 						break;
 					case 37:
-						if( _this.model.autoAdvance != true ) _this.goLeft();
+						if( _this.model.autoAdvance != true) _this.goLeft();
 						break;
 					case 39:
-						if( _this.model.autoAdvance != true ) _this.goRight();
+						if( _this.model.autoAdvance != true) _this.goRight();
 						break;
 					case 32:
 						_this.playPause();
@@ -800,7 +803,7 @@ function(Zeega, Backbone, Layer) {
 			var viewHeight = window.innerHeight;
 
 			var initial_size = {};
-			console.log('vf ``		viewport full', this)
+			console.log('vf ``		viewport full', this);
 			if(this.model.get('viewportFull'))
 			{
 				if(viewWidth / viewHeight > this.viewportRatio)
@@ -819,12 +822,12 @@ function(Zeega, Backbone, Layer) {
 				if( viewWidth / viewHeight > this.viewportRatio )
 				{
 					initial_size.height = viewHeight +'px';
-					initial_size.width = viewHeight * this.viewportRatio +'px'
+					initial_size.width = viewHeight * this.viewportRatio +'px';
 				}
 				else
 				{
 					initial_size.height = viewWidth / this.viewportRatio +'px';
-					initial_size.width = viewWidth +'px'
+					initial_size.width = viewWidth +'px';
 				}
 			}
 			return initial_size;
@@ -992,6 +995,7 @@ function(Zeega, Backbone, Layer) {
 
 		render : function()
 		{
+			this.rendered=true;
 			var _this = this;
 			this.$el.html( _.template(this.getTemplate(), Zeega.player.project.toJSON() ) );
 
@@ -1003,14 +1007,14 @@ function(Zeega, Backbone, Layer) {
 					if(layer.get('attr').archive=="Dropbox") var itemType = layer.get('type').toLowerCase();
 					else var itemType = ( layer.get('attr').archive) ? layer.get('attr').archive.toLowerCase() : layer.get('type').toLowerCase();
 					
-					_this.$el.find('.progress-types ul').append('<li class="layer-load-icon-'+ layer.id +'"><i class="zitem-'+ itemType +'"></i></li>')
+					_this.$el.find('.progress-types ul').append('<li class="layer-load-icon-'+ layer.id +'"><i class="zitem-'+ itemType +'"></i></li>');
 				}
-			})
+			});
 
 			this.$el.find('.bar')
 				.stop()
 				.animate({width : 0.25/this.model.get('layers').length * 100 +'%' },200)
-				.animate({width : 0.75/this.model.get('layers').length * 100 +'%' },100000)
+				.animate({width : 0.75/this.model.get('layers').length * 100 +'%' },100000);
 
 			return this;
 		},
@@ -1029,44 +1033,47 @@ function(Zeega, Backbone, Layer) {
 				.animate({width : this.loadedCount*1.5/this.model.get('layers').length * 100 +'%' },100000);
 			
 			//if(this.model.isLoaded() ) _.delay( function(){_this.fadeOut()}, 10 );
-			if(this.model.isLoaded()){
-				var _this = this;
+			if(this.model.isLoaded()&&this.rendered){
+				this.rendered=false;
 				$(this.el).hide();
-				this.remove(); 
+				
+				this.remove();
 			}
 		},
 		
 		fadeOut : function()
 		{
 			var _this = this;
-			$(this.el).fadeOut('slow', function(){ _this.remove(); });
+			$(this.el).fadeOut('slow', function(){
+				_this.remove();
+			});
 		},
 
 		getTemplate : function()
 		{
-			html =
+			html ="";
 			
-				"<div class='progress-head'>"+
-					"<h3 class='estimate'>Planet Takeout is a participatory documentary project about the Chinese takeout as a vital cultural crossroads in Boston and beyond.</h3><br/><h6>Please be patient while we load this immersive experience.</h6>"+
-				"</div></br>"+
-				"<div class='progress progress-striped active progress-danger'>"+
-					"<div class='bar' style='width:0'></div>"+
-				"</div>";
-
 				// "<div class='progress-head'>"+
-				// 	"<h3 class='estimate'>Estimated time to experience this project. . .</h3>"+
-				// 	"<h3 class='time'><%= estimated_time %></h3>"+
-				// "</div>"+
+				// 	"<h3 class='estimate'>Planet Takeout is a participatory documentary project about the Chinese takeout as a vital cultural crossroads in Boston and beyond.</h3><br/><h6>Please be patient while we load this immersive experience.</h6>"+
+				// "</div></br>"+
 				// "<div class='progress progress-striped active progress-danger'>"+
 				// 	"<div class='bar' style='width:0'></div>"+
+				// "</div>";
+
+				// "<div class='progress-head'>"+
+				// "<h3 class='estimate'>Estimated time to experience this project. . .</h3>"+
+				// "<h3 class='time'><%= estimated_time %></h3>"+
+				// "</div>"+
+				// "<div class='progress progress-striped active progress-danger'>"+
+				// "<div class='bar' style='width:0'></div>"+
 				// "</div>"+
 				// "<div class='progress-types'>"+
-				// 	"<ul></ul>"+
+				// "<ul></ul>"+
 				// "</div>";
 			
 			return html;
 		}
-	});	
+	});
 
 
 	return Zeega;

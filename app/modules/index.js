@@ -3,10 +3,13 @@ define([
 	// Libs
 	"backbone",
 	// Plugins
-	'zeega_player'
+	'zeega_player',
+
+	// Submodules.
+	'modules/submodules/loadingspinner'
 ],
 
-function(Zeega, Backbone) {
+function(Zeega, Backbone,Player,loadingSpinner) {
 
 	// Create a new module
 	var Index = Zeega.module();
@@ -15,6 +18,7 @@ function(Zeega, Backbone) {
 
 		initialize : function()
 		{
+			
 			var _this = this;
 			this.project = new Project();
 			this.project.id = this.get('featuredID');
@@ -31,6 +35,7 @@ function(Zeega, Backbone) {
 
 		renderCitation : function()
 		{
+			loadingSpinner.show('Takeout');
 			this.citationDrawer = new featuredCitationLayout({ model: this.project });
 			Zeega.citation = this.citationDrawer; // I don't like this
 

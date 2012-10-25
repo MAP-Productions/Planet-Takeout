@@ -68,14 +68,20 @@ function(
 
 		index: function()
 		{
+			
+			
 			initialize('player');
 			Zeega.page = new Index.Model();
 			$('.selected').removeClass('selected'); 
 			$('#pt-nav-home').addClass('selected');
+			
+			
 		},
 
 		viewFeatured : function(featuredID)
 		{
+
+			
 			initialize('player');
 			Zeega.page = new Index.Model({featuredID: featuredID });
 			$('.selected').removeClass('selected'); 
@@ -182,30 +188,15 @@ esp inserting the layout into the dom!
 
 	function initialize(to)
 	{
-		switch(to)
-			{
-				case 'mobile':
-					var mobileLayout = new Backbone.Layout({ el: "#main" });
-					var mobileView = Backbone.LayoutView.extend({ template: "mobile" });
-					mobileLayout.insertView(new mobileView() );
-					mobileLayout.render();
-					break;
-				case 'browser':
-					var browserLayout = new Backbone.Layout({ el: "#main" });
-					var browserView = Backbone.LayoutView.extend({ template: "browser" });
-					browserLayout.insertView(new browserView() );
-					browserLayout.render();
-					break;
-				default:
-					initPT();
-					cleanup(to);
-			}
+		initPT();
+		cleanup(to);
 	}
 
 	// makes sure this happens on ly once per load
 	var initPT = _.once( init );
 	function init()
 	{
+
 		console.log('initing');
 		// render the base layout into the dom
 		// this happens only once
@@ -216,6 +207,11 @@ esp inserting the layout into the dom!
 		baseLayout.setView('#nav-upper', nav );
 		baseLayout.render();
 		nav.render();
+
+		$(window).bind('project_loaded',function(){
+			console.log('project is ready!!!!!!!!!!!!!!!!!!!!!!!',Zeega);
+			loadingSpinner.hide();
+		});
 	}
 
 	// happens on every router change
