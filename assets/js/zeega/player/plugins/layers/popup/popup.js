@@ -203,7 +203,7 @@ function(zeega, Backbone, _Layer, Player){
 				height: '500px',
 				'z-index': 10000,
 				position: 'relative',
-				margin: '50px auto'
+				margin: '100px auto'
 			};
 			this.$el.html(this.template());
 			console.log( this.template() );
@@ -244,7 +244,7 @@ function(zeega, Backbone, _Layer, Player){
 
 				//_.delay( this.player.playPause, 2000 );
 			}
-			this.$('.popup-target').append('<a style="z-index:10000;color:white;cursor:pointer;position:absolute;top:0px;right:5px;" >X</a>');
+			this.$('.popup-target').append('<h2 style="z-index:10000;color:white;cursor:pointer;position:absolute;top:0px;right:5px;" >Close</h2>');
 		},
 
 		cleanup : function()

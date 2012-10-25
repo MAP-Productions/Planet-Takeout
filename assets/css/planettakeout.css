@@ -656,6 +656,14 @@ i.PT-featured {
   display: block;
   margin: 0 auto;
 }
+.popup-target {
+  background: #C2D9D6;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#9aebe7), to(#ffd8ab));
+  background-image: -webkit-linear-gradient(top, #ffd8ab, #9aebe7);
+  background-image: -moz-linear-gradient(top, #ffd8ab, #9aebe7);
+  background-image: -ms-linear-gradient(top, #ffd8ab, #9aebe7);
+  background-image: -o-linear-gradient(top, #ffd8ab, #9aebe7);
+}
 button.close {
   float: none;
   position: absolute;
