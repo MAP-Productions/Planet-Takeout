@@ -215,12 +215,7 @@ esp inserting the layout into the dom!
 		
 
 
-		function setCookie(c_name,value,exdays){
-			var exdate=new Date();
-			exdate.setDate(exdate.getDate() + exdays);
-			var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
-			document.cookie=c_name + "=" + c_value;
-		}
+		
 
 		function getCookie(c_name){
 			var i,x,y,ARRcookies=document.cookie.split(";");
@@ -244,10 +239,10 @@ esp inserting the layout into the dom!
 		$(window).bind('project_loaded',function(){
 			loadingSpinner.hide();
 
-			if(_.isUndefined(getCookie('PLANET_TAKEOUT'))){
+			if(_.isUndefined(Zeega.tempCookie)){
 				console.log('pausing cause no cookie');
-				Zeega.player.pause( );
-				setCookie('PLANET_TAKEOUT',1,365);
+				Zeega.player.pause();
+				
 			}
 		});
 

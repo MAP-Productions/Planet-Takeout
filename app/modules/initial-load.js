@@ -40,7 +40,8 @@ function(Zeega, Backbone) {
 				complete:function(){
 					console.log('finished anim');
 					_this.remove();
-					setCookie('PLANET_TAKEOUT');
+					setCookie('PLANET_TAKEOUT',1,365);
+					Zeega.tempCookie=true;
 					if(Zeega.player) Zeega.player.play();
 
 				}
