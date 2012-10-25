@@ -27,7 +27,7 @@ function(Zeega, Backbone) {
 			function setCookie(c_name,value,exdays){
 				var exdate=new Date();
 				exdate.setDate(exdate.getDate() + exdays);
-				var c_value=escape(value) + ((exdays===null) ? "" : "; expires="+exdate.toUTCString());
+				var c_value=escape(value) + ( (exdays === null) ? "" : "; expires=" + exdate.toUTCString() );
 				document.cookie=c_name + "=" + c_value;
 			}
 			this.cycleSlides();
@@ -36,6 +36,7 @@ function(Zeega, Backbone) {
 			},
 			{
 				duration: this.animLength,
+				easing: 'linear',
 				complete:function(){
 					console.log('finished anim');
 					_this.remove();
@@ -51,7 +52,7 @@ function(Zeega, Backbone) {
 				this.elem.slides.eq(this.currentSlide).fadeIn(400).siblings().fadeOut(400);
 			}
 			if (this.currentSlide < (this.numSlides - 1) ) {
-				this.currentSlide += 1
+				this.currentSlide += 1;
 				setTimeout(this.cycleSlides, (this.animLength / this.numSlides));
 			}
 		}
