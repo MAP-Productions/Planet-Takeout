@@ -101,6 +101,13 @@ function(Zeega, Backbone, Modal)
 					'style': info.gif ? 'background:url(assets/img/gifs/'+ info.gif +');background-size:115% auto;background:position' : ''
 				}});
 			}
+			else if( _.include(item.get('tags'), 'pt_blog') )
+			{
+
+				itemView = new App.Views.BlogView({model:item,attributes:{
+					'style':'background:url(assets/img/blog.png);background-size:115% auto;background:position'
+				}});
+			}
 			else if( item.get('media_type') == 'Collection')
 			{
 				itemView = new App.Views.CollectionView({model:item,attributes:{
@@ -129,6 +136,14 @@ function(Zeega, Backbone, Modal)
 
 	App.Views.CollectionView = Backbone.LayoutView.extend({
 		template : 'collection',
+		tagName : 'li',
+		className : 'collection-view',
+
+		serialize : function(){ return this.model.toJSON(); }
+	});
+
+	App.Views.BlogView = Backbone.LayoutView.extend({
+		template : 'blog',
 		tagName : 'li',
 		className : 'collection-view',
 

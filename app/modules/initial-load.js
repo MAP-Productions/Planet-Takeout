@@ -23,7 +23,7 @@ function(Zeega, Backbone) {
 			this.numSlides = this.elem.slides.length;
 			this.currentSlide = 1;
 
-			var animLength = 14000; // how long to spend animating the cat and going through the info slides
+			var animLength = 1000; // how long to spend animating the cat and going through the info slides
 			function setCookie(c_name,value,exdays){
 				var exdate=new Date();
 				exdate.setDate(exdate.getDate() + exdays);
@@ -37,6 +37,7 @@ function(Zeega, Backbone) {
 			{
 				duration: animLength,
 				step: this.onAnimStep,
+				easing:'linear',
 				complete:function(){
 					console.log('finished anim');
 					_this.remove();
