@@ -22,6 +22,10 @@ function(Zeega, Backbone, Modal)
 			this.collection.on('reset',this.onReset, this);
 		},
 
+		events: {
+			'click .top-link' : 'scrollToTop'
+		},
+
 		serialize : function()
 		{
 			if(this.collection.collectionInfo) return this.collection.collectionInfo.items[0];
@@ -65,6 +69,22 @@ function(Zeega, Backbone, Modal)
 			if(this.collection.length<10){
 				this.$('ul').append('<li class="call-to-participate"><div class="participate-text"><a href ="#participate">add #planettakeout to your photos and videos to participate</a></div></li>');
 			}
+
+			// add 'back to top' if the collection will go off the screen
+			if(overflowsScreen()) {
+				this.$('.back-to-top').show();
+			} else {
+				this.$('.back-to-top').hide();
+			}
+
+			function overflowsScreen() {
+				var rows = Math.ceil(_this.collection.length / 6),
+					contentHeight = (rows * 124) + 178;
+
+				return( contentHeight > $(window).height());
+			}
+
+
 			//this.getViews().each(function(view){ view.delegateEvents() });
 
 			// infinite scroll needs some work!
@@ -121,6 +141,11 @@ function(Zeega, Backbone, Modal)
 				}});
 			}
 			return itemView;
+		},
+
+		scrollToTop: function(e) {
+			e.preventDefault();
+			this.$('#grid-view-wrapper').scrollTop(0);
 		}
 
 	});

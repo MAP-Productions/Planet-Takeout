@@ -511,6 +511,25 @@ i.PT-featured {
   left: 38px;
   top: 23px;
 }
+.back-to-top {
+  background: url(../img/catrangoon-white.png) no-repeat left top;
+  display: none;
+  height: 280px;
+  margin: 100px auto;
+  overflow: hidden;
+  width: 853px;
+}
+.back-to-top .top-link {
+  background: url(../img/arrow-straight-small.png) no-repeat 0 5px;
+  color: white;
+  display: block;
+  font-family: 'PT-black';
+  font-size: 50px;
+  height: 60px;
+  line-height: 60px;
+  margin: 62px 0 0 268px;
+  padding-left: 52px;
+}
 #map img {
   max-width: none;
 }
