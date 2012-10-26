@@ -24,7 +24,7 @@ function(Zeega, Backbone, FeaturedIntro) {
 
 			this.numSlides = this.elem.slides.length;
 			this.currentSlide = 0;
-			this.animLength = 1000; // how long to spend animating the cat and going through the info slides
+			this.animLength = 15000; // how long to spend animating the cat and going through the info slides
 
 			this.cycleSlides();
 			this.elem.progressBar.animate({
