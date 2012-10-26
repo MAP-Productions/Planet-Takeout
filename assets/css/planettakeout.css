@@ -55,6 +55,14 @@ ul.horizontal-list li {
   position: relative;
   margin: 0 auto;
 }
+.powered-by-zeega {
+  position: fixed;
+  bottom: 1px;
+  left: 10px;
+  color: #fff;
+  font-size: 10px;
+  z-index: 20000000;
+}
 /* social media icons sprite */
 .social-icon {
   background: url(../img/sprite_social-red.png);

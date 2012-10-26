@@ -64,6 +64,7 @@
 
 	<!-- Main container. -->
 	<div role="main" id="main"></div>
+	<span class="powered-by-zeega">powered by <a href="http://zeega.org">zeega</a></span>
 
 	<!-- Application source. -->
 	<script data-main="app/config" src="assets/js/libs/require.js"></script>
