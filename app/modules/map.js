@@ -33,6 +33,9 @@ function(Zeega, Backbone, Modal)
 	var mapView = Backbone.LayoutView.extend({
 
 		template: 'map',
+		events: {
+			'click #PT-map-submit' : 'lookup'
+		},
 		id: 'PT-map-wrapper',
 
 		ptIconRed : L.icon({
