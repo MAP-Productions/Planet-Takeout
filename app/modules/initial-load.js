@@ -1,10 +1,12 @@
 define([
 	"zeega",
 	// Libs
-	"backbone"
+	"backbone",
+
+	"modules/featured-intro"
 ],
 
-function(Zeega, Backbone) {
+function(Zeega, Backbone, FeaturedIntro) {
 	// Create a new module
 	var InitialLoad = Zeega.module();
 
@@ -22,15 +24,8 @@ function(Zeega, Backbone) {
 
 			this.numSlides = this.elem.slides.length;
 			this.currentSlide = 0;
-			this.animLength = 100; // how long to spend animating the cat and going through the info slides
-//			this.animLength = 15000; // how long to spend animating the cat and going through the info slides
+			this.animLength = 1000; // how long to spend animating the cat and going through the info slides
 
-			function setCookie(c_name,value,exdays){
-				var exdate=new Date();
-				exdate.setDate(exdate.getDate() + exdays);
-				var c_value=escape(value) + ( (exdays === null) ? "" : "; expires=" + exdate.toUTCString() );
-				document.cookie=c_name + "=" + c_value;
-			}
 			this.cycleSlides();
 			this.elem.progressBar.animate({
 				height: '100%'
@@ -38,13 +33,9 @@ function(Zeega, Backbone) {
 			{
 				duration: this.animLength,
 				easing: 'linear',
-				complete:function(){
-					console.log('finished anim');
-					_this.remove();
-					setCookie('PLANET_TAKEOUT',1,365);
-					Zeega.tempCookie=true;
-					if(Zeega.player) Zeega.player.play();
-
+				complete : function()
+				{
+					_this.onProgressComplete();
 				}
 			});
 		},
@@ -56,8 +47,39 @@ function(Zeega, Backbone) {
 				this.currentSlide += 1;
 				setTimeout(this.cycleSlides, (this.animLength / this.numSlides));
 			}
+		},
+
+		onProgressComplete : function()
+		{
+			var _this = this;
+			console.log('finished anim', this, Zeega);
+			setCookie('PLANET_TAKEOUT',1,365);
+			Zeega.tempCookie = true;
+
+			this.featuredIntro = new FeaturedIntro.View();
+			this.featuredIntro.takeoutName = Zeega.player.get('title');
+			$('body').append(this.featuredIntro.el);
+			this.featuredIntro.render();
+			var fIntro = this.featuredIntro;
+			
+			_.delay(function(){
+				fIntro.$('.featured-intro-overlay').fadeOut(2000, function(){
+					fIntro.remove();
+				});
+			}, 4000);
+
+			if(Zeega.player) Zeega.player.play();
+			this.remove();
 		}
 	});
+
+	var setCookie = function(c_name,value,exdays)
+	{
+		var exdate = new Date();
+		exdate.setDate(exdate.getDate() + exdays);
+		var c_value=escape(value) + ( (exdays === null) ? "" : "; expires=" + exdate.toUTCString() );
+		document.cookie=c_name + "=" + c_value;
+	};
 
 	// Required, return the module for AMD compliance
 	return InitialLoad;

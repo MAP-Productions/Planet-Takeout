@@ -13,6 +13,5 @@ function(Zeega, Backbone) {
 		serialize : function(){ return this; }
 	});
 
-	// Required, return the module for AMD compliance
 	return FeaturedIntro;
 });
