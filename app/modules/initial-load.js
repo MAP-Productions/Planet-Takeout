@@ -56,19 +56,20 @@ function(Zeega, Backbone, FeaturedIntro) {
 			setCookie('PLANET_TAKEOUT',1,365);
 			Zeega.tempCookie = true;
 
-			this.featuredIntro = new FeaturedIntro.View();
-			this.featuredIntro.takeoutName = Zeega.player.get('title');
-			$('body').append(this.featuredIntro.el);
-			this.featuredIntro.render();
-			var fIntro = this.featuredIntro;
+			if (Zeega.player) {
+				this.featuredIntro = new FeaturedIntro.View();
+				this.featuredIntro.takeoutName = Zeega.player.get('title');
+				$('body').append(this.featuredIntro.el);
+				this.featuredIntro.render();
+				var fIntro = this.featuredIntro;
+				_.delay(function(){
+					fIntro.$('.featured-intro-overlay').fadeOut(2000, function(){
+						fIntro.remove();
+					});
+				}, 4000);
+				Zeega.player.play();
+			}
 			
-			_.delay(function(){
-				fIntro.$('.featured-intro-overlay').fadeOut(2000, function(){
-					fIntro.remove();
-				});
-			}, 4000);
-
-			if(Zeega.player) Zeega.player.play();
 			this.remove();
 		}
 	});
