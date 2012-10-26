@@ -1,3 +1,5 @@
+/*jslint evil: true */
+
 define([
 	"zeega",
 	// Libs
@@ -10,6 +12,7 @@ define([
 ],
 
 function(Zeega, Backbone,Player,loadingSpinner) {
+
 
 	// Create a new module
 	var Index = Zeega.module();

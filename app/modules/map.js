@@ -127,7 +127,7 @@ function(Zeega, Backbone, Modal)
 				else console.log("Geocoder failed at address look for "+ $('#PT-newtakout-map-submit').val()+": " + status);
 			});
 			
-		},
+		}
 
 	});
 
