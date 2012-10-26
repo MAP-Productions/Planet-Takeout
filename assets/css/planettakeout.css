@@ -761,8 +761,17 @@ button.close {
   float: none;
   position: absolute;
   right: 0;
-  top: 0;
-  padding: 8px 12px 0 0;
+  top: -26px;
+  color: white;
+  opacity: 1;
+  font-family: "PT-black";
+  font-size: 17px;
+  font-weight: normal;
+  cursor: pointer;
+}
+button.close:hover {
+  color: white;
+  opacity: 1;
 }
 .PT-modal-content-head {
   position: relative;
@@ -1040,7 +1049,7 @@ button.close {
 #nav-upper {
   z-index: 1000000;
   position: absolute;
-  height: 100px;
+  height: 33px;
   width: 100%;
   background: url(../img/top-fade.png);
   background-size: 100% 100%;
