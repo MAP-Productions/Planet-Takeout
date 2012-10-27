@@ -4,7 +4,7 @@
 		$fields = json_decode($post_data,true);	
 		
 		
-		$url = 'http://staging.zeega.org/api/items';
+		$url = 'http://alpha.zeega.org/api/items';
 		
 		//url-ify the data for the POST
 		/*foreach($fields as $key=>$value) { 
