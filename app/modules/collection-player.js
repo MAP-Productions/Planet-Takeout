@@ -16,6 +16,7 @@ function(Zeega, Backbone) {
 
 		initialize : function()
 		{
+
 			var _this = this;
 			this.project = new Project( this.toJSON() );
 			this.project.on('project_loaded', this.startPlayer, this );
@@ -226,7 +227,8 @@ function(Zeega, Backbone) {
 
 		url : function()
 		{
-			return localStorage.api + '/items/'+ this.id +'/project';
+			if(_.isUndefined(this.get('page'))) this.set({'page':1});
+			return localStorage.api + '/items/'+ this.id +'/project?page='+this.get('page');
 		},
 
 		defaults : {

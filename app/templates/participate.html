@@ -102,9 +102,9 @@
 					
 				<div id="PT-newtakout-map-wrapper">
 					<div id="PT-newtakout-search-wrapper">
-					<input placeholder="search address" id="PT-newtakout-map-search"/>
-					<button id="PT-newtakout-search-submit" class="btn">GO</button>
-				</div>
+						<input placeholder="search address" id="PT-newtakout-map-search"/>
+						<button id="PT-newtakout-search-submit" class="btn">GO</button>
+					</div>
 					<div id="map"></div>
 				</div>
 				<div id="streetView"></div>
@@ -113,13 +113,15 @@
 		</div>
 		<div id="thanks" style="display: none;">
 			<h1>Thanks for submitting<br/> <strong id="takeoutName"></strong>.</h1>
+			<h3>Are you a customer here? <a id='tell-your-story'>Tell your story!</a></h3>
+
 			<p>Receive the latest updates and exclusive stories from Planet Takeout</p>
 			<form method="post" name="planetTakeoutEmailSignup-1347988840500" action="https://s2785.t.eloqua.com/e/f2" id="form102">
 				<input value="planetTakeoutEmailSignup-1347988840500" type="hidden" name="elqFormName" />
 				<input value="2785" type="hidden" name="elqSiteId" />
 				<input name="elqCampaignId" type="hidden" />
 
-				<input id="field0" value="" type="text" name="emailAddress" class="" />
+				<input placeholder="email address" id="field0" value="" type="text" name="emailAddress" class="" />
 
 				<button class="btn" id="field1" type="submit">Submit</button>
 			</form>
@@ -154,7 +156,7 @@
 			<input value="2785" type="hidden" name="elqSiteId" />
 			<input name="elqCampaignId" type="hidden" />
 
-			<input id="field0" value="" type="text" name="emailAddress" class="" />
+			<input placeholder="email address" id="field0" value="" type="text" name="emailAddress" class="" />
 
 			<button class="btn" id="field1" type="submit">Submit</button>
 		</form>

@@ -7,6 +7,8 @@
 
 .PT-menu-column
 {
+  font-family: 'PT-black', sans-serif;
+  font-size:10px;
   width: 33.3333%;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -14,7 +16,7 @@
   border-left: 1px solid #999;
   padding:15px;
   position: relative;
-  min-height:900px;
+  min-height:950px;
   background: rgba(194, 217, 214, 1);
   background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, from(rgba(154, 235, 231, 1)), to(rgba(255, 216, 171, 1)));
   background-image: -webkit-linear-gradient(left, rgba(154, 235, 231, 1), rgba(255, 216, 171, 1)); 
@@ -38,6 +40,11 @@
 
 .PT-menu h2 {
   margin: 11px 0 16px;
+}
+
+#house-special li {
+  
+  width:270px !important;
 }
 
 .PT-menu h3 {
@@ -131,7 +138,42 @@
   line-height: 28px;
 }
 
+
+.PT-menu .featured-splash {
+  position:absolute;
+  z-index:100;
+  background-image: url(../img/featured_specials.png);
+  background-position: -25px -25px;
+  width: 85px;
+  height: 45px;
+  top: 82px;
+  left: 0px;
+}
+
+
+.PT-menu .house-specials-splash {
+  position:absolute;
+  z-index:100;
+  background-image: url(../img/featured_specials.png);
+  background-position: -25px -102px;
+  width: 91px;
+  height: 55px;
+  top: 66px;
+  left: 4px
+}
+
+
 .PT-menu img.flourish {
   display: block;
   margin: 0 auto;
+}
+
+
+.popup-target{
+  background: #C2D9D6;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#9AEBE7), to(#FFD8AB));
+  background-image: -webkit-linear-gradient(top, #FFD8AB, #9AEBE7);
+  background-image: -moz-linear-gradient(top, #FFD8AB, #9AEBE7);
+  background-image: -ms-linear-gradient(top, #FFD8AB, #9AEBE7);
+  background-image: -o-linear-gradient(top, #FFD8AB, #9AEBE7);
 }

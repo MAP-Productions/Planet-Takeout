@@ -81,6 +81,7 @@ function(zeega, Backbone){
 			if( !this.isVideoLoaded)
 			{
 				var _this = this;
+				console.log('use format: ', this.format);
 				switch( this.format )
 				{
 					case 'html5':
@@ -154,6 +155,10 @@ function(zeega, Backbone){
 					_this.model.trigger('ready', _this.model.id ) ;
 				}
 			});
+
+			this.popcorn.listen('ended',function(){
+				_.delay(function(){_this.popcorn.play();},5000);
+			});
 		},
 		useYoutube : function()
 		{
@@ -168,11 +173,11 @@ function(zeega, Backbone){
 			this.addPopcornToControls();
 			this.setVolume(0);
 
-			console.log('youtube stuff', _this, this.model.get('autoplay'))
+			console.log('youtube stuff', _this, this.model.get('autoplay'));
 			
 			
 			this.popcorn.listen('canplaythrough',function(){
-				console.log('youtube can play', _this, _this.model.get('autoplay'))
+				console.log('youtube can play', _this, _this.model.get('autoplay'));
 				_this.$el.spin(false);
 				
 				_this.model.can_play = true;
@@ -183,13 +188,17 @@ function(zeega, Backbone){
 				}
 				else
 				{
-					console.log('youtube pause')
+					console.log('youtube pause');
 					_this.popcorn.play();
 					_this.popcorn.pause();
 				}
 				_this.model.trigger('ready', _this.model.id ) ;
 				
-				if(_this.model.get('attr').fade_in==0) _this.volume(_this.model.get('attr').volume);
+				if(_this.model.get('attr').fade_in === 0) _this.volume(_this.model.get('attr').volume);
+			});
+
+			this.popcorn.listen('ended',function(){
+				_.delay(function(){_this.popcorn.play();},5000);
 			});
 			
 		},
@@ -221,14 +230,12 @@ function(zeega, Backbone){
 		},
 		private_onCanPlay : function()
 		{
-			console.log('vvvvvvvvvvvv can play',this.settings.autoplay && this.popcorn )
 			this.model.set('duration', this.popcorn.duration() );
 			if( _.isNull(this.model.get('cue_out')) ) this.model.set('cue_out', this.popcorn.duration() );
 			
 		},
 		onCanplay : function()
 		{
-			console.log('vvvvvvvvvvvv can play',this.settings.autoplay && this.popcorn )
 			if(this.settings.autoplay && this.popcorn) this.popcorn.play();
 		},
 		
@@ -236,33 +243,41 @@ function(zeega, Backbone){
 		
 		setVolume : function(vol)
 		{
+			var volume;
 			// constrain volume to 0 < v < 1
-			var volume = vol < 0 ? 0 : vol;
-			var volume = vol > 1 ? 1 : vol;
+			volume = vol < 0 ? 0 : vol;
+			volume = vol > 1 ? 1 : vol;
 			if( _.isNumber(vol) ) this.popcorn.volume( volume );
 		},
-		getVolume : function(){ return this.popcorn.volume() },
+		getVolume : function(){ return this.popcorn.volume(); },
 
-		setCurrentTime : function(t){ if( _.isNumber(t) )  this.popcorn.currentTime(t) },
-		getCurrentTime : function(){ return this.popcorn.currentTime() },
+		setCurrentTime : function(t){ if( _.isNumber(t) )  this.popcorn.currentTime(t); },
+		getCurrentTime : function(){ return this.popcorn.currentTime(); },
 
 		private_onTimeUpdate : function()
 		{
 			// pause if player gets to the cue out point
 			
-			if(this.settings.cue_out == 0) this.settings.cue_out = this.getDuration();
+			if(this.settings.cue_out === 0) this.settings.cue_out = this.getDuration();
 			
 			if( !_.isNull(this.settings.cue_out) && this.popcorn.currentTime() >= this.settings.cue_out )
 			{
 				this.pause();
-				this.popcorn.currentTime( this.settings.cue_in )
+				this.popcorn.currentTime( this.settings.cue_in );
 			}
 		},
 
-		getDuration: function(){ return this.popcorn.duration() },
+		getDuration: function(){ return this.popcorn.duration(); },
 
-		play : function(){ console.log('##		play'); if( this.popcorn && this.popcorn.paused() ) this.popcorn.play() },
-		pause : function(){ if( this.popcorn && !this.popcorn.paused() ) this.popcorn.pause() },
+		play : function()
+		{
+			if( this.popcorn && this.popcorn.paused() )
+			{
+				this.popcorn.play();
+			}
+		},
+
+		pause : function(){ if( this.popcorn && !this.popcorn.paused() ) this.popcorn.pause(); },
 		playPause : function()
 		{
 			if(this.popcorn)

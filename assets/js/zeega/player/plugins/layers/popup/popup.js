@@ -31,50 +31,11 @@ function(zeega, Backbone, _Layer, Player){
 
 	});
 	
-	/*
-	Layer.Views.Controls.Popup = Layer.Views.Controls.extend({
-		
-		render : function()
-		{
-
-			// needs two droppables
-			// one for the popup item
-			// one for the trigger image
-			var popupContentDrop = new Layer.Views.Lib.Droppable({
-				model: this.model,
-				attribute: 'popup_content',
-				label : 'Media to Show'
-			});
-			var popupTargettDrop = new Layer.Views.Lib.Droppable({
-				model: this.model,
-				attribute: 'popup_target',
-				label : 'Media Target to Show'
-			});
-			var opacitySlider = new Layer.Views.Lib.Slider({
-				property : 'opacity',
-				model: this.model,
-				label : 'Target Opacity',
-				step : 0.01,
-				min : 0,
-				max : 1,
-			});
-			
-			$(this.controls)
-				.append( popupContentDrop.getControl() )
-				.append( popupTargettDrop.getControl() )
-				.append( opacitySlider.getControl() );
-			return this;
-		
-		}
-		
-	});
-*/
-
 	Layer.Popup.Visual = _Layer.Visual.extend({
 		
 		draggable : true,
 		
-		template : '<a href="#"></a>',
+		template : '<a href="#"><span class="popup-target"></span><span class="popup-target-title"></span></a>',
 
 		init : function()
 		{
@@ -86,15 +47,16 @@ function(zeega, Backbone, _Layer, Player){
 		{
 			this.$el.html( _.template(this.template, this.model.toJSON() ) )
 				.css({
-					height : this.model.get('attr').height +'%',
+					'overflow': 'visible',
 					'border' : 'none',
 					'height' : this.model.get('attr').height +'%',
-					'border-radius' : '0',
+					'border-radius' : '0'
 				}).addClass('zeega-popup-layer');
 
 			if( this.model.get('attr').popup_target )
 			{
-				this.$('a').html('<img src="'+ this.model.get('attr').popup_target.uri  +'" height="100%" width="100%"/>');
+				this.$('.popup-target').html('<img src="'+ this.model.get('attr').popup_target.uri  +'" height="100%" width="100%"/>');
+				this.$('.popup-target-title').html( '<h3>'+ this.model.get('attr').popup_content.title +'</h3>');
 			}
 			else
 			{
@@ -136,6 +98,8 @@ function(zeega, Backbone, _Layer, Player){
 
 		events : {
 			'click' : 'onClick'
+			//'mouseover' : 'onMouseover',
+			//'mouseout' : 'onMouseout'
 		},
 
 		onClick : function()
@@ -150,29 +114,30 @@ function(zeega, Backbone, _Layer, Player){
 			return false;
 		},
 
+		onMouseover : function()
+		{
+			console.log('popup over', this);
+			var popup = "<div class='popup-popup";
+			this.$el.append();
+		},
+
+		onMouseout : function()
+		{
+			console.log('popup out', this);
+		},
+
 		onLayerEnter: function()
 		{
 			this.makeResizable();
-
 		},
 
 		onExit : function()
 		{
-			if(this.popup) this.popup.cleanup()
+			if(this.popup) this.popup.cleanup();
 		},
 		
 		onPreload : function()
 		{
-			
-/*
-			var img = this.$el.imagesLoaded();
-			img.done(function(){
-				_this.model.trigger('ready',_this.model.id);
-			});
-			img.fail(function(){
-				_this.model.trigger('error',_this.model.id);
-			});
-*/
 			this.model.trigger('ready',this.model.id);
 		}
 	});
@@ -203,7 +168,7 @@ function(zeega, Backbone, _Layer, Player){
 				height: '500px',
 				'z-index': 10000,
 				position: 'relative',
-				margin: '50px auto'
+				margin: '100px auto'
 			};
 			this.$el.html(this.template());
 			console.log( this.template() );
@@ -244,7 +209,7 @@ function(zeega, Backbone, _Layer, Player){
 
 				//_.delay( this.player.playPause, 2000 );
 			}
-			this.$('.popup-target').append('<a style="z-index:10000;color:white;cursor:pointer;position:absolute;top:0px;right:5px;" >X</a>');
+			this.$('.popup-target').append('<h2 style="z-index:10000;color:white;cursor:pointer;position:absolute;top:0px;right:5px;" >Close</h2>');
 		},
 
 		cleanup : function()

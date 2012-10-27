@@ -10,12 +10,39 @@
   width:100%;
 }
 
+#PT-map-search-wrapper{
+  position:absolute;
+  z-index:100;
+  right:10px;
+  top:7px;
+
+  #PT-map-search {
+    border: 2px solid #99a8a6;
+    border-radius: 15px;
+    font-size: 16px;
+    width: 318px;
+    height: 16px;
+    padding: 10px 13px;
+  }
+
+  #PT-map-submit {
+    width: 29px;
+    height: 29px;
+    background: url(../img/icon_search-small.png);
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    border: none;
+    text-indent: -9999px;
+  }
+
+}
 
 .leaflet-popup-content-wrapper
 {
   height: 110px;
   width: 180px;
-  border: 8px solid whiteSmoke;
+  border: 8px solid #de371f;
   box-sizing: border-box;
 }
 
@@ -33,7 +60,7 @@
 {
   border-width: 55px 22px 0;
   border-style: solid;
-  border-color: #fff transparent;
+  border-color: #de371f transparent;
   display: block;
   width: 0;
 
@@ -47,8 +74,6 @@
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
 }
-
-
 
 .map-popup .enter
 {

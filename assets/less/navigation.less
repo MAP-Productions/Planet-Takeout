@@ -2,7 +2,7 @@
 {
 	z-index: 1000000;
 	position: absolute;
-	height: 100px;
+	height: 33px;
 	width: 100%;
 	background: url(../img/top-fade.png);
 	background-size: 100% 100%;
@@ -17,15 +17,33 @@
 	}
 	a
 	{
-		opacity:0.85;
+		position: relative;
 
-		&:hover{ opacity:1; }
+		span {
+			color: #de3620;
+			display: none;
+			font-family: 'PT-black';
+			letter-spacing: 0.05em;
+			position: absolute;
+			right: 7px;
+			text-align: right;
+			top: -25px;
+			width: 145px;
+		}
+
+		&:hover{
+			opacity:1;
+
+			span {
+				display: block;
+			}
+		}
 	}
 
 	li
 	{
 		float: left;
-		margin-left: 165px;
+		margin-left: 158px;
 
 		&:first-child{ margin-left:0; }
 	}

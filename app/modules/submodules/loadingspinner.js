@@ -25,6 +25,7 @@ function(Zeega, Backbone,spin)
 
 	App.hide = function() {
 		console.log('spinner hide');
+		
 		$('#loading')
 			.hide()
 			.children('#spinner').spin(false);

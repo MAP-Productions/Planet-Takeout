@@ -2,6 +2,8 @@ define([
 	// Application.
 	"zeega",
 	// Modules.
+	'modules/initial-load',
+	'modules/featured-intro',
 	'modules/about',
 	'modules/grid',
 	'modules/index',
@@ -19,6 +21,8 @@ define([
 // generic App used
 function(
 	Zeega,
+	InitialLoad,
+	FeaturedIntro,
 	About,
 	Grid,
 	Index,
@@ -53,6 +57,7 @@ function(
 			'collections/:collection_id/view/' : 'viewCollectionPlayer',
 			'collections/:collection_id/view/:item_id' : 'viewCollectionPlayer',
 			'collections/:collection_id/view/:item_id/' : 'viewCollectionPlayer',
+			'collections/:collection_id/view/:item_id/page/:page' : 'viewCollectionPlayer',
 
 			'featured' : 'index',
 			'featured/' : 'index',
@@ -67,14 +72,20 @@ function(
 
 		index: function()
 		{
+			
+			
 			initialize('player');
 			Zeega.page = new Index.Model();
 			$('.selected').removeClass('selected'); 
 			$('#pt-nav-home').addClass('selected');
+			
+			
 		},
 
 		viewFeatured : function(featuredID)
 		{
+
+			
 			initialize('player');
 			Zeega.page = new Index.Model({featuredID: featuredID });
 			$('.selected').removeClass('selected'); 
@@ -115,13 +126,14 @@ function(
 			$('#pt-nav-collections').addClass('selected');
 		},
 
-		viewCollectionPlayer : function( collectionID, itemID )
+		viewCollectionPlayer : function( collectionID, itemID, page )
 		{
+			
 			if( !Zeega.page || Zeega.page.player && Zeega.page.player.id != collectionID )
 			{
 				var createNewPlayer = function()
 				{
-					Zeega.page = new CollectionPlayer.Model({id: collectionID, frameID: itemID });
+					Zeega.page = new CollectionPlayer.Model({id: collectionID, frameID: itemID,page:page });
 				};
 
 				if( Zeega.player ) Zeega.player.on('player_exit', createNewPlayer);
@@ -180,30 +192,15 @@ esp inserting the layout into the dom!
 
 	function initialize(to)
 	{
-		switch(to)
-			{
-				case 'mobile':
-					var mobileLayout = new Backbone.Layout({ el: "#main" });
-					var mobileView = Backbone.LayoutView.extend({ template: "mobile" });
-					mobileLayout.insertView(new mobileView() );
-					mobileLayout.render();
-					break;
-				case 'browser':
-					var browserLayout = new Backbone.Layout({ el: "#main" });
-					var browserView = Backbone.LayoutView.extend({ template: "browser" });
-					browserLayout.insertView(new browserView() );
-					browserLayout.render();
-					break;
-				default:
-					initPT();
-					cleanup(to);
-			}
+		initPT();
+		cleanup(to);
 	}
 
 	// makes sure this happens on ly once per load
 	var initPT = _.once( init );
 	function init()
 	{
+
 		console.log('initing');
 		// render the base layout into the dom
 		// this happens only once
@@ -214,6 +211,60 @@ esp inserting the layout into the dom!
 		baseLayout.setView('#nav-upper', nav );
 		baseLayout.render();
 		nav.render();
+
+
+
+		
+
+
+		
+
+		function getCookie(c_name){
+			var i,x,y,ARRcookies=document.cookie.split(";");
+			for (i=0;i<ARRcookies.length;i++){
+				x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+				y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+				x=x.replace(/^\s+|\s+$/g,"");
+				if (x==c_name){
+					return unescape(y);
+				}
+			}
+		}
+		Zeega.tempCookie=getCookie('PLANET_TAKEOUT');
+		if(_.isUndefined(Zeega.tempCookie)){
+			var loader = new InitialLoad.View();
+			baseLayout.setView('#app-base', loader );
+			loader.render();
+			
+		}
+
+		/* temp! this is to show how to use the FeaturedIntro view */
+		/*
+		var featuredIntro = new FeaturedIntro.View();
+		featuredIntro.takeoutName = 'Peking House';
+
+		baseLayout.setView('#app-base', featuredIntro );
+		featuredIntro.render();
+		*/
+
+		$(window).bind('project_loaded',function(){
+			loadingSpinner.hide();
+
+			if(_.isUndefined(Zeega.tempCookie)){
+				console.log('pausing cause no cookie');
+				Zeega.player.pause();
+				
+			}
+		});
+
+
+		// temporary for initial loading screen with cat
+		
+
+
+
+
+
 	}
 
 	// happens on every router change

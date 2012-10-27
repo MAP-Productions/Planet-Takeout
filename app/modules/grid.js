@@ -16,9 +16,14 @@ function(Zeega, Backbone, Modal)
 
 		initialize : function()
 		{
+			this.scrollActive=true;
 			this.template = this.options.type == 'items' ? 'item-grid-layout' : 'collection-grid-layout';
 			if(Zeega.grid) Zeega.grid.remove();
 			this.collection.on('reset',this.onReset, this);
+		},
+
+		events: {
+			'click .top-link' : 'scrollToTop'
 		},
 
 		serialize : function()
@@ -28,13 +33,23 @@ function(Zeega, Backbone, Modal)
 
 		onReset : function()
 		{
+
 			var _this = this;
 			var itemArray = _.reject( _.toArray(this.collection), function(item){ return item.get('rendered'); });
-			_.each( itemArray, function(item){
-				var itemView = _this.getView(item);
-				_this.insertView('ul.list', itemView );
-				itemView.render();
+			this.collection.each(function(item){
+				if(_.isUndefined(item.get('rendered'))){
+					item.set('rendered', true);
+					item.set('page',_this.collection.page);
+					item.set('collection_id', _this.collection.collectionID);
+					console.log('insertingview',_this.getView(item));
+					console.log(item);
+					var view = _this.getView(item);
+					_this.$el.find( 'ul.list').append(view.el);
+					view.render();
+				}
 			});
+
+
 		},
 
 		beforeRender : function()
@@ -42,6 +57,7 @@ function(Zeega, Backbone, Modal)
 			var _this = this;
 			this.collection.each(function(item){
 				item.set('rendered', true);
+				item.set('page',_this.collection.page);
 				_this.insertView( 'ul.list', _this.getView(item) );
 			});
 		},
@@ -53,18 +69,36 @@ function(Zeega, Backbone, Modal)
 			if(this.collection.length<10){
 				this.$('ul').append('<li class="call-to-participate"><div class="participate-text"><a href ="#participate">add #planettakeout to your photos and videos to participate</a></div></li>');
 			}
+
+			// add 'back to top' if the collection will go off the screen
+			if(overflowsScreen()) {
+				this.$('.back-to-top').show();
+			} else {
+				this.$('.back-to-top').hide();
+			}
+
+			function overflowsScreen() {
+				var rows = Math.ceil(_this.collection.length / 6),
+					contentHeight = (rows * 124) + 178;
+
+				return( contentHeight > $(window).height());
+			}
+
+
 			//this.getViews().each(function(view){ view.delegateEvents() });
 
 			// infinite scroll needs some work!
-			this.$('#grid-view-slider').scroll(function()
+			this.$('#grid-view-wrapper').scroll(function()
 			{
-				if( _this.$('#grid-view-slider ul').height() <= -_this.$('#grid-view-slider ul').position().top + $('#grid-view-wrapper').height() )
+				if(_this.scrollActive&&(_this.$('#grid-view-slider ul').height() <= -_this.$('#grid-view-slider ul').position().top + $('#grid-view-wrapper').height()) )
 				{
-					if(_this.collection.length < _this.collection.itemsCount )
+					
+					if((_this.collection.length < _this.collection.itemsCount) )
 					{
+						_this.scrollActive=false;
 						console.log('infinitely load!');
 						_this.collection.page++;
-						_this.collection.fetch({add:true}).success(function(){ _this.collection.trigger('reset');});
+						_this.collection.fetch({add:true}).success(function(){ console.log(_this.collection);_this.onReset(); _this.scrollActive=true;});
 					}
 				}
 			});
@@ -87,6 +121,13 @@ function(Zeega, Backbone, Modal)
 					'style': info.gif ? 'background:url(assets/img/gifs/'+ info.gif +');background-size:115% auto;background:position' : ''
 				}});
 			}
+			else if( _.include(item.get('tags'), 'pt_blog') )
+			{
+
+				itemView = new App.Views.BlogView({model:item,attributes:{
+					'style':'background:url(assets/img/blog.png);background-size:115% auto;background:position'
+				}});
+			}
 			else if( item.get('media_type') == 'Collection')
 			{
 				itemView = new App.Views.CollectionView({model:item,attributes:{
@@ -100,6 +141,11 @@ function(Zeega, Backbone, Modal)
 				}});
 			}
 			return itemView;
+		},
+
+		scrollToTop: function(e) {
+			e.preventDefault();
+			this.$('#grid-view-wrapper').scrollTop(0);
 		}
 
 	});
@@ -115,6 +161,14 @@ function(Zeega, Backbone, Modal)
 
 	App.Views.CollectionView = Backbone.LayoutView.extend({
 		template : 'collection',
+		tagName : 'li',
+		className : 'collection-view',
+
+		serialize : function(){ return this.model.toJSON(); }
+	});
+
+	App.Views.BlogView = Backbone.LayoutView.extend({
+		template : 'blog',
 		tagName : 'li',
 		className : 'collection-view',
 
