@@ -135,7 +135,7 @@ function(Zeega, Backbone, Modal)
 	});
 
 	var mapItemCollection = Backbone.Collection.extend({
-		url: function(){ return localStorage.api + '/items/46086/items'; },
+		url: function(){ return localStorage.api + '/items/46086/items?limit=300'; },
 		parse : function(res){ return res.items; }
 	});
 
