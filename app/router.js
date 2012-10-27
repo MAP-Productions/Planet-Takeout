@@ -230,7 +230,7 @@ esp inserting the layout into the dom!
 				}
 			}
 		}
-		//Zeega.tempCookie=getCookie('PLANET_TAKEOUT');
+		Zeega.tempCookie=getCookie('PLANET_TAKEOUT');
 		if(_.isUndefined(Zeega.tempCookie)){
 			var loader = new InitialLoad.View();
 			baseLayout.setView('#app-base', loader );
