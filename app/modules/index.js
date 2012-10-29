@@ -149,8 +149,7 @@ function(Zeega, Backbone,Player,loadingSpinner) {
 			
 			if( this.isNew() )
 			{
-				var projects = [47838,46333,46335];
-				return localStorage.api + '/items/'+ projects[Math.floor(Math.random() * projects.length)];
+				return localStorage.api + '/items/'+ Zeega.featureList[Math.floor(Math.random() * Zeega.featureList.length)];
 			}
 			else return localStorage.api + '/items/'+ this.id;
 		},
