@@ -1,4 +1,4 @@
-<a href='/collections/<%= collection_id %>/view/<%= id %><% if( page>=2 ){ %>/<%=page %><% } %>'>
+<a href='/collections/<%= collection_id %>/view/<%= id %><% if( page>=2 ){ %>/page/<%=page %><% } %>'>
 	<!--<% if( _.include(tags, 'pt_radiostory') ){ %><i class='PT-featured featured-icon'></i><% } %> -->
 	<% if( media_type=="Video"||media_type=="Youtube"||media_type=="Audio" ){ %><img class='video-item-overlay' src='assets/img/video-play-overlay.png'/><% } %>
 	<% if( thumbnail_url ) {%>
