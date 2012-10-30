@@ -48,7 +48,7 @@ function(Zeega, Backbone, Modal)
 
 		initialize : function()
 		{
-			this.collection = new mapItemCollection();
+			if(_.isUndefined(Zeega.mapCollection)) Zeega.mapCollection = new mapItemCollection();
 		},
 
 		afterRender : function()
@@ -83,7 +83,7 @@ function(Zeega, Backbone, Modal)
 
 			var renderMarkers = function()
 			{
-				_this.collection.each(function(item){
+				Zeega.mapCollection.each(function(item){
 					item.marker = L.marker([ item.get('media_geo_latitude') || 0, item.get('media_geo_longitude') || 0 ], {icon: _this.ptIconRed} );
 					item.marker.itemID = item.id;
 					item.marker.addTo(_this.map);
@@ -91,11 +91,16 @@ function(Zeega, Backbone, Modal)
 					item.marker.on('click', function(e){ _this.onMarkerClick(e); } );
 				});
 			};
-
-			this.collection.fetch().success(function(){
+			
+			if(Zeega.mapCollection.length>0){
 				renderMarkers();
-			});
-
+			}
+			else{
+				Zeega.mapCollection.fetch().success(function(){
+					renderMarkers();
+				});
+			}
+	
 			$('#PT-map-search').keypress(function(e){
 				if(e.which==13) _this.lookup();
 			});
