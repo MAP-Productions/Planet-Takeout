@@ -47,6 +47,7 @@ function(Zeega, Backbone,Player,FeaturedIntro,loadingSpinner) {
 					}
 					else{
 						$(window).unbind('project_loaded');
+						Zeega.player.play();
 						this.featuredIntro = new FeaturedIntro.View();
 						this.featuredIntro.takeoutName = Zeega.player.get('title');
 						$('body').append(this.featuredIntro.el);
@@ -57,7 +58,7 @@ function(Zeega, Backbone,Player,FeaturedIntro,loadingSpinner) {
 								fIntro.remove();
 							});
 						}, 4000);
-						Zeega.player.play();
+						
 					}
 					
 				});
