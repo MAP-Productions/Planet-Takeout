@@ -46,11 +46,15 @@ function(
 
 			"" : "index",
 			"about" : 'about',
-			"browser" : 'browser',
-			"mobile" : 'mobile',
-
+			'map' : 'map',
+			'participate' : 'participate',
+			'menu' : 'menu',
+			'search' : 'search',
 			"collections" : 'collections',
 			'collections/' : 'collections',
+			'r/:page':'redirect',
+
+
 			'collections/:collection_id' : 'viewCollectionGrid',
 			'collections/:collection_id/' : 'viewCollectionGrid',
 			'collections/:collection_id/view' : 'viewCollectionPlayer',
@@ -62,12 +66,14 @@ function(
 			'featured' : 'index',
 			'featured/' : 'index',
 			'featured/:featured_id' : 'viewFeatured',
-			'featured/:featured_id/' : 'viewFeatured',
+			'featured/:featured_id/' : 'viewFeatured'
 
-			'map' : 'map',
-			'participate' : 'participate',
-			'menu' : 'menu',
-			'search' : 'search'
+			
+		},
+
+		redirect:function(page){
+			Zeega.fromBlog=true;
+			this.navigate(page,true);
 		},
 
 		index: function()
@@ -217,12 +223,15 @@ esp inserting the layout into the dom!
 		Zeega.featureList=[47838,46333,46335];
 
 
-		
-		var loader = new InitialLoad.View();
-		baseLayout.setView('#app-base', loader );
-		loader.render();
-		Zeega.initialLoad=true;
-			
+		if(_.isUndefined(Zeega.fromBlog)){
+			var loader = new InitialLoad.View();
+			baseLayout.setView('#app-base', loader );
+			loader.render();
+			Zeega.initialLoad=true;
+		}
+		else{
+			Zeega.intitialLoad=false;
+		}
 
 
 		
