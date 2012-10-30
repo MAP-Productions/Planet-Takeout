@@ -58,7 +58,7 @@ function(Zeega, Backbone, FeaturedIntro) {
 			var _this = this;
 			Zeega.initialLoader=false;
 			if(!Zeega.featureLoading)$(window).trigger('project_loaded');
-			this.$el.fadeOut('fast',function(){_this.remove();});
+			this.remove();
 		}
 	});
 
