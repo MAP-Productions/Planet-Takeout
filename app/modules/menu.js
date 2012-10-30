@@ -34,37 +34,54 @@ function(Zeega, Backbone, Modal)
 
 		initialize : function()
 		{
+			
+
+			if(_.isUndefined(Zeega.menuCollection))Zeega.menuCollection = new menuItemCollection();
+
+		},
+		afterRender:function(){
+
 			var _this=this;
-			this.collection = new menuItemCollection();
-			this.collection.fetch().success(function(response){
-				_this.loadMenu();
-			});
+			if(Zeega.menuCollection.length>0){
+				_.delay(function(){_this.loadMenu();},10);
+			}
+			else{
+				Zeega.menuCollection.fetch().success(function(collection,response){
+					_this.loadMenu();
+				});
+			}
 		},
 
 		loadMenu :function()
 		{
-			var n = 0;
-			var t = 0;
-			this.collection.each(function(item){
-				var wrapper = false; 
+			var n = 0,
+				t = 0,
+				wrapper =-1,
+				_this=this;
+			Zeega.menuCollection.each(function(item){
+				wrapper=-1;
 				if(_.include(item.get('tags'),'pt_tidbits'))
 				{
-					if(_.include(item.get('tags'),'pt_feature')) wrapper= $('#feature-tidbits');
+					if(_.include(item.get('tags'),'pt_feature')) wrapper= _this.$el.find('#feature-tidbits');
 					else
 					{
 						t++;
-						if(t<5) wrapper=	$('#all-tidbits-one');
-						else wrapper=	$('#all-tidbits-two');
+						if(t<5) wrapper=	_this.$el.find('#all-tidbits-one');
+						else wrapper=	_this.$el.find('#all-tidbits-two');
 					}
 				}
 				//else if(_.include(item.get('tags'),'pt_housespecial')) wrapper= $('#house-special');
 				else if(_.include(item.get('tags'),'pt_neighborhood'))
 				{
 					n++;
-					if(n<7) wrapper=	$('#neighborhood-one');
-					else  wrapper=	$('#neighborhood-two');
+					if(n<7) wrapper=	_this.$el.find('#neighborhood-one');
+					else  wrapper=	_this.$el.find('#neighborhood-two');
 				}
-				if(wrapper)wrapper.append(_.template('<li style="display:none;"><a href="/collections/<%=id%>/"><%=title %></a><span><%= child_items_count %></span></li>', item.toJSON()));
+				if(wrapper!=-1){
+					console.log(wrapper);
+					wrapper.append(_.template('<li style="display:none;"><a href="/collections/<%=id%>/"><%=title %></a><span><%= child_items_count %></span></li>', item.toJSON()));
+					console.log('!!!!!!!!!!!!!addding thigns!!!!');
+				}
 			});
 
 			$('.PT-menu li').fadeIn('fast');
