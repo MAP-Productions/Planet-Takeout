@@ -184,7 +184,7 @@ function(zeega, Backbone, _Layer, Player){
 			if(this.model.get('attr').fade_in>0 && t<f)
 			{
 				var vol =this.model.get('attr').volume*(1.0-((f-t)/this.model.get('attr').fade_in)*((f-t)/this.model.get('attr').fade_in));
-				this.model.player.setVolume(vol);
+				this.model.typeModel.player.setVolume(vol);
 			}
 			
 			else if(this.model.get('attr').fade_out>0 && t>g)

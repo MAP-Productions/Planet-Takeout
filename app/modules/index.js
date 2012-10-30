@@ -7,11 +7,13 @@ define([
 	// Plugins
 	'zeega_player',
 
+	"modules/featured-intro",
+
 	// Submodules.
 	'modules/submodules/loadingspinner'
 ],
 
-function(Zeega, Backbone,Player,loadingSpinner) {
+function(Zeega, Backbone,Player,FeaturedIntro,loadingSpinner) {
 
 
 	// Create a new module
@@ -21,18 +23,47 @@ function(Zeega, Backbone,Player,loadingSpinner) {
 
 		initialize : function()
 		{
-			
+			Zeega.featureLoading=true;
+			loadingSpinner.show('Takeout');
 			var _this = this;
 			this.project = new Project();
 			this.project.id = this.get('featuredID');
 			this.project.fetch().success(function(){
 				// I should not have to put this in Zeega.player!
 				// want this in _this.player !!
+
 				Zeega.player = new Zeega.Player( _this.project.toJSON() );
 				_this.player = Zeega.player; // I want to remove this
-				_this.player.on('ready', _this.renderCitation, _this);
+			//	_this.player.on('ready', _this.renderCitation, _this);
 				_this.player.init();
 				console.log('feature', _this );
+
+				$(window).bind('project_loaded',function(){
+			
+					loadingSpinner.hide();
+					if(Zeega.initialLoader){
+						Zeega.player.pause();
+						Zeega.featureLoading=false;
+					}
+					else{
+						$(window).unbind('project_loaded');
+						this.featuredIntro = new FeaturedIntro.View();
+						this.featuredIntro.takeoutName = Zeega.player.get('title');
+						$('body').append(this.featuredIntro.el);
+						this.featuredIntro.render();
+						var fIntro = this.featuredIntro;
+						_.delay(function(){
+							fIntro.$('.featured-intro-overlay').fadeOut(2000, function(){
+								fIntro.remove();
+							});
+						}, 4000);
+						Zeega.player.play();
+					}
+					
+				});
+
+
+
 			});
 		},
 
@@ -50,7 +81,7 @@ function(Zeega, Backbone,Player,loadingSpinner) {
 		exit : function()
 		{
 			this.player.exit();
-			this.citationDrawer.remove();
+			//this.citationDrawer.remove();
 		}
 
 	});

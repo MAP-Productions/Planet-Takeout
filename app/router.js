@@ -76,7 +76,7 @@ function(
 			
 			initialize('player');
 			Zeega.page = new Index.Model();
-			$('.selected').removeClass('selected'); 
+			$('.selected').removeClass('selected');
 			$('#pt-nav-home').addClass('selected');
 			
 			
@@ -88,7 +88,7 @@ function(
 			
 			initialize('player');
 			Zeega.page = new Index.Model({featuredID: featuredID });
-			$('.selected').removeClass('selected'); 
+			$('.selected').removeClass('selected');
 			$('#pt-nav-home').addClass('selected');
 		},
 
@@ -96,7 +96,7 @@ function(
 		{
 			initialize('modal');
 			Zeega.modal = new About.Model();
-			$('.selected').removeClass('selected'); 
+			$('.selected').removeClass('selected');
 			$('#pt-nav-about').addClass('selected');
 		},
 		browser : function()
@@ -114,7 +114,7 @@ function(
 		{
 			initialize('page');
 			renderCollections();
-			$('.selected').removeClass('selected'); 
+			$('.selected').removeClass('selected');
 			$('#pt-nav-collections').addClass('selected');
 		},
 
@@ -122,7 +122,7 @@ function(
 		{
 			initialize('page');
 			goToItemCollection( collectionID );
-			$('.selected').removeClass('selected'); 
+			$('.selected').removeClass('selected');
 			$('#pt-nav-collections').addClass('selected');
 		},
 
@@ -153,7 +153,7 @@ function(
 		{
 			initialize('modal');
 			Zeega.modal = new Map.Model();
-			$('.selected').removeClass('selected'); 
+			$('.selected').removeClass('selected');
 			$('#pt-nav-map').addClass('selected');
 		},
 
@@ -161,7 +161,7 @@ function(
 		{
 			initialize('modal');
 			Zeega.modal = new Participate.Model();
-			$('.selected').removeClass('selected'); 
+			$('.selected').removeClass('selected');
 			$('#pt-nav-participate').addClass('selected');
 		},
 
@@ -169,7 +169,7 @@ function(
 		{
 			initialize('modal');
 			Zeega.modal = new Menu.Model();
-			$('.selected').removeClass('selected'); 
+			$('.selected').removeClass('selected');
 			$('#pt-nav-menu').addClass('selected');
 
 		},
@@ -218,44 +218,14 @@ esp inserting the layout into the dom!
 
 
 		
-
-		function getCookie(c_name){
-			var i,x,y,ARRcookies=document.cookie.split(";");
-			for (i=0;i<ARRcookies.length;i++){
-				x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
-				y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
-				x=x.replace(/^\s+|\s+$/g,"");
-				if (x==c_name){
-					return unescape(y);
-				}
-			}
-		}
-		Zeega.tempCookie=getCookie('PLANET_TAKEOUT');
-		if(_.isUndefined(Zeega.tempCookie)){
-			var loader = new InitialLoad.View();
-			baseLayout.setView('#app-base', loader );
-			loader.render();
+		var loader = new InitialLoad.View();
+		baseLayout.setView('#app-base', loader );
+		loader.render();
+		Zeega.initialLoad=true;
 			
-		}
 
-		/* temp! this is to show how to use the FeaturedIntro view */
-		/*
-		var featuredIntro = new FeaturedIntro.View();
-		featuredIntro.takeoutName = 'Peking House';
 
-		baseLayout.setView('#app-base', featuredIntro );
-		featuredIntro.render();
-		*/
-
-		$(window).bind('project_loaded',function(){
-			loadingSpinner.hide();
-
-			if(_.isUndefined(Zeega.tempCookie)){
-				console.log('pausing cause no cookie');
-				Zeega.player.pause();
-				
-			}
-		});
+		
 
 
 		// temporary for initial loading screen with cat
@@ -273,7 +243,7 @@ esp inserting the layout into the dom!
 		// if going to a modal, make sure the player is paused
 		// if going to a grid, exit the player
 		// if closing a modal, and a player exists, then make the player play
-		// modal, page, return, player 
+		// modal, page, return, player
 
 		if( Zeega.page && Zeega.page.player )
 		{
@@ -321,7 +291,7 @@ esp inserting the layout into the dom!
 	function goToItemCollection( collectionID )
 	{
 
-		$('.selected').removeClass('selected'); 
+		$('.selected').removeClass('selected');
 		$('#pt-nav-collections').addClass('selected');
 		var items = new Grid.Collections.Items();
 

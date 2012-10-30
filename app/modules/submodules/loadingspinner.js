@@ -13,7 +13,7 @@ function(Zeega, Backbone,spin)
 	var App = Zeega.module();
 
 	App.show = function(loadingText) {
-		console.log('spinner show');
+		console.log('****************************spinner show');
 		var $elem = $('#loading');
 		if (loadingText) {
 			$elem.find('#loadingWhat').text(loadingText);
@@ -24,7 +24,7 @@ function(Zeega, Backbone,spin)
 	};
 
 	App.hide = function() {
-		console.log('spinner hide');
+		console.log('***************************spinner hide');
 		
 		$('#loading')
 			.hide()

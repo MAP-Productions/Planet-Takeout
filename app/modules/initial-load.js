@@ -12,7 +12,11 @@ function(Zeega, Backbone, FeaturedIntro) {
 
 	InitialLoad.View = Backbone.LayoutView.extend({
 		template : 'initial-load',
+		events: {
+			'click #skip':'onProgressComplete'
+		},
 		initialize : function() {
+			Zeega.initialLoader=true;
 			_.bindAll(this, 'afterRender', 'cycleSlides');
 		},
 		afterRender : function() {
@@ -24,7 +28,7 @@ function(Zeega, Backbone, FeaturedIntro) {
 
 			this.numSlides = this.elem.slides.length;
 			this.currentSlide = 0;
-			this.animLength = 15000; // how long to spend animating the cat and going through the info slides
+			this.animLength = 500; // how long to spend animating the cat and going through the info slides
 
 			this.cycleSlides();
 			this.elem.progressBar.animate({
@@ -52,35 +56,12 @@ function(Zeega, Backbone, FeaturedIntro) {
 		onProgressComplete : function()
 		{
 			var _this = this;
-			console.log('finished anim', this, Zeega);
-			setCookie('PLANET_TAKEOUT',1,365);
-			Zeega.tempCookie = true;
-
-			if (Zeega.player) {
-				this.featuredIntro = new FeaturedIntro.View();
-				this.featuredIntro.takeoutName = Zeega.player.get('title');
-				$('body').append(this.featuredIntro.el);
-				this.featuredIntro.render();
-				var fIntro = this.featuredIntro;
-				_.delay(function(){
-					fIntro.$('.featured-intro-overlay').fadeOut(2000, function(){
-						fIntro.remove();
-					});
-				}, 4000);
-				Zeega.player.play();
-			}
-			
+			Zeega.initialLoader=false;
+			if(!Zeega.featureLoading)$(window).trigger('project_loaded');
 			this.remove();
 		}
 	});
 
-	var setCookie = function(c_name,value,exdays)
-	{
-		var exdate = new Date();
-		exdate.setDate(exdate.getDate() + exdays);
-		var c_value=escape(value) + ( (exdays === null) ? "" : "; expires=" + exdate.toUTCString() );
-		document.cookie=c_name + "=" + c_value;
-	};
 
 	// Required, return the module for AMD compliance
 	return InitialLoad;

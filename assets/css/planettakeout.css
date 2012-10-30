@@ -231,6 +231,17 @@ i.PT-featured {
   font-size: 1.5em;
   line-height: 1.5em;
 }
+#skip {
+  position: absolute;
+  right: 5px;
+  bottom: 140px;
+  color: white;
+  opacity: 0.7;
+  cursor: pointer;
+}
+#skip:hover {
+  opacity: 1;
+}
 .featured-intro-overlay {
   background-color: rgba(0, 0, 0, 0.75);
   height: 100%;
