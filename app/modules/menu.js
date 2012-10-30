@@ -46,7 +46,7 @@ function(Zeega, Backbone, Modal)
 			var n = 0;
 			var t = 0;
 			this.collection.each(function(item){
-				var wrapper = false;  
+				var wrapper = false; 
 				if(_.include(item.get('tags'),'pt_tidbits'))
 				{
 					if(_.include(item.get('tags'),'pt_feature')) wrapper= $('#feature-tidbits');
@@ -57,7 +57,7 @@ function(Zeega, Backbone, Modal)
 						else wrapper=	$('#all-tidbits-two');
 					}
 				}
-				else if(_.include(item.get('tags'),'pt_housespecial')) wrapper= $('#house-special');
+				//else if(_.include(item.get('tags'),'pt_housespecial')) wrapper= $('#house-special');
 				else if(_.include(item.get('tags'),'pt_neighborhood'))
 				{
 					n++;

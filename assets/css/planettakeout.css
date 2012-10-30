@@ -59,13 +59,13 @@ ul.horizontal-list li {
   position: fixed;
   bottom: 1px;
   right: 10px;
-  color: #fff;
+  color: white;
   font-size: 10px;
   z-index: 20000000;
   opacity: .7;
 }
 .powered-by-zeega a {
-  color: #fff;
+  color: white;
 }
 /* social media icons sprite */
 .social-icon {
@@ -231,6 +231,17 @@ i.PT-featured {
   font-size: 1.5em;
   line-height: 1.5em;
 }
+#skip {
+  position: absolute;
+  right: 5px;
+  bottom: 140px;
+  color: white;
+  opacity: 0.7;
+  cursor: pointer;
+}
+#skip:hover {
+  opacity: 1;
+}
 .featured-intro-overlay {
   background-color: rgba(0, 0, 0, 0.75);
   height: 100%;
@@ -333,10 +344,12 @@ i.PT-featured {
 #PT-preview-left {
   float: left;
   opacity: 0.6;
+  padding: 10px;
 }
 #PT-preview-right {
   float: right;
   opacity: 0.6;
+  padding: 10px;
 }
 /* featured items drawer */
 #featured-items-drawer {
@@ -370,7 +383,9 @@ i.PT-featured {
   color: white;
 }
 .collection-player-nav {
-  padding: 10px;
+  width: 100%;
+  position: absolute;
+  bottom: 100px;
 }
 .collection-citation-content {
   background: rgba(0, 0, 0, 0.5);
