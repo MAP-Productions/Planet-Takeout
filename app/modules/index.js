@@ -38,7 +38,7 @@ function(Zeega, Backbone,Player,FeaturedIntro,loadingSpinner) {
 				_this.player.init();
 				console.log('feature', _this );
 
-				$(window).bind('project_loaded',function(){
+				$(window).unbind('project_loaded').bind('project_loaded',function(){
 			
 					loadingSpinner.hide();
 					if(Zeega.initialLoader){

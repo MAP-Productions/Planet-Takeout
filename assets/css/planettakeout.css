@@ -344,10 +344,12 @@ i.PT-featured {
 #PT-preview-left {
   float: left;
   opacity: 0.6;
+  padding: 10px;
 }
 #PT-preview-right {
   float: right;
   opacity: 0.6;
+  padding: 10px;
 }
 /* featured items drawer */
 #featured-items-drawer {
@@ -381,7 +383,9 @@ i.PT-featured {
   color: white;
 }
 .collection-player-nav {
-  padding: 10px;
+  width: 100%;
+  position: absolute;
+  bottom: 100px;
 }
 .collection-citation-content {
   background: rgba(0, 0, 0, 0.5);

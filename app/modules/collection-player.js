@@ -3,11 +3,13 @@ define([
 	// Libs
 	"backbone",
 	// Plugins
+	'modules/submodules/loadingspinner',
 	'zeega_player',
+
 	'libs/jquery-ui'
 ],
 
-function(Zeega, Backbone) {
+function(Zeega, Backbone,loadingSpinner) {
 
 	// Create a new module
 	var CPlayer = Zeega.module();
@@ -16,7 +18,7 @@ function(Zeega, Backbone) {
 
 		initialize : function()
 		{
-
+			loadingSpinner.show('Collection');
 			var _this = this;
 			this.project = new Project( this.toJSON() );
 			this.project.on('project_loaded', this.startPlayer, this );
@@ -28,6 +30,7 @@ function(Zeega, Backbone) {
 		{
 			// I should not have to put this in Zeega.player!
 			// I want this in _this.player !!
+
 			Zeega.player = new Zeega.Player( _.extend(this.project.toJSON(),{viewportFull : false}) );
 			this.player = Zeega.player; // I want to remove this
 			
@@ -36,10 +39,12 @@ function(Zeega, Backbone) {
 			
 			this.player.on('timeupdate', function(opts){ this.updateElapsed(opts); }, this);
 			this.player.init();
+
 		},
 
 		renderCitationLayout : function()
 		{
+			loadingSpinner.hide();
 			if( this.citationDrawer ) $('#nav-lower').html( this.citationDrawer.el );
 			
 			this.citationDrawer = new citationLayout({ model: this.project });
