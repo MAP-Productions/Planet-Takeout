@@ -57,7 +57,7 @@ function(Zeega, Backbone, Modal)
 						else wrapper=	$('#all-tidbits-two');
 					}
 				}
-				else if(_.include(item.get('tags'),'pt_housespecial')) wrapper= $('#house-special');
+				//else if(_.include(item.get('tags'),'pt_housespecial')) wrapper= $('#house-special');
 				else if(_.include(item.get('tags'),'pt_neighborhood'))
 				{
 					n++;
