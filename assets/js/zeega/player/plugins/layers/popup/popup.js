@@ -56,7 +56,8 @@ function(zeega, Backbone, _Layer, Player){
 			if( this.model.get('attr').popup_target )
 			{
 				this.$('.popup-target').html('<img src="'+ this.model.get('attr').popup_target.uri  +'" height="100%" width="100%"/>');
-				this.$('.popup-target-title').html( '<h3>'+ this.model.get('attr').popup_content.title +'</h3>');
+				if( _.isUndefined(this.model.get('attr').popup_content))this.$('.popup-target-title').html( '<h3>Surprise!</h3>');
+				else this.$('.popup-target-title').html( '<h3>'+ this.model.get('attr').popup_content.title +'</h3>');
 			}
 			else
 			{
