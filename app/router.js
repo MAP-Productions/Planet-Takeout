@@ -53,6 +53,7 @@ function(
 			"collections" : 'collections',
 			'collections/' : 'collections',
 			'r/:page':'redirect',
+			'r':'redirect',
 
 
 			'collections/:collection_id' : 'viewCollectionGrid',
