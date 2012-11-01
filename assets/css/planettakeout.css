@@ -59,13 +59,13 @@ ul.horizontal-list li {
   position: fixed;
   bottom: 1px;
   right: 10px;
-  color: white;
+  color: #fff;
   font-size: 10px;
   z-index: 20000000;
   opacity: .7;
 }
 .powered-by-zeega a {
-  color: white;
+  color: #fff;
 }
 /* social media icons sprite */
 .social-icon {
@@ -385,7 +385,7 @@ i.PT-featured {
 .collection-player-nav {
   width: 100%;
   position: absolute;
-  bottom: 100px;
+  bottom: 62px;
 }
 .collection-citation-content {
   background: rgba(0, 0, 0, 0.5);

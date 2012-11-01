@@ -1,62 +1,71 @@
-<html lang="en"><head>
+<html lang="en">
+<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 
 	<title>Planet Takeout</title>
 
-	<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script id="facebook-jssdk" src="//connect.facebook.net/en_US/all.js#xfbml=1"></script><script>
-		localStorage.api = '/zeegaapi';
-                if (!window.console) console = {log: function() {}};
-	</script>
+	<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
 
-	<!-- Application root. -->
-	<base href="/">
+	<base href="/Zeega/Planet-Takeout/">
 	
-	<!--<base href="http://localhost/zeega-boilerplate/"> -->
-
 	<!-- Application styles. -->
-	<link rel="stylesheet" href="http://planettakeout.org/assets/css/index.css">
-	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCaSwWAp5JThJ1R6cW1OzLKpmxl1uI1iCE&amp;sensor=false"></script><script src="http://maps.gstatic.com/intl/en_us/mapfiles/api-3/9/14/main.js" type="text/javascript"></script>
-<style type="text/css"></style><style></style><span></span><script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/cat_js/intl/en_us/mapfiles/api-3/9/14/%7Bcommon,util,stats%7D.js"></script><script type="text/javascript" charset="UTF-8" src="http://maps.googleapis.com/maps/api/js/AuthenticationService.Authenticate?1shttp%3A%2F%2Fplanettakeout.org%2F%23mobile&amp;4sAIzaSyCaSwWAp5JThJ1R6cW1OzLKpmxl1uI1iCE&amp;5e1&amp;callback=_xdc_._1ermqw&amp;token=70605"></script></head>
+	<link rel="stylesheet" href="assets/css/index.css">
+	<style type="text/css">
+		body { background: #beedea url(assets/img/bg-gradient.png) repeat-x; padding: 5% 8%; margin: 0; font-size: 1em; }
+
+		.intro { overflow: hidden; margin-bottom: 1.5em; }
+		.intro h2 { font-family: "PT-black"; color: #de3620; font-size: 0.9em; line-height: 1.5em; float: right; width: 68%; }
+		.intro img.pt-logo { float: left; width:25%; }
+
+		.visit-info { font-size: 1.3em; color: #de3620; font-family: "PT-black"; line-height: 1.5em; }
+
+		.cat-connect { margin: 2em 0; position: relative; }
+
+		.cat-connect img.bg { position: relative; width: 100%; z-index: 1; }
+
+		.cat-connect .icons { z-index: 2; position: absolute; left: 50%; width: 48%; top: 8.5%; }
+		.cat-connect .icons a { vertical-align: middle; color: #de3620; font-style: italic; line-height: 1em; margin-bottom: .35em; display: block; }
+		.cat-connect .icons img { width: 25%; margin-right: 0.5em; vertical-align: middle; }
+
+		.explanatory p { margin: 1.5em 0; color: #757575; font-size: 0.8em; font-family: "PT-black"; line-height: 1.5em; }
+	</style>
+</head>
 
 <body>
 
-<div id="app-base">
-	
-	<div id="grid-view-wrapper" style="background-color:#FFD8AB">
-	
-		
-			
-			<div style="padding-top:5%;">
-				
-				<div><h2 style="font-size:16px; line-height:16px; color:red; padding-left:10%; padding-right:10%;">
-				<!--
-					<img style="padding-right:20px; width:50px; float:left" src="http://planettakeout.org/assets/img/pt_logo-white.png">
-				-->
-					Please visit us on a  computer to enjoy 
-				the full immersive experience!</h2>
-				</div>
-				<div style="padding:5%;">
-				
-			</div>
-				<h2 style="font-size:16px; line-height:16px; color:grey; padding-left:10%; padding-right:10%;">Planet Takeout is a participatory documentary project about the  Chinese takeout as a vital cultural crossroads in Boston and beyond.</h2>
-				<br>
-			</div>
-			
 
-			
 
-		
-		
-
+	<div class="intro">
+		<img class="pt-logo" src="assets/img/pt_logo-red.png" />
+		<h2>Planet Takeout is a participatory documentary project about the Chinese takeout as a vital cultural crossroads in Boston and beyond.</h2>
 	</div>
-</div></div></div>
 
-	<!-- Application source. -->
+	<p class="visit-info">Please visit us on a computer to enjoy the full immersive experience!</p>
+
+	<div class="cat-connect">
+		<img class="bg" src="assets/img/cat-loves-bubble-small.png" />
+		<div class="icons">
+			<a href="mailto:val@planettakeout.org"><img src="assets/img/email-large.png" />Email us!</a>
+			<a href="http://www.facebook.com/PlanetTakeout"><img src="assets/img/facebook-large.png" />Like us!</a>
+		</div>
+	</div>
+
+	<div class="explanatory">
+		<p>In virtually every neighborhood of every city and town in America, there’s a Chinese takeout. Each sits at the intersection where an immigrant worker meets a person who lives down the street, where the needs of the neighborhood are met by the adaptability of takeout owners, where food is exchanged, money, and perhaps words. Places where communication may be difficult but a sense of community can take root.</p>
+
+		<p>There are 10,000 takeouts in the U.S., which prepare more than 2 million meals every day, and who knows how many around the world. Planet Takeout aims to document these takeouts and use them as lenses into our local neighborhoods.</p>
+
+		<p>Enter Planet Takeout, a participatory documentary project about the Chinese takeout as a vital cultural crossroads.</p>
+	</div>
+
+	
 	<script type="text/javascript">
 		var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-339013-16']); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();
 	</script>
 
 
-</body></html>
+</body>
+
+</html>
