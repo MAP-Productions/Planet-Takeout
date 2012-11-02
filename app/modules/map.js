@@ -109,7 +109,7 @@ function(Zeega, Backbone, Modal)
 		onMarkerClick : function(e)
 		{
 			console.log('clicked', e, e.target.getLatLng() );
-			var item = this.collection.get(e.target.itemID);
+			var item = Zeega.mapCollection.get(e.target.itemID);
 			var content = new mapPopup({model:item});
 			this.popup = L.popup();
 			this.popup.setLatLng([ e.target.getLatLng().lat, e.target.getLatLng().lng ])
