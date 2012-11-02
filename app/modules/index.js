@@ -202,7 +202,7 @@ function(Zeega, Backbone,Player,FeaturedIntro,loadingSpinner) {
 		},
 
 		parse : function(resp){
-			return eval("(" + resp.items[0].text + ')');
+			return resp.items[0].text.project;
 		}
 
 	});
