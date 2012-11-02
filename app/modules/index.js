@@ -1,4 +1,4 @@
-/*jslint evil: true */
+
 
 define([
 	"zeega",
@@ -202,7 +202,7 @@ function(Zeega, Backbone,Player,FeaturedIntro,loadingSpinner) {
 		},
 
 		parse : function(resp){
-			return resp.items[0].text.project;
+			return resp.items[0].text;
 		}
 
 	});
