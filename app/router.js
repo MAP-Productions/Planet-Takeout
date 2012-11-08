@@ -79,14 +79,10 @@ function(
 
 		index: function()
 		{
-			
-			
 			initialize('player');
 			Zeega.page = new Index.Model();
 			$('.selected').removeClass('selected');
 			$('#pt-nav-home').addClass('selected');
-			
-			
 		},
 
 		viewFeatured : function(featuredID)
@@ -127,6 +123,7 @@ function(
 
 		viewCollectionGrid : function( collectionID )
 		{
+			console.log('view collection grid', collectionID);
 			initialize('page');
 			goToItemCollection( collectionID );
 			$('.selected').removeClass('selected');
@@ -135,25 +132,15 @@ function(
 
 		viewCollectionPlayer : function( collectionID, itemID, page )
 		{
-			
-			if( !Zeega.page || Zeega.page.player && Zeega.page.player.id != collectionID )
+			var createNewPlayer = function()
 			{
-				var createNewPlayer = function()
-				{
-					Zeega.page = new CollectionPlayer.Model({id: collectionID, frameID: itemID,page:page });
-				};
+				Zeega.page = new CollectionPlayer.Model({id: collectionID, frameID: itemID,page:page });
+			};
 
-				if( Zeega.player ) Zeega.player.on('player_exit', createNewPlayer);
-				else createNewPlayer();
+			if( Zeega.player ) Zeega.player.on('player_exit', createNewPlayer);
+			else createNewPlayer();
 
-				initialize('player');
-
-			}
-			else
-			{
-				initialize('resume');
-			}
-
+			initialize('player');
 		},
 
 		map : function()

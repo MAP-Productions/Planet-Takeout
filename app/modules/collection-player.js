@@ -100,6 +100,7 @@ function(Zeega, Backbone,loadingSpinner) {
 
 		exit : function()
 		{
+			console.log('exit collection player', this);
 			this.player.exit();
 			this.citationDrawer.remove();
 		}
