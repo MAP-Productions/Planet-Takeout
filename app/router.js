@@ -131,8 +131,6 @@ function(
 
 		viewCollectionGrid : function( collectionID )
 		{
-			console.log('view collection grid', collectionID);
-
 			initialize('page');
 			goToItemCollection( collectionID );
 			$('.selected').removeClass('selected');
@@ -215,7 +213,6 @@ esp inserting the layout into the dom!
 	function init()
 	{
 
-		console.log('initing');
 		// render the base layout into the dom
 		// this happens only once
 		var baseLayout = new Backbone.Layout({ el: "#main" });
@@ -270,7 +267,7 @@ esp inserting the layout into the dom!
 					Zeega.page.player.pause();
 					break;
 				case 'page':
-					if(Zeega.page.player) Zeega.page.player.exit()
+					if(Zeega.page.player) Zeega.page.player.exit();
 					Zeega.page.exit();
 					break;
 				case 'player':

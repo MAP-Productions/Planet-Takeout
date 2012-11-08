@@ -296,7 +296,6 @@ function(Zeega, Backbone, Layer) {
 
 			if( !this.currentFrame.isPlaying )
 			{
-				console.log('current frame', this.currentFrame, this.elapsedTime );
 				var _this = this;
 				//var remainingTime = this.currentFrame.get('attr').advance - this.elapsedTime;
 				//this.timerStarted = new Date();
@@ -492,7 +491,6 @@ function(Zeega, Backbone, Layer) {
 
 		play : function()
 		{
-			console.log('now playing this ZEEEEEEGA');
 			this.isPlaying = true;
 			_.each( _.toArray(this.layers), function(layer){
 				layer.typeVisual.play();
@@ -509,7 +507,6 @@ function(Zeega, Backbone, Layer) {
 
 		playPause : function()
 		{
-			console.log('now playing this ZEEEEEEGA');
 			this.isPlaying = !this.isPlaying;
 			_.each( _.toArray(this.layers), function(layer){
 				layer.typeVisual.playPause();
@@ -538,7 +535,6 @@ function(Zeega, Backbone, Layer) {
 			// draw and update layer media
 			_.each( this.get('layers'), function(layerID,z){
 				var layer = _this.layers.get(layerID);
-				//console.log('++++++++++render layer',_this.commonLayers,_this.commonLayers[fromFrameID], _this, fromFrameID, layerID,z,_.include(_this.commonLayers, layerID) );
 				if( _.include(_this.commonLayers[fromFrameID], layerID) ) layer.updateZIndex( z );
 				else layer.trigger('player_play', z );
 			});
@@ -767,10 +763,10 @@ function(Zeega, Backbone, Layer) {
 						if(_this.model.editor) _this.exit(); //don't close if standalone player
 						break;
 					case 37:
-						if( _this.model.autoAdvance != true) _this.goLeft();
+						if( _this.model.autoAdvance !== true) _this.goLeft();
 						break;
 					case 39:
-						if( _this.model.autoAdvance != true) _this.goRight();
+						if( _this.model.autoAdvance !== true) _this.goRight();
 						break;
 					case 32:
 						_this.playPause();
@@ -783,18 +779,18 @@ function(Zeega, Backbone, Layer) {
 			{
 				//constrain proportions in player
 				_this.$('#preview-media').clearQueue().animate( _this.getWindowSize() ,500, function(){_this.model.trigger('preview_resize');} );
-			}
+			};
 
 			if( Zeega.player.get('fadeOutOverlays') )
 			{
 				//	fadeout overlays after mouse inactivity
-				var fadeOutOverlays = _.debounce(function(){_this.fadeOutOverlays()},5000);
+				var fadeOutOverlays = _.debounce(function(){_this.fadeOutOverlays();},5000);
 				//hide all controls and citation
 				onmousemove = function()
 				{
 					if( _this.overlaysVisible ) fadeOutOverlays( _this );
 					else _this.fadeInOverlays();
-				}
+				};
 			}
 			
 		},
@@ -805,7 +801,6 @@ function(Zeega, Backbone, Layer) {
 			var viewHeight = window.innerHeight;
 
 			var initial_size = {};
-			console.log('vf ``		viewport full', this);
 			if(this.model.get('viewportFull'))
 			{
 				if(viewWidth / viewHeight > this.viewportRatio)
@@ -870,8 +865,8 @@ function(Zeega, Backbone, Layer) {
 			return false;
 		},
 		
-		goLeft : function(){ this.model.goLeft() },
-		goRight : function(){ this.model.goRight() },
+		goLeft : function(){ this.model.goLeft(); },
+		goRight : function(){ this.model.goRight(); },
 		
 		playPause : function()
 		{
@@ -900,9 +895,9 @@ function(Zeega, Backbone, Layer) {
 		leaveFullscreen : function()
 		{
 			this.isFullscreen = false;
-			if (document.exitFullscreen) 				document.exitFullscreen();
-			else if (document.mozCancelFullScreen) 		document.mozCancelFullScreen();
-			else if (document.webkitCancelFullScreen) 	document.webkitCancelFullScreen();
+			if (document.exitFullscreen)				document.exitFullscreen();
+			else if (document.mozCancelFullScreen)		document.mozCancelFullScreen();
+			else if (document.webkitCancelFullScreen)	document.webkitCancelFullScreen();
 
 			this.$el.find('.zicon-exit-fullscreen').removeClass('zicon-exit-fullscreen').addClass('zicon-go-fullscreen');
 		}

@@ -22,7 +22,6 @@ function(Zeega, Backbone,loadingSpinner) {
 			var _this = this;
 			this.project = new Project( this.toJSON() );
 			this.project.on('project_loaded', this.startPlayer, this );
-			console.log('cp initi', this);
 			this.project.fetch().success(function(){ _this.project.trigger('sync'); });
 		},
 
@@ -100,7 +99,6 @@ function(Zeega, Backbone,loadingSpinner) {
 
 		exit : function()
 		{
-			console.log('exit collection player', this);
 			this.player.exit();
 			this.citationDrawer.remove();
 		}
@@ -184,13 +182,11 @@ function(Zeega, Backbone,loadingSpinner) {
 
 		events : {
 			'click .play-pause' : 'playPause',
-			'click .share-item' : 'shareItem'	
+			'click .share-item' : 'shareItem'
 		},
 
 		playPause : function()
 		{
-			console.log('play pause', Zeega);
-
 			if(this.$('.play-pause i').hasClass('PT-icon-pause')) this.$('.play-pause i').removeClass('PT-icon-pause').addClass('PT-icon-play');
 			else this.$('.play-pause i').removeClass('PT-icon-play').addClass('PT-icon-pause');
 			Zeega.player.playPause();
@@ -254,13 +250,11 @@ function(Zeega, Backbone,loadingSpinner) {
 
 		initialize : function()
 		{
-			//this.on('all', function(e){console.log('all',e)} , this );
 			this.on('sync', this.loadProject, this );
 		},
 
 		loadProject : function()
 		{
-			console.log('project loaded', this);
 			if( this.get('frames').length > 0 ) this.trigger('project_loaded');
 			else this.generateStreetViewProject();
 
