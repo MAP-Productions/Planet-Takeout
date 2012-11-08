@@ -79,10 +79,18 @@ function(
 
 		index: function()
 		{
-			initialize('player');
-			Zeega.page = new Index.Model();
-			$('.selected').removeClass('selected');
-			$('#pt-nav-home').addClass('selected');
+			if( !Zeega.page )
+			{
+				initialize('player');
+				Zeega.page = new Index.Model();
+				$('.selected').removeClass('selected');
+				$('#pt-nav-home').addClass('selected');
+			}
+			else
+			{
+				initialize('resume');
+			}
+
 		},
 
 		viewFeatured : function(featuredID)
