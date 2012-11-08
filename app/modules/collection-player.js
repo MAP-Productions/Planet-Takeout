@@ -134,7 +134,7 @@ function(Zeega, Backbone,loadingSpinner) {
 
 			$(window).mousemove(function(e){
 				if(window.innerHeight - e.pageY < 111) showThrottled();
-			});	
+			});
 			$(window).mousemove(function(e){
 				if(window.innerHeight - e.pageY < 111) hideDebounce();
 			});
@@ -144,8 +144,6 @@ function(Zeega, Backbone,loadingSpinner) {
 		cleanup : function()
 		{
 			$(window).unbind('mousemove');
-
-			//this.timeout = 
 		},
 
 		events : {
@@ -156,11 +154,13 @@ function(Zeega, Backbone,loadingSpinner) {
 		goLeft : function()
 		{
 			this.player.prev();
+			Zeega.router.navigate('collections/'+ this.model.id +'/view/'+ this.player.project.currentFrame.id);
 			return false;
 		},
 		goRight : function()
 		{
 			this.player.next();
+			Zeega.router.navigate('collections/'+ this.model.id +'/view/'+ this.player.project.currentFrame.id);
 			return false;
 		}
 
