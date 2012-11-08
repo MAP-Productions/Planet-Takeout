@@ -253,8 +253,6 @@ function(Zeega, Backbone, Layer) {
 			}
 			this.preloadFrames(frame);
 			
-
-			//if(Zeega.player.get('mode') != 'editor') Zeega.player.router.navigate('frame/'+ frameID );
 			this.currentFrame = frame;
 		},
 		
@@ -358,7 +356,7 @@ function(Zeega, Backbone, Layer) {
 				this.autoAdvance = true;
 				this.elapsedTime = 0;
 				this.timerStarted = new Date();
-				this.timer = setTimeout( function(){ _this.goRight() },adv );
+				this.timer = setTimeout( function(){ _this.goRight(); },adv );
 			}
 			else this.autoAdvance = false;
 
@@ -401,7 +399,7 @@ function(Zeega, Backbone, Layer) {
 		{
 			//	make sure all referenced frames are valid
 
-			var brokenFrames = _.map(this.get('frames'), function(frameID){ 
+			var brokenFrames = _.map(this.get('frames'), function(frameID){
 				if( _.isUndefined( project.frames.get(frameID) ) ) return frameID;
 			});
 			if( _.compact(brokenFrames).length )
@@ -420,7 +418,7 @@ function(Zeega, Backbone, Layer) {
 
 		load : function( project )
 		{
-			this.each(function(sequence){ sequence.verify( project ).load() });
+			this.each(function(sequence){ sequence.verify( project ).load(); });
 		}
 	});
 
@@ -637,7 +635,7 @@ function(Zeega, Backbone, Layer) {
 			_.each( this.framesToPreload, function(frameID){
 				if( _this.id != frameID)
 					_this.commonLayers[frameID] = _.intersection( Zeega.player.project.frames.get(frameID).get('layers'), _this.get('layers') );
-			})
+			});
 		},
 		
 		getLinks : function()
@@ -659,7 +657,7 @@ function(Zeega, Backbone, Layer) {
 					}
 				
 				}
-			})
+			});
 		},
 		
 		setArrowState : function()
@@ -854,7 +852,7 @@ function(Zeega, Backbone, Layer) {
 			'click #preview-left' : 'goLeft',
 			'click #preview-right' : 'goRight',
 
-			'click .fullscreen' : 'toggleFullscreen',
+			'click .fullscreen' : 'toggleFullscreen'
 		},
 		
 		exit : function()
@@ -912,15 +910,16 @@ function(Zeega, Backbone, Layer) {
 		render : function()
 		{
 			var _this = this;
+			var citation;
 			this.$el.empty();
 			_.each( _.toArray(this.model.layers), function(layer){
 				if( Zeega.player.get('appName') && Zeega.Player.CitationView[Zeega.player.get('appName')] )
-					var citation = new Zeega.Player.CitationView[Zeega.player.get('appName')]({model:layer});
-				else var citation = new Zeega.Player.CitationView({model:layer});
+					citation = new Zeega.Player.CitationView[Zeega.player.get('appName')]({model:layer});
+				else citation = new Zeega.Player.CitationView({model:layer});
 
 				_this.$el.append( citation.render().el );
 				citation.delegateEvents();
-			})
+			});
 			
 			return this;
 		}
@@ -999,10 +998,11 @@ function(Zeega, Backbone, Layer) {
 			this.$el.find('.progress-types ul').empty();
 			_.each( _.toArray(this.model.layers), function(layer){
 				
-				if( layer.displayCitation != false && layer.get('type') != 'Link' )
+				if( layer.displayCitation !== false && layer.get('type') != 'Link' )
 				{
-					if(layer.get('attr').archive=="Dropbox") var itemType = layer.get('type').toLowerCase();
-					else var itemType = ( layer.get('attr').archive) ? layer.get('attr').archive.toLowerCase() : layer.get('type').toLowerCase();
+					var itemType;
+					if(layer.get('attr').archive=="Dropbox") itemType = layer.get('type').toLowerCase();
+					else itemType = ( layer.get('attr').archive) ? layer.get('attr').archive.toLowerCase() : layer.get('type').toLowerCase();
 					
 					_this.$el.find('.progress-types ul').append('<li class="layer-load-icon-'+ layer.id +'"><i class="zitem-'+ itemType +'"></i></li>');
 				}
