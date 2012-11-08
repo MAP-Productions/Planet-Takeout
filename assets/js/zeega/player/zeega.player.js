@@ -30,7 +30,8 @@ function(Zeega, Backbone, Layer) {
 	Zeega.Player = Backbone.Model.extend({
 
 		ready : false,
-		
+		status : 'ready',
+
 		defaults : {
 			appName : null,
 			branding : true,
@@ -92,7 +93,7 @@ function(Zeega, Backbone, Layer) {
 			if(this.get('mode') == 'editor') zeega.app.restoreFromPreview(); // needs fixin'
 
 			//Backbone.history.stop();
-
+			this.status = 'destroyed';
 			//this.trigger('player_exit');
 			return false;
 		},

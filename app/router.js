@@ -124,23 +124,35 @@ function(
 		viewCollectionGrid : function( collectionID )
 		{
 			console.log('view collection grid', collectionID);
+
 			initialize('page');
 			goToItemCollection( collectionID );
 			$('.selected').removeClass('selected');
 			$('#pt-nav-collections').addClass('selected');
+			//if(Zeega.page && Zeega.page.player) Zeega.page.player = null;
 		},
 
 		viewCollectionPlayer : function( collectionID, itemID, page )
 		{
-			var createNewPlayer = function()
+			if( !Zeega.page || Zeega.page.player && Zeega.page.player.id != collectionID || Zeega.page.player.status == 'destroyed' )
 			{
-				Zeega.page = new CollectionPlayer.Model({id: collectionID, frameID: itemID,page:page });
-			};
+				var createNewPlayer = function()
+				{
+					Zeega.page = new CollectionPlayer.Model({id: collectionID, frameID: itemID,page:page });
+				};
 
-			if( Zeega.player ) Zeega.player.on('player_exit', createNewPlayer);
-			else createNewPlayer();
+				if( Zeega.player ) Zeega.player.on('player_exit', createNewPlayer);
+				else createNewPlayer();
 
-			initialize('player');
+				initialize('player');
+
+			}
+			else
+			{
+				if(Zeega.page && Zeega.page.player) Zeega.page.player.project.goToFrame(itemID);
+				initialize('resume');
+			}
+
 		},
 
 		map : function()
@@ -250,6 +262,7 @@ esp inserting the layout into the dom!
 					Zeega.page.player.pause();
 					break;
 				case 'page':
+					if(Zeega.page.player) Zeega.page.player.exit()
 					Zeega.page.exit();
 					break;
 				case 'player':
