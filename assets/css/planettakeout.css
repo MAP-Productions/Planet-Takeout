@@ -59,13 +59,13 @@ ul.horizontal-list li {
   position: fixed;
   bottom: 1px;
   right: 10px;
-  color: white;
+  color: #fff;
   font-size: 10px;
   z-index: 20000000;
   opacity: .7;
 }
 .powered-by-zeega a {
-  color: white;
+  color: #fff;
 }
 /* social media icons sprite */
 .social-icon {
@@ -385,7 +385,7 @@ i.PT-featured {
 .collection-player-nav {
   width: 100%;
   position: absolute;
-  bottom: 100px;
+  bottom: 62px;
 }
 .collection-citation-content {
   background: rgba(0, 0, 0, 0.5);
@@ -531,12 +531,18 @@ i.PT-featured {
   text-align: center;
   left: 16px;
   top: 20px;
+  max-width: 107px;
+  /* prevents icon from disappearing when bootstrap gives max-width: 100% too all imgs */
+
 }
 .video-item-overlay {
   position: absolute;
   text-align: center;
   left: 38px;
   top: 23px;
+  max-width: 63px;
+  /* prevents icon from disappearing when bootstrap gives max-width: 100% too all imgs */
+
 }
 .back-to-top {
   background: url(../img/catrangoon-white.png) no-repeat left top;
