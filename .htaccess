@@ -7,6 +7,18 @@ RewriteBase /
 # Set a cookie, and skip the next rule
 #RewriteRule ^ - [CO=mredir:0:www.website.com]
 
+
+#RewriteRule ^app/(.*)$ dist/release/$1 [NC,L]
+#RewriteRule ^assets/js/libs/(.*)$ dist/release/$1 [NC,L]
+#RewriteRule ^assets/css/(.*)$ dist/release/$1 [NC,L]
+#RewriteRule ^zeegaapi/(.*)$ http://alpha.zeega.org/api/$1 [P]
+#writeRule ^assets/img/(.*)$ dist/release/$1 [NC,L]
+#RewriteRule ^assets/img/(.*)$ dist/release/$1 [NC,L]
+
+
+
+
+
 # Check if this looks like a mobile device
 # (You could add another [OR] to the second one and add in what you
 #  had to check, but I believe most mobile devices should send at
@@ -23,6 +35,8 @@ RewriteCond %{HTTP_USER_AGENT} "wapp|wapr|webc|winw|winw|xda|xda-" [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} "up.browser|up.link|windowssce|iemobile|mini|mmp" [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} "symbian|midp|wap|phone|pocket|mobile|pda|psp" [NC]
 RewriteCond %{HTTP_USER_AGENT} !macintosh [NC]
+RewriteCond %{REQUEST_URI} !^/assets/
+
 
 # Check if we're not already on the mobile site
 RewriteCond %{REQUEST_URI} !mobile
@@ -43,7 +57,7 @@ DirectorySlash Off
 RewriteRule ^app/(.*)$ dist/release/$1 [NC,L]
 RewriteRule ^assets/js/libs/(.*)$ dist/release/$1 [NC,L]
 RewriteRule ^assets/css/(.*)$ dist/release/$1 [NC,L]
-RewriteRule ^zeegaapi/(.*)$ http://50.57.99.175/api/$1 [P]
+RewriteRule ^zeegaapi/(.*)$ http://alpha.zeega.org/api/$1 [P]
 
 # These conditions ensure that the file does not exist and that the current
 # request URI is not the index.
