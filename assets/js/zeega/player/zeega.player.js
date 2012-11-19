@@ -30,7 +30,8 @@ function(Zeega, Backbone, Layer) {
 	Zeega.Player = Backbone.Model.extend({
 
 		ready : false,
-		
+		status : 'ready',
+
 		defaults : {
 			appName : null,
 			branding : true,
@@ -92,7 +93,7 @@ function(Zeega, Backbone, Layer) {
 			if(this.get('mode') == 'editor') zeega.app.restoreFromPreview(); // needs fixin'
 
 			//Backbone.history.stop();
-
+			this.status = 'destroyed';
 			//this.trigger('player_exit');
 			return false;
 		},
@@ -252,8 +253,6 @@ function(Zeega, Backbone, Layer) {
 			}
 			this.preloadFrames(frame);
 			
-
-			//if(Zeega.player.get('mode') != 'editor') Zeega.player.router.navigate('frame/'+ frameID );
 			this.currentFrame = frame;
 		},
 		
@@ -295,7 +294,6 @@ function(Zeega, Backbone, Layer) {
 
 			if( !this.currentFrame.isPlaying )
 			{
-				console.log('current frame', this.currentFrame, this.elapsedTime );
 				var _this = this;
 				//var remainingTime = this.currentFrame.get('attr').advance - this.elapsedTime;
 				//this.timerStarted = new Date();
@@ -358,7 +356,7 @@ function(Zeega, Backbone, Layer) {
 				this.autoAdvance = true;
 				this.elapsedTime = 0;
 				this.timerStarted = new Date();
-				this.timer = setTimeout( function(){ _this.goRight() },adv );
+				this.timer = setTimeout( function(){ _this.goRight(); },adv );
 			}
 			else this.autoAdvance = false;
 
@@ -401,7 +399,7 @@ function(Zeega, Backbone, Layer) {
 		{
 			//	make sure all referenced frames are valid
 
-			var brokenFrames = _.map(this.get('frames'), function(frameID){ 
+			var brokenFrames = _.map(this.get('frames'), function(frameID){
 				if( _.isUndefined( project.frames.get(frameID) ) ) return frameID;
 			});
 			if( _.compact(brokenFrames).length )
@@ -420,7 +418,7 @@ function(Zeega, Backbone, Layer) {
 
 		load : function( project )
 		{
-			this.each(function(sequence){ sequence.verify( project ).load() });
+			this.each(function(sequence){ sequence.verify( project ).load(); });
 		}
 	});
 
@@ -491,7 +489,6 @@ function(Zeega, Backbone, Layer) {
 
 		play : function()
 		{
-			console.log('now playing this ZEEEEEEGA');
 			this.isPlaying = true;
 			_.each( _.toArray(this.layers), function(layer){
 				layer.typeVisual.play();
@@ -508,7 +505,6 @@ function(Zeega, Backbone, Layer) {
 
 		playPause : function()
 		{
-			console.log('now playing this ZEEEEEEGA');
 			this.isPlaying = !this.isPlaying;
 			_.each( _.toArray(this.layers), function(layer){
 				layer.typeVisual.playPause();
@@ -537,7 +533,6 @@ function(Zeega, Backbone, Layer) {
 			// draw and update layer media
 			_.each( this.get('layers'), function(layerID,z){
 				var layer = _this.layers.get(layerID);
-				//console.log('++++++++++render layer',_this.commonLayers,_this.commonLayers[fromFrameID], _this, fromFrameID, layerID,z,_.include(_this.commonLayers, layerID) );
 				if( _.include(_this.commonLayers[fromFrameID], layerID) ) layer.updateZIndex( z );
 				else layer.trigger('player_play', z );
 			});
@@ -640,7 +635,7 @@ function(Zeega, Backbone, Layer) {
 			_.each( this.framesToPreload, function(frameID){
 				if( _this.id != frameID)
 					_this.commonLayers[frameID] = _.intersection( Zeega.player.project.frames.get(frameID).get('layers'), _this.get('layers') );
-			})
+			});
 		},
 		
 		getLinks : function()
@@ -662,7 +657,7 @@ function(Zeega, Backbone, Layer) {
 					}
 				
 				}
-			})
+			});
 		},
 		
 		setArrowState : function()
@@ -766,10 +761,10 @@ function(Zeega, Backbone, Layer) {
 						if(_this.model.editor) _this.exit(); //don't close if standalone player
 						break;
 					case 37:
-						if( _this.model.autoAdvance != true) _this.goLeft();
+						if( _this.model.autoAdvance !== true) _this.goLeft();
 						break;
 					case 39:
-						if( _this.model.autoAdvance != true) _this.goRight();
+						if( _this.model.autoAdvance !== true) _this.goRight();
 						break;
 					case 32:
 						_this.playPause();
@@ -782,18 +777,18 @@ function(Zeega, Backbone, Layer) {
 			{
 				//constrain proportions in player
 				_this.$('#preview-media').clearQueue().animate( _this.getWindowSize() ,500, function(){_this.model.trigger('preview_resize');} );
-			}
+			};
 
 			if( Zeega.player.get('fadeOutOverlays') )
 			{
 				//	fadeout overlays after mouse inactivity
-				var fadeOutOverlays = _.debounce(function(){_this.fadeOutOverlays()},5000);
+				var fadeOutOverlays = _.debounce(function(){_this.fadeOutOverlays();},5000);
 				//hide all controls and citation
 				onmousemove = function()
 				{
 					if( _this.overlaysVisible ) fadeOutOverlays( _this );
 					else _this.fadeInOverlays();
-				}
+				};
 			}
 			
 		},
@@ -804,7 +799,6 @@ function(Zeega, Backbone, Layer) {
 			var viewHeight = window.innerHeight;
 
 			var initial_size = {};
-			console.log('vf ``		viewport full', this);
 			if(this.model.get('viewportFull'))
 			{
 				if(viewWidth / viewHeight > this.viewportRatio)
@@ -858,7 +852,7 @@ function(Zeega, Backbone, Layer) {
 			'click #preview-left' : 'goLeft',
 			'click #preview-right' : 'goRight',
 
-			'click .fullscreen' : 'toggleFullscreen',
+			'click .fullscreen' : 'toggleFullscreen'
 		},
 		
 		exit : function()
@@ -869,8 +863,8 @@ function(Zeega, Backbone, Layer) {
 			return false;
 		},
 		
-		goLeft : function(){ this.model.goLeft() },
-		goRight : function(){ this.model.goRight() },
+		goLeft : function(){ this.model.goLeft(); },
+		goRight : function(){ this.model.goRight(); },
 		
 		playPause : function()
 		{
@@ -899,9 +893,9 @@ function(Zeega, Backbone, Layer) {
 		leaveFullscreen : function()
 		{
 			this.isFullscreen = false;
-			if (document.exitFullscreen) 				document.exitFullscreen();
-			else if (document.mozCancelFullScreen) 		document.mozCancelFullScreen();
-			else if (document.webkitCancelFullScreen) 	document.webkitCancelFullScreen();
+			if (document.exitFullscreen)				document.exitFullscreen();
+			else if (document.mozCancelFullScreen)		document.mozCancelFullScreen();
+			else if (document.webkitCancelFullScreen)	document.webkitCancelFullScreen();
 
 			this.$el.find('.zicon-exit-fullscreen').removeClass('zicon-exit-fullscreen').addClass('zicon-go-fullscreen');
 		}
@@ -916,15 +910,16 @@ function(Zeega, Backbone, Layer) {
 		render : function()
 		{
 			var _this = this;
+			var citation;
 			this.$el.empty();
 			_.each( _.toArray(this.model.layers), function(layer){
 				if( Zeega.player.get('appName') && Zeega.Player.CitationView[Zeega.player.get('appName')] )
-					var citation = new Zeega.Player.CitationView[Zeega.player.get('appName')]({model:layer});
-				else var citation = new Zeega.Player.CitationView({model:layer});
+					citation = new Zeega.Player.CitationView[Zeega.player.get('appName')]({model:layer});
+				else citation = new Zeega.Player.CitationView({model:layer});
 
 				_this.$el.append( citation.render().el );
 				citation.delegateEvents();
-			})
+			});
 			
 			return this;
 		}
@@ -1003,10 +998,11 @@ function(Zeega, Backbone, Layer) {
 			this.$el.find('.progress-types ul').empty();
 			_.each( _.toArray(this.model.layers), function(layer){
 				
-				if( layer.displayCitation != false && layer.get('type') != 'Link' )
+				if( layer.displayCitation !== false && layer.get('type') != 'Link' )
 				{
-					if(layer.get('attr').archive=="Dropbox") var itemType = layer.get('type').toLowerCase();
-					else var itemType = ( layer.get('attr').archive) ? layer.get('attr').archive.toLowerCase() : layer.get('type').toLowerCase();
+					var itemType;
+					if(layer.get('attr').archive=="Dropbox") itemType = layer.get('type').toLowerCase();
+					else itemType = ( layer.get('attr').archive) ? layer.get('attr').archive.toLowerCase() : layer.get('type').toLowerCase();
 					
 					_this.$el.find('.progress-types ul').append('<li class="layer-load-icon-'+ layer.id +'"><i class="zitem-'+ itemType +'"></i></li>');
 				}

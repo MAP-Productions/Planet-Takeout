@@ -79,14 +79,18 @@ function(
 
 		index: function()
 		{
-			
-			
-			initialize('player');
-			Zeega.page = new Index.Model();
-			$('.selected').removeClass('selected');
-			$('#pt-nav-home').addClass('selected');
-			
-			
+			if( !Zeega.page )
+			{
+				initialize('player');
+				Zeega.page = new Index.Model();
+				$('.selected').removeClass('selected');
+				$('#pt-nav-home').addClass('selected');
+			}
+			else
+			{
+				initialize('resume');
+			}
+
 		},
 
 		viewFeatured : function(featuredID)
@@ -131,12 +135,12 @@ function(
 			goToItemCollection( collectionID );
 			$('.selected').removeClass('selected');
 			$('#pt-nav-collections').addClass('selected');
+			//if(Zeega.page && Zeega.page.player) Zeega.page.player = null;
 		},
 
 		viewCollectionPlayer : function( collectionID, itemID, page )
 		{
-			
-			if( !Zeega.page || Zeega.page.player && Zeega.page.player.id != collectionID )
+			if( !Zeega.page || Zeega.page.player && Zeega.page.player.id != collectionID || Zeega.page.player.status == 'destroyed' )
 			{
 				var createNewPlayer = function()
 				{
@@ -151,6 +155,7 @@ function(
 			}
 			else
 			{
+				if(Zeega.page && Zeega.page.player) Zeega.page.player.project.goToFrame(itemID);
 				initialize('resume');
 			}
 
@@ -208,7 +213,6 @@ esp inserting the layout into the dom!
 	function init()
 	{
 
-		console.log('initing');
 		// render the base layout into the dom
 		// this happens only once
 		var baseLayout = new Backbone.Layout({ el: "#main" });
@@ -263,6 +267,7 @@ esp inserting the layout into the dom!
 					Zeega.page.player.pause();
 					break;
 				case 'page':
+					if(Zeega.page.player) Zeega.page.player.exit();
 					Zeega.page.exit();
 					break;
 				case 'player':
