@@ -1,6 +1,12 @@
 # Enable the RewriteEngine
 RewriteEngine on
 
+
+RewriteCond %{REQUEST_URI} "/twilio/"
+RewriteRule (.*) $1 [L]
+
+
+
 RewriteBase /
 # Check if this is the noredirect query string
 #RewriteCond %{QUERY_STRING} (^|&)m=0(&|$)
