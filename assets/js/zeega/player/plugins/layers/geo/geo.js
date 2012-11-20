@@ -162,7 +162,7 @@ function(Zeega, Backbone, _Layer){
 					addressControl : false,
 					addressControlOptions : false,
 					clickToGo : true,
-					disableDoubleClickZoom : false,
+					disableDoubleClickZoom : true,
 					enableCloseButton : false,
 					imageDateControl : false,
 					linksControl : false,
@@ -183,7 +183,7 @@ function(Zeega, Backbone, _Layer){
 				
 					
 				};
-				
+				$(this.$('#gmap-container-'+_this.model.id)[0]).css({'height':'640px','width':'640px','margin':'auto'});
 				_this.streetview = new google.maps.StreetViewPanorama( this.$('#gmap-container-'+_this.model.id)[0], mapOptions);
 				
 				
