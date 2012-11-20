@@ -16,6 +16,8 @@ function(Zeega, Backbone,loadingSpinner) {
 
 	CPlayer.Model = Backbone.Model.extend({
 
+		playerType : 'collection',
+
 		initialize : function()
 		{
 			loadingSpinner.show('Collection');
@@ -288,12 +290,13 @@ function(Zeega, Backbone,loadingSpinner) {
 						width:100,
 						lat: _this.get('items')[0].media_geo_latitude,
 						lng: _this.get('items')[0].media_geo_longitude,
-						//streetZoom : resp.items[0].attributes.pov.streetZoom,
-						heading : 0, //_this.get('items')[0].attributes.pov.heading,
-						//pitch : resp.items[0].attributes.pov.pitch,
+						//streetZoom :  _this.get('items')[0].attributes.pov.streetZoom,
+						heading : _this.get('items')[0].attributes.pov.heading,
+						pitch :  _this.get('items')[0].attributes.pov.pitch,
 						title: _this.get('items')[0].title
 					}
 				}];
+				console.log(lay);
 
 				_this.set({
 					sequences : seq,

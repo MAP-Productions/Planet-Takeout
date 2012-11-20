@@ -79,8 +79,9 @@ function(
 
 		index: function()
 		{
-			if( !Zeega.page )
+			if( !Zeega.page || (Zeega.page && Zeega.page.playerType == 'collection') )
 			{
+				console.log('no zeega page');
 				initialize('player');
 				Zeega.page = new Index.Model();
 				$('.selected').removeClass('selected');
@@ -88,6 +89,7 @@ function(
 			}
 			else
 			{
+				console.log('zeega page detected');
 				initialize('resume');
 			}
 

@@ -110,16 +110,24 @@ function(Zeega, Backbone, Modal)
 		{
 			console.log('clicked', e, e.target.getLatLng() );
 			var item = Zeega.mapCollection.get(e.target.itemID);
-			var content = new mapPopup({model:item});
+			var content = new mapPopup({model:item}),
+				thumbUrl;
+
+			if(item.get('thumbnail_url').length===0){
+				thumbUrl="http://maps.googleapis.com/maps/api/streetview?size=200x200&location="+item.get('media_geo_latitude')+","+item.get('media_geo_longitude')+"&fov=90&heading="+item.get('attributes').pov.heading+"&pitch="+item.get('attributes').pov.pitch+"&sensor=false";
+
+			}
+			else thumbUrl=item.get('thumbnail_url');
 			this.popup = L.popup();
 			this.popup.setLatLng([ e.target.getLatLng().lat, e.target.getLatLng().lng ])
 				.setContent( content.render().el )
 				.openOn(this.map);
 
 			$(this.popup._wrapper).css({
-				'background': item.get('thumbnail_url') ? 'url('+ item.get('thumbnail_url') +')' : 'grey',
+				'background': 'url('+ thumbUrl +')',
 				'background-size' : '100% auto'
 			});
+			
 		},
 		lookup : function(  )
 		{
