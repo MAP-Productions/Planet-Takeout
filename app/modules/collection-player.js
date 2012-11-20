@@ -16,6 +16,8 @@ function(Zeega, Backbone,loadingSpinner) {
 
 	CPlayer.Model = Backbone.Model.extend({
 
+		playerType : 'collection',
+
 		initialize : function()
 		{
 			loadingSpinner.show('Collection');

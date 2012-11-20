@@ -474,7 +474,7 @@ i.PT-featured {
   margin: 0;
   list-style: none;
 }
-#grid-view-slider > ul > li {
+#grid-view-slider ul li {
   float: left;
   width: 142px;
   height: 100px;
@@ -482,18 +482,17 @@ i.PT-featured {
   margin: 12px;
   background-size: 100% 100%;
 }
-#grid-view-slider > ul > li a {
+#grid-view-slider ul li a {
   text-decoration: none;
   position: relative;
 }
-#grid-view-slider > ul > li .featured-icon {
+#grid-view-slider ul li .featured-icon {
   position: absolute;
   top: -8px;
   left: -15px;
 }
 .item-title {
   display: none;
-  overflow: none;
   color: white;
 }
 #grid-view-slider > ul > li:hover .item-title {
