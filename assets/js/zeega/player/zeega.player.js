@@ -81,6 +81,8 @@ function(Zeega, Backbone, Layer) {
 		{
 			var _this = this;
 
+			if(this.project.timer) clearTimeout(this.project.timer);
+
 			if( this.get('mode') != 'editor') clearInterval(this.fsCheck);
 
 			if(document.exitFullscreen)					document.exitFullscreen();
