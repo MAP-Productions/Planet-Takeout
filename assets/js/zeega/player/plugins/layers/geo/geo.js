@@ -162,7 +162,7 @@ function(Zeega, Backbone, _Layer){
 					addressControl : false,
 					addressControlOptions : false,
 					clickToGo : true,
-					disableDoubleClickZoom : false,
+					disableDoubleClickZoom : true,
 					enableCloseButton : false,
 					imageDateControl : false,
 					linksControl : false,
@@ -175,15 +175,15 @@ function(Zeega, Backbone, _Layer){
 					visible :true,
 					zoomControl :false,
 					
-					
-					pov : {
-							'heading' : this.model.get('attr').heading,
-							'pitch' : this.model.get('attr').pitch,
-							'zoom' : this.model.get('attr').streetZoom
+					pov:{
+							'heading' : parseInt(this.model.get('attr').heading,10),
+							'pitch' : parseInt(this.model.get('attr').pitch,10),
+							'zoom' : parseInt(this.model.get('attr').streetZoom,10)
 					}
+				
 					
 				};
-				
+				$(this.$('#gmap-container-'+_this.model.id)[0]).css({'height':'640px','width':'640px','margin':'auto'});
 				_this.streetview = new google.maps.StreetViewPanorama( this.$('#gmap-container-'+_this.model.id)[0], mapOptions);
 				
 				
