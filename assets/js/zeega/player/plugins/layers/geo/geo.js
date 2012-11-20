@@ -175,12 +175,12 @@ function(Zeega, Backbone, _Layer){
 					visible :true,
 					zoomControl :false,
 					
-					
-					pov : {
-							'heading' : this.model.get('attr').heading,
-							'pitch' : this.model.get('attr').pitch,
-							'zoom' : this.model.get('attr').streetZoom
+					pov:{
+							'heading' : parseInt(this.model.get('attr').heading,10),
+							'pitch' : parseInt(this.model.get('attr').pitch,10),
+							'zoom' : parseInt(this.model.get('attr').streetZoom,10)
 					}
+				
 					
 				};
 				
