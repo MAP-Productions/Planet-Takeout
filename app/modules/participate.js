@@ -160,25 +160,28 @@ function(Zeega, Backbone, Modal)
 
 		saveStreetView: function()
 		{
-			this.model.save({
-				title: $('#takeoutName').val(),
-				attributes : {
-					tags:$('#takeoutName').val().split(' ').join('').split('\'').join('').toLowerCase(),
-					pov: {
-						heading : this.newTakeoutStreetView.getPov().heading,
-						pitch : this.newTakeoutStreetView.getPov().pitch,
-						streetZoom : Math.floor( this.newTakeoutStreetView.getPov().zoom )
-					}
-				},
-				thumbnail_url:"http://cbk0.google.com/cbk?output=thumbnail&w=200&h=200&ll="+this.newTakeoutStreetView.getPosition().lat()+","+this.newTakeoutStreetView.getPosition().lng(),
-				media_geo_latitude: this.newTakeoutStreetView.getPosition().lat(),
-				media_geo_longitude: this.newTakeoutStreetView.getPosition().lng()
-			});
-			console.log(this.model);
-			$(this.el)
-				.find('#find').hide()
-				.siblings('#thanks').show()
-				.find('#takeoutName').text( this.model.get('title') );
+			if($('#takeoutName').val().split(' ').join('').split('\'').join('').toLowerCase()==="") alert('Please enter the name of the takeout!');
+			else{
+				this.model.save({
+					title: $('#takeoutName').val(),
+					attributes : {
+						tags:$('#takeoutName').val().split(' ').join('').split('\'').join('').toLowerCase(),
+						pov: {
+							heading : this.newTakeoutStreetView.getPov().heading,
+							pitch : this.newTakeoutStreetView.getPov().pitch,
+							streetZoom : Math.floor( this.newTakeoutStreetView.getPov().zoom )
+						}
+					},
+					thumbnail_url:"http://cbk0.google.com/cbk?output=thumbnail&w=200&h=200&ll="+this.newTakeoutStreetView.getPosition().lat()+","+this.newTakeoutStreetView.getPosition().lng(),
+					media_geo_latitude: this.newTakeoutStreetView.getPosition().lat(),
+					media_geo_longitude: this.newTakeoutStreetView.getPosition().lng()
+				});
+				console.log(this.model);
+				$(this.el)
+					.find('#find').hide()
+					.siblings('#thanks').show()
+					.find('#takeoutName').text( this.model.get('title') );
+			}
 		},
 
 		initKeepInTouch: function()
