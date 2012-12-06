@@ -201,7 +201,7 @@ function(Zeega, Backbone, Modal)
 
 		page : 1,
 
-		url : function(){ return localStorage.api + '/search?r_itemswithcollections&tags=pt_grid&page='+ this.page; },
+		url : function(){ return localStorage.api + '/items/search?tags=pt_grid&page='+ this.page; },
 
 		parse : function( res )
 		{
