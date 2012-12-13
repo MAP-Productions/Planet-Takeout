@@ -12,7 +12,7 @@ Please see [Zeega Standalone Player](https://github.com/Zeega/Zeega-Standalone-P
 
 
 
-## ZEEGA
+## Zeega
 
 Zeega is an open-source HTML5 platform for creating interactive documentaries and inventing new forms of storytelling. To read more about Zeega go to [zeega.org](http://zeega.org).
 
