@@ -65,7 +65,7 @@ function(Zeega, Backbone, Modal)
 				attributionControl:false
 			}).setView(start, 12);
 
-			L.tileLayer('http://{s}.tiles.mapbox.com/v2/mapbox.mapbox-streets/{z}/{x}/{y}.png', {
+			L.tileLayer('http://{s}.tiles.mapbox.com/v2/zeega.map-yjji2z1p/{z}/{x}/{y}.png', {
 				maxZoom: 18
 			}).addTo( this.map );
 
